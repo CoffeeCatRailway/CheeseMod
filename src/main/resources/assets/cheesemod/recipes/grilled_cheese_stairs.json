@@ -1,0 +1,20 @@
+{
+    "result": {
+        "item": "cheesemod:grilled_cheese_stairs",
+        "data": 0,
+        "count": 4
+    },
+    "group": "food_block_stairs",
+    "pattern": [
+        "b  ",
+        "bb ",
+        "bbb"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "b": {
+            "item": "cheesemod:food_block",
+            "data": 1
+        }
+    }
+}

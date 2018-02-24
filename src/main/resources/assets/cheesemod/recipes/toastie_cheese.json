@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "cheesemod:cheese_toastie",
+        "data": 0
+    },
+    "ingredients": [
+        {
+            "item": "cheesemod:toast_slice",
+            "data": 32767
+        },
+        {
+            "item": "cheesemod:toast_slice",
+            "data": 32767
+        },
+        {
+            "item": "cheesemod:cheese_slice",
+            "data": 0
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

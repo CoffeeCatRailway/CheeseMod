@@ -1,0 +1,32 @@
+{
+    "result": {
+        "item": "cheesemod:ham_cooked",
+        "data": 0,
+        "count": 3
+    },
+    "ingredients": [
+        [
+            {
+                "item": "cheesemod:knife",
+                "data": 32767
+            },
+            {
+                "item": "cheesemod:cheese_knife",
+                "data": 32767
+            },
+            {
+                "item": "cheesemod:ham_raw_knife",
+                "data": 32767
+            },
+            {
+                "item": "cheesemod:ham_cooked_knife",
+                "data": 32767
+            }
+        ],
+        {
+            "item": "minecraft:cooked_porkchop",
+            "data": 0
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

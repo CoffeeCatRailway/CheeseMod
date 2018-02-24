@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom": { "model": "cheesemod:half_slab_grilled_cheese" },
+        "half=top": { "model": "cheesemod:upper_slab_grilled_cheese" }
+    }
+}

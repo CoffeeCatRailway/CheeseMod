@@ -1,0 +1,19 @@
+{
+    "result": {
+        "item": "cheesemod:food_block",
+        "data": 2
+    },
+    "group": "food_block",
+    "pattern": [
+        "bbb",
+        "bbb",
+        "bbb"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "b": {
+            "item": "minecraft:porkchop",
+            "data": 0
+        }
+    }
+}

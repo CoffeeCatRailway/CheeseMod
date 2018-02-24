@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "cheesemod:knife",
+        "data": 0
+    },
+    "group": "knife",
+    "pattern": [
+        "i",
+        "s"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "i": {
+            "item": "minecraft:iron_ingot",
+            "data": 0
+        },
+        "s": {
+            "item": "minecraft:stick",
+            "data": 0
+        }
+    }
+}

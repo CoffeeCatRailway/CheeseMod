@@ -1,0 +1,25 @@
+{
+    "result": {
+        "item": "cheesemod:grill",
+        "data": 0
+    },
+    "pattern": [
+        "ibi",
+        "ini"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "i": {
+            "item": "minecraft:iron_ingot",
+            "data": 0
+        },
+        "b": {
+            "item": "minecraft:iron_bars",
+            "data": 0
+        },
+        "n": {
+            "item": "minecraft:netherrack",
+            "data": 0
+        }
+    }
+}

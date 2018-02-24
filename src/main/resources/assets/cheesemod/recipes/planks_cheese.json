@@ -1,0 +1,15 @@
+{
+    "result": {
+        "item": "cheesemod:cheese_planks",
+        "data": 0,
+        "count": 4
+    },
+    "group": "food_block_planks",
+    "ingredients": [
+        {
+            "item": "cheesemod:cheese_log",
+            "data": 0
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

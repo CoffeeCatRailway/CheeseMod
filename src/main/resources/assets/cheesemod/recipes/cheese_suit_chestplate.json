@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "cheesemod:cheese_suit_chestplate",
+        "data": 0
+    },
+    "group": "cheese_suit",
+    "pattern": [
+        "bsb",
+        "s s",
+        "bsb"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "b": {
+            "item": "cheesemod:cheese_bit",
+            "data": 0
+        },
+        "s": {
+            "item": "minecraft:stick",
+            "data": 0
+        }
+    }
+}

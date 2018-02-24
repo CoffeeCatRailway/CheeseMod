@@ -1,0 +1,14 @@
+{
+    "result": {
+        "item": "cheesemod:ham_cooked_metal_ingot",
+        "data": 0,
+        "count": 9
+    },
+    "ingredients": [
+        {
+            "item": "cheesemod:ham_cooked_metal_block",
+            "data": 0
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

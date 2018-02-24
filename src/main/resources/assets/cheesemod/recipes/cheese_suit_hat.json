@@ -1,0 +1,18 @@
+{
+    "result": {
+        "item": "cheesemod:cheese_suit_hat",
+        "data": 0
+    },
+    "group": "cheese_suit",
+    "pattern": [
+        "bbb",
+        "b b"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "b": {
+            "item": "cheesemod:cheese_bit",
+            "data": 0
+        }
+    }
+}

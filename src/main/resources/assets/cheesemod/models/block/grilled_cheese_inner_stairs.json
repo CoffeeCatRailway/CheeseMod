@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "cheesemod:blocks/grilled_cheese_block_top",
+        "top": "cheesemod:blocks/grilled_cheese_block_top",
+        "side": "cheesemod:blocks/grilled_cheese_block_side"
+    }
+}

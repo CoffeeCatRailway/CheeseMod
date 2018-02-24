@@ -1,0 +1,14 @@
+{
+    "result": {
+        "item": "minecraft:porkchop",
+        "data": 0,
+        "count": 9
+    },
+    "ingredients": [
+        {
+            "item": "cheesemod:food_block",
+            "data": 2
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

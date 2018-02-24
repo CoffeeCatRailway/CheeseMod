@@ -1,0 +1,23 @@
+{
+    "result": {
+        "item": "cheesemod:ham_suit_chestplate",
+        "data": 0
+    },
+    "group": "ham_suit",
+    "pattern": [
+        "b b",
+        "sbs",
+        "bbb"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "b": {
+            "item": "cheesemod:ham_bit",
+            "data": 0
+        },
+        "s": {
+            "item": "minecraft:stick",
+            "data": 0
+        }
+    }
+}

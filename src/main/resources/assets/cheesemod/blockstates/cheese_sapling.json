@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "stage=0,variant=cheese": { "model": "cheesemod:sapling_cheese" },
+        "stage=0,variant=grilled_cheese": { "model": "cheesemod:sapling_grilled_cheese" },
+        "stage=0,variant=ham_raw": { "model": "cheesemod:sapling_ham_raw" },
+        "stage=0,variant=ham_cooked": { "model": "cheesemod:sapling_ham_cooked" },
+        
+        "stage=1,variant=cheese": { "model": "cheesemod:sapling_cheese"  },
+        "stage=1,variant=grilled_cheese": { "model": "cheesemod:sapling_grilled_cheese"  },
+        "stage=1,variant=ham_raw": { "model": "cheesemod:sapling_ham_raw"  },
+        "stage=1,variant=ham_cooked": { "model": "cheesemod:sapling_ham_cooked"  }
+    }
+}

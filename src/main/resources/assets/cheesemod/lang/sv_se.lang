@@ -1,0 +1,207 @@
+# Entities
+entity.cheese_man.name=Ostman
+entity.ham_man.name=Skinkman
+
+entity.cheese_golem.name=Ostgolem
+entity.ham_golem.name=Skinkgolem
+
+# Items
+item.test_item.name=Testpryl
+
+item.block_o_cheese.name=Block av Ost
+item.cheese_slice.name=Ost Skiva
+
+item.toast.name=Rostat bröd
+item.toast_slice.name=Rostad brödskiva
+item.ham_raw.name=Rå Skinka
+item.ham_cooked.name=Kokt Skinka
+
+item.cheese_toastie.name=Osttoastie
+item.grilled_cheese_toastie.name=Grillad Ost-toastie
+
+item.ham_raw_n_cheese_toastie.name=Rå Skinka och Ost-toastie
+item.ham_cooked_n_cheese_toastie.name=Kokt Skinka och Ost-toastie
+item.grilled_ham_raw_n_cheese_toastie.name=Grillad Rå Skinka och Ost-toastie
+item.grilled_ham_cooked_n_cheese_toastie.name=Grillad Kokt Skinka och Ost-toastie
+
+item.knife.name=Kniv
+item.cheese_knife.name=Ost-kniv
+item.ham_raw_knife.name=Rå Skink-kniv
+item.ham_cooked_knife.name=Kokt Skink-kniv
+
+item.cheese_metal_ingot.name=Ostmetall Tacka
+item.grilled_cheese_metal_ingot.name=Grillad Ostmetall Tacka
+item.ham_raw_metal_ingot.name=Rå Skinkmetall Tacka
+item.ham_cooked_metal_ingot.name=Kokt Skinkmetall Tacka
+
+item.cracker.name=Kex
+item.cheese_n_cracker.name=Ost och Kex
+item.grilled_cheese_n_cracker.name=Grillad Ost och Kex
+
+item.cheese_cutter.name=Osthyvel
+item.cheese_bit.name=Ostbit
+item.ham_bit.name=Skinkbit
+
+
+# Rustning
+item.cheese_helmet.name=Osthjälm
+item.cheese_chestplate.name=Ostbröstplatta
+item.cheese_leggings.name=Ostleggins
+item.cheese_boots.name=Ostkängor
+
+item.grilled_cheese_helmet.name=Grillad Osthjälm
+item.grilled_cheese_chestplate.name=Grillad Ostbröstplatta
+item.grilled_cheese_leggings.name=Grillad Ostleggins
+item.grilled_cheese_boots.name=Grillad Ostkängor
+
+item.ham_raw_helmet.name=Rå Skinkhjälm
+item.ham_raw_chestplate.name=Rå Skinkbröstplatta
+item.ham_raw_leggings.name=Råa Skinkleggins
+item.ham_raw_boots.name=Rå Skinkkängor
+
+item.ham_cooked_helmet.name=Kokt Skinkhjälm
+item.ham_cooked_chestplate.name=Kokt Skinkbröstplatta
+item.ham_cooked_leggings.name=Kokta Skinkleggins
+item.ham_cooked_boots.name=Kokta Skinkkängor
+
+item.cheese_suit_hat.name=Ost Hatt
+item.cheese_suit_chestplate.name=Ost Kostym Bröstplatta
+
+item.ham_suit_hat.name=Skink Hatt
+item.ham_suit_chestplate.name=Skinka Kostym Bröstplatta
+
+
+# Verktyg
+item.cheese_metal_pickaxe.name=Ostmetall Hacka
+item.cheese_metal_axe.name=Ostmetall Yxa
+item.cheese_metal_hoe.name=Ostmetall Lie
+item.cheese_metal_shovel.name=Ostmetall Skyffel
+item.cheese_metal_sword.name=Ostmetall Svärd
+item.cheese_metal_multitool.name=Ostmetall Multiverktyg
+
+item.grilled_cheese_metal_pickaxe.name=Grillad Ostmetall hacka
+item.grilled_cheese_metal_axe.name=Grillad Ostmetall Yxa
+item.grilled_cheese_metal_hoe.name=Grillad Ostmetall Lie
+item.grilled_cheese_metal_shovel.name=Grillad Ostmetall Skyffel
+item.grilled_cheese_metal_sword.name=Grillad Ostmetall Svärd
+item.grilled_cheese_metal_multitool.name=Grillad Ostmetall Multiverktyg
+
+item.ham_raw_metal_pickaxe.name=Rå Skinkmetall hacka
+item.ham_raw_metal_axe.name=Rå Skinkmetall Yxa
+item.ham_raw_metal_hoe.name=Rå Skinkmetall Lie
+item.ham_raw_metal_shovel.name=Rå Skinkmetall Skyffel
+item.ham_raw_metal_sword.name=Rå Skinkmetall Svärd
+item.ham_raw_metal_multitool.name=Rå Skinkmetall Multiverktyg
+
+item.ham_cooked_metal_pickaxe.name=Kokt Skinkmetall hacka
+item.ham_cooked_metal_axe.name=Kokt Skinkmetall Yxa
+item.ham_cooked_metal_hoe.name=Kokt Skinkmetall Lie
+item.ham_cooked_metal_shovel.name=Kokt Skinkmetall Skyffel
+item.ham_cooked_metal_sword.name=Kokt Skinkmetall Svärd
+item.ham_cooked_metal_multitool.name=Kokt Skinkmetall Multiverktyg
+
+
+# Blocks with variants
+tile.cheese_planks_cheese.name=Ostplankor
+tile.cheese_planks_grilled_cheese.name=Grillade Ostplankor
+tile.cheese_planks_ham_raw.name=Råa Skinkplankor
+tile.cheese_planks_ham_cooked.name=Kokta Skinkplankor
+
+tile.cheese_log_cheese.name=Oststock
+tile.cheese_log_grilled_cheese.name=Grillad Oststock
+tile.cheese_log_ham_raw.name=Rå Skinkstock
+tile.cheese_log_ham_cooked.name=Kokt Skinkstock
+
+tile.cheese_leaves_cheese.name=Ostlöv
+tile.cheese_leaves_grilled_cheese.name=Grillade Ostlöv
+tile.cheese_leaves_ham_raw.name=Råa Skinklöv
+tile.cheese_leaves_ham_cooked.name=Kokta Skinklöv
+
+tile.cheese_sapling_cheese.name=Ungt Ostträd
+tile.cheese_sapling_grilled_cheese.name=Grillat Ungt Ostträd
+tile.cheese_sapling_ham_raw.name=Rått Ungt Skinkträd
+tile.cheese_sapling_ham_cooked.name=Kokt Ungt Skinkträd
+
+tile.food_block_cheese.name=Matblock av Ost
+tile.food_block_grilled_cheese.name=Matblock av Grillad Ost
+tile.food_block_ham_raw.name=Matblock av rå Skinkka
+tile.food_block_ham_cooked.name=Matblock av Kokt Skinka
+
+tile.food_ground_block_cheese.name=Ostgräs
+tile.food_ground_block_ham.name=Skinkgräs
+
+# Blocks
+tile.grill.name=Grill
+tile.grill_active.name=Grill
+
+tile.cheese_draw.name=Ost Dra
+tile.ham_draw.name=Skinka Dra
+
+tile.cheese_metal_ore.name=Ostmetall Malm
+tile.nether_cheese_metal_ore.name=Nether Ostmetall Malm
+tile.end_cheese_metal_ore.name=End Ostmetall Malm
+
+tile.grilled_cheese_metal_ore.name=Grillad Ostmetall Malm
+tile.nether_grilled_cheese_metal_ore.name=Nether Grillad Ostmetall Malm
+tile.end_grilled_cheese_metal_ore.name=End Grillad Ostmetall Malm
+
+tile.cheese_metal_block.name=Ostmetall Block
+tile.grilled_cheese_metal_block.name=Grillad Ostmetall Block
+
+tile.cheese_block.name=Ost Block
+tile.grilled_cheese_block.name=Grillat Ost Block
+tile.cheese_stairs.name=Ost Trappor
+tile.grilled_cheese_stairs.name=Grillade Ost Trappor
+
+tile.cheese_slab.name=Ostplatta
+tile.grilled_cheese_slab.name=Grillad Ostplatta
+
+tile.ham_raw_metal_ore.name=Rå Skinkmetall Malm
+tile.nether_ham_raw_metal_ore.name=Nether Rå Skinkmetall Malm
+tile.end_ham_raw_metal_ore.name=End Rå Skinkmetall Malm
+
+tile.ham_cooked_metal_ore.name=Kokt Skinkmetall Malm
+tile.nether_ham_cooked_metal_ore.name=Nether Kokt Skinkmetall Malm
+tile.end_ham_cooked_metal_ore.name=End Kokt Skinkmetall Malm
+
+tile.ham_raw_metal_block.name=Rå Skinkmetall Block
+tile.ham_cooked_metal_block.name=Kokt Skinkmetall Block
+
+tile.ham_raw_block.name=Rått Skink Block
+tile.ham_cooked_block.name=Kokt Skink Block
+tile.ham_raw_stairs.name=Råa Skink Trappor
+tile.ham_cooked_stairs.name=Kokta Skink Trappor
+
+tile.ham_raw_slab.name=Rå Skink Platta
+tile.ham_cooked_slab.name=Kokt Skink Platta
+
+
+# Tabs
+itemGroup.cheesetab=Ost mod
+itemGroup.cheesearmortoolstab=Ost mod: Rustning & Verktyg
+itemGroup.cheesefoodstab=Ost mod: Foods
+
+
+# Guis
+gui.test_gui.title=Test GUI
+gui.test_gui.close=Stäng GUI
+gui.test_gui.change_title=Byta Titel
+
+
+# config
+config.cheesemod.main_title=Ostmod: config
+config.cheesemod.biome_spawning=Ostmod Biomes
+config.cheesemod.biome_spawning.tooltip=Tillåt Ostmod att generera sina biomes.
+
+config.cheesemod.food_suit_scale="Mat" Kostymer
+config.cheesemod.food_suit_scale.tooltip=Bestämmer skalan av "mat" kostymernas model.
+
+
+# Other
+container.grill=Grill
+
+
+# Generators
+generator.cheese=Ost
+generator.ham=Skink
+

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom": { "model": "cheesemod:grilled_cheese_block" },
+        "half=top":    { "model": "cheesemod:grilled_cheese_block" }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "result": {
+        "item": "cheesemod:grinding_stones",
+        "data": 0,
+        "count": 1
+    },
+    "ingredients": [
+        {
+            "item": "minecraft:cobblestone",
+            "data": 0
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

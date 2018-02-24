@@ -1,0 +1,14 @@
+{
+    "result": {
+        "item": "cheesemod:grilled_cheese_metal_ingot",
+        "data": 0,
+        "count": 9
+    },
+    "ingredients": [
+        {
+            "item": "cheesemod:grilled_cheese_metal_block",
+            "data": 0
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

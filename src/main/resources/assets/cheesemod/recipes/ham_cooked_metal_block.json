@@ -1,0 +1,19 @@
+{
+    "result": {
+        "item": "cheesemod:ham_cooked_metal_block",
+        "data": 0
+    },
+    "group": "food_metal_block",
+    "pattern": [
+        "bbb",
+        "bbb",
+        "bbb"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "b": {
+            "item": "cheesemod:ham_cooked_metal_ingot",
+            "data": 0
+        }
+    }
+}

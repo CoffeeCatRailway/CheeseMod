@@ -1,0 +1,30 @@
+{
+    "result": {
+        "item": "cheesemod:ham_cooked_metal_multitool",
+        "data": 0
+    },
+    "group": "multitool",
+    "ingredients": [
+        {
+            "item": "cheesemod:ham_cooked_metal_pickaxe",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:ham_cooked_metal_axe",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:ham_cooked_metal_hoe",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:ham_cooked_metal_shovel",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:ham_cooked_metal_sword",
+            "data": 0
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

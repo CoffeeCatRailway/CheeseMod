@@ -1,0 +1,49 @@
+{
+    "result": {
+        "item": "cheesemod:ham_draw",
+        "data": 0
+    },
+    "group": "food_draw",
+    "pattern": [
+        "plp",
+        "fcp",
+        "plp"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "c": {
+            "type": "forge:ore_dict",
+            "ore": "chest"
+        },
+        "p": [
+            {
+                "item": "cheesemod:cheese_planks",
+                "data": 2
+            },
+            {
+                "item": "cheesemod:cheese_planks",
+                "data": 3
+            }
+        ],
+        "l": [
+            {
+                "item": "cheesemod:cheese_log",
+                "data": 2
+            },
+            {
+                "item": "cheesemod:cheese_log",
+                "data": 3
+            }
+        ],
+        "f": [
+            {
+                "item": "cheesemod:food_block",
+                "data": 2
+            },
+            {
+                "item": "cheesemod:food_block",
+                "data": 3
+            }
+        ]
+    }
+}
