@@ -3,16 +3,13 @@ package coffeecatteam.cheesemod.gui.container;
 import coffeecatteam.cheesemod.crafting.foodmakers.Grilling;
 import coffeecatteam.cheesemod.gui.container.slots.foodmakers.SlotFoodMakerFuel;
 import coffeecatteam.cheesemod.gui.container.slots.foodmakers.SlotFoodMakerOutput;
-import coffeecatteam.cheesemod.gui.container.slots.foodmakers.SlotGrillingOil;
+import coffeecatteam.cheesemod.gui.container.slots.foodmakers.SlotOil;
 import coffeecatteam.cheesemod.objects.tileentity.TileEntityGrill;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnaceFuel;
-import net.minecraft.inventory.SlotFurnaceOutput;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -24,7 +21,7 @@ public class ContainerGrill extends Container {
 	public ContainerGrill(InventoryPlayer player, TileEntityGrill tileentity) {
 		this.tileentity = tileentity;
 		this.addSlotToContainer(new Slot(tileentity, 0, 62, 17));
-		this.addSlotToContainer(new SlotGrillingOil(tileentity, 1, 44, 17));
+		this.addSlotToContainer(new SlotOil(tileentity, 1, 44, 17));
 		this.addSlotToContainer(new SlotFoodMakerFuel(tileentity, 2, 61, 55));
 		this.addSlotToContainer(new SlotFoodMakerOutput(player.player, tileentity, 3, 114, 17));
 

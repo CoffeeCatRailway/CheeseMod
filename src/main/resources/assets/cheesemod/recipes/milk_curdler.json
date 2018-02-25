@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "cheesemod:milk_curdler",
+        "data": 0
+    },
+    "pattern": [
+        "s",
+        "s",
+        "g"
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "s": {
+            "item": "minecraft:stick",
+            "data": 0
+        },
+        "g": {
+            "item": "cheesemod:wooden_gear",
+            "data": 0
+        }
+    }
+}

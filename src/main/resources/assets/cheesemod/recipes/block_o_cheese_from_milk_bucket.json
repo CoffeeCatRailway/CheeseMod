@@ -1,16 +1,16 @@
 {
     "result": {
-        "item": "cheesemod:cheese_bit",
+        "item": "cheesemod:block_o_cheese",
         "data": 0,
-        "count": 4
+        "count": 2
     },
     "ingredients": [
         {
-            "item": "cheesemod:cheese_cutter",
+            "item": "cheesemod:milk_curdler",
             "data": 32767
         },
         {
-            "item": "cheesemod:food_block",
+            "item": "minecraft:milk_bucket",
             "data": 0
         }
     ],

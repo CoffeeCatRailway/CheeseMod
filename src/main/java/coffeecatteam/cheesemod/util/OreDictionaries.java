@@ -76,7 +76,10 @@ public class OreDictionaries {
 				InitItem.HAM_RAW_N_CHEESE_TOASTIE, InitItem.HAM_COOKED_N_CHEESE_TOASTIE,
 				InitItem.GRILLED_HAM_RAW_N_CHEESE_TOASTIE, InitItem.GRILLED_HAM_COOKED_N_CHEESE_TOASTIE);
 		registerOres(foodCracker, InitItem.CRACKER, InitItem.CHEESE_N_CRACKER, InitItem.GRILLED_CHEESE_N_CRACKER);
+		
 		registerOres(oilGrill, InitItem.GRILLING_OIL, InitItem.SMELTING_OIL);
+		
+		OreDictionary.registerOre("gearWood", InitItem.WOODEN_GEAR);
 	}
 	
 	private static void registerOres(String key, Object... items) {

@@ -1,0 +1,22 @@
+{
+    "result": {
+        "item": "cheesemod:wooden_gear",
+        "data": 0
+    },
+    "pattern": [
+        " s ",
+        "sbs",
+        " s "
+    ],
+    "type": "forge:ore_shaped",
+    "key": {
+        "s": {
+            "item": "minecraft:stick",
+            "data": 0
+        },
+        "b": {
+            "item": "minecraft:planks",
+            "data": 0
+        }
+    }
+}

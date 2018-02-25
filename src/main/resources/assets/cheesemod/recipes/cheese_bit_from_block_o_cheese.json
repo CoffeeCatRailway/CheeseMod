@@ -1,8 +1,8 @@
 {
     "result": {
-        "item": "cheesemod:ham_bit",
+        "item": "cheesemod:cheese_bit",
         "data": 0,
-        "count": 4
+        "count": 2
     },
     "ingredients": [
         {
@@ -10,8 +10,8 @@
             "data": 32767
         },
         {
-            "item": "cheesemod:food_block",
-            "data": 2
+            "item": "cheesemod:block_o_cheese",
+            "data": 0
         }
     ],
     "type": "minecraft:crafting_shapeless"

@@ -8,8 +8,6 @@ entity.ham_golem.name=Ham Golem
 # Items
 item.test_item.name=Test Item
 
-item.grilling_oil.name=Grilling Oil
-
 item.block_o_cheese.name=Block O' Cheese
 item.cheese_slice.name=Cheese Slice
 
@@ -47,6 +45,12 @@ item.ham_bit.name=Bit O' Ham
 item.grinding_stones.name=Grinding Stones
 item.flour.name=Flour
 item.salt.name=Salt
+
+item.grilling_oil.name=Grilling Oil
+item.smelting_oil.name=Smelting Oil
+
+item.milk_curdler.name=Milk Curdler
+item.wooden_gear.name=Wooden Gear
 
 
 # Armor

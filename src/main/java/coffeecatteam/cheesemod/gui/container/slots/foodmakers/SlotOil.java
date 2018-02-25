@@ -8,15 +8,15 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class SlotGrillingOil extends Slot {
+public class SlotOil extends Slot {
 
-	public SlotGrillingOil(IInventory inventory, int index, int x, int y) {
+	public SlotOil(IInventory inventory, int index, int x, int y) {
 		super(inventory, index, x, y);
 	}
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		return (stack.getItem() == InitItem.GRILLING_OIL);
+		return (stack.getItem() == InitItem.GRILLING_OIL) || (stack.getItem() == InitItem.SMELTING_OIL);
 	}
 
 	@Override

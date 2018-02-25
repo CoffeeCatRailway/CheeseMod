@@ -12,8 +12,11 @@ import coffeecatteam.cheesemod.objects.items.base.ItemBaseTool;
 import coffeecatteam.cheesemod.objects.items.foods.ItemCracker;
 import coffeecatteam.cheesemod.objects.items.foods.ItemToastie;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
@@ -31,19 +34,8 @@ public class InitItem {
 	/*
 	 * Other
 	 */
-	public static final Item GRILLING_OIL = new ItemBaseTool("grilling_oil", OIL_MATERIAL);
-	public static final Item SMELTING_OIL = new ItemBaseTool("smelting_oil", OIL_MATERIAL);
-	
-	/*
-	 *  Tools
-	 */
-	public static final Item KNIFE = new ItemBaseTool("knife", ToolMaterial.IRON);
-	public static final Item CHEESE_KNIFE = new ItemBaseTool("cheese_knife", InitTool.CHEESE_METAL_TOOL_MATERIAL);
-	public static final Item HAM_RAW_KNIFE = new ItemBaseTool("ham_raw_knife", InitTool.HAM_RAW_METAL_TOOL_MATERIAL);
-	public static final Item HAM_COOKED_KNIFE = new ItemBaseTool("ham_cooked_knife", InitTool.HAM_COOKED_METAL_TOOL_MATERIAL);
-
-	public static final Item CHEESE_CUTTER = new ItemBaseTool("cheese_cutter", BASIC_MATERIAL);
-	public static final Item GRINDING_STONES = new ItemBaseTool("grinding_stones", ToolMaterial.STONE);
+	public static final Item GRILLING_OIL = new ItemBaseTool("grilling_oil", OIL_MATERIAL, false, ItemStack.EMPTY);
+	public static final Item SMELTING_OIL = new ItemBaseTool("smelting_oil", OIL_MATERIAL, false, ItemStack.EMPTY);
 
 	/*
 	 *  Ingots
@@ -52,6 +44,18 @@ public class InitItem {
 	public static final Item GRILLED_CHEESE_METAL_INGOT = new ItemBase("grilled_cheese_metal_ingot");
 	public static final Item HAM_RAW_METAL_INGOT = new ItemBase("ham_raw_metal_ingot");
 	public static final Item HAM_COOKED_METAL_INGOT = new ItemBase("ham_cooked_metal_ingot");
+	
+	/*
+	 *  Tools
+	 */
+	public static final Item KNIFE = new ItemBaseTool("knife", ToolMaterial.IRON, true, new ItemStack(Items.IRON_INGOT, 1, 0));
+	public static final Item CHEESE_KNIFE = new ItemBaseTool("cheese_knife", InitTool.CHEESE_METAL_TOOL_MATERIAL, true, new ItemStack(CHEESE_METAL_INGOT, 1, 0));
+	public static final Item HAM_RAW_KNIFE = new ItemBaseTool("ham_raw_knife", InitTool.HAM_RAW_METAL_TOOL_MATERIAL, true, new ItemStack(HAM_RAW_METAL_INGOT, 1, 0));
+	public static final Item HAM_COOKED_KNIFE = new ItemBaseTool("ham_cooked_knife", InitTool.HAM_COOKED_METAL_TOOL_MATERIAL, true, new ItemStack(HAM_COOKED_METAL_INGOT, 1, 0));
+
+	public static final Item CHEESE_CUTTER = new ItemBaseTool("cheese_cutter", BASIC_MATERIAL, true, new ItemStack(Blocks.STONE, 1, 0));
+	public static final Item GRINDING_STONES = new ItemBaseTool("grinding_stones", ToolMaterial.STONE, false, ItemStack.EMPTY);
+	public static final Item MILK_CURDLER = new ItemBaseTool("milk_curdler", ToolMaterial.WOOD, true, new ItemStack(Blocks.PLANKS, 1, 0));
 
 	/*
 	 *  Foods
@@ -63,28 +67,32 @@ public class InitItem {
 	public static final Item FLOUR = new ItemBaseFood("flour", 1, false);
 	
 	public static final Item HAM_RAW = new ItemBaseFood("ham_raw", 2, true);
-	public static final Item HAM_COOKED = new ItemBaseFood("ham_cooked", 4, false);
+	public static final Item HAM_COOKED = new ItemBaseFood("ham_cooked", 3, false);
 
 	public static final Item TOAST = new ItemBaseFood("toast", 3, false);
 	public static final Item TOAST_SLICE = new ItemBaseFood("toast_slice", 2, false);
 
 	// Toasties
 	public static final Item CHEESE_TOASTIE = new ItemToastie("cheese_toastie", 8, true, "Grilled anyone..?", false);
-	public static final Item GRILLED_CHEESE_TOASTIE = new ItemToastie("grilled_cheese_toastie", 13, true, "Tastes better grilled, right..?", true);
-	public static final Item HAM_RAW_N_CHEESE_TOASTIE = new ItemToastie("ham_raw_n_cheese_toastie", 13, false, "So, Do you want it grilled anyone..?", false);
-	public static final Item HAM_COOKED_N_CHEESE_TOASTIE = new ItemToastie("ham_cooked_n_cheese_toastie", 15, false, "So, Do you want it grilled anyone..?", false);
-	public static final Item GRILLED_HAM_RAW_N_CHEESE_TOASTIE = new ItemToastie("grilled_ham_raw_n_cheese_toastie", 17, false, "So, Does it taste better grilled, right..?", true);
-	public static final Item GRILLED_HAM_COOKED_N_CHEESE_TOASTIE = new ItemToastie( "grilled_ham_cooked_n_cheese_toastie", 19, false, "So, Does it taste better grilled, right..?", true);
+	public static final Item GRILLED_CHEESE_TOASTIE = new ItemToastie("grilled_cheese_toastie", 11, true, "Tastes better grilled, right..?", true);
+	public static final Item HAM_RAW_N_CHEESE_TOASTIE = new ItemToastie("ham_raw_n_cheese_toastie", 9, false, "So, Do you want it grilled anyone..?", false);
+	public static final Item HAM_COOKED_N_CHEESE_TOASTIE = new ItemToastie("ham_cooked_n_cheese_toastie", 11, false, "So, Do you want it grilled anyone..?", false);
+	public static final Item GRILLED_HAM_RAW_N_CHEESE_TOASTIE = new ItemToastie("grilled_ham_raw_n_cheese_toastie", 12, false, "So, Does it taste better grilled, right..?", true);
+	public static final Item GRILLED_HAM_COOKED_N_CHEESE_TOASTIE = new ItemToastie( "grilled_ham_cooked_n_cheese_toastie", 14, false, "So, Does it taste better grilled, right..?", true);
 	
 	// Crackers
 	public static final Item CRACKER = new ItemCracker("cracker", 5, false);
 	public static final Item CHEESE_N_CRACKER = new ItemCracker("cheese_n_cracker", 7, false);
 	public static final Item GRILLED_CHEESE_N_CRACKER = new ItemCracker("grilled_cheese_n_cracker", 10, false);
 	
+	/*
+	 * Other
+	 */
 	public static final Item CHEESE_BIT = new ItemBase("cheese_bit");
 	public static final Item HAM_BIT = new ItemBase("ham_bit");
 
-	// Random
+	public static final Item WOODEN_GEAR = new ItemBase("wooden_gear");
+
 	public static final Item TEST_ITEM = new ItemTest("test_item");
 
 	public static void init() {
@@ -106,11 +114,11 @@ public class InitItem {
 				// Other
 				GRILLING_OIL,
 				SMELTING_OIL,
-				// Tools
-				KNIFE, CHEESE_KNIFE, HAM_RAW_KNIFE, HAM_COOKED_KNIFE,
-				CHEESE_CUTTER, GRINDING_STONES,
 				// Ingots
 				CHEESE_METAL_INGOT, GRILLED_CHEESE_METAL_INGOT, HAM_RAW_METAL_INGOT, HAM_COOKED_METAL_INGOT,
+				// Tools
+				KNIFE, CHEESE_KNIFE, HAM_RAW_KNIFE, HAM_COOKED_KNIFE,
+				CHEESE_CUTTER, GRINDING_STONES, MILK_CURDLER,
 				// Foods
 				BLOCK_O_CHEESE, CHEESE_SLICE,
 				SALT, FLOUR,
@@ -120,7 +128,9 @@ public class InitItem {
 				CHEESE_TOASTIE, GRILLED_CHEESE_TOASTIE, HAM_RAW_N_CHEESE_TOASTIE, HAM_COOKED_N_CHEESE_TOASTIE, GRILLED_HAM_RAW_N_CHEESE_TOASTIE, GRILLED_HAM_COOKED_N_CHEESE_TOASTIE,
 				// Crackers
 				CRACKER, CHEESE_N_CRACKER, GRILLED_CHEESE_N_CRACKER,
-				CHEESE_BIT, HAM_BIT
+				// Other
+				CHEESE_BIT, HAM_BIT,
+				WOODEN_GEAR
 		};
 
 		@SubscribeEvent

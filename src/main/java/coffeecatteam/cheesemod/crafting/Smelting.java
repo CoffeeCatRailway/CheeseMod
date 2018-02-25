@@ -4,6 +4,7 @@ import coffeecatteam.cheesemod.init.InitBlock;
 import coffeecatteam.cheesemod.init.InitItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class Smelting {
@@ -28,10 +29,6 @@ public class Smelting {
 		// Grilled Cheese Ore > Grilled Cheese Ingot
 		GameRegistry.addSmelting(InitBlock.GRILLED_CHEESE_METAL_ORE,
 				new ItemStack(InitItem.GRILLED_CHEESE_METAL_INGOT, 1), 15);
-
-		// Milk Bucket > Block O' Cheese
-		GameRegistry.addSmelting(Items.MILK_BUCKET.setContainerItem(Items.BUCKET),
-				new ItemStack(InitItem.BLOCK_O_CHEESE, 2), 8);
 
 		// Bread > Toast
 		GameRegistry.addSmelting(Items.BREAD, new ItemStack(InitItem.TOAST, 1), 7);
