@@ -11,12 +11,12 @@
     "type": "forge:ore_shaped",
     "key": {
         "s": {
-            "item": "minecraft:stick",
-            "data": 0
+            "type": "forge:ore_dict",
+            "ore": "stickWood"
         },
         "g": {
-            "item": "cheesemod:wooden_gear",
-            "data": 0
+            "type": "forge:ore_dict",
+            "ore": "gearWood"
         }
     }
 }

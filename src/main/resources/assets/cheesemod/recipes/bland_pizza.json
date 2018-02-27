@@ -1,0 +1,17 @@
+{
+    "result": {
+        "item": "cheesemod:bland_pizza",
+        "data": 0
+    },
+    "ingredients": [
+        {
+            "item": "cheesemod:rolling_pin",
+            "data": 32767
+        },
+        {
+            "item": "cheesemod:dough",
+            "data": 0
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

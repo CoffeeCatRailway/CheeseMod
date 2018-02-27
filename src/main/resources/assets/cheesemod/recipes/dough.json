@@ -1,0 +1,27 @@
+{
+    "result": {
+        "item": "cheesemod:dough",
+        "data": 0,
+        "count": 2
+    },
+    "ingredients": [
+        {
+            "item": "minecraft:wheat",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:salt",
+            "data": 0
+        },
+        {
+            "item": "minecraft:sugar",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:flour",
+            "data": 0
+        }
+        
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

@@ -10,6 +10,7 @@ import coffeecatteam.cheesemod.init.InitEntity;
 import coffeecatteam.cheesemod.init.InitItem;
 import coffeecatteam.cheesemod.init.InitTool;
 import coffeecatteam.cheesemod.objects.tileentity.TileEntityCheeseDraw;
+import coffeecatteam.cheesemod.objects.tileentity.TileEntityCrackerMaker;
 import coffeecatteam.cheesemod.objects.tileentity.TileEntityGrill;
 import coffeecatteam.cheesemod.objects.tileentity.TileEntityHamDraw;
 import coffeecatteam.cheesemod.util.Utils;
@@ -39,6 +40,7 @@ public class RegistryHandler {
 		GameRegistry.registerTileEntity(TileEntityCheeseDraw.class, Reference.MODID+":cheese_draw");
 		GameRegistry.registerTileEntity(TileEntityHamDraw.class, Reference.MODID+":ham_draw");
 		GameRegistry.registerTileEntity(TileEntityGrill.class, Reference.MODID+":grill");
+		GameRegistry.registerTileEntity(TileEntityCrackerMaker.class, Reference.MODID+":cracker_maker");
 		logger.info("Items, Blocks, Tools, Armors, Biomes, Entities & TileEntitys Initialized");
 
 		GameRegistry.registerWorldGenerator(new GenOre(), 0);

@@ -92,7 +92,7 @@ public class ContainerCrackerMaker extends Container {
 				Slot slot3 = (Slot) this.inventorySlots.get(index + 3);
 
 				if (!CrackerMaking.INSTANCE.getCrackerMakingResult(stack1, slot1.getStack(), slot2.getStack(), slot3.getStack()).isEmpty()) {
-					if (!this.mergeItemStack(stack1, 0, 2, false)) {
+					if (!this.mergeItemStack(stack1, 0, 5, false)) {
 						return ItemStack.EMPTY;
 					} else if (TileEntityCrackerMaker.isItemFuel(stack1)) {
 						if (!this.mergeItemStack(stack1, 2, 3, false))

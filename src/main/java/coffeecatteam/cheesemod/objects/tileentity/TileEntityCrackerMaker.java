@@ -26,9 +26,12 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityCrackerMaker extends TileEntity implements IInventory, ITickable {
-	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(8, ItemStack.EMPTY);
+	
+	private ItemStackHandler inventory = new ItemStackHandler(6);
+	private NonNullList<ItemStack> inventoryStacks = NonNullList.<ItemStack>withSize(6, ItemStack.EMPTY);
 	private String customName;
 
 	private int burnTime;
@@ -58,12 +61,12 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 
 	@Override
 	public int getSizeInventory() {
-		return this.inventory.size();
+		return this.inventoryStacks.size();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		for (ItemStack stack : this.inventory) {
+		for (ItemStack stack : this.inventoryStacks) {
 			if (!stack.isEmpty())
 				return false;
 		}
@@ -72,30 +75,30 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		return (ItemStack) this.inventory.get(index);
+		return (ItemStack) this.inventoryStacks.get(index);
 	}
 
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
-		return ItemStackHelper.getAndSplit(this.inventory, index, count);
+		return ItemStackHelper.getAndSplit(this.inventoryStacks, index, count);
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
-		return ItemStackHelper.getAndRemove(this.inventory, index);
+		return ItemStackHelper.getAndRemove(this.inventoryStacks, index);
 	}
 
 	@Override
 	public void setInventorySlotContents(int index, ItemStack stack) {
-		ItemStack itemstack = (ItemStack) this.inventory.get(index);
+		ItemStack itemstack = (ItemStack) this.inventoryStacks.get(index);
 		boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack)
 				&& ItemStack.areItemStackTagsEqual(stack, itemstack);
-		this.inventory.set(index, stack);
+		this.inventoryStacks.set(index, stack);
 
 		if (stack.getCount() > this.getInventoryStackLimit())
 			stack.setCount(this.getInventoryStackLimit());
 		if (index == 0 && index + 1 == 1 && !flag) {
-			ItemStack stack1 = (ItemStack) this.inventory.get(index + 1);
+			ItemStack stack1 = (ItemStack) this.inventoryStacks.get(index + 1);
 			this.totalCookTime = this.getCookTime(stack, stack1);
 			this.cookTime = 0;
 			this.markDirty();
@@ -105,12 +108,12 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
-		ItemStackHelper.loadAllItems(compound, this.inventory);
 		this.burnTime = compound.getInteger("BurnTime");
 		this.cookTime = compound.getInteger("CookTime");
 		this.totalCookTime = compound.getInteger("CookTimeTotal");
-		this.currentBurnTime = getItemBurnTime((ItemStack) this.inventory.get(2));
+		this.currentBurnTime = getItemBurnTime((ItemStack) this.inventoryStacks.get(4));
+		inventory.deserializeNBT((NBTTagCompound) compound.getTag("CrackerMakerInventory"));
+		ItemStackHelper.loadAllItems(compound, this.inventoryStacks);
 
 		if (compound.hasKey("CustomName", 8))
 			this.setCustomName(compound.getString("CustomName"));
@@ -122,7 +125,8 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 		compound.setInteger("BurnTime", (short) this.burnTime);
 		compound.setInteger("CookTime", (short) this.cookTime);
 		compound.setInteger("CookTimeTotal", (short) this.totalCookTime);
-		ItemStackHelper.saveAllItems(compound, this.inventory);
+		compound.setTag("CrackerMakerInventory", this.inventory.serializeNBT());
+		ItemStackHelper.saveAllItems(compound, this.inventoryStacks);
 
 		if (this.hasCustomName())
 			compound.setString("CustomName", this.customName);
@@ -146,15 +150,16 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 	public void update() {
 		boolean flag = this.isBurning();
 		boolean flag1 = false;
+		//this.burnTime = 50;
 
 		if (this.isBurning())
 			--this.burnTime;
 
 		if (!this.world.isRemote) {
-			ItemStack stack = (ItemStack) this.inventory.get(2);
+			ItemStack stack = (ItemStack) this.inventoryStacks.get(4);
 
-			if (this.isBurning() || !stack.isEmpty() && !((((ItemStack) this.inventory.get(0)).isEmpty())
-					|| ((ItemStack) this.inventory.get(1)).isEmpty())) {
+			if (this.isBurning() || !stack.isEmpty() && !((((ItemStack) this.inventoryStacks.get(0)).isEmpty())
+					|| ((ItemStack) this.inventoryStacks.get(1)).isEmpty())) {
 				if (!this.isBurning() && this.canSmelt()) {
 					this.burnTime = getItemBurnTime(stack);
 					this.currentBurnTime = this.burnTime;
@@ -168,7 +173,7 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 
 							if (stack.isEmpty()) {
 								ItemStack item1 = item.getContainerItem(stack);
-								this.inventory.set(2, item1);
+								this.inventoryStacks.set(2, item1);
 							}
 						}
 					}
@@ -178,8 +183,8 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 
 					if (this.cookTime == this.totalCookTime) {
 						this.cookTime = 0;
-						this.totalCookTime = this.getCookTime((ItemStack) this.inventory.get(0),
-								(ItemStack) this.inventory.get(1));
+						this.totalCookTime = this.getCookTime((ItemStack) this.inventoryStacks.get(0),
+								(ItemStack) this.inventoryStacks.get(1));
 						this.smeltItem();
 						flag1 = true;
 					}
@@ -202,14 +207,14 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 	}
 
 	private boolean canSmelt() {
-		if (((ItemStack) this.inventory.get(0)).isEmpty() || ((ItemStack) this.inventory.get(1)).isEmpty() || ((ItemStack) this.inventory.get(2)).isEmpty() || ((ItemStack) this.inventory.get(3)).isEmpty())
+		if (((ItemStack) this.inventoryStacks.get(0)).isEmpty() || ((ItemStack) this.inventoryStacks.get(1)).isEmpty() || ((ItemStack) this.inventoryStacks.get(2)).isEmpty() || ((ItemStack) this.inventoryStacks.get(3)).isEmpty())
 			return false;
 		else {
-			ItemStack result = CrackerMaking.INSTANCE.getCrackerMakingResult((ItemStack) this.inventory.get(0), (ItemStack) this.inventory.get(1), (ItemStack) this.inventory.get(2), (ItemStack) this.inventory.get(3));
+			ItemStack result = CrackerMaking.INSTANCE.getCrackerMakingResult((ItemStack) this.inventoryStacks.get(0), (ItemStack) this.inventoryStacks.get(1), (ItemStack) this.inventoryStacks.get(2), (ItemStack) this.inventoryStacks.get(3));
 			if (result.isEmpty())
 				return false;
 			else {
-				ItemStack output = (ItemStack) this.inventory.get(3);
+				ItemStack output = (ItemStack) this.inventoryStacks.get(5);
 				if (output.isEmpty())
 					return true;
 				if (!output.isItemEqual(result))
@@ -222,15 +227,15 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 
 	public void smeltItem() {
 		if (this.canSmelt()) {
-			ItemStack input1 = (ItemStack) this.inventory.get(0);
-			ItemStack input2 = (ItemStack) this.inventory.get(1);
-			ItemStack input3 = (ItemStack) this.inventory.get(2);
-			ItemStack input4 = (ItemStack) this.inventory.get(3);
+			ItemStack input1 = (ItemStack) this.inventoryStacks.get(0);
+			ItemStack input2 = (ItemStack) this.inventoryStacks.get(1);
+			ItemStack input3 = (ItemStack) this.inventoryStacks.get(2);
+			ItemStack input4 = (ItemStack) this.inventoryStacks.get(3);
 			ItemStack result = CrackerMaking.INSTANCE.getCrackerMakingResult(input1, input2, input3, input4);
-			ItemStack output = (ItemStack) this.inventory.get(7);
-
+			ItemStack output = (ItemStack) this.inventoryStacks.get(5);
+			
 			if (output.isEmpty())
-				this.inventory.set(7, result.copy());
+				this.inventoryStacks.set(5, result.copy());
 			else if (output.getItem() == result.getItem()) {
 				output.grow(result.getCount());
 			}
@@ -355,6 +360,6 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 
 	@Override
 	public void clear() {
-		this.inventory.clear();
+		this.inventoryStacks.clear();
 	}
 }

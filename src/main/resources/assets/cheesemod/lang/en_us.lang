@@ -12,8 +12,13 @@ item.block_o_cheese.name=Block O' Cheese
 item.cheese_slice.name=Cheese Slice
 
 item.cracker.name=Cracker
+item.crayfish_cracker.name=Crayfish Cracker
+
 item.cheese_n_cracker.name=Cheese N' Cracker
 item.grilled_cheese_n_cracker.name=Grilled Cheese N' Cracker
+
+item.cheese_n_crayfish_cracker.name=Cheese N' Crayfish Cracker
+item.grilled_cheese_n_crayfish_cracker.name=Grilled Cheese N' Crayfish Cracker
 
 item.toast.name=Toast
 item.toast_slice.name=Toast Slice
@@ -27,6 +32,11 @@ item.ham_raw_n_cheese_toastie.name=Raw Ham N' Cheese Toastie
 item.ham_cooked_n_cheese_toastie.name=Cooked Ham N' Cheese Toastie
 item.grilled_ham_raw_n_cheese_toastie.name=Grilled Raw Ham N' Cheese Toastie
 item.grilled_ham_cooked_n_cheese_toastie.name=Grilled Cooked Ham N' Cheese Toastie
+
+item.dough.name=Dough
+item.bland_pizza.name=Plain Pizza
+item.uncooked_cheese_pizza.name=Uncooked Cheese Pizza
+item.cooked_cheese_pizza.name=Cheese Pizza
 
 item.knife.name=Knife
 item.cheese_knife.name=Cheese Knife
@@ -50,6 +60,7 @@ item.grilling_oil.name=Grilling Oil
 item.smelting_oil.name=Smelting Oil
 
 item.milk_curdler.name=Milk Curdler
+item.rolling_pin.name=Rolling Pin
 item.wooden_gear.name=Wooden Gear
 
 

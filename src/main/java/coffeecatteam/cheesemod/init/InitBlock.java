@@ -102,17 +102,7 @@ public class InitBlock {
 
 	public static void init() {
         ForgeRegistries.BLOCKS.register(GRILL_ACTIVE);
-        
-        if (CheeseMod.DEVELOPER_MODE) {
-        	ForgeRegistries.BLOCKS.register(CRACKER_MAKER_IDLE);
-        	BlockRegistrationHandler.BLOCK_LIST.add(CRACKER_MAKER_IDLE);
-        	
-        	ItemBlock ib = (ItemBlock) new ItemBlock(CRACKER_MAKER_IDLE).setRegistryName(CRACKER_MAKER_IDLE.getRegistryName());
-        	ForgeRegistries.ITEMS.register(ib);
-        	BlockRegistrationHandler.ITEM_LIST.add(ib);
-        	
-        	ForgeRegistries.BLOCKS.register(CRACKER_MAKER_ACTIVE);
-        }
+        ForgeRegistries.BLOCKS.register(CRACKER_MAKER_ACTIVE);
         
 		// Register blocks with variants
 		register(CHEESE_PLANKS, new ItemBlockVariants(CHEESE_PLANKS));
@@ -155,7 +145,7 @@ public class InitBlock {
 				GRILLED_CHEESE_STAIRS, HAM_RAW_METAL_ORE, HAM_COOKED_METAL_ORE, HAM_RAW_METAL_BLOCK,
 				HAM_COOKED_METAL_BLOCK, HAM_RAW_STAIRS, HAM_COOKED_STAIRS, NETHER_CHEESE_METAL_ORE,
 				NETHER_GRILLED_CHEESE_METAL_ORE, NETHER_HAM_RAW_METAL_ORE, NETHER_HAM_COOKED_METAL_ORE,
-				END_CHEESE_METAL_ORE, END_GRILLED_CHEESE_METAL_ORE, END_HAM_RAW_METAL_ORE, END_HAM_COOKED_METAL_ORE, GRILL_IDLE };
+				END_CHEESE_METAL_ORE, END_GRILLED_CHEESE_METAL_ORE, END_HAM_RAW_METAL_ORE, END_HAM_COOKED_METAL_ORE, GRILL_IDLE, CRACKER_MAKER_IDLE };
 
 		@SubscribeEvent
 		public static void registerBlocks(final RegistryEvent.Register<Block> event) {

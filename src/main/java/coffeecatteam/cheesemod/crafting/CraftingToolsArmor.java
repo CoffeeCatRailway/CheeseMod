@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class CraftingToolsArmor {
 
@@ -42,30 +43,32 @@ public class CraftingToolsArmor {
 
 	private static void registerToolCrafting(Item pickaxe, Item axe, Item hoe, Item shovel, Item sword, Item ingot,
 			String resourceLocation) {
-		// Pickaxe
-		GameRegistry.addShapedRecipe(new ResourceLocation("" + pickaxe.getRegistryName()),
-				new ResourceLocation(resourceLocation), new ItemStack(pickaxe), "CCC", " S ", " S ", 'C', ingot, 'S',
-				Items.STICK);
-
-		// Axe
-		GameRegistry.addShapedRecipe(new ResourceLocation("" + axe.getRegistryName()),
-				new ResourceLocation(resourceLocation), new ItemStack(axe), "CC", "CS", " S", 'C', ingot, 'S',
-				Items.STICK);
-
-		// Hoe
-		GameRegistry.addShapedRecipe(new ResourceLocation("" + hoe.getRegistryName()),
-				new ResourceLocation(resourceLocation), new ItemStack(hoe), "CC", " S", " S", 'C', ingot, 'S',
-				Items.STICK);
-
-		// Shovel
-		GameRegistry.addShapedRecipe(new ResourceLocation("" + shovel.getRegistryName()),
-				new ResourceLocation(resourceLocation), new ItemStack(shovel), "C", "S", "S", 'C', ingot, 'S',
-				Items.STICK);
-
-		// Sword
-		GameRegistry.addShapedRecipe(new ResourceLocation("" + sword.getRegistryName()),
-				new ResourceLocation(resourceLocation), new ItemStack(sword), "C", "C", "S", 'C', ingot, 'S',
-				Items.STICK);
+		for (ItemStack stack : OreDictionary.getOres("stickWood")) { 
+			// Pickaxe
+			GameRegistry.addShapedRecipe(new ResourceLocation("" + pickaxe.getRegistryName()),
+					new ResourceLocation(resourceLocation), new ItemStack(pickaxe), "CCC", " S ", " S ", 'C', ingot, 'S',
+					stack);
+	
+			// Axe
+			GameRegistry.addShapedRecipe(new ResourceLocation("" + axe.getRegistryName()),
+					new ResourceLocation(resourceLocation), new ItemStack(axe), "CC", "CS", " S", 'C', ingot, 'S',
+					stack);
+	
+			// Hoe
+			GameRegistry.addShapedRecipe(new ResourceLocation("" + hoe.getRegistryName()),
+					new ResourceLocation(resourceLocation), new ItemStack(hoe), "CC", " S", " S", 'C', ingot, 'S',
+					stack);
+	
+			// Shovel
+			GameRegistry.addShapedRecipe(new ResourceLocation("" + shovel.getRegistryName()),
+					new ResourceLocation(resourceLocation), new ItemStack(shovel), "C", "S", "S", 'C', ingot, 'S',
+					stack);
+	
+			// Sword
+			GameRegistry.addShapedRecipe(new ResourceLocation("" + sword.getRegistryName()),
+					new ResourceLocation(resourceLocation), new ItemStack(sword), "C", "C", "S", 'C', ingot, 'S',
+					stack);
+		}
 	}
 
 	private static void registerArmorCrafting(Item helmet, Item chestplate, Item leggings, Item boots, Item ingot,

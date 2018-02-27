@@ -49,11 +49,11 @@ public class GuiCrackerMaker extends GuiContainer {
 
 		if (TileEntityCrackerMaker.isBurning(tileentity)) {
 			int k = this.getBurnLeftScaled(13);
-			this.drawTexturedModalRect(this.guiLeft + 61, this.guiTop + 50 - k, 176, 12 - k, 14, k + 1);
+			this.drawTexturedModalRect(this.guiLeft + 85, this.guiTop + 56 - k, 176, 12 - k, 14, k + 1);
 		}
 
 		int l = this.getCookProgressScaled(24);
-		this.drawTexturedModalRect(this.guiLeft + 81, this.guiTop + 17, 176, 14, l + 1, 16);
+		this.drawTexturedModalRect(this.guiLeft + 81, this.guiTop + 23, 176, 14, l + 1, 16);
 	}
 
 	private int getBurnLeftScaled(int pixels) {

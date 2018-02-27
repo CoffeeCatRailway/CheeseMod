@@ -33,6 +33,9 @@ public class Smelting {
 		// Bread > Toast
 		GameRegistry.addSmelting(Items.BREAD, new ItemStack(InitItem.TOAST, 1), 7);
 
+		// Dough > Bread
+		GameRegistry.addSmelting(InitItem.DOUGH, new ItemStack(Items.BREAD, 1), 4);
+
 		// Nether Cheese Ore > Cheese Ingot
 		GameRegistry.addSmelting(InitBlock.NETHER_CHEESE_METAL_ORE, new ItemStack(InitItem.CHEESE_METAL_INGOT, 1), 10);
 

@@ -10,7 +10,9 @@ import coffeecatteam.cheesemod.objects.items.base.ItemBase;
 import coffeecatteam.cheesemod.objects.items.base.ItemBaseFood;
 import coffeecatteam.cheesemod.objects.items.base.ItemBaseTool;
 import coffeecatteam.cheesemod.objects.items.foods.ItemCracker;
+import coffeecatteam.cheesemod.objects.items.foods.ItemPizza;
 import coffeecatteam.cheesemod.objects.items.foods.ItemToastie;
+import coffeecatteam.cheesemod.util.interfaces.IOreDict;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -55,7 +57,9 @@ public class InitItem {
 
 	public static final Item CHEESE_CUTTER = new ItemBaseTool("cheese_cutter", BASIC_MATERIAL, true, new ItemStack(Blocks.STONE, 1, 0));
 	public static final Item GRINDING_STONES = new ItemBaseTool("grinding_stones", ToolMaterial.STONE, false, ItemStack.EMPTY);
+	
 	public static final Item MILK_CURDLER = new ItemBaseTool("milk_curdler", ToolMaterial.WOOD, true, new ItemStack(Blocks.PLANKS, 1, 0));
+	public static final Item ROLLING_PIN = new ItemBaseTool("rolling_pin", ToolMaterial.WOOD, true, new ItemStack(Blocks.PLANKS, 1, 0));
 
 	/*
 	 *  Foods
@@ -71,6 +75,13 @@ public class InitItem {
 
 	public static final Item TOAST = new ItemBaseFood("toast", 3, false);
 	public static final Item TOAST_SLICE = new ItemBaseFood("toast_slice", 2, false);
+	
+	public static final Item DOUGH = new ItemBaseFood("dough", 3, false);
+	
+	// Pizzas
+	public static final Item BLAND_PIZZA = new ItemBaseFood("bland_pizza", 5, false);
+	public static final Item UNCOOKED_CHEESE_PIZZA = new ItemPizza("uncooked_cheese_pizza", "Cheese", 7, false, false);
+	public static final Item COOKED_CHEESE_PIZZA = new ItemPizza("cooked_cheese_pizza", "Cheese", 10, false, true);
 
 	// Toasties
 	public static final Item CHEESE_TOASTIE = new ItemToastie("cheese_toastie", 8, true, "Grilled anyone..?", false);
@@ -82,8 +93,13 @@ public class InitItem {
 	
 	// Crackers
 	public static final Item CRACKER = new ItemCracker("cracker", 5, false);
+	public static final Item CRAYFISH_CRACKER = new ItemCracker("crayfish_cracker", 10, false);
+	
 	public static final Item CHEESE_N_CRACKER = new ItemCracker("cheese_n_cracker", 7, false);
 	public static final Item GRILLED_CHEESE_N_CRACKER = new ItemCracker("grilled_cheese_n_cracker", 10, false);
+
+	public static final Item CHEESE_N_CRAYFISH_CRACKER = new ItemCracker("cheese_n_crayfish_cracker", 12, false);
+	public static final Item GRILLED_CHEESE_N_CRAYFISH_CRACKER = new ItemCracker("grilled_cheese_n_crayfish_cracker", 15, false);
 	
 	/*
 	 * Other
@@ -118,16 +134,23 @@ public class InitItem {
 				CHEESE_METAL_INGOT, GRILLED_CHEESE_METAL_INGOT, HAM_RAW_METAL_INGOT, HAM_COOKED_METAL_INGOT,
 				// Tools
 				KNIFE, CHEESE_KNIFE, HAM_RAW_KNIFE, HAM_COOKED_KNIFE,
-				CHEESE_CUTTER, GRINDING_STONES, MILK_CURDLER,
+				CHEESE_CUTTER, GRINDING_STONES,
+				MILK_CURDLER, ROLLING_PIN,
 				// Foods
 				BLOCK_O_CHEESE, CHEESE_SLICE,
 				SALT, FLOUR,
 				HAM_RAW, HAM_COOKED,
 				TOAST, TOAST_SLICE,
+				DOUGH,
+				// Pizzas
+				BLAND_PIZZA,
+				UNCOOKED_CHEESE_PIZZA, COOKED_CHEESE_PIZZA,
 				// Toasties
 				CHEESE_TOASTIE, GRILLED_CHEESE_TOASTIE, HAM_RAW_N_CHEESE_TOASTIE, HAM_COOKED_N_CHEESE_TOASTIE, GRILLED_HAM_RAW_N_CHEESE_TOASTIE, GRILLED_HAM_COOKED_N_CHEESE_TOASTIE,
 				// Crackers
-				CRACKER, CHEESE_N_CRACKER, GRILLED_CHEESE_N_CRACKER,
+				CRACKER, CRAYFISH_CRACKER, 
+				CHEESE_N_CRACKER, GRILLED_CHEESE_N_CRACKER,
+				CHEESE_N_CRAYFISH_CRACKER, GRILLED_CHEESE_N_CRAYFISH_CRACKER,
 				// Other
 				CHEESE_BIT, HAM_BIT,
 				WOODEN_GEAR
@@ -140,6 +163,8 @@ public class InitItem {
 			for (Item item : items) {
 				reg.register(item);
 				ITEM_LIST.add(item);
+				if (item instanceof IOreDict)
+					((IOreDict) item).registerOre();
 			}
 		}
 

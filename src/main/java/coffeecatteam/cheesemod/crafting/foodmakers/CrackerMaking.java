@@ -1,20 +1,17 @@
 package coffeecatteam.cheesemod.crafting.foodmakers;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Table;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import scala.collection.mutable.HashEntry;
 
 public class CrackerMaking {
 	public static final CrackerMaking INSTANCE = new CrackerMaking();
@@ -22,14 +19,25 @@ public class CrackerMaking {
 	
 	private final static Map<ItemStack, Float> experienceList = Maps.<ItemStack, Float>newHashMap();
 
-	public static void addRecipe(ItemStack result, float experience, ItemStack input1, ItemStack input2, ItemStack input3, ItemStack input4) {
+	public static void addRecipe(ItemStack result, float experience, ItemStack input1, ItemStack input2,
+			ItemStack input3, ItemStack input4) {
+		if (input1.isEmpty())
+			input1 = new ItemStack(Blocks.AIR, 1, 0);
+		if (input2.isEmpty())
+			input2 = new ItemStack(Blocks.AIR, 1, 0);
+		if (input3.isEmpty())
+			input3 = new ItemStack(Blocks.AIR, 1, 0);
+		if (input4.isEmpty())
+			input4 = new ItemStack(Blocks.AIR, 1, 0);
+		
 		if (getCrackerMakingResult(input1, input2, input3, input4) != ItemStack.EMPTY)
 			return;
 		crackerMakingListPut(input1, input2, input3, input4, result);
 		CrackerMaking.experienceList.put(result, Float.valueOf(experience));
 	}
-	
-	public static void crackerMakingListPut(ItemStack input1, ItemStack input2, ItemStack input3, ItemStack input4, ItemStack result) {
+
+	public static void crackerMakingListPut(ItemStack input1, ItemStack input2, ItemStack input3, ItemStack input4,
+			ItemStack result) {
 		CrackerMaking.crackerMakingList.add(input1);
 		CrackerMaking.crackerMakingList.add(input2);
 		CrackerMaking.crackerMakingList.add(input3);
@@ -37,36 +45,18 @@ public class CrackerMaking {
 		CrackerMaking.crackerMakingList.add(result);
 	}
 
-	public static ItemStack getCrackerMakingResult(ItemStack input1, ItemStack input2, ItemStack input3, ItemStack input4) {
-//		int size = CrackerMaking.crackerMakingList.size();
-//		for (int i = 0; i < size; i++) {
-//			if (compareItemStacks(input1, (ItemStack) CrackerMaking.crackerMakingList.get(i))) {
-//				for (int j = 0; j < size; j++) {
-//					if (compareItemStacks(input2, (ItemStack) CrackerMaking.crackerMakingList.get(j))) {
-//						for (int k = 0; k < size; k++) {
-//							if (compareItemStacks(input3, (ItemStack) CrackerMaking.crackerMakingList.get(k))) {
-//								for (int l = 0; l < size; l++) {
-//									if (compareItemStacks(input4, (ItemStack) CrackerMaking.crackerMakingList.get(l))) {
-//										return (ItemStack) CrackerMaking.crackerMakingList.get(l);
-//									}
-//								}
-//							}
-//						}
-//					}
-//				}
-//			}
-//		}
-		
-		for (ItemStack stack : CrackerMaking.crackerMakingList) {
-			if (compareItemStacks(input1, (ItemStack) stack)) {
-				for (ItemStack stack1 : CrackerMaking.crackerMakingList) {
-					if (compareItemStacks(input2, (ItemStack) stack1)) {
-						for (ItemStack stack2 : CrackerMaking.crackerMakingList) {
-							if (compareItemStacks(input3, (ItemStack) stack2)) {
-								for (ItemStack stack3 : CrackerMaking.crackerMakingList) {
-									if (compareItemStacks(input4, (ItemStack) stack3)) {
-										//System.out.println(stack3.getItem().getUnlocalizedName());
-										return (ItemStack) stack3;
+	public static ItemStack getCrackerMakingResult(ItemStack input1, ItemStack input2, ItemStack input3,
+			ItemStack input4) {
+		int len = CrackerMaking.crackerMakingList.size();
+		for (int i = 0; i < len; i++) {
+			if (compareItemStacks(input1, CrackerMaking.crackerMakingList.get(i))) {
+				for (int j = 1; j < len; j++) {
+					if (compareItemStacks(input2, CrackerMaking.crackerMakingList.get(j))) {
+						for (int k = 2; k < len; k++) {
+							if (compareItemStacks(input3, CrackerMaking.crackerMakingList.get(k))) {
+								for (int l = 3; l < len; l++) {
+									if (compareItemStacks(input4, CrackerMaking.crackerMakingList.get(l))) {
+										return CrackerMaking.crackerMakingList.get(l+1);
 									}
 								}
 							}

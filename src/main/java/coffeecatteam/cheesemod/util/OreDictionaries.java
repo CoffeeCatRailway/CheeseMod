@@ -60,9 +60,10 @@ public class OreDictionaries {
 		
 		// Trees
 		for (int i = 0; i < EnumHandler.EnumWoodType.values().length; i++) {
-			OreDictionary.registerOre("planksWood", new ItemStack(InitBlock.CHEESE_PLANKS, 1, i));
-			OreDictionary.registerOre("logWood", new ItemStack(InitBlock.CHEESE_LOG, 1, i));
-			OreDictionary.registerOre("foodLeaves", new ItemStack(InitBlock.CHEESE_LOG, 1, i));
+			OreDictionary.registerOre("plankWood", new ItemStack(InitBlock.CHEESE_PLANKS, 1, i));
+			OreDictionary.registerOre("treeWood", new ItemStack(InitBlock.CHEESE_LOG, 1, i));
+			OreDictionary.registerOre("treeLeaves", new ItemStack(InitBlock.CHEESE_LOG, 1, i));
+			OreDictionary.registerOre("treeSapling", new ItemStack(InitBlock.CHEESE_SAPLING, 1, i));
 		}
 		
 		/*

@@ -1,0 +1,21 @@
+{
+    "result": {
+        "item": "cheesemod:uncooked_cheese_pizza",
+        "data": 0
+    },
+    "ingredients": [
+        {
+            "item": "cheesemod:bland_pizza",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:cheese_slice",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:cheese_slice",
+            "data": 0
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

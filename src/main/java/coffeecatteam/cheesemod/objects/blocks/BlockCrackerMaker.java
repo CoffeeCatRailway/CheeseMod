@@ -8,10 +8,13 @@ import coffeecatteam.cheesemod.init.InitBlock;
 import coffeecatteam.cheesemod.objects.tileentity.TileEntityCrackerMaker;
 import coffeecatteam.cheesemod.util.handlers.GuiHandler;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -28,6 +31,7 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -42,7 +46,7 @@ public class BlockCrackerMaker extends BlockContainer {
 
 	boolean active;
 
-	private static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0, 0, 0, 1, 0.5, 1);
+	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
 	public BlockCrackerMaker(String name, float hardness, float resistance, Material material, int harvestLevel,
 			boolean active) {
@@ -53,6 +57,7 @@ public class BlockCrackerMaker extends BlockContainer {
 		setDefaultState(blockState.getBaseState());
 		setHarvestLevel("pickaxe", harvestLevel);
 		setCreativeTab(CheeseMod.CHEESETAB);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
 		blockSoundType = SoundType.STONE;
 		blockParticleGravity = 1.0f;
@@ -90,25 +95,25 @@ public class BlockCrackerMaker extends BlockContainer {
 			offset = rand.nextDouble() * 0.2D / 0.5D;
 			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - 0.3D + offset, d1 + 0.2D, d2 - 0.3D + offset,
 					0.0D, 0.0D, 0.0D, new int[0]);
-			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.3D + offset, d1 + 0.2D, d2 - 0.3D + offset, 0.0D,
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.3D + offset, d1 + 0.1D, d2 - 0.3D + offset, 0.0D,
 					0.0D, 0.0D, new int[0]);
 
 			offset = rand.nextDouble() * 0.2D / 0.5D;
 			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + 0.3D - offset, d1 + 0.2D, d2 - 0.3D + offset,
 					0.0D, 0.0D, 0.0D, new int[0]);
-			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.3D - offset, d1 + 0.2D, d2 - 0.3D + offset, 0.0D,
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.3D - offset, d1 + 0.1D, d2 - 0.3D + offset, 0.0D,
 					0.0D, 0.0D, new int[0]);
 
 			offset = rand.nextDouble() * 0.2D / 0.5D;
 			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + 0.3D - offset, d1 + 0.2D, d2 + 0.3D - offset,
 					0.0D, 0.0D, 0.0D, new int[0]);
-			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.3D - offset, d1 + 0.2D, d2 + 0.3D - offset, 0.0D,
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.3D - offset, d1 + 0.1D, d2 + 0.3D - offset, 0.0D,
 					0.0D, 0.0D, new int[0]);
 
 			offset = rand.nextDouble() * 0.2D / 0.5D;
 			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - 0.3D + offset, d1 + 0.2D, d2 + 0.3D - offset,
 					0.0D, 0.0D, 0.0D, new int[0]);
-			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.3D + offset, d1 + 0.2D, d2 + 0.3D - offset, 0.0D,
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.3D + offset, d1 + 0.1D, d2 + 0.3D - offset, 0.0D,
 					0.0D, 0.0D, new int[0]);
 		}
 	}
@@ -189,11 +194,11 @@ public class BlockCrackerMaker extends BlockContainer {
 		if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
 			enumfacing = EnumFacing.NORTH;
 		}
-		return this.getDefaultState();
+		return this.getDefaultState().withProperty(FACING, enumfacing);
 	}
 
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {});
+		return new BlockStateContainer(this, new IProperty[] { FACING });
 	}
 
 	@Override
@@ -202,6 +207,45 @@ public class BlockCrackerMaker extends BlockContainer {
 		// Add Text
 		tooltip.add("CHEESE & CRACKERS!");
 		super.addInformation(stack, player, tooltip, advanced);
+	}
+
+	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+		this.setDefaultFacing(world, pos, state);
+	}
+
+	private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state) {
+		if (!worldIn.isRemote) {
+			IBlockState iblockstate = worldIn.getBlockState(pos.north());
+			IBlockState iblockstate1 = worldIn.getBlockState(pos.south());
+			IBlockState iblockstate2 = worldIn.getBlockState(pos.west());
+			IBlockState iblockstate3 = worldIn.getBlockState(pos.east());
+			EnumFacing enumfacing = (EnumFacing) state.getValue(FACING);
+
+			if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock()) {
+				enumfacing = EnumFacing.SOUTH;
+			} else if (enumfacing == EnumFacing.SOUTH && iblockstate1.isFullBlock() && !iblockstate.isFullBlock()) {
+				enumfacing = EnumFacing.NORTH;
+			} else if (enumfacing == EnumFacing.WEST && iblockstate2.isFullBlock() && !iblockstate3.isFullBlock()) {
+				enumfacing = EnumFacing.EAST;
+			} else if (enumfacing == EnumFacing.EAST && iblockstate3.isFullBlock() && !iblockstate2.isFullBlock()) {
+				enumfacing = EnumFacing.WEST;
+			}
+
+			worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
+		}
+	}
+
+	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer) {
+		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+	}
+
+	public int getMetaFromState(IBlockState state) {
+		return ((EnumFacing) state.getValue(FACING)).getIndex();
+	}
+
+	public IBlockState withRotation(IBlockState state, Rotation rot) {
+		return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
 	}
 
 	public int getRenderType() {
@@ -213,23 +257,7 @@ public class BlockCrackerMaker extends BlockContainer {
 	}
 
 	@Override
-	public boolean isFullBlock(IBlockState state) {
-		return false;
-	}
-
-	@Override
 	public boolean isOpaqueCube(IBlockState state) {
 		return false;
-	}
-
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return BOUNDING_BOX;
-	}
-
-	@Override
-	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
-			List<AxisAlignedBB> collidingBoxes, Entity entityIn, boolean p_185477_7_) {
-		super.addCollisionBoxToList(pos, entityBox, collidingBoxes, BOUNDING_BOX);
 	}
 }
