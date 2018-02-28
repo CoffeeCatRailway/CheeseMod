@@ -19,6 +19,9 @@ public class Config {
 
     public static final String CATEGORY_OTHER = "other";
 	private static boolean playerHasLoggedIn;
+	
+    private static int grillSpeedMultiplier;
+    private static int crackerMakerSpeedMultiplier;
 
 	public static final String CATEGORY_BIOME_SPAWNING = "biome_spawning";
 	private static boolean entityCheeseManSpawn;
@@ -56,6 +59,11 @@ public class Config {
 		 * CATEGORY_GRILL
 		 */
         playerHasLoggedIn = config.get(CATEGORY_OTHER, "Player Has Logged In", false, "If false it means the player has not logged in before.").getBoolean();
+        
+        int foodMakerMin = 1;
+        int foodMakerMax = 20;
+        grillSpeedMultiplier = config.get(CATEGORY_OTHER, "Grill Speed Multiplier", 5, "Speed multiplier for the grill.").setMinValue(foodMakerMin).setMaxValue(foodMakerMax).getInt();
+        crackerMakerSpeedMultiplier = config.get(CATEGORY_OTHER, "Cracker Maker Speed Multiplier", 5, "Speed multiplier for the cracker maker.").setMinValue(foodMakerMin).setMaxValue(foodMakerMax).getInt();
         
 		/*
 		 * CATEGORY_BIOME_SPAWNING
@@ -138,6 +146,14 @@ public class Config {
 	// CATEGORY_OTHER
     public static boolean getPlayerHasLoggedIn() {
 		return playerHasLoggedIn;
+	}
+    
+    public static int getGrillSpeedMultiplier() {
+        return grillSpeedMultiplier;
+    }
+    
+    public static int getCrackerMakerSpeedMultiplier() {
+		return crackerMakerSpeedMultiplier;
 	}
     
     public static void setPlayerHasLoggedIn(boolean value) {

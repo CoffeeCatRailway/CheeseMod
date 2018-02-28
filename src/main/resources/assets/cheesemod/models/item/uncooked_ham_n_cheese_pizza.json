@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "cheesemod:items/uncooked_ham_n_cheese_pizza"
+    }
+}

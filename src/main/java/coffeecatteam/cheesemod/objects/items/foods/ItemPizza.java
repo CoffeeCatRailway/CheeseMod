@@ -15,7 +15,7 @@ public class ItemPizza extends ItemBaseFood implements IOreDict {
 	private static boolean isCooked;
 
 	public ItemPizza(String name, String oreDictName, int amount, boolean isWolfFood, boolean isCooked) {
-		super(((isCooked) ? "cooked_" : "uncooked_") + name + "pizza", amount, isWolfFood);
+		super(name, amount, isWolfFood);
 		this.name = ((isCooked) ? "cooked" : "uncooked") + oreDictName + "Pizza";
 		this.isCooked = isCooked;
 	}

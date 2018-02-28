@@ -30,7 +30,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class InitItem {
 	
-	public static final ToolMaterial OIL_MATERIAL = EnumHelper.addToolMaterial("oil_material", 1, 100, 0, 0.5F, 0);
+	public static final ToolMaterial OIL_MATERIAL = EnumHelper.addToolMaterial("oil_material", 1, 200, 0, 0.5F, 0);
 	public static final ToolMaterial BASIC_MATERIAL = EnumHelper.addToolMaterial("basic_material", 1, 10, 0, 0.5F, 0);
 
 	/*
@@ -80,8 +80,12 @@ public class InitItem {
 	
 	// Pizzas
 	public static final Item BLAND_PIZZA = new ItemBaseFood("bland_pizza", 5, false);
+	
 	public static final Item UNCOOKED_CHEESE_PIZZA = new ItemPizza("uncooked_cheese_pizza", "Cheese", 7, false, false);
 	public static final Item COOKED_CHEESE_PIZZA = new ItemPizza("cooked_cheese_pizza", "Cheese", 10, false, true);
+	
+	public static final Item UNCOOKED_HAM_N_CHEESE_PIZZA = new ItemPizza("uncooked_ham_n_cheese_pizza", "HamNCheese", 9, false, false);
+	public static final Item COOKED_HAM_N_CHEESE_PIZZA = new ItemPizza("cooked_ham_n_cheese_pizza", "HamNCheese", 13, false, true);
 
 	// Toasties
 	public static final Item CHEESE_TOASTIE = new ItemToastie("cheese_toastie", 8, true, "Grilled anyone..?", false);
@@ -145,6 +149,7 @@ public class InitItem {
 				// Pizzas
 				BLAND_PIZZA,
 				UNCOOKED_CHEESE_PIZZA, COOKED_CHEESE_PIZZA,
+				UNCOOKED_HAM_N_CHEESE_PIZZA, COOKED_HAM_N_CHEESE_PIZZA,
 				// Toasties
 				CHEESE_TOASTIE, GRILLED_CHEESE_TOASTIE, HAM_RAW_N_CHEESE_TOASTIE, HAM_COOKED_N_CHEESE_TOASTIE, GRILLED_HAM_RAW_N_CHEESE_TOASTIE, GRILLED_HAM_COOKED_N_CHEESE_TOASTIE,
 				// Crackers

@@ -73,7 +73,7 @@ public class ConfigGuiFactory implements IModGuiFactory {
 					config.getCategory(Config.CATEGORY_OTHER));
 
 			List<IConfigElement> propOnScreen = category.getChildElements();
-			String windowTitle = I18n.format(configLangFormat+".other");
+			String windowTitle = I18n.format(configLangFormat+"other");
 			
 			return new GuiConfig(owningScreen, propOnScreen, owningScreen.modID,
 					this.configElement.requiresWorldRestart() || this.owningScreen.allRequireWorldRestart,

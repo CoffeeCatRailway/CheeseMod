@@ -32,6 +32,7 @@ public class Recipes {
 		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitItem.CHEESE_N_CRAYFISH_CRACKER, 1), new ItemStack(InitItem.GRILLED_CHEESE_N_CRAYFISH_CRACKER), 2.0F);
 		
 		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitItem.UNCOOKED_CHEESE_PIZZA, 1), new ItemStack(InitItem.COOKED_CHEESE_PIZZA), 2.0F);
+		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitItem.UNCOOKED_HAM_N_CHEESE_PIZZA, 1), new ItemStack(InitItem.COOKED_HAM_N_CHEESE_PIZZA), 2.5F);
 		
 		FurnaceRecipes.instance().getSmeltingList().forEach((input, output) -> {
 			Grilling.addRecipe(new ItemStack(InitItem.SMELTING_OIL, 1, 32767), input, output, FurnaceRecipes.instance().getSmeltingExperience(input));

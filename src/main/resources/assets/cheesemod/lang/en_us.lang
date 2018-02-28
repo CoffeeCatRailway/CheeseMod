@@ -35,8 +35,12 @@ item.grilled_ham_cooked_n_cheese_toastie.name=Grilled Cooked Ham N' Cheese Toast
 
 item.dough.name=Dough
 item.bland_pizza.name=Plain Pizza
+
 item.uncooked_cheese_pizza.name=Uncooked Cheese Pizza
 item.cooked_cheese_pizza.name=Cheese Pizza
+
+item.uncooked_ham_n_cheese_pizza.name=Uncooked Ham N' Cheese Pizza
+item.cooked_ham_n_cheese_pizza.name=Ham N' Cheese Pizza
 
 item.knife.name=Knife
 item.cheese_knife.name=Cheese Knife
@@ -220,7 +224,7 @@ gui.test_gui.change_title=Change Text
 
 # Config
 config.cheesemod.main_title=CheeseMod Config
-config.cheesecore.other=Other Settings
+config.cheesemod.other=Server Side Settings
 
 config.cheesemod.biome_spawning=Entity Biome Spawning
 config.cheesemod.biome_spawning.tooltip=Allows custom modded to spawn in modded biomes

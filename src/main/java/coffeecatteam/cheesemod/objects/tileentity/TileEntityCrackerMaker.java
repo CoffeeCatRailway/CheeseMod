@@ -1,7 +1,10 @@
 package coffeecatteam.cheesemod.objects.tileentity;
 
+import coffeecatteam.cheesemod.Reference;
+import coffeecatteam.cheesemod.config.Config;
 import coffeecatteam.cheesemod.crafting.foodmakers.CrackerMaking;
 import coffeecatteam.cheesemod.objects.blocks.BlockCrackerMaker;
+import coffeecatteam.cheesemod.objects.tileentity.TileEntityGrill.SetSpeedMultiplier;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,6 +26,11 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.ServerTickEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -38,6 +46,38 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 	private int currentBurnTime;
 	private int cookTime;
 	private int totalCookTime;
+	private static int speedMultiplier;
+	private static int tick = 0;
+
+	static {
+		Config.load("cheesecore");
+		setSpeedMultiplier(Config.getCrackerMakerSpeedMultiplier());
+
+		MinecraftForge.EVENT_BUS.register(new SetSpeedMultiplier());
+	}
+
+	@EventBusSubscriber(modid = Reference.MODID)
+	public static class SetSpeedMultiplier {
+
+		@SubscribeEvent(priority = EventPriority.HIGH)
+		public void scheduler(ServerTickEvent e) {
+			if (tick != 20) {
+				tick++;
+				return;
+			}
+			tick = 0;
+			Config.load("cheesecore");
+			setSpeedMultiplier(Config.getCrackerMakerSpeedMultiplier());
+		}
+	}
+
+	public static void setSpeedMultiplier(int speedMultiplier) {
+		TileEntityCrackerMaker.speedMultiplier = speedMultiplier;
+	}
+
+	public static int getSpeedMultiplier() {
+		return speedMultiplier;
+	}
 
 	@Override
 	public String getName() {
@@ -203,7 +243,7 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 	}
 
 	public int getCookTime(ItemStack input1, ItemStack input2) {
-		return 200;
+		return 200 / speedMultiplier;
 	}
 
 	private boolean canSmelt() {

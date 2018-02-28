@@ -43,6 +43,38 @@ public class TileEntityGrill extends TileEntity implements IInventory, ITickable
 	private int currentBurnTime;
 	private int cookTime;
 	private int totalCookTime;
+	private static int speedMultiplier;
+	private static int tick = 0;
+
+	static {
+		Config.load("cheesecore");
+		setSpeedMultiplier(Config.getGrillSpeedMultiplier());
+
+		MinecraftForge.EVENT_BUS.register(new SetSpeedMultiplier());
+	}
+
+	@EventBusSubscriber(modid = Reference.MODID)
+	public static class SetSpeedMultiplier {
+
+		@SubscribeEvent(priority = EventPriority.HIGH)
+		public void scheduler(ServerTickEvent e) {
+			if (tick != 20) {
+				tick++;
+				return;
+			}
+			tick = 0;
+			Config.load("cheesecore");
+			setSpeedMultiplier(Config.getGrillSpeedMultiplier());
+		}
+	}
+
+	public static void setSpeedMultiplier(int speedMultiplier) {
+		TileEntityGrill.speedMultiplier = speedMultiplier;
+	}
+
+	public static int getSpeedMultiplier() {
+		return speedMultiplier;
+	}
 
 	@Override
 	public String getName() {
@@ -206,7 +238,7 @@ public class TileEntityGrill extends TileEntity implements IInventory, ITickable
 	}
 
 	public int getCookTime(ItemStack input1, ItemStack input2) {
-		return 200;
+		return 200 / speedMultiplier;
 	}
 
 	private boolean canSmelt() {

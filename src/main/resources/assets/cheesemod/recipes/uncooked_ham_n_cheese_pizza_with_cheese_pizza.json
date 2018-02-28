@@ -1,0 +1,17 @@
+{
+    "result": {
+        "item": "cheesemod:uncooked_ham_n_cheese_pizza",
+        "data": 0
+    },
+    "ingredients": [
+        {
+            "item": "cheesemod:uncooked_cheese_pizza",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:ham_raw",
+            "data": 0
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}
