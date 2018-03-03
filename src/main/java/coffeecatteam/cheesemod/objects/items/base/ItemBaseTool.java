@@ -3,6 +3,7 @@ package coffeecatteam.cheesemod.objects.items.base;
 import com.google.common.collect.Sets;
 
 import coffeecatteam.cheesemod.CheeseMod;
+import coffeecatteam.cheesemod.util.interfaces.IOreDict;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

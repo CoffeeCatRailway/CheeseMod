@@ -2,20 +2,20 @@ package coffeecatteam.cheesemod.objects.items.base;
 
 import coffeecatteam.cheesemod.CheeseMod;
 import coffeecatteam.cheesemod.util.interfaces.IOreDict;
-import net.minecraft.item.ItemFood;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemSeeds;
 
-public class ItemBaseFood extends ItemFood implements IOreDict {
+public class ItemBaseSeeds extends ItemSeeds implements IOreDict {
 	
 	private String oreDict;
 
-	public ItemBaseFood(String name, String oreDict, int amount, boolean isWolfFood) {
-		super(amount, isWolfFood);
+	public ItemBaseSeeds(String name, String oreDict, Block crops, Block soil) {
+		super(crops, soil);
 		this.oreDict = oreDict;
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(CheeseMod.CHEESEFOODSTAB);
-  	}
+		setCreativeTab(CheeseMod.CHEESETAB);
+	}
 
 	@Override
 	public String registerOre() {

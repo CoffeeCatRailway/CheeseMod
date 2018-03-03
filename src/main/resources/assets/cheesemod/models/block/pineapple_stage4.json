@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "cheesemod:blocks/pineapple_stage4"
+    }
+}

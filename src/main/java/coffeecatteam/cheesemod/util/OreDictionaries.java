@@ -27,14 +27,21 @@ public class OreDictionaries {
 	/*
 	 * Items
 	 */
+	public static final String grillOil = "grillOil";
+	public static final String foodIngot = "foodMetalIngot";
+
+	public static final String foodIngredient = "foodIngredient";
+	
 	public static final String foodCheese = "foodCheese";
 	public static final String foodHam = "foodHam";
 	public static final String foodToast = "foodToast";
 	
+	public static final String foodPizza = "foodPizza";
 	public static final String foodToastie = "foodToastie";
 	public static final String foodCracker = "foodCracker";
 
-	public static final String oilGrill = "oilGrill";
+	public static final String foodBit = "foodBit";
+	public static final String gearWood = "gearWood";
 
 	public static void init() {
 		/*
@@ -65,22 +72,6 @@ public class OreDictionaries {
 			OreDictionary.registerOre("treeLeaves", new ItemStack(InitBlock.CHEESE_LOG, 1, i));
 			OreDictionary.registerOre("treeSapling", new ItemStack(InitBlock.CHEESE_SAPLING, 1, i));
 		}
-		
-		/*
-		 * Items
-		 */
-		registerOres(foodCheese, InitItem.BLOCK_O_CHEESE, InitItem.CHEESE_SLICE);
-		registerOres(foodHam, InitItem.HAM_RAW, InitItem.HAM_COOKED);
-		registerOres(foodToast, InitItem.TOAST, InitItem.TOAST_SLICE);
-		
-		registerOres(foodToastie, InitItem.CHEESE_TOASTIE, InitItem.GRILLED_CHEESE_TOASTIE,
-				InitItem.HAM_RAW_N_CHEESE_TOASTIE, InitItem.HAM_COOKED_N_CHEESE_TOASTIE,
-				InitItem.GRILLED_HAM_RAW_N_CHEESE_TOASTIE, InitItem.GRILLED_HAM_COOKED_N_CHEESE_TOASTIE);
-		registerOres(foodCracker, InitItem.CRACKER, InitItem.CHEESE_N_CRACKER, InitItem.GRILLED_CHEESE_N_CRACKER);
-		
-		registerOres(oilGrill, InitItem.GRILLING_OIL, InitItem.SMELTING_OIL);
-		
-		OreDictionary.registerOre("gearWood", InitItem.WOODEN_GEAR);
 	}
 	
 	private static void registerOres(String key, Object... items) {

@@ -13,13 +13,7 @@ public class SlotHamDraw extends SlotItemHandler {
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		Item[] items = SlotItems.hamItems;
-
-		for (int i = 0; i < items.length; i++) {
-			if (stack.getItem() == items[i]) {
-				return true;
-			}
-		}
-		return false;
+		String itemName = stack.getDisplayName().toString().toLowerCase();
+		return (itemName.contains("ham"));
 	}
 }

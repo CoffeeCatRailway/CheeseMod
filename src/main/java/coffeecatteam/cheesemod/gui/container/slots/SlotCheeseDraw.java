@@ -1,5 +1,8 @@
 package coffeecatteam.cheesemod.gui.container.slots;
 
+import java.util.List;
+
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
@@ -13,13 +16,7 @@ public class SlotCheeseDraw extends SlotItemHandler {
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		Item[] items = SlotItems.cheeseItems;
-		
-		for (int i = 0; i < items.length; i++) {
-			if (stack.getItem() == items[i]) {
-				return true;
-			}
-		}
-		return false;
+		String itemName = stack.getDisplayName().toString().toLowerCase();
+		return (itemName.contains("cheese"));
 	}
 }

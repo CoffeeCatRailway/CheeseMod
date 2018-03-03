@@ -4,6 +4,7 @@ import java.util.List;
 
 import coffeecatteam.cheesemod.CheeseMod;
 import coffeecatteam.cheesemod.objects.items.base.ItemBaseFood;
+import coffeecatteam.cheesemod.util.interfaces.IOreDict;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -11,14 +12,15 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 
-public class ItemToastie extends ItemBaseFood {
+public class ItemToastie extends ItemBaseFood implements IOreDict {
 
 	private static String info;
 	private static boolean grilled;
 
-	public ItemToastie(String name, int amount, boolean isWolfFood, String info, boolean grilled) {
-		super(name, amount, isWolfFood);
+	public ItemToastie(String name, String oreDict, int amount, boolean isWolfFood, String info, boolean grilled) {
+		super(name, oreDict, amount, isWolfFood);
 		this.info = info;
 		this.grilled = grilled;
 	}

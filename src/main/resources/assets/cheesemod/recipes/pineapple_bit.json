@@ -1,6 +1,6 @@
 {
     "result": {
-        "item": "cheesemod:ham_raw",
+        "item": "cheesemod:pineapple_bit",
         "data": 0,
         "count": 3
     },
@@ -10,7 +10,7 @@
             "ore": "knife"
         },
         {
-            "item": "minecraft:porkchop",
+            "item": "cheesemod:pineapple_ring",
             "data": 0
         }
     ],

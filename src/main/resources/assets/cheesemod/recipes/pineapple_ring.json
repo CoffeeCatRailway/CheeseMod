@@ -1,8 +1,8 @@
 {
     "result": {
-        "item": "cheesemod:ham_raw",
+        "item": "cheesemod:pineapple_ring",
         "data": 0,
-        "count": 3
+        "count": 4
     },
     "ingredients": [
         {
@@ -10,7 +10,7 @@
             "ore": "knife"
         },
         {
-            "item": "minecraft:porkchop",
+            "item": "cheesemod:pineapple",
             "data": 0
         }
     ],

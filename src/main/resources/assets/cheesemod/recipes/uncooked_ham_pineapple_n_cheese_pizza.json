@@ -1,0 +1,29 @@
+{
+    "result": {
+        "item": "cheesemod:uncooked_ham_pineapple_n_cheese_pizza",
+        "data": 0
+    },
+    "ingredients": [
+        {
+            "item": "cheesemod:bland_pizza",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:cheese_slice",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:cheese_slice",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:ham_raw",
+            "data": 0
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "foodPineapple"
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

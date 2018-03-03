@@ -7,7 +7,7 @@ import net.minecraft.creativetab.CreativeTabs;
 
 public class BlockBase extends Block {
 
-	public BlockBase(String name, float hardness, float resistance, Material material, String toolClass, int harvestLevel, CreativeTabs tab) {
+	public BlockBase(String name, float hardness, float resistance, Material material, int harvestLevel, CreativeTabs tab) {
 		super(material);
 		setUnlocalizedName(name);
 		setRegistryName(name);

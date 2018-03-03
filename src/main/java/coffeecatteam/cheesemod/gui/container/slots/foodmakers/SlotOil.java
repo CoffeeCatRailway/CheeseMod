@@ -1,11 +1,8 @@
 package coffeecatteam.cheesemod.gui.container.slots.foodmakers;
 
-import coffeecatteam.cheesemod.gui.container.slots.SlotItems;
 import coffeecatteam.cheesemod.init.InitItem;
-import coffeecatteam.cheesemod.objects.tileentity.TileEntityGrill;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class SlotOil extends Slot {

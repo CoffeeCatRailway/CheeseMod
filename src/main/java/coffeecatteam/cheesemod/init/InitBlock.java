@@ -14,6 +14,7 @@ import coffeecatteam.cheesemod.objects.blocks.BlockHalfSlab;
 import coffeecatteam.cheesemod.objects.blocks.BlockHamDraw;
 import coffeecatteam.cheesemod.objects.blocks.base.BlockBase;
 import coffeecatteam.cheesemod.objects.blocks.base.BlockBaseStairs;
+import coffeecatteam.cheesemod.objects.blocks.crops.BlockPineapple;
 import coffeecatteam.cheesemod.objects.blocks.food.BlockFood;
 import coffeecatteam.cheesemod.objects.blocks.food.BlockFoodGround;
 import coffeecatteam.cheesemod.objects.blocks.item.ItemBlockVariants;
@@ -41,28 +42,28 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class InitBlock {
 
 	// Ores
-	public static final Block CHEESE_METAL_ORE = new BlockBase("cheese_metal_ore", 2.0F, 4.0F, Material.ROCK, "pickaxe", 1, CheeseMod.CHEESETAB);
-	public static final Block NETHER_CHEESE_METAL_ORE = new BlockBase("nether_cheese_metal_ore", 2.0F, 4.0F, Material.ROCK, "pickaxe", 1, CheeseMod.CHEESETAB);
-	public static final Block END_CHEESE_METAL_ORE = new BlockBase("end_cheese_metal_ore", 2.0F, 4.0F, Material.ROCK, "pickaxe", 1, CheeseMod.CHEESETAB);
+	public static final Block CHEESE_METAL_ORE = new BlockBase("cheese_metal_ore", 2.0F, 4.0F, Material.ROCK, 1, CheeseMod.CHEESETAB);
+	public static final Block NETHER_CHEESE_METAL_ORE = new BlockBase("nether_cheese_metal_ore", 2.0F, 4.0F, Material.ROCK, 1, CheeseMod.CHEESETAB);
+	public static final Block END_CHEESE_METAL_ORE = new BlockBase("end_cheese_metal_ore", 2.0F, 4.0F, Material.ROCK, 1, CheeseMod.CHEESETAB);
 	
-	public static final Block GRILLED_CHEESE_METAL_ORE = new BlockBase("grilled_cheese_metal_ore", 2.5F, 4.5F, Material.ROCK, "pickaxe", 1, CheeseMod.CHEESETAB);
-	public static final Block NETHER_GRILLED_CHEESE_METAL_ORE = new BlockBase("nether_grilled_cheese_metal_ore", 2.5F, 4.5F, Material.ROCK, "pickaxe", 1, CheeseMod.CHEESETAB);
-	public static final Block END_GRILLED_CHEESE_METAL_ORE = new BlockBase("end_grilled_cheese_metal_ore", 2.5F, 4.5F, Material.ROCK, "pickaxe", 1, CheeseMod.CHEESETAB);
+	public static final Block GRILLED_CHEESE_METAL_ORE = new BlockBase("grilled_cheese_metal_ore", 2.5F, 4.5F, Material.ROCK, 1, CheeseMod.CHEESETAB);
+	public static final Block NETHER_GRILLED_CHEESE_METAL_ORE = new BlockBase("nether_grilled_cheese_metal_ore", 2.5F, 4.5F, Material.ROCK, 1, CheeseMod.CHEESETAB);
+	public static final Block END_GRILLED_CHEESE_METAL_ORE = new BlockBase("end_grilled_cheese_metal_ore", 2.5F, 4.5F, Material.ROCK, 1, CheeseMod.CHEESETAB);
 
-	public static final Block HAM_RAW_METAL_ORE = new BlockBase("ham_raw_metal_ore", 1.5F, 3.5F, Material.ROCK, "pickaxe", 2, CheeseMod.CHEESETAB);
-	public static final Block NETHER_HAM_RAW_METAL_ORE = new BlockBase("nether_ham_raw_metal_ore", 1.5F, 3.5F, Material.ROCK, "pickaxe", 2, CheeseMod.CHEESETAB);
-	public static final Block END_HAM_RAW_METAL_ORE = new BlockBase("end_ham_raw_metal_ore", 1.5F, 3.5F, Material.ROCK, "pickaxe", 2, CheeseMod.CHEESETAB);
+	public static final Block HAM_RAW_METAL_ORE = new BlockBase("ham_raw_metal_ore", 1.5F, 3.5F, Material.ROCK, 2, CheeseMod.CHEESETAB);
+	public static final Block NETHER_HAM_RAW_METAL_ORE = new BlockBase("nether_ham_raw_metal_ore", 1.5F, 3.5F, Material.ROCK, 2, CheeseMod.CHEESETAB);
+	public static final Block END_HAM_RAW_METAL_ORE = new BlockBase("end_ham_raw_metal_ore", 1.5F, 3.5F, Material.ROCK, 2, CheeseMod.CHEESETAB);
 	
-	public static final Block HAM_COOKED_METAL_ORE = new BlockBase("ham_cooked_metal_ore", 2.0F, 4.0F, Material.ROCK, "pickaxe", 2, CheeseMod.CHEESETAB);
-	public static final Block NETHER_HAM_COOKED_METAL_ORE = new BlockBase("nether_ham_cooked_metal_ore", 2.0F, 4.0F, Material.ROCK, "pickaxe", 2, CheeseMod.CHEESETAB);
-	public static final Block END_HAM_COOKED_METAL_ORE = new BlockBase("end_ham_cooked_metal_ore", 2.0F, 4.0F, Material.ROCK, "pickaxe", 2, CheeseMod.CHEESETAB);
+	public static final Block HAM_COOKED_METAL_ORE = new BlockBase("ham_cooked_metal_ore", 2.0F, 4.0F, Material.ROCK, 2, CheeseMod.CHEESETAB);
+	public static final Block NETHER_HAM_COOKED_METAL_ORE = new BlockBase("nether_ham_cooked_metal_ore", 2.0F, 4.0F, Material.ROCK, 2, CheeseMod.CHEESETAB);
+	public static final Block END_HAM_COOKED_METAL_ORE = new BlockBase("end_ham_cooked_metal_ore", 2.0F, 4.0F, Material.ROCK, 2, CheeseMod.CHEESETAB);
 
 	// Food Metal Blocks
-	public static final Block CHEESE_METAL_BLOCK = new BlockBase("cheese_metal_block", 2.5F, 4.5F, Material.IRON, "pickaxe", 2, CheeseMod.CHEESETAB);
-	public static final Block GRILLED_CHEESE_METAL_BLOCK = new BlockBase("grilled_cheese_metal_block", 3.0F, 5.0F, Material.IRON, "pickaxe", 2, CheeseMod.CHEESETAB);
+	public static final Block CHEESE_METAL_BLOCK = new BlockBase("cheese_metal_block", 2.5F, 4.5F, Material.IRON, 2, CheeseMod.CHEESETAB);
+	public static final Block GRILLED_CHEESE_METAL_BLOCK = new BlockBase("grilled_cheese_metal_block", 3.0F, 5.0F, Material.IRON, 2, CheeseMod.CHEESETAB);
 
-	public static final Block HAM_RAW_METAL_BLOCK = new BlockBase("ham_raw_metal_block", 2.0F, 4.0F, Material.IRON, "pickaxe", 2, CheeseMod.CHEESETAB);
-	public static final Block HAM_COOKED_METAL_BLOCK = new BlockBase("ham_cooked_metal_block", 2.5F, 4.5F, Material.IRON, "pickaxe", 2, CheeseMod.CHEESETAB);
+	public static final Block HAM_RAW_METAL_BLOCK = new BlockBase("ham_raw_metal_block", 2.0F, 4.0F, Material.IRON, 2, CheeseMod.CHEESETAB);
+	public static final Block HAM_COOKED_METAL_BLOCK = new BlockBase("ham_cooked_metal_block", 2.5F, 4.5F, Material.IRON, 2, CheeseMod.CHEESETAB);
 
 	// Blocks With Variants
 	public static final Block CHEESE_PLANKS = new BlockCheesePlanks("cheese_planks", 1.0f, 1.0f, 1);
@@ -99,12 +100,24 @@ public class InitBlock {
 	public static final BlockSlab HAM_RAW_DOUBLE_SLAB = new BlockDoubleSlab("ham_raw_double_slab", 0.3F, 0.5F, Material.SPONGE, 1);
 	public static final BlockSlab HAM_COOKED_SLAB = new BlockHalfSlab("ham_cooked_slab", 0.5F, 0.7F, Material.SPONGE, 1);
 	public static final BlockSlab HAM_COOKED_DOUBLE_SLAB = new BlockDoubleSlab("ham_cooked_double_slab", 0.5F, 0.7F, Material.SPONGE, 1);
+	
+	/*
+	 * Crops
+	 */
+	public static final Block PINEAPPLE = new BlockPineapple("pineapple_plant");
 
 	public static void init() {
         ForgeRegistries.BLOCKS.register(GRILL_ACTIVE);
         ForgeRegistries.BLOCKS.register(CRACKER_MAKER_ACTIVE);
         
-		// Register blocks with variants
+        /*
+         * Crops
+         */
+        ForgeRegistries.BLOCKS.register(PINEAPPLE);
+        
+		/*
+		 *  Register blocks with variants
+		 */
 		register(CHEESE_PLANKS, new ItemBlockVariants(CHEESE_PLANKS));
 		register(CHEESE_LOG, new ItemBlockVariants(CHEESE_LOG));
 		register(CHEESE_LEAVES, new ItemBlockVariants(CHEESE_LEAVES));
@@ -113,7 +126,9 @@ public class InitBlock {
 		register(FOOD_BLOCK, new ItemBlockVariants(FOOD_BLOCK));
 		register(FOOD_GROUND_BLOCK, new ItemBlockVariants(FOOD_GROUND_BLOCK));
 
-		// Register block slabs
+		/*
+		 *  Register block slabs
+		 */
 		register(CHEESE_SLAB, new ItemSlab(CHEESE_SLAB, CHEESE_SLAB, CHEESE_DOUBLE_SLAB));
 		register(GRILLED_CHEESE_SLAB,
 				new ItemSlab(GRILLED_CHEESE_SLAB, GRILLED_CHEESE_SLAB, GRILLED_CHEESE_DOUBLE_SLAB));
@@ -140,12 +155,24 @@ public class InitBlock {
 		public static final Set<Item> ITEM_LIST = new HashSet<>();
 
 		private static final Set<Block> registeredBlockList = new HashSet<>();
-		private static final Block[] blocks = { CHEESE_METAL_ORE, GRILLED_CHEESE_METAL_ORE, CHEESE_METAL_BLOCK,
-				GRILLED_CHEESE_METAL_BLOCK, CHEESE_DRAW, HAM_DRAW, CHEESE_STAIRS,
-				GRILLED_CHEESE_STAIRS, HAM_RAW_METAL_ORE, HAM_COOKED_METAL_ORE, HAM_RAW_METAL_BLOCK,
-				HAM_COOKED_METAL_BLOCK, HAM_RAW_STAIRS, HAM_COOKED_STAIRS, NETHER_CHEESE_METAL_ORE,
-				NETHER_GRILLED_CHEESE_METAL_ORE, NETHER_HAM_RAW_METAL_ORE, NETHER_HAM_COOKED_METAL_ORE,
-				END_CHEESE_METAL_ORE, END_GRILLED_CHEESE_METAL_ORE, END_HAM_RAW_METAL_ORE, END_HAM_COOKED_METAL_ORE, GRILL_IDLE, CRACKER_MAKER_IDLE };
+		private static final Block[] blocks = {
+				CHEESE_METAL_ORE, GRILLED_CHEESE_METAL_ORE,
+				CHEESE_METAL_BLOCK, GRILLED_CHEESE_METAL_BLOCK,
+				
+				CHEESE_DRAW, HAM_DRAW,
+				
+				CHEESE_STAIRS, GRILLED_CHEESE_STAIRS,
+				
+				HAM_RAW_METAL_ORE, HAM_COOKED_METAL_ORE,
+				HAM_RAW_METAL_BLOCK, HAM_COOKED_METAL_BLOCK,
+				
+				HAM_RAW_STAIRS, HAM_COOKED_STAIRS,
+				
+				NETHER_CHEESE_METAL_ORE, NETHER_GRILLED_CHEESE_METAL_ORE,
+				NETHER_HAM_RAW_METAL_ORE, NETHER_HAM_COOKED_METAL_ORE,
+				
+				END_CHEESE_METAL_ORE, END_GRILLED_CHEESE_METAL_ORE,
+				END_HAM_RAW_METAL_ORE, END_HAM_COOKED_METAL_ORE, GRILL_IDLE, CRACKER_MAKER_IDLE };
 
 		@SubscribeEvent
 		public static void registerBlocks(final RegistryEvent.Register<Block> event) {

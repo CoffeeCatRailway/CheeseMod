@@ -17,8 +17,8 @@ public class BlockFace extends BlockBase {
 
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
-	public BlockFace(String name, float hardness, float resistance, Material material, String toolClass, int harvestLevel, CreativeTabs tab) {
-		super(name, hardness, resistance, material, name, harvestLevel, tab);
+	public BlockFace(String name, float hardness, float resistance, Material material, int harvestLevel, CreativeTabs tab) {
+		super(name, hardness, resistance, material, harvestLevel, tab);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
 

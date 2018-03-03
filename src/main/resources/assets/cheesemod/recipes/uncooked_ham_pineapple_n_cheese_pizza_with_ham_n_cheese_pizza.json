@@ -1,16 +1,16 @@
 {
     "result": {
-        "item": "cheesemod:ham_raw",
+        "item": "cheesemod:uncooked_ham_pineapple_n_cheese_pizza",
         "data": 0,
-        "count": 3
+        "count": 1
     },
     "ingredients": [
         {
             "type": "forge:ore_dict",
-            "ore": "knife"
+            "ore": "foodPineapple"
         },
         {
-            "item": "minecraft:porkchop",
+            "item": "cheesemod:uncooked_ham_n_cheese_pizza",
             "data": 0
         }
     ],
