@@ -15,6 +15,7 @@ import coffeecatteam.cheesemod.objects.tileentity.TileEntityGrill;
 import coffeecatteam.cheesemod.objects.tileentity.TileEntityHamDraw;
 import coffeecatteam.cheesemod.util.Utils;
 import coffeecatteam.cheesemod.world.gen.GenOre;
+import coffeecatteam.cheesemod.world.gen.GenStructure;
 import coffeecatteam.cheesemod.world.gen.GenTree;
 import coffeecatteam.cheesemod.world.types.WorldTypeCheese;
 import coffeecatteam.cheesemod.world.types.WorldTypeHam;
@@ -44,7 +45,7 @@ public class RegistryHandler {
 		logger.info("Items, Blocks, Tools, Armors, Biomes, Entities & TileEntitys Initialized");
 
 		GameRegistry.registerWorldGenerator(new GenOre(), 0);
-		// GameRegistry.registerWorldGenerator(new GenBlock(), 0);
+		GameRegistry.registerWorldGenerator(new GenStructure(), 0);
 		GameRegistry.registerWorldGenerator(new GenTree(), 0);
 		logger.info("World Generation Initialized");
 	}
