@@ -3,9 +3,15 @@ package coffeecatteam.cheesemod.world.gen.feature;
 import java.util.Random;
 
 import coffeecatteam.cheesemod.Reference;
+import coffeecatteam.cheesemod.util.LootTable;
 import coffeecatteam.cheesemod.util.interfaces.IStructure;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockChest;
+import net.minecraft.block.BlockStructure;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
@@ -28,11 +34,11 @@ public class WorldGenStructure extends WorldGenerator implements IStructure {
 
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos) {
-		this.generateStructure(world, pos);
+		this.generateStructure(world, rand, pos);
 		return true;
 	}
 	
-	public static void generateStructure(World world, BlockPos pos) {
+	public static void generateStructure(World world, Random rand, BlockPos pos) {
 		MinecraftServer mcServer = world.getMinecraftServer();
 		TemplateManager manager = worldServer.getStructureTemplateManager();
 		ResourceLocation location = new ResourceLocation(Reference.MODID, structureName);
@@ -40,6 +46,16 @@ public class WorldGenStructure extends WorldGenerator implements IStructure {
 		
 		if (template != null) {
 			IBlockState state = world.getBlockState(pos);
+			
+			Block block = state.getBlock();
+			if (block instanceof BlockChest) {
+				BlockChest blockChest = (BlockChest) block;
+				TileEntityChest tileEntityChest = (TileEntityChest) blockChest.createNewTileEntity(world, blockChest.getMetaFromState(state));
+				tileEntityChest.setLootTable(LootTable.CHEESE_RUIN, rand.nextLong());
+				
+				state = tileEntityChest.getBlockType().getDefaultState();
+			}
+
 			world.notifyBlockUpdate(pos, state, state, 3);
 			settings.setRotation(getRotation());
 			template.addBlocksToWorldChunk(world, pos, settings);

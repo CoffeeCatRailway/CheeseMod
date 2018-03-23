@@ -28,6 +28,9 @@ public class ModelHamSuit extends ModelBiped {
 	public ModelRenderer arm_left;
 	public ModelRenderer arm_right;
 
+    public ModelRenderer leg_right;
+    public ModelRenderer leg_left;
+
 	private EntityEquipmentSlot armorSlot;
 
 	public ModelHamSuit(float scale, EntityEquipmentSlot armorSlot) {
@@ -41,6 +44,9 @@ public class ModelHamSuit extends ModelBiped {
 		hat = new ModelRenderer(this);
 		arm_left = new ModelRenderer(this);
 		arm_right = new ModelRenderer(this);
+		
+		leg_right = new ModelRenderer(this);
+		leg_left = new ModelRenderer(this);
 		
 		Config.load("cheesemod");
 		float s = Config.getHamSuitScale();
@@ -95,6 +101,17 @@ public class ModelHamSuit extends ModelBiped {
 		pig_body.setRotationPoint(0.0F, 5.6F, 0.0F);
 		setRotation(pig_body, 0.0F, 0.0F, 0.0F);
 		
+		// Legs
+        leg_right = new ModelRenderer(this, 48, 10);
+        leg_right.addBox(-2.0F, 6.0F, -2.0F, 4, 6, 4, s);
+        leg_right.setRotationPoint(-1.9F, 12.0F, 0.0F);
+		setRotation(leg_right, 0.0F, 0.0F, 0.0F);
+
+        leg_left = new ModelRenderer(this, 48, 10);
+        leg_left.addBox(-2.0F, 6.0F, -2.0F, 4, 6, 4, s);
+        leg_left.setRotationPoint(1.9F, 12.0F, 0.0F);
+		setRotation(leg_left, 0.0F, 0.0F, 0.0F);
+		
 		// Hat
 		this.hat.addChild(pig_head);
 		this.hat.addChild(pig_nose);
@@ -125,6 +142,9 @@ public class ModelHamSuit extends ModelBiped {
 
 			copyModelAngles(this.bipedRightArm, this.arm_right);
 			copyModelAngles(this.bipedLeftArm, this.arm_left);
+
+			copyModelAngles(this.bipedRightLeg, this.leg_right);
+			copyModelAngles(this.bipedLeftLeg, this.leg_left);
 		}
 
 		GlStateManager.pushMatrix();
@@ -137,6 +157,10 @@ public class ModelHamSuit extends ModelBiped {
 				this.arm_right.render(scale);
 				this.arm_left.render(scale);
 			}
+			if (armorSlot == EntityEquipmentSlot.FEET) {
+				this.leg_right.render(scale);
+				this.leg_left.render(scale);
+			}
 		} else {
 			if (entity.isSneaking())
 				GlStateManager.translate(0.0F, 0.2F, 0.0F);
@@ -147,6 +171,10 @@ public class ModelHamSuit extends ModelBiped {
 				this.binding.render(scale);
 				this.arm_right.render(scale);
 				this.arm_left.render(scale);
+			}
+			if (armorSlot == EntityEquipmentSlot.FEET) {
+				this.leg_right.render(scale);
+				this.leg_left.render(scale);
 			}
 		}
 		GlStateManager.popMatrix();

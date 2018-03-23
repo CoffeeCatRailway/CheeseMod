@@ -57,6 +57,7 @@ public class InitArmor {
 
 	public static final Item HAM_SUIT_HAT = new ArmorHamSuit("ham_suit_hat", HAM_RAW_ARMOR_MATERIAL, 1, EntityEquipmentSlot.HEAD);
 	public static final Item HAM_SUIT_CHESTPLATE = new ArmorHamSuit("ham_suit_chestplate", HAM_RAW_ARMOR_MATERIAL, 1, EntityEquipmentSlot.CHEST);
+	public static final Item HAM_SUIT_BOOTS = new ArmorHamSuit("ham_suit_boots", HAM_RAW_ARMOR_MATERIAL, 1, EntityEquipmentSlot.FEET);
 	
 	@EventBusSubscriber(modid = Reference.MODID)
 	public static class ArmorRegistrationHandler {
@@ -67,7 +68,7 @@ public class InitArmor {
 				GRILLED_CHEESE_HELMET, GRILLED_CHEESE_CHESTPLATE, GRILLED_CHEESE_LEGGINGS, GRILLED_CHEESE_BOOTS,
 				HAM_RAW_HELMET, HAM_RAW_CHESTPLATE, HAM_RAW_LEGGINGS, HAM_RAW_BOOTS, HAM_COOKED_HELMET,
 				HAM_COOKED_CHESTPLATE, HAM_COOKED_LEGGINGS, HAM_COOKED_BOOTS, CHEESE_SUIT_HAT, CHEESE_SUIT_CHESTPLATE,
-				HAM_SUIT_HAT, HAM_SUIT_CHESTPLATE };
+				HAM_SUIT_HAT, HAM_SUIT_CHESTPLATE, HAM_SUIT_BOOTS };
 
 		@SubscribeEvent
 		public static void registerItems(final RegistryEvent.Register<Item> event) {

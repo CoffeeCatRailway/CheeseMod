@@ -31,7 +31,7 @@ public class BlockFood extends BlockLog implements IMetaName {
 					return apply.getMeta() < 4;
 				}
 			});
-	
+
 	public BlockFood(String name, float hardness, float resistance, int harvestLevel) {
 		setUnlocalizedName(name);
 		setRegistryName(name);
@@ -43,7 +43,7 @@ public class BlockFood extends BlockLog implements IMetaName {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandler.EnumWoodType.CHEESE)
 				.withProperty(LOG_AXIS, EnumAxis.Y));
 	}
-	
+
 	@Override
 	public boolean isWood(IBlockAccess world, BlockPos pos) {
 		return false;
@@ -58,8 +58,7 @@ public class BlockFood extends BlockLog implements IMetaName {
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		IBlockState state = this.getDefaultState().withProperty(VARIANT,
-				EnumHandler.EnumWoodType.byMetaData(meta % 4));
+		IBlockState state = this.getDefaultState().withProperty(VARIANT, EnumHandler.EnumWoodType.byMetaData(meta % 4));
 
 		switch (meta & 6) {
 		case 0:

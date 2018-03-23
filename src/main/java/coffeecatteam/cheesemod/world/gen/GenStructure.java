@@ -28,7 +28,7 @@ import scala.actors.threadpool.Arrays;
 public class GenStructure implements IWorldGenerator {
 
 	public static final WorldGenerator CHEESE_HUT_RUIN = new WorldGenStructure("cheese_hut_ruin");
-	//public static final WorldGenerator HAM_HUT_RUIN = new WorldGenStructure("ham_hut_ruin");
+	public static final WorldGenerator HAM_HUT_RUIN = new WorldGenStructure("ham_hut_ruin");
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
@@ -38,7 +38,7 @@ public class GenStructure implements IWorldGenerator {
 			break;
 		case 0: // Overworld
 			generateStructure(CHEESE_HUT_RUIN, world, random, chunkX, chunkZ, 200, Blocks.GRASS, BiomePlains.class, BiomeForest.class, BiomeHills.class);
-			//generateStructure(HAM_HUT_RUIN, world, random, chunkX, chunkZ, 200, Blocks.GRASS, BiomePlains.class, BiomeForest.class, BiomeHills.class);
+			generateStructure(HAM_HUT_RUIN, world, random, chunkX, chunkZ, 200, Blocks.GRASS, BiomePlains.class, BiomeForest.class, BiomeHills.class);
 			break;
 		case -1: // Nether
 			break;
