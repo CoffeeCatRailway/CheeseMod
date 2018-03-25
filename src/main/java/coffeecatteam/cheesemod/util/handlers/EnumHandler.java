@@ -6,7 +6,9 @@ public class EnumHandler {
 
 	public static enum EnumToastType implements IStringSerializable {
 
-		PLAIN_TOAST(0, 3, "plain"), FRENCH_TOAST(1, 5, "french");
+		PLAIN_TOAST(0, 3, "plain"),
+		FRENCH_TOAST(1, 6, "french"),
+		BACON_TOAST(2, 8, "bacon");
 
 		private static final EnumHandler.EnumToastType[] META_LOOKUP = new EnumHandler.EnumToastType[values().length];
 		private final int meta, amount;

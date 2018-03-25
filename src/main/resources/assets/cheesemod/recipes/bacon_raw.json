@@ -1,0 +1,18 @@
+{
+    "result": {
+        "item": "cheesemod:bacon_raw",
+        "data": 0,
+        "count": 2
+    },
+    "ingredients": [
+        {
+            "type": "forge:ore_dict",
+            "ore": "knife"
+        },
+        {
+            "item": "cheesemod:ham_raw",
+            "data": 0
+        }
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

@@ -26,6 +26,8 @@ public class Recipes {
 		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitBlock.CHEESE_SLAB, 1), new ItemStack(InitBlock.GRILLED_CHEESE_SLAB), 0.7F);
 
 		// Items
+		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitItem.BACON_RAW, 1), new ItemStack(InitItem.BACON_COOKED), 0.7F);
+		
 		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitItem.TOASTIE, 1, 0), new ItemStack(InitItem.TOASTIE, 1, 1), 0.7F);
 		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitItem.TOASTIE, 1, 2), new ItemStack(InitItem.TOASTIE, 1, 3), 0.7F);
 		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitItem.TOASTIE, 1, 4), new ItemStack(InitItem.TOASTIE, 1, 5), 0.7F);

@@ -16,6 +16,9 @@ item.bread_slice.name=Bread Slice
 item.ham_raw.name=Raw Ham
 item.ham_cooked.name=Cooked Ham
 
+item.bacon_raw.name=Raw Bacon
+item.bacon_cooked.name=Cooked Bacon
+
 item.dough.name=Dough
 
 item.cheese_cutter.name=Cheese Cutter
@@ -43,6 +46,7 @@ item.cracker.grilled_cheese_n_crayfish.name=Grilled Cheese N' Crayfish Cracker
 # Items - Toast
 item.toast.plain.name=Plain Toast
 item.toast.french.name=French Toast
+item.toast.bacon.name=Bacon Toast
 
 # Items - Toastie
 item.toastie.cheese.name=Cheese Toastie

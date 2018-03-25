@@ -82,6 +82,9 @@ public class InitItem {
 	
 	public static final Item HAM_RAW = new ItemBaseFood("ham_raw", OreDictionaries.foodHam, 2, true);
 	public static final Item HAM_COOKED = new ItemBaseFood("ham_cooked", OreDictionaries.foodHam, 3, false);
+	
+	public static final Item BACON_RAW = new ItemBaseFood("bacon_raw", OreDictionaries.foodBacon, 2, true);
+	public static final Item BACON_COOKED = new ItemBaseFood("bacon_cooked", OreDictionaries.foodBacon, 5, false);
 
 	public static final Item TOAST = new ItemToast("toast", OreDictionaries.foodToast);
 	public static final Item BREAD_SLICE = new ItemBaseFood("bread_slice", OreDictionaries.foodBreadSlice, 2, false);
@@ -142,6 +145,7 @@ public class InitItem {
 				BLOCK_O_CHEESE, CHEESE_SLICE,
 				SALT, FLOUR,
 				HAM_RAW, HAM_COOKED,
+				BACON_RAW, BACON_COOKED,
 				TOAST, BREAD_SLICE,
 				DOUGH,
 				// Pizza
