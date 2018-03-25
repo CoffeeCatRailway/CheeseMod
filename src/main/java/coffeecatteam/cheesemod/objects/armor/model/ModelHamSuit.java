@@ -5,6 +5,7 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
@@ -145,6 +146,40 @@ public class ModelHamSuit extends ModelBiped {
 
 			copyModelAngles(this.bipedRightLeg, this.leg_right);
 			copyModelAngles(this.bipedLeftLeg, this.leg_left);
+		}
+		if (entity instanceof EntityArmorStand) {
+			EntityArmorStand armorstand = (EntityArmorStand)entity;
+			// Head
+			this.hat.rotateAngleX = 0.017453292F * armorstand.getHeadRotation().getX();
+			this.hat.rotateAngleY = 0.017453292F * armorstand.getHeadRotation().getY();
+			this.hat.rotateAngleZ = 0.017453292F * armorstand.getHeadRotation().getZ();
+            
+			// Body
+			this.binding.rotateAngleX = 0.017453292F * armorstand.getBodyRotation().getX();
+			this.binding.rotateAngleY = 0.017453292F * armorstand.getBodyRotation().getY();
+			this.binding.rotateAngleZ = 0.017453292F * armorstand.getBodyRotation().getZ();
+
+			// Right Arm
+			this.arm_right.rotateAngleX = 0.017453292F * armorstand.getRightArmRotation().getX();
+			this.arm_right.rotateAngleY = 0.017453292F * armorstand.getRightArmRotation().getY();
+			this.arm_right.rotateAngleZ = 0.017453292F * armorstand.getRightArmRotation().getZ();
+
+			// Left Arm
+			this.arm_left.rotateAngleX = 0.017453292F * armorstand.getLeftArmRotation().getX();
+			this.arm_left.rotateAngleY = 0.017453292F * armorstand.getLeftArmRotation().getY();
+			this.arm_left.rotateAngleZ = 0.017453292F * armorstand.getLeftArmRotation().getZ();
+
+			// Right Leg
+			this.leg_right.rotateAngleX = 0.017453292F * armorstand.getRightLegRotation().getX();
+			this.leg_right.rotateAngleY = 0.017453292F * armorstand.getRightLegRotation().getY();
+			this.leg_right.rotateAngleZ = 0.017453292F * armorstand.getRightLegRotation().getZ();
+
+			// Left Leg
+			this.leg_left.rotateAngleX = 0.017453292F * armorstand.getLeftLegRotation().getX();
+			this.leg_left.rotateAngleY = 0.017453292F * armorstand.getLeftLegRotation().getY();
+			this.leg_left.rotateAngleZ = 0.017453292F * armorstand.getLeftLegRotation().getZ();
+			
+			copyModelAngles(this.bipedHead, this.bipedHeadwear);
 		}
 
 		GlStateManager.pushMatrix();

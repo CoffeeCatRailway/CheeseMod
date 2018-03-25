@@ -35,6 +35,7 @@ public class OreDictionaries {
 	public static final String foodCheese = "foodCheese";
 	public static final String foodHam = "foodHam";
 	public static final String foodToast = "foodToast";
+	public static final String foodBreadSlice = "foodBreadSlice";
 	
 	public static final String foodPizza = "foodPizza";
 	public static final String foodToastie = "foodToastie";

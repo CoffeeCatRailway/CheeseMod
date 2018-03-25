@@ -1,16 +1,16 @@
 {
     "result": {
-        "item": "cheesemod:ham_cooked_n_cheese_toastie",
-        "data": 0
+        "item": "cheesemod:toastie",
+        "data": 3
     },
     "ingredients": [
         {
-            "item": "cheesemod:toast_slice",
-            "data": 32767
+            "item": "cheesemod:toast",
+            "data": 0
         },
         {
-            "item": "cheesemod:toast_slice",
-            "data": 32767
+            "item": "cheesemod:toast",
+            "data": 0
         },
         {
             "item": "cheesemod:cheese_slice",

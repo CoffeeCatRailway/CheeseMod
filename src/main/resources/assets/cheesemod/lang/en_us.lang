@@ -11,49 +11,12 @@ item.test_item.name=Test Item
 item.block_o_cheese.name=Block O' Cheese
 item.cheese_slice.name=Cheese Slice
 
-item.cracker.name=Cracker
-item.crayfish_cracker.name=Crayfish Cracker
+item.bread_slice.name=Bread Slice
 
-item.cheese_n_cracker.name=Cheese N' Cracker
-item.grilled_cheese_n_cracker.name=Grilled Cheese N' Cracker
-
-item.cheese_n_crayfish_cracker.name=Cheese N' Crayfish Cracker
-item.grilled_cheese_n_crayfish_cracker.name=Grilled Cheese N' Crayfish Cracker
-
-item.toast.name=Toast
-item.toast_slice.name=Toast Slice
 item.ham_raw.name=Raw Ham
 item.ham_cooked.name=Cooked Ham
 
-item.cheese_toastie.name=Cheese Toastie
-item.grilled_cheese_toastie.name=Grilled Cheese Toastie
-
-item.ham_raw_n_cheese_toastie.name=Raw Ham N' Cheese Toastie
-item.ham_cooked_n_cheese_toastie.name=Cooked Ham N' Cheese Toastie
-item.grilled_ham_raw_n_cheese_toastie.name=Grilled Raw Ham N' Cheese Toastie
-item.grilled_ham_cooked_n_cheese_toastie.name=Grilled Cooked Ham N' Cheese Toastie
-
 item.dough.name=Dough
-item.bland_pizza.name=Plain Pizza
-
-item.uncooked_cheese_pizza.name=Uncooked Cheese Pizza
-item.cooked_cheese_pizza.name=Cheese Pizza
-
-item.uncooked_ham_n_cheese_pizza.name=Uncooked Ham N' Cheese Pizza
-item.cooked_ham_n_cheese_pizza.name=Ham N' Cheese Pizza
-
-item.uncooked_ham_pineapple_n_cheese_pizza.name=Uncooked Ham Pineapple N' Cheese Pizza
-item.cooked_ham_pineapple_n_cheese_pizza.name=Ham Pineapple N' Cheese Pizza
-
-item.knife.name=Knife
-item.cheese_knife.name=Cheese Knife
-item.ham_raw_knife.name=Ham Raw Knife
-item.ham_cooked_knife.name=Ham Cooked Knife
-
-item.cheese_metal_ingot.name=Cheese Metal Ingot
-item.grilled_cheese_metal_ingot.name=Grilled Cheese Metal Ingot
-item.ham_raw_metal_ingot.name=Ham Raw Metal Ingot
-item.ham_cooked_metal_ingot.name=Ham Cooked Metal Ingot
 
 item.cheese_cutter.name=Cheese Cutter
 item.cheese_bit.name=Bit O' Cheese
@@ -63,13 +26,62 @@ item.grinding_stones.name=Grinding Stones
 item.flour.name=Flour
 item.salt.name=Salt
 
-item.grilling_oil.name=Grilling Oil
-item.smelting_oil.name=Smelting Oil
-
 item.milk_curdler.name=Milk Curdler
 item.rolling_pin.name=Rolling Pin
 item.wooden_gear.name=Wooden Gear
 
+# Items - Crackers
+item.cracker.plain.name=Cracker
+item.cracker.crayfish.name=Crayfish Cracker
+
+item.cracker.cheese.name=Cheese N' Cracker
+item.cracker.grilled_cheese.name=Grilled Cheese N' Cracker
+
+item.cracker.cheese_n_crayfish.name=Cheese N' Crayfish Cracker
+item.cracker.grilled_cheese_n_crayfish.name=Grilled Cheese N' Crayfish Cracker
+
+# Items - Toast
+item.toast.plain.name=Plain Toast
+item.toast.french.name=French Toast
+
+# Items - Toastie
+item.toastie.cheese.name=Cheese Toastie
+item.toastie.grilled_cheese.name=Grilled Cheese Toastie
+
+item.toastie.ham_raw_n_cheese.name=Raw Ham N' Cheese Toastie
+item.toastie.ham_cooked_n_cheese.name=Cooked Ham N' Cheese Toastie
+item.toastie.grilled_ham_raw_n_cheese.name=Grilled Raw Ham N' Cheese Toastie
+item.toastie.grilled_ham_cooked_n_cheese.name=Grilled Cooked Ham N' Cheese Toastie
+
+# Items - Pizza
+item.pizza.bland.name=Plain Pizza
+
+item.pizza.uncooked_cheese.name=Uncooked Cheese Pizza
+item.pizza.cooked_cheese.name=Cheese Pizza
+
+item.pizza.uncooked_ham_n_cheese.name=Uncooked Ham N' Cheese Pizza
+item.pizza.cooked_ham_n_cheese.name=Ham N' Cheese Pizza
+
+item.pizza.uncooked_ham_pineapple_n_cheese.name=Uncooked Ham Pineapple N' Cheese Pizza
+item.pizza.cooked_ham_pineapple_n_cheese.name=Ham Pineapple N' Cheese Pizza
+
+# Items - Knife
+item.knife.name=Knife
+item.cheese_knife.name=Cheese Knife
+item.ham_raw_knife.name=Ham Raw Knife
+item.ham_cooked_knife.name=Ham Cooked Knife
+
+# Items - Metal Ingot
+item.cheese_metal_ingot.name=Cheese Metal Ingot
+item.grilled_cheese_metal_ingot.name=Grilled Cheese Metal Ingot
+item.ham_raw_metal_ingot.name=Ham Raw Metal Ingot
+item.ham_cooked_metal_ingot.name=Ham Cooked Metal Ingot
+
+# Items - Oil
+item.grilling_oil.name=Grilling Oil
+item.smelting_oil.name=Smelting Oil
+
+# Items - Pineapple
 item.pineapple.name=Pineapple
 item.pineapple_plant.name=Pineapple Plant
 item.pineapple_ring.name=Pineapple Ring

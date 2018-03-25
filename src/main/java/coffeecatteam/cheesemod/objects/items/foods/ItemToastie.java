@@ -3,41 +3,78 @@ package coffeecatteam.cheesemod.objects.items.foods;
 import java.util.List;
 
 import coffeecatteam.cheesemod.CheeseMod;
-import coffeecatteam.cheesemod.objects.items.base.ItemBaseFood;
+import coffeecatteam.cheesemod.util.handlers.EnumHandler.EnumToastieType;
 import coffeecatteam.cheesemod.util.interfaces.IOreDict;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
 
-public class ItemToastie extends ItemBaseFood implements IOreDict {
+public class ItemToastie extends ItemFood implements IOreDict {
 
-	private static String info;
-	private static boolean grilled;
+	private String oreDict;
+	
+	public ItemToastie(String name, String oreDict) {
+		super(0, false);
+		this.oreDict = oreDict;
+		setUnlocalizedName(name);
+		setRegistryName(name);
+		setCreativeTab(CheeseMod.CHEESEFOODSTAB);
+		this.setHasSubtypes(true);
+	}
+	
+	@Override
+	public int getHealAmount(ItemStack stack) {
+		int i = stack.getMetadata();
+		return EnumToastieType.byMetaData(i).getHealAmount();
+	}
 
-	public ItemToastie(String name, String oreDict, int amount, boolean isWolfFood, String info, boolean grilled) {
-		super(name, oreDict, amount, isWolfFood);
-		this.info = info;
-		this.grilled = grilled;
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		int i = stack.getMetadata();
+		return super.getUnlocalizedName() + "." + EnumToastieType.byMetaData(i).getUnlocalizedName();
+	}
+
+	@Override
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+		if (this.isInCreativeTab(tab)) {
+			for (int i = 0; i < EnumToastieType.values().length; i++) {
+				items.add(new ItemStack(this, 1, i));
+			}
+		}
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		tooltip.add(this.info);
+		int i = stack.getMetadata();
+		boolean grilled = EnumToastieType.byMetaData(i).isGrilled();
+		
+		String infoGrilled = "Tastes better grilled, right..?";
+		String infoNotGrilled = "So, Do you want it grilled anyone..?";
+		tooltip.add(grilled ? infoGrilled : infoNotGrilled);
 	}
 
 	@Override
 	public void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 		super.onFoodEaten(stack, worldIn, player);
-		if (this.getUnlocalizedName().contains("grilled") && this.grilled == true) {
+		int i = stack.getMetadata();
+		boolean grilled = EnumToastieType.byMetaData(i).isGrilled();
+		
+		if (this.getUnlocalizedName().contains("grilled") && grilled == true) {
 			if (!worldIn.isRemote) {
 				player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 400, 1));
 			}
 		}
+	}
+
+	@Override
+	public String registerOre() {
+		return oreDict;
 	}
 }

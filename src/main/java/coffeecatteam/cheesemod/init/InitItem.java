@@ -14,15 +14,20 @@ import coffeecatteam.cheesemod.objects.items.base.ItemBaseSeeds;
 import coffeecatteam.cheesemod.objects.items.base.ItemBaseTool;
 import coffeecatteam.cheesemod.objects.items.foods.ItemCracker;
 import coffeecatteam.cheesemod.objects.items.foods.ItemPizza;
+import coffeecatteam.cheesemod.objects.items.foods.ItemToast;
 import coffeecatteam.cheesemod.objects.items.foods.ItemToastie;
 import coffeecatteam.cheesemod.util.OreDictionaries;
+import coffeecatteam.cheesemod.util.handlers.EnumHandler;
+import coffeecatteam.cheesemod.util.handlers.EnumHandler.EnumToastType;
 import coffeecatteam.cheesemod.util.interfaces.IOreDict;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemSlab;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
@@ -78,40 +83,19 @@ public class InitItem {
 	public static final Item HAM_RAW = new ItemBaseFood("ham_raw", OreDictionaries.foodHam, 2, true);
 	public static final Item HAM_COOKED = new ItemBaseFood("ham_cooked", OreDictionaries.foodHam, 3, false);
 
-	public static final Item TOAST = new ItemBaseFood("toast", OreDictionaries.foodToast, 3, false);
-	public static final Item TOAST_SLICE = new ItemBaseFood("toast_slice", OreDictionaries.foodToast, 2, false);
+	public static final Item TOAST = new ItemToast("toast", OreDictionaries.foodToast);
+	public static final Item BREAD_SLICE = new ItemBaseFood("bread_slice", OreDictionaries.foodBreadSlice, 2, false);
 	
 	public static final Item DOUGH = new ItemBaseFood("dough", OreDictionaries.foodIngredient, 3, false);
 	
-	// Pizzas
-	public static final Item BLAND_PIZZA = new ItemBaseFood("bland_pizza", OreDictionaries.foodPizza, 5, false);
-	
-	public static final Item UNCOOKED_CHEESE_PIZZA = new ItemPizza("uncooked_cheese_pizza", OreDictionaries.foodPizza, 7, false);
-	public static final Item COOKED_CHEESE_PIZZA = new ItemPizza("cooked_cheese_pizza", OreDictionaries.foodPizza, 10, false);
-	
-	public static final Item UNCOOKED_HAM_N_CHEESE_PIZZA = new ItemPizza("uncooked_ham_n_cheese_pizza", OreDictionaries.foodPizza, 9, false);
-	public static final Item COOKED_HAM_N_CHEESE_PIZZA = new ItemPizza("cooked_ham_n_cheese_pizza", OreDictionaries.foodPizza, 13, false);
-	
-	public static final Item UNCOOKED_HAM_PINEAPPLE_N_CHEESE_PIZZA = new ItemPizza("uncooked_ham_pineapple_n_cheese_pizza", OreDictionaries.foodPizza, 12, false);
-	public static final Item COOKED_HAM_PINEAPPLE_N_CHEESE_PIZZA = new ItemPizza("cooked_ham_pineapple_n_cheese_pizza", OreDictionaries.foodPizza, 15, false);
+	// Pizza
+	public static final Item PIZZA = new ItemPizza("pizza", OreDictionaries.foodPizza);
 
-	// Toasties
-	public static final Item CHEESE_TOASTIE = new ItemToastie("cheese_toastie", OreDictionaries.foodToastie, 8, true, "Grilled anyone..?", false);
-	public static final Item GRILLED_CHEESE_TOASTIE = new ItemToastie("grilled_cheese_toastie", OreDictionaries.foodToastie, 11, true, "Tastes better grilled, right..?", true);
-	public static final Item HAM_RAW_N_CHEESE_TOASTIE = new ItemToastie("ham_raw_n_cheese_toastie", OreDictionaries.foodToastie, 9, false, "So, Do you want it grilled anyone..?", false);
-	public static final Item HAM_COOKED_N_CHEESE_TOASTIE = new ItemToastie("ham_cooked_n_cheese_toastie", OreDictionaries.foodToastie, 11, false, "So, Do you want it grilled anyone..?", false);
-	public static final Item GRILLED_HAM_RAW_N_CHEESE_TOASTIE = new ItemToastie("grilled_ham_raw_n_cheese_toastie", OreDictionaries.foodToastie, 12, false, "So, Does it taste better grilled, right..?", true);
-	public static final Item GRILLED_HAM_COOKED_N_CHEESE_TOASTIE = new ItemToastie( "grilled_ham_cooked_n_cheese_toastie", OreDictionaries.foodToastie, 14, false, "So, Does it taste better grilled, right..?", true);
+	// Toastie
+	public static final Item TOASTIE = new ItemToastie("toastie", OreDictionaries.foodToastie);
 	
-	// Crackers
-	public static final Item CRACKER = new ItemCracker("cracker", OreDictionaries.foodCracker, 5, false);
-	public static final Item CRAYFISH_CRACKER = new ItemCracker("crayfish_cracker", OreDictionaries.foodCracker, 10, false);
-	
-	public static final Item CHEESE_N_CRACKER = new ItemCracker("cheese_n_cracker", OreDictionaries.foodCracker, 7, false);
-	public static final Item GRILLED_CHEESE_N_CRACKER = new ItemCracker("grilled_cheese_n_cracker", OreDictionaries.foodCracker, 10, false);
-
-	public static final Item CHEESE_N_CRAYFISH_CRACKER = new ItemCracker("cheese_n_crayfish_cracker", OreDictionaries.foodCracker, 12, false);
-	public static final Item GRILLED_CHEESE_N_CRAYFISH_CRACKER = new ItemCracker("grilled_cheese_n_crayfish_cracker", OreDictionaries.foodCracker, 15, false);
+	// Cracker
+	public static final Item CRACKER = new ItemCracker("cracker", OreDictionaries.foodCracker);
 	
 	// Pineapple
 	public static final Item PINEAPPLE_PLANT = new ItemBaseSeeds("pineapple_plant", "pineapple", InitBlock.PINEAPPLE, Blocks.FARMLAND);
@@ -158,19 +142,14 @@ public class InitItem {
 				BLOCK_O_CHEESE, CHEESE_SLICE,
 				SALT, FLOUR,
 				HAM_RAW, HAM_COOKED,
-				TOAST, TOAST_SLICE,
+				TOAST, BREAD_SLICE,
 				DOUGH,
-				// Pizzas
-				BLAND_PIZZA,
-				UNCOOKED_CHEESE_PIZZA, COOKED_CHEESE_PIZZA,
-				UNCOOKED_HAM_N_CHEESE_PIZZA, COOKED_HAM_N_CHEESE_PIZZA,
-				UNCOOKED_HAM_PINEAPPLE_N_CHEESE_PIZZA, COOKED_HAM_PINEAPPLE_N_CHEESE_PIZZA,
-				// Toasties
-				CHEESE_TOASTIE, GRILLED_CHEESE_TOASTIE, HAM_RAW_N_CHEESE_TOASTIE, HAM_COOKED_N_CHEESE_TOASTIE, GRILLED_HAM_RAW_N_CHEESE_TOASTIE, GRILLED_HAM_COOKED_N_CHEESE_TOASTIE,
-				// Crackers
-				CRACKER, CRAYFISH_CRACKER, 
-				CHEESE_N_CRACKER, GRILLED_CHEESE_N_CRACKER,
-				CHEESE_N_CRAYFISH_CRACKER, GRILLED_CHEESE_N_CRAYFISH_CRACKER,
+				// Pizza
+				PIZZA,
+				// Toastie
+				TOASTIE,
+				// Cracker
+				CRACKER,
 				// Pineapple
 				PINEAPPLE_PLANT, PINEAPPLE, PINEAPPLE_RING, PINEAPPLE_BIT,
 				// Other
@@ -186,9 +165,11 @@ public class InitItem {
 				reg.register(item);
 				ITEM_LIST.add(item);
 				if (item instanceof IOreDict) {
-					String oreDict = ((IOreDict) item).registerOre();
-					OreDictionary.registerOre(oreDict, item);
-					CheeseMod.logger.info("Item [" + item.getUnlocalizedName() + "] registered to ore dictionary name [" + oreDict + "]!");
+					if (!item.getHasSubtypes()) {
+						String oreDict = ((IOreDict) item).registerOre();
+						OreDictionary.registerOre(oreDict, item);
+						CheeseMod.logger.info("Item [" + item.getUnlocalizedName() + "] registered to ore dictionary name [" + oreDict + "]!");
+					}
 				}
 			}
 		}
@@ -196,8 +177,61 @@ public class InitItem {
 		@SubscribeEvent
 		public static void registerModels(final ModelRegistryEvent event) {
 			for (Item item : ITEM_LIST)
-				if (!registeredItemList.contains(item))
-					registerItemModel(item);
+				if (!item.getHasSubtypes() || item instanceof ItemSlab)
+					if (!registeredItemList.contains(item))
+						registerItemModel(item);
+			
+			/*
+			 * Register toast item models
+			 */
+			for (int i = 0; i < EnumHandler.EnumToastType.values().length; i++) {
+				registerItemModelVariants(TOAST, i, "toast_" + EnumHandler.EnumToastType.values()[i].getName());
+				
+				ItemStack stack = new ItemStack(TOAST, 1, i);
+				String oreDict = ((IOreDict) stack.getItem()).registerOre();
+				OreDictionary.registerOre(oreDict, stack);
+				String name = stack.getItem().getUnlocalizedName() + "." + EnumToastType.byMetaData(i).getUnlocalizedName();
+				CheeseMod.logger.info("Item [" + name + "] registered to ore dictionary name [" + oreDict + "]!");
+			}
+			
+			/*
+			 * Register cracker item models
+			 */
+			for (int i = 0; i < EnumHandler.EnumCrackerType.values().length; i++) {
+				registerItemModelVariants(CRACKER, i, "cracker_" + EnumHandler.EnumCrackerType.values()[i].getName());
+				
+				ItemStack stack = new ItemStack(CRACKER, 1, i);
+				String oreDict = ((IOreDict) stack.getItem()).registerOre();
+				OreDictionary.registerOre(oreDict, stack);
+				String name = stack.getItem().getUnlocalizedName() + "." + EnumHandler.EnumCrackerType.byMetaData(i).getUnlocalizedName();
+				CheeseMod.logger.info("Item [" + name + "] registered to ore dictionary name [" + oreDict + "]!");
+			}
+			
+			/*
+			 * Register toastie item models
+			 */
+			for (int i = 0; i < EnumHandler.EnumToastieType.values().length; i++) {
+				registerItemModelVariants(TOASTIE, i, "toastie_" + EnumHandler.EnumToastieType.values()[i].getName());
+				
+				ItemStack stack = new ItemStack(TOASTIE, 1, i);
+				String oreDict = ((IOreDict) stack.getItem()).registerOre();
+				OreDictionary.registerOre(oreDict, stack);
+				String name = stack.getItem().getUnlocalizedName() + "." + EnumHandler.EnumToastieType.byMetaData(i).getUnlocalizedName();
+				CheeseMod.logger.info("Item [" + name + "] registered to ore dictionary name [" + oreDict + "]!");
+			}
+			
+			/*
+			 * Register pizza item models
+			 */
+			for (int i = 0; i < EnumHandler.EnumPizzaType.values().length; i++) {
+				registerItemModelVariants(PIZZA, i, "pizza_" + EnumHandler.EnumPizzaType.values()[i].getName());
+				
+				ItemStack stack = new ItemStack(PIZZA, 1, i);
+				String oreDict = ((IOreDict) stack.getItem()).registerOre();
+				OreDictionary.registerOre(oreDict, stack);
+				String name = stack.getItem().getUnlocalizedName() + "." + EnumHandler.EnumPizzaType.byMetaData(i).getUnlocalizedName();
+				CheeseMod.logger.info("Item [" + name + "] registered to ore dictionary name [" + oreDict + "]!");
+			}
 		}
 
 		private static void registerItemModel(final Item item) {
@@ -209,6 +243,11 @@ public class InitItem {
 		private static void registerItemModel(final Item item, final ModelResourceLocation modelResourceLocation) {
 			ModelLoader.setCustomModelResourceLocation(item, 0, modelResourceLocation);
 			registeredItemList.add(item);
+		}
+
+		private static void registerItemModelVariants(Item item, int meta, String filename) {
+			ModelLoader.setCustomModelResourceLocation(item, meta,
+					new ModelResourceLocation(new ResourceLocation(Reference.MODID, filename), "inventory"));
 		}
 	}
 }

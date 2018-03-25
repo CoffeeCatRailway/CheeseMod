@@ -94,14 +94,14 @@ public class EntityHamMan extends EntityAnimal {
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		ItemStack itemstack = player.getHeldItem(hand);
 
-		if (itemstack.getItem() == InitItem.TOAST_SLICE && !player.capabilities.isCreativeMode && !this.isChild()) {
+		if (itemstack.getItem() == InitItem.BREAD_SLICE && !player.capabilities.isCreativeMode && !this.isChild()) {
 			// player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
 			itemstack.shrink(1);
 
 			if (itemstack.isEmpty()) {
-				player.setHeldItem(hand, new ItemStack(InitItem.HAM_RAW_N_CHEESE_TOASTIE));
-			} else if (!player.inventory.addItemStackToInventory(new ItemStack(InitItem.HAM_RAW_N_CHEESE_TOASTIE))) {
-				player.dropItem(new ItemStack(InitItem.HAM_RAW_N_CHEESE_TOASTIE), false);
+				player.setHeldItem(hand, new ItemStack(InitItem.TOASTIE, 1, 2));
+			} else if (!player.inventory.addItemStackToInventory(new ItemStack(InitItem.TOASTIE, 1, 2))) {
+				player.dropItem(new ItemStack(InitItem.TOASTIE, 1, 2), false);
 			}
 
 			return true;

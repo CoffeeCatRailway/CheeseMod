@@ -53,7 +53,7 @@ public class OnPlayerJoin {
 					new TextComponentString("CoffeeCatTeam discord server")));
 			player.sendMessage(new TextComponentString("If you want to help with the development of the "
 					+ TextFormatting.GOLD + TextFormatting.ITALIC + "CheeseMod" + TextFormatting.RESET + ", then ")
-							.appendSibling(link));
+							.appendSibling(link).appendText(" (Must have discord!)"));
 
 			player.sendMessage(new TextComponentString(TextFormatting.GOLD + "-----------------------------------------------------"));
 		}

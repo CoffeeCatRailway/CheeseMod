@@ -30,8 +30,8 @@ public class Smelting {
 		GameRegistry.addSmelting(InitBlock.GRILLED_CHEESE_METAL_ORE,
 				new ItemStack(InitItem.GRILLED_CHEESE_METAL_INGOT, 1), 15);
 
-		// Bread > Toast
-		GameRegistry.addSmelting(Items.BREAD, new ItemStack(InitItem.TOAST, 1), 7);
+		// Bread Slice > Toast
+		GameRegistry.addSmelting(InitItem.BREAD_SLICE, new ItemStack(InitItem.TOAST, 1), 7);
 
 		// Dough > Bread
 		GameRegistry.addSmelting(InitItem.DOUGH, new ItemStack(Items.BREAD, 1), 4);

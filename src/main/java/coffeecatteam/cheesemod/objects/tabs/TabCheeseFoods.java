@@ -1,6 +1,9 @@
 package coffeecatteam.cheesemod.objects.tabs;
 
+import java.util.Random;
+
 import coffeecatteam.cheesemod.init.InitItem;
+import coffeecatteam.cheesemod.util.handlers.EnumHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
@@ -12,6 +15,6 @@ public class TabCheeseFoods extends CreativeTabs {
 	}
 
 	public ItemStack getTabIconItem() {
-		return new ItemStack(InitItem.CHEESE_TOASTIE);
+		return new ItemStack(InitItem.TOASTIE, 1, new Random().nextInt(EnumHandler.EnumToastieType.values().length));
 	}
 }

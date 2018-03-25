@@ -1,8 +1,7 @@
 {
     "result": {
-        "item": "cheesemod:uncooked_ham_pineapple_n_cheese_pizza",
-        "data": 0,
-        "count": 1
+        "item": "cheesemod:pizza",
+        "data": 5
     },
     "ingredients": [
         {

@@ -98,15 +98,15 @@ public class EntityCheeseMan extends EntityAnimal {
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		ItemStack itemstack = player.getHeldItem(hand);
 
-		if (itemstack.getItem() == coffeecatteam.cheesemod.init.InitItem.TOAST_SLICE
+		if (itemstack.getItem() == InitItem.BREAD_SLICE
 				&& !player.capabilities.isCreativeMode && !this.isChild()) {
 			itemstack.shrink(1);
 
 			if (itemstack.isEmpty()) {
-				player.setHeldItem(hand, new ItemStack(coffeecatteam.cheesemod.init.InitItem.CHEESE_TOASTIE));
+				player.setHeldItem(hand, new ItemStack(InitItem.TOASTIE, 1, 0));
 			} else if (!player.inventory
-					.addItemStackToInventory(new ItemStack(coffeecatteam.cheesemod.init.InitItem.CHEESE_TOASTIE))) {
-				player.dropItem(new ItemStack(coffeecatteam.cheesemod.init.InitItem.CHEESE_TOASTIE), false);
+					.addItemStackToInventory(new ItemStack(InitItem.TOASTIE, 1, 0))) {
+				player.dropItem(new ItemStack(InitItem.TOASTIE, 1, 0), false);
 			}
 
 			return true;

@@ -14,6 +14,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -278,7 +279,7 @@ public class TileEntityGrill extends TileEntity implements IInventory, ITickable
 			ItemStack grilling_oil = new ItemStack(input2.getItem(), 1, input2.getItemDamage());
 			grilling_oil.setItemDamage(grilling_oil.getItemDamage() + 1);
 			if (grilling_oil.getItemDamage() > grilling_oil.getMaxDamage())
-				this.inventory.set(1, ItemStack.EMPTY);
+				this.inventory.set(1, new ItemStack(Items.GLASS_BOTTLE));
 			else
 				this.inventory.set(1, grilling_oil.copy());
 		}

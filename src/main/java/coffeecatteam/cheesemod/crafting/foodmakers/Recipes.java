@@ -16,24 +16,26 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class Recipes {
 	
+	private static final ItemStack GRILLING_OIL = new ItemStack(InitItem.GRILLING_OIL, 1, 32767);
+	
 	public static void initGrill() {
 		// Blocks
-		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitBlock.FOOD_BLOCK, 1, 0), new ItemStack(InitBlock.FOOD_BLOCK, 1, 1), 0.7F);
+		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitBlock.FOOD_BLOCK, 1, 0), new ItemStack(InitBlock.FOOD_BLOCK, 1, 1), 0.7F);
 
-		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitBlock.CHEESE_STAIRS, 1), new ItemStack(InitBlock.GRILLED_CHEESE_STAIRS), 0.7F);
-		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitBlock.CHEESE_SLAB, 1), new ItemStack(InitBlock.GRILLED_CHEESE_SLAB), 0.7F);
+		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitBlock.CHEESE_STAIRS, 1), new ItemStack(InitBlock.GRILLED_CHEESE_STAIRS), 0.7F);
+		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitBlock.CHEESE_SLAB, 1), new ItemStack(InitBlock.GRILLED_CHEESE_SLAB), 0.7F);
 
 		// Items
-		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitItem.CHEESE_TOASTIE, 1), new ItemStack(InitItem.GRILLED_CHEESE_TOASTIE), 0.7F);
-		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitItem.HAM_RAW_N_CHEESE_TOASTIE, 1), new ItemStack(InitItem.GRILLED_HAM_RAW_N_CHEESE_TOASTIE), 0.7F);
-		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitItem.HAM_COOKED_N_CHEESE_TOASTIE, 1), new ItemStack(InitItem.GRILLED_HAM_COOKED_N_CHEESE_TOASTIE), 0.7F);
+		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitItem.TOASTIE, 1, 0), new ItemStack(InitItem.TOASTIE, 1, 1), 0.7F);
+		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitItem.TOASTIE, 1, 2), new ItemStack(InitItem.TOASTIE, 1, 3), 0.7F);
+		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitItem.TOASTIE, 1, 4), new ItemStack(InitItem.TOASTIE, 1, 5), 0.7F);
 		
-		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitItem.CHEESE_N_CRACKER, 1), new ItemStack(InitItem.GRILLED_CHEESE_N_CRACKER), 1.0F);
-		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitItem.CHEESE_N_CRAYFISH_CRACKER, 1), new ItemStack(InitItem.GRILLED_CHEESE_N_CRAYFISH_CRACKER), 2.0F);
+		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitItem.CRACKER, 1, 2), new ItemStack(InitItem.CRACKER, 1, 3), 1.0F);
+		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitItem.CRACKER, 1, 4), new ItemStack(InitItem.CRACKER, 1, 5), 2.0F);
 		
-		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitItem.UNCOOKED_CHEESE_PIZZA, 1), new ItemStack(InitItem.COOKED_CHEESE_PIZZA), 2.0F);
-		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitItem.UNCOOKED_HAM_N_CHEESE_PIZZA, 1), new ItemStack(InitItem.COOKED_HAM_N_CHEESE_PIZZA), 2.5F);
-		Grilling.addRecipe(new ItemStack(InitItem.GRILLING_OIL, 1, 32767), new ItemStack(InitItem.UNCOOKED_HAM_PINEAPPLE_N_CHEESE_PIZZA, 1), new ItemStack(InitItem.COOKED_HAM_PINEAPPLE_N_CHEESE_PIZZA), 2.9F);
+		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitItem.PIZZA, 1, 1), new ItemStack(InitItem.PIZZA, 1, 2), 2.0F);
+		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitItem.PIZZA, 1, 3), new ItemStack(InitItem.PIZZA, 1, 4), 2.5F);
+		Grilling.addRecipe(GRILLING_OIL, new ItemStack(InitItem.PIZZA, 1, 5), new ItemStack(InitItem.PIZZA, 1, 6), 2.9F);
 		
 		FurnaceRecipes.instance().getSmeltingList().forEach((input, output) -> {
 			Grilling.addRecipe(new ItemStack(InitItem.SMELTING_OIL, 1, 32767), input, output, FurnaceRecipes.instance().getSmeltingExperience(input));
@@ -41,7 +43,7 @@ public class Recipes {
 	}
 	
 	public static void initCrackerMaker() {
-		CrackerMaking.addRecipe(new ItemStack(InitItem.CRACKER, 1), 1, new ItemStack(InitItem.FLOUR), new ItemStack(InitItem.SALT), new ItemStack(Items.SUGAR), new ItemStack(Items.WATER_BUCKET));
-		CrackerMaking.addRecipe(new ItemStack(InitItem.CRAYFISH_CRACKER, 1), 1, new ItemStack(InitItem.CRACKER), new ItemStack(InitItem.SALT), new ItemStack(InitItem.SALT), new ItemStack(Items.FISH));
+		CrackerMaking.addRecipe(new ItemStack(InitItem.CRACKER, 1, 0), 1, new ItemStack(InitItem.FLOUR), new ItemStack(InitItem.SALT), new ItemStack(Items.SUGAR), new ItemStack(Items.WATER_BUCKET));
+		CrackerMaking.addRecipe(new ItemStack(InitItem.CRACKER, 1, 1), 1, new ItemStack(InitItem.CRACKER), new ItemStack(InitItem.SALT), new ItemStack(InitItem.SALT), new ItemStack(Items.FISH, 1, 32767));
 	}
 }

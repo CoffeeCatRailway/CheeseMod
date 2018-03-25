@@ -1,6 +1,6 @@
 {
     "result": {
-        "item": "cheesemod:toast_slice",
+        "item": "cheesemod:bread_slice",
         "data": 0,
         "count": 3
     },
@@ -10,7 +10,7 @@
             "ore": "knife"
         },
         {
-            "item": "cheesemod:toast",
+            "item": "minecraft:bread",
             "data": 0
         }
     ],

@@ -14,6 +14,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemBucket;
+import net.minecraft.item.ItemBucketMilk;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -280,11 +282,22 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 				output.grow(result.getCount());
 			}
 
-			input1.shrink(1);
-			input2.shrink(1);
-			input3.shrink(1);
-			input4.shrink(1);
+			this.inventoryStacks.set(0, checkForContainerItem(input1));
+			this.inventoryStacks.set(1, checkForContainerItem(input2));
+			this.inventoryStacks.set(2, checkForContainerItem(input3));
+			this.inventoryStacks.set(3, checkForContainerItem(input4));
 		}
+	}
+	
+	private ItemStack checkForContainerItem(ItemStack itemStack) {
+		ItemStack stack = itemStack.copy();
+		Item item = stack.getItem();
+		if (item instanceof ItemBucket) {
+			stack =  new ItemStack(Items.BUCKET);
+		} else {
+			stack.shrink(1);
+		}
+		return stack.copy();
 	}
 
 	public static int getItemBurnTime(ItemStack fuel) {
