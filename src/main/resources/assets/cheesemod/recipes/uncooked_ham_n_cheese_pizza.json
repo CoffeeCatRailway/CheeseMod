@@ -1,11 +1,11 @@
 {
     "result": {
-        "item": "cheesemod:pizza",
-        "data": 3
+        "item": "cheesemod:pizza_uncooked_ham_n_cheese",
+        "data": 0
     },
     "ingredients": [
         {
-            "item": "cheesemod:bland_pizza",
+            "item": "cheesemod:pizza_bland",
             "data": 0
         },
         {

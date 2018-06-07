@@ -3,8 +3,6 @@ package coffeecatteam.cheesemod.world.gen;
 import java.util.Random;
 
 import coffeecatteam.cheesemod.init.InitBlock;
-import coffeecatteam.cheesemod.objects.blocks.food.BlockFood;
-import coffeecatteam.cheesemod.util.handlers.EnumHandler;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -20,28 +18,10 @@ public class GenBlock implements IWorldGenerator {
 	private WorldGenerator ham_raw_block, ham_cooked_block;
 
 	public GenBlock() {
-		cheese_block = new WorldGenMinable(
-				InitBlock.FOOD_BLOCK.getDefaultState().withProperty(BlockFood.VARIANT, EnumHandler.EnumWoodType.CHEESE),
-				4, BlockMatcher.forBlock(InitBlock.CHEESE_LEAVES.getDefaultState()
-						.withProperty(BlockFood.VARIANT, EnumHandler.EnumWoodType.CHEESE).getBlock()));
-
-		grilled_cheese_block = new WorldGenMinable(
-				InitBlock.FOOD_BLOCK.getDefaultState().withProperty(BlockFood.VARIANT,
-						EnumHandler.EnumWoodType.GRILLED_CHEESE),
-				4, BlockMatcher.forBlock(InitBlock.CHEESE_LEAVES.getDefaultState()
-						.withProperty(BlockFood.VARIANT, EnumHandler.EnumWoodType.GRILLED_CHEESE).getBlock()));
-
-		ham_raw_block = new WorldGenMinable(
-				InitBlock.FOOD_BLOCK.getDefaultState().withProperty(BlockFood.VARIANT,
-						EnumHandler.EnumWoodType.HAM_RAW),
-				4, BlockMatcher.forBlock(InitBlock.CHEESE_LEAVES.getDefaultState()
-						.withProperty(BlockFood.VARIANT, EnumHandler.EnumWoodType.HAM_RAW).getBlock()));
-
-		ham_cooked_block = new WorldGenMinable(
-				InitBlock.FOOD_BLOCK.getDefaultState().withProperty(BlockFood.VARIANT,
-						EnumHandler.EnumWoodType.HAM_COOKED),
-				4, BlockMatcher.forBlock(InitBlock.CHEESE_LEAVES.getDefaultState()
-						.withProperty(BlockFood.VARIANT, EnumHandler.EnumWoodType.HAM_COOKED).getBlock()));
+		cheese_block = new WorldGenMinable(InitBlock.FOOD_BLOCK_CHEESE.getDefaultState(), 4, BlockMatcher.forBlock(InitBlock.LEAVES_CHEESE.getDefaultState().getBlock()));
+		grilled_cheese_block = new WorldGenMinable(InitBlock.FOOD_BLOCK_GRILLED_CHEESE.getDefaultState(), 4, BlockMatcher.forBlock(InitBlock.LEAVES_GRILLED_CHEESE.getDefaultState().getBlock()));
+		ham_raw_block = new WorldGenMinable(InitBlock.FOOD_BLOCK_HAM_RAW.getDefaultState(), 4, BlockMatcher.forBlock(InitBlock.LEAVES_HAM_RAW.getDefaultState().getBlock()));
+		ham_cooked_block = new WorldGenMinable(InitBlock.FOOD_BLOCK_HAM_COOKED.getDefaultState(), 4, BlockMatcher.forBlock(InitBlock.LEAVES_HAM_COOKED.getDefaultState().getBlock()));
 	}
 
 	@Override
@@ -51,7 +31,6 @@ public class GenBlock implements IWorldGenerator {
 		case 0: // Overworld
 			renGenerator(cheese_block, world, random, chunkX, chunkZ, 10, 0, 255);
 			renGenerator(grilled_cheese_block, world, random, chunkX, chunkZ, 10, 0, 255);
-
 			renGenerator(ham_raw_block, world, random, chunkX, chunkZ, 10, 0, 255);
 			renGenerator(ham_cooked_block, world, random, chunkX, chunkZ, 10, 0, 255);
 			break;
@@ -66,7 +45,7 @@ public class GenBlock implements IWorldGenerator {
 
 	private void renGenerator(WorldGenerator gen, World world, Random random, int chunkX, int chunkZ, int chance,
 			int minHeight, int maxHeight) {
-		if (minHeight > maxHeight || minHeight < 0 || maxHeight > 256)
+		if (minHeight > maxHeight || minHeight < 0 || maxHeight > 255)
 			throw new IllegalArgumentException("Cheese went to space!");
 		int heightDiff = maxHeight - minHeight + 1;
 

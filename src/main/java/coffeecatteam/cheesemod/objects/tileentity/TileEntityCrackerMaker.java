@@ -52,7 +52,7 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 	private static int tick = 0;
 
 	static {
-		Config.load("cheesecore");
+		Config.load("cheesemod");
 		setSpeedMultiplier(Config.getCrackerMakerSpeedMultiplier());
 
 		MinecraftForge.EVENT_BUS.register(new SetSpeedMultiplier());
@@ -68,7 +68,7 @@ public class TileEntityCrackerMaker extends TileEntity implements IInventory, IT
 				return;
 			}
 			tick = 0;
-			Config.load("cheesecore");
+			Config.load("cheesemod");
 			setSpeedMultiplier(Config.getCrackerMakerSpeedMultiplier());
 		}
 	}

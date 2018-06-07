@@ -1,9 +1,0 @@
-{
-    "variants": {
-        "variant=cheese": { "model": "cheesemod:planks_cheese" },
-        "variant=grilled_cheese": { "model": "cheesemod:planks_grilled_cheese" },
-        
-        "variant=ham_raw": { "model": "cheesemod:planks_ham_raw" },
-        "variant=ham_cooked": { "model": "cheesemod:planks_ham_cooked" }
-    }
-}

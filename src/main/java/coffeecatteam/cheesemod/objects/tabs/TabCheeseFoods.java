@@ -15,6 +15,6 @@ public class TabCheeseFoods extends CreativeTabs {
 	}
 
 	public ItemStack getTabIconItem() {
-		return new ItemStack(InitItem.TOASTIE, 1, new Random().nextInt(EnumHandler.EnumToastieType.values().length));
+		return new ItemStack(InitItem.TOASTIE_HAM_RAW_N_CHEESE);
 	}
 }

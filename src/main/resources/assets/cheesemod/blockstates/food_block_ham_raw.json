@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y": { "model": "cheesemod:food_ham_raw" },
+        "axis=z": { "model": "cheesemod:food_ham_raw", "x": 90  },
+        "axis=x": { "model": "cheesemod:food_ham_raw", "x": 90, "y": 90 },
+        "axis=none": { "model": "cheesemod:food_ham_raw" }
+    }
+}

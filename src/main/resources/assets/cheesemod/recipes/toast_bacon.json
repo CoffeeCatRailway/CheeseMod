@@ -1,0 +1,18 @@
+{
+    "result": {
+        "item": "cheesemod:toast_bacon",
+        "data": 0
+    },
+    "ingredients": [
+        {
+            "item": "cheesemod:toast_plain",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:bacon_cooked",
+            "data": 0
+        }
+        
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

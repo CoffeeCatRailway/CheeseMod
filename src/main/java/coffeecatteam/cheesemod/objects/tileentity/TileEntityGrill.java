@@ -4,7 +4,6 @@ import coffeecatteam.cheesemod.Reference;
 import coffeecatteam.cheesemod.config.Config;
 import coffeecatteam.cheesemod.crafting.foodmakers.Grilling;
 import coffeecatteam.cheesemod.objects.blocks.BlockGrill;
-import coffeecatteam.cheesemod.objects.items.base.ItemBaseTool;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,13 +11,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemBucket;
-import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
@@ -48,7 +41,7 @@ public class TileEntityGrill extends TileEntity implements IInventory, ITickable
 	private static int tick = 0;
 
 	static {
-		Config.load("cheesecore");
+		Config.load("cheesemod");
 		setSpeedMultiplier(Config.getGrillSpeedMultiplier());
 
 		MinecraftForge.EVENT_BUS.register(new SetSpeedMultiplier());
@@ -64,7 +57,7 @@ public class TileEntityGrill extends TileEntity implements IInventory, ITickable
 				return;
 			}
 			tick = 0;
-			Config.load("cheesecore");
+			Config.load("cheesemod");
 			setSpeedMultiplier(Config.getGrillSpeedMultiplier());
 		}
 	}

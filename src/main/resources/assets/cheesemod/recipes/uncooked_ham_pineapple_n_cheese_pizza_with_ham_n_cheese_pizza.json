@@ -1,7 +1,7 @@
 {
     "result": {
-        "item": "cheesemod:pizza",
-        "data": 5
+        "item": "cheesemod:pizza_uncooked_ham_pineapple_n_cheese",
+        "data": 0
     },
     "ingredients": [
         {
@@ -9,7 +9,7 @@
             "ore": "foodPineapple"
         },
         {
-            "item": "cheesemod:uncooked_ham_n_cheese_pizza",
+            "item": "cheesemod:pizza_uncooked_ham_n_cheese",
             "data": 0
         }
     ],

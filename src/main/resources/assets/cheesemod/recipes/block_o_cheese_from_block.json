@@ -6,7 +6,7 @@
     },
     "ingredients": [
         {
-            "item": "cheesemod:food_block",
+            "item": "cheesemod:food_block_cheese",
             "data": 0
         }
     ],

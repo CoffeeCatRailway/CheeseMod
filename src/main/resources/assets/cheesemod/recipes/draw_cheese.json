@@ -37,12 +37,12 @@
         ],
         "f": [
             {
-                "item": "cheesemod:food_block",
+                "item": "cheesemod:food_block_cheese",
                 "data": 0
             },
             {
-                "item": "cheesemod:food_block",
-                "data": 1
+                "item": "cheesemod:food_block_cheese_grilled",
+                "data": 0
             }
         ]
     }

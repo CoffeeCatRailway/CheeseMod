@@ -36,7 +36,7 @@ public class BlockCheeseDraw extends BlockBase implements ITileEntityProvider {
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
 	public BlockCheeseDraw(String name, float hardness, float resistance, Material material, int harvestLevel) {
-		super(name, hardness, resistance, material, harvestLevel, CheeseMod.CHEESETAB);
+		super(name, hardness, resistance, material, true, harvestLevel, CheeseMod.CHEESETAB);
 		this.setSoundType(SoundType.WOOD);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}

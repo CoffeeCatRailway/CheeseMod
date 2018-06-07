@@ -1,7 +1,7 @@
 {
     "result": {
-        "item": "cheesemod:food_block",
-        "data": 3
+        "item": "cheesemod:food_block_ham_cooked",
+        "data": 0
     },
     "group": "food_block",
     "pattern": [

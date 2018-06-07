@@ -20,7 +20,7 @@
                 },
                 {
                     "type": "item",
-                    "name": "cheesecore:block_o_cheese",
+                    "name": "cheesemod:block_o_cheese",
                     "weight": 1,
                     "functions": [
                         {

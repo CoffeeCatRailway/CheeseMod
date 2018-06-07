@@ -1,23 +1,19 @@
 package coffeecatteam.cheesemod.objects.blocks;
 
-import java.util.List;
-import java.util.Random;
-
-import javax.annotation.Nullable;
-
 import coffeecatteam.cheesemod.CheeseMod;
 import coffeecatteam.cheesemod.init.InitBlock;
 import coffeecatteam.cheesemod.objects.tileentity.TileEntityGrill;
 import coffeecatteam.cheesemod.util.handlers.GuiHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -25,28 +21,23 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
+import java.util.Random;
 
 public class BlockGrill extends BlockContainer {
 	private final boolean isBurning;
 	private static boolean keepInventory;
 
-	boolean active;
+    private boolean active;
 
-	private static final AxisAlignedBB BOUNDING_BOX = new AxisAlignedBB(0, 0, 0, 1, 0.5, 1);
+    private static final PropertyDirection FACING = BlockHorizontal.FACING;
 
 	public BlockGrill(String name, float hardness, float resistance, Material material, int harvestLevel,
 			boolean active) {
@@ -54,7 +45,7 @@ public class BlockGrill extends BlockContainer {
 		setUnlocalizedName(name);
 		this.active = active;
 		setRegistryName(!active ? name : name + "_active");
-		setDefaultState(blockState.getBaseState());
+		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		setHarvestLevel("pickaxe", harvestLevel);
 		setCreativeTab(CheeseMod.CHEESETAB);
 
@@ -82,8 +73,6 @@ public class BlockGrill extends BlockContainer {
 			double d0 = (double) pos.getX() + 0.5D;
 			double d1 = (double) pos.getY() + rand.nextDouble() * 6.0D / 16.0D;
 			double d2 = (double) pos.getZ() + 0.5D;
-			double d3 = 0.52D;
-			double d4 = rand.nextDouble() * 0.6D - 0.3D;
 			double offset;
 
 			if (rand.nextDouble() < 0.1D) {
@@ -92,28 +81,20 @@ public class BlockGrill extends BlockContainer {
 			}
 
 			offset = rand.nextDouble() * 0.2D / 0.5D;
-			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - 0.3D + offset, d1 + 0.2D, d2 - 0.3D + offset,
-					0.0D, 0.0D, 0.0D, new int[0]);
-			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.3D + offset, d1 + 0.2D, d2 - 0.3D + offset, 0.0D,
-					0.0D, 0.0D, new int[0]);
+			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - 0.3D + offset, d1 + 1.0D, d2 - 0.3D + offset, 0.0D, 0.0D, 0.0D);
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.3D + offset, d1 + 1.0D, d2 - 0.3D + offset, 0.0D, 0.0D, 0.0D);
 
 			offset = rand.nextDouble() * 0.2D / 0.5D;
-			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + 0.3D - offset, d1 + 0.2D, d2 - 0.3D + offset,
-					0.0D, 0.0D, 0.0D, new int[0]);
-			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.3D - offset, d1 + 0.2D, d2 - 0.3D + offset, 0.0D,
-					0.0D, 0.0D, new int[0]);
+			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + 0.3D - offset, d1 + 1.0D, d2 - 0.3D + offset, 0.0D, 0.0D, 0.0D);
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.3D - offset, d1 + 1.0D, d2 - 0.3D + offset, 0.0D, 0.0D, 0.0D);
 
 			offset = rand.nextDouble() * 0.2D / 0.5D;
-			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + 0.3D - offset, d1 + 0.2D, d2 + 0.3D - offset,
-					0.0D, 0.0D, 0.0D, new int[0]);
-			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.3D - offset, d1 + 0.2D, d2 + 0.3D - offset, 0.0D,
-					0.0D, 0.0D, new int[0]);
+			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + 0.3D - offset, d1 + 1.0D, d2 + 0.3D - offset, 0.0D, 0.0D, 0.0D);
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.3D - offset, d1 + 1.0D, d2 + 0.3D - offset, 0.0D, 0.0D, 0.0D);
 
 			offset = rand.nextDouble() * 0.2D / 0.5D;
-			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - 0.3D + offset, d1 + 0.2D, d2 + 0.3D - offset,
-					0.0D, 0.0D, 0.0D, new int[0]);
-			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.3D + offset, d1 + 0.2D, d2 + 0.3D - offset, 0.0D,
-					0.0D, 0.0D, new int[0]);
+			worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - 0.3D + offset, d1 + 1.0D, d2 + 0.3D - offset, 0.0D, 0.0D, 0.0D);
+			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.3D + offset, d1 + 1.0D, d2 + 0.3D - offset, 0.0D, 0.0D, 0.0D);
 		}
 	}
 
@@ -126,7 +107,6 @@ public class BlockGrill extends BlockContainer {
 	}
 
 	public static void setState(boolean active, World worldIn, BlockPos pos) {
-		IBlockState iblockstate = worldIn.getBlockState(pos);
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 		keepInventory = true;
 
@@ -146,6 +126,7 @@ public class BlockGrill extends BlockContainer {
 		}
 	}
 
+	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityGrill();
 	}
@@ -188,17 +169,17 @@ public class BlockGrill extends BlockContainer {
 		return EnumBlockRenderType.MODEL;
 	}
 
-	public IBlockState getStateFromMeta(int meta) {
-		EnumFacing enumfacing = EnumFacing.getFront(meta);
-		if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
-			enumfacing = EnumFacing.NORTH;
-		}
-		return this.getDefaultState();
-	}
+    public IBlockState getStateFromMeta(int meta) {
+        EnumFacing enumfacing = EnumFacing.getFront(meta);
+        if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
+            enumfacing = EnumFacing.NORTH;
+        }
+        return this.getDefaultState().withProperty(FACING, enumfacing);
+    }
 
-	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {});
-	}
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, new IProperty[] { FACING });
+    }
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -208,32 +189,54 @@ public class BlockGrill extends BlockContainer {
 		super.addInformation(stack, player, tooltip, advanced);
 	}
 
-	public int getRenderType() {
-		return -1;
-	}
+    public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+        this.setDefaultFacing(world, pos, state);
+    }
 
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
+    private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state) {
+        if (!worldIn.isRemote) {
+            IBlockState iblockstate = worldIn.getBlockState(pos.north());
+            IBlockState iblockstate1 = worldIn.getBlockState(pos.south());
+            IBlockState iblockstate2 = worldIn.getBlockState(pos.west());
+            IBlockState iblockstate3 = worldIn.getBlockState(pos.east());
+            EnumFacing enumfacing = state.getValue(FACING);
 
-	@Override
-	public boolean isFullBlock(IBlockState state) {
-		return false;
-	}
+            if (enumfacing == EnumFacing.NORTH && iblockstate.isFullBlock() && !iblockstate1.isFullBlock()) {
+                enumfacing = EnumFacing.SOUTH;
+            } else if (enumfacing == EnumFacing.SOUTH && iblockstate1.isFullBlock() && !iblockstate.isFullBlock()) {
+                enumfacing = EnumFacing.NORTH;
+            } else if (enumfacing == EnumFacing.WEST && iblockstate2.isFullBlock() && !iblockstate3.isFullBlock()) {
+                enumfacing = EnumFacing.EAST;
+            } else if (enumfacing == EnumFacing.EAST && iblockstate3.isFullBlock() && !iblockstate2.isFullBlock()) {
+                enumfacing = EnumFacing.WEST;
+            }
 
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return false;
-	}
+            worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
+        }
+    }
 
-	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return BOUNDING_BOX;
-	}
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+    }
 
-	@Override
-	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
-			List<AxisAlignedBB> collidingBoxes, Entity entityIn, boolean p_185477_7_) {
-		super.addCollisionBoxToList(pos, entityBox, collidingBoxes, BOUNDING_BOX);
-	}
+    public int getMetaFromState(IBlockState state) {
+        return (state.getValue(FACING)).getIndex();
+    }
+
+    public IBlockState withRotation(IBlockState state, Rotation rot) {
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
+    }
+
+    public int getRenderType() {
+        return -1;
+    }
+
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
 }

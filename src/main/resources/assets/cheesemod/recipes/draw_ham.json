@@ -37,12 +37,12 @@
         ],
         "f": [
             {
-                "item": "cheesemod:food_block",
-                "data": 2
+                "item": "cheesemod:food_block_ham_raw",
+                "data": 0
             },
             {
-                "item": "cheesemod:food_block",
-                "data": 3
+                "item": "cheesemod:food_block_ham_cooked",
+                "data": 0
             }
         ]
     }

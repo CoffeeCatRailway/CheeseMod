@@ -1,11 +1,5 @@
 {
     "parent": "cheesemod:block/grill",
-    "textures": {
-        "particle": "blocks/iron_block",
-        "0": "blocks/iron_block",
-        "1": "blocks/netherrack",
-        "2": "blocks/hopper_inside"
-    },
     "display": {
         "gui": {
             "rotation": [ 30, 225, 0 ],

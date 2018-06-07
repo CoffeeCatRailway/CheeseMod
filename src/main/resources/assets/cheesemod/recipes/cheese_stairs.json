@@ -13,7 +13,7 @@
     "type": "forge:ore_shaped",
     "key": {
         "b": {
-            "item": "cheesemod:food_block",
+            "item": "cheesemod:food_block_cheese",
             "data": 0
         }
     }

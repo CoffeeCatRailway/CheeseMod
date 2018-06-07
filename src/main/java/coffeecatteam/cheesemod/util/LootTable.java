@@ -13,12 +13,20 @@ public class LootTable {
 	private static final Set<ResourceLocation> LOOT_TABLES = Sets.<ResourceLocation>newHashSet();
 	private static final Set<ResourceLocation> READ_ONLY_LOOT_TABLES = Collections.<ResourceLocation>unmodifiableSet(LOOT_TABLES);
 	
+	/*
+	 * Entities
+	 */
 	public static final ResourceLocation CHEESE_MAN = register("entities/cheese_man");
 	public static final ResourceLocation HAM_MAN = register("entities/ham_man");
 
 	public static final ResourceLocation CHEESE_GOLEM = register("entities/golem/cheese_golem");
 	public static final ResourceLocation HAM_GOLEM = register("entities/golem/ham_golem");
 
+	public static final ResourceLocation CRAYFISH = register("entities/crayfish");
+
+	/*
+	 * Structures
+	 */
 	public static final ResourceLocation CHEESE_RUIN = register("chests/cheese_ruin");
 
 	private static ResourceLocation register(String id) {

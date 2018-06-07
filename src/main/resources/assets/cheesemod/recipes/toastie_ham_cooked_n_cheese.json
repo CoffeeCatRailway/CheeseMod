@@ -1,15 +1,15 @@
 {
     "result": {
-        "item": "cheesemod:toastie",
-        "data": 3
+        "item": "cheesemod:toastie_grilled_ham_raw_n_cheese",
+        "data": 0
     },
     "ingredients": [
         {
-            "item": "cheesemod:toast",
+            "item": "cheesemod:toast_plain",
             "data": 0
         },
         {
-            "item": "cheesemod:toast",
+            "item": "cheesemod:toast_plain",
             "data": 0
         },
         {

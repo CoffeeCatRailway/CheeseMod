@@ -33,41 +33,51 @@ item.milk_curdler.name=Milk Curdler
 item.rolling_pin.name=Rolling Pin
 item.wooden_gear.name=Wooden Gear
 
+# Items - Ham
+item.ham_raw.name=Ham Raw
+item.ham_cooked.name=Ham Cooked
+item.ham_green.name=Ham Green
+
+# Items - Egg
+item.egg_cracked.name=Egg Cracked
+item.egg_cooked.name=Egg Cooked
+item.egg_green.name=Egg Green
+
 # Items - Crackers
-item.cracker.plain.name=Cracker
-item.cracker.crayfish.name=Crayfish Cracker
+item.cracker_plain.name=Cracker
+item.cracker_crayfish.name=Crayfish Cracker
 
-item.cracker.cheese.name=Cheese N' Cracker
-item.cracker.grilled_cheese.name=Grilled Cheese N' Cracker
+item.cracker_cheese.name=Cheese N' Cracker
+item.cracker_grilled_cheese.name=Grilled Cheese N' Cracker
 
-item.cracker.cheese_n_crayfish.name=Cheese N' Crayfish Cracker
-item.cracker.grilled_cheese_n_crayfish.name=Grilled Cheese N' Crayfish Cracker
+item.cracker_cheese_n_crayfish.name=Cheese N' Crayfish Cracker
+item.cracker_grilled_cheese_n_crayfish.name=Grilled Cheese N' Crayfish Cracker
 
 # Items - Toast
-item.toast.plain.name=Plain Toast
-item.toast.french.name=French Toast
-item.toast.bacon.name=Bacon Toast
+item.toast_plain.name=Plain Toast
+item.toast_french.name=French Toast
+item.toast_bacon.name=Bacon Toast
 
 # Items - Toastie
-item.toastie.cheese.name=Cheese Toastie
-item.toastie.grilled_cheese.name=Grilled Cheese Toastie
+item.toastie_cheese.name=Cheese Toastie
+item.toastie_grilled_cheese.name=Grilled Cheese Toastie
 
-item.toastie.ham_raw_n_cheese.name=Raw Ham N' Cheese Toastie
-item.toastie.ham_cooked_n_cheese.name=Cooked Ham N' Cheese Toastie
-item.toastie.grilled_ham_raw_n_cheese.name=Grilled Raw Ham N' Cheese Toastie
-item.toastie.grilled_ham_cooked_n_cheese.name=Grilled Cooked Ham N' Cheese Toastie
+item.toastie_ham_raw_n_cheese.name=Raw Ham N' Cheese Toastie
+item.toastie_ham_cooked_n_cheese.name=Cooked Ham N' Cheese Toastie
+item.toastie_grilled_ham_raw_n_cheese.name=Grilled Raw Ham N' Cheese Toastie
+item.toastie_grilled_ham_cooked_n_cheese.name=Grilled Cooked Ham N' Cheese Toastie
 
 # Items - Pizza
-item.pizza.bland.name=Plain Pizza
+item.pizza_bland.name=Plain Pizza
 
-item.pizza.uncooked_cheese.name=Uncooked Cheese Pizza
-item.pizza.cooked_cheese.name=Cheese Pizza
+item.pizza_uncooked_cheese.name=Uncooked Cheese Pizza
+item.pizza_cooked_cheese.name=Cheese Pizza
 
-item.pizza.uncooked_ham_n_cheese.name=Uncooked Ham N' Cheese Pizza
-item.pizza.cooked_ham_n_cheese.name=Ham N' Cheese Pizza
+item.pizza_uncooked_ham_n_cheese.name=Uncooked Ham N' Cheese Pizza
+item.pizza_cooked_ham_n_cheese.name=Ham N' Cheese Pizza
 
-item.pizza.uncooked_ham_pineapple_n_cheese.name=Uncooked Ham Pineapple N' Cheese Pizza
-item.pizza.cooked_ham_pineapple_n_cheese.name=Ham Pineapple N' Cheese Pizza
+item.pizza_uncooked_ham_pineapple_n_cheese.name=Uncooked Ham Pineapple N' Cheese Pizza
+item.pizza_cooked_ham_pineapple_n_cheese.name=Ham Pineapple N' Cheese Pizza
 
 # Items - Knife
 item.knife.name=Knife
@@ -152,25 +162,25 @@ item.ham_cooked_metal_multitool.name=Ham Cooked Metal Multitool
 
 
 # Blocks - variants
-tile.cheese_planks_cheese.name=Cheese Planks
-tile.cheese_planks_grilled_cheese.name=Grilled Cheese Planks
-tile.cheese_planks_ham_raw.name=Ham Raw Planks
-tile.cheese_planks_ham_cooked.name=Ham Cooked Planks
+tile.planks_cheese.name=Cheese Planks
+tile.planks_grilled_cheese.name=Grilled Cheese Planks
+tile.planks_ham_raw.name=Ham Raw Planks
+tile.planks_ham_cooked.name=Ham Cooked Planks
 
-tile.cheese_log_cheese.name=Cheese Log
-tile.cheese_log_grilled_cheese.name=Grilled Cheese Log
-tile.cheese_log_ham_raw.name=Ham Raw Log
-tile.cheese_log_ham_cooked.name=Ham Cooked Log
+tile.log_cheese.name=Cheese Log
+tile.log_grilled_cheese.name=Grilled Cheese Log
+tile.log_ham_raw.name=Ham Raw Log
+tile.log_ham_cooked.name=Ham Cooked Log
 
-tile.cheese_leaves_cheese.name=Cheese Leaves
-tile.cheese_leaves_grilled_cheese.name=Grilled Cheese Leaves
-tile.cheese_leaves_ham_raw.name=Ham Raw Leaves
-tile.cheese_leaves_ham_cooked.name=Ham Cooked Leaves
+tile.leaves_cheese.name=Cheese Leaves
+tile.leaves_grilled_cheese.name=Grilled Cheese Leaves
+tile.leaves_ham_raw.name=Ham Raw Leaves
+tile.leaves_ham_cooked.name=Ham Cooked Leaves
 
-tile.cheese_sapling_cheese.name=Cheese Sapling
-tile.cheese_sapling_grilled_cheese.name=Grilled Cheese Sapling
-tile.cheese_sapling_ham_raw.name=Ham Raw Sapling
-tile.cheese_sapling_ham_cooked.name=Ham Cooked Sapling
+tile.sapling_cheese.name=Cheese Sapling
+tile.sapling_grilled_cheese.name=Grilled Cheese Sapling
+tile.sapling_ham_raw.name=Ham Raw Sapling
+tile.sapling_ham_cooked.name=Ham Cooked Sapling
 
 tile.food_block_cheese.name=Cheese Food Block
 tile.food_block_grilled_cheese.name=Grilled Cheese Food Block

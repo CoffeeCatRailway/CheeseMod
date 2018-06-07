@@ -1,0 +1,28 @@
+{
+    "result": {
+        "item": "cheesemod:toast_french",
+        "data": 0
+    },
+    "ingredients": [
+        {
+            "item": "cheesemod:toast_plain",
+            "data": 0
+        },
+        {
+            "item": "cheesemod:bucket_milk",
+            "data": 0
+        },
+        [
+          {
+            "item": "minecraft:egg",
+            "data": 0
+          },
+          {
+            "item": "cheesemod:egg_cracked",
+            "data": 0
+          }
+        ]
+        
+    ],
+    "type": "minecraft:crafting_shapeless"
+}

@@ -1,11 +1,11 @@
 {
     "result": {
-        "item": "cheesemod:cracker",
-        "data": 2
+        "item": "cheesemod:cracker_cheese",
+        "data": 0
     },
     "ingredients": [
         {
-            "item": "cheesemod:cracker",
+            "item": "cheesemod:cracker_plain",
             "data": 0
         },
         {

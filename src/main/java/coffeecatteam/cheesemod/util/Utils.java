@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import coffeecatteam.cheesemod.Reference;
+import net.minecraftforge.fml.common.Loader;
 
 public class Utils {
 
@@ -24,13 +25,6 @@ public class Utils {
 		return logger;
 	}
 
-	public static Logger getLogger(String name) {
-		if (logger == null) {
-			logger = LogManager.getFormatterLogger(Reference.MODID.replace("c", "C").replace("m", "M")+"_"+name);
-		}
-		return logger;
-	}
-
 	private static boolean isChristmas() {
 		Date today = new Date();
 		Calendar cal = Calendar.getInstance();
@@ -41,5 +35,17 @@ public class Utils {
 		boolean inRange = (day >= 20 && day <= 31);
 		
 		return (month == Calendar.DECEMBER && inRange);
+	}
+	
+	public static boolean isDate(int month, int day) {
+		Date today = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(today);
+
+		int curentMonth = cal.get(Calendar.MONTH);
+		int curentDay = cal.get(Calendar.DAY_OF_MONTH);
+		boolean inRange = curentDay == day;
+		
+		return (curentMonth == month && inRange);
 	}
 }

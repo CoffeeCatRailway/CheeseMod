@@ -10,8 +10,8 @@
     "type": "forge:ore_shaped",
     "key": {
         "b": {
-            "item": "cheesemod:food_block",
-            "data": 1
+            "item": "cheesemod:food_block_grilled_cheese",
+            "data": 0
         }
     }
 }
