@@ -1,7 +1,7 @@
 package coffeecatteam.cheesemod.objects.entity.render.golem;
 
 import coffeecatteam.cheesemod.Reference;
-import coffeecatteam.cheesemod.objects.entity.EntityCheeseGolem;
+import coffeecatteam.cheesemod.objects.entity.golem.EntityCheeseGolem;
 import coffeecatteam.cheesemod.objects.entity.model.ModelCheeseGolem;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;

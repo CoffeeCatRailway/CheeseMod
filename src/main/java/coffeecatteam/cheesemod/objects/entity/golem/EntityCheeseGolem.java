@@ -1,4 +1,4 @@
-package coffeecatteam.cheesemod.objects.entity;
+package coffeecatteam.cheesemod.objects.entity.golem;
 
 import javax.annotation.Nullable;
 

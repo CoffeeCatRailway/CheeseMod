@@ -1,6 +1,6 @@
 package coffeecatteam.cheesemod.objects.entity.model;
 
-import coffeecatteam.cheesemod.objects.entity.EntityHamGolem;
+import coffeecatteam.cheesemod.objects.entity.golem.EntityHamGolem;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;

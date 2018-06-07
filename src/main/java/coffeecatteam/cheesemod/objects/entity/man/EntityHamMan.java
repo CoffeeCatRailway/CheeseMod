@@ -1,4 +1,4 @@
-package coffeecatteam.cheesemod.objects.entity;
+package coffeecatteam.cheesemod.objects.entity.man;
 
 import javax.annotation.Nullable;
 
@@ -26,33 +26,29 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntityCheeseMan extends EntityAnimal {
+public class EntityHamMan extends EntityAnimal {
 
-	public EntityCheeseMan(World worldIn) {
+	public EntityHamMan(World worldIn) {
 		super(worldIn);
-		this.setSize(0.9f, 3.0f);
+		this.height = 2.5f;
+		this.setSize(0.9f, this.height);
 		this.canMateWith(this);
 	}
 
 	@Override
-	public boolean getCanSpawnHere() {
-		return true;
-	}
-
-	@Override
 	public boolean isBreedingItem(ItemStack itemStack) {
-		return itemStack != null && itemStack.getItem() == InitItem.CHEESE_SLICE;
+		return itemStack != null && itemStack == new ItemStack(InitItem.HAM_RAW, 1);
 	}
 
 	@Override
 	protected void initEntityAI() {
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAIPanic(this, 2.0d));
-		this.tasks.addTask(2, new EntityAIMate(this, 1.0d));
-		this.tasks.addTask(3, new EntityAITempt(this, 1.25d, InitItem.CHEESE_SLICE, false));
-		this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25d));
-		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0d));
-		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0f));
+		this.tasks.addTask(1, new EntityAIPanic(this, 2.0D));
+		this.tasks.addTask(2, new EntityAIMate(this, 1.0D));
+		this.tasks.addTask(3, new EntityAITempt(this, 1.25D, new ItemStack(InitItem.HAM_RAW, 1).getItem(), false));
+		this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25D));
+		this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0D));
+		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 	}
 
@@ -91,22 +87,21 @@ public class EntityCheeseMan extends EntityAnimal {
 	@Override
 	@Nullable
 	protected ResourceLocation getLootTable() {
-		return LootTable.CHEESE_MAN;
+		return LootTable.HAM_MAN;
 	}
 
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		ItemStack itemstack = player.getHeldItem(hand);
 
-		if (itemstack.getItem() == InitItem.BREAD_SLICE
-				&& !player.capabilities.isCreativeMode && !this.isChild()) {
+		if (itemstack.getItem() == InitItem.BREAD_SLICE && !player.capabilities.isCreativeMode && !this.isChild()) {
+			// player.playSound(SoundEvents.ENTITY_COW_MILK, 1.0F, 1.0F);
 			itemstack.shrink(1);
 
 			if (itemstack.isEmpty()) {
-				player.setHeldItem(hand, new ItemStack(InitItem.TOASTIE, 1, 0));
-			} else if (!player.inventory
-					.addItemStackToInventory(new ItemStack(InitItem.TOASTIE, 1, 0))) {
-				player.dropItem(new ItemStack(InitItem.TOASTIE, 1, 0), false);
+				player.setHeldItem(hand, new ItemStack(InitItem.TOASTIE_HAM_RAW_N_CHEESE));
+			} else if (!player.inventory.addItemStackToInventory(new ItemStack(InitItem.TOASTIE_HAM_RAW_N_CHEESE))) {
+				player.dropItem(new ItemStack(InitItem.TOASTIE_HAM_RAW_N_CHEESE), false);
 			}
 
 			return true;
@@ -116,13 +111,13 @@ public class EntityCheeseMan extends EntityAnimal {
 	}
 
 	@Override
-	public EntityCheeseMan createChild(EntityAgeable ageable) {
-		return new EntityCheeseMan(this.world);
+	public EntityHamMan createChild(EntityAgeable ageable) {
+		return new EntityHamMan(world);
 	}
 
 	@Override
 	public float getEyeHeight() {
-		return this.isChild() ? this.height - 0.2f : 2.3f;
+		return this.isChild() ? this.height-0.2f : 2.3f;
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package coffeecatteam.cheesemod.objects.entity.ai.cheese;
 
-import coffeecatteam.cheesemod.objects.entity.EntityCheeseGolem;
-import coffeecatteam.cheesemod.objects.entity.EntityCheeseMan;
+import coffeecatteam.cheesemod.objects.entity.golem.EntityCheeseGolem;
+import coffeecatteam.cheesemod.objects.entity.man.EntityCheeseMan;
 import net.minecraft.entity.ai.EntityAIBase;
 
 public class EntityAILookAtCheeseMan extends EntityAIBase {
