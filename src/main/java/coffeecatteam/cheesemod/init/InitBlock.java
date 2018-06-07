@@ -1,28 +1,22 @@
 package coffeecatteam.cheesemod.init;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import coffeecatteam.cheesemod.CheeseMod;
 import coffeecatteam.cheesemod.Reference;
-import coffeecatteam.cheesemod.init.InitItem.ItemRegistrationHandler;
 import coffeecatteam.cheesemod.objects.blocks.BlockCheeseDraw;
 import coffeecatteam.cheesemod.objects.blocks.BlockCrackerMaker;
-import coffeecatteam.cheesemod.objects.blocks.BlockDoubleSlab;
 import coffeecatteam.cheesemod.objects.blocks.BlockGrill;
-import coffeecatteam.cheesemod.objects.blocks.BlockHalfSlab;
 import coffeecatteam.cheesemod.objects.blocks.BlockHamDraw;
-import coffeecatteam.cheesemod.objects.blocks.base.BlockBase;
-import coffeecatteam.cheesemod.objects.blocks.base.BlockBaseStairs;
+import coffeecatteam.cheesemod.objects.blocks.base.*;
 import coffeecatteam.cheesemod.objects.blocks.crops.BlockPineapple;
-import coffeecatteam.cheesemod.objects.blocks.food.BlockFood;
 import coffeecatteam.cheesemod.objects.blocks.food.BlockFoodGround;
 import coffeecatteam.cheesemod.objects.blocks.item.ItemBlockVariants;
-import coffeecatteam.cheesemod.objects.blocks.tree.BlockCheeseLeaves;
-import coffeecatteam.cheesemod.objects.blocks.tree.BlockCheeseLog;
-import coffeecatteam.cheesemod.objects.blocks.tree.BlockCheesePlanks;
-import coffeecatteam.cheesemod.objects.blocks.tree.BlockCheeseSapling;
+import coffeecatteam.cheesemod.objects.blocks.slab.BlockDoubleSlab;
+import coffeecatteam.cheesemod.objects.blocks.slab.BlockHalfSlab;
 import coffeecatteam.cheesemod.util.handlers.EnumHandler;
+import coffeecatteam.cheesemod.world.gen.feature.tree.WorldGenTreeCheese;
+import coffeecatteam.cheesemod.world.gen.feature.tree.WorldGenTreeGrilledCheese;
+import coffeecatteam.cheesemod.world.gen.feature.tree.WorldGenTreeHamCooked;
+import coffeecatteam.cheesemod.world.gen.feature.tree.WorldGenTreeHamRaw;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
@@ -33,46 +27,65 @@ import net.minecraft.item.ItemSlab;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
 
 public class InitBlock {
 
 	// Ores
-	public static final Block CHEESE_METAL_ORE = new BlockBase("cheese_metal_ore", 2.0F, 4.0F, Material.ROCK, 1, CheeseMod.CHEESETAB);
-	public static final Block NETHER_CHEESE_METAL_ORE = new BlockBase("nether_cheese_metal_ore", 2.0F, 4.0F, Material.ROCK, 1, CheeseMod.CHEESETAB);
-	public static final Block END_CHEESE_METAL_ORE = new BlockBase("end_cheese_metal_ore", 2.0F, 4.0F, Material.ROCK, 1, CheeseMod.CHEESETAB);
+	public static final Block CHEESE_METAL_ORE = new BlockBase("cheese_metal_ore", 2.0F, 4.0F, Material.ROCK, false, 1, CheeseMod.CHEESETAB);
+	public static final Block NETHER_CHEESE_METAL_ORE = new BlockBase("nether_cheese_metal_ore", 2.0F, 4.0F, Material.ROCK, false, 1, CheeseMod.CHEESETAB);
+	public static final Block END_CHEESE_METAL_ORE = new BlockBase("end_cheese_metal_ore", 2.0F, 4.0F, Material.ROCK, false, 1, CheeseMod.CHEESETAB);
 	
-	public static final Block GRILLED_CHEESE_METAL_ORE = new BlockBase("grilled_cheese_metal_ore", 2.5F, 4.5F, Material.ROCK, 1, CheeseMod.CHEESETAB);
-	public static final Block NETHER_GRILLED_CHEESE_METAL_ORE = new BlockBase("nether_grilled_cheese_metal_ore", 2.5F, 4.5F, Material.ROCK, 1, CheeseMod.CHEESETAB);
-	public static final Block END_GRILLED_CHEESE_METAL_ORE = new BlockBase("end_grilled_cheese_metal_ore", 2.5F, 4.5F, Material.ROCK, 1, CheeseMod.CHEESETAB);
+	public static final Block GRILLED_CHEESE_METAL_ORE = new BlockBase("grilled_cheese_metal_ore", 2.5F, 4.5F, Material.ROCK, false, 1, CheeseMod.CHEESETAB);
+	public static final Block NETHER_GRILLED_CHEESE_METAL_ORE = new BlockBase("nether_grilled_cheese_metal_ore", 2.5F, 4.5F, Material.ROCK, false, 1, CheeseMod.CHEESETAB);
+	public static final Block END_GRILLED_CHEESE_METAL_ORE = new BlockBase("end_grilled_cheese_metal_ore", 2.5F, 4.5F, Material.ROCK, false, 1, CheeseMod.CHEESETAB);
 
-	public static final Block HAM_RAW_METAL_ORE = new BlockBase("ham_raw_metal_ore", 1.5F, 3.5F, Material.ROCK, 2, CheeseMod.CHEESETAB);
-	public static final Block NETHER_HAM_RAW_METAL_ORE = new BlockBase("nether_ham_raw_metal_ore", 1.5F, 3.5F, Material.ROCK, 2, CheeseMod.CHEESETAB);
-	public static final Block END_HAM_RAW_METAL_ORE = new BlockBase("end_ham_raw_metal_ore", 1.5F, 3.5F, Material.ROCK, 2, CheeseMod.CHEESETAB);
+	public static final Block HAM_RAW_METAL_ORE = new BlockBase("ham_raw_metal_ore", 1.5F, 3.5F, Material.ROCK, false, 2, CheeseMod.CHEESETAB);
+	public static final Block NETHER_HAM_RAW_METAL_ORE = new BlockBase("nether_ham_raw_metal_ore", 1.5F, 3.5F, Material.ROCK, false, 2, CheeseMod.CHEESETAB);
+	public static final Block END_HAM_RAW_METAL_ORE = new BlockBase("end_ham_raw_metal_ore", 1.5F, 3.5F, Material.ROCK, false, 2, CheeseMod.CHEESETAB);
 	
-	public static final Block HAM_COOKED_METAL_ORE = new BlockBase("ham_cooked_metal_ore", 2.0F, 4.0F, Material.ROCK, 2, CheeseMod.CHEESETAB);
-	public static final Block NETHER_HAM_COOKED_METAL_ORE = new BlockBase("nether_ham_cooked_metal_ore", 2.0F, 4.0F, Material.ROCK, 2, CheeseMod.CHEESETAB);
-	public static final Block END_HAM_COOKED_METAL_ORE = new BlockBase("end_ham_cooked_metal_ore", 2.0F, 4.0F, Material.ROCK, 2, CheeseMod.CHEESETAB);
+	public static final Block HAM_COOKED_METAL_ORE = new BlockBase("ham_cooked_metal_ore", 2.0F, 4.0F, Material.ROCK, false, 2, CheeseMod.CHEESETAB);
+	public static final Block NETHER_HAM_COOKED_METAL_ORE = new BlockBase("nether_ham_cooked_metal_ore", 2.0F, 4.0F, Material.ROCK, false, 2, CheeseMod.CHEESETAB);
+	public static final Block END_HAM_COOKED_METAL_ORE = new BlockBase("end_ham_cooked_metal_ore", 2.0F, 4.0F, Material.ROCK, false, 2, CheeseMod.CHEESETAB);
 
-	// Food Metal Blocks
-	public static final Block CHEESE_METAL_BLOCK = new BlockBase("cheese_metal_block", 2.5F, 4.5F, Material.IRON, 2, CheeseMod.CHEESETAB);
-	public static final Block GRILLED_CHEESE_METAL_BLOCK = new BlockBase("grilled_cheese_metal_block", 3.0F, 5.0F, Material.IRON, 2, CheeseMod.CHEESETAB);
+	// Food Metal
+	public static final Block CHEESE_METAL_BLOCK = new BlockBase("cheese_metal_block", 2.5F, 4.5F, Material.IRON, false, 2, CheeseMod.CHEESETAB);
+	public static final Block GRILLED_CHEESE_METAL_BLOCK = new BlockBase("grilled_cheese_metal_block", 3.0F, 5.0F, Material.IRON, false, 2, CheeseMod.CHEESETAB);
 
-	public static final Block HAM_RAW_METAL_BLOCK = new BlockBase("ham_raw_metal_block", 2.0F, 4.0F, Material.IRON, 2, CheeseMod.CHEESETAB);
-	public static final Block HAM_COOKED_METAL_BLOCK = new BlockBase("ham_cooked_metal_block", 2.5F, 4.5F, Material.IRON, 2, CheeseMod.CHEESETAB);
+	public static final Block HAM_RAW_METAL_BLOCK = new BlockBase("ham_raw_metal_block", 2.0F, 4.0F, Material.IRON, false, 2, CheeseMod.CHEESETAB);
+	public static final Block HAM_COOKED_METAL_BLOCK = new BlockBase("ham_cooked_metal_block", 2.5F, 4.5F, Material.IRON, false, 2, CheeseMod.CHEESETAB);
 
-	// Blocks With Variants
-	public static final Block CHEESE_PLANKS = new BlockCheesePlanks("cheese_planks", 1.0f, 1.0f, 1);
-	public static final Block CHEESE_LEAVES = new BlockCheeseLeaves("cheese_leaves", 0.5f, 0.5f);
-	public static final Block CHEESE_LOG = new BlockCheeseLog("cheese_log", 1.0f, 1.0f, 1);
-	public static final Block CHEESE_SAPLING = new BlockCheeseSapling("cheese_sapling", 0.5f, 0.5f);
+	// Food Wood/Tree
+    public static final Block PLANKS_CHEESE = new BlockBase("planks_cheese", 1.0f, 1.0f, Material.WOOD, true, 1, CheeseMod.CHEESETAB);
+    public static final Block PLANKS_GRILLED_CHEESE = new BlockBase("planks_grilled_cheese", 1.0f, 1.0f, Material.WOOD, true, 1, CheeseMod.CHEESETAB);
+    public static final Block PLANKS_HAM_RAW = new BlockBase("planks_ham_raw", 1.0f, 1.0f, Material.WOOD, true, 1, CheeseMod.CHEESETAB);
+    public static final Block PLANKS_HAM_COOKED = new BlockBase("planks_ham_cooked", 1.0f, 1.0f, Material.WOOD, true, 1, CheeseMod.CHEESETAB);
 
-	public static final Block FOOD_BLOCK = new BlockFood("food_block", 1.0f, 1.0f, 1);
-	public static final Block FOOD_GROUND_BLOCK = new BlockFoodGround("food_ground_block", 1.0f, 1.0f, 1);
+    public static final Block LEAVES_CHEESE = new BlockBaseLeaves("cheese");
+    public static final Block LEAVES_GRILLED_CHEESE = new BlockBaseLeaves("grilled_cheese");
+    public static final Block LEAVES_HAM_RAW = new BlockBaseLeaves("ham_raw");
+    public static final Block LEAVES_HAM_COOKED = new BlockBaseLeaves("ham_cooked");
+
+    public static final Block LOG_CHEESE = new BlockBaseFacing("log_cheese", 1.0f, 1.0f, 1, false, true);
+    public static final Block LOG_GRILLED_CHEESE = new BlockBaseFacing("log_grilled_cheese", 1.0f, 1.0f, 1, false, true);
+    public static final Block LOG_HAM_RAW = new BlockBaseFacing("log_ham_raw", 1.0f, 1.0f, 1, false, true);
+    public static final Block LOG_HAM_COOKED = new BlockBaseFacing("log_ham_cooked", 1.0f, 1.0f, 1, false, true);
+
+
+    public static final Block SAPLING_CHEESE = new BlockBaseSapling("sapling_cheese", 0.5f, 0.5f, new WorldGenTreeCheese());
+    public static final Block SAPLING_GRILLED_CHEESE = new BlockBaseSapling("sapling_grilled_cheese", 0.5f, 0.5f, new WorldGenTreeGrilledCheese());
+    public static final Block SAPLING_HAM_RAW = new BlockBaseSapling("sapling_ham_raw", 0.5f, 0.5f, new WorldGenTreeHamRaw());
+    public static final Block SAPLING_HAM_COOKED = new BlockBaseSapling("sapling_ham_cooked", 0.5f, 0.5f, new WorldGenTreeHamCooked());
+
+    // Food Block
+    public static final Block FOOD_BLOCK_CHEESE = new BlockBaseFacing("food_block_cheese", 1.0f, 1.0f, 1, true, false);
+    public static final Block FOOD_BLOCK_GRILLED_CHEESE = new BlockBaseFacing("food_block_grilled_cheese", 1.0f, 1.0f, 1, true, false);
+    public static final Block FOOD_BLOCK_HAM_RAW = new BlockBaseFacing("food_block_ham_raw", 1.0f, 1.0f, 1, true, false);
+    public static final Block FOOD_BLOCK_HAM_COOKED = new BlockBaseFacing("food_block_ham_cooked", 1.0f, 1.0f, 1, true, false);
+
+	public static final Block FOOD_GROUND_BLOCK = new BlockFoodGround("food_ground_block", 1.0f, 1.0f, 1);///////
 	
 	// Food Makers
     public static final BlockGrill GRILL_IDLE = new BlockGrill("grill", 1.0F, 1.5F, Material.IRON, 1, false);
@@ -86,10 +99,10 @@ public class InitBlock {
 	public static final Block HAM_DRAW = new BlockHamDraw("ham_draw", 0.5F, 0.8F, Material.WOOD, 1);
 
 	// Stairs
-	public static final Block CHEESE_STAIRS = new BlockBaseStairs("cheese_stairs", FOOD_BLOCK.getDefaultState().withProperty(BlockFood.VARIANT, EnumHandler.EnumWoodType.CHEESE));
-	public static final Block GRILLED_CHEESE_STAIRS = new BlockBaseStairs("grilled_cheese_stairs", FOOD_BLOCK.getDefaultState().withProperty(BlockFood.VARIANT, EnumHandler.EnumWoodType.GRILLED_CHEESE));
-	public static final Block HAM_RAW_STAIRS = new BlockBaseStairs("ham_raw_stairs", FOOD_BLOCK.getDefaultState().withProperty(BlockFood.VARIANT, EnumHandler.EnumWoodType.HAM_RAW));
-	public static final Block HAM_COOKED_STAIRS = new BlockBaseStairs("ham_cooked_stairs", FOOD_BLOCK.getDefaultState().withProperty(BlockFood.VARIANT, EnumHandler.EnumWoodType.HAM_COOKED));
+	public static final Block CHEESE_STAIRS = new BlockBaseStairs("cheese_stairs", FOOD_BLOCK_CHEESE.getDefaultState());
+	public static final Block GRILLED_CHEESE_STAIRS = new BlockBaseStairs("grilled_cheese_stairs", FOOD_BLOCK_GRILLED_CHEESE.getDefaultState());
+	public static final Block HAM_RAW_STAIRS = new BlockBaseStairs("ham_raw_stairs", FOOD_BLOCK_HAM_RAW.getDefaultState());
+	public static final Block HAM_COOKED_STAIRS = new BlockBaseStairs("ham_cooked_stairs", FOOD_BLOCK_HAM_COOKED.getDefaultState());
 
 	// Slabs
 	public static final BlockSlab CHEESE_SLAB = new BlockHalfSlab("cheese_slab", 0.5F, 1.0F, Material.SPONGE, 1);
@@ -101,140 +114,81 @@ public class InitBlock {
 	public static final BlockSlab HAM_COOKED_SLAB = new BlockHalfSlab("ham_cooked_slab", 0.5F, 0.7F, Material.SPONGE, 1);
 	public static final BlockSlab HAM_COOKED_DOUBLE_SLAB = new BlockDoubleSlab("ham_cooked_double_slab", 0.5F, 0.7F, Material.SPONGE, 1);
 	
-	/*
-	 * Crops
-	 */
+	// Other
 	public static final Block PINEAPPLE = new BlockPineapple("pineapple_plant");
+	public static final Block CHEESE_CAKE = new BlockBaseCake("cake_cheese", 0.5F);
 
 	public static void init() {
-        ForgeRegistries.BLOCKS.register(GRILL_ACTIVE);
-        ForgeRegistries.BLOCKS.register(CRACKER_MAKER_ACTIVE);
-        
+        initSpecial();
+
+        register(CHEESE_METAL_ORE, GRILLED_CHEESE_METAL_ORE, HAM_RAW_METAL_ORE, HAM_COOKED_METAL_ORE);
+        register(NETHER_CHEESE_METAL_ORE, NETHER_GRILLED_CHEESE_METAL_ORE, NETHER_HAM_RAW_METAL_ORE, NETHER_HAM_COOKED_METAL_ORE);
+        register(END_CHEESE_METAL_ORE, END_GRILLED_CHEESE_METAL_ORE, END_HAM_RAW_METAL_ORE, END_HAM_COOKED_METAL_ORE);
+
+        register(CHEESE_METAL_BLOCK, GRILLED_CHEESE_METAL_BLOCK, HAM_RAW_METAL_BLOCK, HAM_COOKED_METAL_BLOCK);
+
+        register(CHEESE_DRAW, HAM_DRAW);
+        register(GRILL_IDLE, CRACKER_MAKER_IDLE);
+        register(CHEESE_CAKE);
+
+        register(FOOD_BLOCK_CHEESE, FOOD_BLOCK_GRILLED_CHEESE, FOOD_BLOCK_HAM_RAW, FOOD_BLOCK_HAM_COOKED);
+        register(CHEESE_STAIRS, GRILLED_CHEESE_STAIRS, HAM_RAW_STAIRS, HAM_COOKED_STAIRS);
+
+        register(PLANKS_CHEESE, PLANKS_GRILLED_CHEESE, PLANKS_HAM_RAW, PLANKS_HAM_COOKED);
+        register(LEAVES_CHEESE, LEAVES_GRILLED_CHEESE, LEAVES_HAM_RAW, LEAVES_HAM_COOKED);
+        register(LOG_CHEESE, LOG_GRILLED_CHEESE, LOG_HAM_RAW, LOG_HAM_COOKED);
+        register(SAPLING_CHEESE, SAPLING_GRILLED_CHEESE, SAPLING_HAM_RAW, SAPLING_HAM_COOKED);
+
         /*
-         * Crops
-         */
-        ForgeRegistries.BLOCKS.register(PINEAPPLE);
-        
-		/*
 		 *  Register blocks with variants
 		 */
-		register(CHEESE_PLANKS, new ItemBlockVariants(CHEESE_PLANKS));
-		register(CHEESE_LOG, new ItemBlockVariants(CHEESE_LOG));
-		register(CHEESE_LEAVES, new ItemBlockVariants(CHEESE_LEAVES));
-		register(CHEESE_SAPLING, new ItemBlockVariants(CHEESE_SAPLING));
-
-		register(FOOD_BLOCK, new ItemBlockVariants(FOOD_BLOCK));
-		register(FOOD_GROUND_BLOCK, new ItemBlockVariants(FOOD_GROUND_BLOCK));
-
-		/*
-		 *  Register block slabs
-		 */
-		register(CHEESE_SLAB, new ItemSlab(CHEESE_SLAB, CHEESE_SLAB, CHEESE_DOUBLE_SLAB));
-		register(GRILLED_CHEESE_SLAB,
-				new ItemSlab(GRILLED_CHEESE_SLAB, GRILLED_CHEESE_SLAB, GRILLED_CHEESE_DOUBLE_SLAB));
-		register(HAM_RAW_SLAB, new ItemSlab(HAM_RAW_SLAB, HAM_RAW_SLAB, HAM_RAW_DOUBLE_SLAB));
-		register(HAM_COOKED_SLAB, new ItemSlab(HAM_COOKED_SLAB, HAM_COOKED_SLAB, HAM_COOKED_DOUBLE_SLAB));
-
-		ForgeRegistries.BLOCKS.registerAll(CHEESE_DOUBLE_SLAB, GRILLED_CHEESE_DOUBLE_SLAB, HAM_RAW_DOUBLE_SLAB,
-				HAM_COOKED_DOUBLE_SLAB);
+        registerItemBlock(FOOD_GROUND_BLOCK, new ItemBlockVariants(FOOD_GROUND_BLOCK));
 	}
 
-	// Register Variants
-	public static void register(Block block, ItemBlock itemblock) {
+	private static void initSpecial() {
+        ForgeRegistries.BLOCKS.register(GRILL_ACTIVE);
+        ForgeRegistries.BLOCKS.register(CRACKER_MAKER_ACTIVE);
+        ForgeRegistries.BLOCKS.register(PINEAPPLE);
+
+        registerItemBlock(CHEESE_SLAB, new ItemSlab(CHEESE_SLAB, CHEESE_SLAB, CHEESE_DOUBLE_SLAB));
+        registerItemBlock(GRILLED_CHEESE_SLAB, new ItemSlab(GRILLED_CHEESE_SLAB, GRILLED_CHEESE_SLAB, GRILLED_CHEESE_DOUBLE_SLAB));
+        registerItemBlock(HAM_RAW_SLAB, new ItemSlab(HAM_RAW_SLAB, HAM_RAW_SLAB, HAM_RAW_DOUBLE_SLAB));
+        registerItemBlock(HAM_COOKED_SLAB, new ItemSlab(HAM_COOKED_SLAB, HAM_COOKED_SLAB, HAM_COOKED_DOUBLE_SLAB));
+
+        ForgeRegistries.BLOCKS.registerAll(CHEESE_DOUBLE_SLAB, GRILLED_CHEESE_DOUBLE_SLAB, HAM_RAW_DOUBLE_SLAB, HAM_COOKED_DOUBLE_SLAB);
+    }
+
+    private static void register(Block... blocks) {
+        for (Block block : blocks)
+            register(block);
+    }
+
+    private static void register(Block block) {
+	    RegistrationHandler.Blocks.BLOCKS.add(block);
+        ItemBlock itemBlock = (ItemBlock) new ItemBlock(block).setRegistryName(block.getRegistryName());
+        RegistrationHandler.Items.ITEMS.add(itemBlock);
+    }
+
+	public static void registerItemBlock(Block block, ItemBlock itemblock) {
 		ForgeRegistries.BLOCKS.register(block);
 		itemblock.setRegistryName(block.getRegistryName());
 		ForgeRegistries.ITEMS.register(itemblock);
 		
 		if (itemblock instanceof ItemSlab)
-			ItemRegistrationHandler.ITEM_LIST.add(itemblock);
+			RegistrationHandler.Items.ITEMS.add(itemblock);
 	}
 
 	@EventBusSubscriber(modid = Reference.MODID)
 	public static class BlockRegistrationHandler {
-		public static final Set<Block> BLOCK_LIST = new HashSet<>();
-		public static final Set<Item> ITEM_LIST = new HashSet<>();
-
-		private static final Set<Block> registeredBlockList = new HashSet<>();
-		private static final Block[] blocks = {
-				CHEESE_METAL_ORE, GRILLED_CHEESE_METAL_ORE,
-				CHEESE_METAL_BLOCK, GRILLED_CHEESE_METAL_BLOCK,
-				
-				CHEESE_DRAW, HAM_DRAW,
-				
-				CHEESE_STAIRS, GRILLED_CHEESE_STAIRS,
-				
-				HAM_RAW_METAL_ORE, HAM_COOKED_METAL_ORE,
-				HAM_RAW_METAL_BLOCK, HAM_COOKED_METAL_BLOCK,
-				
-				HAM_RAW_STAIRS, HAM_COOKED_STAIRS,
-				
-				NETHER_CHEESE_METAL_ORE, NETHER_GRILLED_CHEESE_METAL_ORE,
-				NETHER_HAM_RAW_METAL_ORE, NETHER_HAM_COOKED_METAL_ORE,
-				
-				END_CHEESE_METAL_ORE, END_GRILLED_CHEESE_METAL_ORE,
-				END_HAM_RAW_METAL_ORE, END_HAM_COOKED_METAL_ORE, GRILL_IDLE, CRACKER_MAKER_IDLE };
-
-		@SubscribeEvent
-		public static void registerBlocks(final RegistryEvent.Register<Block> event) {
-			final IForgeRegistry<Block> reg = event.getRegistry();
-
-			for (final Block block : blocks) {
-				reg.register(block);
-				BLOCK_LIST.add(block);
-			}
-		}
-
-		@SubscribeEvent
-		public static void registerItems(final RegistryEvent.Register<Item> event) {
-			final IForgeRegistry<Item> reg = event.getRegistry();
-
-			for (final Block item : blocks) {
-				ItemBlock ib = (ItemBlock) new ItemBlock(item).setRegistryName(item.getRegistryName());
-				reg.register(ib);
-				ITEM_LIST.add(ib);
-			}
-		}
-
 		@SubscribeEvent
 		public static void registerModels(final ModelRegistryEvent event) {
-
-			for (Block block : BLOCK_LIST)
-				if (!registeredBlockList.contains(block))
-					registerBlockModel(block);
-
-			for (int i = 0; i < EnumHandler.EnumWoodType.values().length; i++) {
-				registerBlockModelVariants(CHEESE_PLANKS, i,
-						"planks_" + EnumHandler.EnumWoodType.values()[i].getName());
-				registerBlockModelVariants(CHEESE_LOG, i, "log_" + EnumHandler.EnumWoodType.values()[i].getName());
-				registerBlockModelVariants(CHEESE_LEAVES, i,
-						"leaves_" + EnumHandler.EnumWoodType.values()[i].getName());
-				registerBlockModelVariants(CHEESE_SAPLING, i,
-						"sapling_" + EnumHandler.EnumWoodType.values()[i].getName());
-
-				registerBlockModelVariants(FOOD_BLOCK, i,
-						"food_block_" + EnumHandler.EnumWoodType.values()[i].getName());
-			}
-			
 			for (int i = 0; i < EnumHandler.EnumGroundType.values().length; i++) {
-				registerBlockModelVariants(FOOD_GROUND_BLOCK, i,
-						"food_ground_block_" + EnumHandler.EnumGroundType.values()[i].getName());
+				registerBlockModelVariants(FOOD_GROUND_BLOCK, i, "food_ground_block_" + EnumHandler.EnumGroundType.values()[i].getName());
 			}
-		}
-
-		private static void registerBlockModel(final Block block) {
-			final String registryName = block.getRegistryName().toString();
-			final ModelResourceLocation location = new ModelResourceLocation(registryName, "inventory");
-			registerBlockModel(block, location);
-		}
-
-		private static void registerBlockModel(final Block block, final ModelResourceLocation modelResourceLocation) {
-			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, modelResourceLocation);
-			registeredBlockList.add(block);
 		}
 
 		public static void registerBlockModelVariants(Block block, int meta, String filename) {
-			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta,
-					new ModelResourceLocation(new ResourceLocation(Reference.MODID, filename), "inventory"));
+			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, new ModelResourceLocation(new ResourceLocation(Reference.MODID, filename), "inventory"));
 		}
 	}
 }
