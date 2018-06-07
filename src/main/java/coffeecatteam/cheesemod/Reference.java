@@ -4,7 +4,7 @@ public class Reference {
 
 	public static final String MODID = "cheesemod";
 	public static final String NAME = "Cheese Mod";
-	public static final String VERSION = "1.5-pre2";
+	public static final String VERSION = "2.0";
 
 	public static final String CLIENTPROXY = "coffeecatteam.cheesemod.proxy.ProxyClient";
 	public static final String COMMONPROXY = "coffeecatteam.cheesemod.proxy.ProxyCommon";
@@ -15,4 +15,5 @@ public class Reference {
 	public static final int ENTITY_HAM_MAN = -2;
 	public static final int ENTITY_CHEESE_GOLEM = -3;
 	public static final int ENTITY_HAM_GOLEM = -4;
+	public static final int ENTITY_CRAYFISH = -5;
 }
