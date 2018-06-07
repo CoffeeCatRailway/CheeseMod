@@ -4,7 +4,6 @@ import coffeecatteam.cheesemod.init.InitBlock;
 import coffeecatteam.cheesemod.init.InitItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class Smelting {
@@ -20,10 +19,10 @@ public class Smelting {
 		GameRegistry.addSmelting(InitBlock.HAM_COOKED_METAL_ORE, new ItemStack(InitItem.HAM_COOKED_METAL_INGOT, 1), 15);
 
 		// Ham Raw > Ham Cooked
-		GameRegistry.addSmelting(InitItem.HAM_RAW, new ItemStack(InitItem.HAM_COOKED, 1), 6);
+		GameRegistry.addSmelting(new ItemStack(InitItem.HAM_RAW, 1), new ItemStack(InitItem.HAM_COOKED, 1), 6);
 
 		// Ham Raw Block > Ham Cooked Block
-		GameRegistry.addSmelting(new ItemStack(InitBlock.FOOD_BLOCK, 1, 2), new ItemStack(InitBlock.FOOD_BLOCK, 1, 3),
+		GameRegistry.addSmelting(new ItemStack(InitBlock.FOOD_BLOCK_HAM_RAW), new ItemStack(InitBlock.FOOD_BLOCK_HAM_COOKED),
 				10);
 
 		// Grilled Cheese Ore > Grilled Cheese Ingot
@@ -31,7 +30,7 @@ public class Smelting {
 				new ItemStack(InitItem.GRILLED_CHEESE_METAL_INGOT, 1), 15);
 
 		// Bread Slice > Toast
-		GameRegistry.addSmelting(InitItem.BREAD_SLICE, new ItemStack(InitItem.TOAST, 1), 7);
+		GameRegistry.addSmelting(InitItem.BREAD_SLICE, new ItemStack(InitItem.TOAST_PLAIN, 1), 7);
 
 		// Dough > Bread
 		GameRegistry.addSmelting(InitItem.DOUGH, new ItemStack(Items.BREAD, 1), 4);
