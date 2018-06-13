@@ -1,9 +1,0 @@
-{
-    "variants": {
-        "snowy=false,variant=cheese": { "model": "cheesemod:food_ground_block_cheese" },
-        "snowy=false,variant=ham": { "model": "cheesemod:food_ground_block_ham" },
-        
-        "snowy=true,variant=cheese": { "model": "minecraft:grass_snowed" },
-        "snowy=true,variant=ham": { "model": "minecraft:grass_snowed" }
-    }
-}

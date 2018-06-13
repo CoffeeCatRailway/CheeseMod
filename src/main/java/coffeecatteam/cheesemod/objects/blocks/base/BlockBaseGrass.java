@@ -1,20 +1,12 @@
-package coffeecatteam.cheesemod.objects.blocks.food;
-
-import java.util.Random;
-
-import javax.annotation.Nullable;
-
-import com.google.common.base.Predicate;
+package coffeecatteam.cheesemod.objects.blocks.base;
 
 import coffeecatteam.cheesemod.CheeseMod;
 import coffeecatteam.cheesemod.init.InitBlock;
 import coffeecatteam.cheesemod.util.handlers.EnumHandler;
-import coffeecatteam.cheesemod.util.interfaces.IMetaName;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -28,16 +20,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 
-public class BlockFoodGround extends BlockGrass implements IMetaName {
+import java.util.Random;
 
-	public static final PropertyEnum<EnumHandler.EnumGroundType> VARIANT = PropertyEnum.<EnumHandler.EnumGroundType>create(
-			"variant", EnumHandler.EnumGroundType.class, new Predicate<EnumHandler.EnumGroundType>() {
-				public boolean apply(@Nullable EnumHandler.EnumGroundType apply) {
-					return apply.getMeta() < 2;
-				}
-			});
+public class BlockBaseGrass extends BlockGrass {
 
-	public BlockFoodGround(String name, float hardness, float resistance, int harvestLevel) {
+	public BlockBaseGrass(String name, float hardness, float resistance, int harvestLevel) {
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setHardness(hardness);
@@ -45,14 +32,12 @@ public class BlockFoodGround extends BlockGrass implements IMetaName {
 		setHarvestLevel("axe", harvestLevel);
 		setCreativeTab(CheeseMod.CHEESETAB);
 		setSoundType(SoundType.GROUND);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandler.EnumGroundType.CHEESE));
 	}
 
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		if (!worldIn.isRemote) {
-			if (worldIn.getLightFromNeighbors(pos.up()) < 4
-					&& worldIn.getBlockState(pos.up()).getLightOpacity(worldIn, pos.up()) > 2) {
+			if (worldIn.getLightFromNeighbors(pos.up()) < 4 && worldIn.getBlockState(pos.up()).getLightOpacity(worldIn, pos.up()) > 2) {
 				worldIn.setBlockState(pos, Blocks.DIRT.getDefaultState());
 			} else {
 				if (worldIn.getLightFromNeighbors(pos.up()) >= 9) {
@@ -66,12 +51,8 @@ public class BlockFoodGround extends BlockGrass implements IMetaName {
 						IBlockState iblockstate = worldIn.getBlockState(blockpos.up());
 						IBlockState iblockstate1 = worldIn.getBlockState(blockpos);
 
-						if (iblockstate1.getBlock() == Blocks.DIRT
-								&& iblockstate1.getValue(BlockDirt.VARIANT) == BlockDirt.DirtType.DIRT
-								&& worldIn.getLightFromNeighbors(blockpos.up()) >= 4
-								&& iblockstate.getLightOpacity(worldIn, pos.up()) <= 2) {
-							worldIn.setBlockState(blockpos, InitBlock.FOOD_GROUND_BLOCK.getDefaultState().withProperty(
-									VARIANT, EnumHandler.EnumGroundType.byMetaData(getMetaFromState(state))));
+						if (iblockstate1.getBlock() == Blocks.DIRT && iblockstate1.getValue(BlockDirt.VARIANT) == BlockDirt.DirtType.DIRT && worldIn.getLightFromNeighbors(blockpos.up()) >= 4 && iblockstate.getLightOpacity(worldIn, pos.up()) <= 2) {
+							worldIn.setBlockState(blockpos, InitBlock.GRASS_CHEESE.getDefaultState());
 						}
 					}
 				}
@@ -103,33 +84,12 @@ public class BlockFoodGround extends BlockGrass implements IMetaName {
 	}
 
 	@Override
-	public IBlockState getStateFromMeta(int meta) {
-		return this.getDefaultState().withProperty(VARIANT, EnumHandler.EnumGroundType.byMetaData(meta));
-	}
-
-	@Override
-	public int getMetaFromState(IBlockState state) {
-		return ((EnumHandler.EnumGroundType) state.getValue(VARIANT)).getMeta();
-	}
-
-	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { VARIANT, SNOWY });
+		return new BlockStateContainer(this, new IProperty[] { SNOWY });
 	}
 
 	@Override
 	protected ItemStack getSilkTouchDrop(IBlockState state) {
-		return new ItemStack(Item.getItemFromBlock(this), 1,
-				((EnumHandler.EnumGroundType) state.getValue(VARIANT)).getMeta());
-	}
-
-	@Override
-	public int damageDropped(IBlockState state) {
-		return ((EnumHandler.EnumGroundType) state.getValue(VARIANT)).getMeta();
-	}
-
-	@Override
-	public String getSpecialName(ItemStack stack) {
-		return EnumHandler.EnumGroundType.values()[stack.getItemDamage()].getName();
+		return new ItemStack(Item.getItemFromBlock(this), 1);
 	}
 }

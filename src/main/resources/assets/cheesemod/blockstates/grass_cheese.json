@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "snowy=false": { "model": "cheesemod:grass_cheese" },
+        "snowy=true": { "model": "minecraft:grass_snowed" }
+    }
+}

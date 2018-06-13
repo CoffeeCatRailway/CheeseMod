@@ -4,7 +4,7 @@ import java.util.Random;
 
 import coffeecatteam.cheesemod.config.Config;
 import coffeecatteam.cheesemod.init.InitBlock;
-import coffeecatteam.cheesemod.objects.blocks.food.BlockFoodGround;
+import coffeecatteam.cheesemod.objects.blocks.base.BlockBaseGrass;
 import coffeecatteam.cheesemod.objects.entity.golem.EntityHamGolem;
 import coffeecatteam.cheesemod.objects.entity.man.EntityHamMan;
 import coffeecatteam.cheesemod.util.handlers.EnumHandler;
@@ -30,8 +30,7 @@ public class BiomeHam extends Biome {
 	public void decorate(World worldIn, Random rand, BlockPos pos) {
 		super.decorate(worldIn, rand, pos);
 
-		topBlock = InitBlock.FOOD_GROUND_BLOCK.getDefaultState().withProperty(BlockFoodGround.VARIANT,
-				EnumHandler.EnumGroundType.HAM);
+		topBlock = InitBlock.GRASS_HAM.getDefaultState();
 
 		this.decorator.treesPerChunk = 1;
 		this.decorator.extraTreeChance = 0.2f;

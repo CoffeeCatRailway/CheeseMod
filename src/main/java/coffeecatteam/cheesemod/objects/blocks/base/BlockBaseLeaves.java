@@ -4,6 +4,7 @@ import coffeecatteam.cheesemod.CheeseMod;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
@@ -23,9 +24,8 @@ public class BlockBaseLeaves extends BlockLeaves {
         return null;
     }
 
-    @Nonnull
     @Override
     public List<ItemStack> onSheared(@Nonnull ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
-        return null;
+        return NonNullList.withSize(1, new ItemStack(this));
     }
 }

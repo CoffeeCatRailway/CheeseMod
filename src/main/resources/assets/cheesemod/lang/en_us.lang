@@ -187,8 +187,8 @@ tile.food_block_grilled_cheese.name=Grilled Cheese Food Block
 tile.food_block_ham_raw.name=Ham Raw Food Block
 tile.food_block_ham_cooked.name=Ham Cooked Food Block
 
-tile.food_ground_block_cheese.name=Cheese Grass
-tile.food_ground_block_ham.name=Ham Grass
+tile.grass_cheese.name=Cheese Grass
+tile.grass_ham.name=Ham Grass
 
 
 # Blocks - Normal-ish

@@ -1,18 +1,15 @@
 package coffeecatteam.cheesemod.init;
 
 import coffeecatteam.cheesemod.CheeseMod;
-import coffeecatteam.cheesemod.Reference;
 import coffeecatteam.cheesemod.objects.blocks.BlockCheeseDraw;
 import coffeecatteam.cheesemod.objects.blocks.BlockCrackerMaker;
 import coffeecatteam.cheesemod.objects.blocks.BlockGrill;
 import coffeecatteam.cheesemod.objects.blocks.BlockHamDraw;
 import coffeecatteam.cheesemod.objects.blocks.base.*;
 import coffeecatteam.cheesemod.objects.blocks.crops.BlockPineapple;
-import coffeecatteam.cheesemod.objects.blocks.food.BlockFoodGround;
-import coffeecatteam.cheesemod.objects.blocks.item.ItemBlockVariants;
+import coffeecatteam.cheesemod.objects.blocks.base.BlockBaseGrass;
 import coffeecatteam.cheesemod.objects.blocks.slab.BlockDoubleSlab;
 import coffeecatteam.cheesemod.objects.blocks.slab.BlockHalfSlab;
-import coffeecatteam.cheesemod.util.handlers.EnumHandler;
 import coffeecatteam.cheesemod.world.gen.feature.tree.WorldGenTreeCheese;
 import coffeecatteam.cheesemod.world.gen.feature.tree.WorldGenTreeGrilledCheese;
 import coffeecatteam.cheesemod.world.gen.feature.tree.WorldGenTreeHamCooked;
@@ -20,15 +17,8 @@ import coffeecatteam.cheesemod.world.gen.feature.tree.WorldGenTreeHamRaw;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemSlab;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class InitBlock {
@@ -73,7 +63,6 @@ public class InitBlock {
     public static final Block LOG_HAM_RAW = new BlockBaseFacing("log_ham_raw", 1.0f, 1.0f, 1, false, true);
     public static final Block LOG_HAM_COOKED = new BlockBaseFacing("log_ham_cooked", 1.0f, 1.0f, 1, false, true);
 
-
     public static final Block SAPLING_CHEESE = new BlockBaseSapling("sapling_cheese", 0.5f, 0.5f, new WorldGenTreeCheese());
     public static final Block SAPLING_GRILLED_CHEESE = new BlockBaseSapling("sapling_grilled_cheese", 0.5f, 0.5f, new WorldGenTreeGrilledCheese());
     public static final Block SAPLING_HAM_RAW = new BlockBaseSapling("sapling_ham_raw", 0.5f, 0.5f, new WorldGenTreeHamRaw());
@@ -85,7 +74,8 @@ public class InitBlock {
     public static final Block FOOD_BLOCK_HAM_RAW = new BlockBaseFacing("food_block_ham_raw", 1.0f, 1.0f, 1, true, false);
     public static final Block FOOD_BLOCK_HAM_COOKED = new BlockBaseFacing("food_block_ham_cooked", 1.0f, 1.0f, 1, true, false);
 
-	public static final Block FOOD_GROUND_BLOCK = new BlockFoodGround("food_ground_block", 1.0f, 1.0f, 1);///////
+	public static final Block GRASS_CHEESE = new BlockBaseGrass("grass_cheese", 1.0f, 1.0f, 1);
+    public static final Block GRASS_HAM = new BlockBaseGrass("grass_ham", 1.0f, 1.0f, 1);
 	
 	// Food Makers
     public static final BlockGrill GRILL_IDLE = new BlockGrill("grill", 1.0F, 1.5F, Material.IRON, 1, false);
@@ -139,10 +129,7 @@ public class InitBlock {
         register(LOG_CHEESE, LOG_GRILLED_CHEESE, LOG_HAM_RAW, LOG_HAM_COOKED);
         register(SAPLING_CHEESE, SAPLING_GRILLED_CHEESE, SAPLING_HAM_RAW, SAPLING_HAM_COOKED);
 
-        /*
-		 *  Register blocks with variants
-		 */
-        registerItemBlock(FOOD_GROUND_BLOCK, new ItemBlockVariants(FOOD_GROUND_BLOCK));
+        register(GRASS_CHEESE, GRASS_HAM);
 	}
 
 	private static void initSpecial() {
@@ -176,19 +163,5 @@ public class InitBlock {
 		
 		if (itemblock instanceof ItemSlab)
 			RegistrationHandler.Items.ITEMS.add(itemblock);
-	}
-
-	@EventBusSubscriber(modid = Reference.MODID)
-	public static class BlockRegistrationHandler {
-		@SubscribeEvent
-		public static void registerModels(final ModelRegistryEvent event) {
-			for (int i = 0; i < EnumHandler.EnumGroundType.values().length; i++) {
-				registerBlockModelVariants(FOOD_GROUND_BLOCK, i, "food_ground_block_" + EnumHandler.EnumGroundType.values()[i].getName());
-			}
-		}
-
-		public static void registerBlockModelVariants(Block block, int meta, String filename) {
-			ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), meta, new ModelResourceLocation(new ResourceLocation(Reference.MODID, filename), "inventory"));
-		}
 	}
 }
