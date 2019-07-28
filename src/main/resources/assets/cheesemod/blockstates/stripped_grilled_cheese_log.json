@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y": { "model": "cheesemod:block/stripped_grilled_cheese_log" },
+        "axis=z": { "model": "cheesemod:block/stripped_grilled_cheese_log", "x": 90  },
+        "axis=x": { "model": "cheesemod:block/stripped_grilled_cheese_log", "x": 90, "y": 90 }
+    }
+}

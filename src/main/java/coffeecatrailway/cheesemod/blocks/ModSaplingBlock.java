@@ -21,10 +21,10 @@ public class ModSaplingBlock extends SaplingBlock {
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
         Block block = state.getBlock();
-        return block == ModBlocks.CHEESE_GRASS ||
-                block == ModBlocks.GRILLED_CHEESE_GRASS ||
-                block == ModBlocks.HAM_RAW_GRASS ||
-                block == ModBlocks.HAM_COOKED_GRASS ||
+        return block == ModBlocks.CHEESE_GRASS_BLOCK ||
+                block == ModBlocks.GRILLED_CHEESE_GRASS_BLOCK ||
+                block == ModBlocks.HAM_RAW_GRASS_BLOCK ||
+                block == ModBlocks.HAM_COOKED_GRASS_BLOCK ||
                 super.isValidGround(state, worldIn, pos);
     }
 }

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=lower": { "model": "cheesemod:block/ham_raw_tall_grass_bottom" },
+        "half=upper":    { "model": "cheesemod:block/ham_raw_tall_grass_top" }
+    }
+}
