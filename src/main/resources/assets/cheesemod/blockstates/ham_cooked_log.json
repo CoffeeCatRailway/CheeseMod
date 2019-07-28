@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "axis=y": { "model": "cheesemod:block/ham_cooked_log" },
+        "axis=z": { "model": "cheesemod:block/ham_cooked_log", "x": 90  },
+        "axis=x": { "model": "cheesemod:block/ham_cooked_log", "x": 90, "y": 90 }
+    }
+}

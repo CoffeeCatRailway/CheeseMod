@@ -1,7 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "cheesemod:blocks/log_grilled_cheese_top",
-        "side": "cheesemod:blocks/log_grilled_cheese"
-    }
-}

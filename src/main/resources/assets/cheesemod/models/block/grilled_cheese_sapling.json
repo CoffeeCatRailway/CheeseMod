@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "cheesemod:block/grilled_cheese_sapling"
+    }
+}

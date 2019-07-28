@@ -1,6 +1,0 @@
-{
-    "parent": "block/cross",
-    "textures": {
-        "cross": "cheesemod:blocks/sapling_ham_raw"
-    }
-}

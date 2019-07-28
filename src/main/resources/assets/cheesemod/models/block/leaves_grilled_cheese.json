@@ -1,6 +1,0 @@
-{
-    "parent": "block/leaves",
-    "textures": {
-        "all": "cheesemod:blocks/leaves_grilled_cheese"
-    }
-}

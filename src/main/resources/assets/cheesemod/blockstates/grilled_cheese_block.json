@@ -1,7 +1,7 @@
 {
     "variants": {
-        "axis=y": { "model": "cheesemod:grilled_cheese_block" },
-        "axis=z": { "model": "cheesemod:grilled_cheese_block", "x": 90 },
-        "axis=x": { "model": "cheesemod:grilled_cheese_block", "x": 90, "y": 90 }
+        "axis=y": { "model": "cheesemod:block/grilled_cheese_block" },
+        "axis=z": { "model": "cheesemod:block/grilled_cheese_block", "x": 90 },
+        "axis=x": { "model": "cheesemod:block/grilled_cheese_block", "x": 90, "y": 90 }
     }
 }

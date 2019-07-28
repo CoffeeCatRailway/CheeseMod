@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:knives/iron",
+    "#forge:knives/cheese",
+    "#forge:knives/ham"
+  ]
+}

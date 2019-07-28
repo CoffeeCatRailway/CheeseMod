@@ -1,10 +1,10 @@
 {
     "parent": "block/orientable",
     "textures": {
-        "particle": "cheesemod:blocks/cheese_metal_block",
-        "0": "cheesemod:blocks/cheese_metal_block",
-        "1": "blocks/netherrack",
-        "2": "blocks/obsidian"
+        "particle": "cheesemod:block/cheese_metal_block",
+        "0": "cheesemod:block/cheese_metal_block",
+        "1": "block/netherrack",
+        "2": "block/obsidian"
     },
     "display": {
         "gui": {

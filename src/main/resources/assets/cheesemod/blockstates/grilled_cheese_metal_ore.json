@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "cheesemod:grilled_cheese_metal_ore" }
+        "": { "model": "cheesemod:block/grilled_cheese_metal_ore" }
     }
 }

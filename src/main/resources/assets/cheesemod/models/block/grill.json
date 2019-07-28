@@ -1,12 +1,12 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
     "textures": {
-        "particle": "blocks/iron_block",
-        "0": "blocks/concrete_gray",
-        "1": "blocks/iron_block",
-        "2": "blocks/netherrack",
-        "3": "blocks/anvil_base",
-        "4": "blocks/concrete_silver"
+        "particle": "block/iron_block",
+        "0": "block/concrete_gray",
+        "1": "block/iron_block",
+        "2": "block/netherrack",
+        "3": "block/anvil_base",
+        "4": "block/concrete_silver"
     },
     "elements": [
         {

@@ -1,6 +1,6 @@
 {
     "variants": {
-        "half=bottom": { "model": "cheesemod:ham_raw_block" },
-        "half=top":    { "model": "cheesemod:ham_raw_block" }
+        "half=bottom": { "model": "cheesemod:block/ham_raw_block" },
+        "half=top":    { "model": "cheesemod:block/ham_raw_block" }
     }
 }

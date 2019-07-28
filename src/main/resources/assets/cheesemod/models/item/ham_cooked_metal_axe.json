@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "cheesemod:items/ham_cooked_metal_axe"
+        "layer0": "cheesemod:item/ham_cooked_metal_axe"
     }
 }

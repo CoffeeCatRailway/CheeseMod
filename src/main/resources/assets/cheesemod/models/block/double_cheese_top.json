@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "cheesemod:blocks/cheese_block_top"
+        "all": "cheesemod:block/cheese_block_top"
     }
 }

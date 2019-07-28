@@ -1,14 +1,14 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "particle": "cheesemod:blocks/log_ham_raw",
-        "0": "cheesemod:blocks/log_ham_raw",
-        "1": "cheesemod:blocks/log_ham_raw_top",
-        "2": "cheesemod:blocks/planks_ham_cooked",
-        "3": "cheesemod:blocks/ham_raw_block_side",
-        "4": "cheesemod:blocks/ham_raw_block_top",
-        "5": "cheesemod:blocks/ham_cooked_block_top",
-        "6": "cheesemod:blocks/ham_cooked_block_side"
+        "particle": "cheesemod:block/log_ham_raw",
+        "0": "cheesemod:block/log_ham_raw",
+        "1": "cheesemod:block/log_ham_raw_top",
+        "2": "cheesemod:block/planks_ham_cooked",
+        "3": "cheesemod:block/ham_raw_block_side",
+        "4": "cheesemod:block/ham_raw_block_top",
+        "5": "cheesemod:block/ham_cooked_block_top",
+        "6": "cheesemod:block/ham_cooked_block_side"
     },
     "display": {
         "gui": {

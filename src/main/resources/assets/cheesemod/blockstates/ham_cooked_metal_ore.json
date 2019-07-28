@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "cheesemod:ham_cooked_metal_ore" }
+        "": { "model": "cheesemod:block/ham_cooked_metal_ore" }
     }
 }

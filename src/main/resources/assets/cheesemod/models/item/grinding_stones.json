@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "cheesemod:items/grinding_stones"
+        "layer0": "cheesemod:item/grinding_stones"
     }
 }

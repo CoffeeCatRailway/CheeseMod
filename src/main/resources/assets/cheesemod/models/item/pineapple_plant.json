@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "cheesemod:blocks/pineapple_stage0"
+        "layer0": "cheesemod:block/pineapple_stage0"
     }
 }

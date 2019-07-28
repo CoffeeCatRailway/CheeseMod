@@ -1,13 +1,13 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
     "textures": {
-        "particle": "cheesemod:blocks/cracker_maker_side",
-        "0": "cheesemod:blocks/cracker_maker_bottom",
-        "1": "cheesemod:blocks/cracker_maker_side",
-        "2": "cheesemod:blocks/cracker_maker_front",
-        "3": "cheesemod:blocks/cracker_maker_top",
-        "4": "minecraft:blocks/log_oak",
-        "5": "minecraft:blocks/log_oak_top"
+        "particle": "cheesemod:block/cracker_maker_side",
+        "0": "cheesemod:block/cracker_maker_bottom",
+        "1": "cheesemod:block/cracker_maker_side",
+        "2": "cheesemod:block/cracker_maker_front",
+        "3": "cheesemod:block/cracker_maker_top",
+        "4": "minecraft:block/log_oak",
+        "5": "minecraft:block/log_oak_top"
     },
     "elements": [
         {

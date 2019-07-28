@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "check_decay=true,decayable=true": { "model": "cheesemod:leaves_ham_raw" },
-        "check_decay=true,decayable=false": { "model": "cheesemod:leaves_ham_raw" },
-        "check_decay=false,decayable=true": { "model": "cheesemod:leaves_ham_raw" },
-        "check_decay=false,decayable=false": { "model": "cheesemod:leaves_ham_raw" }
-    }
-}

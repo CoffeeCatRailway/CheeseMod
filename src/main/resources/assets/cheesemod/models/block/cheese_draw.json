@@ -1,14 +1,14 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "particle": "cheesemod:blocks/log_cheese",
-        "0": "cheesemod:blocks/log_cheese",
-        "1": "cheesemod:blocks/log_cheese_top",
-        "2": "cheesemod:blocks/planks_grilled_cheese",
-        "3": "cheesemod:blocks/cheese_block_side",
-        "4": "cheesemod:blocks/cheese_block_top",
-        "5": "cheesemod:blocks/grilled_cheese_block_side",
-        "6": "cheesemod:blocks/grilled_cheese_block_top"
+        "particle": "cheesemod:block/log_cheese",
+        "0": "cheesemod:block/log_cheese",
+        "1": "cheesemod:block/log_cheese_top",
+        "2": "cheesemod:block/planks_grilled_cheese",
+        "3": "cheesemod:block/cheese_block_side",
+        "4": "cheesemod:block/cheese_block_top",
+        "5": "cheesemod:block/grilled_cheese_block_side",
+        "6": "cheesemod:block/grilled_cheese_block_top"
     },
     "display": {
         "gui": {

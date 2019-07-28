@@ -1,0 +1,14 @@
+{
+  "block.cheesemod.cheese_block": "Cheese Block",
+
+  "item.cheesemod.cheese_slice": "Cheese Slice",
+  "item.cheesemod.block_o_cheese": "Block O' Cheese",
+  "item.cheesemod.wooden_gear": "Wooden Gear",
+  "item.cheesemod.knife": "Knife",
+  "item.cheesemod.cheese_knife": "Cheese Knife",
+  "item.cheesemod.grilled_cheese_knife": "Grilled Cheese Knife",
+  "item.cheesemod.ham_raw_knife": "Ham Raw Knife",
+  "item.cheesemod.ham_cooked_knife": "Ham Cooked Knife",
+
+  "itemGroup.cheesemod": "Cheese Mod"
+}

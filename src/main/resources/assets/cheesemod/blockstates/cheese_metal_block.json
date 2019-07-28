@@ -1,5 +1,5 @@
 {
     "variants": {
-        "normal": { "model": "cheesemod:cheese_metal_block" }
+        "": { "model": "cheesemod:block/cheese_metal_block" }
     }
 }

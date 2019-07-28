@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "cheesemod:items/grilling_oil"
+        "layer0": "cheesemod:item/grilling_oil"
     }
 }

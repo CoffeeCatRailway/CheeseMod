@@ -1,8 +1,8 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "particle": "cheesemod:blocks/cheese_metal_block",
-        "0": "cheesemod:blocks/cheese_metal_block",
+        "particle": "cheesemod:block/cheese_metal_block",
+        "0": "cheesemod:block/cheese_metal_block",
         "1": "blocks/netherrack",
         "2": "blocks/obsidian"
     },

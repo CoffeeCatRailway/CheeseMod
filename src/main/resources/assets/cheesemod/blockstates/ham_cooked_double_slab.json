@@ -1,6 +1,6 @@
 {
     "variants": {
-        "half=bottom": { "model": "cheesemod:ham_cooked_block" },
-        "half=top":    { "model": "cheesemod:ham_cooked_block" }
+        "half=bottom": { "model": "cheesemod:block/ham_cooked_block" },
+        "half=top":    { "model": "cheesemod:block/ham_cooked_block" }
     }
 }

@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "cheesemod:items/smelting_oil"
+        "layer0": "cheesemod:item/smelting_oil"
     }
 }

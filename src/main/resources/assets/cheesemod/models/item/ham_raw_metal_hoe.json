@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "cheesemod:items/ham_raw_metal_hoe"
+        "layer0": "cheesemod:item/ham_raw_metal_hoe"
     }
 }
