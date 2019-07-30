@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "cheesemod:block/cheese_planks",
+        "top": "cheesemod:block/cheese_planks",
+        "side": "cheesemod:block/cheese_planks"
+    }
+}
