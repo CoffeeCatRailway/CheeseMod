@@ -1,9 +1,12 @@
 package coffeecatrailway.cheesemod;
 
+import coffeecatrailway.cheesemod.commands.ChezCommand;
 import coffeecatrailway.cheesemod.commands.ConfigCommand;
 import coffeecatrailway.cheesemod.core.ModBlocks;
 import coffeecatrailway.cheesemod.core.ModItems;
 import coffeecatrailway.cheesemod.world.ModWorldFeatures;
+import com.mojang.brigadier.CommandDispatcher;
+import net.minecraft.command.CommandSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -27,7 +30,6 @@ public class SideProxy {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModBlocks::registerAll);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModItems::registerAll);
 
-
         MinecraftForge.EVENT_BUS.addListener(SideProxy::serverStarting);
     }
 
@@ -38,8 +40,11 @@ public class SideProxy {
     }
 
     private static void serverStarting(FMLServerStartingEvent event) {
+        CommandDispatcher<CommandSource> dispatcher = event.getCommandDispatcher();
         if (CheeseMod.isDevBuild())
-            ConfigCommand.register(event.getCommandDispatcher());
+            ConfigCommand.register(dispatcher);
+        ChezCommand.register(dispatcher);
+
         CheeseMod.LOGGER.info("Commands registered");
     }
 
