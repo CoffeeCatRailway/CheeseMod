@@ -25,10 +25,11 @@ minecraft {
             workingDirectory project.file('run')
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                cheesemod {
                     source sourceSets.main
                 }
             }
@@ -38,10 +39,11 @@ minecraft {
             workingDirectory project.file('run')
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                cheesemod {
                     source sourceSets.main
                 }
             }
@@ -51,12 +53,13 @@ minecraft {
             workingDirectory project.file('run')
 
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'cheesemod', '--all', '--output', file('src/generated/resources/')
 
             mods {
-                examplemod {
+                cheesemod {
                     source sourceSets.main
                 }
             }
@@ -65,7 +68,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.14.4-28.0.13'
+    minecraft 'net.minecraftforge:forge:1.14.4-28.0.23'
 }
 
 jar {
