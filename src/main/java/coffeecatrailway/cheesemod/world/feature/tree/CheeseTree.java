@@ -1,5 +1,6 @@
 package coffeecatrailway.cheesemod.world.feature.tree;
 
+import coffeecatrailway.cheesemod.core.ModFeatures;
 import net.minecraft.block.trees.Tree;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
@@ -22,6 +23,6 @@ public class CheeseTree extends Tree {
     @Nullable
     @Override
     protected AbstractTreeFeature<NoFeatureConfig> getTreeFeature(Random random) {
-        return new CheeseTreeFeature(grilled, NoFeatureConfig::deserialize, true);
+        return grilled ? ModFeatures.GRILLED_CHEESE_TREE : ModFeatures.CHEESE_TREE;
     }
 }

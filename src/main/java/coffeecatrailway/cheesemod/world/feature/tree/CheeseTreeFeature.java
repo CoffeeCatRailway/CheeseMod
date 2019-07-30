@@ -6,7 +6,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.gen.IWorldGenerationReader;
-import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 
 import java.util.Random;
@@ -17,7 +16,7 @@ import java.util.function.Function;
  * @author CoffeeCatRailway
  * Created: 27/07/2019
  */
-public class CheeseTreeFeature extends AbstractTreeFeature<NoFeatureConfig> {
+public class CheeseTreeFeature extends TreeFeature<NoFeatureConfig> {
 
     private final int minTreeHeight;
     private final BlockState trunk;
@@ -68,7 +67,7 @@ public class CheeseTreeFeature extends AbstractTreeFeature<NoFeatureConfig> {
 
             if (!flag) {
                 return false;
-            } else if (isSoil(world, position.down(), getSapling()) && position.getY() < world.getMaxHeight() - i - 1) {
+            } else if (isSoil(world, position.down()) && position.getY() < world.getMaxHeight() - i - 1) {
                 this.setDirtAt(world, position.down(), position);
 
                 for (int l2 = position.getY() - 3 + i; l2 <= position.getY() + i; ++l2) {
@@ -90,7 +89,7 @@ public class CheeseTreeFeature extends AbstractTreeFeature<NoFeatureConfig> {
                     }
                 }
 
-                for(int i3 = 0; i3 < i; ++i3) {
+                for (int i3 = 0; i3 < i; ++i3) {
                     if (isAirOrLeaves(world, position.up(i3)) || func_214576_j(world, position.up(i3))) {
                         this.setLogState(changedBlocks, world, position.up(i3), this.trunk, mutableBoundingBox);
                     }

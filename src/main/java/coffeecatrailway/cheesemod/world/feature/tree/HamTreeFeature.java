@@ -6,7 +6,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.gen.IWorldGenerationReader;
-import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 
 import java.util.Random;
@@ -17,7 +16,7 @@ import java.util.function.Function;
  * @author CoffeeCatRailway
  * Created: 27/07/2019
  */
-public class HamTreeFeature extends AbstractTreeFeature<NoFeatureConfig> {
+public class HamTreeFeature extends TreeFeature<NoFeatureConfig> {
 
     private final BlockState trunk;
     private final BlockState leaf;

@@ -333,7 +333,7 @@ public class ModItems {
         return register(name, new Item(new Item.Properties().group(CheeseMod.GROUP_ITEMS).food(food).maxStackSize(stackSize)));
     }
 
-    private static <T extends Item> T register(String name, T item) {
+    private static <I extends Item> I register(String name, I item) {
         ResourceLocation id = new ResourceLocation(CheeseMod.MOD_ID, name);
         item.setRegistryName(id);
         ForgeRegistries.ITEMS.register(item);
