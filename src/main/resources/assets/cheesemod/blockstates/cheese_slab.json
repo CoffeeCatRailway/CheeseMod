@@ -1,6 +1,7 @@
 {
     "variants": {
-        "half=bottom": { "model": "cheesemod:block/half_slab_cheese" },
-        "half=top": { "model": "cheesemod:block/upper_slab_cheese" }
+        "type=bottom": { "model": "cheesemod:block/cheese_slab" },
+        "type=top": { "model": "cheesemod:block/cheese_slab_top" },
+        "type=double": { "model": "cheesemod:block/cheese_block" }
     }
 }

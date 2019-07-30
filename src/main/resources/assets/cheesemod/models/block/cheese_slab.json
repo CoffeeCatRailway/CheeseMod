@@ -1,5 +1,5 @@
 {
-    "parent": "block/half_slab",
+    "parent": "block/slab",
     "textures": {
         "bottom": "cheesemod:block/cheese_block_top",
         "top": "cheesemod:block/cheese_block_top",

@@ -1,6 +1,7 @@
 {
     "variants": {
-        "half=bottom": { "model": "cheesemod:block/half_slab_ham_cooked" },
-        "half=top": { "model": "cheesemod:block/upper_slab_ham_cooked" }
+        "type=bottom": { "model": "cheesemod:block/ham_cooked_slab" },
+        "type=top": { "model": "cheesemod:block/ham_cooked_slab_top" },
+        "type=double": { "model": "cheesemod:block/ham_cooked_block" }
     }
 }

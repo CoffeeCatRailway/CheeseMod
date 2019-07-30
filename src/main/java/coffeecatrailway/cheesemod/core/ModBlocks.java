@@ -111,11 +111,21 @@ public class ModBlocks {
     public static Block HAM_RAW_STAIRS;
     public static Block HAM_COOKED_STAIRS;
 
+    public static Block CHEESE_WOOD_STAIRS;
+    public static Block GRILLED_CHEESE_WOOD_STAIRS;
+    public static Block HAM_RAW_WOOD_STAIRS;
+    public static Block HAM_COOKED_WOOD_STAIRS;
+
     /// Slabs ///
     public static Block CHEESE_SLAB;
     public static Block GRILLED_CHEESE_SLAB;
     public static Block HAM_RAW_SLAB;
     public static Block HAM_COOKED_SLAB;
+
+    public static Block CHEESE_WOOD_SLAB;
+    public static Block GRILLED_CHEESE_WOOD_SLAB;
+    public static Block HAM_RAW_WOOD_SLAB;
+    public static Block HAM_COOKED_WOOD_SLAB;
 
     /// Food Makers ///
     public static Block GRILL;
@@ -224,8 +234,26 @@ public class ModBlocks {
         HAM_COOKED_TALL_GRASS = register("ham_cooked_tall_grass", new ModDoublePlantBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.PLANT)));
 
         /// Stairs ///
+        CHEESE_STAIRS = register("cheese_stairs", new ModStairsBlock(CHEESE_BLOCK.getDefaultState(), Block.Properties.from(CHEESE_BLOCK), true));
+        GRILLED_CHEESE_STAIRS = register("grilled_cheese_stairs", new ModStairsBlock(GRILLED_CHEESE_BLOCK.getDefaultState(), Block.Properties.from(GRILLED_CHEESE_BLOCK), true));
+        HAM_RAW_STAIRS = register("ham_raw_stairs", new ModStairsBlock(HAM_RAW_BLOCK.getDefaultState(), Block.Properties.from(HAM_RAW_BLOCK), true));
+        HAM_COOKED_STAIRS = register("ham_cooked_stairs", new ModStairsBlock(HAM_COOKED_BLOCK.getDefaultState(), Block.Properties.from(HAM_COOKED_BLOCK), true));
+
+        CHEESE_WOOD_STAIRS = register("cheese_wood_stairs", new ModStairsBlock(CHEESE_PLANKS.getDefaultState(), Block.Properties.from(CHEESE_PLANKS), false));
+        GRILLED_CHEESE_WOOD_STAIRS = register("grilled_cheese_wood_stairs", new ModStairsBlock(GRILLED_CHEESE_PLANKS.getDefaultState(), Block.Properties.from(GRILLED_CHEESE_PLANKS), false));
+        HAM_RAW_WOOD_STAIRS = register("ham_raw_wood_stairs", new ModStairsBlock(HAM_RAW_PLANKS.getDefaultState(), Block.Properties.from(HAM_RAW_PLANKS), false));
+        HAM_COOKED_WOOD_STAIRS = register("ham_cooked_wood_stairs", new ModStairsBlock(HAM_COOKED_PLANKS.getDefaultState(), Block.Properties.from(HAM_COOKED_PLANKS), false));
 
         /// Slabs ///
+        CHEESE_SLAB = register("cheese_slab", new ModSlabBlock(Block.Properties.from(CHEESE_BLOCK), true));
+        GRILLED_CHEESE_SLAB = register("grilled_cheese_slab", new ModSlabBlock(Block.Properties.from(GRILLED_CHEESE_BLOCK), true));
+        HAM_RAW_SLAB = register("ham_raw_slab", new ModSlabBlock(Block.Properties.from(HAM_RAW_BLOCK), true));
+        HAM_COOKED_SLAB = register("ham_cooked_slab", new ModSlabBlock(Block.Properties.from(HAM_COOKED_BLOCK), true));
+
+        CHEESE_WOOD_SLAB = register("cheese_wood_slab", new ModSlabBlock(Block.Properties.from(CHEESE_PLANKS), false));
+        GRILLED_CHEESE_WOOD_SLAB = register("grilled_cheese_wood_slab", new ModSlabBlock(Block.Properties.from(GRILLED_CHEESE_PLANKS), false));
+        HAM_RAW_WOOD_SLAB = register("ham_raw_wood_slab", new ModSlabBlock(Block.Properties.from(HAM_RAW_PLANKS), false));
+        HAM_COOKED_WOOD_SLAB = register("ham_cooked_wood_slab", new ModSlabBlock(Block.Properties.from(HAM_COOKED_PLANKS), false));
 
         /// Food Makers ///
 
