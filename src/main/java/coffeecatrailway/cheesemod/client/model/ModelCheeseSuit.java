@@ -64,115 +64,115 @@ public class ModelCheeseSuit extends BipedModel<LivingEntity> {
 
         // Hat
         cheese_hat1 = new RendererModel(this, 0, 0);
-        cheese_hat1.addBox(-4.0F, -8.5F, -4.0F, 9, 4, 9, (float) s);
-        cheese_hat1.setRotationPoint(-0.5F, -0.5F, -0.5F);
+        cheese_hat1.addBox(-4.0f, -8.5f, -4.0f, 9, 4, 9, (float) s);
+        cheese_hat1.setRotationPoint(-0.5f, -0.5f, -0.5f);
         cheese_hat1.mirror = true;
-        setRotation(cheese_hat1, 0F, 0F, 0F);
+        setRotation(cheese_hat1, 0f, 0f, 0f);
 
         cheese_hat2 = new RendererModel(this, 0, 0);
-        cheese_hat2.addBox(-4.0F, -9.5F, -4.0F, 9, 4, 9, (float) (s - s_binding));
-        cheese_hat2.setRotationPoint(-0.5F, -0.5F, -0.5F);
+        cheese_hat2.addBox(-4.0f, -10.0f, -4.0f, 9, 4, 9, (float) (s - s_binding));
+        cheese_hat2.setRotationPoint(-0.5f, -0.5f, -0.5f);
         cheese_hat2.mirror = true;
-        setRotation(cheese_hat2, 0F, 0F, 0F);
+        setRotation(cheese_hat2, 0f, 0f, 0f);
 
         // Right Arm
         shoulder_right = new RendererModel(this, 44, 0);
-        shoulder_right.addBox(1.0F, -2.0F, -2.5F, 5, 4, 5, (float) s);
-        shoulder_right.setRotationPoint(-5.0F, 0.0F, 0.0F);
+        shoulder_right.addBox(1.0f, -2.0f, -2.5f, 5, 4, 5, (float) s);
+        shoulder_right.setRotationPoint(-5.0f, 0.0f, 0.0f);
         shoulder_right.mirror = true;
-        setRotation(shoulder_right, 0.0F, 0.0F, -0.24434609527920614F);
+        setRotation(shoulder_right, 0.0f, 0.0f, -0.24434609527920614f);
 
         fist_right = new RendererModel(this, 44, 0);
-        fist_right.addBox(1.5F, 6.5F, -2.5F, 5, 4, 5, (float) s);
-        fist_right.setRotationPoint(-5.1F, 0.0F, 0.0F);
+        fist_right.addBox(1.5f, 6.5f, -2.5f, 5, 4, 5, (float) s);
+        fist_right.setRotationPoint(-5.1f, 0.0f, 0.0f);
         fist_right.mirror = true;
-        setRotation(fist_right, 0.0F, 0.0F, 0.0F);
+        setRotation(fist_right, 0.0f, 0.0f, 0.0f);
 
         binding_right = new RendererModel(this, 46, 13);
-        binding_right.addBox(7.5F, 2.0F, -0.5F, 1, 7, 1, (float) (s - s_binding));
-        binding_right.setRotationPoint(-5.0F, -2.0F, 0.0F);
+        binding_right.addBox(7.5f, 2.0f, -0.5f, 1, 7, 1, (float) (s - s_binding));
+        binding_right.setRotationPoint(-5.0f, -2.0f, 0.0f);
         binding_right.mirror = true;
-        setRotation(binding_right, 0.0F, 0.0F, 0.0F);
+        setRotation(binding_right, 0.0f, 0.0f, 0.0f);
 
         // Left Arm
         shoulder_left = new RendererModel(this, 44, 0);
-        shoulder_left.addBox(-6.0F, -2.0F, -2.5F, 5, 4, 5, (float) s);
-        shoulder_left.setRotationPoint(5.0F, 0.0F, 0.0F);
+        shoulder_left.addBox(-6.0f, -2.0f, -2.5f, 5, 4, 5, (float) s);
+        shoulder_left.setRotationPoint(5.0f, 0.0f, 0.0f);
         shoulder_left.mirror = true;
-        setRotation(shoulder_left, 0.0F, 0.0F, 0.24434609527920614F);
+        setRotation(shoulder_left, 0.0f, 0.0f, 0.24434609527920614f);
 
         fist_left = new RendererModel(this, 44, 0);
-        fist_left.addBox(-6.5F, 6.5F, -2.5F, 5, 4, 5, (float) s);
-        fist_left.setRotationPoint(5.1F, 0.0F, 0.0F);
+        fist_left.addBox(-6.5f, 6.5f, -2.5f, 5, 4, 5, (float) s);
+        fist_left.setRotationPoint(5.1f, 0.0f, 0.0f);
         fist_left.mirror = true;
-        setRotation(fist_left, 0.0F, 0.0F, 0.0F);
+        setRotation(fist_left, 0.0f, 0.0f, 0.0f);
 
         binding_left = new RendererModel(this, 46, 13);
-        binding_left.addBox(-6.0F, 2.0F, -0.5F, 1, 7, 1, (float) (s - s_binding));
-        binding_left.setRotationPoint(2.5F, -2.0F, 0.0F);
+        binding_left.addBox(-6.0f, 2.0f, -0.5f, 1, 7, 1, (float) (s - s_binding));
+        binding_left.setRotationPoint(2.5f, -2.0f, 0.0f);
         binding_left.mirror = true;
-        setRotation(binding_left, 0.0F, 0.0F, 0.0F);
+        setRotation(binding_left, 0.0f, 0.0f, 0.0f);
 
         // Chestplate
         binding_shoulder1 = new RendererModel(this, 40, 9);
-        binding_shoulder1.addBox(-5.0F, -1.0F, -1.0F, 10, 1, 2, (float) (s - s_binding));
-        binding_shoulder1.setRotationPoint(0.0F, 0.0F, 0.0F);
+        binding_shoulder1.addBox(-5.0f, -1.0f, -1.0f, 10, 1, 2, (float) (s - s_binding));
+        binding_shoulder1.setRotationPoint(0.0f, 0.0f, 0.0f);
         binding_shoulder1.mirror = true;
-        setRotation(binding_shoulder1, 0.0F, 0.0F, 0.0F);
+        setRotation(binding_shoulder1, 0.0f, 0.0f, 0.0f);
 
         binding_shoulder2 = new RendererModel(this, 50, 13);
-        binding_shoulder2.addBox(-0.5F, -1.1F, -2.1F, 1, 1, 4, (float) (s - s_binding));
-        binding_shoulder2.setRotationPoint(0.0F, 0.0F, 0.0F);
+        binding_shoulder2.addBox(-0.5f, -1.1f, -2.1f, 1, 1, 4, (float) (s - s_binding));
+        binding_shoulder2.setRotationPoint(0.0f, 0.0f, 0.0f);
         binding_shoulder2.mirror = true;
-        setRotation(binding_shoulder2, 0.0F, 0.0F, 0.0F);
+        setRotation(binding_shoulder2, 0.0f, 0.0f, 0.0f);
 
         binding_waist1 = new RendererModel(this, 42, 9);
-        binding_waist1.addBox(-4.0F, 5.0F, -1.0F, 9, 1, 1, (float) (s - s_binding));
-        binding_waist1.setRotationPoint(-0.5F, 0.0F, -1.5F);
+        binding_waist1.addBox(-4.0f, 5.0f, -1.0f, 9, 1, 1, (float) (s - s_binding));
+        binding_waist1.setRotationPoint(-0.5f, 0.0f, -1.5f);
         binding_waist1.mirror = true;
-        setRotation(binding_waist1, 0.0F, 0.0F, 0.0F);
+        setRotation(binding_waist1, 0.0f, 0.0f, 0.0f);
 
         binding_waist2 = new RendererModel(this, 42, 9);
-        binding_waist2.addBox(-4.0F, 5.0F, -1.0F, 9, 1, 1, (float) (s - s_binding));
-        binding_waist2.setRotationPoint(-0.5F, 0.0F, 2.5F);
+        binding_waist2.addBox(-4.0f, 5.0f, -1.0f, 9, 1, 1, (float) (s - s_binding));
+        binding_waist2.setRotationPoint(-0.5f, 0.0f, 2.5f);
         binding_waist2.mirror = true;
-        setRotation(binding_waist2, 0.0F, 0.0F, 0.0F);
+        setRotation(binding_waist2, 0.0f, 0.0f, 0.0f);
 
         binding_waist3 = new RendererModel(this, 51, 14);
-        binding_waist3.addBox(-4.0F, 5.0F, -1.0F, 1, 1, 3, (float) (s - s_binding));
-        binding_waist3.setRotationPoint(-0.5F, 0.0F, -0.5F);
+        binding_waist3.addBox(-4.0f, 5.0f, -1.0f, 1, 1, 3, (float) (s - s_binding));
+        binding_waist3.setRotationPoint(-0.5f, 0.0f, -0.5f);
         binding_waist3.mirror = true;
-        setRotation(binding_waist3, 0.0F, 0.0F, 0.0F);
+        setRotation(binding_waist3, 0.0f, 0.0f, 0.0f);
 
         binding_waist4 = new RendererModel(this, 51, 14);
-        binding_waist4.addBox(3.9F, 5.0F, -1.0F, 1, 1, 3, (float) (s - s_binding));
-        binding_waist4.setRotationPoint(-0.4F, 0.0F, -0.5F);
+        binding_waist4.addBox(3.9f, 5.0f, -1.0f, 1, 1, 3, (float) (s - s_binding));
+        binding_waist4.setRotationPoint(-0.4f, 0.0f, -0.5f);
         binding_waist4.mirror = true;
-        setRotation(binding_waist4, 0.0F, 0.0F, 0.0F);
+        setRotation(binding_waist4, 0.0f, 0.0f, 0.0f);
 
         binding_chest1 = new RendererModel(this, 60, 13);
-        binding_chest1.addBox(-4.0F, 0.0F, 0.0F, 1, 5, 1, (float) (s - s_binding));
-        binding_chest1.setRotationPoint(-0.5F, 0.0F, -0.5F);
+        binding_chest1.addBox(-4.0f, 0.0f, 0.0f, 1, 5, 1, (float) (s - s_binding));
+        binding_chest1.setRotationPoint(-0.5f, 0.0f, -0.5f);
         binding_chest1.mirror = true;
-        setRotation(binding_chest1, 0.0F, 0.0F, 0.0F);
+        setRotation(binding_chest1, 0.0f, 0.0f, 0.0f);
 
         binding_chest2 = new RendererModel(this, 60, 13);
-        binding_chest2.addBox(4.0F, 0.0F, 0.0F, 1, 5, 1, (float) (s - s_binding));
-        binding_chest2.setRotationPoint(-0.5F, 0.0F, -0.5F);
+        binding_chest2.addBox(4.0f, 0.0f, 0.0f, 1, 5, 1, (float) (s - s_binding));
+        binding_chest2.setRotationPoint(-0.5f, 0.0f, -0.5f);
         binding_chest2.mirror = true;
-        setRotation(binding_chest2, 0.0F, 0.0F, 0.0F);
+        setRotation(binding_chest2, 0.0f, 0.0f, 0.0f);
 
         binding_chest3 = new RendererModel(this, 60, 13);
-        binding_chest3.addBox(0.0F, -1.0F, -2.0F, 1, 6, 1, (float) (s - s_binding));
-        binding_chest3.setRotationPoint(-0.5F, 0.0F, -0.5F);
+        binding_chest3.addBox(0.0f, -1.0f, -2.0f, 1, 6, 1, (float) (s - s_binding));
+        binding_chest3.setRotationPoint(-0.5f, 0.0f, -0.5f);
         binding_chest3.mirror = true;
-        setRotation(binding_chest3, 0.0F, 0.0F, 0.0F);
+        setRotation(binding_chest3, 0.0f, 0.0f, 0.0f);
 
         binding_chest4 = new RendererModel(this, 60, 13);
-        binding_chest4.addBox(0.0F, -1.0F, 2.0F, 1, 6, 1, (float) (s - s_binding));
-        binding_chest4.setRotationPoint(-0.5F, 0.0F, -0.5F);
+        binding_chest4.addBox(0.0f, -1.0f, 2.0f, 1, 6, 1, (float) (s - s_binding));
+        binding_chest4.setRotationPoint(-0.5f, 0.0f, -0.5f);
         binding_chest4.mirror = true;
-        setRotation(binding_chest4, 0.0F, 0.0F, 0.0F);
+        setRotation(binding_chest4, 0.0f, 0.0f, 0.0f);
 
         // Hat
         this.hat.addChild(cheese_hat1);
@@ -254,7 +254,7 @@ public class ModelCheeseSuit extends BipedModel<LivingEntity> {
             }
         } else {
             if (entity.isSneaking())
-                GlStateManager.translatef(0.0F, 0.2F, 0.0F);
+                GlStateManager.translatef(0.0f, 0.2f, 0.0f);
             if (armorSlot == EquipmentSlotType.HEAD) {
                 this.hat.render(scale);
             }
