@@ -20,19 +20,17 @@ public class ModFeatures {
     /// Trees ///
     public static AbstractTreeFeature<NoFeatureConfig> CHEESE_TREE = new CheeseTreeFeature(false, NoFeatureConfig::deserialize, true);
     public static AbstractTreeFeature<NoFeatureConfig> GRILLED_CHEESE_TREE = new CheeseTreeFeature(true, NoFeatureConfig::deserialize, true);
-    public static AbstractTreeFeature<NoFeatureConfig> HAM_RAW_TREE;
-    public static AbstractTreeFeature<NoFeatureConfig> HAM_COOKED_TREE;
+    public static AbstractTreeFeature<NoFeatureConfig> HAM_RAW_TREE = new HamTreeFeature(false, NoFeatureConfig::deserialize, true);
+    public static AbstractTreeFeature<NoFeatureConfig> HAM_COOKED_TREE = new HamTreeFeature(true, NoFeatureConfig::deserialize, true);
 
     public static void registerAll(RegistryEvent.Register<Feature<?>> event) {
         if (!event.getName().equals(ForgeRegistries.FEATURES.getRegistryName())) return;
 
         /// Trees ///
-//        CHEESE_TREE = register("cheese_tree", new CheeseTreeFeature(false, NoFeatureConfig::deserialize, true));
-//        GRILLED_CHEESE_TREE = register("grilled_cheese_tree", new CheeseTreeFeature(true, NoFeatureConfig::deserialize, true));
         register("cheese_tree", CHEESE_TREE);
         register("grilled_cheese_tree", GRILLED_CHEESE_TREE);
-        HAM_RAW_TREE = register("ham_raw_tree", new HamTreeFeature(false, NoFeatureConfig::deserialize, true));
-        HAM_COOKED_TREE = register("ham_cooked_tree", new HamTreeFeature(true, NoFeatureConfig::deserialize, true));
+        register("ham_raw_tree", HAM_RAW_TREE);
+        register("ham_cooked_tree", HAM_COOKED_TREE);
 
         CheeseMod.LOGGER.info("Features registered");
     }

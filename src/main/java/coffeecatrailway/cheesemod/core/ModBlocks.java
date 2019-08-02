@@ -127,16 +127,16 @@ public class ModBlocks {
     public static Block HAM_RAW_WOOD_SLAB;
     public static Block HAM_COOKED_WOOD_SLAB;
 
-    /// Food Makers ///
-    public static Block GRILL;
-
-    public static Block CRACKER_MAKER;
-
     /// Drawers ///
     public static Block CHEESE_DRAW;
     public static Block GRILLED_CHEESE_DRAW;
     public static Block HAM_RAW_DRAW;
     public static Block HAM_COOKED_DRAW;
+
+    /// Food Makers ///
+    public static Block GRILL;
+
+    public static Block CRACKER_MAKER;
 
     /// Other ///
     public static Block PINEAPPLE;
@@ -255,9 +255,10 @@ public class ModBlocks {
         HAM_RAW_WOOD_SLAB = register("ham_raw_wood_slab", new ModSlabBlock(Block.Properties.from(HAM_RAW_PLANKS), false));
         HAM_COOKED_WOOD_SLAB = register("ham_cooked_wood_slab", new ModSlabBlock(Block.Properties.from(HAM_COOKED_PLANKS), false));
 
-        /// Food Makers ///
-
         /// Drawers ///
+        CHEESE_DRAW = register("cheese_draw", new FoodDraw(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD), "cheese"));
+
+        /// Food Makers ///
 
         /// Other ///
         PINEAPPLE = register("pineapple_plant", new PineappleBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)), null);
