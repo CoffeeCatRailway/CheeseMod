@@ -1,9 +1,8 @@
-package coffeecatrailway.cheesemod.core;
+package coffeecatrailway.cheesemod.core.registries;
 
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.world.feature.tree.CheeseTreeFeature;
 import coffeecatrailway.cheesemod.world.feature.tree.HamTreeFeature;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
@@ -36,8 +35,7 @@ public class ModFeatures {
     }
 
     private static <C extends IFeatureConfig, F extends Feature<C>> F register(String name, F feature) {
-        ResourceLocation id = new ResourceLocation(CheeseMod.MOD_ID, name);
-        feature.setRegistryName(id);
+        feature.setRegistryName(CheeseMod.getLocation(name));
         ForgeRegistries.FEATURES.register(feature);
         return feature;
     }

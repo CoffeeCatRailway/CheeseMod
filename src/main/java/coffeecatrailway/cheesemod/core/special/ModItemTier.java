@@ -1,6 +1,6 @@
 package coffeecatrailway.cheesemod.core.special;
 
-import coffeecatrailway.cheesemod.core.ModItems;
+import coffeecatrailway.cheesemod.core.registries.ModItems;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyLoadBase;

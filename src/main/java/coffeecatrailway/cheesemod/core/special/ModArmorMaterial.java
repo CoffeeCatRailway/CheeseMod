@@ -1,6 +1,6 @@
 package coffeecatrailway.cheesemod.core.special;
 
-import coffeecatrailway.cheesemod.core.ModItems;
+import coffeecatrailway.cheesemod.core.registries.ModItems;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.crafting.Ingredient;
@@ -19,26 +19,26 @@ import java.util.function.Supplier;
 public enum ModArmorMaterial implements IArmorMaterial {
 
     /// Cheese ///
-    CHEESE("cheese", 17 ,new int[] { 2, 4, 4, 2 }, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.5f, () -> {
+    CHEESE("cheese", 17, new int[]{2, 4, 4, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.5f, () -> {
         return Ingredient.fromItems(ModItems.CHEESE_METAL_INGOT);
     }),
-    GRILLED_CHEESE("grilled_cheese", 20, new int[] { 4, 4, 4, 2 }, 11, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.8f, () -> {
+    GRILLED_CHEESE("grilled_cheese", 20, new int[]{4, 4, 4, 2}, 11, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.8f, () -> {
         return Ingredient.fromItems(ModItems.GRILLED_CHEESE_METAL_INGOT);
     }),
 
     /// Ham ///
-    HAM_RAW("ham_raw", 10, new int[] { 2, 2, 3, 2 }, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.3f, () -> {
+    HAM_RAW("ham_raw", 10, new int[]{2, 2, 3, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.3f, () -> {
         return Ingredient.fromItems(ModItems.CHEESE_METAL_INGOT);
     }),
-    HAM_COOKED("ham_cooked", 10, new int[] { 3, 3, 4, 3 }, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.4f, () -> {
+    HAM_COOKED("ham_cooked", 10, new int[]{3, 3, 4, 3}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.4f, () -> {
         return Ingredient.fromItems(ModItems.GRILLED_CHEESE_METAL_INGOT);
     }),
 
     /// Food Suit ///
-    CHEESE_SUIT("cheese_suit", 15, new int[] { 2, 1, 1, 1 }, 9, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.5f, () -> {
+    CHEESE_SUIT("cheese_suit", 15, new int[]{2, 1, 1, 1}, 9, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.5f, () -> {
         return Ingredient.fromItems(ModItems.CHEESE_SLICE);
     }),
-    HAM_SUIT("ham_suit", 15, new int[] { 2, 2, 2, 2 }, 9, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.5f, () -> {
+    HAM_SUIT("ham_suit", 15, new int[]{2, 2, 2, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.5f, () -> {
         return Ingredient.fromItems(ModItems.CHEESE_SLICE);
     });
 

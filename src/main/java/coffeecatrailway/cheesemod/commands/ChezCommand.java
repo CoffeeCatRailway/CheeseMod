@@ -1,6 +1,6 @@
 package coffeecatrailway.cheesemod.commands;
 
-import coffeecatrailway.cheesemod.core.ModItems;
+import coffeecatrailway.cheesemod.core.registries.ModItems;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.minecraft.command.CommandSource;

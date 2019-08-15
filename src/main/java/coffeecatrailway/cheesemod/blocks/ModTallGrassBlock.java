@@ -1,6 +1,6 @@
 package coffeecatrailway.cheesemod.blocks;
 
-import coffeecatrailway.cheesemod.core.ModBlocks;
+import coffeecatrailway.cheesemod.core.registries.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TallGrassBlock;

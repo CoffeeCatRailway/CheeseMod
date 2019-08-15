@@ -1,9 +1,8 @@
-package coffeecatrailway.cheesemod.core;
+package coffeecatrailway.cheesemod.core.registries;
 
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.world.biomes.FoodBiome;
 import net.minecraft.block.Blocks;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.event.RegistryEvent;
@@ -89,8 +88,7 @@ public class ModBiomes {
     }
 
     private static <B extends Biome> B register(String name, B biome) {
-        ResourceLocation id = new ResourceLocation(CheeseMod.MOD_ID, name);
-        biome.setRegistryName(id);
+        biome.setRegistryName(CheeseMod.getLocation(name));
         ForgeRegistries.BIOMES.register(biome);
         return biome;
     }

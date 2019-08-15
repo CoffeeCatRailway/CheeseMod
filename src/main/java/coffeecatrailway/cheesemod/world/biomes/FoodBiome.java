@@ -1,6 +1,6 @@
 package coffeecatrailway.cheesemod.world.biomes;
 
-import coffeecatrailway.cheesemod.core.ModBlocks;
+import coffeecatrailway.cheesemod.core.registries.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;

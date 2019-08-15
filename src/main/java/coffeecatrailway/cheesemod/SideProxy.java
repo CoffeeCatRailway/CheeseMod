@@ -2,7 +2,8 @@ package coffeecatrailway.cheesemod;
 
 import coffeecatrailway.cheesemod.commands.ChezCommand;
 import coffeecatrailway.cheesemod.commands.ConfigCommand;
-import coffeecatrailway.cheesemod.core.*;
+import coffeecatrailway.cheesemod.commands.FoodDimensionCommand;
+import coffeecatrailway.cheesemod.core.registries.*;
 import coffeecatrailway.cheesemod.world.ModWorldFeatures;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandSource;
@@ -30,8 +31,18 @@ public class SideProxy {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModBlocks::registerAll);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModItems::registerAll);
 
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModTileEntityTypes::registerAll);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModContainerTypes::registerAll);
+
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModFeatures::registerAll);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModBiomes::registerAll);
+
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModDimensions::registerDimensions);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModDimensions::registerChunkGeneratorTypes);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModDimensions::registerBiomeProviderTypes);
+
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModStats::registerAll);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModRecipeTypes::registerAll);
 
         MinecraftForge.EVENT_BUS.addListener(SideProxy::serverStarting);
     }
@@ -46,6 +57,7 @@ public class SideProxy {
         CommandDispatcher<CommandSource> dispatcher = event.getCommandDispatcher();
         if (CheeseMod.isDevBuild()) {
             ConfigCommand.register(dispatcher);
+            FoodDimensionCommand.register(dispatcher);
         }
         ChezCommand.register(dispatcher);
 
