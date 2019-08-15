@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "cheesemod:block/ham_cooked_draw" },
+        "facing=south": { "model": "cheesemod:block/ham_cooked_draw", "y": 180 },
+        "facing=west":  { "model": "cheesemod:block/ham_cooked_draw", "y": 270 },
+        "facing=east":  { "model": "cheesemod:block/ham_cooked_draw", "y": 90 }
+    }
+}
