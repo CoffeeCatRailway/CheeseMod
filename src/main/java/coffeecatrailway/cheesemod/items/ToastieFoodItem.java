@@ -20,7 +20,7 @@ public class ToastieFoodItem extends Item {
     private boolean grilled = false;
 
     public ToastieFoodItem(Food food, int stackSize) {
-        super(new Item.Properties().group(CheeseMod.GROUP_ITEMS).food(food).maxStackSize(stackSize));
+        super(new Item.Properties().group(CheeseMod.GROUP_FOODS).food(food).maxStackSize(stackSize));
     }
 
     @Override

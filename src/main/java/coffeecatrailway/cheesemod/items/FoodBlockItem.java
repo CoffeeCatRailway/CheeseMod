@@ -16,7 +16,7 @@ import org.apache.commons.lang3.tuple.Pair;
 public class FoodBlockItem extends BlockItem {
 
     public FoodBlockItem(Block block, Food food, boolean grilled) {
-        super(block, new Item.Properties().group(CheeseMod.GROUP_ITEMS).food(genBlockFood(food, grilled)));
+        super(block, new Item.Properties().group(CheeseMod.GROUP_ALL).food(genBlockFood(food, grilled)));
     }
 
     private static Food genBlockFood(Food food, boolean grilled) {
