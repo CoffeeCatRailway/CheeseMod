@@ -1,6 +1,5 @@
 package coffeecatrailway.cheesemod;
 
-import coffeecatrailway.cheesemod.CheeseMod;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
 import net.minecraftforge.common.ForgeConfigSpec;
@@ -23,6 +22,7 @@ public class ModConfig {
     /// Properties ///
     public static ForgeConfigSpec.BooleanValue playerLoggedIn;
     public static ForgeConfigSpec.BooleanValue stickyFoodBlock;
+
     static {
         playerLoggedIn = BUILDER.comment("If false it means the player has not logged in before")
                 .define(CheeseMod.MOD_ID + ".loggedIn", false);
@@ -39,9 +39,7 @@ public class ModConfig {
     public static class Modifiers {
 
         public ForgeConfigSpec.DoubleValue grilledFoodMultiplier;
-
-        public ForgeConfigSpec.IntValue grillSpeedMultiplier;
-        public ForgeConfigSpec.IntValue crackerMakerSpeedMultiplier;
+        public ForgeConfigSpec.IntValue grillSpeed;
 
         public ForgeConfigSpec.DoubleValue cheeseSuitScale;
         public ForgeConfigSpec.DoubleValue cheeseSuitBindingScale;
@@ -55,13 +53,8 @@ public class ModConfig {
             grilledFoodMultiplier = config.comment("The amount of how much the saturation changes when grilled")
                     .defineInRange(CheeseMod.MOD_ID + ".modifier.grilledSaturation", 1.5d, 0.5d, 10.0d);
 
-            int foodMakerMin = 1;
-            int foodMakerMax = 20;
-            grillSpeedMultiplier = config.comment("Speed multiplier for the grill")
-                    .defineInRange(CheeseMod.MOD_ID + ".modifier.grillSpeed", 5, foodMakerMin, foodMakerMax);
-
-            crackerMakerSpeedMultiplier = config.comment("Speed multiplier for the cracker maker")
-                    .defineInRange(CheeseMod.MOD_ID + ".modifier.crackerMakerSpeed", 5, foodMakerMin, foodMakerMax);
+            grillSpeed = config.comment("Speed multiplier for the grill")
+                    .defineInRange(CheeseMod.MOD_ID + ".modifier.grillSpeed", 5, 1, 20);
 
             double minScale = (double) 0.0f;
             double maxScale = (double) 10.0f;
