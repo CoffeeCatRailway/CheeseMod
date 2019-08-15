@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north": { "model": "cheesemod:block/cracker_maker", "y": 180 },
-        "facing=south": { "model": "cheesemod:block/cracker_maker" },
-        "facing=west":  { "model": "cheesemod:block/cracker_maker", "y": 90 },
-        "facing=east":  { "model": "cheesemod:block/cracker_maker", "y": 270 }
-    }
-}

@@ -1,4 +1,4 @@
-package coffeecatrailway.cheesemod.core;
+package coffeecatrailway.cheesemod.core.registries;
 
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.blocks.*;
@@ -11,7 +11,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -133,12 +132,9 @@ public class ModBlocks {
     public static Block HAM_RAW_DRAW;
     public static Block HAM_COOKED_DRAW;
 
-    /// Food Makers ///
+    /// Other ///
     public static Block GRILL;
 
-    public static Block CRACKER_MAKER;
-
-    /// Other ///
     public static Block PINEAPPLE;
     public static Block CHEESE_CAKE;
 
@@ -256,29 +252,30 @@ public class ModBlocks {
         HAM_COOKED_WOOD_SLAB = register("ham_cooked_wood_slab", new ModSlabBlock(Block.Properties.from(HAM_COOKED_PLANKS), false));
 
         /// Drawers ///
-        CHEESE_DRAW = register("cheese_draw", new FoodDraw(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD), "cheese"));
-
-        /// Food Makers ///
+        CHEESE_DRAW = register("cheese_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
+        GRILLED_CHEESE_DRAW = register("grilled_cheese_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
+        HAM_RAW_DRAW = register("ham_raw_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
+        HAM_COOKED_DRAW = register("ham_cooked_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
 
         /// Other ///
+        GRILL = register("grill", new GrillBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.5F).lightValue(13)));
+
         PINEAPPLE = register("pineapple_plant", new PineappleBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)), null);
         CHEESE_CAKE = register("cheese_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
 
         CheeseMod.LOGGER.info("Blocks registered");
     }
 
-    private static <T extends Block> T register(String name, T block) {
-        BlockItem item = new BlockItem(block, new Item.Properties().group(CheeseMod.GROUP_ITEMS));
+    private static <B extends Block> B register(String name, B block) {
+        BlockItem item = new BlockItem(block, new Item.Properties().group(CheeseMod.GROUP_ALL));
         return register(name, block, item);
     }
 
-    private static <T extends Block> T register(String name, T block, @Nullable BlockItem item) {
-        ResourceLocation id = new ResourceLocation(CheeseMod.MOD_ID, name);
-        block.setRegistryName(id);
+    private static <B extends Block> B register(String name, B block, @Nullable BlockItem item) {
+        block.setRegistryName(CheeseMod.getLocation(name));
         ForgeRegistries.BLOCKS.register(block);
-        if (item != null) {
+        if (item != null)
             ModItems.BLOCKS_TO_REGISTER.put(name, item);
-        }
         return block;
     }
 }
