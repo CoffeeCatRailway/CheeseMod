@@ -10,8 +10,7 @@ import net.minecraft.item.*;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author CoffeeCatRailway
@@ -161,15 +160,14 @@ public class ModItems {
     public static Item PIZZA_CHEESE_HAM_PINEAPPLE_COOKED;
 
     /// Other ///
-    public static Item GRILLING_OIL;
-    public static Item SMELTING_OIL;
-
     public static Item CHEESE_BIT;
     public static Item HAM_BIT;
 
     public static Item WOODEN_GEAR;
 
+    /* Registering */
     static final Map<String, BlockItem> BLOCKS_TO_REGISTER = new LinkedHashMap<>();
+    public static final List<Item> FOODS = new ArrayList<>();
 
     public static void registerAll(RegistryEvent.Register<Item> event) {
         if (!event.getName().equals(ForgeRegistries.ITEMS.getRegistryName())) return;
@@ -326,7 +324,9 @@ public class ModItems {
     }
 
     private static Item registerFood(String name, Food food, int stackSize) {
-        return register(name, new Item(new Item.Properties().group(CheeseMod.GROUP_FOODS).food(food).maxStackSize(stackSize)));
+        Item item = register(name, new Item(new Item.Properties().group(CheeseMod.GROUP_FOODS).food(food).maxStackSize(stackSize)));
+        FOODS.add(item);
+        return item;
     }
 
     private static <I extends Item> I register(String name, I item) {
