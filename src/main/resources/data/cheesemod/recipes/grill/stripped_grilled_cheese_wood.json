@@ -1,0 +1,10 @@
+{
+  "type": "cheesemod:grilling",
+  "ingredient": {
+    "item": "cheesemod:stripped_cheese_wood"
+  },
+  "result": "cheesemod:stripped_grilled_cheese_wood",
+  "experience": 0.7,
+  "cookingtime": 125,
+  "oil": 6
+}

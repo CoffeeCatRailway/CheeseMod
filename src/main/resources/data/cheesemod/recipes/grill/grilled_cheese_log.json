@@ -1,0 +1,10 @@
+{
+  "type": "cheesemod:grilling",
+  "ingredient": {
+    "item": "cheesemod:cheese_log"
+  },
+  "result": "cheesemod:grilled_cheese_log",
+  "experience": 0.7,
+  "cookingtime": 125,
+  "oil": 6
+}

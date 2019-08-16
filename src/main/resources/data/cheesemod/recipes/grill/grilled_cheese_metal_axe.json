@@ -1,0 +1,10 @@
+{
+  "type": "cheesemod:grilling",
+  "ingredient": {
+    "item": "cheesemod:cheese_metal_axe"
+  },
+  "result": "cheesemod:grilled_cheese_metal_axe",
+  "experience": 0.35,
+  "cookingtime": 110,
+  "oil": 6
+}

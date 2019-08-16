@@ -1,0 +1,10 @@
+{
+  "type": "cheesemod:grilling",
+  "ingredient": {
+    "item": "cheesemod:toastie_cheese"
+  },
+  "result": "cheesemod:toastie_cheese_grilled",
+  "experience": 0.25,
+  "cookingtime": 60,
+  "oil": 6
+}

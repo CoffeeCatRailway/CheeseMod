@@ -1,0 +1,10 @@
+{
+  "type": "cheesemod:grilling",
+  "ingredient": {
+    "item": "cheesemod:pizza_cheese_ham"
+  },
+  "result": "cheesemod:pizza_cheese_ham_cooked",
+  "experience": 0.25,
+  "cookingtime": 65,
+  "oil": 7
+}

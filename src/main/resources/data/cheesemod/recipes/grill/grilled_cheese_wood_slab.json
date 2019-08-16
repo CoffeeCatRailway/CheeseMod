@@ -1,0 +1,10 @@
+{
+  "type": "cheesemod:grilling",
+  "ingredient": {
+    "item": "cheesemod:cheese_wood_slab"
+  },
+  "result": "cheesemod:grilled_cheese_wood_slab",
+  "experience": 0.25,
+  "cookingtime": 60,
+  "oil": 3
+}

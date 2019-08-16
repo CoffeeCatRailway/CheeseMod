@@ -1,0 +1,10 @@
+{
+  "type": "cheesemod:grilling",
+  "ingredient": {
+    "item": "cheesemod:cracker_ham"
+  },
+  "result": "cheesemod:cracker_ham_grilled",
+  "experience": 0.1,
+  "cookingtime": 50,
+  "oil": 4
+}
