@@ -193,12 +193,12 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
                 if (this.isBurning() && this.canSmelt(iRecipe)) {
                     this.cookTime += ModConfig.MODIFIERS.grillSpeed.get();
                     if (this.cookTime >= this.cookTimeTotal) {
-                        this.cookTime = 0;
-                        this.cookTimeTotal = this.getCookTimeTotal();
-                        this.smeltRecipe(iRecipe);
                         this.oil -= this.getOil();
                         if (this.oil < 0)
                             this.oil = 0;
+                        this.smeltRecipe(iRecipe);
+                        this.cookTime = 0;
+                        this.cookTimeTotal = this.getCookTimeTotal();
                         flag1 = true;
                     }
                 } else
