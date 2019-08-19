@@ -1,13 +1,13 @@
 {
-    "parent": "cheesemod:block/food_draw",
-    "textures": {
-        "particle": "cheesemod:block/cheese_log_side",
-        "logSide": "cheesemod:block/cheese_log_side",
-        "logTop": "cheesemod:block/cheese_log_top",
-        "planks": "cheesemod:block/grilled_cheese_planks",
-        "foodBlock1Side": "cheesemod:block/cheese_block_side",
-        "foodBlock1Top": "cheesemod:block/cheese_block_top",
-        "foodBlock2Side": "cheesemod:block/grilled_cheese_block_side",
-        "foodBlock2Top": "cheesemod:block/grilled_cheese_block_top"
-    }
+  "parent": "cheesemod:block/food_draw",
+  "textures": {
+    "particle": "cheesemod:block/cheese_log_side",
+    "logSide": "cheesemod:block/cheese_log_side",
+    "logTop": "cheesemod:block/cheese_log_top",
+    "planks": "cheesemod:block/grilled_cheese_planks",
+    "foodBlock1Side": "cheesemod:block/cheese_block_side",
+    "foodBlock1Top": "cheesemod:block/cheese_block_top",
+    "foodBlock2Side": "cheesemod:block/grilled_cheese_block_side",
+    "foodBlock2Top": "cheesemod:block/grilled_cheese_block_top"
+  }
 }

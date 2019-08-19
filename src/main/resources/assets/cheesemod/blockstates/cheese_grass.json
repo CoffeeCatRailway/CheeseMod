@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "cheesemod:block/cheese_grass" }
+  "variants": {
+    "": {
+      "model": "cheesemod:block/cheese_grass"
     }
+  }
 }

@@ -1,7 +1,13 @@
 {
-    "variants": {
-        "type=bottom": { "model": "cheesemod:block/grilled_cheese_slab" },
-        "type=top": { "model": "cheesemod:block/grilled_cheese_slab_top" },
-        "type=double": { "model": "cheesemod:block/grilled_cheese_block" }
+  "variants": {
+    "type=bottom": {
+      "model": "cheesemod:block/grilled_cheese_slab"
+    },
+    "type=top": {
+      "model": "cheesemod:block/grilled_cheese_slab_top"
+    },
+    "type=double": {
+      "model": "cheesemod:block/grilled_cheese_block"
     }
+  }
 }

@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "cheesemod:block/grilled_cheese_leaves" }
+  "variants": {
+    "": {
+      "model": "cheesemod:block/grilled_cheese_leaves"
     }
+  }
 }

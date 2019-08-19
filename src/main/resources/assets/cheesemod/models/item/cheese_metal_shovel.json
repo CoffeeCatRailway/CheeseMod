@@ -1,6 +1,6 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "cheesemod:item/cheese_metal_shovel"
-    }
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "cheesemod:item/cheese_metal_shovel"
+  }
 }

@@ -1,7 +1,7 @@
 {
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "cheesemod:block/ham_raw_log_top",
-        "side": "cheesemod:block/ham_raw_log_side"
-    }
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "cheesemod:block/ham_raw_log_top",
+    "side": "cheesemod:block/ham_raw_log_side"
+  }
 }

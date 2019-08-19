@@ -1,6 +1,6 @@
 {
-    "parent": "block/cross",
-    "textures": {
-        "cross": "cheesemod:block/ham_cooked_sapling"
-    }
+  "parent": "block/cross",
+  "textures": {
+    "cross": "cheesemod:block/ham_cooked_sapling"
+  }
 }

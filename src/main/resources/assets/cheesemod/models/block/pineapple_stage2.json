@@ -1,6 +1,6 @@
 {
-    "parent": "block/cross",
-    "textures": {
-        "cross": "cheesemod:block/pineapple_stage2"
-    }
+  "parent": "block/cross",
+  "textures": {
+    "cross": "cheesemod:block/pineapple_stage2"
+  }
 }

@@ -1,7 +1,13 @@
 {
-    "variants": {
-        "type=bottom": { "model": "cheesemod:block/cheese_slab" },
-        "type=top": { "model": "cheesemod:block/cheese_slab_top" },
-        "type=double": { "model": "cheesemod:block/cheese_block" }
+  "variants": {
+    "type=bottom": {
+      "model": "cheesemod:block/cheese_slab"
+    },
+    "type=top": {
+      "model": "cheesemod:block/cheese_slab_top"
+    },
+    "type=double": {
+      "model": "cheesemod:block/cheese_block"
     }
+  }
 }

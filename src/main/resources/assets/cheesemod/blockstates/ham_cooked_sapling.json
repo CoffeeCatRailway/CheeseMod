@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "cheesemod:block/ham_cooked_sapling" }
+    "": {
+      "model": "cheesemod:block/ham_cooked_sapling"
+    }
   }
 }

@@ -136,7 +136,11 @@ public class ModBlocks {
     public static Block GRILL;
 
     public static Block PINEAPPLE;
+
     public static Block CHEESE_CAKE;
+    public static Block GRILLED_CHEESE_CAKE;
+    public static Block HAM_RAW_CAKE;
+    public static Block HAM_COOKED_CAKE;
 
     public static void registerAll(RegistryEvent.Register<Block> event) {
         if (!event.getName().equals(ForgeRegistries.BLOCKS.getRegistryName())) return;
@@ -261,7 +265,11 @@ public class ModBlocks {
         GRILL = register("grill", new GrillBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.5F).lightValue(13)));
 
         PINEAPPLE = register("pineapple_plant", new PineappleBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)), null);
+
         CHEESE_CAKE = register("cheese_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
+        GRILLED_CHEESE_CAKE = register("grilled_cheese_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
+        HAM_RAW_CAKE = register("ham_raw_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
+        HAM_COOKED_CAKE = register("ham_cooked_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
 
         CheeseMod.LOGGER.info("Blocks registered");
     }

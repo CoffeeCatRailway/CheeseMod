@@ -1,11 +1,24 @@
 {
-    "variants": {
-        "snowy=false": [
-			{ "model": "cheesemod:block/grilled_cheese_grass_block" },
-			{ "model": "cheesemod:block/grilled_cheese_grass_block", "y": 90 },
-			{ "model": "cheesemod:block/grilled_cheese_grass_block", "y": 180 },
-			{ "model": "cheesemod:block/grilled_cheese_grass_block", "y": 270 }
-		],
-        "snowy=true":  { "model": "minecraft:block/grass_block_snow" }
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "cheesemod:block/grilled_cheese_grass_block"
+      },
+      {
+        "model": "cheesemod:block/grilled_cheese_grass_block",
+        "y": 90
+      },
+      {
+        "model": "cheesemod:block/grilled_cheese_grass_block",
+        "y": 180
+      },
+      {
+        "model": "cheesemod:block/grilled_cheese_grass_block",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "minecraft:block/grass_block_snow"
     }
+  }
 }

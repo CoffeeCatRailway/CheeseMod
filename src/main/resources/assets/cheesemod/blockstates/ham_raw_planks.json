@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "cheesemod:block/ham_raw_planks" }
+  "variants": {
+    "": {
+      "model": "cheesemod:block/ham_raw_planks"
     }
+  }
 }

@@ -1,8 +1,19 @@
 {
-    "variants": {
-        "facing=north": { "model": "cheesemod:block/grill", "y": 180 },
-        "facing=south": { "model": "cheesemod:block/grill" },
-        "facing=west":  { "model": "cheesemod:block/grill", "y": 90 },
-        "facing=east":  { "model": "cheesemod:block/grill", "y": 270 }
+  "variants": {
+    "facing=north": {
+      "model": "cheesemod:block/grill",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "cheesemod:block/grill"
+    },
+    "facing=west": {
+      "model": "cheesemod:block/grill",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "cheesemod:block/grill",
+      "y": 270
     }
+  }
 }

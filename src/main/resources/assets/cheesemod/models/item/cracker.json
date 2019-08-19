@@ -1,6 +1,6 @@
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "cheesemod:item/cracker"
-    }
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cheesemod:item/cracker"
+  }
 }

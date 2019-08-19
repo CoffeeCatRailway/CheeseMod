@@ -1,8 +1,8 @@
 {
-    "parent": "block/slab",
-    "textures": {
-        "bottom": "cheesemod:block/grilled_cheese_planks",
-        "top": "cheesemod:block/grilled_cheese_planks",
-        "side": "cheesemod:block/grilled_cheese_planks"
-    }
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "cheesemod:block/grilled_cheese_planks",
+    "top": "cheesemod:block/grilled_cheese_planks",
+    "side": "cheesemod:block/grilled_cheese_planks"
+  }
 }

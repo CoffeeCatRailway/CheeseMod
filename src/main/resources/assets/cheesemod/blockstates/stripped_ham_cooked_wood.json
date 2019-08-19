@@ -1,7 +1,16 @@
 {
-    "variants": {
-        "axis=y": { "model": "cheesemod:block/stripped_ham_cooked_wood" },
-        "axis=z": { "model": "cheesemod:block/stripped_ham_cooked_wood", "x": 90  },
-        "axis=x": { "model": "cheesemod:block/stripped_ham_cooked_wood", "x": 90, "y": 90 }
+  "variants": {
+    "axis=y": {
+      "model": "cheesemod:block/stripped_ham_cooked_wood"
+    },
+    "axis=z": {
+      "model": "cheesemod:block/stripped_ham_cooked_wood",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "cheesemod:block/stripped_ham_cooked_wood",
+      "x": 90,
+      "y": 90
     }
+  }
 }

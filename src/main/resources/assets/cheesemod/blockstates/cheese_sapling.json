@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "cheesemod:block/cheese_sapling" }
+    "": {
+      "model": "cheesemod:block/cheese_sapling"
+    }
   }
 }

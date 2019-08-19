@@ -1,6 +1,6 @@
 {
-    "parent": "block/leaves",
-    "textures": {
-        "all": "cheesemod:block/ham_raw_leaves"
-    }
+  "parent": "block/leaves",
+  "textures": {
+    "all": "cheesemod:block/ham_raw_leaves"
+  }
 }

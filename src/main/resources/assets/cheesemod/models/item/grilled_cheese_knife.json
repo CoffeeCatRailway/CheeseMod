@@ -1,6 +1,6 @@
 {
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "cheesemod:item/grilled_cheese_knife"
-    }
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "cheesemod:item/grilled_cheese_knife"
+  }
 }

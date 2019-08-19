@@ -1,6 +1,6 @@
 {
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "cheesemod:block/ham_raw_metal_block"
-    }
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "cheesemod:block/ham_raw_metal_block"
+  }
 }

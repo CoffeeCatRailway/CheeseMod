@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "cheesemod:block/cheese_metal_ore" }
+  "variants": {
+    "": {
+      "model": "cheesemod:block/cheese_metal_ore"
     }
+  }
 }
