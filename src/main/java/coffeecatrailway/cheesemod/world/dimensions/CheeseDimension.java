@@ -11,6 +11,6 @@ import net.minecraft.world.dimension.DimensionType;
 public class CheeseDimension extends FoodDimension {
 
     public CheeseDimension(World world, DimensionType type) {
-        super(world, type, ModBiomes.CHEESE_FOREST_DIM, ModBiomes.CHEESE_PLAINS_DIM, ModBiomes.GRILLED_CHEESE_FOREST_DIM, ModBiomes.GRILLED_CHEESE_PLAINS_DIM);
+        super(world, type, ModBiomes.CHEESE_FOREST, ModBiomes.CHEESE_PLAINS, ModBiomes.GRILLED_CHEESE_FOREST, ModBiomes.GRILLED_CHEESE_PLAINS);
     }
 }

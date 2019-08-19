@@ -11,6 +11,6 @@ import net.minecraft.world.dimension.DimensionType;
 public class HamDimension extends FoodDimension {
 
     public HamDimension(World world, DimensionType type) {
-        super(world, type, ModBiomes.HAM_RAW_FOREST_DIM, ModBiomes.HAM_RAW_PLAINS_DIM, ModBiomes.HAM_COOKED_FOREST_DIM, ModBiomes.HAM_COOKED_PLAINS_DIM);
+        super(world, type, ModBiomes.HAM_RAW_FOREST, ModBiomes.HAM_RAW_PLAINS, ModBiomes.HAM_COOKED_FOREST, ModBiomes.HAM_COOKED_PLAINS);
     }
 }

@@ -1,6 +1,5 @@
 package coffeecatrailway.cheesemod.world.biomes;
 
-import coffeecatrailway.cheesemod.core.registries.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -8,9 +7,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.MultipleRandomFeatureConfig;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
-import net.minecraft.world.gen.placement.FrequencyConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
@@ -41,6 +41,9 @@ public class FoodBiome extends Biome {
         DefaultBiomeFeatures.addSedimentDisks(this);
         DefaultBiomeFeatures.addExtraEmeraldOre(this);
         DefaultBiomeFeatures.addSprings(this);
+        DefaultBiomeFeatures.addDefaultFlowers(this);
+        DefaultBiomeFeatures.addGrass(this);
+        DefaultBiomeFeatures.addExtraDefaultFlowers(this);
 
         if (mainTree != null && secondTree != null)
             this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
@@ -55,28 +58,6 @@ public class FoodBiome extends Biome {
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.SLIME, 100, 4, 4));
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.ENDERMAN, 10, 1, 4));
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.WITCH, 5, 1, 1));
-    }
-
-    public FoodBiome hasCustomGrass(boolean isCheese, boolean isGrilled) {
-        return customGrass(true, isCheese, isGrilled);
-    }
-
-    public FoodBiome noCustomGrass() {
-        return customGrass(false, false, false);
-    }
-
-    private FoodBiome customGrass(boolean customGrass, boolean isCheese, boolean isGrilled) {
-        BlockState grass = (isCheese ? (isGrilled ? ModBlocks.GRILLED_CHEESE_GRASS : ModBlocks.CHEESE_GRASS) : (isGrilled ? ModBlocks.HAM_COOKED_GRASS : ModBlocks.HAM_RAW_GRASS)).getDefaultState();
-        BlockState tallGrass = (isCheese ? (isGrilled ? ModBlocks.GRILLED_CHEESE_TALL_GRASS : ModBlocks.CHEESE_TALL_GRASS) : (isGrilled ? ModBlocks.HAM_COOKED_TALL_GRASS : ModBlocks.HAM_RAW_TALL_GRASS)).getDefaultState();
-        if (customGrass) {
-            this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.GRASS, new GrassFeatureConfig(grass), Placement.COUNT_HEIGHTMAP_DOUBLE, new FrequencyConfig(20)));
-            this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.DOUBLE_PLANT, new DoublePlantConfig(tallGrass), Placement.COUNT_HEIGHTMAP_DOUBLE, new FrequencyConfig(10)));
-        } else {
-            DefaultBiomeFeatures.addDefaultFlowers(this);
-            DefaultBiomeFeatures.addGrass(this);
-            DefaultBiomeFeatures.addExtraDefaultFlowers(this);
-        }
-        return this;
     }
 
     @Override

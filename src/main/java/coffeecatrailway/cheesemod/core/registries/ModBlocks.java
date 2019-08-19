@@ -6,11 +6,15 @@ import coffeecatrailway.cheesemod.core.special.ModFoods;
 import coffeecatrailway.cheesemod.items.FoodBlockItem;
 import coffeecatrailway.cheesemod.world.feature.tree.CheeseTree;
 import coffeecatrailway.cheesemod.world.feature.tree.HamTree;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.LogBlock;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -87,22 +91,6 @@ public class ModBlocks {
     public static Block GRILLED_CHEESE_BLOCK;
     public static Block HAM_RAW_BLOCK;
     public static Block HAM_COOKED_BLOCK;
-
-    public static Block CHEESE_GRASS_BLOCK;
-    public static Block CHEESE_GRASS;
-    public static Block CHEESE_TALL_GRASS;
-
-    public static Block GRILLED_CHEESE_GRASS_BLOCK;
-    public static Block GRILLED_CHEESE_GRASS;
-    public static Block GRILLED_CHEESE_TALL_GRASS;
-
-    public static Block HAM_RAW_GRASS_BLOCK;
-    public static Block HAM_RAW_GRASS;
-    public static Block HAM_RAW_TALL_GRASS;
-
-    public static Block HAM_COOKED_GRASS_BLOCK;
-    public static Block HAM_COOKED_GRASS;
-    public static Block HAM_COOKED_TALL_GRASS;
 
     /// Stairs ///
     public static Block CHEESE_STAIRS;
@@ -217,22 +205,6 @@ public class ModBlocks {
         HAM_COOKED_BLOCK = new FoodBlock();
         register("ham_cooked_block", HAM_COOKED_BLOCK, new FoodBlockItem(HAM_COOKED_BLOCK, ModFoods.HAM_COOKED, false));
 
-        CHEESE_GRASS_BLOCK = register("cheese_grass_block", new GrassBlock(Block.Properties.create(Material.ORGANIC).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT)));
-        CHEESE_GRASS = register("cheese_grass", new ModTallGrassBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.PLANT)));
-        CHEESE_TALL_GRASS = register("cheese_tall_grass", new ModDoublePlantBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.PLANT)));
-
-        GRILLED_CHEESE_GRASS_BLOCK = register("grilled_cheese_grass_block", new GrassBlock(Block.Properties.create(Material.ORGANIC).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT)));
-        GRILLED_CHEESE_GRASS = register("grilled_cheese_grass", new ModTallGrassBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.PLANT)));
-        GRILLED_CHEESE_TALL_GRASS = register("grilled_cheese_tall_grass", new ModDoublePlantBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.PLANT)));
-
-        HAM_RAW_GRASS_BLOCK = register("ham_raw_grass_block", new GrassBlock(Block.Properties.create(Material.ORGANIC).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT)));
-        HAM_RAW_GRASS = register("ham_raw_grass", new ModTallGrassBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.PLANT)));
-        HAM_RAW_TALL_GRASS = register("ham_raw_tall_grass", new ModDoublePlantBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.PLANT)));
-
-        HAM_COOKED_GRASS_BLOCK = register("ham_cooked_grass_block", new GrassBlock(Block.Properties.create(Material.ORGANIC).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT)));
-        HAM_COOKED_GRASS = register("ham_cooked_grass", new ModTallGrassBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.PLANT)));
-        HAM_COOKED_TALL_GRASS = register("ham_cooked_tall_grass", new ModDoublePlantBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().hardnessAndResistance(0).sound(SoundType.PLANT)));
-
         /// Stairs ///
         CHEESE_STAIRS = register("cheese_stairs", new ModStairsBlock(CHEESE_BLOCK.getDefaultState(), Block.Properties.from(CHEESE_BLOCK), true));
         GRILLED_CHEESE_STAIRS = register("grilled_cheese_stairs", new ModStairsBlock(GRILLED_CHEESE_BLOCK.getDefaultState(), Block.Properties.from(GRILLED_CHEESE_BLOCK), true));
@@ -264,26 +236,32 @@ public class ModBlocks {
         /// Other ///
         GRILL = register("grill", new GrillBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.5F).lightValue(13)));
 
-        PINEAPPLE = register("pineapple_plant", new PineappleBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)), null);
+        PINEAPPLE = register("pineapple_plant", new PineappleBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)), (BlockItem) null);
 
-        CHEESE_CAKE = register("cheese_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
-        GRILLED_CHEESE_CAKE = register("grilled_cheese_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
-        HAM_RAW_CAKE = register("ham_raw_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
-        HAM_COOKED_CAKE = register("ham_cooked_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)));
+        CHEESE_CAKE = register("cheese_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)), CheeseMod.GROUP_FOODS);
+        GRILLED_CHEESE_CAKE = register("grilled_cheese_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)), CheeseMod.GROUP_FOODS);
+        HAM_RAW_CAKE = register("ham_raw_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)), CheeseMod.GROUP_FOODS);
+        HAM_COOKED_CAKE = register("ham_cooked_cake", new ModCakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)), CheeseMod.GROUP_FOODS);
 
         CheeseMod.LOGGER.info("Blocks registered");
     }
 
     private static <B extends Block> B register(String name, B block) {
-        BlockItem item = new BlockItem(block, new Item.Properties().group(CheeseMod.GROUP_ALL));
+        return register(name, block, CheeseMod.GROUP_ALL);
+    }
+
+    private static <B extends Block> B register(String name, B block, ItemGroup group) {
+        BlockItem item = new BlockItem(block, new Item.Properties().group(group));
         return register(name, block, item);
     }
 
     private static <B extends Block> B register(String name, B block, @Nullable BlockItem item) {
         block.setRegistryName(CheeseMod.getLocation(name));
         ForgeRegistries.BLOCKS.register(block);
-        if (item != null)
+        if (item != null) {
             ModItems.BLOCKS_TO_REGISTER.put(name, item);
+            if (item.getGroup() == CheeseMod.GROUP_FOODS) ModItems.FOODS.add(item);
+        }
         return block;
     }
 }
