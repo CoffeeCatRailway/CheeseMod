@@ -1,6 +1,6 @@
 package coffeecatrailway.cheesemod.world;
 
-import coffeecatrailway.cheesemod.core.registries.ModBlocks;
+import coffeecatrailway.cheesemod.core.ModBlocks;
 import coffeecatrailway.cheesemod.world.feature.ModOreFeature;
 import coffeecatrailway.cheesemod.world.feature.ModOreFeatureConfig;
 import com.google.common.base.Predicate;

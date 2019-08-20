@@ -1,6 +1,6 @@
 package coffeecatrailway.cheesemod.core.special;
 
-import coffeecatrailway.cheesemod.core.registries.ModItems;
+import coffeecatrailway.cheesemod.core.ModItems;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.crafting.Ingredient;

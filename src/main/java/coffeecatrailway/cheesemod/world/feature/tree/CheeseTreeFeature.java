@@ -1,6 +1,6 @@
 package coffeecatrailway.cheesemod.world.feature.tree;
 
-import coffeecatrailway.cheesemod.core.registries.ModBlocks;
+import coffeecatrailway.cheesemod.core.ModBlocks;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;

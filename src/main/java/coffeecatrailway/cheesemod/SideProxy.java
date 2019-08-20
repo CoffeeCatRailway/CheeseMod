@@ -1,9 +1,9 @@
 package coffeecatrailway.cheesemod;
 
-import coffeecatrailway.cheesemod.commands.ChezCommand;
-import coffeecatrailway.cheesemod.commands.ConfigCommand;
-import coffeecatrailway.cheesemod.commands.FoodDimensionCommand;
-import coffeecatrailway.cheesemod.core.registries.*;
+import coffeecatrailway.cheesemod.command.ChezCommand;
+import coffeecatrailway.cheesemod.command.ConfigCommand;
+import coffeecatrailway.cheesemod.command.FoodDimensionCommand;
+import coffeecatrailway.cheesemod.core.*;
 import coffeecatrailway.cheesemod.world.ModWorldFeatures;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandSource;

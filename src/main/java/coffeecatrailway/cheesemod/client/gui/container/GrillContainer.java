@@ -1,8 +1,8 @@
 package coffeecatrailway.cheesemod.client.gui.container;
 
-import coffeecatrailway.cheesemod.core.registries.ModContainerTypes;
-import coffeecatrailway.cheesemod.core.registries.ModRecipeTypes;
-import coffeecatrailway.cheesemod.items.crafting.GrillRecipe;
+import coffeecatrailway.cheesemod.core.ModContainerTypes;
+import coffeecatrailway.cheesemod.core.ModRecipeTypes;
+import coffeecatrailway.cheesemod.item.crafting.GrillRecipe;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;

@@ -1,6 +1,6 @@
 package coffeecatrailway.cheesemod.world.feature.tree;
 
-import coffeecatrailway.cheesemod.core.registries.ModFeatures;
+import coffeecatrailway.cheesemod.core.ModFeatures;
 import net.minecraft.block.trees.Tree;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.NoFeatureConfig;

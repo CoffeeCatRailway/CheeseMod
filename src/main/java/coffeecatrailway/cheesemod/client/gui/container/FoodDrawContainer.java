@@ -1,6 +1,6 @@
 package coffeecatrailway.cheesemod.client.gui.container;
 
-import coffeecatrailway.cheesemod.core.registries.ModContainerTypes;
+import coffeecatrailway.cheesemod.core.ModContainerTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;

@@ -1,7 +1,7 @@
 package coffeecatrailway.cheesemod;
 
-import coffeecatrailway.cheesemod.core.registries.ModBlocks;
-import coffeecatrailway.cheesemod.core.registries.ModItems;
+import coffeecatrailway.cheesemod.core.ModBlocks;
+import coffeecatrailway.cheesemod.core.ModItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
