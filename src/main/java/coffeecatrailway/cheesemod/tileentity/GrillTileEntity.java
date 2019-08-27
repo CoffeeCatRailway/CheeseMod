@@ -9,6 +9,7 @@ import coffeecatrailway.cheesemod.core.ModTileEntityTypes;
 import coffeecatrailway.cheesemod.item.crafting.GrillRecipe;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -166,8 +167,10 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
     public void tick() {
         boolean flag = this.isBurning();
         boolean flag1 = false;
-        if (this.isBurning())
+        if (this.isBurning()) {
             this.burnTime--;
+            this.sendUpdates();
+        }
 
         if (!this.world.isRemote) {
             ItemStack fuelStack = this.items.get(1);
@@ -178,13 +181,15 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
                     this.recipesUsed = this.burnTime;
                     if (this.isBurning()) {
                         flag1 = true;
-                        if (fuelStack.hasContainerItem())
+                        if (fuelStack.hasContainerItem()) {
                             this.items.set(1, fuelStack.getContainerItem());
-                        else {
+                            this.sendUpdates();
+                        }else {
                             if (!fuelStack.isEmpty()) {
                                 fuelStack.shrink(1);
                                 if (fuelStack.isEmpty())
                                     this.items.set(1, fuelStack.getContainerItem());
+                                this.sendUpdates();
                             }
                         }
                     }
@@ -200,20 +205,26 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
                         this.cookTime = 0;
                         this.cookTimeTotal = this.getCookTimeTotal();
                         flag1 = true;
+                        this.sendUpdates();
                     }
-                } else
+                } else {
                     this.cookTime = 0;
-            } else if (!this.isBurning() && this.cookTime > 0)
+                    this.sendUpdates();
+                }
+            } else if (!this.isBurning() && this.cookTime > 0) {
                 this.cookTime = MathHelper.clamp(this.cookTime - 2, 0, this.cookTimeTotal);
+                this.sendUpdates();
+            }
 
             if (flag != this.isBurning()) {
                 flag1 = true;
                 this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(GrillBlock.LIT, this.isBurning()), 3);
+                this.sendUpdates();
             }
         }
 
         if (flag1)
-            this.markDirty();
+            this.sendUpdates();
     }
 
     private boolean canSmelt(@Nullable IRecipe<?> iRecipe) {
@@ -335,7 +346,7 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
         if (index == 0 && !flag) {
             this.cookTimeTotal = this.getCookTimeTotal();
             this.cookTime = 0;
-            this.markDirty();
+            this.sendUpdates();
         }
     }
 
@@ -367,7 +378,7 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
     @Override
     public void setRecipeUsed(@Nullable IRecipe<?> recipe) {
         if (recipe != null)
-            this.recipeAmounts.compute(recipe.getId(), (p_214004_0_, p_214004_1_) -> 1 + (p_214004_1_ == null ? 0 : p_214004_1_));
+            this.recipeAmounts.compute(recipe.getId(), (location, integer) -> 1 + (integer == null ? 0 : integer));
     }
 
     @Nullable
@@ -376,8 +387,14 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
         return null;
     }
 
-    @Override
-    public void onCrafting(PlayerEntity player) {
+    private void sendUpdates() {
+        world.notifyBlockUpdate(pos, getState(), getState(), 3);
+        world.markAndNotifyBlock(pos, world.getChunkAt(pos), getState(), getState(), 3);
+        markDirty();
+    }
+
+    private BlockState getState() {
+        return world.getBlockState(pos);
     }
 
     public void giveExperience(PlayerEntity player) {

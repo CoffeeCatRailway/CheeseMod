@@ -12,14 +12,14 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.5.0-1.14.4'
-group = 'coffeecatrailway.cheesemod'
-archivesBaseName = 'cheesemod'
+version = "${project.version}-${project.mcVersion}"
+group = project.group
+archivesBaseName = project.archivesBaseName
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20190719-1.14.3'
+    mappings channel: project.mcpChannel.toString(), version:project.mcpMappings.toString()
     runs {
         client {
             workingDirectory project.file('run')
@@ -67,16 +67,34 @@ minecraft {
     }
 }
 
+repositories {
+    jcenter()
+    mavenLocal()
+    maven {
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.k-4u.nl"
+    }
+}
+
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.14.4-28.0.46'
+    minecraft "net.minecraftforge:forge:${project.mcVersion}-${project.forgeVersion}"
+
+    compileOnly fg.deobf("mezz.jei:jei-1.14.4:${project.jeiVersion}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.14.4:${project.jeiVersion}")
 }
 
 jar {
     manifest {
         attributes([
-            "Specification-Title": "CheeseMod",
+            "Specification-Title": project.archivesBaseName,
             "Specification-Vendor": "CoffeeCatRailway",
-            "Specification-Version": "1",
+            "Specification-Version": project.version,
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"CoffeeCatRailway",

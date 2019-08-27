@@ -4,6 +4,7 @@ import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.client.gui.container.GrillContainer;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -17,8 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class GrillScreen extends ContainerScreen<GrillContainer> {
 
-    private static final ResourceLocation GUI_TEXTURES = CheeseMod.getLocation("textures/gui/container/grill.png");
-    private static final ResourceLocation OIL_OVERLAY = CheeseMod.getLocation("textures/block/grill_oil_overlay.png");
+    public static final ResourceLocation GUI_TEXTURE = CheeseMod.getLocation("textures/gui/container/grill.png");
 
     public GrillScreen(GrillContainer container, PlayerInventory playerInventory, ITextComponent title) {
         super(container, playerInventory, title);
@@ -36,7 +36,11 @@ public class GrillScreen extends ContainerScreen<GrillContainer> {
         int j = this.guiTop + 8;
         if (mouseX >= i && mouseX <= i + 16)
             if (mouseY >= j && mouseY <= j + 16 * 4)
-                this.renderTooltip("Oil: " + container.getOil() + "mb/1000mb", mouseX, mouseY);
+                this.renderTooltip(getFormatedOilString(container.getOil()), mouseX, mouseY);
+    }
+
+    public static String getFormatedOilString(int oil) {
+        return I18n.format("gui." + CheeseMod.MOD_ID + ".category.grill.oil", new Object[]{oil});
     }
 
     @Override
@@ -49,7 +53,7 @@ public class GrillScreen extends ContainerScreen<GrillContainer> {
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.minecraft.getTextureManager().bindTexture(GUI_TEXTURES);
+        this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
         int i = this.guiLeft;
         int j = this.guiTop;
         this.blit(i, j, 0, 0, this.xSize, this.ySize);

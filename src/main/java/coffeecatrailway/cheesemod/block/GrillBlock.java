@@ -1,8 +1,9 @@
 package coffeecatrailway.cheesemod.block;
 
+import coffeecatrailway.cheesemod.core.ModStats;
 import coffeecatrailway.cheesemod.tileentity.GrillTileEntity;
-import com.google.common.collect.Lists;
 import coffeecatrailway.cheesemod.util.VoxelShapeHelper;
+import com.google.common.collect.Lists;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -149,8 +150,10 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable { /// T
             return true;
         else {
             INamedContainerProvider provider = this.getContainer(state, world, pos);
-            if (provider != null)
+            if (provider != null) {
                 player.openContainer(provider);
+                player.addStat(ModStats.INTERACT_WITH_GRILL);
+            }
             return true;
         }
     }
@@ -185,6 +188,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable { /// T
     }
 
     @OnlyIn(Dist.CLIENT)
+    @Override
     public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {
         if (state.get(LIT)) {
             double d0 = (double) pos.getX();
