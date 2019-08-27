@@ -1,5 +1,6 @@
 package coffeecatrailway.cheesemod.block;
 
+import coffeecatrailway.cheesemod.core.ModStats;
 import coffeecatrailway.cheesemod.tileentity.FoodDrawTileEntity;
 import com.google.common.collect.Lists;
 import coffeecatrailway.cheesemod.util.VoxelShapeHelper;
@@ -19,10 +20,7 @@ import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -64,9 +62,17 @@ public class FoodDrawBlock extends ContainerBlock implements IWaterLoggable {
             Block.makeCuboidShape(13.0D, 1.0D, 13.0D, 15.0D, 14.0D, 15.0D),
             Block.makeCuboidShape(13.0D, 1.0D, 1.0D, 15.0D, 14.0D, 3.0D)));
 
-    public FoodDrawBlock(Properties properties) {
+    private IFoodStat stat;
+
+    public FoodDrawBlock(Properties properties, IFoodStat stat) {
         super(properties);
+        this.stat = stat;
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(WATERLOGGED, Boolean.FALSE));
+    }
+
+    public interface IFoodStat {
+
+        ResourceLocation getStat();
     }
 
     @Override
@@ -150,8 +156,10 @@ public class FoodDrawBlock extends ContainerBlock implements IWaterLoggable {
             return true;
         else {
             INamedContainerProvider provider = this.getContainer(state, world, pos);
-            if (provider != null)
+            if (provider != null) {
                 player.openContainer(provider);
+                player.addStat(this.stat.getStat());
+            }
             return true;
         }
     }

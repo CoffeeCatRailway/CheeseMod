@@ -31,12 +31,12 @@ public class ModConfig {
                 .define(CheeseMod.MOD_ID + ".stickyFoodBlock", true);
     }
 
-    public static final Modifiers MODIFIERS = new Modifiers(BUILDER);
-    public static final Biome BIOME = new Biome(BUILDER);
+    public static final ModifiersConfig MODIFIERS = new ModifiersConfig(BUILDER);
+    public static final BiomeConfig BIOME = new BiomeConfig(BUILDER);
 
     public static final ForgeConfigSpec CONFIG = BUILDER.build();
 
-    public static class Modifiers {
+    public static class ModifiersConfig {
 
         public ForgeConfigSpec.DoubleValue grilledFoodMultiplier;
         public ForgeConfigSpec.IntValue grillSpeed;
@@ -47,7 +47,7 @@ public class ModConfig {
         public ForgeConfigSpec.DoubleValue hamSuitScale;
         public ForgeConfigSpec.DoubleValue hamSuitBindingScale;
 
-        public Modifiers(ForgeConfigSpec.Builder config) {
+        public ModifiersConfig(ForgeConfigSpec.Builder config) {
             config.comment("CheeseMod modifier settings");
 
             grilledFoodMultiplier = config.comment("The amount of how much the saturation changes when grilled")
@@ -72,7 +72,7 @@ public class ModConfig {
         }
     }
 
-    public static class Biome {
+    public static class BiomeConfig {
 
         public ForgeConfigSpec.BooleanValue spawnCheeseVillager;
         public ForgeConfigSpec.IntValue cheeseVillagerWeight;
@@ -86,7 +86,7 @@ public class ModConfig {
         public ForgeConfigSpec.BooleanValue spawnHamGolem;
         public ForgeConfigSpec.IntValue hamGolemWeight;
 
-        public Biome(ForgeConfigSpec.Builder config) {
+        public BiomeConfig(ForgeConfigSpec.Builder config) {
             config.comment("CheeseMod biome settings");
 
             int minWeight = 1;

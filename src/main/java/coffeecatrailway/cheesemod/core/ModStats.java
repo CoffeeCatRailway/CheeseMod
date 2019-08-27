@@ -17,10 +17,16 @@ public class ModStats {
 
     public static ResourceLocation INTERACT_WITH_GRILL;
 
+    public static ResourceLocation INTERACT_WITH_CHEESE_DRAW;
+    public static ResourceLocation INTERACT_WITH_HAM_DRAW;
+
     public static void registerAll(RegistryEvent.Register<StatType<?>> event) {
         if (!event.getName().equals(ForgeRegistries.STAT_TYPES.getRegistryName())) return;
 
         INTERACT_WITH_GRILL = register("interact_with_grill", IStatFormatter.DEFAULT);
+
+        INTERACT_WITH_CHEESE_DRAW = register("interact_with_cheese_draw", IStatFormatter.DEFAULT);
+        INTERACT_WITH_HAM_DRAW = register("interact_with_ham_draw", IStatFormatter.DEFAULT);
 
         CheeseMod.LOGGER.info("Stat types registered");
     }

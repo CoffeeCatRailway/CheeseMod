@@ -5,9 +5,9 @@
     "logSide": "cheesemod:block/ham_raw_log_side",
     "logTop": "cheesemod:block/ham_raw_log_top",
     "planks": "cheesemod:block/ham_cooked_planks",
-    "foodBlock1Side": "cheesemod:block/ham_raw_block_side",
-    "foodBlock1Top": "cheesemod:block/ham_raw_block_top",
-    "foodBlock2Side": "cheesemod:block/ham_cooked_block_side",
-    "foodBlock2Top": "cheesemod:block/ham_cooked_block_top"
+    "foodBlock1Side": "cheesemod:block/ham_raw_block",
+    "foodBlock1Top": "cheesemod:block/ham_raw_block",
+    "foodBlock2Side": "cheesemod:block/ham_cooked_block",
+    "foodBlock2Top": "cheesemod:block/ham_cooked_block"
   }
 }

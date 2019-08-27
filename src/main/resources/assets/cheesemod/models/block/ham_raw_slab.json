@@ -1,8 +1,8 @@
 {
   "parent": "block/slab",
   "textures": {
-    "bottom": "cheesemod:block/ham_raw_block_top",
-    "top": "cheesemod:block/ham_raw_block_top",
-    "side": "cheesemod:block/ham_raw_block_side"
+    "bottom": "cheesemod:block/ham_raw_block",
+    "top": "cheesemod:block/ham_raw_block",
+    "side": "cheesemod:block/ham_raw_block"
   }
 }

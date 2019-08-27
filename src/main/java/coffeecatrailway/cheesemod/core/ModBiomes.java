@@ -8,6 +8,9 @@ import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author CoffeeCatRailway
  * Created: 30/07/2019
@@ -44,6 +47,8 @@ public class ModBiomes {
     public static FoodBiome HAM_COOKED_FOREST;
     public static FoodBiome HAM_COOKED_PLAINS;
 
+    public static final List<FoodBiome> FOOD_BIOMES = new ArrayList<>();
+
     public static void registerAll(RegistryEvent.Register<Biome> event) {
         if (!event.getName().equals(ForgeRegistries.BIOMES.getRegistryName())) return;
 
@@ -74,6 +79,8 @@ public class ModBiomes {
     private static <B extends Biome> B register(String name, B biome) {
         biome.setRegistryName(CheeseMod.getLocation(name));
         ForgeRegistries.BIOMES.register(biome);
+        if (biome instanceof FoodBiome)
+            FOOD_BIOMES.add((FoodBiome) biome);
         return biome;
     }
 }

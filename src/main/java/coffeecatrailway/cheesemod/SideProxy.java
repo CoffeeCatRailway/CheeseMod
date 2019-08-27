@@ -1,14 +1,16 @@
 package coffeecatrailway.cheesemod;
 
+import coffeecatrailway.cheesemod.client.renderer.tileentity.GrillTileEntityRenderer;
 import coffeecatrailway.cheesemod.command.ChezCommand;
 import coffeecatrailway.cheesemod.command.ConfigCommand;
-import coffeecatrailway.cheesemod.command.FoodDimensionCommand;
 import coffeecatrailway.cheesemod.core.*;
+import coffeecatrailway.cheesemod.tileentity.GrillTileEntity;
 import coffeecatrailway.cheesemod.world.ModWorldFeatures;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent;
@@ -37,10 +39,6 @@ public class SideProxy {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModFeatures::registerAll);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModBiomes::registerAll);
 
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModDimensions::registerDimensions);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModDimensions::registerChunkGeneratorTypes);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModDimensions::registerBiomeProviderTypes);
-
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModStats::registerAll);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModRecipeTypes::registerAll);
 
@@ -55,10 +53,8 @@ public class SideProxy {
 
     private static void serverStarting(FMLServerStartingEvent event) {
         CommandDispatcher<CommandSource> dispatcher = event.getCommandDispatcher();
-        if (CheeseMod.isDevBuild()) {
+        if (CheeseMod.isDevBuild())
             ConfigCommand.register(dispatcher);
-            FoodDimensionCommand.register(dispatcher);
-        }
         ChezCommand.register(dispatcher);
 
         CheeseMod.LOGGER.info("Commands registered");
@@ -71,7 +67,7 @@ public class SideProxy {
         }
 
         private static void clientSetup(FMLClientSetupEvent event) {
-
+            ClientRegistry.bindTileEntitySpecialRenderer(GrillTileEntity.class, new GrillTileEntityRenderer());
         }
     }
 
