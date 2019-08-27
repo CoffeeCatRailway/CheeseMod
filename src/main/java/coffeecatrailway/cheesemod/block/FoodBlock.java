@@ -18,7 +18,7 @@ import net.minecraftforge.common.ToolType;
  * @author CoffeeCatRailway
  * Created: 19/07/2019
  */
-public class FoodBlock extends RotatedPillarBlock {
+public class FoodBlock extends Block {
 
     public FoodBlock() {
         super(Block.Properties.create(Material.WOOL).sound(SoundType.SLIME).hardnessAndResistance(1.0f).harvestLevel(1).harvestTool(ToolType.AXE));
