@@ -228,10 +228,10 @@ public class ModBlocks {
         HAM_COOKED_WOOD_SLAB = register("ham_cooked_wood_slab", new ModSlabBlock(Block.Properties.from(HAM_COOKED_PLANKS), false));
 
         /// Drawers ///
-        CHEESE_DRAW = register("cheese_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
-        GRILLED_CHEESE_DRAW = register("grilled_cheese_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
-        HAM_RAW_DRAW = register("ham_raw_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
-        HAM_COOKED_DRAW = register("ham_cooked_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD)));
+        CHEESE_DRAW = register("cheese_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_CHEESE_DRAW));
+        GRILLED_CHEESE_DRAW = register("grilled_cheese_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_CHEESE_DRAW));
+        HAM_RAW_DRAW = register("ham_raw_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_HAM_DRAW));
+        HAM_COOKED_DRAW = register("ham_cooked_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_HAM_DRAW));
 
         /// Other ///
         GRILL = register("grill", new GrillBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.5F).lightValue(13)));
