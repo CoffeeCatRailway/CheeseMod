@@ -1,8 +1,8 @@
 {
   "parent": "block/slab_top",
   "textures": {
-    "bottom": "cheesemod:block/cheese_block_top",
-    "top": "cheesemod:block/cheese_block_top",
-    "side": "cheesemod:block/cheese_block_side"
+    "bottom": "cheesemod:block/cheese_block",
+    "top": "cheesemod:block/cheese_block",
+    "side": "cheesemod:block/cheese_block"
   }
 }

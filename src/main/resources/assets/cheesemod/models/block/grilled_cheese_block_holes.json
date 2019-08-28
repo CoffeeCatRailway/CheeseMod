@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "cheesemod:block/grilled_cheese_block_holes"
+  }
+}

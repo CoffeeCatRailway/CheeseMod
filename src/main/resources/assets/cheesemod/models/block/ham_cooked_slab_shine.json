@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "cheesemod:block/ham_cooked_block_shine",
+    "top": "cheesemod:block/ham_cooked_block_shine",
+    "side": "cheesemod:block/ham_cooked_block_shine"
+  }
+}

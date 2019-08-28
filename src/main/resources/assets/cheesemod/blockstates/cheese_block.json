@@ -1,0 +1,15 @@
+{
+  "variants": {
+    "": [
+      { "model": "cheesemod:block/cheese_block", "weight": 5 },
+      { "model": "cheesemod:block/cheese_block", "weight": 5, "y": 90 },
+      { "model": "cheesemod:block/cheese_block", "weight": 5, "x": 90, "y": 180 },
+      { "model": "cheesemod:block/cheese_block", "weight": 5, "y": 270, "z": 180 },
+
+      { "model": "cheesemod:block/cheese_block_holes", "weight": 5 },
+      { "model": "cheesemod:block/cheese_block_holes", "weight": 5, "y": 90 },
+      { "model": "cheesemod:block/cheese_block_holes", "weight": 5, "x": 90, "y": 180 },
+      { "model": "cheesemod:block/cheese_block_holes", "weight": 5, "y": 270, "z": 180 }
+    ]
+  }
+}

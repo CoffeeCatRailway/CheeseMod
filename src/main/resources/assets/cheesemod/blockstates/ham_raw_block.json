@@ -1,7 +1,15 @@
 {
   "variants": {
-    "": {
-      "model": "cheesemod:block/ham_raw_block"
-    }
+    "": [
+      { "model": "cheesemod:block/ham_raw_block", "weight": 5 },
+      { "model": "cheesemod:block/ham_raw_block", "weight": 5, "y": 90 },
+      { "model": "cheesemod:block/ham_raw_block", "weight": 5, "x": 90, "y": 180 },
+      { "model": "cheesemod:block/ham_raw_block", "weight": 5, "y": 270, "z": 180 },
+
+      { "model": "cheesemod:block/ham_raw_block_shine", "weight": 5 },
+      { "model": "cheesemod:block/ham_raw_block_shine", "weight": 5, "y": 90 },
+      { "model": "cheesemod:block/ham_raw_block_shine", "weight": 5, "x": 90, "y": 180 },
+      { "model": "cheesemod:block/ham_raw_block_shine", "weight": 5, "y": 270, "z": 180 }
+    ]
   }
 }
