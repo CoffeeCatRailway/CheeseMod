@@ -1,9 +1,8 @@
 package coffeecatrailway.cheesemod.block;
 
-import coffeecatrailway.cheesemod.core.ModStats;
 import coffeecatrailway.cheesemod.tileentity.FoodDrawTileEntity;
-import com.google.common.collect.Lists;
 import coffeecatrailway.cheesemod.util.VoxelShapeHelper;
+import com.google.common.collect.Lists;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;

@@ -95,6 +95,11 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable { /// T
     }
 
     @Override
+    public BlockRenderLayer getRenderLayer() {
+        return BlockRenderLayer.CUTOUT;
+    }
+
+    @Override
     public int getLightValue(BlockState state) {
         return state.get(LIT) ? super.getLightValue(state) : 0;
     }

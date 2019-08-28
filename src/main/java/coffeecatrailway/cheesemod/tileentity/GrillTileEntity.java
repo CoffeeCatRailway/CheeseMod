@@ -55,7 +55,7 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
     private static final int[] SLOTS_UP = new int[]{0};
     private static final int[] SLOTS_DOWN = new int[]{2, 1};
     private static final int[] SLOTS_HORIZONTAL = new int[]{1};
-    protected NonNullList<ItemStack> items = NonNullList.withSize(3, ItemStack.EMPTY);
+    private NonNullList<ItemStack> items = NonNullList.withSize(3, ItemStack.EMPTY);
     private int burnTime;
     private int recipesUsed;
     private int cookTime;
@@ -183,16 +183,15 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
                         flag1 = true;
                         if (fuelStack.hasContainerItem()) {
                             this.items.set(1, fuelStack.getContainerItem());
-                            this.sendUpdates();
-                        }else {
+                        } else {
                             if (!fuelStack.isEmpty()) {
                                 fuelStack.shrink(1);
                                 if (fuelStack.isEmpty())
                                     this.items.set(1, fuelStack.getContainerItem());
-                                this.sendUpdates();
                             }
                         }
                     }
+                    this.sendUpdates();
                 }
 
                 if (this.isBurning() && this.canSmelt(iRecipe)) {
