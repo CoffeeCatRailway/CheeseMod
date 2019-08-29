@@ -11,6 +11,7 @@
     }
   },
   "result": {
-    "item": "cheesemod:cheese_wood_stairs"
+    "item": "cheesemod:cheese_wood_stairs",
+    "count": 4
   }
 }

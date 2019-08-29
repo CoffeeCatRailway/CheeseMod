@@ -11,6 +11,7 @@
     }
   },
   "result": {
-    "item": "cheesemod:grilled_cheese_stairs"
+    "item": "cheesemod:grilled_cheese_stairs",
+    "count": 4
   }
 }

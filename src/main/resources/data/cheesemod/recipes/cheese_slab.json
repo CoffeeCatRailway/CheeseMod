@@ -9,6 +9,7 @@
     }
   },
   "result": {
-    "item": "cheesemod:cheese_slab"
+    "item": "cheesemod:cheese_slab",
+    "count": 6
   }
 }

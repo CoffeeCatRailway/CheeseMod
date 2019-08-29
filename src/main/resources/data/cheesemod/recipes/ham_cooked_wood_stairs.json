@@ -11,6 +11,7 @@
     }
   },
   "result": {
-    "item": "cheesemod:ham_cooked_wood_stairs"
+    "item": "cheesemod:ham_cooked_wood_stairs",
+    "count": 4
   }
 }

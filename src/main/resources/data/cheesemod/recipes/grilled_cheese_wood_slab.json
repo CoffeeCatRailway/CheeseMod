@@ -9,6 +9,7 @@
     }
   },
   "result": {
-    "item": "cheesemod:grilled_cheese_wood_slab"
+    "item": "cheesemod:grilled_cheese_wood_slab",
+    "count": 6
   }
 }

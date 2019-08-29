@@ -9,6 +9,7 @@
     }
   },
   "result": {
-    "item": "cheesemod:ham_cooked_slab"
+    "item": "cheesemod:ham_cooked_slab",
+    "count": 6
   }
 }
