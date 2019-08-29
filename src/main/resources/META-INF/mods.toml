@@ -4,8 +4,8 @@ issueTrackerURL="https://www.curseforge.com/minecraft/mc-mods/cheesemod/issues"
 
 [[mods]]
 modId="cheesemod"
-version="1.5.0-1.14.4"
-displayName="Cheese Mod"
+version="${version}"
+displayName="CoffeeCat's CheeseMod"
 logoFile="logo.png"
 credits="Credit to MrCrayfish for insperation and the use of his VoxelShapeHelper, thanks to Forge for always being better then fabric."
 authors="CoffeeCatRailway"

@@ -20,14 +20,16 @@ public class ModContainerTypes {
     public static ContainerType<FoodDrawContainer> FOOD_DRAW;
     public static ContainerType<GrillContainer> GRILL;
 
-    public static void registerAll(RegistryEvent.Register<ContainerType<?>> event) {
+    public static void registerContainers(RegistryEvent.Register<ContainerType<?>> event) {
         if (!event.getName().equals(ForgeRegistries.CONTAINERS.getRegistryName())) return;
 
         FOOD_DRAW = register("food_draw", FoodDrawContainer::create);
         GRILL = register("grill", GrillContainer::new);
 
         CheeseMod.LOGGER.info("Container types registered");
+    }
 
+    public static void registerScreens() {
         ScreenManager.registerFactory(FOOD_DRAW, FoodDrawScreen::new);
         ScreenManager.registerFactory(GRILL, GrillScreen::new);
 

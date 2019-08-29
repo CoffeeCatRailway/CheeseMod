@@ -34,7 +34,7 @@ public class SideProxy {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModItems::registerAll);
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModTileEntityTypes::registerAll);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModContainerTypes::registerAll);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModContainerTypes::registerContainers);
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModFeatures::registerAll);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModBiomes::registerAll);
@@ -68,6 +68,8 @@ public class SideProxy {
         }
 
         private static void clientSetup(FMLClientSetupEvent event) {
+            ModContainerTypes.registerScreens();
+
             ClientRegistry.bindTileEntitySpecialRenderer(GrillTileEntity.class, new GrillTileEntityRenderer());
         }
     }
