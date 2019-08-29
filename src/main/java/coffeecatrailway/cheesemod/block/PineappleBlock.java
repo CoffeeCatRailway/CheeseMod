@@ -32,7 +32,7 @@ public class PineappleBlock extends CropsBlock {
     };
 
     public PineappleBlock(Properties builder) {
-        super(builder.hardnessAndResistance(0.0f));
+        super(builder.zeroHardnessAndResistance());
     }
 
     @Override

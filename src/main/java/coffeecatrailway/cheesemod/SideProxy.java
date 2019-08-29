@@ -47,6 +47,7 @@ public class SideProxy {
 
     private static void commonSetup(FMLCommonSetupEvent event) {
         ModWorldFeatures.addFeatures();
+        ModVanillaCompat.setup();
 
         CheeseMod.LOGGER.debug("Common setup");
     }
