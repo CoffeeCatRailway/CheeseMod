@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": [
+    { "item": "cheesemod:bread_slice" }
+  ],
+  "result": "cheesemod:toast",
+  "experience": 0.2,
+  "cookingtime": 100
+}

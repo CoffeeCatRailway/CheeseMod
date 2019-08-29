@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "tag": "forge:toast" },
+    { "tag": "forge:toast" },
+    { "item": "cheesemod:cheese_slice" },
+    { "item": "cheesemod:ham_cooked" }
+  ],
+  "result": {
+    "item": "cheesemod:toastie_cheese_ham_cooked"
+  }
+}

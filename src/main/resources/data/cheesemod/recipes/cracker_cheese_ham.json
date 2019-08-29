@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "cheesemod:cracker" },
+    { "item": "cheesemod:cheese_slice" },
+    { "tag": "forge:ham" }
+  ],
+  "result": {
+    "item": "cheesemod:cracker_cheese_ham"
+  }
+}

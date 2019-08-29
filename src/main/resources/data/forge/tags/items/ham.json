@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "cheesemod:ham_raw",
+    "cheesemod:ham_cooked",
+    "cheesemod:ham_green"
+  ]
+}

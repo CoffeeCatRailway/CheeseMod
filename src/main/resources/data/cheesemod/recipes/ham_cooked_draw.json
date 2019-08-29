@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PLP",
+    "BCP",
+    "PLP"
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:chests/wooden"
+    },
+    "P": {
+      "item": "cheesemod:ham_cooked_planks"
+    },
+    "L": {
+      "tag": "cheesemod:logs/ham_cooked"
+    },
+    "B": {
+      "tag": "cheesemod:food_blocks/ham_raw"
+    }
+  },
+  "result": {
+    "item": "cheesemod:ham_cooked_draw"
+  }
+}

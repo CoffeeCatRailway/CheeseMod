@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:egg" }
+  ],
+  "result": {
+    "item": "cheesemod:egg_cracked"
+  }
+}

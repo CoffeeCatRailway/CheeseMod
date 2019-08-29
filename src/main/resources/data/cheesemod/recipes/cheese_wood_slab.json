@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "cheesemod:cheese_planks"
+    }
+  },
+  "result": {
+    "item": "cheesemod:cheese_wood_slab"
+  }
+}

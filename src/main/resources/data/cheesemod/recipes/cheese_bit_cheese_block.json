@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "cheesemod:cheese_cutter", "data": 32767 },
+    [
+      { "item": "cheesemod:cheese_block" },
+      { "item": "cheesemod:grilled_cheese_block" }
+    ]
+  ],
+  "result": {
+    "item": "cheesemod:cheese_bit",
+    "count": 18
+  }
+}

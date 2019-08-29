@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "cheesemod:cracker" },
+    { "item": "cheesemod:cheese_slice" }
+  ],
+  "result": {
+    "item": "cheesemod:cracker_cheese"
+  }
+}

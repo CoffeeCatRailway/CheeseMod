@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "tag": "forge:dyes/green" },
+    { "item": "cheesemod:ham_raw" }
+  ],
+  "result": {
+    "item": "cheesemod:ham_green"
+  }
+}

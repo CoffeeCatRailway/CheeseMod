@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "III",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "cheesemod:ham_raw_metal_ingot"
+    }
+  },
+  "result": {
+    "item": "cheesemod:ham_raw_metal_block"
+  }
+}

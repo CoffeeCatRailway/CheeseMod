@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "cheesemod:ham_cooked_log",
+    "cheesemod:stripped_ham_cooked_log",
+    "cheesemod:ham_cooked_wood",
+    "cheesemod:stripped_ham_cooked_wood"
+  ]
+}

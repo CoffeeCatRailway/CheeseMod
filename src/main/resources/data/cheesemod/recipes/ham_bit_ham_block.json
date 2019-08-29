@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "cheesemod:cheese_cutter", "data": 32767 },
+    [
+      { "item": "cheesemod:ham_raw_block" },
+      { "item": "cheesemod:ham_cooked_block" }
+    ]
+  ],
+  "result": {
+    "item": "cheesemod:ham_bit",
+    "count": 18
+  }
+}

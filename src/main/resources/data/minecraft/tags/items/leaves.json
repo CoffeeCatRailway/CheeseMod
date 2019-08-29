@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "cheesemod:cheese_leaves",
+    "cheesemod:grilled_cheese_leaves",
+    "cheesemod:ham_raw_leaves",
+    "cheesemod:ham_cooked_leaves"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I",
+    "S"
+  ],
+  "key": {
+    "S": {
+      "tag": "forge:rods/wooden"
+    },
+    "I": {
+      "item": "cheesemod:cheese_metal_ingot"
+    }
+  },
+  "result": {
+    "item": "cheesemod:cheese_knife"
+  }
+}

@@ -1,11 +1,11 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    { "tag": "forge:knives" },
+    { "item": "cheesemod:cheese_cutter", "data": 32767 },
     { "item": "cheesemod:block_o_cheese" }
   ],
   "result": {
-    "item": "cheesemod:cheese_slice",
-    "count": 3
+    "item": "cheesemod:cheese_bit",
+    "count": 2
   }
 }

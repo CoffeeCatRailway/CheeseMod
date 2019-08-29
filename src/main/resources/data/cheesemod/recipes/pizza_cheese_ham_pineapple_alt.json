@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "cheesemod:pineapple_bit" },
+    { "item": "cheesemod:pizza_cheese_ham" }
+  ],
+  "result": {
+    "item": "cheesemod:pizza_cheese_ham_pineapple"
+  }
+}

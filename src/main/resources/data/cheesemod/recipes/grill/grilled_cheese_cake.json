@@ -1,0 +1,10 @@
+{
+  "type": "cheesemod:grilling",
+  "ingredient": {
+    "item": "cheesemod:cheese_cake"
+  },
+  "result": "cheesemod:grilled_cheese_cake",
+  "experience": 0.25,
+  "cookingtime": 100,
+  "oil": 9
+}

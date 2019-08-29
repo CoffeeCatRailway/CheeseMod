@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BSB",
+    "S S",
+    "BSB"
+  ],
+  "key": {
+    "B": {
+      "item": "cheesemod:cheese_bit"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "cheesemod:cheese_suit_chestplate"
+  }
+}

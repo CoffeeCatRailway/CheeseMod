@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "cheesemod:grinding_stones", "data": 32767 },
+    { "item": "minecraft:wheat" }
+  ],
+  "result": {
+    "item": "cheesemod:flour",
+    "count": 3
+  }
+}

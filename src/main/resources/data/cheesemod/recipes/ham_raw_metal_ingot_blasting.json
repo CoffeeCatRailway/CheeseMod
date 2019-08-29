@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": [
+    { "item": "cheesemod:ham_raw_metal_ore" },
+    { "item": "cheesemod:ham_raw_metal_ore_nether" },
+    { "item": "cheesemod:ham_raw_metal_ore_end" }
+  ],
+  "result": "cheesemod:ham_raw_metal_ingot",
+  "experience": 0.7,
+  "cookingtime": 100
+}
