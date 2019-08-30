@@ -117,6 +117,9 @@ public class ModBlocks {
     public static Block HAM_RAW_DRAW;
     public static Block HAM_COOKED_DRAW;
 
+    /// Fluids ///
+    public static Block OIL;
+
     /// Other ///
     public static Block GRILL;
 
@@ -230,6 +233,9 @@ public class ModBlocks {
         HAM_RAW_DRAW = register("ham_raw_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_HAM_DRAW));
         HAM_COOKED_DRAW = register("ham_cooked_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5F).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_HAM_DRAW));
 
+        /// Fluids ///
+        OIL = register("oil_block", new FlowingFluidBlock(ModFluids.OIL_SOURCE, Block.Properties.create(Material.WATER).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()), (ItemGroup) null);
+
         /// Other ///
         GRILL = register("grill", new GrillBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.5F).lightValue(13)));
 
@@ -243,16 +249,16 @@ public class ModBlocks {
         CheeseMod.LOGGER.info("Blocks registered");
     }
 
-    private static <B extends Block> B register(String name, B block) {
+    public static <B extends Block> B register(String name, B block) {
         return register(name, block, CheeseMod.GROUP_ALL);
     }
 
-    private static <B extends Block> B register(String name, B block, ItemGroup group) {
+    public static <B extends Block> B register(String name, B block, ItemGroup group) {
         BlockItem item = new BlockItem(block, new Item.Properties().group(group));
         return register(name, block, item);
     }
 
-    private static <B extends Block> B register(String name, B block, @Nullable BlockItem item) {
+    public static <B extends Block> B register(String name, B block, @Nullable BlockItem item) {
         block.setRegistryName(CheeseMod.getLocation(name));
         ForgeRegistries.BLOCKS.register(block);
         if (item != null) {

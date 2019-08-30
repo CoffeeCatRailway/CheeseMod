@@ -162,6 +162,9 @@ public class ModItems {
     public static Item PIZZA_CHEESE_HAM_PINEAPPLE;
     public static Item PIZZA_CHEESE_HAM_PINEAPPLE_COOKED;
 
+    /// Fluids ///
+    public static Item OIL_BUCKET;
+
     /// Other ///
     public static Item CHEESE_BIT;
     public static Item HAM_BIT;
@@ -317,6 +320,9 @@ public class ModItems {
         PIZZA_CHEESE_HAM_PINEAPPLE = registerFood("pizza_cheese_ham_pineapple", ModFoods.PIZZA_CHEESE_HAM_PINEAPPLE, 32);
         PIZZA_CHEESE_HAM_PINEAPPLE_COOKED = registerFood("pizza_cheese_ham_pineapple_cooked", ModFoods.PIZZA_CHEESE_HAM_PINEAPPLE_COOKED, 32);
 
+        /// Fluids ///
+        OIL_BUCKET = register("oil_bucket", new BucketItem(ModFluids.OIL_SOURCE, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ItemGroup.MISC)));
+
         /// Other ///
         CHEESE_BIT = register("cheese_bit", new Item(new Item.Properties().group(CheeseMod.GROUP_ALL)));
         HAM_BIT = register("ham_bit", new Item(new Item.Properties().group(CheeseMod.GROUP_ALL)));
@@ -332,7 +338,7 @@ public class ModItems {
         return item;
     }
 
-    private static <I extends Item> I register(String name, I item) {
+    public static <I extends Item> I register(String name, I item) {
         item.setRegistryName(CheeseMod.getLocation(name));
         ForgeRegistries.ITEMS.register(item);
         return item;

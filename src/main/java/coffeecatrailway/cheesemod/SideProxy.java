@@ -4,10 +4,12 @@ import coffeecatrailway.cheesemod.client.renderer.tileentity.GrillTileEntityRend
 import coffeecatrailway.cheesemod.command.ChezCommand;
 import coffeecatrailway.cheesemod.command.ConfigCommand;
 import coffeecatrailway.cheesemod.core.*;
+import coffeecatrailway.cheesemod.fluid.OilFluid;
 import coffeecatrailway.cheesemod.tileentity.GrillTileEntity;
 import coffeecatrailway.cheesemod.world.ModWorldFeatures;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandSource;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -29,9 +31,11 @@ public class SideProxy {
         ModConfig.loadConfig(ModConfig.CONFIG, FMLPaths.CONFIGDIR.get().resolve(ModConfig.FILE).toString());
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::commonSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::textureStitchEvent);
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModBlocks::registerAll);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModItems::registerAll);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModFluids::registerAll);
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModTileEntityTypes::registerAll);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModContainerTypes::registerContainers);
@@ -43,6 +47,12 @@ public class SideProxy {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModRecipeTypes::registerAll);
 
         MinecraftForge.EVENT_BUS.addListener(SideProxy::serverStarting);
+    }
+
+    private static void textureStitchEvent(TextureStitchEvent.Pre event) {
+        event.addSprite(OilFluid.ATTRIBUTES.getStillTexture());
+        event.addSprite(OilFluid.ATTRIBUTES.getFlowingTexture());
+        event.addSprite(OilFluid.ATTRIBUTES.getOverlayTexture());
     }
 
     private static void commonSetup(FMLCommonSetupEvent event) {
