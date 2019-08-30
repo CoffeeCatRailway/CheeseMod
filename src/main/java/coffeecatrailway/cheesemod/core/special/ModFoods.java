@@ -5,6 +5,7 @@ import net.minecraft.item.Food;
 import net.minecraft.item.Foods;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import org.apache.commons.lang3.tuple.Pair;
 
 /**
  * @author CoffeeCatRailway
@@ -35,32 +36,75 @@ public class ModFoods {
     public static final Food HAM_GREEN = (new Food.Builder()).hunger(HAM.getHealing()).saturation(HAM.getSaturation()).effect(new EffectInstance(Effects.HUNGER, 400, 1), 1.0f).meat().build();
 
     public static final Food TOAST = (new Food.Builder()).hunger(BREAD_SLICE.getHealing() * 3).saturation(BREAD_SLICE.getSaturation() * 3.0f).build();
-    public static final Food TOAST_FRENCH = (new Food.Builder()).hunger(TOAST.getHealing() + EGG.getHealing()).saturation(TOAST.getSaturation() + EGG.getSaturation()).build();
-    public static final Food TOAST_BACON = (new Food.Builder()).hunger(TOAST.getHealing() + BACON_COOKED.getHealing()).saturation(TOAST.getSaturation() + BACON_COOKED.getSaturation()).build();
+    public static final Food TOAST_FRENCH = buildCombo(false, TOAST, EGG, EGG);
+    public static final Food TOAST_BACON = buildCombo(false, TOAST, BACON_COOKED);
 
     public static final Food CRACKER = (new Food.Builder()).hunger(5).saturation(2.0f).build();
-    public static final Food CRACKER_CHEESE = (new Food.Builder()).hunger(CRACKER.getHealing() + CHEESE_SLICE.getHealing()).saturation(CRACKER.getSaturation() + CHEESE_SLICE.getSaturation()).build();
-    public static final Food CRACKER_CHEESE_GRILLED = (new Food.Builder()).hunger((int) (CRACKER_CHEESE.getHealing() * grilledMul)).saturation((float) (CRACKER_CHEESE.getSaturation() * grilledMul)).build();
-    public static final Food CRACKER_HAM = (new Food.Builder()).hunger(CRACKER.getHealing() + HAM.getHealing()).saturation(CRACKER.getSaturation() + HAM.getSaturation()).build();
-    public static final Food CRACKER_HAM_GRILLED = (new Food.Builder()).hunger((int) (CRACKER_HAM.getHealing() * grilledMul)).saturation((float) (CRACKER_HAM.getSaturation() * grilledMul)).build();
-    public static final Food CRACKER_CHEESE_HAM = (new Food.Builder()).hunger(CRACKER_CHEESE.getHealing() + CRACKER_HAM.getHealing()).saturation(CRACKER_CHEESE.getSaturation() + CRACKER_HAM.getSaturation()).build();
-    public static final Food CRACKER_CHEESE_HAM_GRILLED = (new Food.Builder()).hunger(CRACKER_CHEESE_GRILLED.getHealing() + CRACKER_HAM_GRILLED.getHealing()).saturation(CRACKER_CHEESE_GRILLED.getSaturation() + CRACKER_HAM_GRILLED.getSaturation()).build();
+    public static final Food CRACKER_CHEESE = buildCombo(false, CRACKER, CHEESE_SLICE);
+    public static final Food CRACKER_CHEESE_GRILLED = buildCombo(true, CRACKER_CHEESE);
+    public static final Food CRACKER_HAM = buildCombo(false, CRACKER, HAM);
+    public static final Food CRACKER_HAM_GRILLED = buildCombo(true, CRACKER_HAM);
+    public static final Food CRACKER_CHEESE_HAM = buildCombo(false, CRACKER, CHEESE_SLICE, HAM);
+    public static final Food CRACKER_CHEESE_HAM_GRILLED = buildCombo(true, CRACKER_CHEESE_HAM);
 
-    public static final Food TOASTIE_CHEESE = (new Food.Builder()).hunger(TOAST.getHealing() + CHEESE_SLICE.getHealing()).saturation(TOAST.getSaturation() + CHEESE_SLICE.getSaturation()).build();
-    public static final Food TOASTIE_CHEESE_GRILLED = (new Food.Builder()).hunger((int) (TOASTIE_CHEESE.getHealing() * grilledMul)).saturation((float) (TOASTIE_CHEESE.getSaturation() * grilledMul)).build();
-    public static final Food TOASTIE_CHEESE_HAM = (new Food.Builder()).hunger(TOASTIE_CHEESE.getHealing() + HAM.getHealing()).saturation(TOASTIE_CHEESE.getSaturation() + HAM.getSaturation()).build();
-    public static final Food TOASTIE_CHEESE_HAM_GRILLED = (new Food.Builder()).hunger((int) (TOASTIE_CHEESE_HAM.getHealing() * grilledMul)).saturation((float) (TOASTIE_CHEESE_HAM.getHealing() * grilledMul)).build();
-    public static final Food TOASTIE_CHEESE_HAM_COOKED = (new Food.Builder()).hunger(TOASTIE_CHEESE.getHealing() + HAM_COOKED.getHealing()).saturation(TOASTIE_CHEESE.getSaturation() + HAM_COOKED.getSaturation()).build();
-    public static final Food TOASTIE_CHEESE_HAM_COOKED_GRILLED = (new Food.Builder()).hunger((int) (TOASTIE_CHEESE_HAM_COOKED.getHealing() * grilledMul)).saturation((float) (TOASTIE_CHEESE_HAM_COOKED.getHealing() * grilledMul)).build();
+    public static final Food TOASTIE_CHEESE = buildCombo(false, TOAST, TOAST, CHEESE_SLICE);
+    public static final Food TOASTIE_CHEESE_GRILLED = buildCombo(true, TOASTIE_CHEESE);
+    public static final Food TOASTIE_CHEESE_HAM = buildCombo(false, TOAST, TOAST, CHEESE_SLICE, HAM);
+    public static final Food TOASTIE_CHEESE_HAM_GRILLED = buildCombo(true, TOASTIE_CHEESE_HAM);
+    public static final Food TOASTIE_CHEESE_HAM_COOKED = buildCombo(false, TOAST, TOAST, CHEESE_SLICE, HAM_COOKED);
+    public static final Food TOASTIE_CHEESE_HAM_COOKED_GRILLED = buildCombo(true, TOASTIE_CHEESE_HAM_COOKED);
 
     public static final Food PINEAPPLE = (new Food.Builder()).hunger(12).saturation(5.0f).build();
     public static final Food PINEAPPLE_RING = (new Food.Builder()).hunger(PINEAPPLE.getHealing() / 4).saturation(PINEAPPLE.getSaturation() / 4.0f).build();
     public static final Food PINEAPPLE_BIT = (new Food.Builder()).hunger(PINEAPPLE_RING.getHealing() / 3).saturation(PINEAPPLE_RING.getSaturation() / 3.0f).build();
 
-    public static final Food PIZZA_CHEESE = (new Food.Builder()).hunger(DOUGH.getHealing() + CHEESE_SLICE.getHealing() * 2).saturation(DOUGH.getSaturation() + CHEESE_SLICE.getSaturation() * 2.0f).build();
-    public static final Food PIZZA_CHEESE_COOKED = (new Food.Builder()).hunger((int) (PIZZA_CHEESE.getHealing() * grilledMul)).saturation((float) (PIZZA_CHEESE.getSaturation() * grilledMul)).build();
-    public static final Food PIZZA_CHEESE_HAM = (new Food.Builder()).hunger(PIZZA_CHEESE.getHealing() + HAM.getHealing()).saturation(PIZZA_CHEESE.getSaturation() + HAM.getSaturation()).build();
-    public static final Food PIZZA_CHEESE_HAM_COOKED = (new Food.Builder()).hunger((int) (PIZZA_CHEESE_HAM.getHealing() * grilledMul)).saturation((float) (PIZZA_CHEESE_HAM.getSaturation() * grilledMul)).build();
-    public static final Food PIZZA_CHEESE_HAM_PINEAPPLE = (new Food.Builder()).hunger(PIZZA_CHEESE_HAM.getHealing() + PINEAPPLE.getHealing()).saturation(PIZZA_CHEESE_HAM.getSaturation() + PINEAPPLE.getSaturation()).build();
-    public static final Food PIZZA_CHEESE_HAM_PINEAPPLE_COOKED = (new Food.Builder()).hunger((int) (PIZZA_CHEESE_HAM_PINEAPPLE.getHealing() * grilledMul)).saturation((float) (PIZZA_CHEESE_HAM_PINEAPPLE.getSaturation() * grilledMul)).build();
+    public static final Food PIZZA_CHEESE = buildCombo(false, DOUGH, CHEESE_SLICE);
+    public static final Food PIZZA_CHEESE_COOKED = buildCombo(true, PIZZA_CHEESE);
+    public static final Food PIZZA_CHEESE_HAM = buildCombo(false, DOUGH, CHEESE_SLICE, HAM_COOKED);
+    public static final Food PIZZA_CHEESE_HAM_COOKED = buildCombo(true, PIZZA_CHEESE_HAM);
+    public static final Food PIZZA_CHEESE_HAM_PINEAPPLE = buildCombo(false, DOUGH, CHEESE_SLICE, HAM_COOKED, PINEAPPLE_RING);
+    public static final Food PIZZA_CHEESE_HAM_PINEAPPLE_COOKED = buildCombo(true, PIZZA_CHEESE_HAM_PINEAPPLE);
+
+    private static Food buildCombo(boolean grilled, Food... foods) {
+        if (foods.length == 1) {
+            Food food = foods[0];
+            Food.Builder newFood = new Food.Builder().hunger(food.getHealing() * grilledI(grilled)).saturation(food.getSaturation() * grilledF(grilled));
+            newFood = applyEffects(food, newFood);
+
+            return newFood.build();
+        }
+
+        Food.Builder newFood = new Food.Builder().hunger((foods[0].getHealing() / 2) * grilledI(grilled)).saturation((foods[0].getSaturation() / 2.0f) * grilledF(grilled));
+
+        for (int i = 1; i < foods.length; i++) {
+            Food food = foods[i];
+            Food foodB = newFood.build();
+            newFood = newFood.hunger(food.getHealing() / 2 + foodB.getHealing()).saturation(food.getSaturation() / 2.0f + foodB.getSaturation());
+            newFood = applyEffects(food, newFood);
+        }
+
+        Food foodB = newFood.build();
+        return newFood.hunger(foodB.getHealing() * grilledI(grilled)).saturation(foodB.getSaturation() * grilledF(grilled)).build();
+    }
+
+    private static Food.Builder applyEffects(Food fooda, Food.Builder foodb) {
+        Food.Builder newFood = foodb;
+        if (fooda.isMeat()) newFood = newFood.meat();
+        if (fooda.isFastEating()) newFood = newFood.fastToEat();
+        if (fooda.canEatWhenFull()) newFood = newFood.setAlwaysEdible();
+
+        if (fooda.getEffects().size() > 0)
+            for (Pair<EffectInstance, Float> effect : fooda.getEffects())
+                newFood = newFood.effect(effect.getLeft(), effect.getRight());
+
+        return newFood;
+    }
+
+    private static float grilledF(boolean isGrilled) {
+        return (float) (isGrilled ? grilledMul : 1.0f);
+    }
+
+    private static int grilledI(boolean isGrilled) {
+        return (int) grilledF(isGrilled);
+    }
 }
