@@ -1,5 +1,7 @@
 package coffeecatrailway.cheesemod.block;
 
+import coffeecatrailway.cheesemod.core.ModFluids;
+import coffeecatrailway.cheesemod.core.ModItems;
 import coffeecatrailway.cheesemod.core.ModStats;
 import coffeecatrailway.cheesemod.tileentity.GrillTileEntity;
 import coffeecatrailway.cheesemod.util.VoxelShapeHelper;
@@ -15,6 +17,7 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
@@ -31,6 +34,9 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -153,7 +159,20 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable { /// T
     public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         if (world.isRemote)
             return true;
-        else {
+        else if (player.getHeldItem(hand).getItem() == ModItems.OIL_BUCKET && hand == Hand.MAIN_HAND) {
+            if (world.getTileEntity(pos) instanceof GrillTileEntity) {
+                GrillTileEntity tile = (GrillTileEntity) world.getTileEntity(pos);
+                int oil = tile.getTank().getFluidAmount();
+                if (oil <= FluidAttributes.BUCKET_VOLUME) {
+                    if (!player.abilities.isCreativeMode)
+                        player.setHeldItem(hand, new ItemStack(Items.BUCKET));
+
+                    tile.getTank().fill(new FluidStack(ModFluids.OIL_SOURCE, FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
+                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    return true;
+                }
+            }
+        } else {
             INamedContainerProvider provider = this.getContainer(state, world, pos);
             if (provider != null) {
                 player.openContainer(provider);
@@ -161,6 +180,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable { /// T
             }
             return true;
         }
+        return false;
     }
 
     @Nullable

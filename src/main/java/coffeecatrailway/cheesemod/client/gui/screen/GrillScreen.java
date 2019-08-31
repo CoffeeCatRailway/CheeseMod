@@ -2,6 +2,7 @@ package coffeecatrailway.cheesemod.client.gui.screen;
 
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.client.gui.container.GrillContainer;
+import coffeecatrailway.cheesemod.tileentity.GrillTileEntity;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.resources.I18n;
@@ -40,7 +41,7 @@ public class GrillScreen extends ContainerScreen<GrillContainer> {
     }
 
     public static String getFormatedOilString(int oil) {
-        return I18n.format("gui." + CheeseMod.MOD_ID + ".category.grill.oil", new Object[]{oil});
+        return I18n.format("gui." + CheeseMod.MOD_ID + ".category.grill.oil", oil, GrillTileEntity.FLUID_CAPTACITY);
     }
 
     @Override
@@ -66,7 +67,7 @@ public class GrillScreen extends ContainerScreen<GrillContainer> {
         this.blit(i + 85, j + 32, 176, 14, l + 1, 16);
 
         GlStateManager.enableBlend();
-        int k = (int) map(this.container.getOil(), 0, 1000, 0, 64);
+        int k = (int) map(this.container.getOil(), 0, GrillTileEntity.FLUID_CAPTACITY, 0, 64);
         this.blit(i + 35, j + 8 + 64 - k, 176, 160 - k + 1, 16, k);
         GlStateManager.disableBlend();
 

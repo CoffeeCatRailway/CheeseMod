@@ -4,6 +4,7 @@ import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.ModConfig;
 import coffeecatrailway.cheesemod.block.GrillBlock;
 import coffeecatrailway.cheesemod.client.gui.container.GrillContainer;
+import coffeecatrailway.cheesemod.core.ModFluids;
 import coffeecatrailway.cheesemod.core.ModRecipeTypes;
 import coffeecatrailway.cheesemod.core.ModTileEntityTypes;
 import coffeecatrailway.cheesemod.item.crafting.GrillRecipe;
@@ -27,7 +28,6 @@ import net.minecraft.item.crafting.RecipeItemHelper;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.AbstractFurnaceTileEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.LockableTileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.NonNullList;
@@ -38,6 +38,10 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.ForgeEventFactory;
+import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
@@ -50,17 +54,18 @@ import java.util.Map;
  * @author CoffeeCatRailway
  * Created: 8/08/2019
  */
-public class GrillTileEntity extends LockableTileEntity implements ISidedInventory, IRecipeHolder, IRecipeHelperPopulator, ITickableTileEntity {
+public class GrillTileEntity extends LockableTileFluidHandler implements ISidedInventory, IRecipeHolder, IRecipeHelperPopulator, ITickableTileEntity {
 
     private static final int[] SLOTS_UP = new int[]{0};
     private static final int[] SLOTS_DOWN = new int[]{2, 1};
     private static final int[] SLOTS_HORIZONTAL = new int[]{1};
-    private NonNullList<ItemStack> items = NonNullList.withSize(3, ItemStack.EMPTY);
+    public static final int FLUID_CAPTACITY = FluidAttributes.BUCKET_VOLUME * 2;
+
+    private NonNullList<ItemStack> inventory = NonNullList.withSize(3, ItemStack.EMPTY);
     private int burnTime;
     private int recipesUsed;
     private int cookTime;
     private int cookTimeTotal;
-    private int oil;
     private final IIntArray data = new IIntArray() {
         public int get(int index) {
             switch (index) {
@@ -73,7 +78,7 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
                 case 3:
                     return GrillTileEntity.this.cookTimeTotal;
                 case 4:
-                    return GrillTileEntity.this.oil;
+                    return GrillTileEntity.this.tank.getFluidAmount();
                 default:
                     return 0;
             }
@@ -94,7 +99,7 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
                     GrillTileEntity.this.cookTimeTotal = value;
                     break;
                 case 4:
-                    GrillTileEntity.this.oil = value;
+                    GrillTileEntity.this.tank.setFluid(new FluidStack(ModFluids.OIL_SOURCE, value));
                     break;
             }
 
@@ -108,7 +113,8 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
     private final IRecipeType<GrillRecipe> recipeType;
 
     public GrillTileEntity() {
-        super(ModTileEntityTypes.GRILL);
+        super(ModTileEntityTypes.GRILL, FLUID_CAPTACITY);
+        this.tank.setValidator((fluid) -> fluid.getFluid() == ModFluids.OIL_SOURCE);
         this.recipeType = ModRecipeTypes.GRILLING;
     }
 
@@ -128,13 +134,12 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
 
     public void read(CompoundNBT compound) {
         super.read(compound);
-        this.items = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
-        ItemStackHelper.loadAllItems(compound, this.items);
+        this.inventory = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
+        ItemStackHelper.loadAllItems(compound, this.inventory);
         this.burnTime = compound.getInt("BurnTime");
         this.cookTime = compound.getInt("CookTime");
         this.cookTimeTotal = compound.getInt("CookTimeTotal");
-        this.oil = compound.getInt("Oil");
-        this.recipesUsed = this.getBurnTime(this.items.get(1));
+        this.recipesUsed = this.getBurnTime(this.inventory.get(1));
         int i = compound.getShort("RecipesUsedSize");
 
         for (int j = 0; j < i; ++j) {
@@ -150,8 +155,7 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
         compound.putInt("BurnTime", this.burnTime);
         compound.putInt("CookTime", this.cookTime);
         compound.putInt("CookTimeTotal", this.cookTimeTotal);
-        compound.putInt("Oil", this.oil);
-        ItemStackHelper.saveAllItems(compound, this.items);
+        ItemStackHelper.saveAllItems(compound, this.inventory);
         compound.putShort("RecipesUsedSize", (short) this.recipeAmounts.size());
         int i = 0;
 
@@ -173,8 +177,8 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
         }
 
         if (!this.world.isRemote) {
-            ItemStack fuelStack = this.items.get(1);
-            if (this.isBurning() || !fuelStack.isEmpty() && !this.items.get(0).isEmpty()) {
+            ItemStack fuelStack = this.inventory.get(1);
+            if (this.isBurning() || !fuelStack.isEmpty() && !this.inventory.get(0).isEmpty()) {
                 IRecipe<?> iRecipe = this.world.getRecipeManager().getRecipe(this.recipeType, this, this.world).orElse(null);
                 if (!this.isBurning() && this.canSmelt(iRecipe)) {
                     this.burnTime = this.getBurnTime(fuelStack);
@@ -182,12 +186,12 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
                     if (this.isBurning()) {
                         flag1 = true;
                         if (fuelStack.hasContainerItem()) {
-                            this.items.set(1, fuelStack.getContainerItem());
+                            this.inventory.set(1, fuelStack.getContainerItem());
                         } else {
                             if (!fuelStack.isEmpty()) {
                                 fuelStack.shrink(1);
                                 if (fuelStack.isEmpty())
-                                    this.items.set(1, fuelStack.getContainerItem());
+                                    this.inventory.set(1, fuelStack.getContainerItem());
                             }
                         }
                     }
@@ -197,9 +201,7 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
                 if (this.isBurning() && this.canSmelt(iRecipe)) {
                     this.cookTime += ModConfig.MODIFIERS.grillSpeed.get();
                     if (this.cookTime >= this.cookTimeTotal) {
-                        this.oil -= this.getOil();
-                        if (this.oil < 0)
-                            this.oil = 0;
+                        this.tank.drain(this.getOilForRecipe(), IFluidHandler.FluidAction.EXECUTE);
                         this.smeltRecipe(iRecipe);
                         this.cookTime = 0;
                         this.cookTimeTotal = this.getCookTimeTotal();
@@ -227,12 +229,12 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
     }
 
     private boolean canSmelt(@Nullable IRecipe<?> iRecipe) {
-        if (!this.items.get(0).isEmpty() && iRecipe != null && this.oil > 0 && this.oil >= this.getOil()) {
+        if (!this.inventory.get(0).isEmpty() && iRecipe != null && this.tank.getFluidAmount() > 0 && this.tank.getFluidAmount() >= this.getOilForRecipe()) {
             ItemStack recipeOutStack = iRecipe.getRecipeOutput();
             if (recipeOutStack.isEmpty())
                 return false;
             else {
-                ItemStack outStack = this.items.get(2);
+                ItemStack outStack = this.inventory.get(2);
                 if (outStack.isEmpty())
                     return true;
                 else if (!outStack.isItemEqual(recipeOutStack))
@@ -248,11 +250,11 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
 
     private void smeltRecipe(@Nullable IRecipe<?> iRecipe) {
         if (iRecipe != null && this.canSmelt(iRecipe)) {
-            ItemStack ingredientStack = this.items.get(0);
+            ItemStack ingredientStack = this.inventory.get(0);
             ItemStack recipeOutStack = iRecipe.getRecipeOutput();
-            ItemStack outStack = this.items.get(2);
+            ItemStack outStack = this.inventory.get(2);
             if (outStack.isEmpty())
-                this.items.set(2, recipeOutStack.copy());
+                this.inventory.set(2, recipeOutStack.copy());
             else if (outStack.getItem() == recipeOutStack.getItem())
                 outStack.grow(recipeOutStack.getCount());
 
@@ -277,8 +279,12 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
         return this.world.getRecipeManager().getRecipe(this.recipeType, this, this.world).map(GrillRecipe::getCookTime).orElse(200);
     }
 
-    private int getOil() {
+    private int getOilForRecipe() {
         return this.world.getRecipeManager().getRecipe(this.recipeType, this, this.world).map(GrillRecipe::getOil).orElse(0);
+    }
+
+    public FluidTank getTank() {
+        return this.tank;
     }
 
     @Override
@@ -307,12 +313,12 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
 
     @Override
     public int getSizeInventory() {
-        return this.items.size();
+        return this.inventory.size();
     }
 
     @Override
     public boolean isEmpty() {
-        for (ItemStack itemstack : this.items)
+        for (ItemStack itemstack : this.inventory)
             if (!itemstack.isEmpty())
                 return false;
 
@@ -321,24 +327,24 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
 
     @Override
     public ItemStack getStackInSlot(int index) {
-        return this.items.get(index);
+        return this.inventory.get(index);
     }
 
     @Override
     public ItemStack decrStackSize(int index, int count) {
-        return ItemStackHelper.getAndSplit(this.items, index, count);
+        return ItemStackHelper.getAndSplit(this.inventory, index, count);
     }
 
     @Override
     public ItemStack removeStackFromSlot(int index) {
-        return ItemStackHelper.getAndRemove(this.items, index);
+        return ItemStackHelper.getAndRemove(this.inventory, index);
     }
 
     @Override
     public void setInventorySlotContents(int index, ItemStack stack) {
-        ItemStack itemstack = this.items.get(index);
+        ItemStack itemstack = this.inventory.get(index);
         boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
-        this.items.set(index, stack);
+        this.inventory.set(index, stack);
         if (stack.getCount() > this.getInventoryStackLimit())
             stack.setCount(this.getInventoryStackLimit());
 
@@ -364,14 +370,14 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
         else if (index != 1)
             return true;
         else {
-            ItemStack itemstack = this.items.get(1);
+            ItemStack itemstack = this.inventory.get(1);
             return AbstractFurnaceTileEntity.isFuel(stack) || stack.getItem() == Items.BUCKET && itemstack.getItem() != Items.BUCKET;
         }
     }
 
     @Override
     public void clear() {
-        this.items.clear();
+        this.inventory.clear();
     }
 
     @Override
@@ -432,7 +438,7 @@ public class GrillTileEntity extends LockableTileEntity implements ISidedInvento
 
     @Override
     public void fillStackedContents(RecipeItemHelper helper) {
-        for (ItemStack itemstack : this.items)
+        for (ItemStack itemstack : this.inventory)
             helper.accountStack(itemstack);
     }
 
