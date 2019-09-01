@@ -229,9 +229,7 @@
   "container.cheesemod.ham_cooked_draw": "Cooked Ham Draw",
 
   "container.cheesemod.grill": "Grill",
-  "gui.cheesemod.category.grill.oil": "Oil: %smb/1000mb",
   "gui.cheesemod.category.grill.oil": "Oil: %smb/%smb",
-
 
   "itemGroup.cheesemod.all": "Cheese Mod",
   "itemGroup.cheesemod.foods": "Cheese Mod Foods"

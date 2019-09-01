@@ -30,8 +30,8 @@ public class ModFeatures {
 
     /// Structures ///
     public static Structure<NoFeatureConfig> PINE_HUT = new PineHutStructure(NoFeatureConfig::deserialize);
-    public static Structure<?> PINE_HUT_STRUCT = registerStructure("Pine_Hut", PINE_HUT);
-    public static IStructurePieceType PINE_HUT_TYPE = registerStructureTYPE("PineHut", PineHutStructure.HutPiece::new);
+    public static Structure<?> PINE_HUT_STRUCT = registerStructure("pine_hut", PINE_HUT);
+    public static IStructurePieceType PINE_HUT_TYPE = registerStructureTYPE("pine_hut", PineHutStructure.Piece::new);
 
     public static void registerAll(RegistryEvent.Register<Feature<?>> event) {
         if (!event.getName().equals(ForgeRegistries.FEATURES.getRegistryName())) return;

@@ -2,6 +2,7 @@ package coffeecatrailway.cheesemod.world;
 
 import coffeecatrailway.cheesemod.core.ModBiomes;
 import coffeecatrailway.cheesemod.core.ModBlocks;
+import coffeecatrailway.cheesemod.core.ModFeatures;
 import coffeecatrailway.cheesemod.world.feature.ModOreFeature;
 import coffeecatrailway.cheesemod.world.feature.ModOreFeatureConfig;
 import com.google.common.base.Predicate;
@@ -9,7 +10,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.placement.CountRangeConfig;
+import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -40,14 +43,22 @@ public class ModWorldFeatures {
                 addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE_END.getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
 
             } else {                                                    /// OVERWORLD ///
-                if (biome == ModBiomes.CHEESE_FOREST || biome == ModBiomes.CHEESE_PLAINS || biome == ModBiomes.GRILLED_CHEESE_FOREST || biome == ModBiomes.GRILLED_CHEESE_PLAINS) {
+                boolean isCheese = biome == ModBiomes.CHEESE_FOREST || biome == ModBiomes.CHEESE_PLAINS || biome == ModBiomes.GRILLED_CHEESE_FOREST || biome == ModBiomes.GRILLED_CHEESE_PLAINS;
+                boolean isHam = biome == ModBiomes.HAM_RAW_FOREST || biome == ModBiomes.HAM_RAW_PLAINS || biome == ModBiomes.HAM_COOKED_FOREST || biome == ModBiomes.HAM_COOKED_PLAINS;
+
+                // Ores
+                if (isCheese) {
                     addOre(biome, ModBlocks.CHEESE_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                     addOre(biome, ModBlocks.GRILLED_CHEESE_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                 }
-                if (biome == ModBiomes.HAM_RAW_FOREST || biome == ModBiomes.HAM_RAW_PLAINS || biome == ModBiomes.HAM_COOKED_FOREST || biome == ModBiomes.HAM_COOKED_PLAINS) {
+                if (isHam) {
                     addOre(biome, ModBlocks.HAM_RAW_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                     addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                 }
+
+                // Structures
+                biome.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(ModFeatures.PINE_HUT, IFeatureConfig.NO_FEATURE_CONFIG, Placement.TOP_SOLID_HEIGHTMAP, IPlacementConfig.NO_PLACEMENT_CONFIG));
+                biome.addStructure(ModFeatures.PINE_HUT, IFeatureConfig.NO_FEATURE_CONFIG);
             }
         });
     }

@@ -47,9 +47,11 @@ public class SideProxy {
     }
 
     private static void textureStitchEvent(TextureStitchEvent.Pre event) {
-        event.addSprite(OilFluid.ATTRIBUTES.getStillTexture());
-        event.addSprite(OilFluid.ATTRIBUTES.getFlowingTexture());
-        event.addSprite(OilFluid.ATTRIBUTES.getOverlayTexture());
+        if(event.getMap().getBasePath().equals("textures")) {
+            event.addSprite(OilFluid.ATTRIBUTES.getStillTexture());
+            event.addSprite(OilFluid.ATTRIBUTES.getFlowingTexture());
+            event.addSprite(OilFluid.ATTRIBUTES.getOverlayTexture());
+        }
     }
 
     private static void commonSetup(FMLCommonSetupEvent event) {
