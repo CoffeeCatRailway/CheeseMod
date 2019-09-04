@@ -40,6 +40,7 @@ public class ModConfig {
 
         public ForgeConfigSpec.DoubleValue grilledFoodMultiplier;
         public ForgeConfigSpec.IntValue grillSpeed;
+        public ForgeConfigSpec.IntValue melterSpeed;
 
         public ForgeConfigSpec.DoubleValue cheeseSuitScale;
         public ForgeConfigSpec.DoubleValue cheeseSuitBindingScale;
@@ -53,8 +54,13 @@ public class ModConfig {
             grilledFoodMultiplier = config.comment("The amount of how much the saturation changes when grilled")
                     .defineInRange(CheeseMod.MOD_ID + ".modifier.grilledSaturation", 1.5d, 0.5d, 10.0d);
 
+            int minSpeed = 1;
+            int maxSpeed = 20;
             grillSpeed = config.comment("Speed multiplier for the grill")
-                    .defineInRange(CheeseMod.MOD_ID + ".modifier.grillSpeed", 5, 1, 20);
+                    .defineInRange(CheeseMod.MOD_ID + ".modifier.grillSpeed", 5, minSpeed, maxSpeed);
+
+            melterSpeed = config.comment("Speed multiplier for the melter")
+                    .defineInRange(CheeseMod.MOD_ID + ".modifier.melterSpeed", 4, minSpeed, maxSpeed);
 
             double minScale = (double) 0.0f;
             double maxScale = (double) 10.0f;

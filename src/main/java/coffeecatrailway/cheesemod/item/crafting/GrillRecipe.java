@@ -17,8 +17,8 @@ public class GrillRecipe extends AbstractCookingRecipe {
     private final ItemStack result;
     private final int oil;
 
-    public GrillRecipe(ResourceLocation id, String group, Ingredient ingredient, ItemStack result, float experience, int cookTime, int oil) {
-        super(ModRecipeTypes.GRILLING, id, group, ingredient, result, experience, cookTime);
+    public GrillRecipe(ResourceLocation id, Ingredient ingredient, ItemStack result, float experience, int cookTime, int oil) {
+        super(ModRecipeTypes.GRILLING, id, "", ingredient, result, experience, cookTime);
         this.result = result;
         this.oil = oil;
     }

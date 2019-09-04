@@ -164,6 +164,7 @@ public class ModItems {
 
     /// Fluids ///
     public static Item OIL_BUCKET;
+    public static Item MELTED_CHEESE_BUCKET;
 
     /// Other ///
     public static Item CHEESE_BIT;
@@ -322,6 +323,7 @@ public class ModItems {
 
         /// Fluids ///
         OIL_BUCKET = register("oil_bucket", new BucketItem(ModFluids.OIL_SOURCE, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ItemGroup.MISC)));
+        MELTED_CHEESE_BUCKET = register("melted_cheese_bucket", new BucketItem(ModFluids.MELTED_CHEESE_SOURCE, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ItemGroup.MISC)));
 
         /// Other ///
         CHEESE_BIT = register("cheese_bit", new Item(new Item.Properties().group(CheeseMod.GROUP_ALL)));

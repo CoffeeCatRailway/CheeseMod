@@ -28,6 +28,10 @@ public abstract class LockableTileFluidHandler extends LockableTileEntity {
         holder = LazyOptional.of(() -> tank);
     }
 
+    public FluidTank getTank() {
+        return tank;
+    }
+
     @Override
     public void read(CompoundNBT tag) {
         super.read(tag);

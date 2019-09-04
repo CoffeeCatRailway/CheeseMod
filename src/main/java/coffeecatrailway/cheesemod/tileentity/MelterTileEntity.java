@@ -2,18 +2,16 @@ package coffeecatrailway.cheesemod.tileentity;
 
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.ModConfig;
-import coffeecatrailway.cheesemod.block.GrillBlock;
-import coffeecatrailway.cheesemod.client.gui.container.GrillContainer;
-import coffeecatrailway.cheesemod.core.ModFluids;
+import coffeecatrailway.cheesemod.block.MelterBlock;
+import coffeecatrailway.cheesemod.client.gui.container.MelterContainer;
 import coffeecatrailway.cheesemod.core.ModRecipeTypes;
 import coffeecatrailway.cheesemod.core.ModTileEntityTypes;
-import coffeecatrailway.cheesemod.item.crafting.GrillRecipe;
-import com.google.common.collect.Lists;
+import coffeecatrailway.cheesemod.item.crafting.MelterRecipe;
 import com.google.common.collect.Maps;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.inventory.IRecipeHelperPopulator;
 import net.minecraft.inventory.IRecipeHolder;
 import net.minecraft.inventory.ISidedInventory;
@@ -33,11 +31,11 @@ import net.minecraft.util.IIntArray;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -47,21 +45,19 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 import javax.annotation.Nullable;
-import java.util.List;
 import java.util.Map;
 
 /**
  * @author CoffeeCatRailway
- * Created: 8/08/2019
+ * Created: 3/09/2019
  */
-public class GrillTileEntity extends LockableTileFluidHandler implements ISidedInventory, IRecipeHolder, IRecipeHelperPopulator, ITickableTileEntity {
+public class MelterTileEntity extends LockableTileFluidHandler implements ISidedInventory, IRecipeHolder, IRecipeHelperPopulator, ITickableTileEntity {
 
     private static final int[] SLOTS_UP = new int[]{0};
-    private static final int[] SLOTS_DOWN = new int[]{2, 1};
     private static final int[] SLOTS_HORIZONTAL = new int[]{1};
-    public static final int FLUID_CAPTACITY = FluidAttributes.BUCKET_VOLUME * 2;
+    public static final int FLUID_CAPTACITY = FluidAttributes.BUCKET_VOLUME * 10;
 
-    private NonNullList<ItemStack> inventory = NonNullList.withSize(3, ItemStack.EMPTY);
+    private NonNullList<ItemStack> inventory = NonNullList.withSize(2, ItemStack.EMPTY);
     private int burnTime;
     private int recipesUsed;
     private int cookTime;
@@ -70,15 +66,17 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
         public int get(int index) {
             switch (index) {
                 case 0:
-                    return GrillTileEntity.this.burnTime;
+                    return MelterTileEntity.this.burnTime;
                 case 1:
-                    return GrillTileEntity.this.recipesUsed;
+                    return MelterTileEntity.this.recipesUsed;
                 case 2:
-                    return GrillTileEntity.this.cookTime;
+                    return MelterTileEntity.this.cookTime;
                 case 3:
-                    return GrillTileEntity.this.cookTimeTotal;
+                    return MelterTileEntity.this.cookTimeTotal;
                 case 4:
-                    return GrillTileEntity.this.tank.getFluidAmount();
+                    return MelterTileEntity.this.tank.getFluidAmount();
+                case 5:
+                    return Registry.FLUID.getId(MelterTileEntity.this.tank.getFluid().getFluid());
                 default:
                     return 0;
             }
@@ -87,45 +85,47 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
         public void set(int index, int value) {
             switch (index) {
                 case 0:
-                    GrillTileEntity.this.burnTime = value;
+                    MelterTileEntity.this.burnTime = value;
                     break;
                 case 1:
-                    GrillTileEntity.this.recipesUsed = value;
+                    MelterTileEntity.this.recipesUsed = value;
                     break;
                 case 2:
-                    GrillTileEntity.this.cookTime = value;
+                    MelterTileEntity.this.cookTime = value;
                     break;
                 case 3:
-                    GrillTileEntity.this.cookTimeTotal = value;
+                    MelterTileEntity.this.cookTimeTotal = value;
                     break;
                 case 4:
-                    GrillTileEntity.this.tank.setFluid(new FluidStack(ModFluids.OIL_SOURCE, value));
+                    MelterTileEntity.this.tank.setFluid(new FluidStack(MelterTileEntity.this.tank.getFluid().getFluid(), value));
+                    break;
+                case 5:
+                    MelterTileEntity.this.tank.setFluid(new FluidStack(Registry.FLUID.getByValue(value), 1));
                     break;
             }
 
         }
 
         public int size() {
-            return 5;
+            return 6;
         }
     };
     private final Map<ResourceLocation, Integer> recipeAmounts = Maps.newHashMap();
-    private final IRecipeType<GrillRecipe> recipeType;
+    private final IRecipeType<MelterRecipe> recipeType;
 
-    public GrillTileEntity() {
-        super(ModTileEntityTypes.GRILL, FLUID_CAPTACITY);
-        this.tank.setValidator((fluid) -> fluid.getFluid() == ModFluids.OIL_SOURCE || fluid.getFluid() == ModFluids.OIL_FLOWING);
-        this.recipeType = ModRecipeTypes.GRILLING;
+    public MelterTileEntity() {
+        super(ModTileEntityTypes.MELTER, FLUID_CAPTACITY);
+        recipeType = ModRecipeTypes.MELTING;
     }
 
     @Override
     protected ITextComponent getDefaultName() {
-        return new TranslationTextComponent("container." + CheeseMod.MOD_ID + ".grill");
+        return new TranslationTextComponent("container." + CheeseMod.MOD_ID + ".melter");
     }
 
     @Override
     protected Container createMenu(int id, PlayerInventory player) {
-        return new GrillContainer(id, player, this, this.data);
+        return new MelterContainer(id, player, this, this.data, this.tank);
     }
 
     private boolean isBurning() {
@@ -169,6 +169,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
         return compound;
     }
 
+    @Override
     public void tick() {
         boolean flag = this.isBurning();
         boolean flag1 = false;
@@ -186,9 +187,9 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                     this.recipesUsed = this.burnTime;
                     if (this.isBurning()) {
                         flag1 = true;
-                        if (fuelStack.hasContainerItem()) {
+                        if (fuelStack.hasContainerItem())
                             this.inventory.set(1, fuelStack.getContainerItem());
-                        } else {
+                        else {
                             if (!fuelStack.isEmpty()) {
                                 fuelStack.shrink(1);
                                 if (fuelStack.isEmpty())
@@ -200,18 +201,14 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                 }
 
                 if (this.isBurning() && this.canSmelt(iRecipe)) {
-                    this.cookTime += ModConfig.MODIFIERS.grillSpeed.get();
+                    this.cookTime += ModConfig.MODIFIERS.melterSpeed.get();
                     if (this.cookTime >= this.cookTimeTotal) {
-                        this.tank.drain(this.getOilForRecipe(), IFluidHandler.FluidAction.EXECUTE);
                         this.smeltRecipe(iRecipe);
                         this.cookTime = 0;
                         this.cookTimeTotal = this.getCookTimeTotal();
                         flag1 = true;
                         this.sendUpdates();
                     }
-                } else {
-                    this.cookTime = 0;
-                    this.sendUpdates();
                 }
             } else if (!this.isBurning() && this.cookTime > 0) {
                 this.cookTime = MathHelper.clamp(this.cookTime - 2, 0, this.cookTimeTotal);
@@ -220,7 +217,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
 
             if (flag != this.isBurning()) {
                 flag1 = true;
-                this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(GrillBlock.LIT, this.isBurning()), 3);
+                this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(MelterBlock.LIT, this.isBurning()), 3);
                 this.sendUpdates();
             }
         }
@@ -230,66 +227,58 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
     }
 
     private boolean canSmelt(@Nullable IRecipe<?> iRecipe) {
-        if (!this.inventory.get(0).isEmpty() && iRecipe != null && this.tank.getFluidAmount() > 0 && this.tank.getFluidAmount() >= this.getOilForRecipe()) {
-            ItemStack recipeOutStack = iRecipe.getRecipeOutput();
-            if (recipeOutStack.isEmpty())
+        if (!(iRecipe instanceof MelterRecipe))
+            return false;
+
+        if (!this.inventory.get(0).isEmpty() && this.tank.getFluidAmount() < this.tank.getCapacity() && (this.tank.getCapacity() - this.tank.getFluidAmount()) >= this.getRecipeResult().getAmount()) {
+            MelterRecipe recipe = (MelterRecipe) iRecipe;
+            FluidStack outStack = recipe.getResult();
+            if (outStack.isEmpty())
                 return false;
             else {
-                ItemStack outStack = this.inventory.get(2);
-                if (outStack.isEmpty())
+                if (this.tank.isEmpty())
                     return true;
-                else if (!outStack.isItemEqual(recipeOutStack))
+                else if (!outStack.isFluidEqual(this.tank.getFluid()))
                     return false;
-                else if (outStack.getCount() + recipeOutStack.getCount() <= this.getInventoryStackLimit() && outStack.getCount() + recipeOutStack.getCount() <= outStack.getMaxStackSize())
-                    return true;
                 else
-                    return outStack.getCount() + recipeOutStack.getCount() <= outStack.getMaxStackSize();
+                    return outStack.getAmount() + this.tank.getFluidAmount() <= this.tank.getCapacity();
             }
         } else
             return false;
     }
 
     private void smeltRecipe(@Nullable IRecipe<?> iRecipe) {
-        if (iRecipe != null && this.canSmelt(iRecipe)) {
+        if (!(iRecipe instanceof MelterRecipe))
+            return;
+
+        if (this.canSmelt(iRecipe)) {
+            MelterRecipe recipe = (MelterRecipe) iRecipe;
             ItemStack ingredientStack = this.inventory.get(0);
-            ItemStack recipeOutStack = iRecipe.getRecipeOutput();
-            ItemStack outStack = this.inventory.get(2);
+            FluidStack recipeOutStack = recipe.getResult();
+            FluidStack outStack = this.tank.getFluid();
             if (outStack.isEmpty())
-                this.inventory.set(2, recipeOutStack.copy());
-            else if (outStack.getItem() == recipeOutStack.getItem())
-                outStack.grow(recipeOutStack.getCount());
+                this.tank.setFluid(recipeOutStack.copy());
+            else if (outStack.getFluid() == recipeOutStack.getFluid())
+                this.tank.fill(recipeOutStack, IFluidHandler.FluidAction.EXECUTE);
 
             if (!this.world.isRemote)
-                this.setRecipeUsed(iRecipe);
+                this.setRecipeUsed(recipe);
 
             ingredientStack.shrink(1);
         }
     }
 
-    public static int getBurnTime(ItemStack fuelStack) {
-        if (fuelStack.isEmpty())
-            return 0;
-        else {
-            Item fuelItem = fuelStack.getItem();
-            int ret = fuelStack.getBurnTime();
-            return ForgeEventFactory.getItemBurnTime(fuelStack, ret == -1 ? AbstractFurnaceTileEntity.getBurnTimes().getOrDefault(fuelItem, 0) : ret);
-        }
-    }
-
     private int getCookTimeTotal() {
-        return this.world.getRecipeManager().getRecipe(this.recipeType, this, this.world).map(GrillRecipe::getCookTime).orElse(200);
+        return this.world.getRecipeManager().getRecipe(this.recipeType, this, this.world).map(MelterRecipe::getCookTime).orElse(200);
     }
 
-    private int getOilForRecipe() {
-        return this.world.getRecipeManager().getRecipe(this.recipeType, this, this.world).map(GrillRecipe::getOil).orElse(0);
+    private FluidStack getRecipeResult() {
+        return this.world.getRecipeManager().getRecipe(this.recipeType, this, this.world).map(MelterRecipe::getResult).orElse(FluidStack.EMPTY);
     }
 
     @Override
     public int[] getSlotsForFace(Direction side) {
-        if (side == Direction.DOWN)
-            return SLOTS_DOWN;
-        else
-            return side == Direction.UP ? SLOTS_UP : SLOTS_HORIZONTAL;
+        return side == Direction.UP ? SLOTS_UP : SLOTS_HORIZONTAL;
     }
 
     @Override
@@ -362,9 +351,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
 
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack) {
-        if (index == 2)
-            return false;
-        else if (index != 1)
+        if (index != 1)
             return true;
         else {
             ItemStack itemstack = this.inventory.get(1);
@@ -397,40 +384,6 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
 
     private BlockState getState() {
         return world.getBlockState(pos);
-    }
-
-    public void giveExperience(PlayerEntity player) {
-        List<IRecipe<?>> list = Lists.newArrayList();
-
-        for (Map.Entry<ResourceLocation, Integer> entry : this.recipeAmounts.entrySet()) {
-            player.world.getRecipeManager().getRecipe(entry.getKey()).ifPresent((iRecipe) -> {
-                list.add(iRecipe);
-                giveExperience(player, entry.getValue(), ((GrillRecipe) iRecipe).getExperience());
-            });
-        }
-
-        player.unlockRecipes(list);
-        this.recipeAmounts.clear();
-    }
-
-    private void giveExperience(PlayerEntity player, int amount, float experience) {
-        if (experience == 0.0F) {
-            amount = 0;
-        } else if (experience < 1.0F) {
-            int i = MathHelper.floor((float) amount * experience);
-            if (i < MathHelper.ceil((float) amount * experience) && Math.random() < (double) ((float) amount * experience - (float) i)) {
-                ++i;
-            }
-
-            amount = i;
-        }
-
-        while (amount > 0) {
-            int j = ExperienceOrbEntity.getXPSplit(amount);
-            amount -= j;
-            player.world.addEntity(new ExperienceOrbEntity(player.world, player.posX, player.posY + 0.5D, player.posZ + 0.5D, j));
-        }
-
     }
 
     @Override

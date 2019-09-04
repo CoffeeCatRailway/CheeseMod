@@ -4,6 +4,7 @@ import coffeecatrailway.cheesemod.core.ModFluids;
 import coffeecatrailway.cheesemod.core.ModItems;
 import coffeecatrailway.cheesemod.core.ModStats;
 import coffeecatrailway.cheesemod.tileentity.GrillTileEntity;
+import coffeecatrailway.cheesemod.tileentity.MelterTileEntity;
 import coffeecatrailway.cheesemod.util.VoxelShapeHelper;
 import com.google.common.collect.Lists;
 import net.minecraft.block.*;
@@ -47,7 +48,7 @@ import java.util.Random;
  * @author CoffeeCatRailway
  * Created: 8/08/2019
  */
-public class GrillBlock extends ContainerBlock implements IWaterLoggable {
+public class MelterBlock extends ContainerBlock implements IWaterLoggable {
 
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
@@ -55,25 +56,23 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
 
     private static final VoxelShape SHAPE_BASE = VoxelShapeHelper.combineAll(Lists.newArrayList(
             /// Stands ///
-            Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 2.0D, 11.0D, 2.0D),
-            Block.makeCuboidShape(14.0D, 0.0D, 1.0D, 15.0D, 11.0D, 2.0D),
-            Block.makeCuboidShape(14.0D, 0.0D, 14.0D, 15.0D, 11.0D, 15.0D),
-            Block.makeCuboidShape(1.0D, 0.0D, 14.0D, 2.0D, 11.0D, 15.0D),
+            Block.makeCuboidShape(1.5D, 0.0D, 1.5D, 2.5D, 3.1D, 2.5D),
+            Block.makeCuboidShape(14.5D, 0.0D, 1.5D, 13.5D, 3.1D, 2.5D),
+            Block.makeCuboidShape(14.5D, 0.0D, 14.5D, 13.5D, 3.1D, 13.5D),
+            Block.makeCuboidShape(1.5D, 0.0D, 14.5D, 2.5D, 3.1D, 13.5D),
 
             /// Top ///
-            Block.makeCuboidShape(1.0D, 11.0D, 1.0D, 15.0D, 13.0D, 15.0D),
-            Block.makeCuboidShape(0.0D, 12.0D, 1.0D, 1.0D, 16.0D, 15.0D),
-            Block.makeCuboidShape(15.0D, 12.0D, 1.0D, 16.0D, 16.0D, 15.0D),
-            Block.makeCuboidShape(1.0D, 12.0D, 0.0D, 15.0D, 16.0D, 1.0D),
-            Block.makeCuboidShape(1.0D, 12.0D, 15.0D, 15.0D, 16.0D, 16.0D)
+            Block.makeCuboidShape(1.0D, 3.1D, 1.0D, 15.0D, 4.1D, 15.0D),
+            Block.makeCuboidShape(0.0D, 4.1D, 1.0D, 1.0D, 7.1D, 15.0D),
+            Block.makeCuboidShape(15.0D, 4.1D, 1.0D, 16.0D, 7.1D, 15.0D),
+            Block.makeCuboidShape(1.0D, 4.1D, 0.0D, 15.0D, 7.1D, 1.0D),
+            Block.makeCuboidShape(1.0D, 4.1D, 15.0D, 15.0D, 7.1D, 16.0D)
     ));
 
-    private static final VoxelShape SHAPE_BRASE_FRONT = Block.makeCuboidShape(15.0D, 5.0D, 2.0D, 14.0D, 6.0D, 14.0D);
-    private static final VoxelShape SHAPE_BRASE_BACK = Block.makeCuboidShape(1.0D, 5.0D, 2.0D, 2.0D, 6.0D, 14.0D);
+    private static final VoxelShape SHAPE_LOG = Block.makeCuboidShape(0.5D, 0.0D, 6.0D, 15.5D, 2.0D, 9.0D);
+    private static final VoxelShape SHAPE_CONTROLS = Block.makeCuboidShape(16.0D, 4.6D, 6.0D, 17.0D, 6.0D, 10.0D);
 
-    private static final VoxelShape SHAPE_CONTROLS = Block.makeCuboidShape(16.0D, 12.25D, 2.5D, 17.0D, 14.25D, 13.5D);
-
-    public GrillBlock(Properties properties) {
+    public MelterBlock(Properties properties) {
         super(properties);
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(LIT, Boolean.FALSE).with(WATERLOGGED, Boolean.FALSE));
     }
@@ -84,13 +83,11 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
         shapes.add(SHAPE_BASE);
 
         Direction defaultDir = Direction.EAST;
-        VoxelShape[] braseFront = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(SHAPE_BRASE_FRONT, defaultDir));
-        VoxelShape[] braseBack = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(SHAPE_BRASE_BACK, defaultDir));
+        VoxelShape[] log = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(SHAPE_LOG, defaultDir));
         VoxelShape[] controls = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(SHAPE_CONTROLS, defaultDir));
 
         Direction facing = state.get(FACING);
-        shapes.add(braseFront[facing.getHorizontalIndex()]);
-        shapes.add(braseBack[facing.getHorizontalIndex()]);
+        shapes.add(log[facing.getHorizontalIndex()]);
         shapes.add(controls[facing.getHorizontalIndex()]);
         return VoxelShapeHelper.combineAll(shapes);
     }
@@ -159,16 +156,18 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
     public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         if (world.isRemote)
             return true;
-        else if (player.getHeldItem(hand).getItem() == ModItems.OIL_BUCKET && hand == Hand.MAIN_HAND) {
-            if (world.getTileEntity(pos) instanceof GrillTileEntity) {
-                GrillTileEntity tile = (GrillTileEntity) world.getTileEntity(pos);
-                int oil = tile.getTank().getFluidAmount();
-                if (oil <= FluidAttributes.BUCKET_VOLUME) {
-                    if (!player.abilities.isCreativeMode)
-                        player.setHeldItem(hand, new ItemStack(Items.BUCKET));
+        else if (player.getHeldItem(hand).getItem() == Items.BUCKET && hand == Hand.MAIN_HAND) {
+            if (world.getTileEntity(pos) instanceof MelterTileEntity) {
+                MelterTileEntity tile = (MelterTileEntity) world.getTileEntity(pos);
+                int fluidAmount = tile.getTank().getFluidAmount();
+                if (fluidAmount >= FluidAttributes.BUCKET_VOLUME) {
+                    if (!player.abilities.isCreativeMode) {
+                        player.inventory.addItemStackToInventory(new ItemStack(tile.getTank().getFluid().getFluid().getFilledBucket()));
+                        player.getHeldItem(hand).shrink(1);
+                    }
 
-                    tile.getTank().fill(new FluidStack(ModFluids.OIL_SOURCE, FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
-                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    tile.getTank().drain(FluidAttributes.BUCKET_VOLUME, IFluidHandler.FluidAction.EXECUTE);
+                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
                     return true;
                 }
             }
@@ -186,7 +185,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
     @Nullable
     @Override
     public TileEntity createNewTileEntity(IBlockReader world) {
-        return new GrillTileEntity();
+        return new MelterTileEntity();
     }
 
     @Override
@@ -217,7 +216,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
     public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {
         if (state.get(LIT)) {
             double d0 = (double) pos.getX();
-            double d1 = (double) pos.getY() + 1.0D;
+            double d1 = (double) pos.getY() + 0.2D;
             double d2 = (double) pos.getZ();
             if (rand.nextDouble() < 0.1D)
                 world.playSound(d0, d1, d2, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);

@@ -29,7 +29,6 @@ public class GrillRecipeSerializer<T extends GrillRecipe> extends ForgeRegistryE
 
     @Override
     public T read(ResourceLocation id, JsonObject json) {
-        String group = JSONUtils.getString(json, "group", "");
         JsonElement ingredientJson = JSONUtils.isJsonArray(json, "ingredient") ? JSONUtils.getJsonArray(json, "ingredient") : JSONUtils.getJsonObject(json, "ingredient");
         Ingredient ingredient = Ingredient.deserialize(ingredientJson);
 
@@ -46,23 +45,21 @@ public class GrillRecipeSerializer<T extends GrillRecipe> extends ForgeRegistryE
         float experience = JSONUtils.getFloat(json, "experience", 0.0F);
         int cookTime = JSONUtils.getInt(json, "cookingtime", this.cookTime);
         int oil = JSONUtils.getInt(json, "oil", 0);
-        return this.factory.create(id, group, ingredient, stack, experience, cookTime, oil);
+        return this.factory.create(id, ingredient, stack, experience, cookTime, oil);
     }
 
     @Override
     public T read(ResourceLocation id, PacketBuffer buffer) {
-        String group = buffer.readString(32767);
         Ingredient ingredient = Ingredient.read(buffer);
         ItemStack stack = buffer.readItemStack();
         float experience = buffer.readFloat();
         int cookTime = buffer.readVarInt();
         int oil = buffer.readVarInt();
-        return this.factory.create(id, group, ingredient, stack, experience, cookTime, oil);
+        return this.factory.create(id, ingredient, stack, experience, cookTime, oil);
     }
 
     @Override
     public void write(PacketBuffer buffer, T recipe) {
-        buffer.writeString(recipe.getGroup());
         recipe.getIngredients().get(0).write(buffer);
         buffer.writeItemStack(recipe.getRecipeOutput());
         buffer.writeFloat(recipe.getExperience());
@@ -71,6 +68,6 @@ public class GrillRecipeSerializer<T extends GrillRecipe> extends ForgeRegistryE
     }
 
     public interface IFactory<T extends AbstractCookingRecipe> {
-        T create(ResourceLocation id, String group, Ingredient ingredient, ItemStack stack, float experience, int cookTime, int oil);
+        T create(ResourceLocation id, Ingredient ingredient, ItemStack stack, float experience, int cookTime, int oil);
     }
 }

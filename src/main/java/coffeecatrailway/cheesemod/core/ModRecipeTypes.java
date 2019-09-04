@@ -3,6 +3,8 @@ package coffeecatrailway.cheesemod.core;
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.item.crafting.GrillRecipe;
 import coffeecatrailway.cheesemod.item.crafting.GrillRecipeSerializer;
+import coffeecatrailway.cheesemod.item.crafting.MelterRecipe;
+import coffeecatrailway.cheesemod.item.crafting.MelterRecipeSerializer;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
@@ -19,18 +21,22 @@ public class ModRecipeTypes {
 
     /// Recipe Types ///
     public static IRecipeType<GrillRecipe> GRILLING;
+    public static IRecipeType<MelterRecipe> MELTING;
 
     /// Recipe Serializers ///
     public static GrillRecipeSerializer<GrillRecipe> GRILLING_SERIALIZER;
+    public static MelterRecipeSerializer<MelterRecipe> MELTING_SERIALIZER;
 
     public static void registerAll(RegistryEvent.Register<IRecipeSerializer<?>> event) {
         if (!event.getName().equals(ForgeRegistries.RECIPE_SERIALIZERS.getRegistryName())) return;
 
         GRILLING = register("grilling");
+        MELTING = register("melting");
 
         CheeseMod.LOGGER.info("Recipe types registered");
 
         GRILLING_SERIALIZER = register("grilling", new GrillRecipeSerializer<>(GrillRecipe::new, 200));
+        MELTING_SERIALIZER = register("melting", new MelterRecipeSerializer<>(MelterRecipe::new, 200));
 
         CheeseMod.LOGGER.info("Recipe serializers registered");
     }

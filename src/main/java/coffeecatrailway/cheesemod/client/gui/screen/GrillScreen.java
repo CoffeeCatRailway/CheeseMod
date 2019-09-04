@@ -67,24 +67,10 @@ public class GrillScreen extends ContainerScreen<GrillContainer> {
         this.blit(i + 85, j + 32, 176, 14, l + 1, 16);
 
         GlStateManager.enableBlend();
-        int k = (int) map(this.container.getOil(), 0, GrillTileEntity.FLUID_CAPTACITY, 0, 64);
+        int k = (int) CheeseMod.map(this.container.getOil(), 0, GrillTileEntity.FLUID_CAPTACITY, 0, 64);
         this.blit(i + 35, j + 8 + 64 - k, 176, 160 - k + 1, 16, k);
         GlStateManager.disableBlend();
 
         this.blit(i + 35, j + 8, 176, 32, 16, 64);
-    }
-
-    private float map(float from, float fromMin, float fromMax, float toMin, float toMax) {
-        float fromAbs = from - fromMin;
-        float fromMaxAbs = fromMax - fromMin;
-
-        float normal = fromAbs / fromMaxAbs;
-
-        float toMaxAbs = toMax - toMin;
-        float toAbs = toMaxAbs * normal;
-
-        float to = toAbs + toMin;
-
-        return to;
     }
 }

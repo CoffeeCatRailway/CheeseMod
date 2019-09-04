@@ -85,7 +85,11 @@
   "block.cheesemod.ham_raw_draw": "Raw Ham Draw",
   "block.cheesemod.ham_cooked_draw": "Cooked Ham Draw",
 
+  "block.cheesemod.oil_block": "Oil",
+  "block.cheesemod.melted_cheese": "Melted Cheese",
+
   "block.cheesemod.grill": "Grill",
+  "block.cheesemod.melter": "Melter",
 
   "block.cheesemod.pineapple_plant": "Pineapple Plant",
 
@@ -217,6 +221,7 @@
   "item.cheesemod.pizza_cheese_ham_pineapple_cooked": "Cooked Cheesy Ham N' Pineapple Pizza",
 
   "item.cheesemod.oil_bucket": "Oil Bucket",
+  "item.cheesemod.melted_cheese_bucket": "Melted Cheese Bucket",
 
   "item.cheesemod.cheese_bit": "Bit O' Cheese",
   "item.cheesemod.ham_bit": "Bit O' Ham",
@@ -229,7 +234,10 @@
   "container.cheesemod.ham_cooked_draw": "Cooked Ham Draw",
 
   "container.cheesemod.grill": "Grill",
+  "container.cheesemod.melter": "Melter",
+
   "gui.cheesemod.category.grill.oil": "Oil: %smb/%smb",
+  "gui.cheesemod.category.melter.fluid": "%s: %smb/%smb",
 
   "itemGroup.cheesemod.all": "Cheese Mod",
   "itemGroup.cheesemod.foods": "Cheese Mod Foods"

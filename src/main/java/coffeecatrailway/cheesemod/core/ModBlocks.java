@@ -119,9 +119,11 @@ public class ModBlocks {
 
     /// Fluids ///
     public static Block OIL;
+    public static Block MELTED_CHEESE;
 
     /// Other ///
     public static Block GRILL;
+    public static Block MELTER;
 
     public static Block PINEAPPLE;
 
@@ -235,9 +237,11 @@ public class ModBlocks {
 
         /// Fluids ///
         OIL = register("oil_block", new FlowingFluidBlock(ModFluids.OIL_SOURCE, Block.Properties.create(Material.WATER).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()), (ItemGroup) null);
+        MELTED_CHEESE = register("melted_cheese", new FlowingFluidBlock(ModFluids.MELTED_CHEESE_SOURCE, Block.Properties.create(Material.LAVA).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()), (ItemGroup) null);
 
         /// Other ///
-        GRILL = register("grill", new GrillBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.5F).lightValue(13)));
+        GRILL = register("grill", new GrillBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5F).lightValue(13)));
+        MELTER = register("melter", new MelterBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5F).lightValue(13)));
 
         PINEAPPLE = register("pineapple_plant", new PineappleBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)), (BlockItem) null);
 

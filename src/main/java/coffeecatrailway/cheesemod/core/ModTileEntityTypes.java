@@ -3,6 +3,7 @@ package coffeecatrailway.cheesemod.core;
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.tileentity.FoodDrawTileEntity;
 import coffeecatrailway.cheesemod.tileentity.GrillTileEntity;
+import coffeecatrailway.cheesemod.tileentity.MelterTileEntity;
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.types.Type;
 import net.minecraft.tileentity.TileEntity;
@@ -21,12 +22,14 @@ public class ModTileEntityTypes {
 
     public static TileEntityType<FoodDrawTileEntity> FOOD_DRAW;
     public static TileEntityType<GrillTileEntity> GRILL;
+    public static TileEntityType<MelterTileEntity> MELTER;
 
     public static void registerAll(RegistryEvent.Register<TileEntityType<?>> event) {
         if (!event.getName().equals(ForgeRegistries.TILE_ENTITIES.getRegistryName())) return;
 
         FOOD_DRAW = register("food_draw", TileEntityType.Builder.create(FoodDrawTileEntity::new, ModBlocks.CHEESE_DRAW, ModBlocks.GRILLED_CHEESE_DRAW, ModBlocks.HAM_RAW_DRAW, ModBlocks.HAM_COOKED_DRAW));
         GRILL = register("grill", TileEntityType.Builder.create(GrillTileEntity::new, ModBlocks.GRILL));
+        MELTER = register("melter", TileEntityType.Builder.create(MelterTileEntity::new, ModBlocks.MELTER));
 
         CheeseMod.LOGGER.info("Tile entity types registered");
     }

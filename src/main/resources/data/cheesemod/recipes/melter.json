@@ -1,16 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "IBI",
-    "INI",
-    "I I"
+    "I I",
+    "INI"
   ],
   "key": {
     "I": {
       "tag": "forge:ingots/iron"
-    },
-    "B": {
-      "item": "minecraft:iron_bars"
     },
     "N": [
       { "item": "minecraft:netherrack" },
@@ -19,6 +15,6 @@
     ]
   },
   "result": {
-    "item": "cheesemod:grill"
+    "item": "cheesemod:melter"
   }
 }
