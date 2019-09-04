@@ -48,7 +48,7 @@ public class SideProxy {
     }
 
     private static void textureStitchEvent(TextureStitchEvent.Pre event) {
-        if(event.getMap().getBasePath().equals("textures")) {
+        if (event.getMap().getBasePath().equals("textures")) {
             event.addSprite(OilFluid.ATTRIBUTES.getStillTexture());
             event.addSprite(OilFluid.ATTRIBUTES.getFlowingTexture());
             event.addSprite(OilFluid.ATTRIBUTES.getOverlayTexture());

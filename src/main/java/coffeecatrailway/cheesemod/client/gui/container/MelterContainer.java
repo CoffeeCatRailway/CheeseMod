@@ -6,7 +6,6 @@ import coffeecatrailway.cheesemod.item.crafting.MelterRecipe;
 import coffeecatrailway.cheesemod.tileentity.MelterTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.fluid.Fluid;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;

@@ -1,7 +1,5 @@
 package coffeecatrailway.cheesemod.block;
 
-import coffeecatrailway.cheesemod.core.ModFluids;
-import coffeecatrailway.cheesemod.core.ModItems;
 import coffeecatrailway.cheesemod.core.ModStats;
 import coffeecatrailway.cheesemod.tileentity.GrillTileEntity;
 import coffeecatrailway.cheesemod.tileentity.MelterTileEntity;
@@ -36,7 +34,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fluids.FluidAttributes;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import javax.annotation.Nullable;
