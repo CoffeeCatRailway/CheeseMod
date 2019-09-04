@@ -239,6 +239,15 @@
   "gui.cheesemod.category.grill.oil": "Oil: %smb/%smb",
   "gui.cheesemod.category.melter.fluid": "%s: %smb/%smb",
 
+  "biome.cheesemod.cheese_forest": "Cheese Forest",
+  "biome.cheesemod.cheese_plains": "Cheese Plains",
+  "biome.cheesemod.grilled_cheese_forest": "Grilled Cheese Forest",
+  "biome.cheesemod.grilled_cheese_plains": "Grilled Cheese Plains",
+  "biome.cheesemod.ham_raw_forest": "Ham Raw Forest",
+  "biome.cheesemod.ham_raw_plains": "Ham Raw Plains",
+  "biome.cheesemod.ham_cooked_forest": "Ham Cooked Forest",
+  "biome.cheesemod.ham_cooked_plains": "Ham Cooked Plains",
+
   "itemGroup.cheesemod.all": "Cheese Mod",
   "itemGroup.cheesemod.foods": "Cheese Mod Foods"
 }

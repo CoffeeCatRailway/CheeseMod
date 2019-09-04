@@ -58,13 +58,17 @@ public class ModWorldFeatures {
                     addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                 }
 
+                // Biome stuffs
                 if (biome.getCategory() == Biome.Category.FOREST && !isCheese && !isHam) {
-                    biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
-                                    new Feature[]{ModFeatures.GRILLED_CHEESE_TREE}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.CHEESE_TREE, IFeatureConfig.NO_FEATURE_CONFIG),
-                            Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(1, 0.05F, 1)));
-                    biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
-                                    new Feature[]{ModFeatures.HAM_COOKED_TREE}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.HAM_RAW_TREE, IFeatureConfig.NO_FEATURE_CONFIG),
-                            Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(1, 0.05F, 0)));
+                    addCheeseTrees(biome);
+                    addHamTrees(biome);
+                }
+
+                if (biome.getCategory() == Biome.Category.PLAINS) {
+                    if (isCheese)
+                        addCheeseTrees(biome);
+                    if (isHam)
+                        addHamTrees(biome);
                 }
 
                 // Structures
@@ -72,6 +76,18 @@ public class ModWorldFeatures {
                 biome.addStructure(ModFeatures.PINE_HUT, IFeatureConfig.NO_FEATURE_CONFIG);
             }
         });
+    }
+
+    private static void addCheeseTrees(Biome biome) {
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
+                        new Feature[]{ModFeatures.GRILLED_CHEESE_TREE}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.CHEESE_TREE, IFeatureConfig.NO_FEATURE_CONFIG),
+                Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(1, 0.05F, 1)));
+    }
+
+    private static void addHamTrees(Biome biome) {
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
+                        new Feature[]{ModFeatures.HAM_COOKED_TREE}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.HAM_RAW_TREE, IFeatureConfig.NO_FEATURE_CONFIG),
+                Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(1, 0.05F, 0)));
     }
 
     private static void addOre(Biome biome, BlockState state, int size, int regionSize, Predicate<BlockState> target, CountRangeConfig range) {
