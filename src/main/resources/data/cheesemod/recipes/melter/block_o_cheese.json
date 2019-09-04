@@ -1,0 +1,11 @@
+{
+  "type": "cheesemod:melting",
+  "ingredient": {
+    "item": "cheesemod:block_o_cheese"
+  },
+  "result": {
+    "fluid": "cheesemod:melted_cheese",
+    "amount": 100
+  },
+  "cookingtime": 50
+}

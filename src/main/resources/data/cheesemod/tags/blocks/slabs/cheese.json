@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "cheesemod:cheese_slab",
+    "#cheesemod:slabs/grilled_cheese"
+  ]
+}

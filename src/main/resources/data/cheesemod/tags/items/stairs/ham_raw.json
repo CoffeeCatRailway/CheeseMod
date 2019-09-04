@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "cheesemod:ham_raw_stairs",
+    "#cheesemod:stairs/ham_cooked"
+  ]
+}

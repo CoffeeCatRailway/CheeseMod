@@ -1,0 +1,12 @@
+{
+  "type": "cheesemod:melting",
+  "ingredient": [
+    { "tag": "forge:stone" },
+    { "tag": "forge:cobblestone" }
+  ],
+  "result": {
+    "fluid": "minecraft:lava",
+    "amount": 20
+  },
+  "cookingtime": 250
+}

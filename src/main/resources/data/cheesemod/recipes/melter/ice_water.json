@@ -1,0 +1,11 @@
+{
+  "type": "cheesemod:melting",
+  "ingredient": {
+    "tag": "forge:ice"
+  },
+  "result": {
+    "fluid": "minecraft:water",
+    "amount": 1000
+  },
+  "cookingtime": 25
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#cheesemod:slabs/cheese",
+    "#cheesemod:slabs/wooden/cheese",
+    "#cheesemod:slabs/ham_raw",
+    "#cheesemod:slabs/wooden/ham_raw"
+  ]
+}

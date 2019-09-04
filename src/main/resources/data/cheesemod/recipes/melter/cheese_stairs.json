@@ -1,0 +1,11 @@
+{
+  "type": "cheesemod:melting",
+  "ingredient": {
+    "tag": "cheesemod:stairs/cheese"
+  },
+  "result": {
+    "fluid": "cheesemod:melted_cheese",
+    "amount": 500
+  },
+  "cookingtime": 75
+}
