@@ -10,9 +10,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.MultipleRandomFeatureConfig;
+import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.CountRangeConfig;
-import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -30,19 +32,19 @@ public class ModWorldFeatures {
 
     public static void addFeatures() {
         ForgeRegistries.BIOMES.forEach(biome -> {
-            if (biome.getCategory() == Biome.Category.NETHER) {         /// NETHER ///
+            if (biome.getCategory() == Biome.Category.NETHER) { /// NETHER ///
                 addOre(biome, ModBlocks.CHEESE_METAL_ORE_NETHER.getDefaultState(), 10, 8, TARGET_NETHER, RANGE_FULL);
                 addOre(biome, ModBlocks.GRILLED_CHEESE_METAL_ORE_NETHER.getDefaultState(), 10, 8, TARGET_NETHER, RANGE_FULL);
                 addOre(biome, ModBlocks.HAM_RAW_METAL_ORE_NETHER.getDefaultState(), 10, 8, TARGET_NETHER, RANGE_FULL);
                 addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE_NETHER.getDefaultState(), 10, 8, TARGET_NETHER, RANGE_FULL);
 
-            } else if (biome.getCategory() == Biome.Category.THEEND) {  /// END ///
+            } else if (biome.getCategory() == Biome.Category.THEEND) { /// END ///
                 addOre(biome, ModBlocks.CHEESE_METAL_ORE_END.getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
                 addOre(biome, ModBlocks.GRILLED_CHEESE_METAL_ORE_END.getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
                 addOre(biome, ModBlocks.HAM_RAW_METAL_ORE_END.getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
                 addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE_END.getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
 
-            } else {                                                    /// OVERWORLD ///
+            } else { /// OVERWORLD ///
                 boolean isCheese = biome == ModBiomes.CHEESE_FOREST || biome == ModBiomes.CHEESE_PLAINS || biome == ModBiomes.GRILLED_CHEESE_FOREST || biome == ModBiomes.GRILLED_CHEESE_PLAINS;
                 boolean isHam = biome == ModBiomes.HAM_RAW_FOREST || biome == ModBiomes.HAM_RAW_PLAINS || biome == ModBiomes.HAM_COOKED_FOREST || biome == ModBiomes.HAM_COOKED_PLAINS;
 
@@ -54,6 +56,15 @@ public class ModWorldFeatures {
                 if (isHam) {
                     addOre(biome, ModBlocks.HAM_RAW_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                     addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
+                }
+
+                if (biome.getCategory() == Biome.Category.FOREST && !isCheese && !isHam) {
+                    biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
+                                    new Feature[]{ModFeatures.GRILLED_CHEESE_TREE}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.CHEESE_TREE, IFeatureConfig.NO_FEATURE_CONFIG),
+                            Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(1, 0.05F, 1)));
+                    biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
+                                    new Feature[]{ModFeatures.HAM_COOKED_TREE}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.HAM_RAW_TREE, IFeatureConfig.NO_FEATURE_CONFIG),
+                            Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(1, 0.05F, 0)));
                 }
 
                 // Structures
