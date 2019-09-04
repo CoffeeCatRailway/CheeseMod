@@ -2,6 +2,7 @@ package coffeecatrailway.cheesemod.jei;
 
 import coffeecatrailway.cheesemod.client.gui.screen.GrillScreen;
 import coffeecatrailway.cheesemod.core.ModBlocks;
+import coffeecatrailway.cheesemod.core.ModItems;
 import coffeecatrailway.cheesemod.item.crafting.GrillRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -15,6 +16,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.ArrayList;
@@ -81,7 +83,9 @@ public class GrillRecipeCategoryJei implements IRecipeCategory<GrillRecipe> {
 
     @Override
     public void setIngredients(GrillRecipe recipe, IIngredients ingredients) {
-        ingredients.setInputIngredients(recipe.getIngredients());
+        List<Ingredient> inputs = new ArrayList<>(recipe.getIngredients());
+        inputs.add(Ingredient.fromItems(ModItems.OIL_BUCKET));
+        ingredients.setInputIngredients(inputs);
         ingredients.setOutput(VanillaTypes.ITEM, recipe.getResult());
     }
 
@@ -100,7 +104,7 @@ public class GrillRecipeCategoryJei implements IRecipeCategory<GrillRecipe> {
 
         float experience = recipe.getExperience();
         if (experience > 0.0F) {
-            String experienceString = I18n.format("gui.jei.category.smelting.experience", new Object[]{experience});
+            String experienceString = I18n.format("gui.jei.category.smelting.experience", experience);
             Minecraft minecraft = Minecraft.getInstance();
             FontRenderer fontRenderer = minecraft.fontRenderer;
             int stringWidth = fontRenderer.getStringWidth(experienceString);
