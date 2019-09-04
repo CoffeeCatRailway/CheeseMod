@@ -3,6 +3,7 @@ package coffeecatrailway.cheesemod;
 import coffeecatrailway.cheesemod.command.ChezCommand;
 import coffeecatrailway.cheesemod.command.ConfigCommand;
 import coffeecatrailway.cheesemod.core.*;
+import coffeecatrailway.cheesemod.fluid.MeltedCheeseFluid;
 import coffeecatrailway.cheesemod.fluid.OilFluid;
 import coffeecatrailway.cheesemod.world.ModWorldFeatures;
 import com.mojang.brigadier.CommandDispatcher;
@@ -51,6 +52,9 @@ public class SideProxy {
             event.addSprite(OilFluid.ATTRIBUTES.getStillTexture());
             event.addSprite(OilFluid.ATTRIBUTES.getFlowingTexture());
             event.addSprite(OilFluid.ATTRIBUTES.getOverlayTexture());
+
+            event.addSprite(MeltedCheeseFluid.ATTRIBUTES.getStillTexture());
+            event.addSprite(MeltedCheeseFluid.ATTRIBUTES.getFlowingTexture());
         }
     }
 

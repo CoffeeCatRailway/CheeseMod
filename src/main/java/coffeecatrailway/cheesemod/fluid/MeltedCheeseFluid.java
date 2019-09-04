@@ -11,7 +11,6 @@ import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.Item;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tileentity.TileEntity;
@@ -34,44 +33,52 @@ import java.util.Random;
  * @author CoffeeCatRailway
  * Created: 30/08/2019
  */
-public abstract class OilFluid extends FlowingFluid {
+public abstract class MeltedCheeseFluid extends FlowingFluid {
 
-    public static final FluidAttributes ATTRIBUTES = FluidAttributes.builder("oil", CheeseMod.getLocation("block/oil_still"), CheeseMod.getLocation("block/oil_flowing"))
-            .viscosity(1500).density(1500).overlay(CheeseMod.getLocation("block/oil_overlay")).build();
+    public static final FluidAttributes ATTRIBUTES = FluidAttributes.builder("melted_cheese", CheeseMod.getLocation("block/melted_cheese_still"), CheeseMod.getLocation("block/melted_cheese_flowing"))
+            .viscosity(1500).density(1500).temperature(500).build();
 
     @Override
     public Fluid getStillFluid() {
-        return ModFluids.OIL_SOURCE;
+        return ModFluids.MELTED_CHEESE_SOURCE;
     }
 
     @Override
     public Fluid getFlowingFluid() {
-        return ModFluids.OIL_FLOWING;
+        return ModFluids.MELTED_CHEESE_FLOWING;
     }
 
     @Override
     public Item getFilledBucket() {
-        return ModItems.OIL_BUCKET;
+        return ModItems.MELTED_CHEESE_BUCKET;
     }
 
     @Override
     protected BlockState getBlockState(IFluidState state) {
-        return ModBlocks.OIL.getDefaultState().with(FlowingFluidBlock.LEVEL, getLevelFromState(state));
+        return ModBlocks.MELTED_CHEESE.getDefaultState().with(FlowingFluidBlock.LEVEL, getLevelFromState(state));
     }
 
     @Override
     protected boolean canSourcesMultiply() {
-        return true;
+        return false;
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
     public void animateTick(World world, BlockPos pos, IFluidState state, Random random) {
-        if (!state.isSource() && !state.get(FALLING)) {
-            if (random.nextInt(64) == 0)
-                world.playSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, SoundEvents.BLOCK_WATER_AMBIENT, SoundCategory.BLOCKS, random.nextFloat() * 0.25F + 0.75F, random.nextFloat() + 0.5F, false);
-        } else if (random.nextInt(10) == 0)
-            world.addParticle(ParticleTypes.UNDERWATER, (double) ((float) pos.getX() + random.nextFloat()), (double) ((float) pos.getY() + random.nextFloat()), (double) ((float) pos.getZ() + random.nextFloat()), 0.0D, 0.0D, 0.0D);
+        BlockPos blockpos = pos.up();
+        if (world.getBlockState(blockpos).isAir() && !world.getBlockState(blockpos).isOpaqueCube(world, blockpos)) {
+            if (random.nextInt(100) == 0) {
+                double d0 = (double) ((float) pos.getX() + random.nextFloat());
+                double d1 = (double) (pos.getY() + 1);
+                double d2 = (double) ((float) pos.getZ() + random.nextFloat());
+                world.playSound(d0, d1, d2, SoundEvents.BLOCK_LAVA_POP, SoundCategory.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
+            }
+
+            if (random.nextInt(200) == 0) {
+                world.playSound((double) pos.getX(), (double) pos.getY(), (double) pos.getZ(), SoundEvents.BLOCK_LAVA_AMBIENT, SoundCategory.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
+            }
+        }
     }
 
     @Override
@@ -82,27 +89,27 @@ public abstract class OilFluid extends FlowingFluid {
 
     @Override
     protected int getSlopeFindDistance(IWorldReader world) {
-        return 4;
+        return world.getDimension().doesWaterVaporize() ? 4 : 2;
     }
 
     @Override
     protected int getLevelDecreasePerBlock(IWorldReader world) {
-        return 1;
+        return world.getDimension().doesWaterVaporize() ? 1 : 2;
     }
 
     @Override
     public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.TRANSLUCENT;
+        return BlockRenderLayer.CUTOUT;
     }
 
     @Override
     protected boolean func_215665_a(IFluidState state, IBlockReader reader, BlockPos pos, Fluid fluid, Direction direction) {
-        return direction == Direction.DOWN && !fluid.isIn(ModFluids.OIL_TAG);
+        return direction == Direction.DOWN && !fluid.isIn(ModFluids.MELTED_CHEESE_TAG);
     }
 
     @Override
     public int getTickRate(IWorldReader reader) {
-        return 5;
+        return 10;
     }
 
     @Override
@@ -120,7 +127,7 @@ public abstract class OilFluid extends FlowingFluid {
         return ATTRIBUTES;
     }
 
-    public static class Flowing extends OilFluid {
+    public static class Flowing extends MeltedCheeseFluid {
 
         @Override
         protected void fillStateContainer(StateContainer.Builder<Fluid, IFluidState> builder) {
@@ -139,7 +146,7 @@ public abstract class OilFluid extends FlowingFluid {
         }
     }
 
-    public static class Source extends OilFluid {
+    public static class Source extends MeltedCheeseFluid {
 
         @Override
         public int getLevel(IFluidState state) {
