@@ -1,9 +1,14 @@
 {
-  "type": "minecraft:smelting",
-  "ingredient": [
-    { "item": "minecraft:water_bucket" }
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "cheesemod:grinding_stones", "data": 32767 },
+    [
+      { "tag": "forge:stone" },
+      { "tag": "forge:cobblestone" }
+    ]
   ],
-  "result": "cheesemod:salt",
-  "experience": 0.5,
-  "cookingtime": 150
+  "result": {
+    "item": "cheesemod:salt",
+    "count": 2
+  }
 }
