@@ -15,7 +15,7 @@ apply plugin: 'maven-publish'
 def modName = project.name
 version = "${project.version}-${project.mcVersion}"
 group = project.group
-archivesBaseName = "${project.author.toLowerCase()}.${project.modId}"
+archivesBaseName = project.modId
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
