@@ -65,7 +65,7 @@ public class ModFoods {
     public static final Food PIZZA_CHEESE_HAM_PINEAPPLE = buildCombo(false, DOUGH, CHEESE_SLICE, HAM_COOKED, PINEAPPLE_RING);
     public static final Food PIZZA_CHEESE_HAM_PINEAPPLE_COOKED = buildCombo(true, PIZZA_CHEESE_HAM_PINEAPPLE);
 
-    private static Food buildCombo(boolean grilled, Food... foods) {
+    public static Food buildCombo(boolean grilled, Food... foods) {
         if (foods.length == 1) {
             Food food = foods[0];
             Food.Builder newFood = new Food.Builder().hunger(food.getHealing() * grilledI(grilled)).saturation(food.getSaturation() * grilledF(grilled));

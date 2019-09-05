@@ -202,10 +202,10 @@ public class ModBlocks {
         register("grilled_cheese_block", GRILLED_CHEESE_BLOCK, new FoodBlockItem(GRILLED_CHEESE_BLOCK, ModFoods.CHEESE_SLICE, true));
 
         HAM_RAW_BLOCK = new FoodBlock();
-        register("ham_raw_block", HAM_RAW_BLOCK, new FoodBlockItem(HAM_RAW_BLOCK, ModFoods.HAM, false));
+        register("ham_raw_block", HAM_RAW_BLOCK, new FoodBlockItem(HAM_RAW_BLOCK, ModFoods.HAM_COOKED, false));
 
         HAM_COOKED_BLOCK = new FoodBlock();
-        register("ham_cooked_block", HAM_COOKED_BLOCK, new FoodBlockItem(HAM_COOKED_BLOCK, ModFoods.HAM_COOKED, false));
+        register("ham_cooked_block", HAM_COOKED_BLOCK, new FoodBlockItem(HAM_COOKED_BLOCK, ModFoods.HAM_COOKED, true));
 
         /// Stairs ///
         CHEESE_STAIRS = register("cheese_stairs", new ModStairsBlock(CHEESE_BLOCK.getDefaultState(), Block.Properties.from(CHEESE_BLOCK), true));
