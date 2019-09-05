@@ -29,7 +29,6 @@ public class SideProxy {
         ModConfig.loadConfig(ModConfig.CONFIG, FMLPaths.CONFIGDIR.get().resolve(ModConfig.FILE).toString());
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::commonSetup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(SideProxy::textureStitchEvent);
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModBlocks::registerAll);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModItems::registerAll);
@@ -45,17 +44,6 @@ public class SideProxy {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModRecipeTypes::registerAll);
 
         MinecraftForge.EVENT_BUS.addListener(SideProxy::serverStarting);
-    }
-
-    private static void textureStitchEvent(TextureStitchEvent.Pre event) {
-        if (event.getMap().getBasePath().equals("textures")) {
-            event.addSprite(OilFluid.ATTRIBUTES.getStillTexture());
-            event.addSprite(OilFluid.ATTRIBUTES.getFlowingTexture());
-            event.addSprite(OilFluid.ATTRIBUTES.getOverlayTexture());
-
-            event.addSprite(MeltedCheeseFluid.ATTRIBUTES.getStillTexture());
-            event.addSprite(MeltedCheeseFluid.ATTRIBUTES.getFlowingTexture());
-        }
     }
 
     private static void commonSetup(FMLCommonSetupEvent event) {
@@ -78,10 +66,22 @@ public class SideProxy {
 
         Client() {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(Client::clientSetup);
+            FMLJavaModLoadingContext.get().getModEventBus().addListener(Client::textureStitchEvent);
         }
 
         private static void clientSetup(FMLClientSetupEvent event) {
             ModContainerTypes.registerScreens();
+        }
+
+        private static void textureStitchEvent(TextureStitchEvent.Pre event) {
+            if (event.getMap().getBasePath().equals("textures")) {
+                event.addSprite(OilFluid.ATTRIBUTES.getStillTexture());
+                event.addSprite(OilFluid.ATTRIBUTES.getFlowingTexture());
+                event.addSprite(OilFluid.ATTRIBUTES.getOverlayTexture());
+
+                event.addSprite(MeltedCheeseFluid.ATTRIBUTES.getStillTexture());
+                event.addSprite(MeltedCheeseFluid.ATTRIBUTES.getFlowingTexture());
+            }
         }
     }
 
