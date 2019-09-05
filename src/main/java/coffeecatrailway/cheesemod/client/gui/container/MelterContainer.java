@@ -71,7 +71,7 @@ public class MelterContainer extends Container {
         if (slot != null && slot.getHasStack()) {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
-            if (index == 2) {
+            if (index == 1) {
                 if (!this.mergeItemStack(itemstack1, 2, 38, true)) {
                     return ItemStack.EMPTY;
                 }
@@ -90,7 +90,7 @@ public class MelterContainer extends Container {
                     if (!this.mergeItemStack(itemstack1, 29, 38, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (index >= 29 && index < 38 && !this.mergeItemStack(itemstack1, 3, 30, false)) {
+                } else if (index >= 29 && index < 38 && !this.mergeItemStack(itemstack1, 2, 29, false)) {
                     return ItemStack.EMPTY;
                 }
             } else if (!this.mergeItemStack(itemstack1, 2, 38, false)) {
