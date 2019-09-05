@@ -26,32 +26,31 @@ import java.util.List;
  * @author CoffeeCatRailway
  * Created: 26/08/2019
  */
-public class GrillRecipeCategoryJei implements IRecipeCategory<GrillRecipe> {
+public class GrillRecipeCategory implements IRecipeCategory<GrillRecipe> {
 
     private final IDrawable background;
     private final IDrawable icon;
 
-    private final IDrawableAnimated oil;
-    private final IDrawable oilMetor;
-
     private final IDrawableAnimated flame;
     private final IDrawableAnimated arrow;
 
+    private final IDrawableAnimated oil;
+    private final IDrawable oilMetor;
+
     private final String localizedName;
 
-    public GrillRecipeCategoryJei(IGuiHelper guiHelper) {
+    public GrillRecipeCategory(IGuiHelper guiHelper) {
         background = guiHelper.createDrawable(GrillScreen.GUI_TEXTURE, 33, 6, 107, 68);
         icon = guiHelper.createDrawableIngredient(new ItemStack(ModBlocks.GRILL));
-
-//        oil = guiHelper.createDrawable(GrillScreen.GUI_TEXTURE, 176, 97, 16, 64);
-        oil = guiHelper.drawableBuilder(GrillScreen.GUI_TEXTURE, 176, 97, 16, 64)
-                .buildAnimated(100, IDrawableAnimated.StartDirection.TOP, true);
-        oilMetor = guiHelper.createDrawable(GrillScreen.GUI_TEXTURE, 176, 32, 16, 64);
 
         flame = guiHelper.drawableBuilder(GrillScreen.GUI_TEXTURE, 176, 0, 14, 14)
                 .buildAnimated(200, IDrawableAnimated.StartDirection.TOP, true);
         arrow = guiHelper.drawableBuilder(GrillScreen.GUI_TEXTURE, 176, 14, 24, 17)
                 .buildAnimated(200, IDrawableAnimated.StartDirection.LEFT, false);
+
+        oil = guiHelper.drawableBuilder(GrillScreen.GUI_TEXTURE, 176, 97, 16, 64)
+                .buildAnimated(100, IDrawableAnimated.StartDirection.TOP, true);
+        oilMetor = guiHelper.createDrawable(GrillScreen.GUI_TEXTURE, 176, 32, 16, 64);
 
         localizedName = ModBlocks.GRILL.getNameTextComponent().getString();
     }

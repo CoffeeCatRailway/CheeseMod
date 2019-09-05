@@ -2,6 +2,7 @@ package coffeecatrailway.cheesemod.jei;
 
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.client.gui.screen.GrillScreen;
+import coffeecatrailway.cheesemod.client.gui.screen.MelterScreen;
 import coffeecatrailway.cheesemod.core.ModBlocks;
 import coffeecatrailway.cheesemod.core.ModRecipeTypes;
 import mezz.jei.api.IModPlugin;
@@ -29,6 +30,7 @@ public class CheeseModPlugin implements IModPlugin {
 
     private static final ResourceLocation UID = CheeseMod.getLocation("plugin/main");
     static final ResourceLocation GRILL = CheeseMod.getLocation("category/grill");
+    static final ResourceLocation MELTER = CheeseMod.getLocation("category/melter");
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -39,13 +41,15 @@ public class CheeseModPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration reg) {
         IGuiHelper guiHelper = reg.getJeiHelpers().getGuiHelper();
         reg.addRecipeCategories(
-                new GrillRecipeCategoryJei(guiHelper)
+                new GrillRecipeCategory(guiHelper),
+                new MelterRecipeCategory(guiHelper)
         );
     }
 
     @Override
     public void registerRecipes(IRecipeRegistration reg) {
         reg.addRecipes(getRecipesOfType(ModRecipeTypes.GRILLING), GRILL);
+        reg.addRecipes(getRecipesOfType(ModRecipeTypes.MELTING), MELTER);
     }
 
     private static List<IRecipe<?>> getRecipesOfType(IRecipeType<?> type) {
@@ -55,10 +59,12 @@ public class CheeseModPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration reg) {
         reg.addRecipeCatalyst(new ItemStack(ModBlocks.GRILL), GRILL);
+        reg.addRecipeCatalyst(new ItemStack(ModBlocks.MELTER), MELTER);
     }
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration reg) {
         reg.addRecipeClickArea(GrillScreen.class, 85, 33, 24, 17, GRILL);
+        reg.addRecipeClickArea(MelterScreen.class, 68, 33, 24, 17, MELTER);
     }
 }
