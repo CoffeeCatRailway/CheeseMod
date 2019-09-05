@@ -1,23 +1,18 @@
 package coffeecatrailway.cheesemod.jei;
 
-import coffeecatrailway.cheesemod.client.gui.screen.GrillScreen;
 import coffeecatrailway.cheesemod.client.gui.screen.MelterScreen;
 import coffeecatrailway.cheesemod.core.ModBlocks;
-import coffeecatrailway.cheesemod.core.ModItems;
 import coffeecatrailway.cheesemod.item.crafting.MelterRecipe;
-import com.google.common.collect.Lists;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredientType;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,6 +2,7 @@ package coffeecatrailway.cheesemod.jei;
 
 import coffeecatrailway.cheesemod.client.gui.screen.GrillScreen;
 import coffeecatrailway.cheesemod.core.ModBlocks;
+import coffeecatrailway.cheesemod.core.ModFluids;
 import coffeecatrailway.cheesemod.core.ModItems;
 import coffeecatrailway.cheesemod.item.crafting.GrillRecipe;
 import mezz.jei.api.constants.VanillaTypes;
@@ -18,6 +19,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,6 +87,7 @@ public class GrillRecipeCategory implements IRecipeCategory<GrillRecipe> {
         List<Ingredient> inputs = new ArrayList<>(recipe.getIngredients());
         inputs.add(Ingredient.fromItems(ModItems.OIL_BUCKET));
         ingredients.setInputIngredients(inputs);
+        ingredients.setInput(VanillaTypes.FLUID, new FluidStack(ModFluids.OIL_SOURCE, recipe.getOil()));
         ingredients.setOutput(VanillaTypes.ITEM, recipe.getResult());
     }
 
