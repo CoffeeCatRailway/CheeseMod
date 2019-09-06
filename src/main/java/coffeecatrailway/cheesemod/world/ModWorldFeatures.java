@@ -1,5 +1,6 @@
 package coffeecatrailway.cheesemod.world;
 
+import coffeecatrailway.cheesemod.ModConfig;
 import coffeecatrailway.cheesemod.core.ModBiomes;
 import coffeecatrailway.cheesemod.core.ModBlocks;
 import coffeecatrailway.cheesemod.core.ModFeatures;
@@ -10,11 +11,13 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.BushConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.MultipleRandomFeatureConfig;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.CountRangeConfig;
+import net.minecraft.world.gen.placement.HeightWithChanceConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -59,9 +62,12 @@ public class ModWorldFeatures {
                 }
 
                 // Biome stuffs
-                if (biome.getCategory() == Biome.Category.FOREST && !isCheese && !isHam) {
-                    addCheeseTrees(biome);
-                    addHamTrees(biome);
+                if (!isCheese && !isHam) {
+                    if (biome.getCategory() == Biome.Category.FOREST) {
+                        addCheeseTrees(biome);
+                        addHamTrees(biome);
+                    }
+                    addPineapples(biome);
                 }
 
                 if (biome.getCategory() == Biome.Category.PLAINS) {
@@ -70,12 +76,13 @@ public class ModWorldFeatures {
                     if (isHam)
                         addHamTrees(biome);
                 }
-
-                // Structures
-                biome.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(ModFeatures.PINE_HUT, IFeatureConfig.NO_FEATURE_CONFIG, Placement.TOP_SOLID_HEIGHTMAP, IPlacementConfig.NO_PLACEMENT_CONFIG));
-                biome.addStructure(ModFeatures.PINE_HUT, IFeatureConfig.NO_FEATURE_CONFIG);
             }
         });
+    }
+
+    private static void addPineapples(Biome biome) {
+        double chance = ModConfig.BIOME.pineappleSpawnChance.get();
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.BUSH, new BushConfig(ModBlocks.PINEAPPLE.getDefaultState()), Placement.COUNT_CHANCE_HEIGHTMAP, new HeightWithChanceConfig(ModConfig.BIOME.pineappleSpawnCount.get(), (float) chance)));
     }
 
     private static void addCheeseTrees(Biome biome) {

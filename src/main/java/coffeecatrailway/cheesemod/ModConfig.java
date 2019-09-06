@@ -80,6 +80,9 @@ public class ModConfig {
 
     public static class BiomeConfig {
 
+        public ForgeConfigSpec.IntValue pineappleSpawnCount;
+        public ForgeConfigSpec.DoubleValue pineappleSpawnChance;
+
         public ForgeConfigSpec.BooleanValue spawnCheeseVillager;
         public ForgeConfigSpec.IntValue cheeseVillagerWeight;
 
@@ -94,6 +97,11 @@ public class ModConfig {
 
         public BiomeConfig(ForgeConfigSpec.Builder config) {
             config.comment("CheeseMod biome settings");
+
+            pineappleSpawnCount = config.comment("The amount of pineapples that spawn together")
+                    .defineInRange(CheeseMod.MOD_ID + ".biome.pineappleSpawnChance", 1, 0, 10);
+            pineappleSpawnChance = config.comment("If you like pineapples don't set the value to 0!")
+                    .defineInRange(CheeseMod.MOD_ID + ".biome.pineappleSpawnCount", 0.025, 0.0, 1.0);
 
             int minWeight = 1;
             int maxWeight = 20;

@@ -3,8 +3,8 @@ package coffeecatrailway.cheesemod.block;
 import coffeecatrailway.cheesemod.core.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.CropsBlock;
-import net.minecraft.block.GrassBlock;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -48,6 +48,7 @@ public class PineappleBlock extends CropsBlock {
 
     @Override
     protected boolean isValidGround(BlockState state, IBlockReader reader, BlockPos pos) {
-        return super.isValidGround(state, reader, pos) || state.getBlock() instanceof GrassBlock;
+        Block block = state.getBlock();
+        return block == Blocks.GRASS_BLOCK || block == Blocks.DIRT || block == Blocks.COARSE_DIRT || block == Blocks.PODZOL || block == Blocks.FARMLAND;
     }
 }
