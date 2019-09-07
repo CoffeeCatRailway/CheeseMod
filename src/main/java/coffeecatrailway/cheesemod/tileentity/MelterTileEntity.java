@@ -23,6 +23,8 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.RecipeItemHelper;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.AbstractFurnaceTileEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.Direction;
@@ -375,7 +377,7 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
     }
 
     private void sendUpdates() {
-        world.notifyBlockUpdate(pos, getState(), getState(), 3);
+        world.notifyBlockUpdate(this.pos, this.getBlockState(), this.getBlockState(), 2);
         world.markAndNotifyBlock(pos, world.getChunkAt(pos), getState(), getState(), 3);
         markDirty();
     }
@@ -410,5 +412,23 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
         super.remove();
         for (int x = 0; x < handlers.length; x++)
             handlers[x].invalidate();
+    }
+
+    @Override
+    public CompoundNBT getUpdateTag() {
+        return this.write(new CompoundNBT());
+    }
+
+    @Nullable
+    @Override
+    public SUpdateTileEntityPacket getUpdatePacket() {
+        CompoundNBT nbt = new CompoundNBT();
+        super.write(nbt);
+        return new SUpdateTileEntityPacket(getPos(), 1, nbt);
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+        this.read(pkt.getNbtCompound());
     }
 }
