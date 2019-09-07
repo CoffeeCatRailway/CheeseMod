@@ -4,6 +4,7 @@ import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.client.gui.container.MelterContainer;
 import coffeecatrailway.cheesemod.tileentity.MelterTileEntity;
 import com.mojang.blaze3d.platform.GlStateManager;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.I18n;
@@ -77,15 +78,13 @@ public class MelterScreen extends ContainerScreen<MelterContainer> {
         if (fluid.isEquivalentTo(Fluids.WATER))
             GlStateManager.color4f(0.23922F, 0.42745F, 1.0F, 1.0F);
 
-        ResourceLocation fluidTexture = fluid.getAttributes().getStillTexture();
+        ResourceLocation fluidTexture = getFluidTexture(fluid);
         if (fluidTexture != null) {
-            ResourceLocation newLocation = new ResourceLocation(fluidTexture.getNamespace(), "textures/" + fluidTexture.getPath() + ".png");
-            TextureAtlasSprite sprite = this.minecraft.getTextureMap().getSprite(newLocation);
 
             GlStateManager.enableBlend();
-            this.minecraft.getTextureManager().bindTexture(newLocation);
+            this.minecraft.getTextureManager().bindTexture(fluidTexture);
             int k = (int) CheeseMod.map(this.container.getFluidAmount(), 0, MelterTileEntity.FLUID_CAPTACITY, 0, 64);
-            int h = (int) (sprite.getHeight() * sprite.getHeight() * 1.5f);
+            int h = getFluidTextureHeight(fluidTexture);
             this.blit(i + 97, j + 8 + 64 - k, 0, 64 - k + 1, 32, k, 16, h);
             GlStateManager.disableBlend();
         }
@@ -95,5 +94,17 @@ public class MelterScreen extends ContainerScreen<MelterContainer> {
 
         this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
         this.blit(i + 97, j + 8, 176, 32, 32, 64);
+    }
+
+    public static int getFluidTextureHeight(ResourceLocation fluidTexture) {
+        TextureAtlasSprite sprite = Minecraft.getInstance().getTextureMap().getSprite(fluidTexture);
+        return (int) (sprite.getHeight() * sprite.getHeight() * 1.5f);
+    }
+
+    public static ResourceLocation getFluidTexture(Fluid fluid) {
+        ResourceLocation fluidTexture = fluid.getAttributes().getStillTexture();
+        if (fluidTexture != null)
+            return new ResourceLocation(fluidTexture.getNamespace(), "textures/" + fluidTexture.getPath() + ".png");
+        return null;
     }
 }
