@@ -1,16 +1,19 @@
 package coffeecatrailway.cheesemod;
 
+import coffeecatrailway.cheesemod.client.renderer.tileentity.MelterTileEntityRenderer;
 import coffeecatrailway.cheesemod.command.ChezCommand;
 import coffeecatrailway.cheesemod.command.ConfigCommand;
 import coffeecatrailway.cheesemod.core.*;
 import coffeecatrailway.cheesemod.fluid.MeltedCheeseFluid;
 import coffeecatrailway.cheesemod.fluid.OilFluid;
+import coffeecatrailway.cheesemod.tileentity.MelterTileEntity;
 import coffeecatrailway.cheesemod.world.ModWorldFeatures;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.command.CommandSource;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent;
@@ -71,6 +74,7 @@ public class SideProxy {
 
         private static void clientSetup(FMLClientSetupEvent event) {
             ModContainerTypes.registerScreens();
+            ClientRegistry.bindTileEntitySpecialRenderer(MelterTileEntity.class, new MelterTileEntityRenderer());
         }
 
         private static void textureStitchEvent(TextureStitchEvent.Pre event) {

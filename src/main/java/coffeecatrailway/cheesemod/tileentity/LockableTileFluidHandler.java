@@ -52,4 +52,10 @@ public abstract class LockableTileFluidHandler extends LockableTileEntity {
             return holder.cast();
         return super.getCapability(capability, facing);
     }
+
+    protected void sendUpdates() {
+        world.notifyBlockUpdate(this.pos, this.getBlockState(), this.getBlockState(), 2);
+        world.markAndNotifyBlock(pos, world.getChunkAt(pos), this.getBlockState(), this.getBlockState(), 3);
+        super.markDirty();
+    }
 }

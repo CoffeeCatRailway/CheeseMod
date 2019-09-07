@@ -10,7 +10,6 @@ import coffeecatrailway.cheesemod.core.ModTileEntityTypes;
 import coffeecatrailway.cheesemod.item.crafting.GrillRecipe;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -386,16 +385,6 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
     @Override
     public IRecipe<?> getRecipeUsed() {
         return null;
-    }
-
-    private void sendUpdates() {
-        world.notifyBlockUpdate(pos, getState(), getState(), 3);
-        world.markAndNotifyBlock(pos, world.getChunkAt(pos), getState(), getState(), 3);
-        markDirty();
-    }
-
-    private BlockState getState() {
-        return world.getBlockState(pos);
     }
 
     public void giveExperience(PlayerEntity player) {

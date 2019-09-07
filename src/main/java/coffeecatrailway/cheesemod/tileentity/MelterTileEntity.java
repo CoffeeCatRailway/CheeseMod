@@ -8,7 +8,6 @@ import coffeecatrailway.cheesemod.core.ModRecipeTypes;
 import coffeecatrailway.cheesemod.core.ModTileEntityTypes;
 import coffeecatrailway.cheesemod.item.crafting.MelterRecipe;
 import com.google.common.collect.Maps;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IRecipeHelperPopulator;
@@ -218,7 +217,7 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
             if (flag != this.isBurning()) {
                 flag1 = true;
                 this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(MelterBlock.LIT, this.isBurning()), 3);
-                this.sendUpdates();
+                super.sendUpdates();
             }
         }
 
@@ -374,16 +373,6 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
     @Override
     public IRecipe<?> getRecipeUsed() {
         return null;
-    }
-
-    private void sendUpdates() {
-        world.notifyBlockUpdate(this.pos, this.getBlockState(), this.getBlockState(), 2);
-        world.markAndNotifyBlock(pos, world.getChunkAt(pos), getState(), getState(), 3);
-        markDirty();
-    }
-
-    private BlockState getState() {
-        return world.getBlockState(pos);
     }
 
     @Override

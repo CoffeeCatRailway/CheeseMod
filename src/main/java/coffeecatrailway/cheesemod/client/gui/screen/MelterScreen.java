@@ -83,7 +83,7 @@ public class MelterScreen extends ContainerScreen<MelterContainer> {
 
             GlStateManager.enableBlend();
             this.minecraft.getTextureManager().bindTexture(fluidTexture);
-            int k = (int) CheeseMod.map(this.container.getFluidAmount(), 0, MelterTileEntity.FLUID_CAPTACITY, 0, 64);
+            int k = (int) mapFluid(this.container.getFluidAmount(), 0, 64);
             int h = getFluidTextureHeight(fluidTexture);
             this.blit(i + 97, j + 8 + 64 - k, 0, 64 - k + 1, 32, k, 16, h);
             GlStateManager.disableBlend();
@@ -94,6 +94,10 @@ public class MelterScreen extends ContainerScreen<MelterContainer> {
 
         this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
         this.blit(i + 97, j + 8, 176, 32, 32, 64);
+    }
+
+    public static float mapFluid(float amount, float min, float max) {
+        return CheeseMod.map(amount, 0.0f, MelterTileEntity.FLUID_CAPTACITY, min, max);
     }
 
     public static int getFluidTextureHeight(ResourceLocation fluidTexture) {
