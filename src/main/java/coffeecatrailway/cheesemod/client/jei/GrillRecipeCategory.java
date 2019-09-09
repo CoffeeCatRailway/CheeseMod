@@ -1,4 +1,4 @@
-package coffeecatrailway.cheesemod.jei;
+package coffeecatrailway.cheesemod.client.jei;
 
 import coffeecatrailway.cheesemod.client.gui.screen.GrillScreen;
 import coffeecatrailway.cheesemod.core.ModBlocks;

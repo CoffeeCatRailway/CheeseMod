@@ -1,18 +1,22 @@
-package coffeecatrailway.cheesemod.jei;
+package coffeecatrailway.cheesemod.client.jei;
 
 import coffeecatrailway.cheesemod.client.gui.screen.MelterScreen;
 import coffeecatrailway.cheesemod.core.ModBlocks;
 import coffeecatrailway.cheesemod.item.crafting.MelterRecipe;
+import com.mojang.blaze3d.platform.GlStateManager;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
+import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +26,8 @@ import java.util.List;
  * Created: 5/09/2019
  */
 public class MelterRecipeCategory implements IRecipeCategory<MelterRecipe> {
+
+    private final IGuiHelper guiHelper;
 
     private final IDrawable background;
     private final IDrawable icon;
@@ -34,6 +40,8 @@ public class MelterRecipeCategory implements IRecipeCategory<MelterRecipe> {
     private final String localizedName;
 
     public MelterRecipeCategory(IGuiHelper guiHelper) {
+        this.guiHelper = guiHelper;
+
         background = guiHelper.createDrawable(MelterScreen.GUI_TEXTURE, 42, 6, 89, 68);
         icon = guiHelper.createDrawableIngredient(new ItemStack(ModBlocks.MELTER));
 
@@ -88,10 +96,26 @@ public class MelterRecipeCategory implements IRecipeCategory<MelterRecipe> {
 
     @Override
     public void draw(MelterRecipe recipe, double mouseX, double mouseY) {
-        flame.draw(2, 28);
-        arrow.draw(25, 26);
+        this.flame.draw(2, 28);
+        this.arrow.draw(25, 26);
 
-        fluidMetor.draw(55, 2);
+        FluidStack fluidStack = recipe.getResult();
+        ResourceLocation fluidTexture = MelterScreen.getFluidTexture(fluidStack.getFluid());
+        if (fluidTexture != null) {
+            if (fluidStack.getFluid().isEquivalentTo(Fluids.WATER))
+                GlStateManager.color4f(0.23922F, 0.42745F, 1.0F, 1.0F);
+
+            int k = (int) MelterScreen.mapFluid(fluidStack.getAmount(), 0, 64) + 2;
+            int h = MelterScreen.getFluidTextureHeight(fluidTexture);
+            IDrawableStatic fluidDraw = this.guiHelper.drawableBuilder(fluidTexture, 0, 0, 32, k)
+                    .setTextureSize(16, h - k).build();
+            fluidDraw.draw(55, 2 + this.fluidMetor.getHeight() - k);
+
+            if (fluidStack.getFluid().isEquivalentTo(Fluids.WATER))
+                GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+        }
+
+        this.fluidMetor.draw(55, 2);
     }
 
     @Override

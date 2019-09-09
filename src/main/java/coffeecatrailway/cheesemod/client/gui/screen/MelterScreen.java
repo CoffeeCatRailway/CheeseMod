@@ -80,11 +80,11 @@ public class MelterScreen extends ContainerScreen<MelterContainer> {
 
         ResourceLocation fluidTexture = getFluidTexture(fluid);
         if (fluidTexture != null) {
-
             GlStateManager.enableBlend();
             this.minecraft.getTextureManager().bindTexture(fluidTexture);
             int k = (int) mapFluid(this.container.getFluidAmount(), 0, 64);
             int h = getFluidTextureHeight(fluidTexture);
+            h = (int) (h * h * 1.5f);
             this.blit(i + 97, j + 8 + 64 - k, 0, 64 - k + 1, 32, k, 16, h);
             GlStateManager.disableBlend();
         }
@@ -102,7 +102,7 @@ public class MelterScreen extends ContainerScreen<MelterContainer> {
 
     public static int getFluidTextureHeight(ResourceLocation fluidTexture) {
         TextureAtlasSprite sprite = Minecraft.getInstance().getTextureMap().getSprite(fluidTexture);
-        return (int) (sprite.getHeight() * sprite.getHeight() * 1.5f);
+        return sprite.getHeight();
     }
 
     public static ResourceLocation getFluidTexture(Fluid fluid) {
