@@ -16,7 +16,8 @@ public class ModFoods {
     private static final double grilledMul = ModConfig.MODIFIERS.grilledFoodMultiplier.get();
 
     public static final Food BLOCK_O_CHEESE = (new Food.Builder()).hunger(6).saturation(1f).fastToEat().build();
-    public static final Food CHEESE_SLICE = (new Food.Builder()).hunger(2).saturation(0.5f).fastToEat().build();
+    public static final Food CHEESE_BALL = (new Food.Builder()).hunger(BLOCK_O_CHEESE.getHealing() / 2).saturation(BLOCK_O_CHEESE.getSaturation() / 2.0f).fastToEat().build();
+    public static final Food CHEESE_SLICE = (new Food.Builder()).hunger(BLOCK_O_CHEESE.getHealing() / 3).saturation(BLOCK_O_CHEESE.getSaturation() / 2.0f).fastToEat().build();
 
     public static final Food INGREDIENT = (new Food.Builder()).hunger(1).saturation(0.5f).build();
 
@@ -55,6 +56,7 @@ public class ModFoods {
     public static final Food TOASTIE_CHEESE_HAM_COOKED_GRILLED = buildCombo(true, TOASTIE_CHEESE_HAM_COOKED);
 
     public static final Food PINEAPPLE = (new Food.Builder()).hunger(12).saturation(5.0f).build();
+    public static final Food PINEAPPLE_PLANT = (new Food.Builder()).hunger(PINEAPPLE.getHealing() / 8).saturation(PINEAPPLE.getSaturation() / 8.0f).effect(new EffectInstance(Effects.NAUSEA, 400, 1), 1.0f).build();
     public static final Food PINEAPPLE_RING = (new Food.Builder()).hunger(PINEAPPLE.getHealing() / 4).saturation(PINEAPPLE.getSaturation() / 4.0f).build();
     public static final Food PINEAPPLE_BIT = (new Food.Builder()).hunger(PINEAPPLE_RING.getHealing() / 3).saturation(PINEAPPLE_RING.getSaturation() / 3.0f).build();
 

@@ -103,6 +103,7 @@ public class ModItems {
 
     /// Food ///
     public static Item BLOCK_O_CHEESE;
+    public static Item CHEESE_BALL;
     public static Item CHEESE_SLICE;
 
     public static Item SALT;
@@ -262,6 +263,7 @@ public class ModItems {
 
         /// Food ///
         BLOCK_O_CHEESE = registerFood("block_o_cheese", ModFoods.BLOCK_O_CHEESE, 16);
+        CHEESE_BALL = registerFood("cheese_ball", new CheeseBallItem(new Item.Properties().food(ModFoods.CHEESE_BALL).maxStackSize(16).group(CheeseMod.GROUP_ALL)));
         CHEESE_SLICE = registerFood("cheese_slice", ModFoods.CHEESE_SLICE, 32);
 
         SALT = registerFood("salt", ModFoods.INGREDIENT, 64);
@@ -307,7 +309,7 @@ public class ModItems {
         TOASTIE_CHEESE_HAM_COOKED_GRILLED = register("toastie_cheese_ham_cooked_grilled", new ToastieFoodItem(ModFoods.TOASTIE_CHEESE_HAM_COOKED_GRILLED, 32).grilled());
 
         /// Food - Pineapple ///
-        PINEAPPLE_PLANT = register("pineapple_plant", new BlockNamedItem(ModBlocks.PINEAPPLE, new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        PINEAPPLE_PLANT = registerFood("pineapple_plant", new BlockNamedItem(ModBlocks.PINEAPPLE, new Item.Properties().food(ModFoods.PINEAPPLE_PLANT).group(CheeseMod.GROUP_FOODS)));
         PINEAPPLE = registerFood("pineapple", ModFoods.PINEAPPLE, 32);
         PINEAPPLE_RING = registerFood("pineapple_ring", ModFoods.PINEAPPLE_RING, 32);
         PINEAPPLE_BIT = registerFood("pineapple_bit", ModFoods.PINEAPPLE_BIT, 32);
@@ -335,9 +337,13 @@ public class ModItems {
     }
 
     private static Item registerFood(String name, Food food, int stackSize) {
-        Item item = register(name, new Item(new Item.Properties().group(CheeseMod.GROUP_FOODS).food(food).maxStackSize(stackSize)));
-        FOODS.add(item);
-        return item;
+        return registerFood(name, new Item(new Item.Properties().group(CheeseMod.GROUP_FOODS).food(food).maxStackSize(stackSize)));
+    }
+
+    private static <I extends Item> I registerFood(String name, I item) {
+        I i = register(name, item);
+        FOODS.add(i);
+        return i;
     }
 
     public static <I extends Item> I register(String name, I item) {

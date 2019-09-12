@@ -1,19 +1,23 @@
 package coffeecatrailway.cheesemod;
 
-import coffeecatrailway.cheesemod.client.renderer.tileentity.MelterTileEntityRenderer;
+import coffeecatrailway.cheesemod.client.render.tileentity.MelterTileEntityRenderer;
 import coffeecatrailway.cheesemod.command.ChezCommand;
 import coffeecatrailway.cheesemod.command.ConfigCommand;
 import coffeecatrailway.cheesemod.core.*;
-import coffeecatrailway.cheesemod.fluid.MeltedCheeseFluid;
-import coffeecatrailway.cheesemod.fluid.OilFluid;
+import coffeecatrailway.cheesemod.entity.CheeseBallEntity;
 import coffeecatrailway.cheesemod.tileentity.MelterTileEntity;
 import coffeecatrailway.cheesemod.world.ModWorldFeatures;
 import com.mojang.brigadier.CommandDispatcher;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.BreakingParticle;
+import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.command.CommandSource;
-import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent;
@@ -46,6 +50,9 @@ public class SideProxy {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModStats::registerAll);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModRecipeTypes::registerAll);
 
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModEntityTypes::registerAll);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(ModParticles::registerAll);
+
         MinecraftForge.EVENT_BUS.addListener(SideProxy::serverStarting);
     }
 
@@ -69,23 +76,15 @@ public class SideProxy {
 
         Client() {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(Client::clientSetup);
-            FMLJavaModLoadingContext.get().getModEventBus().addListener(Client::textureStitchEvent);
         }
 
         private static void clientSetup(FMLClientSetupEvent event) {
             ModContainerTypes.registerScreens();
+            Minecraft.getInstance().particles.registerFactory(ModParticles.ITEM_CHEESE_BALL, (type, world, v, v1, v2, v3, v4, v5) -> new BreakingParticle(world, v, v1, v2, new ItemStack(ModItems.CHEESE_BALL)));
+
+            ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+            RenderingRegistry.registerEntityRenderingHandler(CheeseBallEntity.class, (manager) -> new SpriteRenderer<CheeseBallEntity>(manager, itemRenderer));
             ClientRegistry.bindTileEntitySpecialRenderer(MelterTileEntity.class, new MelterTileEntityRenderer());
-        }
-
-        private static void textureStitchEvent(TextureStitchEvent.Pre event) {
-            if (event.getMap().getBasePath().equals("textures")) {
-                event.addSprite(OilFluid.ATTRIBUTES.getStillTexture());
-                event.addSprite(OilFluid.ATTRIBUTES.getFlowingTexture());
-                event.addSprite(OilFluid.ATTRIBUTES.getOverlayTexture());
-
-                event.addSprite(MeltedCheeseFluid.ATTRIBUTES.getStillTexture());
-                event.addSprite(MeltedCheeseFluid.ATTRIBUTES.getFlowingTexture());
-            }
         }
     }
 
