@@ -1,7 +1,7 @@
-package coffeecatrailway.cheesemod.client.renderer.tileentity;
+package coffeecatrailway.cheesemod.client.render.tileentity;
 
 import coffeecatrailway.cheesemod.client.gui.screen.MelterScreen;
-import coffeecatrailway.cheesemod.client.renderer.tileentity.model.MelterFluidModel;
+import coffeecatrailway.cheesemod.client.render.tileentity.model.MelterFluidModel;
 import coffeecatrailway.cheesemod.tileentity.MelterTileEntity;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
@@ -33,9 +33,7 @@ public class MelterTileEntityRenderer extends TileEntityRenderer<MelterTileEntit
         Fluid fluid = tile.getTank().getFluid().getFluid();
 
         ResourceLocation fluidTexture = MelterScreen.getFluidTexture(fluid);
-        if (fluidTexture != null) {
-            GlStateManager.pushMatrix();
-
+        if (fluidTexture != null && !fluidTexture.toString().equals("minecraft:textures/white.png")) {
             RayTraceResult raytraceresult = this.rendererDispatcher.cameraHitResult;
             if (raytraceresult != null && raytraceresult.getType() == RayTraceResult.Type.BLOCK && tile.getPos().equals(((BlockRayTraceResult) raytraceresult).getPos())) {
                 this.setLightmapDisabled(true);
@@ -43,13 +41,13 @@ public class MelterTileEntityRenderer extends TileEntityRenderer<MelterTileEntit
                 this.setLightmapDisabled(false);
             }
 
+            GlStateManager.pushMatrix();
             float yOff = MelterScreen.mapFluid(fluidAmount, 0.0f, 0.1f);
             GlStateManager.translatef((float) x, (float) y + 0.26f + yOff, (float) z); /// TODO: Fix texture stretching! ///
 
             GlStateManager.enableBlend();
             this.bindTexture(AtlasTexture.LOCATION_BLOCKS_TEXTURE);
-            String icon = fluid.getFluid().getAttributes().getStillTexture().toString();
-            TextureAtlasSprite fluidSprite = Minecraft.getInstance().getTextureMap().getAtlasSprite(icon);
+            TextureAtlasSprite fluidSprite = Minecraft.getInstance().getTextureMap().getAtlasSprite(fluidTexture.toString());
 
             int color = fluid.getFluid().getAttributes().getColor();
             float[] colors = new float[]{((color >> 24) & 0xFF) / 255.0f, ((color >> 16) & 0xFF) / 255.0f, ((color >> 8) & 0xFF) / 255.0f, (color & 0xFF) / 255.0f};
@@ -60,9 +58,8 @@ public class MelterTileEntityRenderer extends TileEntityRenderer<MelterTileEntit
             GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 
             Tessellator tessellator = Tessellator.getInstance();
-            BufferBuilder bufferBuilder = tessellator.getBuffer();
-            bufferBuilder.begin(7, DefaultVertexFormats.POSITION);
-            this.addQuad(bufferBuilder, 0.5, 0.0625, 0.0625, 0.5, 0.5, colors, fluidSprite);
+            tessellator.getBuffer().begin(7, DefaultVertexFormats.POSITION_TEX);
+            this.addQuad(tessellator.getBuffer(), 0.0, 0.0, 0.0, 1.0, 1.0, colors, fluidSprite);
             tessellator.draw();
 
             GlStateManager.depthMask(true);
@@ -72,7 +69,6 @@ public class MelterTileEntityRenderer extends TileEntityRenderer<MelterTileEntit
 
             fluidModel.render();
             GlStateManager.disableBlend();
-
             GlStateManager.popMatrix();
         }
     }
