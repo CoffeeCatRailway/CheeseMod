@@ -19,7 +19,7 @@ public class ModEntityTypes {
     public static void registerAll(RegistryEvent.Register<EntityType<?>> event) {
         if (!event.getName().equals(ForgeRegistries.ENTITIES.getRegistryName())) return;
 
-        CHEESE_BALL = register("cheese_ball", EntityType.Builder.<CheeseBallEntity>create(CheeseBallEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).setCustomClientFactory((packet,world) -> new CheeseBallEntity(CHEESE_BALL, world)));
+        CHEESE_BALL = register("cheese_ball", EntityType.Builder.<CheeseBallEntity>create(CheeseBallEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).setCustomClientFactory((packet, world) -> new CheeseBallEntity(CHEESE_BALL, world)));
     }
 
     public static <E extends Entity> EntityType<E> register(String name, EntityType.Builder<E> builder) {
