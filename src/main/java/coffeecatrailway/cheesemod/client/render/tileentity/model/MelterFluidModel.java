@@ -1,4 +1,4 @@
-package coffeecatrailway.cheesemod.client.renderer.tileentity.model;
+package coffeecatrailway.cheesemod.client.render.tileentity.model;
 
 import net.minecraft.client.renderer.entity.model.RendererModel;
 import net.minecraft.client.renderer.model.Model;

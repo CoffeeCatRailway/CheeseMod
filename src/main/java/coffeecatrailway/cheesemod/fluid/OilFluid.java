@@ -35,9 +35,6 @@ import java.util.Random;
  */
 public abstract class OilFluid extends FlowingFluid {
 
-    public static final FluidAttributes ATTRIBUTES = FluidAttributes.builder("oil", CheeseMod.getLocation("block/oil_still"), CheeseMod.getLocation("block/oil_flowing"))
-            .viscosity(1500).density(1500).overlay(CheeseMod.getLocation("block/oil_overlay")).build();
-
     @Override
     public Fluid getStillFluid() {
         return ModFluids.OIL_SOURCE;
@@ -56,6 +53,12 @@ public abstract class OilFluid extends FlowingFluid {
     @Override
     protected BlockState getBlockState(IFluidState state) {
         return ModBlocks.OIL.getDefaultState().with(FlowingFluidBlock.LEVEL, getLevelFromState(state));
+    }
+
+    @Override
+    protected FluidAttributes createAttributes() {
+        return FluidAttributes.builder(CheeseMod.getLocation("block/oil_still"), CheeseMod.getLocation("block/oil_flowing"))
+                .viscosity(1500).density(1500).overlay(CheeseMod.getLocation("block/oil_overlay")).build(ModFluids.OIL_SOURCE);
     }
 
     @Override
@@ -112,11 +115,6 @@ public abstract class OilFluid extends FlowingFluid {
     @Override
     public boolean isEquivalentTo(Fluid fluid) {
         return fluid == getStillFluid() || fluid == getFlowingFluid();
-    }
-
-    @Override
-    protected FluidAttributes createAttributes(Fluid fluid) {
-        return ATTRIBUTES;
     }
 
     public static class Flowing extends OilFluid {

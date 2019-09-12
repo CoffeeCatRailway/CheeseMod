@@ -34,9 +34,6 @@ import java.util.Random;
  */
 public abstract class MeltedCheeseFluid extends FlowingFluid {
 
-    public static final FluidAttributes ATTRIBUTES = FluidAttributes.builder("melted_cheese", CheeseMod.getLocation("block/melted_cheese_still"), CheeseMod.getLocation("block/melted_cheese_flowing"))
-            .viscosity(1500).density(1500).temperature(500).build();
-
     @Override
     public Fluid getStillFluid() {
         return ModFluids.MELTED_CHEESE_SOURCE;
@@ -55,6 +52,12 @@ public abstract class MeltedCheeseFluid extends FlowingFluid {
     @Override
     protected BlockState getBlockState(IFluidState state) {
         return ModBlocks.MELTED_CHEESE.getDefaultState().with(FlowingFluidBlock.LEVEL, getLevelFromState(state));
+    }
+
+    @Override
+    protected FluidAttributes createAttributes() {
+        return FluidAttributes.builder(CheeseMod.getLocation("block/melted_cheese_still"), CheeseMod.getLocation("block/melted_cheese_flowing"))
+                .viscosity(1500).density(1500).temperature(500).build(ModFluids.MELTED_CHEESE_SOURCE);
     }
 
     @Override
@@ -119,11 +122,6 @@ public abstract class MeltedCheeseFluid extends FlowingFluid {
     @Override
     public boolean isEquivalentTo(Fluid fluid) {
         return fluid == getStillFluid() || fluid == getFlowingFluid();
-    }
-
-    @Override
-    protected FluidAttributes createAttributes(Fluid fluid) {
-        return ATTRIBUTES;
     }
 
     public static class Flowing extends MeltedCheeseFluid {
