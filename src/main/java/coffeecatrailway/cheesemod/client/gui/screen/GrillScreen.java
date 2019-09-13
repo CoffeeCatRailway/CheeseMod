@@ -2,7 +2,7 @@ package coffeecatrailway.cheesemod.client.gui.screen;
 
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.client.gui.container.GrillContainer;
-import coffeecatrailway.cheesemod.tileentity.GrillTileEntity;
+import coffeecatrailway.cheesemod.common.tileentity.GrillTileEntity;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.resources.I18n;

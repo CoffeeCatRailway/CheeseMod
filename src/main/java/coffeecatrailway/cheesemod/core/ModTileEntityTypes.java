@@ -1,9 +1,9 @@
 package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
-import coffeecatrailway.cheesemod.tileentity.FoodDrawTileEntity;
-import coffeecatrailway.cheesemod.tileentity.GrillTileEntity;
-import coffeecatrailway.cheesemod.tileentity.MelterTileEntity;
+import coffeecatrailway.cheesemod.common.tileentity.FoodDrawTileEntity;
+import coffeecatrailway.cheesemod.common.tileentity.GrillTileEntity;
+import coffeecatrailway.cheesemod.common.tileentity.MelterTileEntity;
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.types.Type;
 import net.minecraft.tileentity.TileEntity;

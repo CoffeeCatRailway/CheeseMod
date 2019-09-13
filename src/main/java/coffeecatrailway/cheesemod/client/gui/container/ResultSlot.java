@@ -1,6 +1,6 @@
 package coffeecatrailway.cheesemod.client.gui.container;
 
-import coffeecatrailway.cheesemod.tileentity.GrillTileEntity;
+import coffeecatrailway.cheesemod.common.tileentity.GrillTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.FurnaceResultSlot;

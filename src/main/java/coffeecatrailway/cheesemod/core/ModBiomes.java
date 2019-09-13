@@ -1,7 +1,7 @@
 package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
-import coffeecatrailway.cheesemod.world.biome.FoodBiome;
+import coffeecatrailway.cheesemod.common.world.biome.FoodBiome;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeManager;

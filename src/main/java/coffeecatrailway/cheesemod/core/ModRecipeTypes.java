@@ -1,10 +1,10 @@
 package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
-import coffeecatrailway.cheesemod.item.crafting.GrillRecipe;
-import coffeecatrailway.cheesemod.item.crafting.GrillRecipeSerializer;
-import coffeecatrailway.cheesemod.item.crafting.MelterRecipe;
-import coffeecatrailway.cheesemod.item.crafting.MelterRecipeSerializer;
+import coffeecatrailway.cheesemod.common.item.crafting.GrillRecipe;
+import coffeecatrailway.cheesemod.common.item.crafting.GrillRecipeSerializer;
+import coffeecatrailway.cheesemod.common.item.crafting.MelterRecipe;
+import coffeecatrailway.cheesemod.common.item.crafting.MelterRecipeSerializer;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;

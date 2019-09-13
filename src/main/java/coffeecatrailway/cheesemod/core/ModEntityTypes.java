@@ -1,7 +1,7 @@
 package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
-import coffeecatrailway.cheesemod.entity.CheeseBallEntity;
+import coffeecatrailway.cheesemod.common.entity.CheeseBallEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;

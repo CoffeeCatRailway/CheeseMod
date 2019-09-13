@@ -1,12 +1,11 @@
 package coffeecatrailway.cheesemod;
 
 import coffeecatrailway.cheesemod.client.render.tileentity.MelterTileEntityRenderer;
-import coffeecatrailway.cheesemod.command.ChezCommand;
-import coffeecatrailway.cheesemod.command.ConfigCommand;
+import coffeecatrailway.cheesemod.common.command.ChezCommand;
 import coffeecatrailway.cheesemod.core.*;
-import coffeecatrailway.cheesemod.entity.CheeseBallEntity;
-import coffeecatrailway.cheesemod.tileentity.MelterTileEntity;
-import coffeecatrailway.cheesemod.world.ModWorldFeatures;
+import coffeecatrailway.cheesemod.common.entity.CheeseBallEntity;
+import coffeecatrailway.cheesemod.common.tileentity.MelterTileEntity;
+import coffeecatrailway.cheesemod.common.world.ModWorldFeatures;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.BreakingParticle;
@@ -65,8 +64,6 @@ public class SideProxy {
 
     private static void serverStarting(FMLServerStartingEvent event) {
         CommandDispatcher<CommandSource> dispatcher = event.getCommandDispatcher();
-        if (CheeseMod.isDevBuild())
-            ConfigCommand.register(dispatcher);
         ChezCommand.register(dispatcher);
 
         CheeseMod.LOGGER.info("Commands registered");

@@ -4,7 +4,7 @@ import coffeecatrailway.cheesemod.client.gui.screen.GrillScreen;
 import coffeecatrailway.cheesemod.core.ModBlocks;
 import coffeecatrailway.cheesemod.core.ModFluids;
 import coffeecatrailway.cheesemod.core.ModItems;
-import coffeecatrailway.cheesemod.item.crafting.GrillRecipe;
+import coffeecatrailway.cheesemod.common.item.crafting.GrillRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;

@@ -1,8 +1,8 @@
 package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
-import coffeecatrailway.cheesemod.fluid.MeltedCheeseFluid;
-import coffeecatrailway.cheesemod.fluid.OilFluid;
+import coffeecatrailway.cheesemod.common.fluid.MeltedCheeseFluid;
+import coffeecatrailway.cheesemod.common.fluid.OilFluid;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.tags.FluidTags;

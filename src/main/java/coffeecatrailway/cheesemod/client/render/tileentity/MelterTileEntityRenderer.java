@@ -2,7 +2,7 @@ package coffeecatrailway.cheesemod.client.render.tileentity;
 
 import coffeecatrailway.cheesemod.client.gui.screen.MelterScreen;
 import coffeecatrailway.cheesemod.client.render.tileentity.model.MelterFluidModel;
-import coffeecatrailway.cheesemod.tileentity.MelterTileEntity;
+import coffeecatrailway.cheesemod.common.tileentity.MelterTileEntity;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.fluid.Fluid;

@@ -1,11 +1,11 @@
 package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
-import coffeecatrailway.cheesemod.block.*;
+import coffeecatrailway.cheesemod.common.block.*;
 import coffeecatrailway.cheesemod.core.special.ModFoods;
-import coffeecatrailway.cheesemod.item.FoodBlockItem;
-import coffeecatrailway.cheesemod.world.feature.tree.CheeseTree;
-import coffeecatrailway.cheesemod.world.feature.tree.HamTree;
+import coffeecatrailway.cheesemod.common.item.FoodBlockItem;
+import coffeecatrailway.cheesemod.common.world.feature.tree.CheeseTree;
+import coffeecatrailway.cheesemod.common.world.feature.tree.HamTree;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;

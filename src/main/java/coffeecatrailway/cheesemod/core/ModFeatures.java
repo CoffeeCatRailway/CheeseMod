@@ -1,8 +1,8 @@
 package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
-import coffeecatrailway.cheesemod.world.feature.tree.CheeseTreeFeature;
-import coffeecatrailway.cheesemod.world.feature.tree.HamTreeFeature;
+import coffeecatrailway.cheesemod.common.world.feature.tree.CheeseTreeFeature;
+import coffeecatrailway.cheesemod.common.world.feature.tree.HamTreeFeature;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
