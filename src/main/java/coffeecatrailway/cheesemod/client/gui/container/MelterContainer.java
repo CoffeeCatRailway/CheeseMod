@@ -18,7 +18,6 @@ import net.minecraft.util.IntArray;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fluids.capability.templates.FluidTank;
 
 /**
  * @author CoffeeCatRailway
@@ -28,21 +27,19 @@ public class MelterContainer extends Container {
 
     private final IInventory inventory;
     private final IIntArray data;
-    private final FluidTank tank;
     private final World world;
     private final IRecipeType<MelterRecipe> recipeType;
 
     public MelterContainer(int id, PlayerInventory playerInventory) {
-        this(id, playerInventory, new Inventory(2), new IntArray(MelterTileEntity.DATA_ARRAY_SIZE), new FluidTank(MelterTileEntity.FLUID_CAPTACITY));
+        this(id, playerInventory, new Inventory(2), new IntArray(MelterTileEntity.DATA_ARRAY_SIZE));
     }
 
-    public MelterContainer(int id, PlayerInventory playerInventory, IInventory inventory, IIntArray data, FluidTank tank) {
+    public MelterContainer(int id, PlayerInventory playerInventory, IInventory inventory, IIntArray data) {
         super(ModContainerTypes.MELTER, id);
         assertInventorySize(inventory, inventory.getSizeInventory());
         assertIntArraySize(data, data.size());
         this.inventory = inventory;
         this.data = data;
-        this.tank = tank;
         this.world = playerInventory.player.world;
         recipeType = ModRecipeTypes.MELTING;
 

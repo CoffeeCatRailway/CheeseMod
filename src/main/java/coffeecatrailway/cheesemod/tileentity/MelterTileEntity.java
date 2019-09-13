@@ -129,7 +129,7 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
 
     @Override
     protected Container createMenu(int id, PlayerInventory player) {
-        return new MelterContainer(id, player, this, this.data, this.tank);
+        return new MelterContainer(id, player, this, this.data);
     }
 
     private boolean isBurning() {
