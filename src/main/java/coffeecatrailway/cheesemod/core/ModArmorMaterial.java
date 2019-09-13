@@ -1,4 +1,4 @@
-package coffeecatrailway.cheesemod.core.special;
+package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.core.ModItems;
 import net.minecraft.inventory.EquipmentSlotType;

@@ -2,7 +2,6 @@ package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.common.block.*;
-import coffeecatrailway.cheesemod.core.special.ModFoods;
 import coffeecatrailway.cheesemod.common.item.FoodBlockItem;
 import coffeecatrailway.cheesemod.common.world.feature.tree.CheeseTree;
 import coffeecatrailway.cheesemod.common.world.feature.tree.HamTree;

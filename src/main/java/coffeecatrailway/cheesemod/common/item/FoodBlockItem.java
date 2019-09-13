@@ -1,7 +1,7 @@
 package coffeecatrailway.cheesemod.common.item;
 
 import coffeecatrailway.cheesemod.CheeseMod;
-import coffeecatrailway.cheesemod.core.special.ModFoods;
+import coffeecatrailway.cheesemod.core.ModFoods;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Food;
