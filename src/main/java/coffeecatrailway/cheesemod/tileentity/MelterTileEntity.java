@@ -55,6 +55,7 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
     private static final int[] SLOTS_UP = new int[]{0};
     private static final int[] SLOTS_HORIZONTAL = new int[]{1};
     public static final int FLUID_CAPTACITY = FluidAttributes.BUCKET_VOLUME * 10;
+    public static final int DATA_ARRAY_SIZE = 7;
 
     private NonNullList<ItemStack> inventory = NonNullList.withSize(2, ItemStack.EMPTY);
     private int burnTime;
@@ -76,6 +77,8 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
                     return MelterTileEntity.this.tank.getFluidAmount();
                 case 5:
                     return Registry.FLUID.getId(MelterTileEntity.this.tank.getFluid().getFluid());
+                case 6:
+                    return MelterTileEntity.this.tank.getFluid().getFluid().getAttributes().getColor(MelterTileEntity.this.world, MelterTileEntity.this.getPos());
                 default:
                     return 0;
             }
@@ -101,12 +104,14 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
                 case 5:
                     MelterTileEntity.this.tank.setFluid(new FluidStack(Registry.FLUID.getByValue(value), 1));
                     break;
+                case 6:
+                    break;
             }
 
         }
 
         public int size() {
-            return 6;
+            return DATA_ARRAY_SIZE;
         }
     };
     private final Map<ResourceLocation, Integer> recipeAmounts = Maps.newHashMap();

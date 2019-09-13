@@ -10,7 +10,6 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ITextComponent;
@@ -75,8 +74,9 @@ public class MelterScreen extends ContainerScreen<MelterContainer> {
         this.blit(i + 68, j + 32, 176, 14, l + 1, 16);
 
         Fluid fluid = Registry.FLUID.getByValue(container.getFluid());
-        if (fluid.isEquivalentTo(Fluids.WATER))
-            GlStateManager.color4f(0.23922F, 0.42745F, 1.0F, 1.0F);
+        int color = this.container.getFluidColor();
+        float[] colors = new float[]{((color >> 16) & 0xFF) / 255.0f, ((color >> 8) & 0xFF) / 255.0f, (color & 0xFF) / 255.0f, ((color >> 24) & 0xFF) / 255.0f};
+        GlStateManager.color4f(colors[0], colors[1], colors[2], colors[3]);
 
         ResourceLocation fluidTexture = getFluidTexture(fluid);
         if (fluidTexture != null) {
@@ -89,8 +89,7 @@ public class MelterScreen extends ContainerScreen<MelterContainer> {
             GlStateManager.disableBlend();
         }
 
-        if (fluid.isEquivalentTo(Fluids.WATER))
-            GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+        GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 
         this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
         this.blit(i + 97, j + 8, 176, 32, 32, 64);

@@ -33,7 +33,7 @@ public class MelterContainer extends Container {
     private final IRecipeType<MelterRecipe> recipeType;
 
     public MelterContainer(int id, PlayerInventory playerInventory) {
-        this(id, playerInventory, new Inventory(2), new IntArray(6), new FluidTank(MelterTileEntity.FLUID_CAPTACITY));
+        this(id, playerInventory, new Inventory(2), new IntArray(MelterTileEntity.DATA_ARRAY_SIZE), new FluidTank(MelterTileEntity.FLUID_CAPTACITY));
     }
 
     public MelterContainer(int id, PlayerInventory playerInventory, IInventory inventory, IIntArray data, FluidTank tank) {
@@ -146,5 +146,10 @@ public class MelterContainer extends Container {
     @OnlyIn(Dist.CLIENT)
     public int getFluidAmount() {
         return this.data.get(4);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public int getFluidColor() {
+        return this.data.get(6);
     }
 }
