@@ -19,6 +19,7 @@ import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.CountRangeConfig;
 import net.minecraft.world.gen.placement.HeightWithChanceConfig;
 import net.minecraft.world.gen.placement.Placement;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /**
@@ -31,7 +32,7 @@ public class ModWorldFeatures {
 
     private static final Predicate<BlockState> TARGET_NETHER = s -> s.getBlock() == Blocks.NETHERRACK;
     private static final Predicate<BlockState> TARGET_END = s -> s.getBlock() == Blocks.END_STONE;
-    private static final Predicate<BlockState> TARGET_OVERWORLD = s -> s.getBlock() == Blocks.STONE;
+    private static final Predicate<BlockState> TARGET_OVERWORLD = s -> Tags.Blocks.STONE.contains(s.getBlock());
 
     public static void addFeatures() {
         ForgeRegistries.BIOMES.forEach(biome -> {
