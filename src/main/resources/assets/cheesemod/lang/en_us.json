@@ -168,6 +168,7 @@
   "item.cheesemod.ham_suit_boots": "Ham Suit Boots",
 
   "item.cheesemod.block_o_cheese": "Block O' Cheese",
+  "item.cheesemod.cheese_ball": "Cheese Ball",
   "item.cheesemod.cheese_slice": "Cheese Slice",
 
   "item.cheesemod.salt": "Rock Salt",
@@ -223,10 +224,20 @@
   "item.cheesemod.oil_bucket": "Oil Bucket",
   "item.cheesemod.melted_cheese_bucket": "Melted Cheese Bucket",
 
+  "item.cheesemod.cheese_foodie_spawn_egg": "Cheese Foodie Spawn Egg [WIP]",
+  "item.cheesemod.grilled_cheese_foodie_spawn_egg": "Grilled Cheese Foodie Spawn Egg [WIP]",
+  "item.cheesemod.ham_raw_foodie_spawn_egg": "Ham Raw Foodie Spawn Egg [WIP]",
+  "item.cheesemod.ham_cooked_foodie_spawn_egg": "Ham Cooked Foodie Spawn Egg [WIP]",
+
   "item.cheesemod.cheese_bit": "Bit O' Cheese",
   "item.cheesemod.ham_bit": "Bit O' Ham",
 
   "item.cheesemod.wooden_gear": "Wooden Gear",
+
+  "entity.cheesemod.cheese_foodie": "Cheese Foodie",
+  "entity.cheesemod.grilled_cheese_foodie": "Grilled Cheese Foodie",
+  "entity.cheesemod.ham_raw_foodie": "Ham Raw Foodie",
+  "entity.cheesemod.ham_cooked_foodie": "Ham Cooked Foodie",
 
   "container.cheesemod.cheese_draw": "Cheese Draw",
   "container.cheesemod.grilled_cheese_draw": "Grilled Cheese Draw",

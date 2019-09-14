@@ -331,10 +331,10 @@ public class ModItems {
         MELTED_CHEESE_BUCKET = register("melted_cheese_bucket", new BucketItem(ModFluids.MELTED_CHEESE_SOURCE, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ItemGroup.MISC)));
 
         /// Spawn Eggs ///
-        CHEESE_FOODIE_SPAWN_EGG = register("cheese_foodie_spawn_egg", new SpawnEggItem(ModEntityTypes.CHEESE_FOODIE, 11445876, 9404726, new Item.Properties().maxStackSize(1).group(ItemGroup.MISC)));
-        GRILLED_CHEESE_FOODIE_SPAWN_EGG = register("grilled_cheese_foodie_spawn_egg", new SpawnEggItem(ModEntityTypes.GRILLED_CHEESE_FOODIE, 8484425, 8877339, new Item.Properties().maxStackSize(1).group(ItemGroup.MISC)));
-        HAM_RAW_FOODIE_SPAWN_EGG = register("ham_raw_foodie_spawn_egg", new SpawnEggItem(ModEntityTypes.HAM_RAW_FOODIE, 12152929, 13920850, new Item.Properties().maxStackSize(1).group(ItemGroup.MISC)));
-        HAM_COOKED_FOODIE_SPAWN_EGG = register("ham_cooked_foodie_spawn_egg", new SpawnEggItem(ModEntityTypes.HAM_COOKED_FOODIE, 13218964, 16770746, new Item.Properties().maxStackSize(1).group(ItemGroup.MISC)));
+        CHEESE_FOODIE_SPAWN_EGG = register("cheese_foodie_spawn_egg", new SpawnEggItem(ModEntityTypes.CHEESE_FOODIE, 11445876, 9404726, new Item.Properties().group(ItemGroup.MISC)));
+        GRILLED_CHEESE_FOODIE_SPAWN_EGG = register("grilled_cheese_foodie_spawn_egg", new SpawnEggItem(ModEntityTypes.GRILLED_CHEESE_FOODIE, 8484425, 8877339, new Item.Properties().group(ItemGroup.MISC)));
+        HAM_RAW_FOODIE_SPAWN_EGG = register("ham_raw_foodie_spawn_egg", new SpawnEggItem(ModEntityTypes.HAM_RAW_FOODIE, 12152929, 13920850, new Item.Properties().group(ItemGroup.MISC)));
+        HAM_COOKED_FOODIE_SPAWN_EGG = register("ham_cooked_foodie_spawn_egg", new SpawnEggItem(ModEntityTypes.HAM_COOKED_FOODIE, 13218964, 16770746, new Item.Properties().group(ItemGroup.MISC)));
 
         /// Other ///
         CHEESE_BIT = register("cheese_bit", new Item(new Item.Properties().group(CheeseMod.GROUP_ALL)));
