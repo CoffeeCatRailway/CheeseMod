@@ -72,8 +72,13 @@ public class FoodieModel<E extends FoodieEntity> extends EntityModel<E> {
         this.setRotationAngles(entity, limbSwing, limbSwingAmount, ageTicks, headYaw, headPitch, scale);
 
         GlStateManager.pushMatrix();
-        if (entity.isSitting()) {
-            GlStateManager.translatef(0.0f, !entity.isChild() ? 0.225f : 0.125f, 0.0f);
+        if (entity.isSitting() || entity.getRidingEntity() != null) {
+            if (entity.getRidingEntity() != null) {
+                GlStateManager.rotatef(entity.getRidingEntity().getRotationYawHead(), 0.0f, 1.0f, 0.0f);
+                GlStateManager.translatef(0.0f, !entity.isChild() ? -0.125f : -0.275f, 0.0f);
+            } else
+                GlStateManager.translatef(0.0f, !entity.isChild() ? 0.225f : 0.125f, 0.0f);
+
             this.arm_r.rotateAngleX = -2.35619f;
             this.arm_l.rotateAngleX = -2.35619f;
 

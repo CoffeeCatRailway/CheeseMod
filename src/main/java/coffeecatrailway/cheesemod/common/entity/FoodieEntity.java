@@ -197,6 +197,16 @@ public abstract class FoodieEntity extends TameableEntity {
                 }
             }
 
+            if (itemstack.isEmpty() && player.isSneaking()) {
+                if (this.getRidingEntity() != null) {
+                    this.stopRiding();
+                    return true;
+                } else {
+                    if (this.startRiding(player))
+                        return true;
+                }
+            }
+
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(itemstack)) {
                 this.sitGoal.setSitting(!this.isSitting());
                 this.isJumping = false;
@@ -227,6 +237,13 @@ public abstract class FoodieEntity extends TameableEntity {
         }
 
         return super.processInteract(player, hand);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+//        if (this.getRidingEntity() != null && this.getRidingEntity() instanceof PlayerEntity && this.getRidingEntity().isSneaking())
+//            this.stopRiding();
     }
 
     @Override
