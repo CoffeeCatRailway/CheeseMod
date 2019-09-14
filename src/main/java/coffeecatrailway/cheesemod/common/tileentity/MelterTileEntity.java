@@ -2,11 +2,11 @@ package coffeecatrailway.cheesemod.common.tileentity;
 
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.ModConfig;
-import coffeecatrailway.cheesemod.common.block.MelterBlock;
 import coffeecatrailway.cheesemod.client.gui.container.MelterContainer;
+import coffeecatrailway.cheesemod.common.block.MelterBlock;
+import coffeecatrailway.cheesemod.common.item.crafting.MelterRecipe;
 import coffeecatrailway.cheesemod.core.ModRecipeTypes;
 import coffeecatrailway.cheesemod.core.ModTileEntityTypes;
-import coffeecatrailway.cheesemod.common.item.crafting.MelterRecipe;
 import com.google.common.collect.Maps;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

@@ -1,14 +1,17 @@
 package coffeecatrailway.cheesemod.common.world;
 
 import coffeecatrailway.cheesemod.ModConfig;
-import coffeecatrailway.cheesemod.core.ModBiomes;
-import coffeecatrailway.cheesemod.core.ModBlocks;
-import coffeecatrailway.cheesemod.core.ModFeatures;
+import coffeecatrailway.cheesemod.common.world.biome.FoodBiome;
 import coffeecatrailway.cheesemod.common.world.feature.ModOreFeature;
 import coffeecatrailway.cheesemod.common.world.feature.ModOreFeatureConfig;
+import coffeecatrailway.cheesemod.core.ModBiomes;
+import coffeecatrailway.cheesemod.core.ModBlocks;
+import coffeecatrailway.cheesemod.core.ModEntityTypes;
+import coffeecatrailway.cheesemod.core.ModFeatures;
 import com.google.common.base.Predicate;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityClassification;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.BushConfig;
@@ -49,21 +52,38 @@ public class ModWorldFeatures {
                 addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE_END.getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
 
             } else { /// OVERWORLD ///
-                boolean isCheese = biome == ModBiomes.CHEESE_FOREST || biome == ModBiomes.CHEESE_PLAINS || biome == ModBiomes.GRILLED_CHEESE_FOREST || biome == ModBiomes.GRILLED_CHEESE_PLAINS;
-                boolean isHam = biome == ModBiomes.HAM_RAW_FOREST || biome == ModBiomes.HAM_RAW_PLAINS || biome == ModBiomes.HAM_COOKED_FOREST || biome == ModBiomes.HAM_COOKED_PLAINS;
+                boolean isCheese = biome == ModBiomes.CHEESE_FOREST || biome == ModBiomes.CHEESE_PLAINS;
+                boolean isGrilledCheese = biome == ModBiomes.GRILLED_CHEESE_FOREST || biome == ModBiomes.GRILLED_CHEESE_PLAINS;
+                boolean justCheese = isCheese || isGrilledCheese;
+
+                boolean isHamRaw = biome == ModBiomes.HAM_RAW_FOREST || biome == ModBiomes.HAM_RAW_PLAINS;
+                boolean isHamCooked = biome == ModBiomes.HAM_COOKED_FOREST || biome == ModBiomes.HAM_COOKED_PLAINS;
+                boolean justHam = isHamRaw || isHamCooked;
+
+                // Foodies
+                if (biome instanceof FoodBiome) {
+                    if (isCheese)
+                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntityTypes.CHEESE_FOODIE, 100, 1, 3));
+                    if (isGrilledCheese)
+                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntityTypes.GRILLED_CHEESE_FOODIE, 100, 1, 3));
+                    if (isHamRaw)
+                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntityTypes.HAM_RAW_FOODIE, 100, 1, 3));
+                    if (isHamCooked)
+                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntityTypes.HAM_COOKED_FOODIE, 100, 1, 3));
+                }
 
                 // Ores
-                if (isCheese) {
+                if (justCheese) {
                     addOre(biome, ModBlocks.CHEESE_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                     addOre(biome, ModBlocks.GRILLED_CHEESE_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                 }
-                if (isHam) {
+                if (justHam) {
                     addOre(biome, ModBlocks.HAM_RAW_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                     addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                 }
 
-                // Biome stuffs
-                if (!isCheese && !isHam) {
+                // Extra Trees
+                if (!justCheese && !justHam) {
                     if (biome.getCategory() == Biome.Category.FOREST) {
                         addCheeseTrees(biome);
                         addHamTrees(biome);
@@ -72,9 +92,9 @@ public class ModWorldFeatures {
                 }
 
                 if (biome.getCategory() == Biome.Category.PLAINS) {
-                    if (isCheese)
+                    if (justCheese)
                         addCheeseTrees(biome);
-                    if (isHam)
+                    if (justHam)
                         addHamTrees(biome);
                 }
             }

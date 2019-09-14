@@ -1,8 +1,8 @@
 package coffeecatrailway.cheesemod.common.tileentity;
 
 import coffeecatrailway.cheesemod.CheeseMod;
-import coffeecatrailway.cheesemod.common.block.FoodDrawBlock;
 import coffeecatrailway.cheesemod.client.gui.container.FoodDrawContainer;
+import coffeecatrailway.cheesemod.common.block.FoodDrawBlock;
 import coffeecatrailway.cheesemod.core.ModTileEntityTypes;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;

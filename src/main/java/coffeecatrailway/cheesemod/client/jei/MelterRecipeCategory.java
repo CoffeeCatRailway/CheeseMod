@@ -1,8 +1,8 @@
 package coffeecatrailway.cheesemod.client.jei;
 
 import coffeecatrailway.cheesemod.client.gui.screen.MelterScreen;
-import coffeecatrailway.cheesemod.core.ModBlocks;
 import coffeecatrailway.cheesemod.common.item.crafting.MelterRecipe;
+import coffeecatrailway.cheesemod.core.ModBlocks;
 import com.mojang.blaze3d.platform.GlStateManager;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;

@@ -2,12 +2,12 @@ package coffeecatrailway.cheesemod.common.tileentity;
 
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.ModConfig;
-import coffeecatrailway.cheesemod.common.block.GrillBlock;
 import coffeecatrailway.cheesemod.client.gui.container.GrillContainer;
+import coffeecatrailway.cheesemod.common.block.GrillBlock;
+import coffeecatrailway.cheesemod.common.item.crafting.GrillRecipe;
 import coffeecatrailway.cheesemod.core.ModFluids;
 import coffeecatrailway.cheesemod.core.ModRecipeTypes;
 import coffeecatrailway.cheesemod.core.ModTileEntityTypes;
-import coffeecatrailway.cheesemod.common.item.crafting.GrillRecipe;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.entity.item.ExperienceOrbEntity;

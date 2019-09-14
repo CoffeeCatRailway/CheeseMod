@@ -1,9 +1,9 @@
 package coffeecatrailway.cheesemod.client.gui.container;
 
-import coffeecatrailway.cheesemod.core.ModContainerTypes;
-import coffeecatrailway.cheesemod.core.ModRecipeTypes;
 import coffeecatrailway.cheesemod.common.item.crafting.MelterRecipe;
 import coffeecatrailway.cheesemod.common.tileentity.MelterTileEntity;
+import coffeecatrailway.cheesemod.core.ModContainerTypes;
+import coffeecatrailway.cheesemod.core.ModRecipeTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;

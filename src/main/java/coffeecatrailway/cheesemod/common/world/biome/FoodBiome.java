@@ -62,6 +62,10 @@ public class FoodBiome extends Biome {
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.WITCH, 5, 1, 1));
     }
 
+    public void addSpawn(EntityClassification type, Biome.SpawnListEntry spawnListEntry) {
+        super.addSpawn(type, spawnListEntry);
+    }
+
     @Override
     public int getGrassColor(BlockPos pos) {
         return grassColor;
