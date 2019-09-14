@@ -1,11 +1,12 @@
 package coffeecatrailway.cheesemod;
 
+import coffeecatrailway.cheesemod.client.render.entity.FoodieRenderer;
 import coffeecatrailway.cheesemod.client.render.tileentity.MelterTileEntityRenderer;
 import coffeecatrailway.cheesemod.common.command.ChezCommand;
-import coffeecatrailway.cheesemod.core.*;
-import coffeecatrailway.cheesemod.common.entity.CheeseBallEntity;
+import coffeecatrailway.cheesemod.common.entity.*;
 import coffeecatrailway.cheesemod.common.tileentity.MelterTileEntity;
 import coffeecatrailway.cheesemod.common.world.ModWorldFeatures;
+import coffeecatrailway.cheesemod.core.*;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.BreakingParticle;
@@ -80,7 +81,13 @@ public class SideProxy {
             Minecraft.getInstance().particles.registerFactory(ModParticles.ITEM_CHEESE_BALL, (type, world, v, v1, v2, v3, v4, v5) -> new BreakingParticle(world, v, v1, v2, new ItemStack(ModItems.CHEESE_BALL)));
 
             ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-            RenderingRegistry.registerEntityRenderingHandler(CheeseBallEntity.class, (manager) -> new SpriteRenderer<CheeseBallEntity>(manager, itemRenderer));
+            RenderingRegistry.registerEntityRenderingHandler(CheeseBallEntity.class, manager -> new SpriteRenderer<CheeseBallEntity>(manager, itemRenderer));
+
+            RenderingRegistry.registerEntityRenderingHandler(CheeseFoodie.class, manager -> new FoodieRenderer<CheeseFoodie>(manager, CheeseMod.getLocation("textures/entity/foodie/cheese.png")));
+            RenderingRegistry.registerEntityRenderingHandler(GrilledCheeseFoodie.class, manager -> new FoodieRenderer<GrilledCheeseFoodie>(manager, CheeseMod.getLocation("textures/entity/foodie/grilled_cheese.png")));
+            RenderingRegistry.registerEntityRenderingHandler(HamRawFoodie.class, manager -> new FoodieRenderer<HamRawFoodie>(manager, CheeseMod.getLocation("textures/entity/foodie/ham_raw.png")));
+            RenderingRegistry.registerEntityRenderingHandler(HamCookedFoodie.class, manager -> new FoodieRenderer<HamCookedFoodie>(manager, CheeseMod.getLocation("textures/entity/foodie/ham_cooked.png")));
+
             ClientRegistry.bindTileEntitySpecialRenderer(MelterTileEntity.class, new MelterTileEntityRenderer());
         }
     }
