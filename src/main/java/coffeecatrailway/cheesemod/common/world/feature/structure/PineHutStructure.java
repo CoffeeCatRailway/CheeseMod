@@ -23,15 +23,15 @@ import java.util.function.Function;
 public class PineHutStructure extends Structure<NoFeatureConfig> {
 
     public static final ResourceLocation LOCATION = CheeseMod.getLocation("hut/pine_hut");
-    public static final BlockPos CENTER = new BlockPos(4, 1, 3);
+    public static final BlockPos CENTER = new BlockPos(1, 0, 3);
 
     public PineHutStructure(Function<Dynamic<?>, ? extends NoFeatureConfig> function) {
         super(function);
     }
 
     @Override
-    public boolean hasStartAt(ChunkGenerator<?> chunkGen, Random rand, int chunkPosX, int chunkPosZ) {
-        return chunkPosX == 0 && chunkPosZ == 0;
+    public boolean hasStartAt(ChunkGenerator<?> generator, Random rand, int chunkX, int chunkZ) {
+        return rand.nextInt(500) == 0;
     }
 
     @Override
@@ -59,9 +59,9 @@ public class PineHutStructure extends Structure<NoFeatureConfig> {
         public void init(ChunkGenerator<?> generator, TemplateManager template, int chunkX, int chunkZ, Biome biome) {
             int i = chunkX * 16;
             int j = chunkZ * 16;
-            BlockPos pos = new BlockPos(i, 64, j);
+            BlockPos pos = new BlockPos(i, 0, j);
             Rotation rotation = Rotation.values()[this.rand.nextInt(Rotation.values().length)];
-            this.components.add(new PineHutStructurePiece(template, PineHutStructure.LOCATION, pos, rotation, 0));
+            this.components.add(new PineHutStructurePiece(template, PineHutStructure.LOCATION, pos, rotation));
             this.recalculateStructureSize();
         }
     }
