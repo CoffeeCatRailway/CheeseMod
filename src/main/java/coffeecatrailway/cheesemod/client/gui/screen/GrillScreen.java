@@ -47,13 +47,13 @@ public class GrillScreen extends ContainerScreen<GrillContainer> {
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         String title = this.title.getFormattedText();
-        this.font.drawString(title, (float) (this.xSize / 2 - this.font.getStringWidth(title) / 2) + 1, 6.0F, 4210752);
-        this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float) (this.ySize - 96 + 4), 4210752);
+        this.font.drawString(title, (float) (this.xSize / 2 - this.font.getStringWidth(title) / 2) + 1, 6.0f, 4210752);
+        this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0f, (float) (this.ySize - 96 + 4), 4210752);
     }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+        GlStateManager.color4f(1.0f, 1.0f, 1.0f, 1.0f);
         this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
         int i = this.guiLeft;
         int j = this.guiTop;

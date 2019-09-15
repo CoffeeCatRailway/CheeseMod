@@ -42,7 +42,7 @@ public class GrillRecipeSerializer<T extends GrillRecipe> extends ForgeRegistryE
             ResourceLocation resultId = new ResourceLocation(result);
             stack = new ItemStack(Registry.ITEM.getValue(resultId).orElseThrow(() -> new IllegalStateException("Item: " + result + " does not exist")));
         }
-        float experience = JSONUtils.getFloat(json, "experience", 0.0F);
+        float experience = JSONUtils.getFloat(json, "experience", 0.0f);
         int cookTime = JSONUtils.getInt(json, "cookingtime", this.cookTime);
         int oil = JSONUtils.getInt(json, "oil", 0);
         return this.factory.create(id, ingredient, stack, experience, cookTime, oil);

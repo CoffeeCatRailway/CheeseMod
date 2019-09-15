@@ -91,7 +91,7 @@ public class FoodDrawTileEntity extends LockableLootTileEntity implements ITicka
 
     private int getPlayersUsing(World world, LockableTileEntity tileEntity, int x, int y, int z) {
         int i = 0;
-        for (PlayerEntity playerentity : world.getEntitiesWithinAABB(PlayerEntity.class, new AxisAlignedBB((double) ((float) x - 5.0F), (double) ((float) y - 5.0F), (double) ((float) z - 5.0F), (double) ((float) (x + 1) + 5.0F), (double) ((float) (y + 1) + 5.0F), (double) ((float) (z + 1) + 5.0F)))) {
+        for (PlayerEntity playerentity : world.getEntitiesWithinAABB(PlayerEntity.class, new AxisAlignedBB((double) ((float) x - 5.0f), (double) ((float) y - 5.0f), (double) ((float) z - 5.0f), (double) ((float) (x + 1) + 5.0f), (double) ((float) (y + 1) + 5.0f), (double) ((float) (z + 1) + 5.0f)))) {
             if (playerentity.openContainer instanceof FoodDrawContainer) {
                 IInventory iinventory = ((FoodDrawContainer) playerentity.openContainer).getFoodInventory();
                 if (iinventory == tileEntity)
@@ -148,7 +148,7 @@ public class FoodDrawTileEntity extends LockableLootTileEntity implements ITicka
         double d0 = (double) this.pos.getX() + 0.5D;
         double d1 = (double) this.pos.getY() + 0.5D;
         double d2 = (double) this.pos.getZ() + 0.5D;
-        this.world.playSound(null, d0, d1, d2, soundIn, SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
+        this.world.playSound(null, d0, d1, d2, soundIn, SoundCategory.BLOCKS, 0.5f, this.world.rand.nextFloat() * 0.1F + 0.9f);
     }
 
     @Override

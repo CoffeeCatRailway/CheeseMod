@@ -30,7 +30,7 @@ public class PineHutStructurePiece extends TemplateStructurePiece {
 
     private final ResourceLocation location;
     private final Rotation rotation;
-    private BlockPos pos;
+    private BlockPos pos = BlockPos.ZERO;
 
     public PineHutStructurePiece(TemplateManager template, ResourceLocation location, BlockPos pos, Rotation rotation) {
         super(ModFeatures.PINE_HUT_TYPE, 0);

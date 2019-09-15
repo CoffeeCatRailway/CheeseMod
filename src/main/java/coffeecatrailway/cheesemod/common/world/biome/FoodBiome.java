@@ -30,7 +30,7 @@ public class FoodBiome extends Biome {
 
     public FoodBiome(int waterColor, int waterFogColor, int grassColor, BlockState surface, Feature mainTree, Feature secondTree, String parent) {
         super(new Biome.Builder().surfaceBuilder(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(surface, SurfaceBuilder.DIRT, SurfaceBuilder.SAND)).precipitation(Biome.RainType.RAIN)
-                .category((mainTree != null && secondTree != null) ? Biome.Category.FOREST : Category.PLAINS).depth(0.1F).scale(0.2F).temperature(0.7F).downfall(0.8F)
+                .category((mainTree != null && secondTree != null) ? Biome.Category.FOREST : Category.PLAINS).depth(0.1f).scale(0.2f).temperature(0.7f).downfall(0.8f)
                 .waterColor(waterColor).waterFogColor(waterFogColor).parent(parent));
         this.grassColor = grassColor;
 
@@ -50,7 +50,7 @@ public class FoodBiome extends Biome {
         if (mainTree != null && secondTree != null)
             this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
                             new Feature[]{secondTree}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, mainTree, IFeatureConfig.NO_FEATURE_CONFIG),
-                    Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(10, 0.1F, 1)));
+                    Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(10, 0.1f, 1)));
 
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.SPIDER, 100, 4, 4));
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.ZOMBIE, 95, 4, 4));

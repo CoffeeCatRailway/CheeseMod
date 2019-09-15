@@ -198,11 +198,11 @@ public class ModItems {
         ROLLING_PIN = register("rolling_pin", new ModToolItem(1.5f, 2.5f, ItemTier.WOOD, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
 
         /// Tool - Knife ///
-        KNIFE = register("knife", new ModToolItem(3.5F, -2.1F, ItemTier.IRON, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
-        CHEESE_KNIFE = register("cheese_knife", new ModToolItem(5.0F, -2.7F, ModItemTier.CHEESE_METAL, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
-        GRILLED_CHEESE_KNIFE = register("grilled_cheese_knife", new ModToolItem(6.0F, -3.5F, ModItemTier.GRILLED_CHEESE_METAL, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
-        HAM_RAW_KNIFE = register("ham_raw_knife", new ModToolItem(4.7F, -2.9F, ModItemTier.HAM_RAW_METAL, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
-        HAM_COOKED_KNIFE = register("ham_cooked_knife", new ModToolItem(5.8F, -3.0F, ModItemTier.HAM_COOKED_METAL, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
+        KNIFE = register("knife", new ModToolItem(3.5f, -2.1f, ItemTier.IRON, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
+        CHEESE_KNIFE = register("cheese_knife", new ModToolItem(5.0f, -2.7f, ModItemTier.CHEESE_METAL, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
+        GRILLED_CHEESE_KNIFE = register("grilled_cheese_knife", new ModToolItem(6.0f, -3.5f, ModItemTier.GRILLED_CHEESE_METAL, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
+        HAM_RAW_KNIFE = register("ham_raw_knife", new ModToolItem(4.7f, -2.9f, ModItemTier.HAM_RAW_METAL, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
+        HAM_COOKED_KNIFE = register("ham_cooked_knife", new ModToolItem(5.8f, -3.0f, ModItemTier.HAM_COOKED_METAL, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
 
         /// Tool - Cheese Metal ///
         CHEESE_METAL_PICKAXE = register("cheese_metal_pickaxe", new PickaxeItem(ModItemTier.CHEESE_METAL, 1, -2.8f, new Item.Properties().group(CheeseMod.GROUP_ALL)));

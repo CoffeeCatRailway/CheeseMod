@@ -42,10 +42,10 @@ public abstract class FoodieEntity extends TameableEntity {
         this.sitGoal = new SitGoal(this);
         this.goalSelector.addGoal(1, this.sitGoal);
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, true));
-        this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
+        this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.0D, 10.0f, 2.0f));
         this.goalSelector.addGoal(4, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 0.6D));
-        this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 6.0F));
+        this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 6.0f));
         this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
         this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
@@ -55,7 +55,7 @@ public abstract class FoodieEntity extends TameableEntity {
     @Override
     protected void registerAttributes() {
         super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue((double) 0.3F);
+        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue((double) 0.3f);
         if (this.isTamed())
             this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
         else
@@ -98,7 +98,7 @@ public abstract class FoodieEntity extends TameableEntity {
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.BLOCK_SNOW_PLACE, 0.15F, 1.0F);
+        this.playSound(SoundEvents.BLOCK_SNOW_PLACE, 0.15f, 1.0f);
     }
 
     @Override
@@ -156,7 +156,7 @@ public abstract class FoodieEntity extends TameableEntity {
                 this.sitGoal.setSitting(false);
 
             if (entity != null && !(entity instanceof PlayerEntity) && !(entity instanceof AbstractArrowEntity))
-                amount = (amount + 1.0F) / 2.0F;
+                amount = (amount + 1.0f) / 2.0f;
 
             return super.attackEntityFrom(source, amount);
         }
@@ -187,7 +187,7 @@ public abstract class FoodieEntity extends TameableEntity {
         Item item = itemstack.getItem();
         if (this.isTamed()) {
             if (!itemstack.isEmpty()) {
-                if (this.foodItem(itemstack) && this.dataManager.get(DATA_HEALTH_ID) < 20.0F) {
+                if (this.foodItem(itemstack) && this.dataManager.get(DATA_HEALTH_ID) < 20.0f) {
                     if (!player.abilities.isCreativeMode) {
                         itemstack.shrink(1);
                     }
@@ -224,7 +224,7 @@ public abstract class FoodieEntity extends TameableEntity {
                     this.navigator.clearPath();
                     this.setAttackTarget(null);
                     this.sitGoal.setSitting(true);
-                    this.setHealth(20.0F);
+                    this.setHealth(20.0f);
                     this.playTameEffect(true);
                     this.world.setEntityState(this, (byte) 7);
                 } else {
@@ -237,13 +237,6 @@ public abstract class FoodieEntity extends TameableEntity {
         }
 
         return super.processInteract(player, hand);
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-//        if (this.getRidingEntity() != null && this.getRidingEntity() instanceof PlayerEntity && this.getRidingEntity().isSneaking())
-//            this.stopRiding();
     }
 
     @Override

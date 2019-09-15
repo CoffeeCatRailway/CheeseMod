@@ -54,63 +54,63 @@ public class ModelHamSuit extends BipedModel<LivingEntity> {
 
         // Hat
         pig_head = new RendererModel(this, 0, 0);
-        pig_head.addBox(-3.5F, -7.5F, -3.5F, 8, 8, 8, (float) s);
-        pig_head.setRotationPoint(-0.5F, -0.5F, -0.5F);
-        setRotation(pig_head, 0.0F, 0.0F, 0.0F);
+        pig_head.addBox(-3.5f, -7.5f, -3.5f, 8, 8, 8, (float) s);
+        pig_head.setRotationPoint(-0.5f, -0.5f, -0.5f);
+        setRotation(pig_head, 0.0f, 0.0f, 0.0f);
 
         pig_nose = new RendererModel(this, 26, 0);
-        pig_nose.addBox(-1.5F, -2.5F, -5.0F, 4, 3, 1, (float) (s - s_binding));
-        pig_nose.setRotationPoint(-0.5F, -0.5F, -0.5F);
-        setRotation(pig_nose, 0.0F, 0.0F, 0.0F);
+        pig_nose.addBox(-1.5f, -2.5f, -5.0f, 4, 3, 1, (float) (s - s_binding));
+        pig_nose.setRotationPoint(-0.5f, -0.5f, -0.5f);
+        setRotation(pig_nose, 0.0f, 0.0f, 0.0f);
 
         // Right Arm
         shoulder_right = new RendererModel(this, 44, 0);
-        shoulder_right.addBox(1.0F, -2.0F, -2.5F, 5, 4, 5, (float) s);
-        shoulder_right.setRotationPoint(-5.0F, 0.0F, 0.0F);
-        setRotation(shoulder_right, 0.0F, 0.0F, -0.24434609527920614F);
+        shoulder_right.addBox(1.0f, -2.0f, -2.5f, 5, 4, 5, (float) s);
+        shoulder_right.setRotationPoint(-5.0f, 0.0f, 0.0f);
+        setRotation(shoulder_right, 0.0f, 0.0f, -0.24434609527920614f);
 
         fist_right = new RendererModel(this, 48, 10);
-        fist_right.addBox(1.5F, 5.5F, -2.0F, 4, 6, 4, (float) s);
-        fist_right.setRotationPoint(-5.0F, 0.0F, 0.0F);
-        setRotation(fist_right, 0.0F, 0.0F, 0.0F);
+        fist_right.addBox(1.5f, 5.5f, -2.0f, 4, 6, 4, (float) s);
+        fist_right.setRotationPoint(-5.0f, 0.0f, 0.0f);
+        setRotation(fist_right, 0.0f, 0.0f, 0.0f);
 
         binding_right = new RendererModel(this, 39, 0);
-        binding_right.addBox(7.5F, 1.0F, -0.5F, 1, 7, 1, (float) (s - s_binding));
-        binding_right.setRotationPoint(-5.0F, 0.0F, 0.0F);
-        setRotation(binding_right, 0.0F, 0.0F, 0.0F);
+        binding_right.addBox(7.5f, 1.0f, -0.5f, 1, 7, 1, (float) (s - s_binding));
+        binding_right.setRotationPoint(-5.0f, 0.0f, 0.0f);
+        setRotation(binding_right, 0.0f, 0.0f, 0.0f);
 
         // Left Arm
         shoulder_left = new RendererModel(this, 44, 0);
-        shoulder_left.addBox(-6.0F, -2.0F, -2.5F, 5, 4, 5, (float) s);
-        shoulder_left.setRotationPoint(5.0F, 0.0F, 0.0F);
-        setRotation(shoulder_left, 0.0F, 0.0F, 0.24434609527920614F);
+        shoulder_left.addBox(-6.0f, -2.0f, -2.5f, 5, 4, 5, (float) s);
+        shoulder_left.setRotationPoint(5.0f, 0.0f, 0.0f);
+        setRotation(shoulder_left, 0.0f, 0.0f, 0.24434609527920614f);
 
         fist_left = new RendererModel(this, 48, 10);
-        fist_left.addBox(-5.5F, 5.5F, -2.0F, 4, 6, 4, (float) s);
-        fist_left.setRotationPoint(5.0F, 0.0F, 0.0F);
-        setRotation(fist_left, 0.0F, 0.0F, 0.0F);
+        fist_left.addBox(-5.5f, 5.5f, -2.0f, 4, 6, 4, (float) s);
+        fist_left.setRotationPoint(5.0f, 0.0f, 0.0f);
+        setRotation(fist_left, 0.0f, 0.0f, 0.0f);
 
         binding_left = new RendererModel(this, 39, 0);
-        binding_left.addBox(-3.5F, 1.0F, -0.5F, 1, 7, 1, (float) (s - s_binding));
-        binding_left.setRotationPoint(0.0F, 0.0F, 0.0F);
-        setRotation(binding_left, 0.0F, 0.0F, 0.0F);
+        binding_left.addBox(-3.5f, 1.0f, -0.5f, 1, 7, 1, (float) (s - s_binding));
+        binding_left.setRotationPoint(0.0f, 0.0f, 0.0f);
+        setRotation(binding_left, 0.0f, 0.0f, 0.0f);
 
         // Chestplate
         pig_body = new RendererModel(this, 0, 17);
-        pig_body.addBox(-3.0F, -5.0F, -2.5F, 6, 10, 5, 1.3f);
-        pig_body.setRotationPoint(0.0F, 5.6F, 0.0F);
-        setRotation(pig_body, 0.0F, 0.0F, 0.0F);
+        pig_body.addBox(-3.0f, -5.0f, -2.5f, 6, 10, 5, 1.3f);
+        pig_body.setRotationPoint(0.0f, 5.6f, 0.0f);
+        setRotation(pig_body, 0.0f, 0.0f, 0.0f);
 
         // Legs
         leg_right = new RendererModel(this, 48, 10);
-        leg_right.addBox(-2.0F, 6.0F, -2.0F, 4, 6, 4, (float) s);
-        leg_right.setRotationPoint(-1.9F, 12.0F, 0.0F);
-        setRotation(leg_right, 0.0F, 0.0F, 0.0F);
+        leg_right.addBox(-2.0f, 6.0f, -2.0f, 4, 6, 4, (float) s);
+        leg_right.setRotationPoint(-1.9f, 12.0f, 0.0f);
+        setRotation(leg_right, 0.0f, 0.0f, 0.0f);
 
         leg_left = new RendererModel(this, 48, 10);
-        leg_left.addBox(-2.0F, 6.0F, -2.0F, 4, 6, 4, (float) s);
-        leg_left.setRotationPoint(1.9F, 12.0F, 0.0F);
-        setRotation(leg_left, 0.0F, 0.0F, 0.0F);
+        leg_left.addBox(-2.0f, 6.0f, -2.0f, 4, 6, 4, (float) s);
+        leg_left.setRotationPoint(1.9f, 12.0f, 0.0f);
+        setRotation(leg_left, 0.0f, 0.0f, 0.0f);
 
         // Hat
         this.hat.addChild(pig_head);
@@ -198,7 +198,7 @@ public class ModelHamSuit extends BipedModel<LivingEntity> {
             }
         } else {
             if (entity.isSneaking())
-                GlStateManager.translatef(0.0F, 0.2F, 0.0F);
+                GlStateManager.translatef(0.0f, 0.2f, 0.0f);
             if (armorSlot == EquipmentSlotType.HEAD) {
                 this.hat.render(scale);
             }

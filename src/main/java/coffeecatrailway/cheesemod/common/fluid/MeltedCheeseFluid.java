@@ -74,11 +74,11 @@ public abstract class MeltedCheeseFluid extends FlowingFluid {
                 double d0 = (double) ((float) pos.getX() + random.nextFloat());
                 double d1 = (double) (pos.getY() + 1);
                 double d2 = (double) ((float) pos.getZ() + random.nextFloat());
-                world.playSound(d0, d1, d2, SoundEvents.BLOCK_LAVA_POP, SoundCategory.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
+                world.playSound(d0, d1, d2, SoundEvents.BLOCK_LAVA_POP, SoundCategory.BLOCKS, 0.2F + random.nextFloat() * 0.2f, 0.9F + random.nextFloat() * 0.15f, false);
             }
 
             if (random.nextInt(200) == 0) {
-                world.playSound((double) pos.getX(), (double) pos.getY(), (double) pos.getZ(), SoundEvents.BLOCK_LAVA_AMBIENT, SoundCategory.BLOCKS, 0.2F + random.nextFloat() * 0.2F, 0.9F + random.nextFloat() * 0.15F, false);
+                world.playSound((double) pos.getX(), (double) pos.getY(), (double) pos.getZ(), SoundEvents.BLOCK_LAVA_AMBIENT, SoundCategory.BLOCKS, 0.2F + random.nextFloat() * 0.2f, 0.9F + random.nextFloat() * 0.15f, false);
             }
         }
     }

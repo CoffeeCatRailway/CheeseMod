@@ -402,9 +402,9 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
     }
 
     private void giveExperience(PlayerEntity player, int amount, float experience) {
-        if (experience == 0.0F) {
+        if (experience == 0.0f) {
             amount = 0;
-        } else if (experience < 1.0F) {
+        } else if (experience < 1.0f) {
             int i = MathHelper.floor((float) amount * experience);
             if (i < MathHelper.ceil((float) amount * experience) && Math.random() < (double) ((float) amount * experience - (float) i)) {
                 ++i;

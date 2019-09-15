@@ -103,7 +103,7 @@ public class MelterRecipeCategory implements IRecipeCategory<MelterRecipe> {
         ResourceLocation fluidTexture = MelterScreen.getFluidTexture(fluidStack.getFluid());
         if (fluidTexture != null) {
             if (fluidStack.getFluid().isEquivalentTo(Fluids.WATER))
-                GlStateManager.color4f(0.23922F, 0.42745F, 1.0F, 1.0F);
+                GlStateManager.color4f(0.23922f, 0.42745f, 1.0f, 1.0f);
 
             int k = (int) MelterScreen.mapFluid(fluidStack.getAmount(), 0, 64) + 2;
             int h = MelterScreen.getFluidTextureHeight(fluidTexture);
@@ -112,7 +112,7 @@ public class MelterRecipeCategory implements IRecipeCategory<MelterRecipe> {
             fluidDraw.draw(55, 2 + this.fluidMetor.getHeight() - k);
 
             if (fluidStack.getFluid().isEquivalentTo(Fluids.WATER))
-                GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+                GlStateManager.color4f(1.0f, 1.0f, 1.0f, 1.0f);
         }
 
         this.fluidMetor.draw(55, 2);

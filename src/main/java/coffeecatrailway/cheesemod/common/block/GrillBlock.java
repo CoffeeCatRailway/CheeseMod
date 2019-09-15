@@ -168,7 +168,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
                         player.setHeldItem(hand, new ItemStack(Items.BUCKET));
 
                     tile.getTank().fill(new FluidStack(ModFluids.OIL_SOURCE, FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
-                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
                     return true;
                 }
             }
@@ -220,7 +220,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
             double d1 = (double) pos.getY() + 1.0D;
             double d2 = (double) pos.getZ();
             if (rand.nextDouble() < 0.1D)
-                world.playSound(d0, d1, d2, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+                world.playSound(d0, d1, d2, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0f, 1.0f, false);
 
             double d3 = rand.nextDouble() * 0.9D + 0.1D;
             double d4 = rand.nextDouble() * 0.9D + 0.1D;

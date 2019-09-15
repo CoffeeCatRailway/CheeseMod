@@ -105,12 +105,12 @@ public class GrillRecipeCategory implements IRecipeCategory<GrillRecipe> {
         arrow.draw(51, 26);
 
         float experience = recipe.getExperience();
-        if (experience > 0.0F) {
+        if (experience > 0.0f) {
             String experienceString = I18n.format("gui.jei.category.smelting.experience", experience);
             Minecraft minecraft = Minecraft.getInstance();
             FontRenderer fontRenderer = minecraft.fontRenderer;
             int stringWidth = fontRenderer.getStringWidth(experienceString);
-            fontRenderer.drawString(experienceString, (float) (this.background.getWidth() - stringWidth), 0.0F, -8355712);
+            fontRenderer.drawString(experienceString, (float) (this.background.getWidth() - stringWidth), 0.0f, -8355712);
         }
 
         oil.draw(2, 2);

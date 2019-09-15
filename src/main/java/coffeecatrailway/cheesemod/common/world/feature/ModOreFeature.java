@@ -28,8 +28,8 @@ public class ModOreFeature extends Feature<ModOreFeatureConfig> {
     @Override
     public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, ModOreFeatureConfig config) {
         float f = rand.nextFloat() * (float) Math.PI;
-        float f1 = (float) config.size / 8.0F;
-        int i = MathHelper.ceil(((float) config.size / 16.0F * 2.0F + 1.0F) / 2.0F);
+        float f1 = (float) config.size / 8.0f;
+        int i = MathHelper.ceil(((float) config.size / 16.0f * 2.0f + 1.0f) / 2.0f);
         double d0 = (double) ((float) pos.getX() + MathHelper.sin(f) * f1);
         double d1 = (double) ((float) pos.getX() - MathHelper.sin(f) * f1);
         double d2 = (double) ((float) pos.getZ() + MathHelper.cos(f) * f1);
@@ -69,7 +69,7 @@ public class ModOreFeature extends Feature<ModOreFeatureConfig> {
             double d2 = MathHelper.lerp((double) f, p_207803_12_, p_207803_14_);
             double d4 = MathHelper.lerp((double) f, p_207803_8_, p_207803_10_);
             double d6 = random.nextDouble() * (double) config.size / 16.0D;
-            double d7 = ((double) (MathHelper.sin((float) Math.PI * f) + 1.0F) * d6 + 1.0D) / 2.0D;
+            double d7 = ((double) (MathHelper.sin((float) Math.PI * f) + 1.0f) * d6 + 1.0D) / 2.0D;
             adouble[j * 4 + 0] = d0;
             adouble[j * 4 + 1] = d2;
             adouble[j * 4 + 2] = d4;

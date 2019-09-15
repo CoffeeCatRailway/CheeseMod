@@ -34,7 +34,7 @@ public class ModStairsBlock extends StairsBlock {
             if (entity.isSneaking()) {
                 super.onFallenUpon(world, pos, entity, fallDistance);
             } else {
-                entity.fall(fallDistance, 0.0F);
+                entity.fall(fallDistance, 0.0f);
             }
         } else {
             super.onFallenUpon(world, pos, entity, fallDistance);

@@ -54,13 +54,13 @@ public class MelterScreen extends ContainerScreen<MelterContainer> {
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         String title = this.title.getFormattedText();
-        this.font.drawString(title, (float) (this.xSize / 2 - this.font.getStringWidth(title) / 2) - 9.0f, 6.0F, 4210752);
-        this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float) (this.ySize - 96 + 4), 4210752);
+        this.font.drawString(title, (float) (this.xSize / 2 - this.font.getStringWidth(title) / 2) - 9.0f, 6.0f, 4210752);
+        this.font.drawString(this.playerInventory.getDisplayName().getFormattedText(), 8.0f, (float) (this.ySize - 96 + 4), 4210752);
     }
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-        GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+        GlStateManager.color4f(1.0f, 1.0f, 1.0f, 1.0f);
         this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
         int i = this.guiLeft;
         int j = this.guiTop;
@@ -75,7 +75,7 @@ public class MelterScreen extends ContainerScreen<MelterContainer> {
 
         Fluid fluid = Registry.FLUID.getByValue(container.getFluid());
         int color = this.container.getFluidColor();
-        float[] colors = new float[]{((color >> 16) & 0xFF) / 255.0f, ((color >> 8) & 0xFF) / 255.0f, (color & 0xFF) / 255.0f, ((color >> 24) & 0xFF) / 255.0f};
+        float[] colors = new float[]{((color >> 16) & 0xFf) / 255.0f, ((color >> 8) & 0xFf) / 255.0f, (color & 0xFf) / 255.0f, ((color >> 24) & 0xFf) / 255.0f};
         GlStateManager.color4f(colors[0], colors[1], colors[2], colors[3]);
 
         ResourceLocation fluidTexture = getFluidTexture(fluid);
@@ -89,7 +89,7 @@ public class MelterScreen extends ContainerScreen<MelterContainer> {
             GlStateManager.disableBlend();
         }
 
-        GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+        GlStateManager.color4f(1.0f, 1.0f, 1.0f, 1.0f);
 
         this.minecraft.getTextureManager().bindTexture(GUI_TEXTURE);
         this.blit(i + 97, j + 8, 176, 32, 32, 64);

@@ -40,7 +40,7 @@ public class MelterTileEntityRenderer extends TileEntityRenderer<MelterTileEntit
             GlStateManager.translatef((float) x, (float) y + 0.26f + yOff, (float) z); /// TODO: Fix texture stretching! ///
 
             int color = fluid.getAttributes().getColor(this.getWorld(), tile.getPos());
-            float[] colors = new float[]{((color >> 16) & 0xFF) / 255.0f, ((color >> 8) & 0xFF) / 255.0f, (color & 0xFF) / 255.0f, ((color >> 24) & 0xFF) / 255.0f};
+            float[] colors = new float[]{((color >> 16) & 0xFf) / 255.0f, ((color >> 8) & 0xFf) / 255.0f, (color & 0xFf) / 255.0f, ((color >> 24) & 0xFf) / 255.0f};
             GlStateManager.color4f(colors[0], colors[1], colors[2], colors[3]);
 
             GlStateManager.enableBlend();
@@ -48,7 +48,7 @@ public class MelterTileEntityRenderer extends TileEntityRenderer<MelterTileEntit
             fluidModel.render();
             GlStateManager.disableBlend();
 
-            GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+            GlStateManager.color4f(1.0f, 1.0f, 1.0f, 1.0f);
             GlStateManager.popMatrix();
         }
     }
