@@ -18,10 +18,7 @@ import net.minecraft.world.gen.feature.BushConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.MultipleRandomFeatureConfig;
-import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
-import net.minecraft.world.gen.placement.CountRangeConfig;
-import net.minecraft.world.gen.placement.HeightWithChanceConfig;
-import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.placement.*;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -97,6 +94,9 @@ public class ModWorldFeatures {
                     if (justHam)
                         addHamTrees(biome);
                 }
+
+                // Structures
+                biome.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(ModFeatures.PINE_HUT, IFeatureConfig.NO_FEATURE_CONFIG, Placement.NOPE, IPlacementConfig.NO_PLACEMENT_CONFIG));
             }
         });
     }
