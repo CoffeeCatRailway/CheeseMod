@@ -31,7 +31,11 @@ public class PineHutStructure extends Structure<NoFeatureConfig> {
 
     @Override
     public boolean hasStartAt(ChunkGenerator<?> generator, Random rand, int chunkX, int chunkZ) {
-        return rand.nextInt(500) == 0;
+        return rand.nextInt(750) == 0 && canSpawn(generator.getBiomeProvider().getBiome(chunkX * 16, chunkZ * 16));
+    }
+
+    public static boolean canSpawn(Biome biome) {
+        return biome.getCategory() != Biome.Category.OCEAN && biome.getCategory() != Biome.Category.RIVER && biome.getCategory() != Biome.Category.FOREST;
     }
 
     @Override

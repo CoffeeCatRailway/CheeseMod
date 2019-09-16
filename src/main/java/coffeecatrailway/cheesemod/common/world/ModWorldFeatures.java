@@ -3,6 +3,7 @@ package coffeecatrailway.cheesemod.common.world;
 import coffeecatrailway.cheesemod.common.world.biome.FoodBiome;
 import coffeecatrailway.cheesemod.common.world.feature.ModOreFeature;
 import coffeecatrailway.cheesemod.common.world.feature.ModOreFeatureConfig;
+import coffeecatrailway.cheesemod.common.world.feature.structure.PineHutStructure;
 import coffeecatrailway.cheesemod.core.ModBiomes;
 import coffeecatrailway.cheesemod.core.ModBlocks;
 import coffeecatrailway.cheesemod.core.ModEntityTypes;
@@ -96,7 +97,7 @@ public class ModWorldFeatures {
                 }
 
                 // Structures
-                if (biome.getCategory() != Biome.Category.OCEAN && biome.getCategory() != Biome.Category.RIVER && biome.getCategory() != Biome.Category.FOREST) {
+                if (PineHutStructure.canSpawn(biome)) {
                     biome.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(ModFeatures.PINE_HUT, IFeatureConfig.NO_FEATURE_CONFIG, Placement.NOPE, IPlacementConfig.NO_PLACEMENT_CONFIG));
                     biome.addStructure(ModFeatures.PINE_HUT, IFeatureConfig.NO_FEATURE_CONFIG);
                 }
