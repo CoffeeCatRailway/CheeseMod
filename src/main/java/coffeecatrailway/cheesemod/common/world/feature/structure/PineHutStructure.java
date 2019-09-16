@@ -22,7 +22,9 @@ import java.util.function.Function;
  */
 public class PineHutStructure extends Structure<NoFeatureConfig> {
 
-    public static final ResourceLocation LOCATION = CheeseMod.getLocation("hut/pine_hut");
+    public static final ResourceLocation VARIANT_1 = CheeseMod.getLocation("hut/pine_camp_roof");
+    public static final ResourceLocation VARIANT_2 = CheeseMod.getLocation("hut/pine_slab_roof");
+    public static final ResourceLocation VARIANT_3 = CheeseMod.getLocation("hut/pine_trap_roof");
     public static final BlockPos CENTER = new BlockPos(1, 0, 3);
 
     public PineHutStructure(Function<Dynamic<?>, ? extends NoFeatureConfig> function) {
@@ -31,7 +33,7 @@ public class PineHutStructure extends Structure<NoFeatureConfig> {
 
     @Override
     public boolean hasStartAt(ChunkGenerator<?> generator, Random rand, int chunkX, int chunkZ) {
-        return rand.nextInt(750) == 0 && canSpawn(generator.getBiomeProvider().getBiome(chunkX * 16, chunkZ * 16));
+        return rand.nextInt(550) == 0 && canSpawn(generator.getBiomeProvider().getBiome(chunkX * 16, chunkZ * 16));
     }
 
     public static boolean canSpawn(Biome biome) {
@@ -65,8 +67,18 @@ public class PineHutStructure extends Structure<NoFeatureConfig> {
             int j = chunkZ * 16;
             BlockPos pos = new BlockPos(i, 0, j);
             Rotation rotation = Rotation.values()[this.rand.nextInt(Rotation.values().length)];
-            this.components.add(new PineHutStructurePiece(template, PineHutStructure.LOCATION, pos, rotation));
+            this.components.add(new PineHutStructurePiece(template, getVariant(), pos, rotation));
             this.recalculateStructureSize();
+        }
+
+        public ResourceLocation getVariant() {
+            int v = this.rand.nextInt(4);
+            if (v == 0)
+                return PineHutStructure.VARIANT_3;
+            else if (v == 1)
+                return PineHutStructure.VARIANT_2;
+            else
+                return PineHutStructure.VARIANT_1;
         }
     }
 }
