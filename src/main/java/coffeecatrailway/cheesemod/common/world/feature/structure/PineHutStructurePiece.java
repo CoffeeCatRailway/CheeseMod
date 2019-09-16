@@ -1,5 +1,6 @@
 package coffeecatrailway.cheesemod.common.world.feature.structure;
 
+import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.core.ModFeatures;
 import net.minecraft.block.Blocks;
 import net.minecraft.nbt.CompoundNBT;
@@ -18,7 +19,6 @@ import net.minecraft.world.gen.feature.template.BlockIgnoreStructureProcessor;
 import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.Template;
 import net.minecraft.world.gen.feature.template.TemplateManager;
-import net.minecraft.world.storage.loot.LootTables;
 
 import java.util.Random;
 
@@ -67,7 +67,7 @@ public class PineHutStructurePiece extends TemplateStructurePiece {
             worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
             TileEntity tileentity = worldIn.getTileEntity(pos.down());
             if (tileentity instanceof ChestTileEntity)
-                ((ChestTileEntity) tileentity).setLootTable(rand.nextInt(1) == 0 ? LootTables.CHESTS_BURIED_TREASURE : LootTables.CHESTS_VILLAGE_VILLAGE_TOOLSMITH, rand.nextLong());
+                ((ChestTileEntity) tileentity).setLootTable(CheeseMod.PINE_HUT_LOOT_TABLE, rand.nextLong());
         }
     }
 

@@ -28,7 +28,8 @@ public class CheeseMod {
     public static final String MOD_ID = "cheesemod";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
-    private static final ResourceLocation TAB = getLocation("textures/gui/container/creative_inventory/tab.png");
+    public static final ResourceLocation PINE_HUT_LOOT_TABLE = CheeseMod.getLocation("chests/pine_hut");
+    private static final ResourceLocation TAB = CheeseMod.getLocation("textures/gui/container/creative_inventory/tab.png");
     public static final ItemGroup GROUP_ALL = new ItemGroup(MOD_ID + ".all") {
 
         @Override
