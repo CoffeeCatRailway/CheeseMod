@@ -1,6 +1,7 @@
 package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
+import coffeecatrailway.cheesemod.common.entity.item.BoatEntityCM;
 import coffeecatrailway.cheesemod.common.item.*;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
@@ -170,6 +171,12 @@ public class ModItems {
     public static Item HAM_RAW_FOODIE_SPAWN_EGG;
     public static Item HAM_COOKED_FOODIE_SPAWN_EGG;
 
+    /// Boats ///
+    public static Item BOAT_CHEESE;
+    public static Item BOAT_GRILLED_CHEESE;
+    public static Item BOAT_HAM_RAW;
+    public static Item BOAT_HAM_COOKED;
+
     /// Other ///
     public static Item CHEESE_BIT;
     public static Item HAM_BIT;
@@ -335,6 +342,12 @@ public class ModItems {
         GRILLED_CHEESE_FOODIE_SPAWN_EGG = register("grilled_cheese_foodie_spawn_egg", new SpawnEggItem(ModEntityTypes.GRILLED_CHEESE_FOODIE, 8484425, 8877339, new Item.Properties().group(ItemGroup.MISC)));
         HAM_RAW_FOODIE_SPAWN_EGG = register("ham_raw_foodie_spawn_egg", new SpawnEggItem(ModEntityTypes.HAM_RAW_FOODIE, 12152929, 13920850, new Item.Properties().group(ItemGroup.MISC)));
         HAM_COOKED_FOODIE_SPAWN_EGG = register("ham_cooked_foodie_spawn_egg", new SpawnEggItem(ModEntityTypes.HAM_COOKED_FOODIE, 13218964, 16770746, new Item.Properties().group(ItemGroup.MISC)));
+
+        /// Boats ///
+        BOAT_CHEESE = register("cheese_boat", new BoatItemCM(BoatEntityCM.Type.CHEESE, new Item.Properties().maxStackSize(1).group(CheeseMod.GROUP_ALL)));
+        BOAT_GRILLED_CHEESE = register("grilled_cheese_boat", new BoatItemCM(BoatEntityCM.Type.GRILLED_CHEESE, new Item.Properties().maxStackSize(1).group(CheeseMod.GROUP_ALL)));
+        BOAT_HAM_RAW = register("ham_raw_boat", new BoatItemCM(BoatEntityCM.Type.HAM_RAW, new Item.Properties().maxStackSize(1).group(CheeseMod.GROUP_ALL)));
+        BOAT_HAM_COOKED = register("ham_cooked_boat", new BoatItemCM(BoatEntityCM.Type.HAM_COOKED, new Item.Properties().maxStackSize(1).group(CheeseMod.GROUP_ALL)));
 
         /// Other ///
         CHEESE_BIT = register("cheese_bit", new Item(new Item.Properties().group(CheeseMod.GROUP_ALL)));

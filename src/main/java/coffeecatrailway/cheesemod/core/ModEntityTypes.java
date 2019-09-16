@@ -2,10 +2,12 @@ package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.common.entity.*;
+import coffeecatrailway.cheesemod.common.entity.item.BoatEntityCM;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.event.RegistryEvent;
@@ -23,6 +25,8 @@ public class ModEntityTypes {
     public static EntityType<GrilledCheeseFoodie> GRILLED_CHEESE_FOODIE;
     public static EntityType<HamRawFoodie> HAM_RAW_FOODIE;
     public static EntityType<HamCookedFoodie> HAM_COOKED_FOODIE;
+
+    public static EntityType<? extends BoatEntity> BOAT;
 
     public static void registerAll(RegistryEvent.Register<EntityType<?>> event) {
         if (!event.getName().equals(ForgeRegistries.ENTITIES.getRegistryName())) return;
@@ -45,6 +49,8 @@ public class ModEntityTypes {
         HAM_COOKED_FOODIE = register("ham_cooked_foodie", EntityType.Builder.<HamCookedFoodie>create(HamCookedFoodie::new, EntityClassification.CREATURE).size(0.5f, 1.15f)
                 .setCustomClientFactory((packet, world) -> new HamCookedFoodie(GRILLED_CHEESE_FOODIE, world)));
         EntitySpawnPlacementRegistry.register(HAM_COOKED_FOODIE, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, AnimalEntity::func_223316_b);
+
+        BOAT = register("food_boat", EntityType.Builder.<BoatEntityCM>create(BoatEntityCM::new, EntityClassification.MISC).setTrackingRange(80).setUpdateInterval(3).setShouldReceiveVelocityUpdates(true).size(1.375f, 0.5625f).setCustomClientFactory(BoatEntityCM::new));
     }
 
     public static <E extends Entity> EntityType<E> register(String name, EntityType.Builder<E> builder) {

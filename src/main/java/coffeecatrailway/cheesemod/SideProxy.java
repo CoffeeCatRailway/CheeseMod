@@ -1,9 +1,11 @@
 package coffeecatrailway.cheesemod;
 
+import coffeecatrailway.cheesemod.client.render.entity.BoatRendererCM;
 import coffeecatrailway.cheesemod.client.render.entity.FoodieRenderer;
 import coffeecatrailway.cheesemod.client.render.tileentity.MelterTileEntityRenderer;
 import coffeecatrailway.cheesemod.common.command.ChezCommand;
 import coffeecatrailway.cheesemod.common.entity.*;
+import coffeecatrailway.cheesemod.common.entity.item.BoatEntityCM;
 import coffeecatrailway.cheesemod.common.tileentity.MelterTileEntity;
 import coffeecatrailway.cheesemod.common.world.ModWorldFeatures;
 import coffeecatrailway.cheesemod.core.*;
@@ -87,6 +89,8 @@ public class SideProxy {
             RenderingRegistry.registerEntityRenderingHandler(GrilledCheeseFoodie.class, manager -> new FoodieRenderer<GrilledCheeseFoodie>(manager, CheeseMod.getLocation("textures/entity/foodie/grilled_cheese.png")));
             RenderingRegistry.registerEntityRenderingHandler(HamRawFoodie.class, manager -> new FoodieRenderer<HamRawFoodie>(manager, CheeseMod.getLocation("textures/entity/foodie/ham_raw.png")));
             RenderingRegistry.registerEntityRenderingHandler(HamCookedFoodie.class, manager -> new FoodieRenderer<HamCookedFoodie>(manager, CheeseMod.getLocation("textures/entity/foodie/ham_cooked.png")));
+
+            RenderingRegistry.registerEntityRenderingHandler(BoatEntityCM.class, BoatRendererCM::new);
 
             ClientRegistry.bindTileEntitySpecialRenderer(MelterTileEntity.class, new MelterTileEntityRenderer());
         }
