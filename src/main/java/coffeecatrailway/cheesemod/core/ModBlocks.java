@@ -1,6 +1,7 @@
 package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
+import coffeecatrailway.cheesemod.ModItemGroups;
 import coffeecatrailway.cheesemod.common.block.*;
 import coffeecatrailway.cheesemod.common.item.FoodBlockItem;
 import coffeecatrailway.cheesemod.common.world.feature.tree.CheeseTree;
@@ -109,6 +110,31 @@ public class ModBlocks {
     public static Block GRILLED_CHEESE_WOOD_SLAB;
     public static Block HAM_RAW_WOOD_SLAB;
     public static Block HAM_COOKED_WOOD_SLAB;
+
+    /// Fences ///
+    public static Block CHEESE_FENCE;
+    public static Block CHEESE_FENCE_GATE;
+
+    public static Block GRILLED_CHEESE_FENCE;
+    public static Block GRILLED_CHEESE_FENCE_GATE;
+
+    public static Block HAM_RAW_FENCE;
+    public static Block HAM_RAW_FENCE_GATE;
+
+    public static Block HAM_COOKED_FENCE;
+    public static Block HAM_COOKED_FENCE_GATE;
+
+    public static Block CHEESE_WOOD_FENCE;
+    public static Block CHEESE_WOOD_FENCE_GATE;
+
+    public static Block GRILLED_CHEESE_WOOD_FENCE;
+    public static Block GRILLED_CHEESE_WOOD_FENCE_GATE;
+
+    public static Block HAM_RAW_WOOD_FENCE;
+    public static Block HAM_RAW_WOOD_FENCE_GATE;
+
+    public static Block HAM_COOKED_WOOD_FENCE;
+    public static Block HAM_COOKED_WOOD_FENCE_GATE;
 
     /// Drawers ///
     public static Block CHEESE_DRAW;
@@ -228,6 +254,31 @@ public class ModBlocks {
         HAM_RAW_WOOD_SLAB = register("ham_raw_wood_slab", new ModSlabBlock(Block.Properties.from(HAM_RAW_PLANKS), false));
         HAM_COOKED_WOOD_SLAB = register("ham_cooked_wood_slab", new ModSlabBlock(Block.Properties.from(HAM_COOKED_PLANKS), false));
 
+        /// Fences ///
+        CHEESE_FENCE = register("cheese_fence", new FenceBlock(Block.Properties.from(CHEESE_BLOCK).hardnessAndResistance(2.0F, 3.0F)));
+        CHEESE_FENCE_GATE = register("cheese_fence_gate", new FenceGateBlock(Block.Properties.from(CHEESE_BLOCK).hardnessAndResistance(2.0F, 3.0F)));
+
+        GRILLED_CHEESE_FENCE = register("grilled_cheese_fence", new FenceBlock(Block.Properties.from(GRILLED_CHEESE_BLOCK).hardnessAndResistance(2.0F, 3.0F)));
+        GRILLED_CHEESE_FENCE_GATE = register("grilled_cheese_fence_gate", new FenceGateBlock(Block.Properties.from(GRILLED_CHEESE_BLOCK).hardnessAndResistance(2.0F, 3.0F)));
+
+        HAM_RAW_FENCE = register("ham_raw_fence", new FenceBlock(Block.Properties.from(HAM_RAW_BLOCK).hardnessAndResistance(2.0F, 3.0F)));
+        HAM_RAW_FENCE_GATE = register("ham_raw_fence_gate", new FenceGateBlock(Block.Properties.from(HAM_RAW_BLOCK).hardnessAndResistance(2.0F, 3.0F)));
+
+        HAM_COOKED_FENCE = register("ham_cooked_fence", new FenceBlock(Block.Properties.from(HAM_COOKED_BLOCK).hardnessAndResistance(2.0F, 3.0F)));
+        HAM_COOKED_FENCE_GATE = register("ham_cooked_fence_gate", new FenceGateBlock(Block.Properties.from(HAM_COOKED_BLOCK).hardnessAndResistance(2.0F, 3.0F)));
+
+        CHEESE_WOOD_FENCE = register("cheese_wood_fence", new FenceBlock(Block.Properties.from(CHEESE_PLANKS).hardnessAndResistance(2.0F, 3.0F)));
+        CHEESE_WOOD_FENCE_GATE = register("cheese_wood_fence_gate", new FenceGateBlock(Block.Properties.from(CHEESE_PLANKS).hardnessAndResistance(2.0F, 3.0F)));
+
+        GRILLED_CHEESE_WOOD_FENCE = register("grilled_cheese_wood_fence", new FenceBlock(Block.Properties.from(GRILLED_CHEESE_PLANKS).hardnessAndResistance(2.0F, 3.0F)));
+        GRILLED_CHEESE_WOOD_FENCE_GATE = register("grilled_cheese_wood_fence_gate", new FenceGateBlock(Block.Properties.from(GRILLED_CHEESE_PLANKS).hardnessAndResistance(2.0F, 3.0F)));
+
+        HAM_RAW_WOOD_FENCE = register("ham_raw_wood_fence", new FenceBlock(Block.Properties.from(HAM_RAW_PLANKS).hardnessAndResistance(2.0F, 3.0F)));
+        HAM_RAW_WOOD_FENCE_GATE = register("ham_raw_wood_fence_gate", new FenceGateBlock(Block.Properties.from(HAM_RAW_PLANKS).hardnessAndResistance(2.0F, 3.0F)));
+
+        HAM_COOKED_WOOD_FENCE = register("ham_cooked_wood_fence", new FenceBlock(Block.Properties.from(HAM_COOKED_PLANKS).hardnessAndResistance(2.0F, 3.0F)));
+        HAM_COOKED_WOOD_FENCE_GATE = register("ham_cooked_wood_fence_gate", new FenceGateBlock(Block.Properties.from(HAM_COOKED_PLANKS).hardnessAndResistance(2.0F, 3.0F)));
+
         /// Drawers ///
         CHEESE_DRAW = register("cheese_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5f).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_CHEESE_DRAW));
         GRILLED_CHEESE_DRAW = register("grilled_cheese_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5f).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_CHEESE_DRAW));
@@ -244,16 +295,16 @@ public class ModBlocks {
 
         PINEAPPLE = register("pineapple_plant", new PineappleBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)), (BlockItem) null);
 
-        CHEESE_CAKE = register("cheese_cake", new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), CheeseMod.GROUP_FOODS);
-        GRILLED_CHEESE_CAKE = register("grilled_cheese_cake", new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), CheeseMod.GROUP_FOODS);
-        HAM_RAW_CAKE = register("ham_raw_cake", new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), CheeseMod.GROUP_FOODS);
-        HAM_COOKED_CAKE = register("ham_cooked_cake", new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), CheeseMod.GROUP_FOODS);
+        CHEESE_CAKE = register("cheese_cake", new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
+        GRILLED_CHEESE_CAKE = register("grilled_cheese_cake", new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
+        HAM_RAW_CAKE = register("ham_raw_cake", new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
+        HAM_COOKED_CAKE = register("ham_cooked_cake", new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
 
         CheeseMod.LOGGER.info("Blocks registered");
     }
 
     public static <B extends Block> B register(String name, B block) {
-        return register(name, block, CheeseMod.GROUP_ALL);
+        return register(name, block, ModItemGroups.GROUP_ALL);
     }
 
     public static <B extends Block> B register(String name, B block, ItemGroup group) {
@@ -266,7 +317,7 @@ public class ModBlocks {
         ForgeRegistries.BLOCKS.register(block);
         if (item != null) {
             ModItems.BLOCKS_TO_REGISTER.put(name, item);
-            if (item.getGroup() == CheeseMod.GROUP_FOODS) ModItems.FOODS.add(item);
+            if (item.getGroup() == ModItemGroups.GROUP_FOODS) ModItems.FOODS.add(item);
         }
         return block;
     }

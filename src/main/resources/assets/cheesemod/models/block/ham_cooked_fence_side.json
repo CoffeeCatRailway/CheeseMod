@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_side",
+    "textures": {
+        "texture": "cheesemod:block/ham_cooked_block"
+    }
+}

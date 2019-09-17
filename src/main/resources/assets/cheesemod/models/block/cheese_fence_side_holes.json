@@ -1,0 +1,6 @@
+{
+  "parent": "block/fence_side",
+  "textures": {
+    "texture": "cheesemod:block/cheese_block_holes"
+  }
+}

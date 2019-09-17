@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_inventory",
+    "textures": {
+        "texture": "cheesemod:block/grilled_cheese_block"
+    }
+}

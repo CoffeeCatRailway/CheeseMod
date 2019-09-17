@@ -80,6 +80,30 @@
   "block.cheesemod.ham_raw_wood_slab": "Raw Ham Wood Slab",
   "block.cheesemod.ham_cooked_wood_slab": "Cooked Ham Wood Slab",
 
+  "block.cheesemod.cheese_fence": "Cheese Fence",
+  "block.cheesemod.cheese_fence_gate": "Cheese Fence Gate",
+
+  "block.cheesemod.grilled_cheese_fence": "Grilled Cheese Fence",
+  "block.cheesemod.grilled_cheese_fence_gate": "Grilled Cheese Fence Gate",
+
+  "block.cheesemod.ham_raw_fence": "Raw Ham Fence",
+  "block.cheesemod.ham_raw_fence_gate": "Raw Ham Fence Gate",
+
+  "block.cheesemod.ham_cooked_fence": "Cooked Ham Fence",
+  "block.cheesemod.ham_cooked_fence_gate": "Cooked Ham Fence Gate",
+
+  "block.cheesemod.cheese_wood_fence": "Cheese Wood Fence",
+  "block.cheesemod.cheese_wood_fence_gate": "Cheese Wood Fence Gate",
+
+  "block.cheesemod.grilled_cheese_wood_fence": "Grilled Cheese Wood Fence",
+  "block.cheesemod.grilled_cheese_wood_fence_gate": "Grilled Cheese Wood Fence Gate",
+
+  "block.cheesemod.ham_raw_wood_fence": "Raw Ham Wood Fence",
+  "block.cheesemod.ham_raw_wood_fence_gate": "Raw Ham Wood Fence Gate",
+
+  "block.cheesemod.ham_cooked_wood_fence": "Cooked Ham Wood Fence",
+  "block.cheesemod.ham_cooked_wood_fence_gate": "Cooked Ham Wood Fence Gate",
+
   "block.cheesemod.cheese_draw": "Cheese Draw",
   "block.cheesemod.grilled_cheese_draw": "Grilled Cheese Draw",
   "block.cheesemod.ham_raw_draw": "Raw Ham Draw",
@@ -95,8 +119,8 @@
 
   "block.cheesemod.cheese_cake": "Cheese Cake",
   "block.cheesemod.grilled_cheese_cake": "Grilled Cheese Cake",
-  "block.cheesemod.ham_raw_cake": "Ham Raw Cake",
-  "block.cheesemod.ham_cooked_cake": "Ham Cooked Cake",
+  "block.cheesemod.ham_raw_cake": "Raw Ham Cake",
+  "block.cheesemod.ham_cooked_cake": "Cooked Ham Cake",
 
   "item.cheesemod.cheese_metal_ingot": "Cheese Metal Ingot",
   "item.cheesemod.grilled_cheese_metal_ingot": "Grilled Cheese Metal Ingot",
@@ -226,8 +250,13 @@
 
   "item.cheesemod.cheese_foodie_spawn_egg": "Cheese Foodie Spawn Egg [WIP]",
   "item.cheesemod.grilled_cheese_foodie_spawn_egg": "Grilled Cheese Foodie Spawn Egg [WIP]",
-  "item.cheesemod.ham_raw_foodie_spawn_egg": "Ham Raw Foodie Spawn Egg [WIP]",
-  "item.cheesemod.ham_cooked_foodie_spawn_egg": "Ham Cooked Foodie Spawn Egg [WIP]",
+  "item.cheesemod.ham_raw_foodie_spawn_egg": "Raw Ham Foodie Spawn Egg [WIP]",
+  "item.cheesemod.ham_cooked_foodie_spawn_egg": "Cooked Ham Foodie Spawn Egg [WIP]",
+
+  "item.cheesemod.cheese_boat": "Cheese Foodie Boat",
+  "item.cheesemod.grilled_cheese_boat": "Grilled Cheese Boat",
+  "item.cheesemod.ham_raw_boat": "Raw Ham Boat",
+  "item.cheesemod.ham_cooked_boat": "Cooked Ham Boat",
 
   "item.cheesemod.cheese_bit": "Bit O' Cheese",
   "item.cheesemod.ham_bit": "Bit O' Ham",
@@ -236,8 +265,10 @@
 
   "entity.cheesemod.cheese_foodie": "Cheese Foodie",
   "entity.cheesemod.grilled_cheese_foodie": "Grilled Cheese Foodie",
-  "entity.cheesemod.ham_raw_foodie": "Ham Raw Foodie",
-  "entity.cheesemod.ham_cooked_foodie": "Ham Cooked Foodie",
+  "entity.cheesemod.ham_raw_foodie": "Raw Ham Foodie",
+  "entity.cheesemod.ham_cooked_foodie": "Cooked Ham Foodie",
+
+  "entity.cheesemod.food_boat": "Food Boat",
 
   "container.cheesemod.cheese_draw": "Cheese Draw",
   "container.cheesemod.grilled_cheese_draw": "Grilled Cheese Draw",
@@ -254,13 +285,11 @@
   "biome.cheesemod.cheese_plains": "Cheese Plains",
   "biome.cheesemod.grilled_cheese_forest": "Grilled Cheese Forest",
   "biome.cheesemod.grilled_cheese_plains": "Grilled Cheese Plains",
-  "biome.cheesemod.ham_raw_forest": "Ham Raw Forest",
-  "biome.cheesemod.ham_raw_plains": "Ham Raw Plains",
-  "biome.cheesemod.ham_cooked_forest": "Ham Cooked Forest",
-  "biome.cheesemod.ham_cooked_plains": "Ham Cooked Plains",
+  "biome.cheesemod.ham_raw_forest": "Raw Ham Forest",
+  "biome.cheesemod.ham_raw_plains": "Raw Ham Plains",
+  "biome.cheesemod.ham_cooked_forest": "Cooked Ham Forest",
+  "biome.cheesemod.ham_cooked_plains": "Cooked Ham Plains",
 
-  "itemGroup.cheesemod.all": "Cheese Mod",
-  "itemGroup.cheesemod.foods": "Cheese Mod Foods"
   "itemGroup.cheesemod.foods": "Cheese Mod Foods",
   "itemGroup.cheesemod.armor_tools": "Cheese Mod Armor & Tools",
   "itemGroup.cheesemod.all": "Cheese Mod"
