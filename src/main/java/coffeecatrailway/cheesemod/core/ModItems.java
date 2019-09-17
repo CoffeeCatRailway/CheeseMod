@@ -273,7 +273,7 @@ public class ModItems {
 
         /// Food ///
         BLOCK_O_CHEESE = registerFood("block_o_cheese", ModFoods.BLOCK_O_CHEESE, 16);
-        CHEESE_BALL = registerFood("cheese_ball", new CheeseBallItem(new Item.Properties().food(ModFoods.CHEESE_BALL).maxStackSize(16).group(CheeseMod.GROUP_ALL)));
+        CHEESE_BALL = registerFood("cheese_ball", new CheeseBallItem(new Item.Properties().food(ModFoods.CHEESE_BALL).maxStackSize(16).group(CheeseMod.GROUP_FOODS)));
         CHEESE_SLICE = registerFood("cheese_slice", ModFoods.CHEESE_SLICE, 32);
 
         SALT = registerFood("salt", ModFoods.INGREDIENT, 64);
