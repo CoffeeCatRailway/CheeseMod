@@ -104,8 +104,8 @@ processResources {
 dependencies {
     minecraft "net.minecraftforge:forge:${project.mcVersion}-${project.forgeVersion}"
 
-    compileOnly fg.deobf("mezz.jei:jei-1.14.4:${project.jeiVersion}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.14.4:${project.jeiVersion}")
+    compileOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}")
 }
 
 jar {
