@@ -136,6 +136,17 @@ public class ModBlocks {
     public static Block HAM_COOKED_WOOD_FENCE;
     public static Block HAM_COOKED_WOOD_FENCE_GATE;
 
+    /// Pressure Plates ///
+    public static Block CHEESE_PRESSURE_PLATE;
+    public static Block GRILLED_CHEESE_PRESSURE_PLATE;
+    public static Block HAM_RAW_PRESSURE_PLATE;
+    public static Block HAM_COOKED_PRESSURE_PLATE;
+
+    public static Block CHEESE_WOOD_PRESSURE_PLATE;
+    public static Block GRILLED_CHEESE_WOOD_PRESSURE_PLATE;
+    public static Block HAM_RAW_WOOD_PRESSURE_PLATE;
+    public static Block HAM_COOKED_WOOD_PRESSURE_PLATE;
+
     /// Drawers ///
     public static Block CHEESE_DRAW;
     public static Block GRILLED_CHEESE_DRAW;
@@ -278,6 +289,17 @@ public class ModBlocks {
 
         HAM_COOKED_WOOD_FENCE = register("ham_cooked_wood_fence", new FenceBlock(Block.Properties.from(HAM_COOKED_PLANKS).hardnessAndResistance(2.0F, 3.0F)));
         HAM_COOKED_WOOD_FENCE_GATE = register("ham_cooked_wood_fence_gate", new FenceGateBlock(Block.Properties.from(HAM_COOKED_PLANKS).hardnessAndResistance(2.0F, 3.0F)));
+
+        /// Pressure Plate ///
+        CHEESE_PRESSURE_PLATE = register("cheese_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(CHEESE_BLOCK).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+        GRILLED_CHEESE_PRESSURE_PLATE = register("grilled_cheese_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(GRILLED_CHEESE_BLOCK).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+        HAM_RAW_PRESSURE_PLATE = register("ham_raw_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(HAM_RAW_BLOCK).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+        HAM_COOKED_PRESSURE_PLATE = register("ham_cooked_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(HAM_COOKED_BLOCK).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+
+        CHEESE_WOOD_PRESSURE_PLATE = register("cheese_wood_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(CHEESE_PLANKS).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+        GRILLED_CHEESE_WOOD_PRESSURE_PLATE = register("grilled_cheese_wood_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(GRILLED_CHEESE_PLANKS).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+        HAM_RAW_WOOD_PRESSURE_PLATE = register("ham_raw_wood_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(HAM_RAW_PLANKS).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+        HAM_COOKED_WOOD_PRESSURE_PLATE = register("ham_cooked_wood_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(HAM_COOKED_PLANKS).doesNotBlockMovement().hardnessAndResistance(0.5F)));
 
         /// Drawers ///
         CHEESE_DRAW = register("cheese_draw", new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5f).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_CHEESE_DRAW));

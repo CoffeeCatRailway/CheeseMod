@@ -104,6 +104,16 @@
   "block.cheesemod.ham_cooked_wood_fence": "Cooked Ham Wood Fence",
   "block.cheesemod.ham_cooked_wood_fence_gate": "Cooked Ham Wood Fence Gate",
 
+  "block.cheesemod.cheese_pressure_plate": "Cheese Pressure Plate",
+  "block.cheesemod.grilled_cheese_pressure_plate": "Grilled Cheese Pressure Plate",
+  "block.cheesemod.ham_raw_pressure_plate": "Raw Ham Pressure Plate",
+  "block.cheesemod.ham_cooked_pressure_plate": "Cooked Ham Pressure Plate",
+
+  "block.cheesemod.cheese_wood_pressure_plate": "Cheese Wood Pressure Plate",
+  "block.cheesemod.grilled_cheese_wood_pressure_plate": "Grilled Cheese Wood Pressure Plate",
+  "block.cheesemod.ham_raw_wood_pressure_plate": "Raw Ham Wood Pressure Plate",
+  "block.cheesemod.ham_cooked_wood_pressure_plate": "Cooked Ham Wood Pressure Plate",
+
   "block.cheesemod.cheese_draw": "Cheese Draw",
   "block.cheesemod.grilled_cheese_draw": "Grilled Cheese Draw",
   "block.cheesemod.ham_raw_draw": "Raw Ham Draw",
@@ -248,10 +258,10 @@
   "item.cheesemod.oil_bucket": "Oil Bucket",
   "item.cheesemod.melted_cheese_bucket": "Melted Cheese Bucket",
 
-  "item.cheesemod.cheese_foodie_spawn_egg": "Cheese Foodie Spawn Egg [WIP]",
-  "item.cheesemod.grilled_cheese_foodie_spawn_egg": "Grilled Cheese Foodie Spawn Egg [WIP]",
-  "item.cheesemod.ham_raw_foodie_spawn_egg": "Raw Ham Foodie Spawn Egg [WIP]",
-  "item.cheesemod.ham_cooked_foodie_spawn_egg": "Cooked Ham Foodie Spawn Egg [WIP]",
+  "item.cheesemod.cheese_foodie_spawn_egg": "Cheese Foodie Spawn Egg",
+  "item.cheesemod.grilled_cheese_foodie_spawn_egg": "Grilled Cheese Foodie Spawn Egg",
+  "item.cheesemod.ham_raw_foodie_spawn_egg": "Raw Ham Foodie Spawn Egg",
+  "item.cheesemod.ham_cooked_foodie_spawn_egg": "Cooked Ham Foodie Spawn Egg",
 
   "item.cheesemod.cheese_boat": "Cheese Foodie Boat",
   "item.cheesemod.grilled_cheese_boat": "Grilled Cheese Boat",
