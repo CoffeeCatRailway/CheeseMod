@@ -1,6 +1,7 @@
 package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
+import coffeecatrailway.cheesemod.ModItemGroups;
 import coffeecatrailway.cheesemod.common.entity.item.BoatEntityCM;
 import coffeecatrailway.cheesemod.common.item.*;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -192,88 +193,88 @@ public class ModItems {
         BLOCKS_TO_REGISTER.forEach(ModItems::register);
 
         /// Ingots ///
-        CHEESE_METAL_INGOT = register("cheese_metal_ingot", new Item(new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        GRILLED_CHEESE_METAL_INGOT = register("grilled_cheese_metal_ingot", new Item(new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_RAW_METAL_INGOT = register("ham_raw_metal_ingot", new Item(new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_COOKED_METAL_INGOT = register("ham_cooked_metal_ingot", new Item(new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        CHEESE_METAL_INGOT = register("cheese_metal_ingot", new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
+        GRILLED_CHEESE_METAL_INGOT = register("grilled_cheese_metal_ingot", new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
+        HAM_RAW_METAL_INGOT = register("ham_raw_metal_ingot", new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
+        HAM_COOKED_METAL_INGOT = register("ham_cooked_metal_ingot", new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
 
         /// Tool ///
-        CHEESE_CUTTER = register("cheese_cutter", new ModToolItem(1.5f, 2.5f, ItemTier.WOOD, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
-        GRINDING_STONES = register("grinding_stones", new ModToolItem(2.0f, 2.7f, ItemTier.STONE, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
+        CHEESE_CUTTER = register("cheese_cutter", new ModToolItem(1.5f, 2.5f, ItemTier.WOOD, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+        GRINDING_STONES = register("grinding_stones", new ModToolItem(2.0f, 2.7f, ItemTier.STONE, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
 
-        MILK_CURDLER = register("milk_curdler", new ModToolItem(1.5f, 2.5f, ItemTier.WOOD, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
-        ROLLING_PIN = register("rolling_pin", new ModToolItem(1.5f, 2.5f, ItemTier.WOOD, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
+        MILK_CURDLER = register("milk_curdler", new ModToolItem(1.5f, 2.5f, ItemTier.WOOD, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+        ROLLING_PIN = register("rolling_pin", new SwordItem(ItemTier.WOOD, 1, 2.5f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
 
         /// Tool - Knife ///
-        KNIFE = register("knife", new ModToolItem(3.5f, -2.1f, ItemTier.IRON, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
-        CHEESE_KNIFE = register("cheese_knife", new ModToolItem(5.0f, -2.7f, ModItemTier.CHEESE_METAL, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
-        GRILLED_CHEESE_KNIFE = register("grilled_cheese_knife", new ModToolItem(6.0f, -3.5f, ModItemTier.GRILLED_CHEESE_METAL, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
-        HAM_RAW_KNIFE = register("ham_raw_knife", new ModToolItem(4.7f, -2.9f, ModItemTier.HAM_RAW_METAL, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
-        HAM_COOKED_KNIFE = register("ham_cooked_knife", new ModToolItem(5.8f, -3.0f, ModItemTier.HAM_COOKED_METAL, new Item.Properties().group(CheeseMod.GROUP_ALL).maxStackSize(1)));
+        KNIFE = register("knife", new ModToolItem(3.5f, -2.1f, ItemTier.IRON, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+        CHEESE_KNIFE = register("cheese_knife", new ModToolItem(5.0f, -2.7f, ModItemTier.CHEESE_METAL, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+        GRILLED_CHEESE_KNIFE = register("grilled_cheese_knife", new ModToolItem(6.0f, -3.5f, ModItemTier.GRILLED_CHEESE_METAL, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+        HAM_RAW_KNIFE = register("ham_raw_knife", new ModToolItem(4.7f, -2.9f, ModItemTier.HAM_RAW_METAL, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+        HAM_COOKED_KNIFE = register("ham_cooked_knife", new ModToolItem(5.8f, -3.0f, ModItemTier.HAM_COOKED_METAL, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
 
         /// Tool - Cheese Metal ///
-        CHEESE_METAL_PICKAXE = register("cheese_metal_pickaxe", new PickaxeItem(ModItemTier.CHEESE_METAL, 1, -2.8f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        CHEESE_METAL_AXE = register("cheese_metal_axe", new AxeItem(ModItemTier.CHEESE_METAL, 6, -3.1f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        CHEESE_METAL_HOE = register("cheese_metal_hoe", new HoeItem(ModItemTier.CHEESE_METAL, -1.0f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        CHEESE_METAL_SHOVEL = register("cheese_metal_shovel", new ShovelItem(ModItemTier.CHEESE_METAL, 1.5f, -3.0f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        CHEESE_METAL_SWORD = register("cheese_metal_sword", new SwordItem(ModItemTier.CHEESE_METAL, 3, -2.4f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        CHEESE_METAL_PICKAXE = register("cheese_metal_pickaxe", new PickaxeItem(ModItemTier.CHEESE_METAL, 1, -2.8f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        CHEESE_METAL_AXE = register("cheese_metal_axe", new AxeItem(ModItemTier.CHEESE_METAL, 6, -3.1f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        CHEESE_METAL_HOE = register("cheese_metal_hoe", new HoeItem(ModItemTier.CHEESE_METAL, -1.0f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        CHEESE_METAL_SHOVEL = register("cheese_metal_shovel", new ShovelItem(ModItemTier.CHEESE_METAL, 1.5f, -3.0f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        CHEESE_METAL_SWORD = register("cheese_metal_sword", new SwordItem(ModItemTier.CHEESE_METAL, 3, -2.4f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
 
         /// Tool - Grilled Cheese Metal ///
-        GRILLED_CHEESE_METAL_PICKAXE = register("grilled_cheese_metal_pickaxe", new PickaxeItem(ModItemTier.GRILLED_CHEESE_METAL, 2, -2.0f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        GRILLED_CHEESE_METAL_AXE = register("grilled_cheese_metal_axe", new AxeItem(ModItemTier.GRILLED_CHEESE_METAL, 7, -2.3f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        GRILLED_CHEESE_METAL_HOE = register("grilled_cheese_metal_hoe", new HoeItem(ModItemTier.GRILLED_CHEESE_METAL, -1.0f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        GRILLED_CHEESE_METAL_SHOVEL = register("grilled_cheese_metal_shovel", new ShovelItem(ModItemTier.GRILLED_CHEESE_METAL, 2.5f, -2.2f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        GRILLED_CHEESE_METAL_SWORD = register("grilled_cheese_metal_sword", new SwordItem(ModItemTier.GRILLED_CHEESE_METAL, 4, -1.6f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        GRILLED_CHEESE_METAL_PICKAXE = register("grilled_cheese_metal_pickaxe", new PickaxeItem(ModItemTier.GRILLED_CHEESE_METAL, 2, -2.0f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        GRILLED_CHEESE_METAL_AXE = register("grilled_cheese_metal_axe", new AxeItem(ModItemTier.GRILLED_CHEESE_METAL, 7, -2.3f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        GRILLED_CHEESE_METAL_HOE = register("grilled_cheese_metal_hoe", new HoeItem(ModItemTier.GRILLED_CHEESE_METAL, -1.0f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        GRILLED_CHEESE_METAL_SHOVEL = register("grilled_cheese_metal_shovel", new ShovelItem(ModItemTier.GRILLED_CHEESE_METAL, 2.5f, -2.2f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        GRILLED_CHEESE_METAL_SWORD = register("grilled_cheese_metal_sword", new SwordItem(ModItemTier.GRILLED_CHEESE_METAL, 4, -1.6f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
 
         /// Tool - Ham Raw Metal ///
-        HAM_RAW_METAL_PICKAXE = register("ham_raw_metal_pickaxe", new PickaxeItem(ModItemTier.HAM_RAW_METAL, 1, -2.7f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_RAW_METAL_AXE = register("ham_raw_metal_axe", new AxeItem(ModItemTier.HAM_RAW_METAL, 6, -3.0f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_RAW_METAL_HOE = register("ham_raw_metal_hoe", new HoeItem(ModItemTier.HAM_RAW_METAL, -1.0f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_RAW_METAL_SHOVEL = register("ham_raw_metal_shovel", new ShovelItem(ModItemTier.HAM_RAW_METAL, 1.8f, -2.9f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_RAW_METAL_SWORD = register("ham_raw_metal_sword", new SwordItem(ModItemTier.HAM_RAW_METAL, 3, -2.3f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        HAM_RAW_METAL_PICKAXE = register("ham_raw_metal_pickaxe", new PickaxeItem(ModItemTier.HAM_RAW_METAL, 1, -2.7f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_RAW_METAL_AXE = register("ham_raw_metal_axe", new AxeItem(ModItemTier.HAM_RAW_METAL, 6, -3.0f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_RAW_METAL_HOE = register("ham_raw_metal_hoe", new HoeItem(ModItemTier.HAM_RAW_METAL, -1.0f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_RAW_METAL_SHOVEL = register("ham_raw_metal_shovel", new ShovelItem(ModItemTier.HAM_RAW_METAL, 1.8f, -2.9f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_RAW_METAL_SWORD = register("ham_raw_metal_sword", new SwordItem(ModItemTier.HAM_RAW_METAL, 3, -2.3f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
 
         /// Tool - Ham Cooked Metal ///
-        HAM_COOKED_METAL_PICKAXE = register("ham_cooked_metal_pickaxe", new PickaxeItem(ModItemTier.HAM_COOKED_METAL, 2, -2.6f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_COOKED_METAL_AXE = register("ham_cooked_metal_axe", new AxeItem(ModItemTier.HAM_COOKED_METAL, 7, -2.9f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_COOKED_METAL_HOE = register("ham_cooked_metal_hoe", new HoeItem(ModItemTier.HAM_COOKED_METAL, -1.0f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_COOKED_METAL_SHOVEL = register("ham_cooked_metal_shovel", new ShovelItem(ModItemTier.HAM_COOKED_METAL, 2.9f, -2.8f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_COOKED_METAL_SWORD = register("ham_cooked_metal_sword", new SwordItem(ModItemTier.HAM_COOKED_METAL, 4, -2.2f, new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        HAM_COOKED_METAL_PICKAXE = register("ham_cooked_metal_pickaxe", new PickaxeItem(ModItemTier.HAM_COOKED_METAL, 2, -2.6f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_COOKED_METAL_AXE = register("ham_cooked_metal_axe", new AxeItem(ModItemTier.HAM_COOKED_METAL, 7, -2.9f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_COOKED_METAL_HOE = register("ham_cooked_metal_hoe", new HoeItem(ModItemTier.HAM_COOKED_METAL, -1.0f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_COOKED_METAL_SHOVEL = register("ham_cooked_metal_shovel", new ShovelItem(ModItemTier.HAM_COOKED_METAL, 2.9f, -2.8f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_COOKED_METAL_SWORD = register("ham_cooked_metal_sword", new SwordItem(ModItemTier.HAM_COOKED_METAL, 4, -2.2f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
 
         /// Armor - Cheese Metal ///
-        CHEESE_METAL_HELMET = register("cheese_metal_helmet", new ArmorItem(ModArmorMaterial.CHEESE, EquipmentSlotType.HEAD, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        CHEESE_METAL_CHESTPLATE = register("cheese_metal_chestplate", new ArmorItem(ModArmorMaterial.CHEESE, EquipmentSlotType.CHEST, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        CHEESE_METAL_LEGGINGS = register("cheese_metal_leggings", new ArmorItem(ModArmorMaterial.CHEESE, EquipmentSlotType.LEGS, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        CHEESE_METAL_BOOTS = register("cheese_metal_boots", new ArmorItem(ModArmorMaterial.CHEESE, EquipmentSlotType.FEET, new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        CHEESE_METAL_HELMET = register("cheese_metal_helmet", new ArmorItem(ModArmorMaterial.CHEESE, EquipmentSlotType.HEAD, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        CHEESE_METAL_CHESTPLATE = register("cheese_metal_chestplate", new ArmorItem(ModArmorMaterial.CHEESE, EquipmentSlotType.CHEST, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        CHEESE_METAL_LEGGINGS = register("cheese_metal_leggings", new ArmorItem(ModArmorMaterial.CHEESE, EquipmentSlotType.LEGS, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        CHEESE_METAL_BOOTS = register("cheese_metal_boots", new ArmorItem(ModArmorMaterial.CHEESE, EquipmentSlotType.FEET, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
 
         /// Armor - Grilled Cheese Metal ///
-        GRILLED_CHEESE_METAL_HELMET = register("grilled_cheese_metal_helmet", new ArmorItem(ModArmorMaterial.GRILLED_CHEESE, EquipmentSlotType.HEAD, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        GRILLED_CHEESE_METAL_CHESTPLATE = register("grilled_cheese_metal_chestplate", new ArmorItem(ModArmorMaterial.GRILLED_CHEESE, EquipmentSlotType.CHEST, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        GRILLED_CHEESE_METAL_LEGGINGS = register("grilled_cheese_metal_leggings", new ArmorItem(ModArmorMaterial.GRILLED_CHEESE, EquipmentSlotType.LEGS, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        GRILLED_CHEESE_METAL_BOOTS = register("grilled_cheese_metal_boots", new ArmorItem(ModArmorMaterial.GRILLED_CHEESE, EquipmentSlotType.FEET, new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        GRILLED_CHEESE_METAL_HELMET = register("grilled_cheese_metal_helmet", new ArmorItem(ModArmorMaterial.GRILLED_CHEESE, EquipmentSlotType.HEAD, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        GRILLED_CHEESE_METAL_CHESTPLATE = register("grilled_cheese_metal_chestplate", new ArmorItem(ModArmorMaterial.GRILLED_CHEESE, EquipmentSlotType.CHEST, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        GRILLED_CHEESE_METAL_LEGGINGS = register("grilled_cheese_metal_leggings", new ArmorItem(ModArmorMaterial.GRILLED_CHEESE, EquipmentSlotType.LEGS, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        GRILLED_CHEESE_METAL_BOOTS = register("grilled_cheese_metal_boots", new ArmorItem(ModArmorMaterial.GRILLED_CHEESE, EquipmentSlotType.FEET, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
 
         /// Armor - Ham Raw Metal ///
-        HAM_RAW_METAL_HELMET = register("ham_raw_metal_helmet", new ArmorItem(ModArmorMaterial.HAM_RAW, EquipmentSlotType.HEAD, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_RAW_METAL_CHESTPLATE = register("ham_raw_metal_chestplate", new ArmorItem(ModArmorMaterial.HAM_RAW, EquipmentSlotType.CHEST, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_RAW_METAL_LEGGINGS = register("ham_raw_metal_leggings", new ArmorItem(ModArmorMaterial.HAM_RAW, EquipmentSlotType.LEGS, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_RAW_METAL_BOOTS = register("ham_raw_metal_boots", new ArmorItem(ModArmorMaterial.HAM_RAW, EquipmentSlotType.FEET, new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        HAM_RAW_METAL_HELMET = register("ham_raw_metal_helmet", new ArmorItem(ModArmorMaterial.HAM_RAW, EquipmentSlotType.HEAD, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_RAW_METAL_CHESTPLATE = register("ham_raw_metal_chestplate", new ArmorItem(ModArmorMaterial.HAM_RAW, EquipmentSlotType.CHEST, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_RAW_METAL_LEGGINGS = register("ham_raw_metal_leggings", new ArmorItem(ModArmorMaterial.HAM_RAW, EquipmentSlotType.LEGS, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_RAW_METAL_BOOTS = register("ham_raw_metal_boots", new ArmorItem(ModArmorMaterial.HAM_RAW, EquipmentSlotType.FEET, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
 
         /// Armor - Ham Cooked Metal ///
-        HAM_COOKED_METAL_HELMET = register("ham_cooked_metal_helmet", new ArmorItem(ModArmorMaterial.HAM_COOKED, EquipmentSlotType.HEAD, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_COOKED_METAL_CHESTPLATE = register("ham_cooked_metal_chestplate", new ArmorItem(ModArmorMaterial.HAM_COOKED, EquipmentSlotType.CHEST, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_COOKED_METAL_LEGGINGS = register("ham_cooked_metal_leggings", new ArmorItem(ModArmorMaterial.HAM_COOKED, EquipmentSlotType.LEGS, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_COOKED_METAL_BOOTS = register("ham_cooked_metal_boots", new ArmorItem(ModArmorMaterial.HAM_COOKED, EquipmentSlotType.FEET, new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        HAM_COOKED_METAL_HELMET = register("ham_cooked_metal_helmet", new ArmorItem(ModArmorMaterial.HAM_COOKED, EquipmentSlotType.HEAD, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_COOKED_METAL_CHESTPLATE = register("ham_cooked_metal_chestplate", new ArmorItem(ModArmorMaterial.HAM_COOKED, EquipmentSlotType.CHEST, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_COOKED_METAL_LEGGINGS = register("ham_cooked_metal_leggings", new ArmorItem(ModArmorMaterial.HAM_COOKED, EquipmentSlotType.LEGS, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_COOKED_METAL_BOOTS = register("ham_cooked_metal_boots", new ArmorItem(ModArmorMaterial.HAM_COOKED, EquipmentSlotType.FEET, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
 
         /// Armor - Food Suit ///
-        CHEESE_SUIT_HAT = register("cheese_suit_hat", new CheeseSuitArmorItem(ModArmorMaterial.CHEESE_SUIT, EquipmentSlotType.HEAD, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        CHEESE_SUIT_CHESTPLATE = register("cheese_suit_chestplate", new CheeseSuitArmorItem(ModArmorMaterial.CHEESE_SUIT, EquipmentSlotType.CHEST, new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        CHEESE_SUIT_HAT = register("cheese_suit_hat", new CheeseSuitArmorItem(ModArmorMaterial.CHEESE_SUIT, EquipmentSlotType.HEAD, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        CHEESE_SUIT_CHESTPLATE = register("cheese_suit_chestplate", new CheeseSuitArmorItem(ModArmorMaterial.CHEESE_SUIT, EquipmentSlotType.CHEST, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
 
-        HAM_SUIT_HAT = register("ham_suit_hat", new HamSuitArmorItem(ModArmorMaterial.HAM_SUIT, EquipmentSlotType.HEAD, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_SUIT_CHESTPLATE = register("ham_suit_chestplate", new HamSuitArmorItem(ModArmorMaterial.HAM_SUIT, EquipmentSlotType.CHEST, new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_SUIT_BOOTS = register("ham_suit_boots", new HamSuitArmorItem(ModArmorMaterial.HAM_SUIT, EquipmentSlotType.FEET, new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        HAM_SUIT_HAT = register("ham_suit_hat", new HamSuitArmorItem(ModArmorMaterial.HAM_SUIT, EquipmentSlotType.HEAD, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_SUIT_CHESTPLATE = register("ham_suit_chestplate", new HamSuitArmorItem(ModArmorMaterial.HAM_SUIT, EquipmentSlotType.CHEST, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
+        HAM_SUIT_BOOTS = register("ham_suit_boots", new HamSuitArmorItem(ModArmorMaterial.HAM_SUIT, EquipmentSlotType.FEET, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
 
         /// Food ///
         BLOCK_O_CHEESE = registerFood("block_o_cheese", ModFoods.BLOCK_O_CHEESE, 16);
-        CHEESE_BALL = registerFood("cheese_ball", new CheeseBallItem(new Item.Properties().food(ModFoods.CHEESE_BALL).maxStackSize(16).group(CheeseMod.GROUP_FOODS)));
+        CHEESE_BALL = registerFood("cheese_ball", new CheeseBallItem(new Item.Properties().food(ModFoods.CHEESE_BALL).maxStackSize(16).group(ModItemGroups.GROUP_FOODS)));
         CHEESE_SLICE = registerFood("cheese_slice", ModFoods.CHEESE_SLICE, 32);
 
         SALT = registerFood("salt", ModFoods.INGREDIENT, 64);
@@ -319,7 +320,7 @@ public class ModItems {
         TOASTIE_CHEESE_HAM_COOKED_GRILLED = register("toastie_cheese_ham_cooked_grilled", new ToastieFoodItem(ModFoods.TOASTIE_CHEESE_HAM_COOKED_GRILLED, 32).grilled());
 
         /// Food - Pineapple ///
-        PINEAPPLE_PLANT = registerFood("pineapple_plant", new BlockNamedItem(ModBlocks.PINEAPPLE, new Item.Properties().food(ModFoods.PINEAPPLE_PLANT).group(CheeseMod.GROUP_FOODS)));
+        PINEAPPLE_PLANT = registerFood("pineapple_plant", new BlockNamedItem(ModBlocks.PINEAPPLE, new Item.Properties().food(ModFoods.PINEAPPLE_PLANT).group(ModItemGroups.GROUP_FOODS)));
         PINEAPPLE = registerFood("pineapple", ModFoods.PINEAPPLE, 32);
         PINEAPPLE_RING = registerFood("pineapple_ring", ModFoods.PINEAPPLE_RING, 32);
         PINEAPPLE_BIT = registerFood("pineapple_bit", ModFoods.PINEAPPLE_BIT, 32);
@@ -344,22 +345,22 @@ public class ModItems {
         HAM_COOKED_FOODIE_SPAWN_EGG = register("ham_cooked_foodie_spawn_egg", new SpawnEggItem(ModEntityTypes.HAM_COOKED_FOODIE, 13218964, 16770746, new Item.Properties().group(ItemGroup.MISC)));
 
         /// Boats ///
-        BOAT_CHEESE = register("cheese_boat", new BoatItemCM(BoatEntityCM.Type.CHEESE, new Item.Properties().maxStackSize(1).group(CheeseMod.GROUP_ALL)));
-        BOAT_GRILLED_CHEESE = register("grilled_cheese_boat", new BoatItemCM(BoatEntityCM.Type.GRILLED_CHEESE, new Item.Properties().maxStackSize(1).group(CheeseMod.GROUP_ALL)));
-        BOAT_HAM_RAW = register("ham_raw_boat", new BoatItemCM(BoatEntityCM.Type.HAM_RAW, new Item.Properties().maxStackSize(1).group(CheeseMod.GROUP_ALL)));
-        BOAT_HAM_COOKED = register("ham_cooked_boat", new BoatItemCM(BoatEntityCM.Type.HAM_COOKED, new Item.Properties().maxStackSize(1).group(CheeseMod.GROUP_ALL)));
+        BOAT_CHEESE = register("cheese_boat", new BoatItemCM(BoatEntityCM.Type.CHEESE, new Item.Properties().maxStackSize(1).group(ModItemGroups.GROUP_ALL)));
+        BOAT_GRILLED_CHEESE = register("grilled_cheese_boat", new BoatItemCM(BoatEntityCM.Type.GRILLED_CHEESE, new Item.Properties().maxStackSize(1).group(ModItemGroups.GROUP_ALL)));
+        BOAT_HAM_RAW = register("ham_raw_boat", new BoatItemCM(BoatEntityCM.Type.HAM_RAW, new Item.Properties().maxStackSize(1).group(ModItemGroups.GROUP_ALL)));
+        BOAT_HAM_COOKED = register("ham_cooked_boat", new BoatItemCM(BoatEntityCM.Type.HAM_COOKED, new Item.Properties().maxStackSize(1).group(ModItemGroups.GROUP_ALL)));
 
         /// Other ///
-        CHEESE_BIT = register("cheese_bit", new Item(new Item.Properties().group(CheeseMod.GROUP_ALL)));
-        HAM_BIT = register("ham_bit", new Item(new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        CHEESE_BIT = register("cheese_bit", new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
+        HAM_BIT = register("ham_bit", new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
 
-        WOODEN_GEAR = register("wooden_gear", new Item(new Item.Properties().group(CheeseMod.GROUP_ALL)));
+        WOODEN_GEAR = register("wooden_gear", new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
 
         CheeseMod.LOGGER.info("Items registered");
     }
 
     private static Item registerFood(String name, Food food, int stackSize) {
-        return registerFood(name, new Item(new Item.Properties().group(CheeseMod.GROUP_FOODS).food(food).maxStackSize(stackSize)));
+        return registerFood(name, new Item(new Item.Properties().group(ModItemGroups.GROUP_FOODS).food(food).maxStackSize(stackSize)));
     }
 
     private static <I extends Item> I registerFood(String name, I item) {

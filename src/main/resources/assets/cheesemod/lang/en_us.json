@@ -261,4 +261,7 @@
 
   "itemGroup.cheesemod.all": "Cheese Mod",
   "itemGroup.cheesemod.foods": "Cheese Mod Foods"
+  "itemGroup.cheesemod.foods": "Cheese Mod Foods",
+  "itemGroup.cheesemod.armor_tools": "Cheese Mod Armor & Tools",
+  "itemGroup.cheesemod.all": "Cheese Mod"
 }

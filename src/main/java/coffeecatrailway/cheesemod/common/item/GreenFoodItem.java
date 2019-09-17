@@ -1,6 +1,7 @@
 package coffeecatrailway.cheesemod.common.item;
 
 import coffeecatrailway.cheesemod.CheeseMod;
+import coffeecatrailway.cheesemod.ModItemGroups;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
@@ -20,7 +21,7 @@ import java.util.List;
 public class GreenFoodItem extends Item {
 
     public GreenFoodItem(Food food, int stackSize) {
-        super(new Item.Properties().group(CheeseMod.GROUP_FOODS).food(food).maxStackSize(stackSize));
+        super(new Item.Properties().group(ModItemGroups.GROUP_FOODS).food(food).maxStackSize(stackSize));
     }
 
     @Override
