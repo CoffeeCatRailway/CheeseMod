@@ -14,6 +14,10 @@ import net.minecraft.world.World;
  */
 public class HamCookedFoodie extends FoodieEntity {
 
+    public HamCookedFoodie(World world) {
+        this(ModEntityTypes.HAM_COOKED_FOODIE, world);
+    }
+
     public HamCookedFoodie(EntityType<? extends TameableEntity> type, World world) {
         super(type, world);
     }

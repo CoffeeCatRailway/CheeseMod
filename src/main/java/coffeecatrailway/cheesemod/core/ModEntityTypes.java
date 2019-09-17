@@ -19,44 +19,49 @@ import net.minecraftforge.registries.ForgeRegistries;
  */
 public class ModEntityTypes {
 
-    public static EntityType<CheeseBallEntity> CHEESE_BALL;
+    public static EntityType<CheeseBallEntity> CHEESE_BALL = build("cheese_ball", EntityType.Builder.<CheeseBallEntity>create(CheeseBallEntity::new, EntityClassification.MISC).size(0.25f, 0.25f)
+            .setCustomClientFactory((packet, world) -> new CheeseBallEntity(world)));
 
-    public static EntityType<CheeseFoodie> CHEESE_FOODIE;
-    public static EntityType<GrilledCheeseFoodie> GRILLED_CHEESE_FOODIE;
-    public static EntityType<HamRawFoodie> HAM_RAW_FOODIE;
-    public static EntityType<HamCookedFoodie> HAM_COOKED_FOODIE;
+    public static EntityType<CheeseFoodie> CHEESE_FOODIE = build("cheese_foodie", EntityType.Builder.<CheeseFoodie>create(CheeseFoodie::new, EntityClassification.CREATURE).size(0.5f, 1.15f)
+            .setCustomClientFactory((packet, world) -> new CheeseFoodie(world)));
+    public static EntityType<GrilledCheeseFoodie> GRILLED_CHEESE_FOODIE = build("grilled_cheese_foodie", EntityType.Builder.<GrilledCheeseFoodie>create(GrilledCheeseFoodie::new, EntityClassification.CREATURE).size(0.5f, 1.15f)
+            .setCustomClientFactory((packet, world) -> new GrilledCheeseFoodie(world)));
+    public static EntityType<HamRawFoodie> HAM_RAW_FOODIE = build("ham_raw_foodie", EntityType.Builder.<HamRawFoodie>create(HamRawFoodie::new, EntityClassification.CREATURE).size(0.5f, 1.15f)
+            .setCustomClientFactory((packet, world) -> new HamRawFoodie(world)));
+    public static EntityType<HamCookedFoodie> HAM_COOKED_FOODIE = build("ham_cooked_foodie", EntityType.Builder.<HamCookedFoodie>create(HamCookedFoodie::new, EntityClassification.CREATURE).size(0.5f, 1.15f)
+            .setCustomClientFactory((packet, world) -> new HamCookedFoodie(world)));
 
-    public static EntityType<? extends BoatEntity> BOAT;
+    public static EntityType<? extends BoatEntity> BOAT = build("food_boat", EntityType.Builder.<BoatEntityCM>create(BoatEntityCM::new, EntityClassification.MISC).setTrackingRange(80)
+            .setUpdateInterval(3).setShouldReceiveVelocityUpdates(true).size(1.375f, 0.5625f).setCustomClientFactory(BoatEntityCM::new));
 
     public static void registerAll(RegistryEvent.Register<EntityType<?>> event) {
         if (!event.getName().equals(ForgeRegistries.ENTITIES.getRegistryName())) return;
 
-        CHEESE_BALL = register("cheese_ball", EntityType.Builder.<CheeseBallEntity>create(CheeseBallEntity::new, EntityClassification.MISC).size(0.25f, 0.25f)
-                .setCustomClientFactory((packet, world) -> new CheeseBallEntity(CHEESE_BALL, world)));
+        register(CHEESE_BALL);
 
-        CHEESE_FOODIE = register("cheese_foodie", EntityType.Builder.<CheeseFoodie>create(CheeseFoodie::new, EntityClassification.CREATURE).size(0.5f, 1.15f)
-                .setCustomClientFactory((packet, world) -> new CheeseFoodie(CHEESE_FOODIE, world)));
+        register(CHEESE_FOODIE);
         EntitySpawnPlacementRegistry.register(CHEESE_FOODIE, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, AnimalEntity::func_223316_b);
 
-        GRILLED_CHEESE_FOODIE = register("grilled_cheese_foodie", EntityType.Builder.<GrilledCheeseFoodie>create(GrilledCheeseFoodie::new, EntityClassification.CREATURE).size(0.5f, 1.15f)
-                .setCustomClientFactory((packet, world) -> new GrilledCheeseFoodie(GRILLED_CHEESE_FOODIE, world)));
+        register(GRILLED_CHEESE_FOODIE);
         EntitySpawnPlacementRegistry.register(GRILLED_CHEESE_FOODIE, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, AnimalEntity::func_223316_b);
 
-        HAM_RAW_FOODIE = register("ham_raw_foodie", EntityType.Builder.<HamRawFoodie>create(HamRawFoodie::new, EntityClassification.CREATURE).size(0.5f, 1.15f)
-                .setCustomClientFactory((packet, world) -> new HamRawFoodie(CHEESE_FOODIE, world)));
+        register(HAM_RAW_FOODIE);
         EntitySpawnPlacementRegistry.register(HAM_RAW_FOODIE, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, AnimalEntity::func_223316_b);
 
-        HAM_COOKED_FOODIE = register("ham_cooked_foodie", EntityType.Builder.<HamCookedFoodie>create(HamCookedFoodie::new, EntityClassification.CREATURE).size(0.5f, 1.15f)
-                .setCustomClientFactory((packet, world) -> new HamCookedFoodie(GRILLED_CHEESE_FOODIE, world)));
+        register(HAM_COOKED_FOODIE);
         EntitySpawnPlacementRegistry.register(HAM_COOKED_FOODIE, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, AnimalEntity::func_223316_b);
 
-        BOAT = register("food_boat", EntityType.Builder.<BoatEntityCM>create(BoatEntityCM::new, EntityClassification.MISC).setTrackingRange(80).setUpdateInterval(3).setShouldReceiveVelocityUpdates(true).size(1.375f, 0.5625f).setCustomClientFactory(BoatEntityCM::new));
+        register(BOAT);
+        CheeseMod.LOGGER.info("Entity types registered");
     }
 
-    public static <E extends Entity> EntityType<E> register(String name, EntityType.Builder<E> builder) {
+    public static <E extends Entity> EntityType<E> build(String name, EntityType.Builder<E> builder) {
         EntityType<E> type = builder.build(name);
         type.setRegistryName(CheeseMod.getLocation(name));
-        ForgeRegistries.ENTITIES.register(type);
         return type;
+    }
+
+    public static void register(EntityType<?> type) {
+        ForgeRegistries.ENTITIES.register(type);
     }
 }

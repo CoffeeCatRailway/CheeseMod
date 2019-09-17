@@ -27,6 +27,10 @@ import net.minecraftforge.fml.network.NetworkHooks;
  */
 public class CheeseBallEntity extends ProjectileItemEntity {
 
+    public CheeseBallEntity(World world) {
+        this(ModEntityTypes.CHEESE_BALL, world);
+    }
+
     public CheeseBallEntity(EntityType<? extends CheeseBallEntity> type, World world) {
         super(type, world);
     }

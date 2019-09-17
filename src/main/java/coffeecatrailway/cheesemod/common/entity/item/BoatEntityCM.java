@@ -75,8 +75,8 @@ public class BoatEntityCM extends BoatEntity {
     private float rockingAngle;
     private float prevRockingAngle;
 
-    public BoatEntityCM(EntityType<? extends BoatEntity> entityType, World world) {
-        super(entityType, world);
+    public BoatEntityCM(EntityType<? extends BoatEntity> type, World world) {
+        super(type, world);
         this.preventEntitySpawning = true;
     }
 

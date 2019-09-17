@@ -13,6 +13,10 @@ import net.minecraft.world.World;
  */
 public class CheeseFoodie extends FoodieEntity {
 
+    public CheeseFoodie(World world) {
+        this(ModEntityTypes.CHEESE_FOODIE, world);
+    }
+
     public CheeseFoodie(EntityType<? extends TameableEntity> type, World world) {
         super(type, world);
     }
