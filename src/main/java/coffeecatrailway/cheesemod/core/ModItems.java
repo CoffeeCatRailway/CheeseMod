@@ -2,10 +2,17 @@ package coffeecatrailway.cheesemod.core;
 
 import coffeecatrailway.cheesemod.CheeseMod;
 import coffeecatrailway.cheesemod.ModItemGroups;
+import coffeecatrailway.cheesemod.common.entity.CheeseBallEntity;
 import coffeecatrailway.cheesemod.common.entity.item.BoatEntityCM;
 import coffeecatrailway.cheesemod.common.item.*;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.dispenser.IPosition;
+import net.minecraft.dispenser.ProjectileDispenseBehavior;
+import net.minecraft.entity.IProjectile;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
+import net.minecraft.util.Util;
+import net.minecraft.world.World;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -275,6 +282,12 @@ public class ModItems {
         /// Food ///
         BLOCK_O_CHEESE = registerFood("block_o_cheese", ModFoods.BLOCK_O_CHEESE, 16);
         CHEESE_BALL = registerFood("cheese_ball", new CheeseBallItem(new Item.Properties().food(ModFoods.CHEESE_BALL).maxStackSize(16).group(ModItemGroups.GROUP_FOODS)));
+        DispenserBlock.registerDispenseBehavior(CHEESE_BALL, new ProjectileDispenseBehavior() {
+            @Override
+            protected IProjectile getProjectileEntity(World world, IPosition pos, ItemStack stack) {
+                return Util.make(new CheeseBallEntity(world, pos.getX(), pos.getY(), pos.getZ()), (entity) -> entity.func_213884_b(stack));
+            }
+        });
         CHEESE_SLICE = registerFood("cheese_slice", ModFoods.CHEESE_SLICE, 32);
 
         SALT = registerFood("salt", ModFoods.INGREDIENT, 64);
