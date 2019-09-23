@@ -136,6 +136,17 @@ public class ModBlocks {
     public static Block HAM_COOKED_WOOD_FENCE;
     public static Block HAM_COOKED_WOOD_FENCE_GATE;
 
+    /// Doors ///
+    public static Block CHEESE_DOOR;
+    public static Block GRILLED_CHEESE_DOOR;
+    public static Block HAM_RAW_DOOR;
+    public static Block HAM_COOKED_DOOR;
+
+    public static Block CHEESE_WOOD_DOOR;
+    public static Block GRILLED_CHEESE_WOOD_DOOR;
+    public static Block HAM_RAW_WOOD_DOOR;
+    public static Block HAM_COOKED_WOOD_DOOR;
+
     /// Pressure Plates ///
     public static Block CHEESE_PRESSURE_PLATE;
     public static Block GRILLED_CHEESE_PRESSURE_PLATE;
@@ -289,6 +300,17 @@ public class ModBlocks {
 
         HAM_COOKED_WOOD_FENCE = register("ham_cooked_wood_fence", new FenceBlock(Block.Properties.from(HAM_COOKED_PLANKS).hardnessAndResistance(2.0F, 3.0F)));
         HAM_COOKED_WOOD_FENCE_GATE = register("ham_cooked_wood_fence_gate", new FenceGateBlock(Block.Properties.from(HAM_COOKED_PLANKS).hardnessAndResistance(2.0F, 3.0F)));
+
+        /// Doors ///
+        CHEESE_DOOR = register("cheese_door", new DoorBlock(Block.Properties.from(CHEESE_BLOCK).hardnessAndResistance(3.0F)));
+        GRILLED_CHEESE_DOOR = register("grilled_cheese_door", new DoorBlock(Block.Properties.from(GRILLED_CHEESE_BLOCK).hardnessAndResistance(3.0F)));
+        HAM_RAW_DOOR = register("ham_raw_door", new DoorBlock(Block.Properties.from(HAM_RAW_BLOCK).hardnessAndResistance(3.0F)));
+        HAM_COOKED_DOOR = register("ham_cooked_door", new DoorBlock(Block.Properties.from(HAM_COOKED_BLOCK).hardnessAndResistance(3.0F)));
+
+        CHEESE_WOOD_DOOR = register("cheese_wood_door", new DoorBlock(Block.Properties.from(CHEESE_PLANKS).hardnessAndResistance(3.0F)));
+        GRILLED_CHEESE_WOOD_DOOR = register("grilled_cheese_wood_door", new DoorBlock(Block.Properties.from(GRILLED_CHEESE_PLANKS).hardnessAndResistance(3.0F)));
+        HAM_RAW_WOOD_DOOR = register("ham_raw_wood_door", new DoorBlock(Block.Properties.from(HAM_RAW_PLANKS).hardnessAndResistance(3.0F)));
+        HAM_COOKED_WOOD_DOOR = register("ham_cooked_wood_door", new DoorBlock(Block.Properties.from(HAM_COOKED_PLANKS).hardnessAndResistance(3.0F)));
 
         /// Pressure Plate ///
         CHEESE_PRESSURE_PLATE = register("cheese_pressure_plate", new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(CHEESE_BLOCK).doesNotBlockMovement().hardnessAndResistance(0.5F)));
