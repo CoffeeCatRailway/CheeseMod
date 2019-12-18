@@ -1,0 +1,13 @@
+{
+  "type": "coffeecheese:melting",
+  "ingredient": [
+    { "item": "minecraft:ice" },
+    { "item": "minecraft:packed_ice" },
+    { "item": "minecraft:blue_ice" }
+  ],
+  "result": {
+    "fluid": "minecraft:water",
+    "amount": 1000
+  },
+  "cookingtime": 25
+}

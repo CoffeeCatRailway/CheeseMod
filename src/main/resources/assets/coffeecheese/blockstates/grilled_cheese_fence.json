@@ -1,0 +1,32 @@
+{
+    "multipart": [
+        {   "apply": [
+          { "model": "coffeecheese:block/grilled_cheese_fence_post", "weight": 5 },
+          { "model": "coffeecheese:block/grilled_cheese_fence_post_holes", "weight": 5 }
+        ]},
+        {   "when": { "north": "true" },
+            "apply": [
+              { "model": "coffeecheese:block/grilled_cheese_fence_side", "uvlock": true, "weight": 5 },
+              { "model": "coffeecheese:block/grilled_cheese_fence_side_holes", "uvlock": true, "weight": 5 }
+            ]
+        },
+        {   "when": { "east": "true" },
+          "apply": [
+            { "model": "coffeecheese:block/grilled_cheese_fence_side", "y": 90, "uvlock": true, "weight": 5 },
+            { "model": "coffeecheese:block/grilled_cheese_fence_side_holes", "y": 90, "uvlock": true, "weight": 5 }
+          ]
+        },
+        {   "when": { "south": "true" },
+          "apply": [
+            { "model": "coffeecheese:block/grilled_cheese_fence_side", "y": 180, "uvlock": true, "weight": 5 },
+            { "model": "coffeecheese:block/grilled_cheese_fence_side_holes", "y": 180, "uvlock": true, "weight": 5 }
+          ]
+        },
+        {   "when": { "west": "true" },
+          "apply": [
+            { "model": "coffeecheese:block/grilled_cheese_fence_side", "y": 270, "uvlock": true, "weight": 5 },
+            { "model": "coffeecheese:block/grilled_cheese_fence_side_holes", "y": 270, "uvlock": true, "weight": 5 }
+          ]
+        }
+    ]
+}

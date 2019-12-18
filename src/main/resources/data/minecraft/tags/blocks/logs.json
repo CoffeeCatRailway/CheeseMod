@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "#cheesemod:logs/cheese",
-    "#cheesemod:logs/grilled_cheese",
-    "#cheesemod:logs/ham_raw",
-    "#cheesemod:logs/ham_cooked"
+    "#coffeecheese:logs/cheese",
+    "#coffeecheese:logs/grilled_cheese",
+    "#coffeecheese:logs/ham_raw",
+    "#coffeecheese:logs/ham_cooked"
   ]
 }

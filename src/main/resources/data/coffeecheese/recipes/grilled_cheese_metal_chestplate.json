@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    "III",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "coffeecheese:grilled_cheese_metal_ingot"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:grilled_cheese_metal_chestplate"
+  }
+}

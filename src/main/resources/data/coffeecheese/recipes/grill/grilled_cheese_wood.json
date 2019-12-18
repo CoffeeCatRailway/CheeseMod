@@ -1,0 +1,10 @@
+{
+  "type": "coffeecheese:grilling",
+  "ingredient": {
+    "item": "coffeecheese:cheese_wood"
+  },
+  "result": "coffeecheese:grilled_cheese_wood",
+  "experience": 0.7,
+  "cookingtime": 125,
+  "oil": 6
+}

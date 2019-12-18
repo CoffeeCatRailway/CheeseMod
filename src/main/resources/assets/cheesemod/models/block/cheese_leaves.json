@@ -1,6 +1,0 @@
-{
-  "parent": "block/leaves",
-  "textures": {
-    "all": "cheesemod:block/cheese_leaves"
-  }
-}

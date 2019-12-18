@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    "coffeecheese:cheese_metal_ore",
+    "coffeecheese:cheese_metal_ore_nether",
+    "coffeecheese:cheese_metal_ore_end",
+    "coffeecheese:cheese_metal_ingot",
+    "coffeecheese:cheese_metal_block",
+
+    "coffeecheese:grilled_cheese_metal_ore",
+    "coffeecheese:grilled_cheese_metal_ore_nether",
+    "coffeecheese:grilled_cheese_metal_ore_end",
+    "coffeecheese:grilled_cheese_metal_ingot",
+    "coffeecheese:grilled_cheese_metal_block",
+
+    "coffeecheese:ham_raw_metal_ore",
+    "coffeecheese:ham_raw_metal_ore_nether",
+    "coffeecheese:ham_raw_metal_ore_end",
+    "coffeecheese:ham_raw_metal_ingot",
+    "coffeecheese:ham_raw_metal_block",
+
+    "coffeecheese:ham_cooked_metal_ore",
+    "coffeecheese:ham_cooked_metal_ore_nether",
+    "coffeecheese:ham_cooked_metal_ore_end",
+    "coffeecheese:ham_cooked_metal_ingot",
+    "coffeecheese:ham_cooked_metal_block"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "coffeecheese:item/ham_raw_metal_helmet"
+  }
+}

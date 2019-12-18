@@ -1,0 +1,13 @@
+{
+  "parent": "coffeecheese:block/food_draw",
+  "textures": {
+    "particle": "coffeecheese:block/ham_cooked_log_side",
+    "logSide": "coffeecheese:block/ham_cooked_log_side",
+    "logTop": "coffeecheese:block/ham_cooked_log_top",
+    "planks": "coffeecheese:block/ham_raw_planks",
+    "foodBlock1Side": "coffeecheese:block/ham_cooked_block_shine",
+    "foodBlock1Top": "coffeecheese:block/ham_cooked_block_shine",
+    "foodBlock2Side": "coffeecheese:block/ham_raw_block",
+    "foodBlock2Top": "coffeecheese:block/ham_raw_block"
+  }
+}

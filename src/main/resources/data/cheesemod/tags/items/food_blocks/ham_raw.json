@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "cheesemod:ham_raw_block",
-    "#cheesemod:food_blocks/ham_cooked"
-  ]
-}

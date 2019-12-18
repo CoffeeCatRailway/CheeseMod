@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "coffeecheese:block/ham_cooked_wood_slab"
+    },
+    "type=top": {
+      "model": "coffeecheese:block/ham_cooked_wood_slab_top"
+    },
+    "type=double": {
+      "model": "coffeecheese:block/ham_cooked_planks"
+    }
+  }
+}

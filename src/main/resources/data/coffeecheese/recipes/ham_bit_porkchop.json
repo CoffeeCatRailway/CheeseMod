@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "coffeecheese:cheese_cutter", "data": 32767 },
+    [
+      { "item": "minecraft:porkchop" },
+      { "item": "minecraft:cooked_porkchop" }
+    ]
+  ],
+  "result": {
+    "item": "coffeecheese:ham_bit",
+    "count": 2
+  }
+}

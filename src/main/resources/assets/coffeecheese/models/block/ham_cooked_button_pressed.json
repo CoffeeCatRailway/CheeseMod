@@ -1,0 +1,6 @@
+{
+  "parent": "block/button_pressed",
+  "textures": {
+    "texture": "coffeecheese:block/ham_cooked_block"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "coffeecheese:grilling",
+  "ingredient": {
+    "item": "coffeecheese:cheese_metal_pickaxe"
+  },
+  "result": "coffeecheese:grilled_cheese_metal_pickaxe",
+  "experience": 0.3,
+  "cookingtime": 105,
+  "oil": 6
+}

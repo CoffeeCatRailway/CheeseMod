@@ -1,0 +1,32 @@
+{
+    "multipart": [
+        {   "apply": [
+          { "model": "coffeecheese:block/ham_raw_fence_post", "weight": 5 },
+          { "model": "coffeecheese:block/ham_raw_fence_post_shine", "weight": 5 }
+        ]},
+        {   "when": { "north": "true" },
+            "apply": [
+              { "model": "coffeecheese:block/ham_raw_fence_side", "uvlock": true, "weight": 5 },
+              { "model": "coffeecheese:block/ham_raw_fence_side_shine", "uvlock": true, "weight": 5 }
+            ]
+        },
+        {   "when": { "east": "true" },
+          "apply": [
+            { "model": "coffeecheese:block/ham_raw_fence_side", "y": 90, "uvlock": true, "weight": 5 },
+            { "model": "coffeecheese:block/ham_raw_fence_side_shine", "y": 90, "uvlock": true, "weight": 5 }
+          ]
+        },
+        {   "when": { "south": "true" },
+          "apply": [
+            { "model": "coffeecheese:block/ham_raw_fence_side", "y": 180, "uvlock": true, "weight": 5 },
+            { "model": "coffeecheese:block/ham_raw_fence_side_shine", "y": 180, "uvlock": true, "weight": 5 }
+          ]
+        },
+        {   "when": { "west": "true" },
+          "apply": [
+            { "model": "coffeecheese:block/ham_raw_fence_side", "y": 270, "uvlock": true, "weight": 5 },
+            { "model": "coffeecheese:block/ham_raw_fence_side_shine", "y": 270, "uvlock": true, "weight": 5 }
+          ]
+        }
+    ]
+}

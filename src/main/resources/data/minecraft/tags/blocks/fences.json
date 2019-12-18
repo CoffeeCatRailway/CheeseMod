@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "cheesemod:cheese_fence",
-    "cheesemod:grilled_cheese_fence",
-    "cheesemod:ham_raw_fence",
-    "cheesemod:ham_cooked_fence"
+    "coffeecheese:cheese_fence",
+    "coffeecheese:grilled_cheese_fence",
+    "coffeecheese:ham_raw_fence",
+    "coffeecheese:ham_cooked_fence"
   ]
 }

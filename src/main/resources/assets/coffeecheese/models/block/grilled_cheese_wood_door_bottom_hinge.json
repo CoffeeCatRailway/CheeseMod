@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_bottom_rh",
+    "textures": {
+        "bottom": "coffeecheese:block/grilled_cheese_wood_door_bottom",
+        "top": "coffeecheese:block/grilled_cheese_wood_door_top"
+    }
+}

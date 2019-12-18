@@ -1,6 +1,6 @@
 modLoader="javafml"
 loaderVersion="[28,)"
-issueTrackerURL="https://www.curseforge.com/minecraft/mc-mods/cheesemod/issues"
+issueTrackerURL="https://github.com/CoffeeCatRailway/CoffeeCatsCheeseMod/issues"
 
 [[mods]]
 modId="${modId}"
@@ -13,20 +13,26 @@ description='''
 CHEESE, HAM, COOKED HAM WHAT ELSE DO YOU WANT?!
 So, you like cheese? Well then you have the right mod, because you'll find that this mod adds lots of new wonderful cheesey things to make and find.
 
-Downloads: https://www.curseforge.com/minecraft/mc-mods/cheesemod (I do not upload anywhere else)
+Downloads: https://www.curseforge.com/minecraft/mc-mods/coffeecheese (I do not upload anywhere else)
 Source: https://github.com/CoffeeCatRailway/CoffeeCatsCheeseMod
 Issues: https://github.com/CoffeeCatRailway/CoffeeCatsCheeseMod/issues
 '''
 
-[[dependencies.cheesemod]]
+[[dependencies.coffeecheese]]
     modId="forge"
     mandatory=true
     versionRange="[28,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.cheesemod]]
+[[dependencies.coffeecheese]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.14.4]"
     ordering="NONE"
     side="BOTH"
+[[dependencies.coffeecheese]]
+    modId="filters"
+    mandatory=false
+    versionRange="[1.1.0]"
+    ordering="BEFORE"
+    side="CLIENT"

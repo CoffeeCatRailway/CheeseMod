@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "#cheesemod:stairs/cheese",
-    "#cheesemod:stairs/wooden/cheese",
-    "#cheesemod:stairs/ham_raw",
-    "#cheesemod:stairs/wooden/ham_raw"
+    "#coffeecheese:stairs/cheese",
+    "#coffeecheese:stairs/wooden/cheese",
+    "#coffeecheese:stairs/ham_raw",
+    "#coffeecheese:stairs/wooden/ham_raw"
   ]
 }

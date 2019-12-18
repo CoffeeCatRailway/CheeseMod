@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab_top",
-  "textures": {
-    "bottom": "cheesemod:block/ham_cooked_planks",
-    "top": "cheesemod:block/ham_cooked_planks",
-    "side": "cheesemod:block/ham_cooked_planks"
-  }
-}

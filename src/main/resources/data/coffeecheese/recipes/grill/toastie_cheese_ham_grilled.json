@@ -1,0 +1,10 @@
+{
+  "type": "coffeecheese:grilling",
+  "ingredient": {
+    "item": "coffeecheese:toastie_cheese_ham"
+  },
+  "result": "coffeecheese:toastie_cheese_ham_grilled",
+  "experience": 0.3,
+  "cookingtime": 65,
+  "oil": 6
+}

@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "cheesemod:block/grilled_cheese_metal_ore_nether"
-  }
-}

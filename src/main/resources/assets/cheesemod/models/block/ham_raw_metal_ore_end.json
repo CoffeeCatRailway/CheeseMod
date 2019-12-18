@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "cheesemod:block/ham_raw_metal_ore_end"
-  }
-}

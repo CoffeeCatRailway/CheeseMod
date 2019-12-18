@@ -1,0 +1,36 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:logs",
+    "#minecraft:planks",
+    "#minecraft:wooden_fences",
+
+    "#coffeecheese:stairs/wooden/cheese",
+    "#coffeecheese:stairs/wooden/grilled_cheese",
+    "#coffeecheese:stairs/wooden/ham_raw",
+    "#coffeecheese:stairs/wooden/ham_cooked",
+
+    "#coffeecheese:slabs/wooden/cheese",
+    "#coffeecheese:slabs/wooden/grilled_cheese",
+    "#coffeecheese:slabs/wooden/ham_raw",
+    "#coffeecheese:slabs/wooden/ham_cooked",
+
+    "coffeecheese:wooden_gear",
+
+    "coffeecheese:cheese_draw",
+    "coffeecheese:grilled_cheese_draw",
+    "coffeecheese:ham_raw_draw",
+    "coffeecheese:ham_cooked_draw",
+
+    "coffeecheese:cheese_fence_gate",
+    "coffeecheese:grilled_cheese_fence_gate",
+    "coffeecheese:ham_raw_fence_gate",
+    "coffeecheese:ham_cooked_fence_gate",
+
+    "#minecraft:wooden_pressure_plates",
+    "#minecraft:wooden_buttons",
+    "#minecraft:wooden_doors",
+    "#minecraft:wooden_trapdoors",
+    "#minecraft:boats"
+  ]
+}

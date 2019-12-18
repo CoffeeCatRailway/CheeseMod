@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smoking",
-  "ingredient": [
-    { "item": "cheesemod:bacon_raw" }
-  ],
-  "result": "cheesemod:bacon_cooked",
-  "experience": 0.2,
-  "cookingtime": 50
-}

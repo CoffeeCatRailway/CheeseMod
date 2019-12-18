@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "cheesemod:knife",
-    "cheesemod:cheese_cutter"
+    "coffeecheese:knife",
+    "coffeecheese:cheese_cutter"
   ]
 }

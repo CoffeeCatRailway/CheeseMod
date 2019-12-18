@@ -1,0 +1,8 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "bottom": "coffeecheese:block/cheese_planks",
+    "top": "coffeecheese:block/cheese_planks",
+    "side": "coffeecheese:block/cheese_planks"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "coffeecheese:grilling",
+  "ingredient": {
+    "item": "coffeecheese:stripped_cheese_log"
+  },
+  "result": "coffeecheese:stripped_grilled_cheese_log",
+  "experience": 0.7,
+  "cookingtime": 125,
+  "oil": 6
+}

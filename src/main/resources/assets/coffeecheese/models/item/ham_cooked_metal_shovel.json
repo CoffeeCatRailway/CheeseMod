@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "coffeecheese:item/ham_cooked_metal_shovel"
+  }
+}

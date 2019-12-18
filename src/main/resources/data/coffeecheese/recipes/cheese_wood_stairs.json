@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "coffeecheese:cheese_planks"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:cheese_wood_stairs",
+    "count": 4
+  }
+}

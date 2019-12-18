@@ -1,0 +1,306 @@
+{
+  "block.coffeecheese.cheese_metal_ore": "Cheese Metal Ore",
+  "block.coffeecheese.cheese_metal_ore_nether": "Cheese Metal Ore Nether",
+  "block.coffeecheese.cheese_metal_ore_end": "Cheese Metal Ore End",
+
+  "block.coffeecheese.grilled_cheese_metal_ore": "Grilled Cheese Metal Ore",
+  "block.coffeecheese.grilled_cheese_metal_ore_nether": "Grilled Cheese Metal Ore Nether",
+  "block.coffeecheese.grilled_cheese_metal_ore_end": "Grilled Cheese Metal Ore End",
+
+  "block.coffeecheese.ham_raw_metal_ore": "Raw Ham Metal Ore",
+  "block.coffeecheese.ham_raw_metal_ore_nether": "Raw Ham Metal Ore Nether",
+  "block.coffeecheese.ham_raw_metal_ore_end": "Raw Ham Metal Ore End",
+
+  "block.coffeecheese.ham_cooked_metal_ore": "Cooked Ham Metal Ore",
+  "block.coffeecheese.ham_cooked_metal_ore_nether": "Cooked Ham Metal Ore Nether",
+  "block.coffeecheese.ham_cooked_metal_ore_end": "Cooked Ham Metal Ore End",
+
+  "block.coffeecheese.cheese_metal_block": "Cheese Metal Block",
+  "block.coffeecheese.grilled_cheese_metal_block": "Grilled Cheese Metal Block",
+  "block.coffeecheese.ham_raw_metal_block": "Raw Ham Metal Block",
+  "block.coffeecheese.ham_cooked_metal_block": "Cooked Ham Metal Block",
+
+  "block.coffeecheese.cheese_planks": "Cheese Planks",
+  "block.coffeecheese.grilled_cheese_planks": "Grilled Cheese Planks",
+  "block.coffeecheese.ham_raw_planks": "Raw Ham Planks",
+  "block.coffeecheese.ham_cooked_planks": "Cooked Ham Planks",
+
+  "block.coffeecheese.cheese_leaves": "Cheese Leaves",
+  "block.coffeecheese.grilled_cheese_leaves": "Grilled Cheese Leaves",
+  "block.coffeecheese.ham_raw_leaves": "Raw Ham Leaves",
+  "block.coffeecheese.ham_cooked_leaves": "Cooked Ham Leaves",
+
+  "block.coffeecheese.cheese_log": "Cheese Log",
+  "block.coffeecheese.grilled_cheese_log": "Grilled Cheese Log",
+  "block.coffeecheese.ham_raw_log": "Raw Ham Log",
+  "block.coffeecheese.ham_cooked_log": "Cooked Ham Log",
+
+  "block.coffeecheese.stripped_cheese_log": "Stripped Cheese Log",
+  "block.coffeecheese.stripped_grilled_cheese_log": "Stripped Grilled Cheese Log",
+  "block.coffeecheese.stripped_ham_raw_log": "Stripped Raw Ham Log",
+  "block.coffeecheese.stripped_ham_cooked_log": "Stripped Cooked Ham Log",
+
+  "block.coffeecheese.cheese_wood": "Cheese Wood",
+  "block.coffeecheese.grilled_cheese_wood": "Grilled Cheese Wood",
+  "block.coffeecheese.ham_raw_wood": "Raw Ham Wood",
+  "block.coffeecheese.ham_cooked_wood": "Cooked Ham Wood",
+
+  "block.coffeecheese.stripped_cheese_wood": "Stripped Cheese Wood",
+  "block.coffeecheese.stripped_grilled_cheese_wood": "Stripped Grilled Cheese Wood",
+  "block.coffeecheese.stripped_ham_raw_wood": "Stripped Raw Ham Wood",
+  "block.coffeecheese.stripped_ham_cooked_wood": "Stripped Cooked Ham Wood",
+
+  "block.coffeecheese.cheese_sapling": "Cheese Sapling",
+  "block.coffeecheese.grilled_cheese_sapling": "Grilled Cheese Sapling",
+  "block.coffeecheese.ham_raw_sapling": "Raw Ham Sapling",
+  "block.coffeecheese.ham_cooked_sapling": "Cooked Ham Sapling",
+
+  "block.coffeecheese.cheese_block": "Cheese Block",
+  "block.coffeecheese.grilled_cheese_block": "Grilled Cheese Block",
+  "block.coffeecheese.ham_raw_block": "Raw Ham Block",
+  "block.coffeecheese.ham_cooked_block": "Cooked Ham Block",
+
+  "block.coffeecheese.cheese_stairs": "Cheese Stairs",
+  "block.coffeecheese.grilled_cheese_stairs": "Grilled Cheese Stairs",
+  "block.coffeecheese.ham_raw_stairs": "Raw Ham Stairs",
+  "block.coffeecheese.ham_cooked_stairs": "Cooked Ham Stairs",
+
+  "block.coffeecheese.cheese_wood_stairs": "Cheese Wood Stairs",
+  "block.coffeecheese.grilled_cheese_wood_stairs": "Grilled Cheese Wood Stairs",
+  "block.coffeecheese.ham_raw_wood_stairs": "Raw Ham Wood Stairs",
+  "block.coffeecheese.ham_cooked_wood_stairs": "Cooked Ham Wood Stairs",
+
+  "block.coffeecheese.cheese_slab": "Cheese Slab",
+  "block.coffeecheese.grilled_cheese_slab": "Grilled Cheese Slab",
+  "block.coffeecheese.ham_raw_slab": "Raw Ham Slab",
+  "block.coffeecheese.ham_cooked_slab": "Cooked Ham Slab",
+
+  "block.coffeecheese.cheese_wood_slab": "Cheese Wood Slab",
+  "block.coffeecheese.grilled_cheese_wood_slab": "Grilled Cheese Wood Slab",
+  "block.coffeecheese.ham_raw_wood_slab": "Raw Ham Wood Slab",
+  "block.coffeecheese.ham_cooked_wood_slab": "Cooked Ham Wood Slab",
+
+  "block.coffeecheese.cheese_fence": "Cheese Fence",
+  "block.coffeecheese.cheese_fence_gate": "Cheese Fence Gate",
+
+  "block.coffeecheese.grilled_cheese_fence": "Grilled Cheese Fence",
+  "block.coffeecheese.grilled_cheese_fence_gate": "Grilled Cheese Fence Gate",
+
+  "block.coffeecheese.ham_raw_fence": "Raw Ham Fence",
+  "block.coffeecheese.ham_raw_fence_gate": "Raw Ham Fence Gate",
+
+  "block.coffeecheese.ham_cooked_fence": "Cooked Ham Fence",
+  "block.coffeecheese.ham_cooked_fence_gate": "Cooked Ham Fence Gate",
+
+  "block.coffeecheese.cheese_wood_fence": "Cheese Wood Fence",
+  "block.coffeecheese.cheese_wood_fence_gate": "Cheese Wood Fence Gate",
+
+  "block.coffeecheese.grilled_cheese_wood_fence": "Grilled Cheese Wood Fence",
+  "block.coffeecheese.grilled_cheese_wood_fence_gate": "Grilled Cheese Wood Fence Gate",
+
+  "block.coffeecheese.ham_raw_wood_fence": "Raw Ham Wood Fence",
+  "block.coffeecheese.ham_raw_wood_fence_gate": "Raw Ham Wood Fence Gate",
+
+  "block.coffeecheese.ham_cooked_wood_fence": "Cooked Ham Wood Fence",
+  "block.coffeecheese.ham_cooked_wood_fence_gate": "Cooked Ham Wood Fence Gate",
+
+  "block.coffeecheese.cheese_pressure_plate": "Cheese Pressure Plate",
+  "block.coffeecheese.grilled_cheese_pressure_plate": "Grilled Cheese Pressure Plate",
+  "block.coffeecheese.ham_raw_pressure_plate": "Raw Ham Pressure Plate",
+  "block.coffeecheese.ham_cooked_pressure_plate": "Cooked Ham Pressure Plate",
+
+  "block.coffeecheese.cheese_wood_pressure_plate": "Cheese Wood Pressure Plate",
+  "block.coffeecheese.grilled_cheese_wood_pressure_plate": "Grilled Cheese Wood Pressure Plate",
+  "block.coffeecheese.ham_raw_wood_pressure_plate": "Raw Ham Wood Pressure Plate",
+  "block.coffeecheese.ham_cooked_wood_pressure_plate": "Cooked Ham Wood Pressure Plate",
+
+  "block.coffeecheese.cheese_draw": "Cheese Draw",
+  "block.coffeecheese.grilled_cheese_draw": "Grilled Cheese Draw",
+  "block.coffeecheese.ham_raw_draw": "Raw Ham Draw",
+  "block.coffeecheese.ham_cooked_draw": "Cooked Ham Draw",
+
+  "block.coffeecheese.oil_block": "Oil",
+  "block.coffeecheese.melted_cheese": "Melted Cheese",
+
+  "block.coffeecheese.grill": "Grill",
+  "block.coffeecheese.melter": "Melter",
+
+  "block.coffeecheese.pineapple_plant": "Pineapple Plant",
+
+  "block.coffeecheese.cheese_cake": "Cheese Cake",
+  "block.coffeecheese.grilled_cheese_cake": "Grilled Cheese Cake",
+  "block.coffeecheese.ham_raw_cake": "Raw Ham Cake",
+  "block.coffeecheese.ham_cooked_cake": "Cooked Ham Cake",
+
+  "item.coffeecheese.cheese_metal_ingot": "Cheese Metal Ingot",
+  "item.coffeecheese.grilled_cheese_metal_ingot": "Grilled Cheese Metal Ingot",
+  "item.coffeecheese.ham_raw_metal_ingot": "Raw Ham Metal Ingot",
+  "item.coffeecheese.ham_cooked_metal_ingot": "Cooked Ham Metal Ingot",
+
+  "item.coffeecheese.cheese_cutter": "Cheese Cutter",
+  "item.coffeecheese.grinding_stones": "Grinding Stones",
+
+  "item.coffeecheese.milk_curdler": "Milk Curdler",
+  "item.coffeecheese.rolling_pin": "Rolling Pin",
+
+  "item.coffeecheese.knife": "Knife",
+  "item.coffeecheese.cheese_knife": "Cheese Knife",
+  "item.coffeecheese.grilled_cheese_knife": "Grilled Cheese Knife",
+
+  "item.coffeecheese.ham_raw_knife": "Raw Ham Knife",
+  "item.coffeecheese.ham_cooked_knife": "Cooked Ham Knife",
+
+  "item.coffeecheese.cheese_metal_pickaxe": "Cheese Metal Pickaxe",
+  "item.coffeecheese.cheese_metal_axe": "Cheese Metal Axe",
+  "item.coffeecheese.cheese_metal_hoe": "Cheese Metal Hoe",
+  "item.coffeecheese.cheese_metal_shovel": "Cheese Metal Shovel",
+  "item.coffeecheese.cheese_metal_sword": "Cheese Metal Sword",
+
+  "item.coffeecheese.grilled_cheese_metal_pickaxe": "Grilled Cheese Metal Pickaxe",
+  "item.coffeecheese.grilled_cheese_metal_axe": "Grilled Cheese Metal Axe",
+  "item.coffeecheese.grilled_cheese_metal_hoe": "Grilled Cheese Metal Hoe",
+  "item.coffeecheese.grilled_cheese_metal_shovel": "Grilled Cheese Metal Shovel",
+  "item.coffeecheese.grilled_cheese_metal_sword": "Grilled Cheese Metal Sword",
+
+  "item.coffeecheese.ham_raw_metal_pickaxe": "Raw Ham Metal Pickaxe",
+  "item.coffeecheese.ham_raw_metal_axe": "Raw Ham Metal Axe",
+  "item.coffeecheese.ham_raw_metal_hoe": "Raw Ham Metal Hoe",
+  "item.coffeecheese.ham_raw_metal_shovel": "Raw Ham Metal Shovel",
+  "item.coffeecheese.ham_raw_metal_sword": "Raw Ham Metal Sword",
+
+  "item.coffeecheese.ham_cooked_metal_pickaxe": "Cooked Ham Metal Pickaxe",
+  "item.coffeecheese.ham_cooked_metal_axe": "Cooked Ham Metal Axe",
+  "item.coffeecheese.ham_cooked_metal_hoe": "Cooked Ham Metal Hoe",
+  "item.coffeecheese.ham_cooked_metal_shovel": "Cooked Ham Metal Shovel",
+  "item.coffeecheese.ham_cooked_metal_sword": "Cooked Ham Metal Sword",
+
+  "item.coffeecheese.cheese_metal_helmet": "Cheese Metal Helmet",
+  "item.coffeecheese.cheese_metal_chestplate": "Cheese Metal Chestplate",
+  "item.coffeecheese.cheese_metal_leggings": "Cheese Metal Leggings",
+  "item.coffeecheese.cheese_metal_boots": "Cheese Metal Boots",
+
+  "item.coffeecheese.grilled_cheese_metal_helmet": "Grilled Cheese Metal Helmet",
+  "item.coffeecheese.grilled_cheese_metal_chestplate": "Grilled Cheese Metal Chestplate",
+  "item.coffeecheese.grilled_cheese_metal_leggings": "Grilled Cheese Metal Leggings",
+  "item.coffeecheese.grilled_cheese_metal_boots": "Grilled Cheese Metal Boots",
+
+  "item.coffeecheese.ham_raw_metal_helmet": "Raw Ham Metal Helmet",
+  "item.coffeecheese.ham_raw_metal_chestplate": "Raw Ham Metal Chestplate",
+  "item.coffeecheese.ham_raw_metal_leggings": "Raw Ham Metal Leggings",
+  "item.coffeecheese.ham_raw_metal_boots": "Raw Ham Metal Boots",
+
+  "item.coffeecheese.ham_cooked_metal_helmet": "Cooked Ham Metal Helmet",
+  "item.coffeecheese.ham_cooked_metal_chestplate": "Cooked Ham Metal Chestplate",
+  "item.coffeecheese.ham_cooked_metal_leggings": "Cooked Ham Metal Leggings",
+  "item.coffeecheese.ham_cooked_metal_boots": "Cooked Ham Metal Boots",
+
+  "item.coffeecheese.cheese_suit_hat": "Cheese Suit Hat",
+  "item.coffeecheese.cheese_suit_chestplate": "Cheese Suit Chestplate",
+
+  "item.coffeecheese.ham_suit_hat": "Ham Suit Hat",
+  "item.coffeecheese.ham_suit_chestplate": "Ham Suit Chestplate",
+  "item.coffeecheese.ham_suit_boots": "Ham Suit Boots",
+
+  "item.coffeecheese.block_o_cheese": "Block O' Cheese",
+  "item.coffeecheese.cheese_ball": "Cheese Ball",
+  "item.coffeecheese.cheese_slice": "Cheese Slice",
+
+  "item.coffeecheese.salt": "Rock Salt",
+  "item.coffeecheese.flour": "Flour",
+
+  "item.coffeecheese.bacon_raw": "Raw Bacon",
+  "item.coffeecheese.bacon_cooked": "Cooked Bacon",
+
+  "item.coffeecheese.bread_slice": "Bread Slice",
+
+  "item.coffeecheese.dough": "Dough",
+
+  "item.coffeecheese.egg_cracked": "Cracked Egg",
+  "item.coffeecheese.egg_cooked": "Cooked Egg",
+  "item.coffeecheese.egg_green": "Green Egg",
+
+  "item.coffeecheese.ham_raw": "Raw Ham",
+  "item.coffeecheese.ham_cooked": "Cooked Ham",
+  "item.coffeecheese.ham_green": "Green Ham",
+
+  "item.coffeecheese.toast": "Toast",
+  "item.coffeecheese.toast_french": "French Toast",
+  "item.coffeecheese.toast_bacon": "Bacon On Toast",
+
+  "item.coffeecheese.cracker": "Cracker",
+  "item.coffeecheese.cracker_cheese": "Cheese N' Cracker",
+  "item.coffeecheese.cracker_cheese_grilled": "Grilled Cheese N' Cracker",
+  "item.coffeecheese.cracker_ham": "Ham N' Cracker",
+  "item.coffeecheese.cracker_ham_grilled": "Grilled Ham N' Cracker",
+  "item.coffeecheese.cracker_cheese_ham": "Cheese, Ham N' Cracker",
+  "item.coffeecheese.cracker_cheese_ham_grilled": "Grilled Cheese, Ham N' Cracker",
+
+  "item.coffeecheese.toastie_cheese": "Cheese Toastie",
+  "item.coffeecheese.toastie_cheese_grilled": "Grilled Cheese Toastie",
+  "item.coffeecheese.toastie_cheese_ham": "Ham N' Cheese Toastie",
+  "item.coffeecheese.toastie_cheese_ham_grilled": "Grilled Ham N' Cheese Toastie",
+  "item.coffeecheese.toastie_cheese_ham_cooked": "(Cooked) Ham N' Cheese Toastie",
+  "item.coffeecheese.toastie_cheese_ham_cooked_grilled": "Grilled (Cooked) Ham N' Cheese Toastie",
+
+  "item.coffeecheese.pineapple_plant": "Pineapple Plant",
+  "item.coffeecheese.pineapple": "Pineapple",
+  "item.coffeecheese.pineapple_ring": "Pineapple Ring",
+  "item.coffeecheese.pineapple_bit": "Bit O' Pineapple",
+
+  "item.coffeecheese.pizza": "Pizza Base",
+  "item.coffeecheese.pizza_cheese": "Cheesy Pizza",
+  "item.coffeecheese.pizza_cheese_cooked": "Cooked Cheesy Pizza",
+  "item.coffeecheese.pizza_cheese_ham": "Cheesy Ham Pizza",
+  "item.coffeecheese.pizza_cheese_ham_cooked": "Cooked Cheesy Ham Pizza",
+  "item.coffeecheese.pizza_cheese_ham_pineapple": "Cheesy Ham N' Pineapple Pizza",
+  "item.coffeecheese.pizza_cheese_ham_pineapple_cooked": "Cooked Cheesy Ham N' Pineapple Pizza",
+
+  "item.coffeecheese.oil_bucket": "Oil Bucket",
+  "item.coffeecheese.melted_cheese_bucket": "Melted Cheese Bucket",
+
+  "item.coffeecheese.cheese_foodie_spawn_egg": "Cheese Foodie Spawn Egg",
+  "item.coffeecheese.grilled_cheese_foodie_spawn_egg": "Grilled Cheese Foodie Spawn Egg",
+  "item.coffeecheese.ham_raw_foodie_spawn_egg": "Raw Ham Foodie Spawn Egg",
+  "item.coffeecheese.ham_cooked_foodie_spawn_egg": "Cooked Ham Foodie Spawn Egg",
+
+  "item.coffeecheese.cheese_boat": "Cheese Foodie Boat",
+  "item.coffeecheese.grilled_cheese_boat": "Grilled Cheese Boat",
+  "item.coffeecheese.ham_raw_boat": "Raw Ham Boat",
+  "item.coffeecheese.ham_cooked_boat": "Cooked Ham Boat",
+
+  "item.coffeecheese.cheese_bit": "Bit O' Cheese",
+  "item.coffeecheese.ham_bit": "Bit O' Ham",
+
+  "item.coffeecheese.wooden_gear": "Wooden Gear",
+
+  "entity.coffeecheese.cheese_foodie": "Cheese Foodie",
+  "entity.coffeecheese.grilled_cheese_foodie": "Grilled Cheese Foodie",
+  "entity.coffeecheese.ham_raw_foodie": "Raw Ham Foodie",
+  "entity.coffeecheese.ham_cooked_foodie": "Cooked Ham Foodie",
+
+  "entity.coffeecheese.food_boat": "Food Boat",
+
+  "container.coffeecheese.cheese_draw": "Cheese Draw",
+  "container.coffeecheese.grilled_cheese_draw": "Grilled Cheese Draw",
+  "container.coffeecheese.ham_raw_draw": "Raw Ham Draw",
+  "container.coffeecheese.ham_cooked_draw": "Cooked Ham Draw",
+
+  "container.coffeecheese.grill": "Grill",
+  "container.coffeecheese.melter": "Melter",
+
+  "gui.coffeecheese.category.grill.oil": "Oil: %smb/%smb",
+  "gui.coffeecheese.category.melter.fluid": "%s: %smb/%smb",
+
+  "biome.coffeecheese.cheese_forest": "Cheese Forest",
+  "biome.coffeecheese.cheese_plains": "Cheese Plains",
+  "biome.coffeecheese.grilled_cheese_forest": "Grilled Cheese Forest",
+  "biome.coffeecheese.grilled_cheese_plains": "Grilled Cheese Plains",
+  "biome.coffeecheese.ham_raw_forest": "Raw Ham Forest",
+  "biome.coffeecheese.ham_raw_plains": "Raw Ham Plains",
+  "biome.coffeecheese.ham_cooked_forest": "Cooked Ham Forest",
+  "biome.coffeecheese.ham_cooked_plains": "Cooked Ham Plains",
+
+  "itemGroup.coffeecheese.foods": "Cheese Mod Foods",
+  "itemGroup.coffeecheese.armor_tools": "Cheese Mod Armor & Tools",
+  "itemGroup.coffeecheese.all": "Cheese Mod"
+}

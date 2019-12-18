@@ -74,16 +74,23 @@ minecraft {
 repositories {
     jcenter()
     mavenLocal()
+
     maven {
-        // location of the maven that hosts JEI files
-        name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
     maven {
-        // location of a maven mirror for JEI files, as a fallback
-        name = "ModMaven"
-        url = "https://modmaven.k-4u.nl"
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
     }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${project.mcVersion}-${project.forgeVersion}"
+
+    compileOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}")
+
+    compile "filters:Filters-${project.filtersVersion}:${project.mcVersion}:deobf"
 }
 
 processResources {
@@ -99,13 +106,6 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'META-INF/mods.toml'
     }
-}
-
-dependencies {
-    minecraft "net.minecraftforge:forge:${project.mcVersion}-${project.forgeVersion}"
-
-    compileOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}")
 }
 
 jar {

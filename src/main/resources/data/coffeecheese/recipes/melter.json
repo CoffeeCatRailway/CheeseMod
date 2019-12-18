@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    "INI"
+  ],
+  "key": {
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "N": [
+      { "item": "minecraft:netherrack" },
+      { "tag": "minecraft:logs" },
+      { "tag": "minecraft:planks" }
+    ]
+  },
+  "result": {
+    "item": "coffeecheese:melter"
+  }
+}

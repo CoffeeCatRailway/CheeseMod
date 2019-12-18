@@ -1,0 +1,11 @@
+{
+  "type": "coffeecheese:melting",
+  "ingredient": {
+    "tag": "coffeecheese:slabs/cheese"
+  },
+  "result": {
+    "fluid": "coffeecheese:melted_cheese",
+    "amount": 500
+  },
+  "cookingtime": 25
+}

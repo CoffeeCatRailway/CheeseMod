@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B B",
+    "SBS",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "coffeecheese:ham_bit"
+    },
+    "S": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:ham_suit_chestplate"
+  }
+}

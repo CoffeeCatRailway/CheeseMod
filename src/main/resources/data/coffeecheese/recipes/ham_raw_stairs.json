@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B  ",
+    "BB ",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "coffeecheese:ham_raw_block"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:ham_raw_stairs",
+    "count": 4
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "coffeecheese:grilling",
+  "ingredient": {
+    "item": "coffeecheese:cheese_planks"
+  },
+  "result": "coffeecheese:grilled_cheese_planks",
+  "experience": 0.5,
+  "cookingtime": 90,
+  "oil": 4
+}

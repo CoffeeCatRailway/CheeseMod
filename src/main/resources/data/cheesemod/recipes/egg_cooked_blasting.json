@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": [
-    { "item": "cheesemod:egg_cracked" }
-  ],
-  "result": "cheesemod:egg_cooked",
-  "experience": 0.15,
-  "cookingtime": 50
-}

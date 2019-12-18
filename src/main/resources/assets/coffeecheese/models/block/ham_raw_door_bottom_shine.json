@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_bottom",
+    "textures": {
+        "bottom": "coffeecheese:block/ham_raw_door_bottom_shine",
+        "top": "coffeecheese:block/ham_raw_door_top"
+    }
+}

@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "cheesemod:ham_raw_knife",
-    "cheesemod:ham_cooked_knife"
+    "coffeecheese:ham_raw_knife",
+    "coffeecheese:ham_cooked_knife"
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "coffeecheese:pizza_cheese" },
+    { "tag": "forge:ham" }
+  ],
+  "result": {
+    "item": "coffeecheese:pizza_cheese_ham"
+  }
+}

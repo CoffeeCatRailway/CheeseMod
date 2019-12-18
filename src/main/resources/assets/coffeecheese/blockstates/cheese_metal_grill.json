@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=south": {
+      "model": "coffeecheese:block/cheese_metal_grill"
+    },
+    "facing=north": {
+      "model": "coffeecheese:block/cheese_metal_grill",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "coffeecheese:block/cheese_metal_grill",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "coffeecheese:block/cheese_metal_grill",
+      "y": 90
+    }
+  }
+}

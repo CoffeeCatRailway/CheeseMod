@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "coffeecheese:ham_raw_wood_stairs",
+    "#coffeecheese:stairs/wooden/ham_cooked"
+  ]
+}

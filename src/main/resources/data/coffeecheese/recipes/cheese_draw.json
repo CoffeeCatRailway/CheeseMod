@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PLP",
+    "BCP",
+    "PLP"
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:chests/wooden"
+    },
+    "P": {
+      "item": "coffeecheese:cheese_planks"
+    },
+    "L": {
+      "tag": "coffeecheese:logs/cheese"
+    },
+    "B": {
+      "tag": "coffeecheese:food_blocks/cheese"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:cheese_draw"
+  }
+}

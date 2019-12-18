@@ -1,8 +1,0 @@
-{
-  "parent": "block/stairs",
-  "textures": {
-    "bottom": "cheesemod:block/cheese_block",
-    "top": "cheesemod:block/cheese_block",
-    "side": "cheesemod:block/cheese_block"
-  }
-}

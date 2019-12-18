@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": [
+    { "item": "coffeecheese:ham_raw_block" }
+  ],
+  "result": "coffeecheese:ham_cooked_block",
+  "experience": 0.45,
+  "cookingtime": 150
+}

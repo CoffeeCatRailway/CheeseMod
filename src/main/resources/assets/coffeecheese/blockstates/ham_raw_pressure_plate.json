@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "powered=false": { "model": "coffeecheese:block/ham_raw_pressure_plate" },
+    "powered=true": { "model": "coffeecheese:block/ham_raw_pressure_plate_down" }
+  }
+}

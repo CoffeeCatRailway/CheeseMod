@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "coffeecheese:block/ham_raw_draw"
+    },
+    "facing=south": {
+      "model": "coffeecheese:block/ham_raw_draw",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "coffeecheese:block/ham_raw_draw",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "coffeecheese:block/ham_raw_draw",
+      "y": 90
+    }
+  }
+}

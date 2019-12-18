@@ -1,0 +1,6 @@
+{
+  "parent": "block/fence_post",
+  "textures": {
+    "texture": "coffeecheese:block/ham_raw_block_shine"
+  }
+}

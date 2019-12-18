@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "coffeecheese:ham_raw_block",
+    "#coffeecheese:food_blocks/ham_cooked"
+  ]
+}

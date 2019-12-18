@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "tag": "forge:knives" },
+    { "item": "minecraft:porkchop" }
+  ],
+  "result": {
+    "item": "coffeecheese:ham_raw",
+    "count": 3
+  }
+}

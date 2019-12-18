@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "coffeecheese:grinding_stones", "data": 32767 },
+    [
+      { "tag": "forge:stone" },
+      { "tag": "forge:cobblestone" }
+    ]
+  ],
+  "result": {
+    "item": "coffeecheese:salt",
+    "count": 2
+  }
+}

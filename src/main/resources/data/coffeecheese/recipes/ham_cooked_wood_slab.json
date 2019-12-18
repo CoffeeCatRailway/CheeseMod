@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "coffeecheese:ham_cooked_planks"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:ham_cooked_wood_slab",
+    "count": 6
+  }
+}

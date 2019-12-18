@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "cheesemod:toast",
-    "cheesemod:toast_french",
-    "cheesemod:toast_bacon"
+    "coffeecheese:toast",
+    "coffeecheese:toast_french",
+    "coffeecheese:toast_bacon"
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "type": "coffeecheese:grilling",
+  "ingredient": {
+    "item": "coffeecheese:pizza_cheese_ham_pineapple"
+  },
+  "result": "coffeecheese:pizza_cheese_ham_pineapple_cooked",
+  "experience": 0.35,
+  "cookingtime": 75,
+  "oil": 9
+}

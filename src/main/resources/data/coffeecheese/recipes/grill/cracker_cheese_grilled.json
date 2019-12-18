@@ -1,0 +1,10 @@
+{
+  "type": "coffeecheese:grilling",
+  "ingredient": {
+    "item": "coffeecheese:cracker_cheese"
+  },
+  "result": "coffeecheese:cracker_cheese_grilled",
+  "experience": 0.1,
+  "cookingtime": 50,
+  "oil": 4
+}

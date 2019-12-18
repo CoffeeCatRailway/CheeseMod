@@ -1,0 +1,6 @@
+{
+  "parent": "block/fence_post",
+  "textures": {
+    "texture": "coffeecheese:block/grilled_cheese_block_holes"
+  }
+}

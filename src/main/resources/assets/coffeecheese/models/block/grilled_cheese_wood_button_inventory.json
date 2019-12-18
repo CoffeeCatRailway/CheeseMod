@@ -1,0 +1,6 @@
+{
+    "parent": "block/button_inventory",
+    "textures": {
+        "texture": "coffeecheese:block/grilled_cheese_planks"
+    }
+}

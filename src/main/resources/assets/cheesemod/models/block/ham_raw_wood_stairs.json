@@ -1,8 +1,0 @@
-{
-  "parent": "block/stairs",
-  "textures": {
-    "bottom": "cheesemod:block/ham_raw_planks",
-    "top": "cheesemod:block/ham_raw_planks",
-    "side": "cheesemod:block/ham_raw_planks"
-  }
-}
