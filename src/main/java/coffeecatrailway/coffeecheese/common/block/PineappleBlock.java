@@ -1,6 +1,6 @@
 package coffeecatrailway.coffeecheese.common.block;
 
-import coffeecatrailway.coffeecheese.core.ModItems;
+import coffeecatrailway.coffeecheese.registry.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropsBlock;
@@ -42,6 +42,6 @@ public class PineappleBlock extends CropsBlock {
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return ModItems.PINEAPPLE_PLANT;
+        return ModItems.PINEAPPLE_PLANT.get();
     }
 }

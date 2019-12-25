@@ -1,8 +1,8 @@
 package coffeecatrailway.coffeecheese.common.entity;
 
-import coffeecatrailway.coffeecheese.core.ModEntityTypes;
-import coffeecatrailway.coffeecheese.core.ModItems;
-import coffeecatrailway.coffeecheese.core.ModParticles;
+import coffeecatrailway.coffeecheese.registry.ModEntityTypes;
+import coffeecatrailway.coffeecheese.registry.ModItems;
+import coffeecatrailway.coffeecheese.registry.ModParticles;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -49,8 +49,8 @@ public class CheeseBallEntity extends ProjectileItemEntity {
     }
 
     @Override
-    protected Item func_213885_i() {
-        return ModItems.CHEESE_BALL;
+    protected Item getDefaultItem() {
+        return ModItems.CHEESE_BALL.get();
     }
 
     @OnlyIn(Dist.CLIENT)

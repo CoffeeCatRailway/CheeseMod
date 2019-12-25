@@ -1,7 +1,7 @@
 package coffeecatrailway.coffeecheese.common.item.crafting;
 
-import coffeecatrailway.coffeecheese.core.ModBlocks;
-import coffeecatrailway.coffeecheese.core.ModRecipeTypes;
+import coffeecatrailway.coffeecheese.registry.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModRecipeTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.AbstractCookingRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -24,7 +24,7 @@ public class GrillRecipe extends AbstractCookingRecipe {
     }
 
     public ItemStack getIcon() {
-        return new ItemStack(ModBlocks.GRILL);
+        return new ItemStack(ModBlocks.GRILL.get());
     }
 
     @Override

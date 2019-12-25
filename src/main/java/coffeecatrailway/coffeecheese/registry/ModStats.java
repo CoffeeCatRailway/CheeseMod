@@ -1,4 +1,4 @@
-package coffeecatrailway.coffeecheese.core;
+package coffeecatrailway.coffeecheese.registry;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
 import net.minecraft.stats.IStatFormatter;

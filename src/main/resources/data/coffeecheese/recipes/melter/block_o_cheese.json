@@ -4,7 +4,7 @@
     "item": "coffeecheese:block_o_cheese"
   },
   "result": {
-    "fluid": "coffeecheese:melted_cheese",
+    "fluid": "coffeecheese:melted_cheese_still",
     "amount": 100
   },
   "cookingtime": 50

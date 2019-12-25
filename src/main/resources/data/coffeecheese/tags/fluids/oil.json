@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "coffeecheese:oil",
+    "coffeecheese:oil_still",
     "coffeecheese:oil_flowing"
   ]
 }

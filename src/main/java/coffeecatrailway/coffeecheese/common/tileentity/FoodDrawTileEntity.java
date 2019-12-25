@@ -3,7 +3,7 @@ package coffeecatrailway.coffeecheese.common.tileentity;
 import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.client.gui.container.FoodDrawContainer;
 import coffeecatrailway.coffeecheese.common.block.FoodDrawBlock;
-import coffeecatrailway.coffeecheese.core.ModTileEntityTypes;
+import coffeecatrailway.coffeecheese.registry.ModTileEntities;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -35,7 +35,7 @@ public class FoodDrawTileEntity extends LockableLootTileEntity implements ITicka
     private int ticksSinceSync;
 
     public FoodDrawTileEntity() {
-        super(ModTileEntityTypes.FOOD_DRAW);
+        super(ModTileEntities.FOOD_DRAW.get());
     }
 
     @Override

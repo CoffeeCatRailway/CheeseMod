@@ -2,7 +2,7 @@ package coffeecatrailway.coffeecheese.common.block;
 
 import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
 import coffeecatrailway.coffeecheese.common.tileentity.MelterTileEntity;
-import coffeecatrailway.coffeecheese.core.ModStats;
+import coffeecatrailway.coffeecheese.registry.ModStats;
 import coffeecatrailway.coffeecheese.util.VoxelShapeHelper;
 import com.google.common.collect.Lists;
 import net.minecraft.block.*;

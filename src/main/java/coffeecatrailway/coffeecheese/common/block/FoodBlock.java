@@ -1,6 +1,6 @@
 package coffeecatrailway.coffeecheese.common.block;
 
-import coffeecatrailway.coffeecheese.ModConfig;
+import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -25,7 +25,7 @@ public class FoodBlock extends Block {
 
     @Override
     public boolean isStickyBlock(BlockState state) {
-        return ModConfig.stickyFoodBlock.get();
+        return ModCheeseConfig.stickyFoodBlock.get();
     }
 
     @Override

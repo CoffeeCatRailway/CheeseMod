@@ -1,6 +1,6 @@
 package coffeecatrailway.coffeecheese.common.world.feature.tree;
 
-import coffeecatrailway.coffeecheese.core.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -26,12 +26,12 @@ public class CheeseTreeFeature extends TreeFeature<NoFeatureConfig> {
         super(dynamicFunction, doBlockNofityOnPlace);
         if (grilled) {
             this.minTreeHeight = 6;
-            this.trunk = ModBlocks.GRILLED_CHEESE_LOG.getDefaultState();
-            this.leaf = ModBlocks.GRILLED_CHEESE_LEAVES.getDefaultState();
+            this.trunk = ModBlocks.GRILLED_CHEESE_LOG.get().getDefaultState();
+            this.leaf = ModBlocks.GRILLED_CHEESE_LEAVES.get().getDefaultState();
         } else {
             this.minTreeHeight = 4;
-            this.trunk = ModBlocks.CHEESE_LOG.getDefaultState();
-            this.leaf = ModBlocks.CHEESE_LEAVES.getDefaultState();
+            this.trunk = ModBlocks.CHEESE_LOG.get().getDefaultState();
+            this.leaf = ModBlocks.CHEESE_LEAVES.get().getDefaultState();
         }
     }
 
@@ -81,7 +81,7 @@ public class CheeseTreeFeature extends TreeFeature<NoFeatureConfig> {
                             int i2 = l1 - position.getZ();
                             if (Math.abs(k1) != j4 || Math.abs(i2) != j4 && l3 != 0) {
                                 BlockPos blockpos = new BlockPos(j1, l2, l1);
-                                if (isAirOrLeaves(world, blockpos) || func_214576_j(world, blockpos)) {
+                                if (isAirOrLeaves(world, blockpos) || isSoil(world, blockpos)) {
                                     this.setLogState(changedBlocks, world, blockpos, this.leaf, mutableBoundingBox);
                                 }
                             }
@@ -90,7 +90,7 @@ public class CheeseTreeFeature extends TreeFeature<NoFeatureConfig> {
                 }
 
                 for (int i3 = 0; i3 < i; ++i3) {
-                    if (isAirOrLeaves(world, position.up(i3)) || func_214576_j(world, position.up(i3))) {
+                    if (isAirOrLeaves(world, position.up(i3)) || isSoil(world, position.up(i3))) {
                         this.setLogState(changedBlocks, world, position.up(i3), this.trunk, mutableBoundingBox);
                     }
                 }

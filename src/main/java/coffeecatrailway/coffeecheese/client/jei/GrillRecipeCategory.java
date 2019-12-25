@@ -2,9 +2,9 @@ package coffeecatrailway.coffeecheese.client.jei;
 
 import coffeecatrailway.coffeecheese.client.gui.screen.GrillScreen;
 import coffeecatrailway.coffeecheese.common.item.crafting.GrillRecipe;
-import coffeecatrailway.coffeecheese.core.ModBlocks;
-import coffeecatrailway.coffeecheese.core.ModFluids;
-import coffeecatrailway.coffeecheese.core.ModItems;
+import coffeecatrailway.coffeecheese.registry.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModFluids;
+import coffeecatrailway.coffeecheese.registry.ModItems;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -43,7 +43,7 @@ public class GrillRecipeCategory implements IRecipeCategory<GrillRecipe> {
 
     public GrillRecipeCategory(IGuiHelper guiHelper) {
         background = guiHelper.createDrawable(GrillScreen.GUI_TEXTURE, 33, 6, 107, 68);
-        icon = guiHelper.createDrawableIngredient(new ItemStack(ModBlocks.GRILL));
+        icon = guiHelper.createDrawableIngredient(new ItemStack(ModBlocks.GRILL.get()));
 
         flame = guiHelper.drawableBuilder(GrillScreen.GUI_TEXTURE, 176, 0, 14, 14)
                 .buildAnimated(200, IDrawableAnimated.StartDirection.TOP, true);
@@ -54,7 +54,7 @@ public class GrillRecipeCategory implements IRecipeCategory<GrillRecipe> {
                 .buildAnimated(100, IDrawableAnimated.StartDirection.TOP, true);
         oilMetor = guiHelper.createDrawable(GrillScreen.GUI_TEXTURE, 176, 32, 16, 64);
 
-        localizedName = ModBlocks.GRILL.getNameTextComponent().getString();
+        localizedName = ModBlocks.GRILL.get().getNameTextComponent().getString();
     }
 
     @Override
@@ -85,9 +85,9 @@ public class GrillRecipeCategory implements IRecipeCategory<GrillRecipe> {
     @Override
     public void setIngredients(GrillRecipe recipe, IIngredients ingredients) {
         List<Ingredient> inputs = new ArrayList<>(recipe.getIngredients());
-        inputs.add(Ingredient.fromItems(ModItems.OIL_BUCKET));
+        inputs.add(Ingredient.fromItems(ModFluids.OIL_BUCKET.get()));
         ingredients.setInputIngredients(inputs);
-        ingredients.setInput(VanillaTypes.FLUID, new FluidStack(ModFluids.OIL_SOURCE, recipe.getOil()));
+        ingredients.setInput(VanillaTypes.FLUID, new FluidStack(ModFluids.OIL_S.get(), recipe.getOil()));
         ingredients.setOutput(VanillaTypes.ITEM, recipe.getResult());
     }
 

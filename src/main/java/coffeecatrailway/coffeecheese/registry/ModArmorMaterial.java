@@ -1,4 +1,4 @@
-package coffeecatrailway.coffeecheese.core;
+package coffeecatrailway.coffeecheese.registry;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
@@ -19,26 +19,26 @@ public enum ModArmorMaterial implements IArmorMaterial {
 
     /// Cheese ///
     CHEESE("cheese", 17, new int[]{2, 4, 4, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.5f, () -> {
-        return Ingredient.fromItems(ModItems.CHEESE_METAL_INGOT);
+        return Ingredient.fromItems(ModItems.CHEESE_METAL_INGOT.get());
     }),
     GRILLED_CHEESE("grilled_cheese", 20, new int[]{4, 4, 4, 2}, 11, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1.8f, () -> {
-        return Ingredient.fromItems(ModItems.GRILLED_CHEESE_METAL_INGOT);
+        return Ingredient.fromItems(ModItems.GRILLED_CHEESE_METAL_INGOT.get());
     }),
 
     /// Ham ///
     HAM_RAW("ham_raw", 10, new int[]{2, 2, 3, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.3f, () -> {
-        return Ingredient.fromItems(ModItems.CHEESE_METAL_INGOT);
+        return Ingredient.fromItems(ModItems.CHEESE_METAL_INGOT.get());
     }),
     HAM_COOKED("ham_cooked", 10, new int[]{3, 3, 4, 3}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.4f, () -> {
-        return Ingredient.fromItems(ModItems.GRILLED_CHEESE_METAL_INGOT);
+        return Ingredient.fromItems(ModItems.GRILLED_CHEESE_METAL_INGOT.get());
     }),
 
     /// Food Suit ///
     CHEESE_SUIT("cheese_suit", 15, new int[]{2, 1, 1, 1}, 9, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.5f, () -> {
-        return Ingredient.fromItems(ModItems.CHEESE_SLICE);
+        return Ingredient.fromItems(ModItems.CHEESE_SLICE.get());
     }),
     HAM_SUIT("ham_suit", 15, new int[]{2, 2, 2, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.5f, () -> {
-        return Ingredient.fromItems(ModItems.CHEESE_SLICE);
+        return Ingredient.fromItems(ModItems.CHEESE_SLICE.get());
     });
 
     private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};

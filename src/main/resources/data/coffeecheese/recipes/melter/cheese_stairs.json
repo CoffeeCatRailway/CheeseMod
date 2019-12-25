@@ -1,10 +1,11 @@
 {
   "type": "coffeecheese:melting",
-  "ingredient": {
-    "tag": "coffeecheese:stairs/cheese"
-  },
+  "ingredient": [
+    { "tag": "coffeecheese:stairs/cheese" },
+    { "tag": "coffeecheese:stairs/grilled_cheese" }
+  ],
   "result": {
-    "fluid": "coffeecheese:melted_cheese",
+    "fluid": "coffeecheese:melted_cheese_still",
     "amount": 500
   },
   "cookingtime": 75

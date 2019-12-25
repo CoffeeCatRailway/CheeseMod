@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "coffeecheese:cracker",
+    "coffeecheese:cracker_cheese",
+    "coffeecheese:cracker_cheese_grilled",
+    "coffeecheese:cracker_ham",
+    "coffeecheese:cracker_ham_grilled",
+    "coffeecheese:cracker_cheese_ham",
+    "coffeecheese:cracker_cheese_ham_grilled"
+  ]
+}

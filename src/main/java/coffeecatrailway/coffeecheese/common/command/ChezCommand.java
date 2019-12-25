@@ -1,6 +1,6 @@
 package coffeecatrailway.coffeecheese.common.command;
 
-import coffeecatrailway.coffeecheese.core.ModItems;
+import coffeecatrailway.coffeecheese.registry.ModItems;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import net.minecraft.command.CommandSource;
@@ -17,11 +17,11 @@ public class ChezCommand {
     public static void register(CommandDispatcher<CommandSource> dispatcher) {
         dispatcher.register(Commands.literal("chez").requires(source -> source.hasPermissionLevel(3)).executes(context -> {
             ServerPlayerEntity player = context.getSource().asPlayer();
-            player.inventory.addItemStackToInventory(new ItemStack(ModItems.CHEESE_SLICE));
+            player.inventory.addItemStackToInventory(new ItemStack(ModItems.CHEESE_SLICE.get()));
             return 1;
         }).then(Commands.argument("count", IntegerArgumentType.integer(0)).executes(context -> {
             ServerPlayerEntity player = context.getSource().asPlayer();
-            player.inventory.addItemStackToInventory(new ItemStack(ModItems.CHEESE_SLICE, IntegerArgumentType.getInteger(context, "count")));
+            player.inventory.addItemStackToInventory(new ItemStack(ModItems.CHEESE_SLICE.get(), IntegerArgumentType.getInteger(context, "count")));
             return 1;
         })));
     }

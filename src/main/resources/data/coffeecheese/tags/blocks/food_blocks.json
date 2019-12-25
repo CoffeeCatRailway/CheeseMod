@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "#coffeecheese:food_blocks/cheese",
-    "#coffeecheese:food_blocks/ham_raw"
+    "#coffeecheese:food_blocks/grilled_cheese",
+    "#coffeecheese:food_blocks/ham_raw",
+    "#coffeecheese:food_blocks/ham_cooked"
   ]
 }

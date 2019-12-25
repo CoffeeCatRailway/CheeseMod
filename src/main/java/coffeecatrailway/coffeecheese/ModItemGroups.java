@@ -1,7 +1,7 @@
 package coffeecatrailway.coffeecheese;
 
-import coffeecatrailway.coffeecheese.core.ModBlocks;
-import coffeecatrailway.coffeecheese.core.ModItems;
+import coffeecatrailway.coffeecheese.registry.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -32,7 +32,7 @@ public class ModItemGroups {
             last = System.currentTimeMillis();
 
             if (now > cooldown) {
-                item = ModItems.FOODS.get(new Random().nextInt(ModItems.FOODS.size() - 1));
+                item = ModItems.FOODS.get(new Random().nextInt(ModItems.FOODS.size() - 1)).get();
                 now = 0;
             }
             return new ItemStack(item);
@@ -54,7 +54,7 @@ public class ModItemGroups {
 
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(ModItems.CHEESE_METAL_SWORD);
+            return new ItemStack(ModItems.CHEESE_METAL_SWORD.get());
         }
 
         @Override
@@ -67,7 +67,7 @@ public class ModItemGroups {
 
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(ModBlocks.CHEESE_BLOCK);
+            return new ItemStack(ModBlocks.CHEESE_BLOCK.get());
         }
 
         @Override

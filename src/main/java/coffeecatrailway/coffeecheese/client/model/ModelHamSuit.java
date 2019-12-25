@@ -1,6 +1,6 @@
 package coffeecatrailway.coffeecheese.client.model;
 
-import coffeecatrailway.coffeecheese.ModConfig;
+import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
@@ -49,8 +49,8 @@ public class ModelHamSuit extends BipedModel<LivingEntity> {
         leg_right = new RendererModel(this);
         leg_left = new RendererModel(this);
 
-        double s = ModConfig.MODIFIERS.hamSuitScale.get();
-        double s_binding = ModConfig.MODIFIERS.hamSuitBindingScale.get();
+        double s = ModCheeseConfig.hamSuitScale.get();
+        double s_binding = ModCheeseConfig.hamSuitBindingScale.get();
 
         // Hat
         pig_head = new RendererModel(this, 0, 0);

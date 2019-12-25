@@ -2,7 +2,7 @@ package coffeecatrailway.coffeecheese.client.jei;
 
 import coffeecatrailway.coffeecheese.client.gui.screen.MelterScreen;
 import coffeecatrailway.coffeecheese.common.item.crafting.MelterRecipe;
-import coffeecatrailway.coffeecheese.core.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import com.mojang.blaze3d.platform.GlStateManager;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
@@ -43,7 +43,7 @@ public class MelterRecipeCategory implements IRecipeCategory<MelterRecipe> {
         this.guiHelper = guiHelper;
 
         background = guiHelper.createDrawable(MelterScreen.GUI_TEXTURE, 42, 6, 89, 68);
-        icon = guiHelper.createDrawableIngredient(new ItemStack(ModBlocks.MELTER));
+        icon = guiHelper.createDrawableIngredient(new ItemStack(ModBlocks.MELTER.get()));
 
         flame = guiHelper.drawableBuilder(MelterScreen.GUI_TEXTURE, 176, 0, 14, 14)
                 .buildAnimated(200, IDrawableAnimated.StartDirection.TOP, true);
@@ -52,7 +52,7 @@ public class MelterRecipeCategory implements IRecipeCategory<MelterRecipe> {
 
         fluidMetor = guiHelper.createDrawable(MelterScreen.GUI_TEXTURE, 176, 32, 32, 64);
 
-        localizedName = ModBlocks.MELTER.getNameTextComponent().getString();
+        localizedName = ModBlocks.MELTER.get().getNameTextComponent().getString();
     }
 
     @Override

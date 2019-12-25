@@ -1,9 +1,9 @@
 package coffeecatrailway.coffeecheese.common.block;
 
 import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
-import coffeecatrailway.coffeecheese.core.ModFluids;
-import coffeecatrailway.coffeecheese.core.ModItems;
-import coffeecatrailway.coffeecheese.core.ModStats;
+import coffeecatrailway.coffeecheese.registry.ModFluids;
+import coffeecatrailway.coffeecheese.registry.ModItems;
+import coffeecatrailway.coffeecheese.registry.ModStats;
 import coffeecatrailway.coffeecheese.util.VoxelShapeHelper;
 import com.google.common.collect.Lists;
 import net.minecraft.block.*;
@@ -159,7 +159,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
     public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         if (world.isRemote)
             return true;
-        else if (player.getHeldItem(hand).getItem() == ModItems.OIL_BUCKET && hand == Hand.MAIN_HAND) {
+        else if (player.getHeldItem(hand).getItem() == ModFluids.OIL_BUCKET.get() && hand == Hand.MAIN_HAND) {
             if (world.getTileEntity(pos) instanceof GrillTileEntity) {
                 GrillTileEntity tile = (GrillTileEntity) world.getTileEntity(pos);
                 int oil = tile.getTank().getFluidAmount();
@@ -167,7 +167,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
                     if (!player.abilities.isCreativeMode)
                         player.setHeldItem(hand, new ItemStack(Items.BUCKET));
 
-                    tile.getTank().fill(new FluidStack(ModFluids.OIL_SOURCE, FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
+                    tile.getTank().fill(new FluidStack(ModFluids.OIL_S.get(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
                     world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
                     return true;
                 }

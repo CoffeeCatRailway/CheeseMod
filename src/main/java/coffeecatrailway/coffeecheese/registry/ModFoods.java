@@ -1,6 +1,6 @@
-package coffeecatrailway.coffeecheese.core;
+package coffeecatrailway.coffeecheese.registry;
 
-import coffeecatrailway.coffeecheese.ModConfig;
+import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import net.minecraft.item.Food;
 import net.minecraft.item.Foods;
 import net.minecraft.potion.EffectInstance;
@@ -13,7 +13,7 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class ModFoods {
 
-    private static final double grilledMul = ModConfig.MODIFIERS.grilledFoodMultiplier.get();
+    private static final double grilledMul = ModCheeseConfig.grilledFoodMultiplier.get();
 
     public static final Food BLOCK_O_CHEESE = (new Food.Builder()).hunger(6).saturation(1f).fastToEat().build();
     public static final Food CHEESE_BALL = (new Food.Builder()).hunger(BLOCK_O_CHEESE.getHealing() / 2).saturation(BLOCK_O_CHEESE.getSaturation() / 2.0f).fastToEat().build();

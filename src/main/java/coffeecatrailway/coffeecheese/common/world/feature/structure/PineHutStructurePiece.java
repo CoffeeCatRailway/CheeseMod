@@ -1,7 +1,7 @@
 package coffeecatrailway.coffeecheese.common.world.feature.structure;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
-import coffeecatrailway.coffeecheese.core.ModFeatures;
+import coffeecatrailway.coffeecheese.registry.ModFeatures;
 import net.minecraft.block.Blocks;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ChestTileEntity;

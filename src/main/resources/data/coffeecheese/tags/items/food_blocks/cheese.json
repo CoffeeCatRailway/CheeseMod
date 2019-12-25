@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "coffeecheese:cheese_block",
-    "#coffeecheese:food_blocks/grilled_cheese"
+    "coffeecheese:cheese_block"
   ]
 }

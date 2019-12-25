@@ -1,7 +1,7 @@
 package coffeecatrailway.coffeecheese.common.entity;
 
-import coffeecatrailway.coffeecheese.core.ModEntityTypes;
-import coffeecatrailway.coffeecheese.core.ModItems;
+import coffeecatrailway.coffeecheese.registry.ModEntityTypes;
+import coffeecatrailway.coffeecheese.registry.ModItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.item.ItemStack;
@@ -24,7 +24,7 @@ public class HamRawFoodie extends FoodieEntity {
 
     @Override
     public boolean breedingItem(ItemStack stack) {
-        return stack.getItem() == ModItems.HAM_RAW;
+        return stack.getItem() == ModItems.HAM_RAW.get();
     }
 
     @Override

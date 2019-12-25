@@ -1,7 +1,7 @@
 package coffeecatrailway.coffeecheese.common.item.crafting;
 
-import coffeecatrailway.coffeecheese.core.ModBlocks;
-import coffeecatrailway.coffeecheese.core.ModRecipeTypes;
+import coffeecatrailway.coffeecheese.registry.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModRecipeTypes;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -80,7 +80,7 @@ public class MelterRecipe implements IRecipe<IInventory> {
 
     @Override
     public ItemStack getIcon() {
-        return new ItemStack(ModBlocks.MELTER);
+        return new ItemStack(ModBlocks.MELTER.get());
     }
 
     @Override

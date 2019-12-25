@@ -1,8 +1,8 @@
 package coffeecatrailway.coffeecheese.common.entity.item;
 
-import coffeecatrailway.coffeecheese.core.ModBlocks;
-import coffeecatrailway.coffeecheese.core.ModEntityTypes;
-import coffeecatrailway.coffeecheese.core.ModItems;
+import coffeecatrailway.coffeecheese.registry.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModEntityTypes;
+import coffeecatrailway.coffeecheese.registry.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LilyPadBlock;
@@ -154,13 +154,13 @@ public class BoatEntityCM extends BoatEntity {
         switch (this.getBoatModel()) {
             case CHEESE:
             default:
-                return ModItems.BOAT_CHEESE;
+                return ModItems.BOAT_CHEESE.get();
             case GRILLED_CHEESE:
-                return ModItems.BOAT_GRILLED_CHEESE;
+                return ModItems.BOAT_GRILLED_CHEESE.get();
             case HAM_RAW:
-                return ModItems.BOAT_HAM_RAW;
+                return ModItems.BOAT_HAM_RAW.get();
             case HAM_COOKED:
-                return ModItems.BOAT_HAM_COOKED;
+                return ModItems.BOAT_HAM_COOKED.get();
         }
     }
 
@@ -372,7 +372,7 @@ public class BoatEntityCM extends BoatEntity {
                         blockpos$pooledmutableblockpos.setPos(l1, k1, i2);
                         IFluidState ifluidstate = this.world.getFluidState(blockpos$pooledmutableblockpos);
                         if (ifluidstate.isTagged(FluidTags.WATER)) {
-                            f = Math.max(f, ifluidstate.func_215679_a(this.world, blockpos$pooledmutableblockpos));
+                            f = Math.max(f, ifluidstate.getActualHeight(this.world, blockpos$pooledmutableblockpos));
                         }
 
                         if (f >= 1.0F) {
@@ -450,7 +450,7 @@ public class BoatEntityCM extends BoatEntity {
                         blockpos$pooledmutableblockpos.setPos(k1, l1, i2);
                         IFluidState ifluidstate = this.world.getFluidState(blockpos$pooledmutableblockpos);
                         if (ifluidstate.isTagged(FluidTags.WATER)) {
-                            float f = (float) l1 + ifluidstate.func_215679_a(this.world, blockpos$pooledmutableblockpos);
+                            float f = (float) l1 + ifluidstate.getActualHeight(this.world, blockpos$pooledmutableblockpos);
                             this.waterLevel = Math.max((double) f, this.waterLevel);
                             flag |= axisalignedbb.minY < (double) f;
                         }
@@ -483,7 +483,7 @@ public class BoatEntityCM extends BoatEntity {
                     for (int i2 = i1; i2 < j1; ++i2) {
                         blockpos$pooledmutableblockpos.setPos(k1, l1, i2);
                         IFluidState ifluidstate = this.world.getFluidState(blockpos$pooledmutableblockpos);
-                        if (ifluidstate.isTagged(FluidTags.WATER) && d0 < (double) ((float) blockpos$pooledmutableblockpos.getY() + ifluidstate.func_215679_a(this.world, blockpos$pooledmutableblockpos))) {
+                        if (ifluidstate.isTagged(FluidTags.WATER) && d0 < (double) ((float) blockpos$pooledmutableblockpos.getY() + ifluidstate.getActualHeight(this.world, blockpos$pooledmutableblockpos))) {
                             if (!ifluidstate.isSource()) {
                                 return Status.UNDER_FLOWING_WATER;
                             }
@@ -761,10 +761,10 @@ public class BoatEntityCM extends BoatEntity {
     }
 
     public enum Type {
-        CHEESE(ModBlocks.CHEESE_PLANKS, "cheese"),
-        GRILLED_CHEESE(ModBlocks.GRILLED_CHEESE_PLANKS, "grilled_cheese"),
-        HAM_RAW(ModBlocks.HAM_RAW_PLANKS, "ham_raw"),
-        HAM_COOKED(ModBlocks.HAM_COOKED_PLANKS, "ham_cooked");
+        CHEESE(ModBlocks.CHEESE_PLANKS.get(), "cheese"),
+        GRILLED_CHEESE(ModBlocks.GRILLED_CHEESE_PLANKS.get(), "grilled_cheese"),
+        HAM_RAW(ModBlocks.HAM_RAW_PLANKS.get(), "ham_raw"),
+        HAM_COOKED(ModBlocks.HAM_COOKED_PLANKS.get(), "ham_cooked");
 
         private final String name;
         private final Block block;

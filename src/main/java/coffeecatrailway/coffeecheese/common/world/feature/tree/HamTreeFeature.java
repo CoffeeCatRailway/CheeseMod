@@ -1,6 +1,6 @@
 package coffeecatrailway.coffeecheese.common.world.feature.tree;
 
-import coffeecatrailway.coffeecheese.core.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -24,11 +24,11 @@ public class HamTreeFeature extends TreeFeature<NoFeatureConfig> {
     public HamTreeFeature(boolean cooked, Function<Dynamic<?>, ? extends NoFeatureConfig> dynamicFunction, boolean doBlockNofityOnPlace) {
         super(dynamicFunction, doBlockNofityOnPlace);
         if (cooked) {
-            this.trunk = ModBlocks.HAM_COOKED_LOG.getDefaultState();
-            this.leaf = ModBlocks.HAM_COOKED_LEAVES.getDefaultState();
+            this.trunk = ModBlocks.HAM_COOKED_LOG.get().getDefaultState();
+            this.leaf = ModBlocks.HAM_COOKED_LEAVES.get().getDefaultState();
         } else {
-            this.trunk = ModBlocks.HAM_RAW_LOG.getDefaultState();
-            this.leaf = ModBlocks.HAM_RAW_LEAVES.getDefaultState();
+            this.trunk = ModBlocks.HAM_RAW_LOG.get().getDefaultState();
+            this.leaf = ModBlocks.HAM_RAW_LEAVES.get().getDefaultState();
         }
     }
 
@@ -82,7 +82,7 @@ public class HamTreeFeature extends TreeFeature<NoFeatureConfig> {
                             int l2 = k2 - position.getZ();
                             if (Math.abs(j2) != i3 || Math.abs(l2) != i3 || i3 <= rand.nextInt(3)) {
                                 BlockPos blockpos = new BlockPos(i2, j4, k2);
-                                if (isAirOrLeaves(world, blockpos) || func_214576_j(world, blockpos)) {
+                                if (isAirOrLeaves(world, blockpos) || isSoil(world, blockpos)) {
                                     this.setLogState(changedBlocks, world, blockpos, leaf, mutableBoundingBox);
                                 }
                             }

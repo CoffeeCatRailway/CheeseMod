@@ -2,8 +2,8 @@ package coffeecatrailway.coffeecheese.client.gui.container;
 
 import coffeecatrailway.coffeecheese.common.item.crafting.MelterRecipe;
 import coffeecatrailway.coffeecheese.common.tileentity.MelterTileEntity;
-import coffeecatrailway.coffeecheese.core.ModContainerTypes;
-import coffeecatrailway.coffeecheese.core.ModRecipeTypes;
+import coffeecatrailway.coffeecheese.registry.ModContainers;
+import coffeecatrailway.coffeecheese.registry.ModRecipeTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -35,7 +35,7 @@ public class MelterContainer extends Container {
     }
 
     public MelterContainer(int id, PlayerInventory playerInventory, IInventory inventory, IIntArray data) {
-        super(ModContainerTypes.MELTER, id);
+        super(ModContainers.MELTER.get(), id);
         assertInventorySize(inventory, inventory.getSizeInventory());
         assertIntArraySize(data, data.size());
         this.inventory = inventory;

@@ -1,7 +1,7 @@
 package coffeecatrailway.coffeecheese.common.entity;
 
-import coffeecatrailway.coffeecheese.core.ModEntityTypes;
-import coffeecatrailway.coffeecheese.core.ModItems;
+import coffeecatrailway.coffeecheese.registry.ModEntityTypes;
+import coffeecatrailway.coffeecheese.registry.ModItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.item.ItemStack;
@@ -23,12 +23,12 @@ public class CheeseFoodie extends FoodieEntity {
 
     @Override
     public boolean breedingItem(ItemStack stack) {
-        return stack.getItem() == ModItems.CHEESE_SLICE;
+        return stack.getItem() == ModItems.CHEESE_SLICE.get();
     }
 
     @Override
     public boolean foodItem(ItemStack stack) {
-        return stack.getItem() == ModItems.BLOCK_O_CHEESE;
+        return stack.getItem() == ModItems.BLOCK_O_CHEESE.get();
     }
 
     @Override
@@ -38,6 +38,6 @@ public class CheeseFoodie extends FoodieEntity {
 
     @Override
     public ItemStack getDroppedItem() {
-        return new ItemStack(ModItems.BLOCK_O_CHEESE);
+        return new ItemStack(ModItems.BLOCK_O_CHEESE.get());
     }
 }

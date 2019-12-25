@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#coffeecheese:stairs/wooden/cheese",
+    "#coffeecheese:stairs/wooden/grilled_cheese",
+    "#coffeecheese:stairs/wooden/ham_raw",
+    "#coffeecheese:stairs/wooden/ham_cooked"
+  ]
+}

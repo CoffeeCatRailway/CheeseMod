@@ -1,12 +1,12 @@
 package coffeecatrailway.coffeecheese.common.tileentity;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
-import coffeecatrailway.coffeecheese.ModConfig;
+import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import coffeecatrailway.coffeecheese.client.gui.container.MelterContainer;
 import coffeecatrailway.coffeecheese.common.block.MelterBlock;
 import coffeecatrailway.coffeecheese.common.item.crafting.MelterRecipe;
-import coffeecatrailway.coffeecheese.core.ModRecipeTypes;
-import coffeecatrailway.coffeecheese.core.ModTileEntityTypes;
+import coffeecatrailway.coffeecheese.registry.ModRecipeTypes;
+import coffeecatrailway.coffeecheese.registry.ModTileEntities;
 import com.google.common.collect.Maps;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -118,7 +118,7 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
     private final IRecipeType<MelterRecipe> recipeType;
 
     public MelterTileEntity() {
-        super(ModTileEntityTypes.MELTER, FLUID_CAPTACITY);
+        super(ModTileEntities.MELTER.get(), FLUID_CAPTACITY);
         recipeType = ModRecipeTypes.MELTING;
     }
 
@@ -205,7 +205,7 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
                 }
 
                 if (this.isBurning() && this.canSmelt(iRecipe)) {
-                    this.cookTime += ModConfig.MODIFIERS.melterSpeed.get();
+                    this.cookTime += ModCheeseConfig.melterSpeed.get();
                     if (this.cookTime >= this.cookTimeTotal) {
                         this.smeltRecipe(iRecipe);
                         this.cookTime = 0;

@@ -4,7 +4,7 @@
     "item": "coffeecheese:cheese_ball"
   },
   "result": {
-    "fluid": "coffeecheese:melted_cheese",
+    "fluid": "coffeecheese:melted_cheese_still",
     "amount": 50
   },
   "cookingtime": 50

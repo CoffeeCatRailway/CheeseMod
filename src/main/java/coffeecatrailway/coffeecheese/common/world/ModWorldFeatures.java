@@ -4,10 +4,10 @@ import coffeecatrailway.coffeecheese.common.world.biome.FoodBiome;
 import coffeecatrailway.coffeecheese.common.world.feature.ModOreFeature;
 import coffeecatrailway.coffeecheese.common.world.feature.ModOreFeatureConfig;
 import coffeecatrailway.coffeecheese.common.world.feature.structure.PineHutStructure;
-import coffeecatrailway.coffeecheese.core.ModBiomes;
-import coffeecatrailway.coffeecheese.core.ModBlocks;
-import coffeecatrailway.coffeecheese.core.ModEntityTypes;
-import coffeecatrailway.coffeecheese.core.ModFeatures;
+import coffeecatrailway.coffeecheese.registry.ModBiomes;
+import coffeecatrailway.coffeecheese.registry.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModEntityTypes;
+import coffeecatrailway.coffeecheese.registry.ModFeatures;
 import com.google.common.base.Predicate;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -39,24 +39,24 @@ public class ModWorldFeatures {
     public static void addFeatures() {
         ForgeRegistries.BIOMES.forEach(biome -> {
             if (biome.getCategory() == Biome.Category.NETHER) { /// NETHER ///
-                addOre(biome, ModBlocks.CHEESE_METAL_ORE_NETHER.getDefaultState(), 10, 8, TARGET_NETHER, RANGE_FULL);
-                addOre(biome, ModBlocks.GRILLED_CHEESE_METAL_ORE_NETHER.getDefaultState(), 10, 8, TARGET_NETHER, RANGE_FULL);
-                addOre(biome, ModBlocks.HAM_RAW_METAL_ORE_NETHER.getDefaultState(), 10, 8, TARGET_NETHER, RANGE_FULL);
-                addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE_NETHER.getDefaultState(), 10, 8, TARGET_NETHER, RANGE_FULL);
+                addOre(biome, ModBlocks.CHEESE_METAL_ORE_NETHER.get().getDefaultState(), 10, 8, TARGET_NETHER, RANGE_FULL);
+                addOre(biome, ModBlocks.GRILLED_CHEESE_METAL_ORE_NETHER.get().getDefaultState(), 10, 8, TARGET_NETHER, RANGE_FULL);
+                addOre(biome, ModBlocks.HAM_RAW_METAL_ORE_NETHER.get().getDefaultState(), 10, 8, TARGET_NETHER, RANGE_FULL);
+                addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE_NETHER.get().getDefaultState(), 10, 8, TARGET_NETHER, RANGE_FULL);
 
             } else if (biome.getCategory() == Biome.Category.THEEND) { /// END ///
-                addOre(biome, ModBlocks.CHEESE_METAL_ORE_END.getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
-                addOre(biome, ModBlocks.GRILLED_CHEESE_METAL_ORE_END.getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
-                addOre(biome, ModBlocks.HAM_RAW_METAL_ORE_END.getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
-                addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE_END.getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
+                addOre(biome, ModBlocks.CHEESE_METAL_ORE_END.get().getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
+                addOre(biome, ModBlocks.GRILLED_CHEESE_METAL_ORE_END.get().getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
+                addOre(biome, ModBlocks.HAM_RAW_METAL_ORE_END.get().getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
+                addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE_END.get().getDefaultState(), 10, 8, TARGET_END, RANGE_FULL);
 
             } else { /// OVERWORLD ///
-                boolean isCheese = biome == ModBiomes.CHEESE_FOREST || biome == ModBiomes.CHEESE_PLAINS;
-                boolean isGrilledCheese = biome == ModBiomes.GRILLED_CHEESE_FOREST || biome == ModBiomes.GRILLED_CHEESE_PLAINS;
+                boolean isCheese = biome == ModBiomes.CHEESE_FOREST.get() || biome == ModBiomes.CHEESE_PLAINS.get();
+                boolean isGrilledCheese = biome == ModBiomes.GRILLED_CHEESE_FOREST.get() || biome == ModBiomes.GRILLED_CHEESE_PLAINS.get();
                 boolean justCheese = isCheese || isGrilledCheese;
 
-                boolean isHamRaw = biome == ModBiomes.HAM_RAW_FOREST || biome == ModBiomes.HAM_RAW_PLAINS;
-                boolean isHamCooked = biome == ModBiomes.HAM_COOKED_FOREST || biome == ModBiomes.HAM_COOKED_PLAINS;
+                boolean isHamRaw = biome == ModBiomes.HAM_RAW_FOREST.get() || biome == ModBiomes.HAM_RAW_PLAINS.get();
+                boolean isHamCooked = biome == ModBiomes.HAM_COOKED_FOREST.get() || biome == ModBiomes.HAM_COOKED_PLAINS.get();
                 boolean justHam = isHamRaw || isHamCooked;
 
                 // Foodies
@@ -73,12 +73,12 @@ public class ModWorldFeatures {
 
                 // Ores
                 if (justCheese) {
-                    addOre(biome, ModBlocks.CHEESE_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
-                    addOre(biome, ModBlocks.GRILLED_CHEESE_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
+                    addOre(biome, ModBlocks.CHEESE_METAL_ORE.get().getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
+                    addOre(biome, ModBlocks.GRILLED_CHEESE_METAL_ORE.get().getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                 }
                 if (justHam) {
-                    addOre(biome, ModBlocks.HAM_RAW_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
-                    addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE.getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
+                    addOre(biome, ModBlocks.HAM_RAW_METAL_ORE.get().getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
+                    addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE.get().getDefaultState(), 10, 8, TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                 }
 
                 // Extra Trees

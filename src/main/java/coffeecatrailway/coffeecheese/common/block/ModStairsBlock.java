@@ -1,6 +1,6 @@
 package coffeecatrailway.coffeecheese.common.block;
 
-import coffeecatrailway.coffeecheese.ModConfig;
+import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.entity.Entity;
@@ -25,7 +25,7 @@ public class ModStairsBlock extends StairsBlock {
 
     @Override
     public boolean isStickyBlock(BlockState state) {
-        return ModConfig.stickyFoodBlock.get() && isBoundy;
+        return ModCheeseConfig.stickyFoodBlock.get() && isBoundy;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package coffeecatrailway.coffeecheese.client.gui.container;
 
-import coffeecatrailway.coffeecheese.core.ModContainerTypes;
+import coffeecatrailway.coffeecheese.registry.ModContainers;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -20,7 +20,7 @@ public class FoodDrawContainer extends Container {
     public IInventory foodInventory;
 
     public FoodDrawContainer(int id, PlayerInventory playerInventory, IInventory foodInventory) {
-        super(ModContainerTypes.FOOD_DRAW, id);
+        super(ModContainers.FOOD_DRAW.get(), id);
         assertInventorySize(foodInventory, size);
         this.foodInventory = foodInventory;
         foodInventory.openInventory(playerInventory.player);

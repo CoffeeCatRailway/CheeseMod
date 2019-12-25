@@ -1,13 +1,13 @@
 package coffeecatrailway.coffeecheese.common.tileentity;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
-import coffeecatrailway.coffeecheese.ModConfig;
+import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import coffeecatrailway.coffeecheese.client.gui.container.GrillContainer;
 import coffeecatrailway.coffeecheese.common.block.GrillBlock;
 import coffeecatrailway.coffeecheese.common.item.crafting.GrillRecipe;
-import coffeecatrailway.coffeecheese.core.ModFluids;
-import coffeecatrailway.coffeecheese.core.ModRecipeTypes;
-import coffeecatrailway.coffeecheese.core.ModTileEntityTypes;
+import coffeecatrailway.coffeecheese.registry.ModFluids;
+import coffeecatrailway.coffeecheese.registry.ModRecipeTypes;
+import coffeecatrailway.coffeecheese.registry.ModTileEntities;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.entity.item.ExperienceOrbEntity;
@@ -97,7 +97,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                     GrillTileEntity.this.cookTimeTotal = value;
                     break;
                 case 4:
-                    GrillTileEntity.this.tank.setFluid(new FluidStack(ModFluids.OIL_SOURCE, value));
+                    GrillTileEntity.this.tank.setFluid(new FluidStack(ModFluids.OIL_S.get(), value));
                     break;
             }
 
@@ -111,8 +111,8 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
     private final IRecipeType<GrillRecipe> recipeType;
 
     public GrillTileEntity() {
-        super(ModTileEntityTypes.GRILL, FLUID_CAPTACITY);
-        this.tank.setValidator((fluid) -> fluid.getFluid() == ModFluids.OIL_SOURCE || fluid.getFluid() == ModFluids.OIL_FLOWING);
+        super(ModTileEntities.GRILL.get(), FLUID_CAPTACITY);
+        this.tank.setValidator((fluid) -> fluid.getFluid() == ModFluids.OIL_S.get() || fluid.getFluid() == ModFluids.OIL_F.get());
         this.recipeType = ModRecipeTypes.GRILLING;
     }
 
@@ -198,7 +198,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                 }
 
                 if (this.isBurning() && this.canSmelt(iRecipe)) {
-                    this.cookTime += ModConfig.MODIFIERS.grillSpeed.get();
+                    this.cookTime += ModCheeseConfig.grillSpeed.get();
                     if (this.cookTime >= this.cookTimeTotal) {
                         this.tank.drain(this.getOilForRecipe(), IFluidHandler.FluidAction.EXECUTE);
                         this.smeltRecipe(iRecipe);
