@@ -24,14 +24,14 @@ public class FoodBiome extends Biome {
 
     private int grassColor;
 
-    public FoodBiome(int waterColor, int waterFogColor, int grassColor, BlockState surface, String parent) {
-        this(waterColor, waterFogColor, grassColor, surface, null, null, parent);
+    public FoodBiome(int waterColor, int waterFogColor, int grassColor, BlockState surface) {
+        this(waterColor, waterFogColor, grassColor, surface, null, null);
     }
 
-    public FoodBiome(int waterColor, int waterFogColor, int grassColor, BlockState surface, Feature mainTree, Feature secondTree, String parent) {
+    public FoodBiome(int waterColor, int waterFogColor, int grassColor, BlockState surface, Feature mainTree, Feature secondTree) {
         super(new Biome.Builder().surfaceBuilder(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(surface, SurfaceBuilder.DIRT, SurfaceBuilder.SAND)).precipitation(Biome.RainType.RAIN)
                 .category((mainTree != null && secondTree != null) ? Biome.Category.FOREST : Category.PLAINS).depth(0.1f).scale(0.2f).temperature(0.7f).downfall(0.8f)
-                .waterColor(waterColor).waterFogColor(waterFogColor).parent(parent));
+                .waterColor(waterColor).waterFogColor(waterFogColor));
         this.grassColor = grassColor;
 
         DefaultBiomeFeatures.addCarvers(this);
@@ -69,9 +69,5 @@ public class FoodBiome extends Biome {
     @Override
     public int getGrassColor(BlockPos pos) {
         return grassColor;
-    }
-
-    public static String getParent(FoodBiome foodBiome) {
-        return foodBiome.getRegistryName().getPath();
     }
 }

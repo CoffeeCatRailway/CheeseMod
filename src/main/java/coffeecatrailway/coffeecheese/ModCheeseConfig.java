@@ -2,14 +2,18 @@ package coffeecatrailway.coffeecheese;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
+import java.util.List;
+import java.util.function.Supplier;
+
 /**
  * @author CoffeeCatRailway
  * Created: 22/12/2019
  */
 public class ModCheeseConfig {
 
-    private static final String config = CheeseMod.MOD_ID + ".config.";
-    private static final String configModifier = CheeseMod.MOD_ID + ".config.modifier.";
+    private static final String config = CheeseMod.MOD_ID + ".";
+    private static final String configModifier = config + "modifier.";
+    private static final String configBiome = config + "biome.";
 
     public static ForgeConfigSpec.DoubleValue cheeseSuitScale;
     public static ForgeConfigSpec.DoubleValue cheeseSuitBindingScale;
@@ -42,13 +46,21 @@ public class ModCheeseConfig {
     public static ForgeConfigSpec.IntValue grillSpeed;
     public static ForgeConfigSpec.IntValue melterSpeed;
 
+    public static ForgeConfigSpec.IntValue cheeseBiomeWeight;
+
+    public static ForgeConfigSpec.IntValue grilledCheeseBiomeWeight;
+
+    public static ForgeConfigSpec.IntValue hamRawBiomeWeight;
+
+    public static ForgeConfigSpec.IntValue hamCookedBiomeWeight;
+
     public static class ServerConfig {
 
         public ServerConfig(ForgeConfigSpec.Builder builder) {
             stickyFoodBlock = builder.comment("If true all food blocks (cheese, grilled cheese & ham raw or cooked) will act like slime blocks when pushed by a piston")
                     .define(config + "stickyFoodBlock", true);
 
-            builder.comment("CheeseMod modifier settings");
+            builder.comment("\nCheeseMod modifier settings");
 
             grilledFoodMultiplier = builder.comment("The amount of how much the saturation changes when grilled")
                     .defineInRange(configModifier + "grilledSaturation", 1.5d, 0.5d, 10.0d);
@@ -60,6 +72,22 @@ public class ModCheeseConfig {
 
             melterSpeed = builder.comment("Speed multiplier for the melter")
                     .defineInRange(configModifier + "melterSpeed", 4, minSpeed, maxSpeed);
+
+            builder.comment("\nCheeseMod biome settings");
+            int minWeight = 0;
+            int maxWeight = 1000;
+
+            cheeseBiomeWeight = builder.comment("Cheese weight")
+                    .defineInRange(configBiome + "cheeseBiomeWeight", 20, minWeight, maxWeight);
+
+            grilledCheeseBiomeWeight = builder.comment("Grilled cheese weight")
+                    .defineInRange(configBiome + "grilledCheeseBiomeWeight", 13, minWeight, maxWeight);
+
+            hamRawBiomeWeight = builder.comment("Ham raw weight")
+                    .defineInRange(configBiome + "hamRawBiomeWeight", 15, minWeight, maxWeight);
+
+            hamCookedBiomeWeight = builder.comment("Ham cooked weight")
+                    .defineInRange(configBiome + "hamCookedBiomeWeight", 10, minWeight, maxWeight);
         }
     }
 }
