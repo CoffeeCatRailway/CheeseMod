@@ -16,6 +16,8 @@ import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -76,21 +78,16 @@ public class CheeseMod {
     public void setupClient(FMLClientSetupEvent event) {
         ModContainers.registerScreens();
 
-        Minecraft.getInstance().particles.registerFactory(ModParticles.ITEM_CHEESE_BALL, (type, world, v, v1, v2, v3, v4, v5) -> new BreakingParticle(world, v, v1, v2, new ItemStack(ModItems.CHEESE_BALL.get())));
-
-        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-        RenderingRegistry.registerEntityRenderingHandler(CheeseBallEntity.class, manager -> new SpriteRenderer<CheeseBallEntity>(manager, itemRenderer));
-
-        RenderingRegistry.registerEntityRenderingHandler(CheeseFoodie.class, manager -> new FoodieRenderer<CheeseFoodie>(manager, CheeseMod.getLocation("textures/entity/foodie/cheese.png")));
-        RenderingRegistry.registerEntityRenderingHandler(GrilledCheeseFoodie.class, manager -> new FoodieRenderer<GrilledCheeseFoodie>(manager, CheeseMod.getLocation("textures/entity/foodie/grilled_cheese.png")));
-        RenderingRegistry.registerEntityRenderingHandler(HamRawFoodie.class, manager -> new FoodieRenderer<HamRawFoodie>(manager, CheeseMod.getLocation("textures/entity/foodie/ham_raw.png")));
-        RenderingRegistry.registerEntityRenderingHandler(HamCookedFoodie.class, manager -> new FoodieRenderer<HamCookedFoodie>(manager, CheeseMod.getLocation("textures/entity/foodie/ham_cooked.png")));
-
-        RenderingRegistry.registerEntityRenderingHandler(BoatEntityCM.class, BoatRendererCM::new);
-
-        ClientRegistry.bindTileEntitySpecialRenderer(MelterTileEntity.class, new MelterTileEntityRenderer());
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerParticleFactories);
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerEntityRenderers);
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerTileEntityRenderers);
         CheeseMod.LOGGER.debug("Common setup - Renderers");
 
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerFilters);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static void registerFilters() {
         if (ModList.get().isLoaded("filters")) {
             Filters.get().register(ModItemGroups.GROUP_ALL, CheeseMod.getLocation("filters/all/natural"), new ItemStack(ModBlocks.CHEESE_SAPLING.get()));
             Filters.get().register(ModItemGroups.GROUP_ALL, CheeseMod.getLocation("filters/all/woods"), new ItemStack(ModBlocks.CHEESE_LOG.get()));
@@ -108,6 +105,29 @@ public class CheeseMod {
             Filters.get().register(ModItemGroups.GROUP_FOODS, CheeseMod.getLocation("filters/foods/crackers"), new ItemStack(ModItems.CRACKER.get()));
             CheeseMod.LOGGER.debug("Common setup - MrCrayfish Filters support");
         }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static void registerParticleFactories() {
+        Minecraft.getInstance().particles.registerFactory(ModParticles.ITEM_CHEESE_BALL, (type, world, v, v1, v2, v3, v4, v5) -> new BreakingParticle(world, v, v1, v2, new ItemStack(ModItems.CHEESE_BALL.get())));
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static void registerEntityRenderers() {
+        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+        RenderingRegistry.registerEntityRenderingHandler(CheeseBallEntity.class, manager -> new SpriteRenderer<>(manager, itemRenderer));
+
+        RenderingRegistry.registerEntityRenderingHandler(CheeseFoodie.class, manager -> new FoodieRenderer<>(manager, CheeseMod.getLocation("textures/entity/foodie/cheese.png")));
+        RenderingRegistry.registerEntityRenderingHandler(GrilledCheeseFoodie.class, manager -> new FoodieRenderer<>(manager, CheeseMod.getLocation("textures/entity/foodie/grilled_cheese.png")));
+        RenderingRegistry.registerEntityRenderingHandler(HamRawFoodie.class, manager -> new FoodieRenderer<>(manager, CheeseMod.getLocation("textures/entity/foodie/ham_raw.png")));
+        RenderingRegistry.registerEntityRenderingHandler(HamCookedFoodie.class, manager -> new FoodieRenderer<>(manager, CheeseMod.getLocation("textures/entity/foodie/ham_cooked.png")));
+
+        RenderingRegistry.registerEntityRenderingHandler(BoatEntityCM.class, BoatRendererCM::new);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public static void registerTileEntityRenderers() {
+        ClientRegistry.bindTileEntitySpecialRenderer(MelterTileEntity.class, new MelterTileEntityRenderer());
     }
 
     public void setupCommon(FMLCommonSetupEvent event) {
