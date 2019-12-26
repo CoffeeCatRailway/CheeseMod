@@ -90,6 +90,7 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}")
 
+//    compileOnly "filters:Filters-${project.filtersVersion}:${project.mcVersion}:deobf"
     compile "filters:Filters-${project.filtersVersion}:${project.mcVersion}:deobf"
 }
 
