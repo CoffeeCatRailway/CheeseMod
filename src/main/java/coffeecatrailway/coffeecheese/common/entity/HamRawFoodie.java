@@ -1,6 +1,6 @@
 package coffeecatrailway.coffeecheese.common.entity;
 
-import coffeecatrailway.coffeecheese.registry.ModEntityTypes;
+import coffeecatrailway.coffeecheese.registry.ModEntities;
 import coffeecatrailway.coffeecheese.registry.ModItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.TameableEntity;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 public class HamRawFoodie extends FoodieEntity {
 
     public HamRawFoodie(World world) {
-        this(ModEntityTypes.HAM_RAW_FOODIE, world);
+        this(ModEntities.HAM_RAW_FOODIE.get(), world);
     }
 
     public HamRawFoodie(EntityType<? extends TameableEntity> type, World world) {
@@ -34,7 +34,7 @@ public class HamRawFoodie extends FoodieEntity {
 
     @Override
     public FoodieEntity createChild() {
-        return ModEntityTypes.HAM_RAW_FOODIE.create(world);
+        return ModEntities.HAM_RAW_FOODIE.get().create(world);
     }
 
     @Override

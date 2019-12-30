@@ -67,12 +67,14 @@ public class CheeseMod {
         ModFluids.register(modEventBus);
         ModTileEntities.TILE_ENTITIES.register(modEventBus);
         ModContainers.CONTAINERS.register(modEventBus);
+        ModFeatures.FEATURES.register(modEventBus);
         ModBiomes.BIOMES.register(modEventBus);
-
-        DistExecutor.runForDist(
-                () -> SideProxy.Client::new,
-                () -> SideProxy.Server::new
-        );
+        modEventBus.addListener(ModStats::registerAll);
+        ModRecipes.registerRecipeType();
+        ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
+        ModEntities.ENTITIES.register(modEventBus);
+        modEventBus.addListener(ModEntities::registerSpawnPlacements);
+        ModParticles.PARTICLE_TYPES.register(modEventBus);
     }
 
     public void setupClient(FMLClientSetupEvent event) {
@@ -109,7 +111,7 @@ public class CheeseMod {
 
     @OnlyIn(Dist.CLIENT)
     public static void registerParticleFactories() {
-        Minecraft.getInstance().particles.registerFactory(ModParticles.ITEM_CHEESE_BALL, (type, world, v, v1, v2, v3, v4, v5) -> new BreakingParticle(world, v, v1, v2, new ItemStack(ModItems.CHEESE_BALL.get())));
+        Minecraft.getInstance().particles.registerFactory(ModParticles.ITEM_CHEESE_BALL.get(), (type, world, v, v1, v2, v3, v4, v5) -> new BreakingParticle(world, v, v1, v2, new ItemStack(ModItems.CHEESE_BALL.get())));
     }
 
     @OnlyIn(Dist.CLIENT)

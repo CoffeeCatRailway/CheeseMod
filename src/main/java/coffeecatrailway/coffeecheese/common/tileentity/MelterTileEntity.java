@@ -5,7 +5,7 @@ import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import coffeecatrailway.coffeecheese.client.gui.container.MelterContainer;
 import coffeecatrailway.coffeecheese.common.block.MelterBlock;
 import coffeecatrailway.coffeecheese.common.item.crafting.MelterRecipe;
-import coffeecatrailway.coffeecheese.registry.ModRecipeTypes;
+import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import coffeecatrailway.coffeecheese.registry.ModTileEntities;
 import com.google.common.collect.Maps;
 import net.minecraft.entity.player.PlayerEntity;
@@ -119,7 +119,7 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
 
     public MelterTileEntity() {
         super(ModTileEntities.MELTER.get(), FLUID_CAPTACITY);
-        recipeType = ModRecipeTypes.MELTING;
+        recipeType = ModRecipes.MELTING;
     }
 
     @Override

@@ -23,6 +23,6 @@ public class CheeseTree extends Tree {
     @Nullable
     @Override
     protected AbstractTreeFeature<NoFeatureConfig> getTreeFeature(Random random) {
-        return grilled ? ModFeatures.GRILLED_CHEESE_TREE : ModFeatures.CHEESE_TREE;
+        return grilled ? ModFeatures.GRILLED_CHEESE_TREE.get() : ModFeatures.CHEESE_TREE.get();
     }
 }

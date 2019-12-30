@@ -23,6 +23,6 @@ public class HamTree extends Tree {
     @Nullable
     @Override
     protected AbstractTreeFeature<NoFeatureConfig> getTreeFeature(Random random) {
-        return cooked ? ModFeatures.HAM_COOKED_TREE : ModFeatures.HAM_RAW_TREE;
+        return cooked ? ModFeatures.HAM_COOKED_TREE.get() : ModFeatures.HAM_RAW_TREE.get();
     }
 }

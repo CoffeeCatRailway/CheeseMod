@@ -6,7 +6,7 @@ import coffeecatrailway.coffeecheese.common.world.feature.ModOreFeatureConfig;
 import coffeecatrailway.coffeecheese.common.world.feature.structure.PineHutStructure;
 import coffeecatrailway.coffeecheese.registry.ModBiomes;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
-import coffeecatrailway.coffeecheese.registry.ModEntityTypes;
+import coffeecatrailway.coffeecheese.registry.ModEntities;
 import coffeecatrailway.coffeecheese.registry.ModFeatures;
 import com.google.common.base.Predicate;
 import net.minecraft.block.BlockState;
@@ -62,13 +62,13 @@ public class ModWorldFeatures {
                 // Foodies
                 if (biome instanceof FoodBiome) {
                     if (isCheese)
-                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntityTypes.CHEESE_FOODIE, 100, 1, 3));
+                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntities.CHEESE_FOODIE.get(), 100, 1, 3));
                     if (isGrilledCheese)
-                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntityTypes.GRILLED_CHEESE_FOODIE, 100, 1, 3));
+                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntities.GRILLED_CHEESE_FOODIE.get(), 100, 1, 3));
                     if (isHamRaw)
-                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntityTypes.HAM_RAW_FOODIE, 100, 1, 3));
+                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntities.HAM_RAW_FOODIE.get(), 100, 1, 3));
                     if (isHamCooked)
-                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntityTypes.HAM_COOKED_FOODIE, 100, 1, 3));
+                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntities.HAM_COOKED_FOODIE.get(), 100, 1, 3));
                 }
 
                 // Ores
@@ -98,8 +98,8 @@ public class ModWorldFeatures {
 
                 // Structures
                 if (PineHutStructure.canSpawn(biome)) {
-                    biome.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(ModFeatures.PINE_HUT, IFeatureConfig.NO_FEATURE_CONFIG, Placement.NOPE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-                    biome.addStructure(ModFeatures.PINE_HUT, IFeatureConfig.NO_FEATURE_CONFIG);
+                    biome.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(ModFeatures.PINE_HUT.get(), IFeatureConfig.NO_FEATURE_CONFIG, Placement.NOPE, IPlacementConfig.NO_PLACEMENT_CONFIG));
+                    biome.addStructure(ModFeatures.PINE_HUT.get(), IFeatureConfig.NO_FEATURE_CONFIG);
                 }
             }
         });
@@ -107,13 +107,13 @@ public class ModWorldFeatures {
 
     private static void addCheeseTrees(Biome biome) {
         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
-                        new Feature[]{ModFeatures.GRILLED_CHEESE_TREE}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.CHEESE_TREE, IFeatureConfig.NO_FEATURE_CONFIG),
+                        new Feature[]{ModFeatures.GRILLED_CHEESE_TREE.get()}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.CHEESE_TREE.get(), IFeatureConfig.NO_FEATURE_CONFIG),
                 Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(1, 0.05f, 1)));
     }
 
     private static void addHamTrees(Biome biome) {
         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
-                        new Feature[]{ModFeatures.HAM_COOKED_TREE}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.HAM_RAW_TREE, IFeatureConfig.NO_FEATURE_CONFIG),
+                        new Feature[]{ModFeatures.HAM_COOKED_TREE.get()}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.HAM_RAW_TREE.get(), IFeatureConfig.NO_FEATURE_CONFIG),
                 Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(1, 0.05f, 0)));
     }
 

@@ -1,6 +1,6 @@
 package coffeecatrailway.coffeecheese.common.entity;
 
-import coffeecatrailway.coffeecheese.registry.ModEntityTypes;
+import coffeecatrailway.coffeecheese.registry.ModEntities;
 import coffeecatrailway.coffeecheese.registry.ModItems;
 import coffeecatrailway.coffeecheese.registry.ModParticles;
 import net.minecraft.entity.Entity;
@@ -28,7 +28,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public class CheeseBallEntity extends ProjectileItemEntity {
 
     public CheeseBallEntity(World world) {
-        this(ModEntityTypes.CHEESE_BALL, world);
+        this(ModEntities.CHEESE_BALL.get(), world);
     }
 
     public CheeseBallEntity(EntityType<? extends CheeseBallEntity> type, World world) {
@@ -36,11 +36,11 @@ public class CheeseBallEntity extends ProjectileItemEntity {
     }
 
     public CheeseBallEntity(World world, LivingEntity entity) {
-        super(ModEntityTypes.CHEESE_BALL, entity, world);
+        super(ModEntities.CHEESE_BALL.get(), entity, world);
     }
 
     public CheeseBallEntity(World world, double x, double y, double z) {
-        super(ModEntityTypes.CHEESE_BALL, x, y, z, world);
+        super(ModEntities.CHEESE_BALL.get(), x, y, z, world);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class CheeseBallEntity extends ProjectileItemEntity {
     @OnlyIn(Dist.CLIENT)
     private IParticleData func_213887_n() {
         ItemStack stack = this.func_213882_k();
-        return stack.isEmpty() ? ModParticles.ITEM_CHEESE_BALL : new ItemParticleData(ParticleTypes.ITEM, stack);
+        return stack.isEmpty() ? ModParticles.ITEM_CHEESE_BALL.get() : new ItemParticleData(ParticleTypes.ITEM, stack);
     }
 
     @OnlyIn(Dist.CLIENT)

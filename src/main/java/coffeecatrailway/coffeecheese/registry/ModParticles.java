@@ -3,7 +3,8 @@ package coffeecatrailway.coffeecheese.registry;
 import coffeecatrailway.coffeecheese.CheeseMod;
 import net.minecraft.particles.BasicParticleType;
 import net.minecraft.particles.ParticleType;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /**
@@ -12,20 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
  */
 public class ModParticles {
 
-    public static BasicParticleType ITEM_CHEESE_BALL;
+    public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = new DeferredRegister<>(ForgeRegistries.PARTICLE_TYPES, CheeseMod.MOD_ID);
 
-    public static void registerAll(RegistryEvent.Register<ParticleType<?>> event) {
-        if (!event.getName().equals(ForgeRegistries.PARTICLE_TYPES.getRegistryName())) return;
-
-        ITEM_CHEESE_BALL = register("item_cheese_ball", false);
-
-        CheeseMod.LOGGER.info("<Particle types registered");
-    }
-
-    private static BasicParticleType register(String name, boolean alwaysShow) {
-        BasicParticleType type = new BasicParticleType(alwaysShow);
-        type.setRegistryName(CheeseMod.getLocation(name));
-        ForgeRegistries.PARTICLE_TYPES.register(type);
-        return type;
-    }
+    public static final RegistryObject<BasicParticleType> ITEM_CHEESE_BALL = PARTICLE_TYPES.register("item_cheese_ball", () -> new BasicParticleType(false));
 }

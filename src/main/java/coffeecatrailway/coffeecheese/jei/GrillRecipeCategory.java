@@ -1,10 +1,9 @@
-package coffeecatrailway.coffeecheese.client.jei;
+package coffeecatrailway.coffeecheese.jei;
 
 import coffeecatrailway.coffeecheese.client.gui.screen.GrillScreen;
 import coffeecatrailway.coffeecheese.common.item.crafting.GrillRecipe;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModFluids;
-import coffeecatrailway.coffeecheese.registry.ModItems;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawable;

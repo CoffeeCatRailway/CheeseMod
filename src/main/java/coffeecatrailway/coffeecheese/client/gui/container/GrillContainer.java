@@ -2,7 +2,7 @@ package coffeecatrailway.coffeecheese.client.gui.container;
 
 import coffeecatrailway.coffeecheese.common.item.crafting.GrillRecipe;
 import coffeecatrailway.coffeecheese.registry.ModContainers;
-import coffeecatrailway.coffeecheese.registry.ModRecipeTypes;
+import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -35,7 +35,7 @@ public class GrillContainer extends Container {
 
     public GrillContainer(int id, PlayerInventory playerInventory, IInventory inventory, IIntArray data) {
         super(ModContainers.GRILL.get(), id);
-        this.recipeType = ModRecipeTypes.GRILLING;
+        this.recipeType = ModRecipes.GRILLING;
         assertInventorySize(inventory, inventory.getSizeInventory());
         assertIntArraySize(data, data.size());
         this.inventory = inventory;

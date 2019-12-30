@@ -1,4 +1,4 @@
-package coffeecatrailway.coffeecheese.client.jei;
+package coffeecatrailway.coffeecheese.jei;
 
 import coffeecatrailway.coffeecheese.client.gui.screen.MelterScreen;
 import coffeecatrailway.coffeecheese.common.item.crafting.MelterRecipe;

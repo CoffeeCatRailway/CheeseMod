@@ -1,10 +1,10 @@
-package coffeecatrailway.coffeecheese.client.jei;
+package coffeecatrailway.coffeecheese.jei;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.client.gui.screen.GrillScreen;
 import coffeecatrailway.coffeecheese.client.gui.screen.MelterScreen;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
-import coffeecatrailway.coffeecheese.registry.ModRecipeTypes;
+import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -48,8 +48,8 @@ public class CheeseModPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration reg) {
-        reg.addRecipes(getRecipesOfType(ModRecipeTypes.GRILLING), GRILL);
-        reg.addRecipes(getRecipesOfType(ModRecipeTypes.MELTING), MELTER);
+        reg.addRecipes(getRecipesOfType(ModRecipes.GRILLING), GRILL);
+        reg.addRecipes(getRecipesOfType(ModRecipes.MELTING), MELTER);
     }
 
     private static List<IRecipe<?>> getRecipesOfType(IRecipeType<?> type) {

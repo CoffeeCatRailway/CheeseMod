@@ -3,7 +3,7 @@ package coffeecatrailway.coffeecheese.client.gui.container;
 import coffeecatrailway.coffeecheese.common.item.crafting.MelterRecipe;
 import coffeecatrailway.coffeecheese.common.tileentity.MelterTileEntity;
 import coffeecatrailway.coffeecheese.registry.ModContainers;
-import coffeecatrailway.coffeecheese.registry.ModRecipeTypes;
+import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
@@ -41,7 +41,7 @@ public class MelterContainer extends Container {
         this.inventory = inventory;
         this.data = data;
         this.world = playerInventory.player.world;
-        recipeType = ModRecipeTypes.MELTING;
+        recipeType = ModRecipes.MELTING;
 
         this.addSlot(new Slot(this.inventory, 0, 44, 13));
         this.addSlot(new FuelSlot(this.inventory, 1, 44, 51));

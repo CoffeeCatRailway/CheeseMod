@@ -39,7 +39,7 @@ public class CheeseBallItem extends Item {
             world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5f, 0.4F / (random.nextFloat() * 0.4F + 0.8f));
             if (!world.isRemote) {
                 CheeseBallEntity entity = new CheeseBallEntity(world, player);
-                entity.entityDropItem(stack);
+                entity.setItem(stack);
                 entity.shoot(player, player.rotationPitch, player.rotationYaw, 0.0f, 1.5f, 1.0f);
                 world.addEntity(entity);
             }

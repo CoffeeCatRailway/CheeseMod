@@ -23,7 +23,7 @@ public class ModVanillaCompat {
         DispenserBlock.registerDispenseBehavior(ModItems.CHEESE_BALL.get(), new ProjectileDispenseBehavior() {
             @Override
             protected IProjectile getProjectileEntity(World world, IPosition pos, ItemStack stack) {
-                return Util.make(new CheeseBallEntity(world, pos.getX(), pos.getY(), pos.getZ()), (entity) -> entity.entityDropItem(stack));
+                return Util.make(new CheeseBallEntity(world, pos.getX(), pos.getY(), pos.getZ()), (entity) -> entity.setItem(stack));
             }
         });
 

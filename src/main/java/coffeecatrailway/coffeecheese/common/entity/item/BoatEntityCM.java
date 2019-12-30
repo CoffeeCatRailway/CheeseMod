@@ -1,7 +1,7 @@
 package coffeecatrailway.coffeecheese.common.entity.item;
 
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
-import coffeecatrailway.coffeecheese.registry.ModEntityTypes;
+import coffeecatrailway.coffeecheese.registry.ModEntities;
 import coffeecatrailway.coffeecheese.registry.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -81,7 +81,7 @@ public class BoatEntityCM extends BoatEntity {
     }
 
     public BoatEntityCM(World worldIn, double x, double y, double z) {
-        this(ModEntityTypes.BOAT, worldIn);
+        this(ModEntities.BOAT.get(), worldIn);
         this.setPosition(x, y, z);
         this.setMotion(Vec3d.ZERO);
         this.prevPosX = x;
@@ -90,7 +90,7 @@ public class BoatEntityCM extends BoatEntity {
     }
 
     public BoatEntityCM(FMLPlayMessages.SpawnEntity spawnEntity, World world) {
-        this(ModEntityTypes.BOAT, world);
+        this(ModEntities.BOAT.get(), world);
     }
 
     @Override

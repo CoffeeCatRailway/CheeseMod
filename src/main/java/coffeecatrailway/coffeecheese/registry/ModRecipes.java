@@ -10,41 +10,29 @@ import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /**
  * @author CoffeeCatRailway
  * Created: 9/08/2019
  */
-public class ModRecipeTypes {
+public class ModRecipes {
 
     /// Recipe Types ///
     public static IRecipeType<GrillRecipe> GRILLING;
     public static IRecipeType<MelterRecipe> MELTING;
 
     /// Recipe Serializers ///
-    public static GrillRecipeSerializer<GrillRecipe> GRILLING_SERIALIZER;
-    public static MelterRecipeSerializer<MelterRecipe> MELTING_SERIALIZER;
+    public static final DeferredRegister<IRecipeSerializer<?>> RECIPE_SERIALIZERS = new DeferredRegister<>(ForgeRegistries.RECIPE_SERIALIZERS, CheeseMod.MOD_ID);
 
-    public static void registerAll(RegistryEvent.Register<IRecipeSerializer<?>> event) {
-        if (!event.getName().equals(ForgeRegistries.RECIPE_SERIALIZERS.getRegistryName())) return;
+    public static final RegistryObject<GrillRecipeSerializer<GrillRecipe>> GRILLING_SERIALIZER = RECIPE_SERIALIZERS.register("grilling", () -> new GrillRecipeSerializer<>(GrillRecipe::new, 200));
+    public static final RegistryObject<MelterRecipeSerializer<MelterRecipe>> MELTING_SERIALIZER = RECIPE_SERIALIZERS.register("melting", () -> new MelterRecipeSerializer<>(MelterRecipe::new, 200));
 
+    public static void registerRecipeType() {
         GRILLING = register("grilling");
         MELTING = register("melting");
-
-        CheeseMod.LOGGER.info("Recipe types registered");
-
-        GRILLING_SERIALIZER = register("grilling", new GrillRecipeSerializer<>(GrillRecipe::new, 200));
-        MELTING_SERIALIZER = register("melting", new MelterRecipeSerializer<>(MelterRecipe::new, 200));
-
-        CheeseMod.LOGGER.info("Recipe serializers registered");
-    }
-
-    private static <S extends IRecipeSerializer<R>, R extends IRecipe<?>> S register(String name, S serializer) {
-        serializer.setRegistryName(CheeseMod.getLocation(name));
-        ForgeRegistries.RECIPE_SERIALIZERS.register(serializer);
-        return serializer;
     }
 
     private static <R extends IRecipe<?>> IRecipeType<R> register(String name) {

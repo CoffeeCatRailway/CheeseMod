@@ -1,7 +1,7 @@
 package coffeecatrailway.coffeecheese.common.item.crafting;
 
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
-import coffeecatrailway.coffeecheese.registry.ModRecipeTypes;
+import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -26,7 +26,7 @@ public class MelterRecipe implements IRecipe<IInventory> {
     protected final int cookTime;
 
     public MelterRecipe(ResourceLocation id, Ingredient ingredient, FluidStack result, int cookTime) {
-        type = ModRecipeTypes.MELTING;
+        type = ModRecipes.MELTING;
         this.id = id;
         this.ingredient = ingredient;
         this.result = result;
@@ -85,6 +85,6 @@ public class MelterRecipe implements IRecipe<IInventory> {
 
     @Override
     public IRecipeSerializer<?> getSerializer() {
-        return ModRecipeTypes.MELTING_SERIALIZER;
+        return ModRecipes.MELTING_SERIALIZER.get();
     }
 }

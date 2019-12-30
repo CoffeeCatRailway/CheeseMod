@@ -39,28 +39,28 @@ public class ModBiomes {
     /// Biomes ///
     public static final RegistryObject<FoodBiome> CHEESE_FOREST = BIOMES.register("cheese_forest", () ->
             new FoodBiome(CHEESE_WATER_COLOR, CHEESE_WATER_FOG_COLOR, CHEESE_GRASS_COLOR,
-                    Blocks.GRASS_BLOCK.getDefaultState(), ModFeatures.CHEESE_TREE, ModFeatures.GRILLED_CHEESE_TREE));
+                    Blocks.GRASS_BLOCK.getDefaultState(), ModFeatures.CHEESE_TREE.get(), ModFeatures.GRILLED_CHEESE_TREE.get()));
     public static final RegistryObject<FoodBiome> CHEESE_PLAINS = BIOMES.register("cheese_plains", () ->
             new FoodBiome(CHEESE_WATER_COLOR, CHEESE_WATER_FOG_COLOR, CHEESE_GRASS_COLOR,
                     Blocks.GRASS_BLOCK.getDefaultState()));
 
     public static final RegistryObject<FoodBiome> GRILLED_CHEESE_FOREST = BIOMES.register("grilled_cheese_forest", () ->
             new FoodBiome(GRILLED_CHEESE_WATER_COLOR, GRILLED_CHEESE_WATER_FOG_COLOR, GRILLED_CHEESE_GRASS_COLOR,
-                    Blocks.GRASS_BLOCK.getDefaultState(), ModFeatures.GRILLED_CHEESE_TREE, ModFeatures.CHEESE_TREE));
+                    Blocks.GRASS_BLOCK.getDefaultState(), ModFeatures.GRILLED_CHEESE_TREE.get(), ModFeatures.CHEESE_TREE.get()));
     public static final RegistryObject<FoodBiome> GRILLED_CHEESE_PLAINS = BIOMES.register("grilled_cheese_plains", () ->
             new FoodBiome(GRILLED_CHEESE_WATER_COLOR, GRILLED_CHEESE_WATER_FOG_COLOR, GRILLED_CHEESE_GRASS_COLOR,
                     Blocks.GRASS_BLOCK.getDefaultState()));
 
     public static final RegistryObject<FoodBiome> HAM_RAW_FOREST = BIOMES.register("ham_raw_forest", () ->
             new FoodBiome(HAM_RAW_WATER_COLOR, HAM_RAW_WATER_FOG_COLOR, HAM_RAW_GRASS_COLOR,
-                    Blocks.GRASS_BLOCK.getDefaultState(), ModFeatures.HAM_RAW_TREE, ModFeatures.HAM_COOKED_TREE));
+                    Blocks.GRASS_BLOCK.getDefaultState(), ModFeatures.HAM_RAW_TREE.get(), ModFeatures.HAM_COOKED_TREE.get()));
     public static final RegistryObject<FoodBiome> HAM_RAW_PLAINS = BIOMES.register("ham_raw_plains", () ->
             new FoodBiome(HAM_RAW_WATER_COLOR, HAM_RAW_WATER_FOG_COLOR, HAM_RAW_GRASS_COLOR,
                     Blocks.GRASS_BLOCK.getDefaultState()));
 
     public static final RegistryObject<FoodBiome> HAM_COOKED_FOREST = BIOMES.register("ham_cooked_forest", () ->
             new FoodBiome(HAM_COOKED_WATER_COLOR, HAM_COOKED_WATER_FOG_COLOR, HAM_COOKED_GRASS_COLOR,
-                    Blocks.GRASS_BLOCK.getDefaultState(), ModFeatures.HAM_COOKED_TREE, ModFeatures.HAM_RAW_TREE));
+                    Blocks.GRASS_BLOCK.getDefaultState(), ModFeatures.HAM_COOKED_TREE.get(), ModFeatures.HAM_RAW_TREE.get()));
     public static final RegistryObject<FoodBiome> HAM_COOKED_PLAINS = BIOMES.register("ham_cooked_plains", () ->
             new FoodBiome(HAM_COOKED_WATER_COLOR, HAM_COOKED_WATER_FOG_COLOR, HAM_COOKED_GRASS_COLOR,
                     Blocks.GRASS_BLOCK.getDefaultState()));

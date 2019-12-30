@@ -1,7 +1,7 @@
 package coffeecatrailway.coffeecheese.common.item.crafting;
 
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
-import coffeecatrailway.coffeecheese.registry.ModRecipeTypes;
+import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.AbstractCookingRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -18,7 +18,7 @@ public class GrillRecipe extends AbstractCookingRecipe {
     private final int oil;
 
     public GrillRecipe(ResourceLocation id, Ingredient ingredient, ItemStack result, float experience, int cookTime, int oil) {
-        super(ModRecipeTypes.GRILLING, id, "", ingredient, result, experience, cookTime);
+        super(ModRecipes.GRILLING, id, "", ingredient, result, experience, cookTime);
         this.result = result;
         this.oil = oil;
     }
@@ -29,7 +29,7 @@ public class GrillRecipe extends AbstractCookingRecipe {
 
     @Override
     public IRecipeSerializer<?> getSerializer() {
-        return ModRecipeTypes.GRILLING_SERIALIZER;
+        return ModRecipes.GRILLING_SERIALIZER.get();
     }
 
     public ItemStack getResult() {

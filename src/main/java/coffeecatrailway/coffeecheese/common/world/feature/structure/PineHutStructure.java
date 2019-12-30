@@ -72,7 +72,7 @@ public class PineHutStructure extends Structure<NoFeatureConfig> {
         }
 
         public ResourceLocation getVariant() {
-            int v = this.rand.nextInt(4);
+            int v = this.rand.nextInt(3);
             if (v == 0)
                 return PineHutStructure.VARIANT_3;
             else if (v == 1)
