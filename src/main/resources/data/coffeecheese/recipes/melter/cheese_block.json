@@ -1,9 +1,8 @@
 {
   "type": "coffeecheese:melting",
-  "ingredient": [
-    { "tag": "coffeecheese:food_blocks/cheese" },
-    { "tag": "coffeecheese:food_blocks/grilled_cheese" }
-  ],
+  "ingredient": {
+    "tag": "coffeecheese:food_blocks/cheese"
+  },
   "result": {
     "fluid": "coffeecheese:melted_cheese_still",
     "amount": 1000

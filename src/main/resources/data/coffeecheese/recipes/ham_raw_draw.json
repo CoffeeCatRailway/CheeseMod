@@ -15,9 +15,10 @@
     "L": {
       "tag": "coffeecheese:logs/ham_raw"
     },
-    "B": {
-      "tag": "coffeecheese:food_blocks/ham_raw"
-    }
+    "B": [
+      { "tag": "coffeecheese:food_blocks/ham_raw" },
+      { "tag": "coffeecheese:food_blocks/ham_cooked" }
+    ]
   },
   "result": {
     "item": "coffeecheese:ham_raw_draw"

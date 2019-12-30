@@ -1,5 +1,6 @@
 package coffeecatrailway.coffeecheese.common.block;
 
+import coffeecatrailway.coffeecheese.common.ModTags;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModFluids;
 import net.minecraft.block.BlockState;
@@ -7,10 +8,12 @@ import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.fluid.IFluidState;
+import net.minecraft.pathfinding.PathType;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
@@ -29,15 +32,59 @@ public class ModFlowingFluidBlock extends FlowingFluidBlock {
 
     @Override
     public boolean reactWithNeighbors(World world, BlockPos pos, BlockState state) {
-        if (this.getFluid() == ModFluids.MELTED_CHEESE_S.get()) {
+        if (this.getFluid().isIn(ModTags.Fluids.MELTED_CHEESE)) {
             for (Direction side : Direction.values()) {
                 if (side != Direction.DOWN) {
                     IFluidState offset = world.getFluidState(pos.offset(side));
 
                     if (offset.getFluid().isIn(FluidTags.WATER)) {
-                        world.setBlockState(pos, ModBlocks.CHEESE_BLOCK.get().getDefaultState());
-                        this.triggerMixEffects(world, pos);
-                        return false;
+                        if (world.getFluidState(pos).isSource()) {
+                            world.setBlockState(pos, ModBlocks.CHEESE_BLOCK.get().getDefaultState());
+                            this.triggerMixEffects(world, pos);
+                            return false;
+                        }
+                    }
+                }
+            }
+        } else if (this.getFluid().isIn(ModTags.Fluids.MELTED_GRILLED_CHEESE)) {
+            for (Direction side : Direction.values()) {
+                if (side != Direction.DOWN) {
+                    IFluidState offset = world.getFluidState(pos.offset(side));
+
+                    if (offset.getFluid().isIn(FluidTags.WATER)) {
+                        if (world.getFluidState(pos).isSource()) {
+                            world.setBlockState(pos, ModBlocks.GRILLED_CHEESE_BLOCK.get().getDefaultState());
+                            this.triggerMixEffects(world, pos);
+                            return false;
+                        }
+                    }
+                }
+            }
+        } else if (this.getFluid().isIn(ModTags.Fluids.MELTED_HAM_RAW)) {
+            for (Direction side : Direction.values()) {
+                if (side != Direction.DOWN) {
+                    IFluidState offset = world.getFluidState(pos.offset(side));
+
+                    if (offset.getFluid().isIn(FluidTags.WATER)) {
+                        if (world.getFluidState(pos).isSource()) {
+                            world.setBlockState(pos, ModBlocks.HAM_RAW_BLOCK.get().getDefaultState());
+                            this.triggerMixEffects(world, pos);
+                            return false;
+                        }
+                    }
+                }
+            }
+        } else if (this.getFluid().isIn(ModTags.Fluids.MELTED_HAM_COOKED)) {
+            for (Direction side : Direction.values()) {
+                if (side != Direction.DOWN) {
+                    IFluidState offset = world.getFluidState(pos.offset(side));
+
+                    if (offset.getFluid().isIn(FluidTags.WATER)) {
+                        if (world.getFluidState(pos).isSource()) {
+                            world.setBlockState(pos, ModBlocks.HAM_COOKED_BLOCK.get().getDefaultState());
+                            this.triggerMixEffects(world, pos);
+                            return false;
+                        }
                     }
                 }
             }
@@ -53,7 +100,8 @@ public class ModFlowingFluidBlock extends FlowingFluidBlock {
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
         super.onEntityCollision(state, worldIn, pos, entityIn);
-        if (this.getFluid() == ModFluids.MELTED_CHEESE_S.get() || this.getFluid() == ModFluids.MELTED_CHEESE_F.get()) {
+        if (this.getFluid().isIn(ModTags.Fluids.MELTED_CHEESE) || this.getFluid().isIn(ModTags.Fluids.MELTED_GRILLED_CHEESE)
+                || this.getFluid().isIn(ModTags.Fluids.MELTED_HAM_RAW) || this.getFluid().isIn(ModTags.Fluids.MELTED_HAM_COOKED)) {
             if (!entityIn.isImmuneToFire())
                 entityIn.attackEntityFrom(DamageSource.IN_FIRE, 5.0F);
             entityIn.setInLava();

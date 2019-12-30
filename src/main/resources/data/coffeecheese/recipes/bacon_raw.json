@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     { "tag": "forge:knives" },
-    { "tag": "forge:ham" }
+    { "tag": "coffeecheese:food_slice/ham_raw" }
   ],
   "result": {
     "item": "coffeecheese:bacon_raw",

@@ -30,18 +30,18 @@ public class ModItems {
     public static final RegistryObject<Item> HAM_COOKED_METAL_INGOT = ITEMS.register("ham_cooked_metal_ingot", () -> new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
 
     /// Tool ///
-    public static final RegistryObject<Item> CHEESE_CUTTER = ITEMS.register("cheese_cutter", () -> new SwordItem(ItemTier.WOOD, 1, 2.5f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
-    public static final RegistryObject<Item> GRINDING_STONES = ITEMS.register("grinding_stones", () -> new SwordItem(ItemTier.STONE, 2, 2.7f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+    public static final RegistryObject<Item> CHEESE_CUTTER = ITEMS.register("cheese_cutter", () -> new CraftToolItem(ItemTier.WOOD, 1, 2.5f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+    public static final RegistryObject<Item> GRINDING_STONES = ITEMS.register("grinding_stones", () -> new CraftToolItem(ItemTier.STONE, 2, 2.7f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
 
-    public static final RegistryObject<Item> MILK_CURDLER = ITEMS.register("milk_curdler", () -> new SwordItem(ItemTier.WOOD, 2, 2.5f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
-    public static final RegistryObject<Item> ROLLING_PIN = ITEMS.register("rolling_pin", () -> new SwordItem(ItemTier.WOOD, 1, 2.5f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+    public static final RegistryObject<Item> MILK_CURDLER = ITEMS.register("milk_curdler", () -> new CraftToolItem(ItemTier.WOOD, 2, 2.5f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+    public static final RegistryObject<Item> ROLLING_PIN = ITEMS.register("rolling_pin", () -> new CraftToolItem(ItemTier.WOOD, 1, 2.5f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
 
     /// Tool - Knife ///
-    public static final RegistryObject<Item> KNIFE = ITEMS.register("knife", () -> new SwordItem(ItemTier.IRON, 4, -2.1f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
-    public static final RegistryObject<Item> CHEESE_KNIFE = ITEMS.register("cheese_knife", () -> new SwordItem(ModItemTier.CHEESE_METAL, 5, -2.7f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
-    public static final RegistryObject<Item> GRILLED_CHEESE_KNIFE = ITEMS.register("grilled_cheese_knife", () -> new SwordItem(ModItemTier.GRILLED_CHEESE_METAL, 6, -3.5f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
-    public static final RegistryObject<Item> HAM_RAW_KNIFE = ITEMS.register("ham_raw_knife", () -> new SwordItem(ModItemTier.HAM_RAW_METAL, 5, -2.9f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
-    public static final RegistryObject<Item> HAM_COOKED_KNIFE = ITEMS.register("ham_cooked_knife", () -> new SwordItem(ModItemTier.HAM_COOKED_METAL, 6, -3.0f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+    public static final RegistryObject<Item> KNIFE = ITEMS.register("knife", () -> new CraftToolItem(ItemTier.IRON, 4, -2.1f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+    public static final RegistryObject<Item> CHEESE_KNIFE = ITEMS.register("cheese_knife", () -> new CraftToolItem(ModItemTier.CHEESE_METAL, 5, -2.7f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+    public static final RegistryObject<Item> GRILLED_CHEESE_KNIFE = ITEMS.register("grilled_cheese_knife", () -> new CraftToolItem(ModItemTier.GRILLED_CHEESE_METAL, 6, -3.5f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+    public static final RegistryObject<Item> HAM_RAW_KNIFE = ITEMS.register("ham_raw_knife", () -> new CraftToolItem(ModItemTier.HAM_RAW_METAL, 5, -2.9f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
+    public static final RegistryObject<Item> HAM_COOKED_KNIFE = ITEMS.register("ham_cooked_knife", () -> new CraftToolItem(ModItemTier.HAM_COOKED_METAL, 6, -3.0f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
 
     /// Tool - Cheese Metal ///
     public static final RegistryObject<Item> CHEESE_METAL_PICKAXE = ITEMS.register("cheese_metal_pickaxe", () -> new PickaxeItem(ModItemTier.CHEESE_METAL, 1, -2.8f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)));
@@ -167,10 +167,10 @@ public class ModItems {
     public static final RegistryObject<Item> PIZZA_CHEESE_HAM_PINEAPPLE_COOKED = registerItemFood("pizza_cheese_ham_pineapple_cooked", ModFoods.PIZZA_CHEESE_HAM_PINEAPPLE_COOKED, 32);
 
     /// Spawn Eggs ///
-    public static final RegistryObject<Item> CHEESE_FOODIE_SPAWN_EGG = ITEMS.register("cheese_foodie_spawn_egg", () -> new SpawnEggItem(ModEntityTypes.CHEESE_FOODIE, 11445876, 9404726, new Item.Properties().group(ItemGroup.MISC)));
-    public static final RegistryObject<Item> GRILLED_CHEESE_FOODIE_SPAWN_EGG = ITEMS.register("grilled_cheese_foodie_spawn_egg", () -> new SpawnEggItem(ModEntityTypes.GRILLED_CHEESE_FOODIE, 8484425, 8877339, new Item.Properties().group(ItemGroup.MISC)));
-    public static final RegistryObject<Item> HAM_RAW_FOODIE_SPAWN_EGG = ITEMS.register("ham_raw_foodie_spawn_egg", () -> new SpawnEggItem(ModEntityTypes.HAM_RAW_FOODIE, 12152929, 13920850, new Item.Properties().group(ItemGroup.MISC)));
-    public static final RegistryObject<Item> HAM_COOKED_FOODIE_SPAWN_EGG = ITEMS.register("ham_cooked_foodie_spawn_egg", () -> new SpawnEggItem(ModEntityTypes.HAM_COOKED_FOODIE, 13218964, 16770746, new Item.Properties().group(ItemGroup.MISC)));
+    public static final RegistryObject<Item> CHEESE_FOODIE_SPAWN_EGG = ITEMS.register("cheese_foodie_spawn_egg", () -> new MeSpawnEggItem(ModEntities.CHEESE_FOODIE.get(), 11445876, 9404726));
+    public static final RegistryObject<Item> GRILLED_CHEESE_FOODIE_SPAWN_EGG = ITEMS.register("grilled_cheese_foodie_spawn_egg", () -> new MeSpawnEggItem(ModEntities.GRILLED_CHEESE_FOODIE.get(), 8484425, 8877339));
+    public static final RegistryObject<Item> HAM_RAW_FOODIE_SPAWN_EGG = ITEMS.register("ham_raw_foodie_spawn_egg", () -> new MeSpawnEggItem(ModEntities.HAM_RAW_FOODIE.get(), 12152929, 13920850));
+    public static final RegistryObject<Item> HAM_COOKED_FOODIE_SPAWN_EGG = ITEMS.register("ham_cooked_foodie_spawn_egg", () -> new MeSpawnEggItem(ModEntities.HAM_COOKED_FOODIE.get(), 13218964, 16770746));
 
     /// Boats ///
     public static final RegistryObject<Item> BOAT_CHEESE = ITEMS.register("cheese_boat", () -> new BoatItemCM(BoatEntityCM.Type.CHEESE, new Item.Properties().maxStackSize(1).group(ModItemGroups.GROUP_ALL)));

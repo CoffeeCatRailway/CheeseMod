@@ -1,8 +1,12 @@
 {
   "type": "coffeecheese:melting",
   "ingredient": [
-    { "tag": "forge:stone" },
-    { "tag": "forge:cobblestone" }
+    {
+      "tag": "forge:stone"
+    },
+    {
+      "tag": "forge:cobblestone"
+    }
   ],
   "result": {
     "fluid": "minecraft:lava",

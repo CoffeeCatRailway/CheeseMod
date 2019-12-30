@@ -2,7 +2,6 @@ package coffeecatrailway.coffeecheese.common.block;
 
 import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
 import coffeecatrailway.coffeecheese.registry.ModFluids;
-import coffeecatrailway.coffeecheese.registry.ModItems;
 import coffeecatrailway.coffeecheese.registry.ModStats;
 import coffeecatrailway.coffeecheese.util.VoxelShapeHelper;
 import com.google.common.collect.Lists;

@@ -119,8 +119,30 @@
   "block.coffeecheese.ham_raw_draw": "Raw Ham Draw",
   "block.coffeecheese.ham_cooked_draw": "Cooked Ham Draw",
 
-  "block.coffeecheese.oil_block": "Oil",
+  "block.coffeecheese.oil": "Oil",
+  "block.coffeecheese.oil_still": "Oil",
+  "fluid.coffeecheese.oil_still": "Oil",
+  "fluid.coffeecheese.oil_flowing": "Oil",
+
   "block.coffeecheese.melted_cheese": "Melted Cheese",
+  "block.coffeecheese.melted_cheese_still": "Melted Cheese",
+  "fluid.coffeecheese.melted_cheese_still": "Melted Cheese",
+  "fluid.coffeecheese.melted_cheese_flowing": "Melted Cheese",
+
+  "block.coffeecheese.melted_grilled_cheese": "Melted Grilled Cheese",
+  "block.coffeecheese.melted_grilled_cheese_still": "Melted Grilled Cheese",
+  "fluid.coffeecheese.melted_grilled_cheese_still": "Melted Grilled Cheese",
+  "fluid.coffeecheese.melted_grilled_cheese_flowing": "Melted Grilled Cheese",
+
+  "block.coffeecheese.melted_ham_raw": "Melted Ham Raw",
+  "block.coffeecheese.melted_ham_raw_still": "Melted Ham Raw",
+  "fluid.coffeecheese.melted_ham_raw_still": "Melted Ham Raw",
+  "fluid.coffeecheese.melted_ham_raw_flowing": "Melted Ham Raw",
+
+  "block.coffeecheese.melted_ham_cooked": "Melted Ham Cooked",
+  "block.coffeecheese.melted_ham_cooked_still": "Melted Ham Cooked",
+  "fluid.coffeecheese.melted_ham_cooked_still": "Melted Ham Cooked",
+  "fluid.coffeecheese.melted_ham_cooked_flowing": "Melted Ham Cooked",
 
   "block.coffeecheese.grill": "Grill",
   "block.coffeecheese.melter": "Melter",
@@ -256,7 +278,11 @@
   "item.coffeecheese.pizza_cheese_ham_pineapple_cooked": "Cooked Cheesy Ham N' Pineapple Pizza",
 
   "item.coffeecheese.oil_bucket": "Oil Bucket",
+
   "item.coffeecheese.melted_cheese_bucket": "Melted Cheese Bucket",
+  "item.coffeecheese.melted_grilled_cheese_bucket": "Melted Grilled Cheese Bucket",
+  "item.coffeecheese.melted_ham_raw_bucket": "Melted Ham Raw Bucket",
+  "item.coffeecheese.melted_ham_cooked_bucket": "Melted Ham Cooked Bucket",
 
   "item.coffeecheese.cheese_foodie_spawn_egg": "Cheese Foodie Spawn Egg",
   "item.coffeecheese.grilled_cheese_foodie_spawn_egg": "Grilled Cheese Foodie Spawn Egg",

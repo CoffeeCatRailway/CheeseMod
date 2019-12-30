@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "coffeecheese:ham_raw",
-    "coffeecheese:ham_cooked",
     "coffeecheese:ham_green"
   ]
 }

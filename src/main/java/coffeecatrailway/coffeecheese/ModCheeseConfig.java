@@ -2,9 +2,6 @@ package coffeecatrailway.coffeecheese;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
-import java.util.List;
-import java.util.function.Supplier;
-
 /**
  * @author CoffeeCatRailway
  * Created: 22/12/2019
@@ -78,16 +75,16 @@ public class ModCheeseConfig {
             int maxWeight = 1000;
 
             cheeseBiomeWeight = builder.comment("Cheese weight")
-                    .defineInRange(configBiome + "cheeseBiomeWeight", 20, minWeight, maxWeight);
+                    .defineInRange(configBiome + "cheeseBiomeWeight", 10, minWeight, maxWeight);
 
             grilledCheeseBiomeWeight = builder.comment("Grilled cheese weight")
-                    .defineInRange(configBiome + "grilledCheeseBiomeWeight", 13, minWeight, maxWeight);
+                    .defineInRange(configBiome + "grilledCheeseBiomeWeight", 7, minWeight, maxWeight);
 
             hamRawBiomeWeight = builder.comment("Ham raw weight")
-                    .defineInRange(configBiome + "hamRawBiomeWeight", 15, minWeight, maxWeight);
+                    .defineInRange(configBiome + "hamRawBiomeWeight", 10, minWeight, maxWeight);
 
             hamCookedBiomeWeight = builder.comment("Ham cooked weight")
-                    .defineInRange(configBiome + "hamCookedBiomeWeight", 10, minWeight, maxWeight);
+                    .defineInRange(configBiome + "hamCookedBiomeWeight", 7, minWeight, maxWeight);
         }
     }
 }

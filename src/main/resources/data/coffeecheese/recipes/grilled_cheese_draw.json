@@ -15,9 +15,10 @@
     "L": {
       "tag": "coffeecheese:logs/grilled_cheese"
     },
-    "B": {
-      "tag": "coffeecheese:food_blocks/cheese"
-    }
+    "B": [
+      { "tag": "coffeecheese:food_blocks/cheese" },
+      { "tag": "coffeecheese:food_blocks/grilled_cheese" }
+    ]
   },
   "result": {
     "item": "coffeecheese:grilled_cheese_draw"

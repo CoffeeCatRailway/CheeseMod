@@ -199,21 +199,21 @@ public class ModBlocks {
     public static final RegistryObject<Block> HAM_COOKED_DRAW = registerBlockGeneral("ham_cooked_draw", () -> new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5f).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_HAM_DRAW));
 
     /// Other ///
-    public static final RegistryObject<Block> GRILL = registerBlockGroupl("grill", () -> new GrillBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5f).lightValue(13)), null);
-    public static final RegistryObject<Block> MELTER = registerBlockGroupl("melter", () -> new MelterBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5f).lightValue(13)), null);
+    public static final RegistryObject<Block> GRILL = registerBlockGeneral("grill", () -> new GrillBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5f).lightValue(13)));
+    public static final RegistryObject<Block> MELTER = registerBlockGeneral("melter", () -> new MelterBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5f).lightValue(13)));
 
     public static final RegistryObject<Block> PINEAPPLE = BLOCKS.register("pineapple_plant", () -> new PineappleBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)));
 
-    public static final RegistryObject<Block> CHEESE_CAKE = registerBlockGroupl("cheese_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
-    public static final RegistryObject<Block> GRILLED_CHEESE_CAKE = registerBlockGroupl("grilled_cheese_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
-    public static final RegistryObject<Block> HAM_RAW_CAKE = registerBlockGroupl("ham_raw_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
-    public static final RegistryObject<Block> HAM_COOKED_CAKE = registerBlockGroupl("ham_cooked_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
+    public static final RegistryObject<Block> CHEESE_CAKE = registerBlockGroup("cheese_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
+    public static final RegistryObject<Block> GRILLED_CHEESE_CAKE = registerBlockGroup("grilled_cheese_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
+    public static final RegistryObject<Block> HAM_RAW_CAKE = registerBlockGroup("ham_raw_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
+    public static final RegistryObject<Block> HAM_COOKED_CAKE = registerBlockGroup("ham_cooked_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
 
     private static <T extends Block> RegistryObject<T> registerBlockGeneral(String name, Supplier<? extends T> block) {
         return registerBlock(name, block, item -> registerBlockItem(item, ModItemGroups.GROUP_ALL));
     }
 
-    private static <T extends Block> RegistryObject<T> registerBlockGroupl(String name, Supplier<? extends T> block, ItemGroup group) {
+    private static <T extends Block> RegistryObject<T> registerBlockGroup(String name, Supplier<? extends T> block, ItemGroup group) {
         return registerBlock(name, block, item -> registerBlockItem(item, group));
     }
 

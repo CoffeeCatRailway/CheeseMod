@@ -1,7 +1,7 @@
 {
   "type": "coffeecheese:melting",
   "ingredient": {
-    "item": "coffeecheese:cheese_slice"
+    "tag": "coffeecheese:food_slice/cheese"
   },
   "result": {
     "fluid": "coffeecheese:melted_cheese_still",

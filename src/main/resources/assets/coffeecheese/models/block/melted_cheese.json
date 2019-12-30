@@ -1,6 +1,6 @@
 {
     "textures": {
-        "particle": "coffeecheese:block/melted_cheese_still"
+        "particle": "coffeecheese:fluid/melted_cheese_still"
     }
 }
 

@@ -28,13 +28,6 @@ public class MelterTileEntityRenderer extends TileEntityRenderer<MelterTileEntit
 
         ResourceLocation fluidTexture = MelterScreen.getFluidTexture(fluid);
         if (fluidTexture != null && !fluidTexture.toString().equals("minecraft:textures/white.png")) {
-            RayTraceResult raytraceresult = this.rendererDispatcher.cameraHitResult;
-            if (raytraceresult != null && raytraceresult.getType() == RayTraceResult.Type.BLOCK && tile.getPos().equals(((BlockRayTraceResult) raytraceresult).getPos())) {
-                this.setLightmapDisabled(true);
-                this.drawNameplate(tile, MelterScreen.getFormatedFluidString(fluid, fluidAmount), x, y - 0.5d, z, 12);
-                this.setLightmapDisabled(false);
-            }
-
             GlStateManager.pushMatrix();
             float yOff = MelterScreen.mapFluid(fluidAmount, 0.0f, 0.1f);
             GlStateManager.translatef((float) x, (float) y + 0.26f + yOff, (float) z); /// TODO: Fix texture stretching! ///

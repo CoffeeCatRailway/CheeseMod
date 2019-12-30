@@ -62,6 +62,9 @@ public class ModTags {
 
         public static Tag<Fluid> GRILL_OIL = tag("oil");
         public static Tag<Fluid> MELTED_CHEESE = tag("cheese");
+        public static Tag<Fluid> MELTED_GRILLED_CHEESE = tag("grilled_cheese");
+        public static Tag<Fluid> MELTED_HAM_RAW = tag("ham_raw");
+        public static Tag<Fluid> MELTED_HAM_COOKED = tag("ham_cooked");
 
         private static Tag<Fluid> tag(String name) {
             return new FluidTags.Wrapper(CheeseMod.getLocation(name));
