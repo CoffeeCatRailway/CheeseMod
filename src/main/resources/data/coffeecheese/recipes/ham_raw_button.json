@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "tag": "coffeecheese:food_blocks/ham_raw" }
+  ],
+  "result": {
+    "item": "coffeecheese:ham_raw_button"
+  }
+}

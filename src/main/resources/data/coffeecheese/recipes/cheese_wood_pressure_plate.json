@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BB"
+  ],
+  "key": {
+    "B": {
+      "item": "coffeecheese:cheese_planks"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:cheese_wood_pressure_plate"
+  }
+}

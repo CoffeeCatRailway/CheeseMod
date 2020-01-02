@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "tag": "coffeecheese:food_blocks/ham_raw"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:ham_raw_trap_door"
+  }
+}

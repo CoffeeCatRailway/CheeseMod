@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BB"
+  ],
+  "key": {
+    "B": {
+      "tag": "coffeecheese:food_blocks/ham_cooked"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:ham_cooked_pressure_plate"
+  }
+}

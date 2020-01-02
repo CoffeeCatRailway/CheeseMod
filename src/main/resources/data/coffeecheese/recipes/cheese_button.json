@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "tag": "coffeecheese:food_blocks/cheese" }
+  ],
+  "result": {
+    "item": "coffeecheese:cheese_button"
+  }
+}

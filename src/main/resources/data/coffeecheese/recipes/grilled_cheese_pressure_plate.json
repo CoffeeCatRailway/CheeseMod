@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BB"
+  ],
+  "key": {
+    "B": {
+      "tag": "coffeecheese:food_blocks/grilled_cheese"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:grilled_cheese_pressure_plate"
+  }
+}

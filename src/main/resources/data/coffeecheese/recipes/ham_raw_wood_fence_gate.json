@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SBS",
+    "SBS"
+  ],
+  "key": {
+    "S": {
+      "tag": "forge:rods/wooden"
+    },
+    "B": {
+      "item": "coffeecheese:ham_raw_planks"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:ham_raw_wood_fence_gate"
+  }
+}

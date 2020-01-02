@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "coffeecheese:grilled_cheese_planks" }
+  ],
+  "result": {
+    "item": "coffeecheese:grilled_cheese_wood_button"
+  }
+}
