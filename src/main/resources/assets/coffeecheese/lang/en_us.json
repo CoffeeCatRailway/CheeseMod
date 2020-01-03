@@ -104,6 +104,26 @@
   "block.coffeecheese.ham_cooked_wood_fence": "Cooked Ham Wood Fence",
   "block.coffeecheese.ham_cooked_wood_fence_gate": "Cooked Ham Wood Fence Gate",
 
+  "block.coffeecheese.cheese_door": "Cheese Door",
+  "block.coffeecheese.grilled_cheese_door": "Grilled Cheese Door",
+  "block.coffeecheese.ham_raw_door": "Raw Ham Door",
+  "block.coffeecheese.ham_cooked_door": "Cooked Ham Door",
+
+  "block.coffeecheese.cheese_wood_door": "Cheese Wood Door",
+  "block.coffeecheese.grilled_cheese_wood_door": "Grilled Cheese Wood Door",
+  "block.coffeecheese.ham_raw_wood_door": "Raw Ham Wood Door",
+  "block.coffeecheese.ham_cooked_wood_door": "Cooked Ham Wood Door",
+
+  "block.coffeecheese.cheese_trap_door": "Cheese Trapdoor",
+  "block.coffeecheese.grilled_cheese_trap_door": "Grilled Cheese Trapdoor",
+  "block.coffeecheese.ham_raw_trap_door": "Raw Ham Trapdoor",
+  "block.coffeecheese.ham_cooked_trap_door": "Cooked Ham Trapdoor",
+
+  "block.coffeecheese.cheese_wood_trap_door": "Cheese Wood Trapdoor",
+  "block.coffeecheese.grilled_cheese_wood_trap_door": "Grilled Cheese Wood Trapdoor",
+  "block.coffeecheese.ham_raw_wood_trap_door": "Raw Ham Wood Trapdoor",
+  "block.coffeecheese.ham_cooked_wood_trap_door": "Cooked Ham Wood Trapdoor",
+
   "block.coffeecheese.cheese_pressure_plate": "Cheese Pressure Plate",
   "block.coffeecheese.grilled_cheese_pressure_plate": "Grilled Cheese Pressure Plate",
   "block.coffeecheese.ham_raw_pressure_plate": "Raw Ham Pressure Plate",
@@ -114,15 +134,25 @@
   "block.coffeecheese.ham_raw_wood_pressure_plate": "Raw Ham Wood Pressure Plate",
   "block.coffeecheese.ham_cooked_wood_pressure_plate": "Cooked Ham Wood Pressure Plate",
 
+  "block.coffeecheese.cheese_button": "Cheese Button",
+  "block.coffeecheese.grilled_cheese_button": "Grilled Cheese Button",
+  "block.coffeecheese.ham_raw_button": "Raw Ham Button",
+  "block.coffeecheese.ham_cooked_button": "Cooked Ham Button",
+
+  "block.coffeecheese.cheese_wood_button": "Cheese Wood Button",
+  "block.coffeecheese.grilled_cheese_wood_button": "Grilled Cheese Wood Button",
+  "block.coffeecheese.ham_raw_wood_button": "Raw Ham Wood Button",
+  "block.coffeecheese.ham_cooked_wood_button": "Cooked Ham Wood Button",
+
   "block.coffeecheese.cheese_draw": "Cheese Draw",
   "block.coffeecheese.grilled_cheese_draw": "Grilled Cheese Draw",
   "block.coffeecheese.ham_raw_draw": "Raw Ham Draw",
   "block.coffeecheese.ham_cooked_draw": "Cooked Ham Draw",
 
-  "block.coffeecheese.oil": "Oil",
-  "block.coffeecheese.oil_still": "Oil",
-  "fluid.coffeecheese.oil_still": "Oil",
-  "fluid.coffeecheese.oil_flowing": "Oil",
+  "block.coffeecheese.oil": "Grill Oil",
+  "block.coffeecheese.oil_still": "Grill Oil",
+  "fluid.coffeecheese.oil_still": "Grill Oil",
+  "fluid.coffeecheese.oil_flowing": "Grill Oil",
 
   "block.coffeecheese.melted_cheese": "Melted Cheese",
   "block.coffeecheese.melted_cheese_still": "Melted Cheese",
