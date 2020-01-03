@@ -1,7 +1,7 @@
 package coffeecatrailway.coffeecheese.common.world;
 
 import coffeecatrailway.coffeecheese.ModCheeseConfig;
-import coffeecatrailway.coffeecheese.common.world.biome.FoodBiome;
+import coffeecatrailway.coffeecheese.common.world.biome.BaseFoodBiome;
 import coffeecatrailway.coffeecheese.common.world.feature.ModOreFeature;
 import coffeecatrailway.coffeecheese.common.world.feature.ModOreFeatureConfig;
 import coffeecatrailway.coffeecheese.common.world.feature.structure.PineHutStructure;
@@ -80,21 +80,21 @@ public class ModWorldFeatures {
                 boolean justHam = isHamRaw || isHamCooked;
 
                 // Foodies
-                if (biome instanceof FoodBiome) {
+                if (biome instanceof BaseFoodBiome) {
                     if (isCheese && ModCheeseConfig.cheeseFoodieWeight.get() > 0)
-                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntities.CHEESE_FOODIE.get(),
+                        ((BaseFoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntities.CHEESE_FOODIE.get(),
                                 ModCheeseConfig.cheeseFoodieWeight.get(), ModCheeseConfig.cheeseFoodieMin.get(), ModCheeseConfig.cheeseFoodieMax.get()));
 
                     if (isGrilledCheese && ModCheeseConfig.grilledCheeseFoodieWeight.get() > 0)
-                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntities.GRILLED_CHEESE_FOODIE.get(),
+                        ((BaseFoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntities.GRILLED_CHEESE_FOODIE.get(),
                                 ModCheeseConfig.grilledCheeseFoodieWeight.get(), ModCheeseConfig.grilledCheeseFoodieMin.get(), ModCheeseConfig.grilledCheeseFoodieMax.get()));
 
                     if (isHamRaw && ModCheeseConfig.hamRawFoodieWeight.get() > 0)
-                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntities.HAM_RAW_FOODIE.get(),
+                        ((BaseFoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntities.HAM_RAW_FOODIE.get(),
                                 ModCheeseConfig.hamRawFoodieWeight.get(), ModCheeseConfig.hamRawFoodieMin.get(), ModCheeseConfig.hamRawFoodieMax.get()));
 
                     if (isHamCooked && ModCheeseConfig.hamCookedFoodieWeight.get() > 0)
-                        ((FoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntities.HAM_COOKED_FOODIE.get(),
+                        ((BaseFoodBiome) biome).addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(ModEntities.HAM_COOKED_FOODIE.get(),
                                 ModCheeseConfig.hamCookedFoodieWeight.get(), ModCheeseConfig.hamCookedFoodieMin.get(), ModCheeseConfig.hamCookedFoodieMax.get()));
                 }
 

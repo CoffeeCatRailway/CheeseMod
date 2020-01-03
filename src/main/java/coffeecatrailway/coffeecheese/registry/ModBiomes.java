@@ -2,8 +2,7 @@ package coffeecatrailway.coffeecheese.registry;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.ModCheeseConfig;
-import coffeecatrailway.coffeecheese.common.world.biome.FoodBiome;
-import net.minecraft.block.Blocks;
+import coffeecatrailway.coffeecheese.common.world.biome.*;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
@@ -20,50 +19,42 @@ public class ModBiomes {
     public static final DeferredRegister<Biome> BIOMES = new DeferredRegister<>(ForgeRegistries.BIOMES, CheeseMod.MOD_ID);
 
     /// Biome Colors ///
-    private static final int CHEESE_WATER_COLOR = 14402627;
-    private static final int CHEESE_WATER_FOG_COLOR = 4800790;
-    private static final int CHEESE_GRASS_COLOR = 16768849;
+    public static final int CHEESE_WATER_COLOR = 14402627;
+    public static final int CHEESE_WATER_FOG_COLOR = 4800790;
+    public static final int CHEESE_GRASS_COLOR = 16768849;
 
-    private static final int GRILLED_CHEESE_WATER_COLOR = 9864494;
-    private static final int GRILLED_CHEESE_WATER_FOG_COLOR = 7036449;
-    private static final int GRILLED_CHEESE_GRASS_COLOR = 9534766;
+    public static final int GRILLED_CHEESE_WATER_COLOR = 9864494;
+    public static final int GRILLED_CHEESE_WATER_FOG_COLOR = 7036449;
+    public static final int GRILLED_CHEESE_GRASS_COLOR = 9534766;
 
-    private static final int HAM_RAW_WATER_COLOR = 13920850;
-    private static final int HAM_RAW_WATER_FOG_COLOR = 10506302;
-    private static final int HAM_RAW_GRASS_COLOR = 16744291;
+    public static final int HAM_RAW_WATER_COLOR = 13920850;
+    public static final int HAM_RAW_WATER_FOG_COLOR = 10506302;
+    public static final int HAM_RAW_GRASS_COLOR = 16744291;
 
-    private static final int HAM_COOKED_WATER_COLOR = 14729878;
-    private static final int HAM_COOKED_WATER_FOG_COLOR = 10389865;
-    private static final int HAM_COOKED_GRASS_COLOR = 16770746;
+    public static final int HAM_COOKED_WATER_COLOR = 14729878;
+    public static final int HAM_COOKED_WATER_FOG_COLOR = 10389865;
+    public static final int HAM_COOKED_GRASS_COLOR = 16770746;
 
     /// Biomes ///
-    public static final RegistryObject<FoodBiome> CHEESE_FOREST = BIOMES.register("cheese_forest", () ->
-            new FoodBiome(CHEESE_WATER_COLOR, CHEESE_WATER_FOG_COLOR, CHEESE_GRASS_COLOR,
-                    Blocks.GRASS_BLOCK.getDefaultState(), ModFeatures.CHEESE_TREE.get(), ModFeatures.GRILLED_CHEESE_TREE.get()));
-    public static final RegistryObject<FoodBiome> CHEESE_PLAINS = BIOMES.register("cheese_plains", () ->
-            new FoodBiome(CHEESE_WATER_COLOR, CHEESE_WATER_FOG_COLOR, CHEESE_GRASS_COLOR,
-                    Blocks.GRASS_BLOCK.getDefaultState()));
+    public static final RegistryObject<BaseFoodBiome> CHEESE_FOREST = BIOMES.register("cheese_forest", () ->
+            new CheeseFoodBiome(Biome.Category.FOREST));
+    public static final RegistryObject<BaseFoodBiome> CHEESE_PLAINS = BIOMES.register("cheese_plains", () ->
+            new CheeseFoodBiome(Biome.Category.PLAINS));
 
-    public static final RegistryObject<FoodBiome> GRILLED_CHEESE_FOREST = BIOMES.register("grilled_cheese_forest", () ->
-            new FoodBiome(GRILLED_CHEESE_WATER_COLOR, GRILLED_CHEESE_WATER_FOG_COLOR, GRILLED_CHEESE_GRASS_COLOR,
-                    Blocks.GRASS_BLOCK.getDefaultState(), ModFeatures.GRILLED_CHEESE_TREE.get(), ModFeatures.CHEESE_TREE.get()));
-    public static final RegistryObject<FoodBiome> GRILLED_CHEESE_PLAINS = BIOMES.register("grilled_cheese_plains", () ->
-            new FoodBiome(GRILLED_CHEESE_WATER_COLOR, GRILLED_CHEESE_WATER_FOG_COLOR, GRILLED_CHEESE_GRASS_COLOR,
-                    Blocks.GRASS_BLOCK.getDefaultState()));
+    public static final RegistryObject<BaseFoodBiome> GRILLED_CHEESE_FOREST = BIOMES.register("grilled_cheese_forest", () ->
+            new GrilledCheeseFoodBiome(Biome.Category.FOREST));
+    public static final RegistryObject<BaseFoodBiome> GRILLED_CHEESE_PLAINS = BIOMES.register("grilled_cheese_plains", () ->
+            new GrilledCheeseFoodBiome(Biome.Category.PLAINS));
 
-    public static final RegistryObject<FoodBiome> HAM_RAW_FOREST = BIOMES.register("ham_raw_forest", () ->
-            new FoodBiome(HAM_RAW_WATER_COLOR, HAM_RAW_WATER_FOG_COLOR, HAM_RAW_GRASS_COLOR,
-                    Blocks.GRASS_BLOCK.getDefaultState(), ModFeatures.HAM_RAW_TREE.get(), ModFeatures.HAM_COOKED_TREE.get()));
-    public static final RegistryObject<FoodBiome> HAM_RAW_PLAINS = BIOMES.register("ham_raw_plains", () ->
-            new FoodBiome(HAM_RAW_WATER_COLOR, HAM_RAW_WATER_FOG_COLOR, HAM_RAW_GRASS_COLOR,
-                    Blocks.GRASS_BLOCK.getDefaultState()));
+    public static final RegistryObject<BaseFoodBiome> HAM_RAW_FOREST = BIOMES.register("ham_raw_forest", () ->
+            new HamRawFoodBiome(Biome.Category.FOREST));
+    public static final RegistryObject<BaseFoodBiome> HAM_RAW_PLAINS = BIOMES.register("ham_raw_plains", () ->
+            new HamRawFoodBiome(Biome.Category.PLAINS));
 
-    public static final RegistryObject<FoodBiome> HAM_COOKED_FOREST = BIOMES.register("ham_cooked_forest", () ->
-            new FoodBiome(HAM_COOKED_WATER_COLOR, HAM_COOKED_WATER_FOG_COLOR, HAM_COOKED_GRASS_COLOR,
-                    Blocks.GRASS_BLOCK.getDefaultState(), ModFeatures.HAM_COOKED_TREE.get(), ModFeatures.HAM_RAW_TREE.get()));
-    public static final RegistryObject<FoodBiome> HAM_COOKED_PLAINS = BIOMES.register("ham_cooked_plains", () ->
-            new FoodBiome(HAM_COOKED_WATER_COLOR, HAM_COOKED_WATER_FOG_COLOR, HAM_COOKED_GRASS_COLOR,
-                    Blocks.GRASS_BLOCK.getDefaultState()));
+    public static final RegistryObject<BaseFoodBiome> HAM_COOKED_FOREST = BIOMES.register("ham_cooked_forest", () ->
+            new HamCookedFoodBiome(Biome.Category.FOREST));
+    public static final RegistryObject<BaseFoodBiome> HAM_COOKED_PLAINS = BIOMES.register("ham_cooked_plains", () ->
+            new HamCookedFoodBiome(Biome.Category.PLAINS));
 
     public static void addBiomeTypes() {
         BiomeDictionary.addTypes(CHEESE_FOREST.get(), BiomeDictionary.Type.FOREST, BiomeDictionary.Type.COLD, BiomeDictionary.Type.OVERWORLD);
@@ -100,6 +91,14 @@ public class ModBiomes {
         if (w4 > 0) {
             BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(HAM_COOKED_FOREST.get(), w4));
             BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(HAM_COOKED_PLAINS.get(), w4));
+        }
+    }
+
+    public static void addBiomeFeatures() {
+        for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
+            if (biome instanceof BaseFoodBiome) {
+                ((BaseFoodBiome) biome).addFeatures();
+            }
         }
     }
 }

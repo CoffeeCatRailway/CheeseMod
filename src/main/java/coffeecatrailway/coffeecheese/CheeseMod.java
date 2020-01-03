@@ -134,6 +134,7 @@ public class CheeseMod {
 
     public void setupCommon(FMLCommonSetupEvent event) {
         ModBiomes.addBiomeTypes();
+        ModBiomes.addBiomeFeatures();
         ModWorldFeatures.addFeatures();
         ModVanillaCompat.setup();
         CheeseMod.LOGGER.debug("Common setup");
