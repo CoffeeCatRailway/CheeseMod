@@ -1,5 +1,6 @@
 <img src="https://i.imgur.com/rhx5rd4.png"/>
 
+# CoffeeCats CheeseMod [![Curseforge](http://cf.way2muchnoise.eu/full_cheesemod_downloads.svg)](https://minecraft.curseforge.com/projects/cheesemod) [![Curseforge](http://cf.way2muchnoise.eu/versions/For%20MC_cheesemod_all.svg)](https://minecraft.curseforge.com/projects/cheesemod)
 
 Minecraft mod that adds various food-related items blocks and more!
 ### Features
