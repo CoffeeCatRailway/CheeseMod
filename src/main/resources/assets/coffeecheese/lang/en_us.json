@@ -307,7 +307,7 @@
   "item.coffeecheese.pizza_cheese_ham_pineapple": "Cheesy Ham N' Pineapple Pizza",
   "item.coffeecheese.pizza_cheese_ham_pineapple_cooked": "Cooked Cheesy Ham N' Pineapple Pizza",
 
-  "item.coffeecheese.oil_bucket": "Oil Bucket",
+  "item.coffeecheese.oil_bucket": "Grill Oil Bucket",
 
   "item.coffeecheese.melted_cheese_bucket": "Melted Cheese Bucket",
   "item.coffeecheese.melted_grilled_cheese_bucket": "Melted Grilled Cheese Bucket",
@@ -344,7 +344,7 @@
   "container.coffeecheese.grill": "Grill",
   "container.coffeecheese.melter": "Melter",
 
-  "gui.coffeecheese.category.grill.oil": "Oil: %smb/%smb",
+  "gui.coffeecheese.category.grill.oil": "Grill Oil: %smb/%smb",
   "gui.coffeecheese.category.melter.fluid": "%s: %smb/%smb",
 
   "biome.coffeecheese.cheese_forest": "Cheese Forest",
