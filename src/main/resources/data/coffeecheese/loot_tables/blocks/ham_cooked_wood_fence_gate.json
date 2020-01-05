@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "coffeecheese:ham_cookedgrilled_cheese_wood_fence_gate"
+          "name": "coffeecheese:ham_cooked_wood_fence_gate"
         }
       ],
       "conditions": [
