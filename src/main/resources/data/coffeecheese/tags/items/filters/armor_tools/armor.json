@@ -1,5 +1,24 @@
 {
   "replace": false,
   "values": [
+    "coffeecheese:cheese_metal_helmet",
+    "coffeecheese:cheese_metal_chestplate",
+    "coffeecheese:cheese_metal_leggings",
+    "coffeecheese:cheese_metal_boots",
+
+    "coffeecheese:grilled_cheese_metal_helmet",
+    "coffeecheese:grilled_cheese_metal_chestplate",
+    "coffeecheese:grilled_cheese_metal_leggings",
+    "coffeecheese:grilled_cheese_metal_boots",
+
+    "coffeecheese:ham_raw_metal_helmet",
+    "coffeecheese:ham_raw_metal_chestplate",
+    "coffeecheese:ham_raw_metal_leggings",
+    "coffeecheese:ham_raw_metal_boots",
+
+    "coffeecheese:ham_cooked_metal_helmet",
+    "coffeecheese:ham_cooked_metal_chestplate",
+    "coffeecheese:ham_cooked_metal_leggings",
+    "coffeecheese:ham_cooked_metal_boots"
   ]
 }
