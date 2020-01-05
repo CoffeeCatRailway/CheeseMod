@@ -3,6 +3,7 @@ package coffeecatrailway.coffeecheese.common.tileentity;
 import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import coffeecatrailway.coffeecheese.client.gui.container.GrillContainer;
+import coffeecatrailway.coffeecheese.common.ModTags;
 import coffeecatrailway.coffeecheese.common.block.GrillBlock;
 import coffeecatrailway.coffeecheese.common.item.crafting.GrillRecipe;
 import coffeecatrailway.coffeecheese.registry.ModFluids;
@@ -112,7 +113,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
 
     public GrillTileEntity() {
         super(ModTileEntities.GRILL.get(), FLUID_CAPTACITY);
-        this.tank.setValidator((fluid) -> fluid.getFluid() == ModFluids.OIL_S.get() || fluid.getFluid() == ModFluids.OIL_F.get());
+        this.tank.setValidator(fluid -> ModTags.Fluids.GRILL_OIL.contains(fluid.getFluid()));
         this.recipeType = ModRecipes.GRILLING;
     }
 
