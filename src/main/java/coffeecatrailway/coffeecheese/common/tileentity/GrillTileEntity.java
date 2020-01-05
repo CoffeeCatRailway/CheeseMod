@@ -64,7 +64,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
     private int recipesUsed;
     private int cookTime;
     private int cookTimeTotal;
-    private final IIntArray data = new IIntArray() {
+    public final IIntArray data = new IIntArray() {
         public int get(int index) {
             switch (index) {
                 case 0:

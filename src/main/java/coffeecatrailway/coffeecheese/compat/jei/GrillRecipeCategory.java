@@ -1,4 +1,4 @@
-package coffeecatrailway.coffeecheese.jei;
+package coffeecatrailway.coffeecheese.compat.jei;
 
 import coffeecatrailway.coffeecheese.client.gui.screen.GrillScreen;
 import coffeecatrailway.coffeecheese.common.item.crafting.GrillRecipe;
@@ -58,7 +58,7 @@ public class GrillRecipeCategory implements IRecipeCategory<GrillRecipe> {
 
     @Override
     public ResourceLocation getUid() {
-        return CheeseModPlugin.GRILL;
+        return JEIModPlugin.GRILL;
     }
 
     @Override

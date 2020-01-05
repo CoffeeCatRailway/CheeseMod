@@ -8,6 +8,7 @@ import coffeecatrailway.coffeecheese.common.entity.*;
 import coffeecatrailway.coffeecheese.common.entity.item.BoatEntityCM;
 import coffeecatrailway.coffeecheese.common.tileentity.MelterTileEntity;
 import coffeecatrailway.coffeecheese.common.world.ModWorldFeatures;
+import coffeecatrailway.coffeecheese.compat.top.TOPCompatibility;
 import coffeecatrailway.coffeecheese.registry.*;
 import com.mrcrayfish.filters.Filters;
 import net.minecraft.client.Minecraft;
@@ -22,6 +23,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -137,6 +139,10 @@ public class CheeseMod {
         ModBiomes.addBiomeFeatures();
         ModWorldFeatures.addFeatures();
         ModVanillaCompat.setup();
+
+        if (ModList.get().isLoaded("theoneprobe"))
+            InterModComms.sendTo("theoneprobe", "getTheOneProbe", TOPCompatibility::new);
+
         CheeseMod.LOGGER.debug("Common setup");
     }
 

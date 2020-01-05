@@ -1,4 +1,4 @@
-package coffeecatrailway.coffeecheese.jei;
+package coffeecatrailway.coffeecheese.compat.jei;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.client.gui.screen.GrillScreen;
@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  * Created: 26/08/2019
  */
 @JeiPlugin
-public class CheeseModPlugin implements IModPlugin {
+public class JEIModPlugin implements IModPlugin {
 
     private static final ResourceLocation UID = CheeseMod.getLocation("plugin/main");
     static final ResourceLocation GRILL = CheeseMod.getLocation("category/grill");

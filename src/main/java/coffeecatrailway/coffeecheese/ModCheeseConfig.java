@@ -20,6 +20,8 @@ public class ModCheeseConfig {
     public static ForgeConfigSpec.DoubleValue hamSuitScale;
     public static ForgeConfigSpec.DoubleValue hamSuitBindingScale;
 
+    public static ForgeConfigSpec.BooleanValue topEnabled;
+
     public static class ClientConfig {
 
         public ClientConfig(ForgeConfigSpec.Builder builder) {
@@ -36,6 +38,9 @@ public class ModCheeseConfig {
 
             hamSuitBindingScale = builder.comment("Ham suit binding scale")
                     .defineInRange(configModifier + "hamSuitBindingScale", 0.3d, minScale, maxScale);
+
+            topEnabled = builder.comment("Use the one probe")
+                    .define(config + "topEnabled", true);
         }
     }
 

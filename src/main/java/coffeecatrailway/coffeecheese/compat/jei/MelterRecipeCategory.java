@@ -1,4 +1,4 @@
-package coffeecatrailway.coffeecheese.jei;
+package coffeecatrailway.coffeecheese.compat.jei;
 
 import coffeecatrailway.coffeecheese.client.gui.screen.MelterScreen;
 import coffeecatrailway.coffeecheese.common.item.crafting.MelterRecipe;
@@ -57,7 +57,7 @@ public class MelterRecipeCategory implements IRecipeCategory<MelterRecipe> {
 
     @Override
     public ResourceLocation getUid() {
-        return CheeseModPlugin.MELTER;
+        return JEIModPlugin.MELTER;
     }
 
     @Override

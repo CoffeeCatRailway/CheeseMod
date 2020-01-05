@@ -82,6 +82,10 @@ repositories {
         name = "CurseForge"
         url = "https://minecraft.curseforge.com/api/maven/"
     }
+    maven { // TOP
+        name 'tterrag maven'
+        url "https://maven.tterrag.com/"
+    }
 }
 
 dependencies {
@@ -89,6 +93,14 @@ dependencies {
 
     compileOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}")
+
+    if (findProject(':TheOneProbe') != null) {
+        compile project(':TheOneProbe')
+    } else {
+        compile fg.deobf(project.dependencies.create("mcjty.theoneprobe:TheOneProbe-${project.topVersion}") {
+            transitive = false
+        })
+    }
 
 //    compileOnly "filters:Filters-${project.filtersVersion}:${project.mcVersion}:deobf"
     compile "filters:Filters-${project.filtersVersion}:${project.mcVersion}:deobf"
