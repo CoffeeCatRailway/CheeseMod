@@ -36,3 +36,9 @@ Issues: https://github.com/CoffeeCatRailway/CoffeeCatsCheeseMod/issues
     versionRange="[1.1,]"
     ordering="BEFORE"
     side="CLIENT"
+[[dependencies.coffeecheese]]
+    modId="jeresources"
+    mandatory=false
+    versionRange="[0.10,]"
+    ordering="AFTER"
+    side="BOTH"

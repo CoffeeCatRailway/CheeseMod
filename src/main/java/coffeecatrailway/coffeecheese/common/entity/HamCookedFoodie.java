@@ -36,9 +36,4 @@ public class HamCookedFoodie extends FoodieEntity {
     public FoodieEntity createChild() {
         return ModEntities.HAM_COOKED_FOODIE.get().create(world);
     }
-
-    @Override
-    public ItemStack getDroppedItem() {
-        return new ItemStack(Items.COOKED_PORKCHOP);
-    }
 }

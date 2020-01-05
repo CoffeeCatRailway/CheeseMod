@@ -136,12 +136,6 @@ public abstract class FoodieEntity extends TameableEntity {
     }
 
     @Override
-    public void onDeath(DamageSource cause) {
-        this.entityDropItem(this.getDroppedItem());
-        super.onDeath(cause);
-    }
-
-    @Override
     protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
         return sizeIn.height * 0.8F;
     }
@@ -249,8 +243,6 @@ public abstract class FoodieEntity extends TameableEntity {
     public abstract boolean foodItem(ItemStack stack);
 
     public abstract FoodieEntity createChild();
-
-    public abstract ItemStack getDroppedItem();
 
     @Override
     public int getMaxSpawnedInChunk() {

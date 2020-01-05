@@ -35,9 +35,4 @@ public class GrilledCheeseFoodie extends FoodieEntity {
     public FoodieEntity createChild() {
         return ModEntities.GRILLED_CHEESE_FOODIE.get().create(world);
     }
-
-    @Override
-    public ItemStack getDroppedItem() {
-        return new ItemStack(ModItems.BLOCK_O_CHEESE.get());
-    }
 }

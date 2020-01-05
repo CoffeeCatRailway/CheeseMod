@@ -8,6 +8,7 @@ import coffeecatrailway.coffeecheese.common.entity.*;
 import coffeecatrailway.coffeecheese.common.entity.item.BoatEntityCM;
 import coffeecatrailway.coffeecheese.common.tileentity.MelterTileEntity;
 import coffeecatrailway.coffeecheese.common.world.ModWorldFeatures;
+import coffeecatrailway.coffeecheese.compat.jer.JEResourcesCompat;
 import coffeecatrailway.coffeecheese.compat.top.TOPCompatibility;
 import coffeecatrailway.coffeecheese.registry.*;
 import com.mrcrayfish.filters.Filters;
@@ -32,6 +33,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.commons.lang3.tuple.Pair;
@@ -56,6 +58,7 @@ public class CheeseMod {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::setupClient);
         modEventBus.addListener(this::setupCommon);
+        modEventBus.addListener(this::interModEvent);
 
         final Pair<ModCheeseConfig.ClientConfig, ForgeConfigSpec> specPairC = new ForgeConfigSpec.Builder().configure(ModCheeseConfig.ClientConfig::new);
         final Pair<ModCheeseConfig.ServerConfig, ForgeConfigSpec> specPairS = new ForgeConfigSpec.Builder().configure(ModCheeseConfig.ServerConfig::new);
@@ -77,6 +80,11 @@ public class CheeseMod {
         ModEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(ModEntities::registerSpawnPlacements);
         ModParticles.PARTICLE_TYPES.register(modEventBus);
+    }
+
+    public void interModEvent(InterModProcessEvent event) {
+        if (ModList.get().isLoaded("jeresources"))
+            JEResourcesCompat.register();
     }
 
     public void setupClient(FMLClientSetupEvent event) {
