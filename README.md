@@ -1,6 +1,6 @@
 <img src="https://i.imgur.com/rhx5rd4.png"/>
 
-# CoffeeCats CheeseMod [![Curseforge](http://cf.way2muchnoise.eu/full_cheesemod_downloads.svg)](https://minecraft.curseforge.com/projects/cheesemod) [![Curseforge](http://cf.way2muchnoise.eu/versions/For%20MC_cheesemod_all.svg)](https://minecraft.curseforge.com/projects/cheesemod)
+# CoffeeCats CheeseMod [![Curseforge](http://cf.way2muchnoise.eu/full_cheesemod_downloads.svg)](https://minecraft.curseforge.com/projects/cheesemod) [![Curseforge](http://cf.way2muchnoise.eu/versions/For%20MC_cheesemod_all.svg)](https://minecraft.curseforge.com/projects/cheesemod) <a href="https://discord.gg/Fk8G5cr" target="_blank"><img src="https://img.shields.io/discord/461794532422582282.svg?color=%237289da&label=Discord&logo=discord&logoColor=%237289da" /></a>
 
 Minecraft mod that adds various food-related items blocks and more!
 ### Features
