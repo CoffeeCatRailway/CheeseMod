@@ -89,16 +89,24 @@ public class ModBlocks {
     public static final RegistryObject<Block> HAM_COOKED_SAPLING = registerBlockGeneral("ham_cooked_sapling", () -> new SaplingBlock(new HamTree(true), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
 
     /// Food Block ///
-    public static final RegistryObject<Block> CHEESE_BLOCK = BLOCKS.register("cheese_block", FoodBlock::new);
-    public static final RegistryObject<Block> GRILLED_CHEESE_BLOCK = BLOCKS.register("grilled_cheese_block", FoodBlock::new);
-    public static final RegistryObject<Block> HAM_RAW_BLOCK = BLOCKS.register("ham_raw_block", FoodBlock::new);
-    public static final RegistryObject<Block> HAM_COOKED_BLOCK = BLOCKS.register("ham_cooked_block", FoodBlock::new);
+    public static final RegistryObject<Block> CHEESE_BLOCK = BLOCKS.register("cheese_block", () -> new FoodBlock(true));
+    public static final RegistryObject<Block> GRILLED_CHEESE_BLOCK = BLOCKS.register("grilled_cheese_block", () -> new FoodBlock(true));
+
+    public static final RegistryObject<Block> HAM_RAW_BLOCK = BLOCKS.register("ham_raw_block", () -> new FoodBlock(true));
+    public static final RegistryObject<Block> HAM_COOKED_BLOCK = BLOCKS.register("ham_cooked_block", () -> new FoodBlock(true));
+
+    public static final RegistryObject<Block> BACON_RAW_BLOCK = BLOCKS.register("bacon_raw_block", () -> new FoodBlock(false));
+    public static final RegistryObject<Block> BACON_COOKED_BLOCK = BLOCKS.register("bacon_cooked_block", () -> new FoodBlock(false));
 
     static {
         ModItems.ITEMS.register("cheese_block", () -> new FoodBlockItem(CHEESE_BLOCK.get(), ModFoods.CHEESE_SLICE, false));
         ModItems.ITEMS.register("grilled_cheese_block", () -> new FoodBlockItem(GRILLED_CHEESE_BLOCK.get(), ModFoods.CHEESE_SLICE, false));
+
         ModItems.ITEMS.register("ham_raw_block", () -> new FoodBlockItem(HAM_RAW_BLOCK.get(), ModFoods.HAM, false));
         ModItems.ITEMS.register("ham_cooked_block", () -> new FoodBlockItem(HAM_COOKED_BLOCK.get(), ModFoods.HAM_COOKED, false));
+
+        ModItems.ITEMS.register("bacon_raw_block", () -> new FoodBlockItem(BACON_RAW_BLOCK.get(), ModFoods.BACON, false));
+        ModItems.ITEMS.register("bacon_cooked_block", () -> new FoodBlockItem(BACON_COOKED_BLOCK.get(), ModFoods.BACON_COOKED, false));
     }
 
     /// Stairs ///
@@ -202,7 +210,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> GRILL = registerBlockGeneral("grill", () -> new GrillBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5f).lightValue(13)));
     public static final RegistryObject<Block> MELTER = registerBlockGeneral("melter", () -> new MelterBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5f).lightValue(13)));
 
-    public static final RegistryObject<Block> PINEAPPLE = BLOCKS.register("pineapple_plant", () -> new PineappleBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)));
+    public static final RegistryObject<PineappleBlock> PINEAPPLE = BLOCKS.register("pineapple_plant", () -> new PineappleBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)));
 
     public static final RegistryObject<Block> CHEESE_CAKE = registerBlockGroup("cheese_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
     public static final RegistryObject<Block> GRILLED_CHEESE_CAKE = registerBlockGroup("grilled_cheese_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);

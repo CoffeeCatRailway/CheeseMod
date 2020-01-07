@@ -1,6 +1,7 @@
 package coffeecatrailway.coffeecheese.registry;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
+import coffeecatrailway.coffeecheese.common.world.feature.BaconBallFeature;
 import coffeecatrailway.coffeecheese.common.world.feature.structure.PineHutStructure;
 import coffeecatrailway.coffeecheese.common.world.feature.structure.PineHutStructurePiece;
 import coffeecatrailway.coffeecheese.common.world.feature.tree.CheeseTreeFeature;
@@ -36,4 +37,8 @@ public class ModFeatures {
     /// Structures ///
     public static final RegistryObject<Structure<NoFeatureConfig>> PINE_HUT = FEATURES.register("pine_hut", () -> new PineHutStructure(NoFeatureConfig::deserialize));
     public static IStructurePieceType PINE_HUT_TYPE = Registry.register(Registry.STRUCTURE_PIECE, CheeseMod.getLocation("hut"), PineHutStructurePiece::new);
+
+    /// Other ///
+    public static final RegistryObject<BaconBallFeature> BACON_RAW_BALL = FEATURES.register("bacon_raw_ball", () -> new BaconBallFeature(false, NoFeatureConfig::deserialize));
+    public static final RegistryObject<BaconBallFeature> BACON_COOKED_BALL = FEATURES.register("bacon_cooked_ball", () -> new BaconBallFeature(true, NoFeatureConfig::deserialize));
 }

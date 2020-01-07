@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "coffeecheese:block/bacon_cooked_block"
+  }
+}

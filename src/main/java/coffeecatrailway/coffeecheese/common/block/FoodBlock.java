@@ -18,14 +18,17 @@ import net.minecraftforge.common.ToolType;
  * Created: 19/07/2019
  */
 public class FoodBlock extends Block {
+    
+    private final boolean definiteStick;
 
-    public FoodBlock() {
+    public FoodBlock(boolean definiteStick) {
         super(Block.Properties.create(Material.WOOL).sound(SoundType.SLIME).hardnessAndResistance(1.0f).harvestLevel(1).harvestTool(ToolType.AXE));
+        this.definiteStick = definiteStick;
     }
 
     @Override
     public boolean isStickyBlock(BlockState state) {
-        return ModCheeseConfig.stickyFoodBlock.get();
+        return ModCheeseConfig.stickyFoodBlock.get() && this.definiteStick;
     }
 
     @Override

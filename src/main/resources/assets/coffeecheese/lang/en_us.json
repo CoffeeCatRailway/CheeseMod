@@ -57,8 +57,12 @@
 
   "block.coffeecheese.cheese_block": "Cheese Block",
   "block.coffeecheese.grilled_cheese_block": "Grilled Cheese Block",
+
   "block.coffeecheese.ham_raw_block": "Raw Ham Block",
   "block.coffeecheese.ham_cooked_block": "Cooked Ham Block",
+
+  "block.coffeecheese.bacon_raw_block": "Bacon Block",
+  "block.coffeecheese.bacon_cooked_block": "Cooked Bacon Block",
 
   "block.coffeecheese.cheese_stairs": "Cheese Stairs",
   "block.coffeecheese.grilled_cheese_stairs": "Grilled Cheese Stairs",

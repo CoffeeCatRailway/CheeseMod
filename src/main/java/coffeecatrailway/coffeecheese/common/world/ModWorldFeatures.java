@@ -15,10 +15,11 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.placement.CountRangeConfig;
-import net.minecraft.world.gen.placement.IPlacementConfig;
-import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.feature.MultipleRandomFeatureConfig;
+import net.minecraft.world.gen.feature.SingleRandomFeatureConfig;
+import net.minecraft.world.gen.placement.*;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -110,6 +111,11 @@ public class ModWorldFeatures {
                             TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                     addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE.get().getDefaultState(), ModCheeseConfig.hamCookedOreSize.get(), ModCheeseConfig.hamCookedOreRegionSize.get(),
                             TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
+
+                    if (isHamRaw)
+                        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModFeatures.BACON_RAW_BALL.get(), IFeatureConfig.NO_FEATURE_CONFIG, Placement.CHANCE_HEIGHTMAP, new ChanceConfig(3)));
+                    if (isHamCooked)
+                        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModFeatures.BACON_COOKED_BALL.get(), IFeatureConfig.NO_FEATURE_CONFIG, Placement.CHANCE_HEIGHTMAP, new ChanceConfig(3)));
                 }
 
                 // Structures
