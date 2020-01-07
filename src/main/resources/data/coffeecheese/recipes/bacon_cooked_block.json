@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": [
+    { "item": "coffeecheese:bacon_raw_block" }
+  ],
+  "result": "coffeecheese:bacon_cooked_block",
+  "experience": 1.8,
+  "cookingtime": 900
+}
