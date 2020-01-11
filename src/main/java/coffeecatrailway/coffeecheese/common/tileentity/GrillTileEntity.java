@@ -41,6 +41,7 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
@@ -61,6 +62,8 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
     public static final int FLUID_CAPTACITY = FluidAttributes.BUCKET_VOLUME * 2;
 
     private NonNullList<ItemStack> inventory = NonNullList.withSize(3, ItemStack.EMPTY);
+    private final FluidTank catcherTank;
+
     private int burnTime;
     private int recipesUsed;
     private int cookTime;
@@ -114,6 +117,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
     public GrillTileEntity() {
         super(ModTileEntities.GRILL.get(), FLUID_CAPTACITY);
         this.tank.setValidator(fluid -> ModTags.Fluids.GRILL_OIL.contains(fluid.getFluid()));
+        this.catcherTank = new FluidTank(FluidAttributes.BUCKET_VOLUME);
         this.recipeType = ModRecipes.GRILLING;
     }
 
@@ -136,6 +140,10 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
         super.read(compound);
         this.inventory = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound, this.inventory);
+
+        if (compound.contains("catcherTank"))
+            this.catcherTank.readFromNBT((CompoundNBT) compound.get("catcherTank"));
+
         this.burnTime = compound.getInt("BurnTime");
         this.cookTime = compound.getInt("CookTime");
         this.cookTimeTotal = compound.getInt("CookTimeTotal");
@@ -151,21 +159,27 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
 
     @Override
     public CompoundNBT write(CompoundNBT compound) {
-        super.write(compound);
+        ItemStackHelper.saveAllItems(compound, this.inventory);
+
+        if (this.getBlockState().get(GrillBlock.HAS_CATCHER)) {
+            CompoundNBT tankNBT = new CompoundNBT();
+            this.catcherTank.writeToNBT(tankNBT);
+            compound.put("catcherTank", tankNBT);
+        }
+
         compound.putInt("BurnTime", this.burnTime);
         compound.putInt("CookTime", this.cookTime);
         compound.putInt("CookTimeTotal", this.cookTimeTotal);
-        ItemStackHelper.saveAllItems(compound, this.inventory);
         compound.putShort("RecipesUsedSize", (short) this.recipeAmounts.size());
-        int i = 0;
 
+        int i = 0;
         for (Map.Entry<ResourceLocation, Integer> entry : this.recipeAmounts.entrySet()) {
             compound.putString("RecipeLocation" + i, entry.getKey().toString());
             compound.putInt("RecipeAmount" + i, entry.getValue());
             ++i;
         }
 
-        return compound;
+        return super.write(compound);
     }
 
     public void tick() {
@@ -202,6 +216,14 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                     this.cookTime += ModCheeseConfig.grillSpeed.get();
                     if (this.cookTime >= this.cookTimeTotal) {
                         this.tank.drain(this.getOilForRecipe(), IFluidHandler.FluidAction.EXECUTE);
+
+                        if (this.getBlockState().get(GrillBlock.HAS_CATCHER)) {
+                            int catchedOil = this.getOilForRecipe() / 2 + (this.world.rand.nextInt(5) + 10);
+                            if (this.catcherTank.getSpace() != 0)
+                                this.catcherTank.fill(new FluidStack(ModFluids.OIL_S.get(), catchedOil), IFluidHandler.FluidAction.EXECUTE);
+                            this.sendUpdates();
+                        }
+
                         this.smeltRecipe(iRecipe);
                         this.cookTime = 0;
                         this.cookTimeTotal = this.getCookTimeTotal();
@@ -448,5 +470,9 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
         super.remove();
         for (int x = 0; x < handlers.length; x++)
             handlers[x].invalidate();
+    }
+
+    public FluidTank getCatcherTank() {
+        return catcherTank;
     }
 }

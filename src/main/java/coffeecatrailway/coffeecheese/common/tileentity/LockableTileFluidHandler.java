@@ -1,7 +1,6 @@
 package coffeecatrailway.coffeecheese.common.tileentity;
 
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.LockableTileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
@@ -17,7 +16,7 @@ import javax.annotation.Nullable;
  * @author CoffeeCatRailway
  * Created: 31/08/2019
  */
-public abstract class LockableTileFluidHandler extends LockableTileEntity {
+public abstract class LockableTileFluidHandler extends ModLockableTileEntity {
 
     protected final FluidTank tank;
     private final LazyOptional<IFluidHandler> holder;
@@ -33,16 +32,17 @@ public abstract class LockableTileFluidHandler extends LockableTileEntity {
     }
 
     @Override
-    public void read(CompoundNBT tag) {
-        super.read(tag);
-        tank.readFromNBT(tag);
+    public void read(CompoundNBT compound) {
+        super.read(compound);
+        this.tank.readFromNBT((CompoundNBT) compound.get("fluidTank"));
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT tag) {
-        tag = super.write(tag);
-        tank.writeToNBT(tag);
-        return tag;
+    public CompoundNBT write(CompoundNBT compound) {
+        CompoundNBT tankNBT = new CompoundNBT();
+        this.tank.writeToNBT(tankNBT);
+        compound.put("fluidTank", tankNBT);
+        return super.write(compound);
     }
 
     @Override
@@ -51,11 +51,5 @@ public abstract class LockableTileFluidHandler extends LockableTileEntity {
         if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
             return holder.cast();
         return super.getCapability(capability, facing);
-    }
-
-    protected void sendUpdates() {
-        world.notifyBlockUpdate(this.pos, this.getBlockState(), this.getBlockState(), 2);
-        world.markAndNotifyBlock(pos, world.getChunkAt(pos), this.getBlockState(), this.getBlockState(), 3);
-        super.markDirty();
     }
 }
