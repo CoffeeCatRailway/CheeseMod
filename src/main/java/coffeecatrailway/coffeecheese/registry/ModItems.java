@@ -4,8 +4,13 @@ import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.ModItemGroups;
 import coffeecatrailway.coffeecheese.common.entity.item.BoatEntityCM;
 import coffeecatrailway.coffeecheese.common.item.*;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -183,6 +188,14 @@ public class ModItems {
     public static final RegistryObject<Item> HAM_BIT = ITEMS.register("ham_bit", () -> new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
 
     public static final RegistryObject<Item> WOODEN_GEAR = ITEMS.register("wooden_gear", () -> new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
+
+    public static final RegistryObject<Item> OIL_CATCHER = ITEMS.register("oil_catcher", () -> new Item(new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS)) {
+        @Override
+        public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+            super.addInformation(stack, worldIn, tooltip, flagIn);
+            tooltip.add(new StringTextComponent(I18n.format("item." + CheeseMod.MOD_ID + ".oil_catcher.info")));
+        }
+    });
 
     private static RegistryObject<Item> registerItemFood(String name, Food food, int stackSize) {
         RegistryObject<Item> reg = ITEMS.register(name, () -> new Item(new Item.Properties().food(food).maxStackSize(stackSize).group(ModItemGroups.GROUP_FOODS)));

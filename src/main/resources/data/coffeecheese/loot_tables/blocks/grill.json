@@ -6,6 +6,19 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "coffeecheese:grill",
+              "properties": {
+                "has_catcher": "true"
+              }
+            }
+          ],
+          "name": "coffeecheese:oil_catcher"
+        },
+        {
+          "type": "minecraft:item",
           "name": "coffeecheese:grill"
         }
       ],

@@ -2,6 +2,7 @@ package coffeecatrailway.coffeecheese.common.block;
 
 import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
 import coffeecatrailway.coffeecheese.registry.ModFluids;
+import coffeecatrailway.coffeecheese.registry.ModItems;
 import coffeecatrailway.coffeecheese.registry.ModStats;
 import coffeecatrailway.coffeecheese.util.VoxelShapeHelper;
 import com.google.common.collect.Lists;
@@ -51,6 +52,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
     public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public static final BooleanProperty HAS_CATCHER = BooleanProperty.create("has_catcher");
 
     private static final VoxelShape SHAPE_BASE = VoxelShapeHelper.combineAll(Lists.newArrayList(
             /// Stands ///
@@ -67,6 +69,17 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
             Block.makeCuboidShape(1.0D, 12.0D, 15.0D, 15.0D, 16.0D, 16.0D)
     ));
 
+    private static final VoxelShape SHAPE_CATCHER = VoxelShapeHelper.combineAll(Lists.newArrayList(
+            /// Base ///
+            Block.makeCuboidShape(2.0D, 6.0D, 2.0D, 14.0D, 7.0D, 14.0D),
+
+            /// Walls ///
+            Block.makeCuboidShape(15.0D, 7.0D, 2.0D, 14.0D, 8.0D, 14.0D),
+            Block.makeCuboidShape(1.0D, 7.0D, 2.0D, 2.0D, 8.0D, 14.0D),
+            Block.makeCuboidShape(1.0D, 7.0D, 14.0D, 15.0D, 8.0D, 15.0D),
+            Block.makeCuboidShape(1.0D, 7.0D, 2.0D, 15.0D, 8.0D, 1.0D)
+    ));
+
     private static final VoxelShape SHAPE_BRASE_FRONT = Block.makeCuboidShape(15.0D, 5.0D, 2.0D, 14.0D, 6.0D, 14.0D);
     private static final VoxelShape SHAPE_BRASE_BACK = Block.makeCuboidShape(1.0D, 5.0D, 2.0D, 2.0D, 6.0D, 14.0D);
 
@@ -74,13 +87,15 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
 
     public GrillBlock(Properties properties) {
         super(properties);
-        this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(LIT, Boolean.FALSE).with(WATERLOGGED, Boolean.FALSE));
+        this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(LIT, Boolean.FALSE).with(WATERLOGGED, Boolean.FALSE).with(HAS_CATCHER, Boolean.FALSE));
     }
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         List<VoxelShape> shapes = new ArrayList<>();
         shapes.add(SHAPE_BASE);
+        if (state.get(HAS_CATCHER))
+            shapes.add(SHAPE_CATCHER);
 
         Direction defaultDir = Direction.EAST;
         VoxelShape[] braseFront = VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(SHAPE_BRASE_FRONT, defaultDir));
@@ -129,7 +144,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
 
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(FACING, LIT, WATERLOGGED);
+        builder.add(FACING, LIT, WATERLOGGED, HAS_CATCHER);
     }
 
     @Override
@@ -171,6 +186,23 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
                     return true;
                 }
             }
+        } else if (player.getHeldItem(hand).getItem() == Items.BUCKET && state.get(HAS_CATCHER) && hand == Hand.MAIN_HAND) {
+            if (world.getTileEntity(pos) instanceof GrillTileEntity) {
+                GrillTileEntity tile = (GrillTileEntity) world.getTileEntity(pos);
+                int oil = tile.getCatcherTank().getFluidAmount();
+                if (oil >= FluidAttributes.BUCKET_VOLUME) {
+                    if (!player.abilities.isCreativeMode)
+                        player.setHeldItem(hand, new ItemStack(ModFluids.OIL_BUCKET.get()));
+
+                    tile.getCatcherTank().drain(new FluidStack(ModFluids.OIL_S.get(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
+                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                    return true;
+                }
+            }
+        } else if (player.getHeldItem(hand).getItem() == ModItems.OIL_CATCHER.get() && !state.get(HAS_CATCHER) && hand == Hand.MAIN_HAND) {
+            world.setBlockState(pos, state.with(HAS_CATCHER, Boolean.TRUE));
+            if (!player.abilities.isCreativeMode)
+                player.getHeldItem(hand).shrink(1);
         } else {
             INamedContainerProvider provider = this.getContainer(state, world, pos);
             if (provider != null) {

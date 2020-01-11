@@ -333,6 +333,9 @@
 
   "item.coffeecheese.wooden_gear": "Wooden Gear",
 
+  "item.coffeecheese.oil_catcher": "Oil Catcher",
+  "item.coffeecheese.oil_catcher.info": "Right-click on grill to gather excess oil",
+
   "entity.coffeecheese.cheese_foodie": "Cheese Foodie",
   "entity.coffeecheese.grilled_cheese_foodie": "Grilled Cheese Foodie",
   "entity.coffeecheese.ham_raw_foodie": "Raw Ham Foodie",
@@ -377,5 +380,11 @@
 
   "itemGroup.coffeecheese.foods": "Cheese Mod Foods",
   "itemGroup.coffeecheese.armor_tools": "Cheese Mod Armor & Tools",
-  "itemGroup.coffeecheese.all": "Cheese Mod"
+  "itemGroup.coffeecheese.all": "Cheese Mod",
+
+  "top.coffeecheese.grill.oil": "Oil Amount",
+  "top.coffeecheese.grill.oil_catcher": "Oil Catcher Amount",
+
+  "top.coffeecheese.melter.stack": "Melting",
+  "top.coffeecheese.melter.fluid": "%s Amount"
 }

@@ -2,6 +2,7 @@ package coffeecatrailway.coffeecheese.compat.top;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.ModCheeseConfig;
+import coffeecatrailway.coffeecheese.common.block.GrillBlock;
 import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
 import coffeecatrailway.coffeecheese.common.tileentity.MelterTileEntity;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
@@ -10,6 +11,7 @@ import com.google.common.base.Function;
 import mcjty.theoneprobe.api.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -54,14 +56,29 @@ public class TOPCompatibility implements Function<ITheOneProbe, Void>, IProbeInf
                 GrillTileEntity tile = (GrillTileEntity) world.getTileEntity(hitData.getPos());
                 if (!tile.getStackInSlot(0).isEmpty())
                     probeInfo.horizontal().item(tile.getStackInSlot(0)).progress(tile.data.get(2), tile.data.get(3));
+
+                probeInfo.horizontal().text(I18n.format("top." + CheeseMod.MOD_ID + ".grill.oil"));
                 probeInfo.horizontal().item(new ItemStack(ModFluids.OIL_BUCKET.get())).progress(tile.getTank().getFluidAmount(), tile.getTank().getCapacity());
+
+                if (tile.getBlockState().get(GrillBlock.HAS_CATCHER)) {
+                    probeInfo.horizontal().text(I18n.format("top." + CheeseMod.MOD_ID + ".grill.oil_catcher"));
+                    probeInfo.horizontal().item(new ItemStack(ModFluids.OIL_BUCKET.get())).progress(tile.getCatcherTank().getFluidAmount(), tile.getCatcherTank().getCapacity());
+                }
             }
             if (block == ModBlocks.MELTER.get()) {
                 MelterTileEntity tile = (MelterTileEntity) world.getTileEntity(hitData.getPos());
-                if (!tile.getStackInSlot(0).isEmpty())
+                if (!tile.getStackInSlot(0).isEmpty()) {
+                    probeInfo.horizontal().text(I18n.format("top." + CheeseMod.MOD_ID + ".melter.stack"));
                     probeInfo.horizontal().item(tile.getStackInSlot(0)).progress(tile.data.get(2), tile.data.get(3));
-                if (tile.getTank().getFluidAmount() > 0)
+                }
+
+                if (tile.getTank().getFluidAmount() > 0) {
+                    String fluidName = I18n.format("block." + tile.getTank().getFluid().getFluid().getRegistryName().toString().replace(":", "."));
+                    if (fluidName.contains("empty"))
+                        fluidName = "Empty";
+                    probeInfo.horizontal().text(I18n.format("top." + CheeseMod.MOD_ID + ".melter.fluid", fluidName));
                     probeInfo.horizontal().item(new ItemStack(tile.getTank().getFluid().getFluid().getFilledBucket())).progress(tile.getTank().getFluidAmount(), tile.getTank().getCapacity());
+                }
             }
         }
     }
