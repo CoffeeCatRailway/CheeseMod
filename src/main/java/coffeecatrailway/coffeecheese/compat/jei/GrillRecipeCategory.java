@@ -101,7 +101,7 @@ public class GrillRecipeCategory implements IRecipeCategory<GrillRecipe> {
     @Override
     public void draw(GrillRecipe recipe, double mouseX, double mouseY) {
         flame.draw(28, 28);
-        arrow.draw(51, 26);
+        arrow.draw(51, 27);
 
         float experience = recipe.getExperience();
         if (experience > 0.0f) {

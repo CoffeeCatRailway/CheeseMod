@@ -97,7 +97,7 @@ public class MelterRecipeCategory implements IRecipeCategory<MelterRecipe> {
     @Override
     public void draw(MelterRecipe recipe, double mouseX, double mouseY) {
         this.flame.draw(2, 28);
-        this.arrow.draw(25, 26);
+        this.arrow.draw(25, 27);
 
         FluidStack fluidStack = recipe.getResult();
         ResourceLocation fluidTexture = MelterScreen.getFluidTexture(fluidStack.getFluid());
