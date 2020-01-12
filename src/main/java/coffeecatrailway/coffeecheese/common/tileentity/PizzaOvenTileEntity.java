@@ -2,9 +2,8 @@ package coffeecatrailway.coffeecheese.common.tileentity;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.ModCheeseConfig;
-import coffeecatrailway.coffeecheese.client.gui.container.MelterContainer;
-import coffeecatrailway.coffeecheese.common.block.MelterBlock;
-import coffeecatrailway.coffeecheese.common.item.crafting.MelterRecipe;
+import coffeecatrailway.coffeecheese.client.gui.container.PizzaOvenContainer;
+import coffeecatrailway.coffeecheese.common.block.PizzaOvenBlock;
 import coffeecatrailway.coffeecheese.common.item.crafting.PizzaOvenRecipe;
 import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import coffeecatrailway.coffeecheese.registry.ModTileEntities;
@@ -24,8 +23,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.RecipeItemHelper;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.AbstractFurnaceTileEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.Direction;
@@ -33,14 +30,11 @@ import net.minecraft.util.IIntArray;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.FluidAttributes;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
@@ -51,16 +45,19 @@ import java.util.Map;
 
 /**
  * @author CoffeeCatRailway
- * Created: 3/09/2019
+ * Created: 10/01/2020
  */
-public class MelterTileEntity extends LockableTileFluidHandler implements ISidedInventory, IRecipeHolder, IRecipeHelperPopulator, ITickableTileEntity {
+public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISidedInventory, IRecipeHolder, IRecipeHelperPopulator, ITickableTileEntity {
 
-    private static final int[] SLOTS_UP = new int[]{0};
-    private static final int[] SLOTS_HORIZONTAL = new int[]{1};
-    public static final int FLUID_CAPTACITY = FluidAttributes.BUCKET_VOLUME * 10;
-    public static final int DATA_ARRAY_SIZE = 7;
+    private static final int[] SLOTS_UP = new int[]{
+            0, 1, 2,
+            3, 4, 5,
+            6, 7, 8
+    };
+    private static final int[] SLOTS_DOWN = new int[]{10, 9};
+    private static final int[] SLOTS_HORIZONTAL = new int[]{9};
 
-    private NonNullList<ItemStack> inventory = NonNullList.withSize(2, ItemStack.EMPTY);
+    private NonNullList<ItemStack> inventory = NonNullList.withSize(11, ItemStack.EMPTY);
     private int burnTime;
     private int recipesUsed;
     private int cookTime;
@@ -69,19 +66,13 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
         public int get(int index) {
             switch (index) {
                 case 0:
-                    return MelterTileEntity.this.burnTime;
+                    return PizzaOvenTileEntity.this.burnTime;
                 case 1:
-                    return MelterTileEntity.this.recipesUsed;
+                    return PizzaOvenTileEntity.this.recipesUsed;
                 case 2:
-                    return MelterTileEntity.this.cookTime;
+                    return PizzaOvenTileEntity.this.cookTime;
                 case 3:
-                    return MelterTileEntity.this.cookTimeTotal;
-                case 4:
-                    return MelterTileEntity.this.tank.getFluidAmount();
-                case 5:
-                    return Registry.FLUID.getId(MelterTileEntity.this.tank.getFluid().getFluid());
-                case 6:
-                    return MelterTileEntity.this.tank.getFluid().getFluid().getAttributes().getColor(MelterTileEntity.this.world, MelterTileEntity.this.getPos());
+                    return PizzaOvenTileEntity.this.cookTimeTotal;
                 default:
                     return 0;
             }
@@ -90,49 +81,41 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
         public void set(int index, int value) {
             switch (index) {
                 case 0:
-                    MelterTileEntity.this.burnTime = value;
+                    PizzaOvenTileEntity.this.burnTime = value;
                     break;
                 case 1:
-                    MelterTileEntity.this.recipesUsed = value;
+                    PizzaOvenTileEntity.this.recipesUsed = value;
                     break;
                 case 2:
-                    MelterTileEntity.this.cookTime = value;
+                    PizzaOvenTileEntity.this.cookTime = value;
                     break;
                 case 3:
-                    MelterTileEntity.this.cookTimeTotal = value;
-                    break;
-                case 4:
-                    MelterTileEntity.this.tank.setFluid(new FluidStack(MelterTileEntity.this.tank.getFluid().getFluid(), value));
-                    break;
-                case 5:
-                    MelterTileEntity.this.tank.setFluid(new FluidStack(Registry.FLUID.getByValue(value), 1));
-                    break;
-                case 6:
+                    PizzaOvenTileEntity.this.cookTimeTotal = value;
                     break;
             }
 
         }
 
         public int size() {
-            return DATA_ARRAY_SIZE;
+            return 4;
         }
     };
     private final Map<ResourceLocation, Integer> recipeAmounts = Maps.newHashMap();
-    private final IRecipeType<MelterRecipe> recipeType;
+    private final IRecipeType<PizzaOvenRecipe> recipeType;
 
-    public MelterTileEntity() {
-        super(ModTileEntities.MELTER.get(), FLUID_CAPTACITY);
-        recipeType = ModRecipes.MELTING;
+    public PizzaOvenTileEntity() {
+        super(ModTileEntities.PIZZA_OVEN.get());
+        this.recipeType = ModRecipes.PIZZA_OVEN;
     }
 
     @Override
     protected ITextComponent getDefaultName() {
-        return new TranslationTextComponent("container." + CheeseMod.MOD_ID + ".melter");
+        return new TranslationTextComponent("container." + CheeseMod.MOD_ID + ".pizza_oven");
     }
 
     @Override
     protected Container createMenu(int id, PlayerInventory player) {
-        return new MelterContainer(id, player, this, this.data);
+        return new PizzaOvenContainer(id, player, this, this.data);
     }
 
     private boolean isBurning() {
@@ -144,10 +127,11 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
         super.read(compound);
         this.inventory = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound, this.inventory);
+
         this.burnTime = compound.getInt("BurnTime");
         this.cookTime = compound.getInt("CookTime");
         this.cookTimeTotal = compound.getInt("CookTimeTotal");
-        this.recipesUsed = GrillTileEntity.getBurnTime(this.inventory.get(1));
+        this.recipesUsed = PizzaOvenTileEntity.getBurnTime(this.inventory.get(9));
         int i = compound.getShort("RecipesUsedSize");
 
         for (int j = 0; j < i; ++j) {
@@ -176,7 +160,13 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
         return super.write(compound);
     }
 
-    @Override
+    public boolean hasItems() {
+        for (int i = 0; i < 9; i++)
+            if (!this.inventory.get(i).isEmpty())
+                return true;
+        return false;
+    }
+
     public void tick() {
         boolean flag = this.isBurning();
         boolean flag1 = false;
@@ -186,21 +176,21 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
         }
 
         if (!this.world.isRemote) {
-            ItemStack fuelStack = this.inventory.get(1);
-            if (this.isBurning() || !fuelStack.isEmpty() && !this.inventory.get(0).isEmpty()) {
+            ItemStack fuelStack = this.inventory.get(9);
+            if (this.isBurning() || !fuelStack.isEmpty() && hasItems()) {
                 IRecipe<?> iRecipe = this.world.getRecipeManager().getRecipe(this.recipeType, this, this.world).orElse(null);
                 if (!this.isBurning() && this.canSmelt(iRecipe)) {
-                    this.burnTime = GrillTileEntity.getBurnTime(fuelStack);
+                    this.burnTime = PizzaOvenTileEntity.getBurnTime(fuelStack);
                     this.recipesUsed = this.burnTime;
                     if (this.isBurning()) {
                         flag1 = true;
-                        if (fuelStack.hasContainerItem())
-                            this.inventory.set(1, fuelStack.getContainerItem());
-                        else {
+                        if (fuelStack.hasContainerItem()) {
+                            this.inventory.set(9, fuelStack.getContainerItem());
+                        } else {
                             if (!fuelStack.isEmpty()) {
                                 fuelStack.shrink(1);
                                 if (fuelStack.isEmpty())
-                                    this.inventory.set(1, fuelStack.getContainerItem());
+                                    this.inventory.set(9, fuelStack.getContainerItem());
                             }
                         }
                     }
@@ -208,7 +198,7 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
                 }
 
                 if (this.isBurning() && this.canSmelt(iRecipe)) {
-                    this.cookTime += ModCheeseConfig.melterSpeed.get();
+                    this.cookTime += ModCheeseConfig.pizzaOvenSpeed.get();
                     if (this.cookTime >= this.cookTimeTotal) {
                         this.smeltRecipe(iRecipe);
                         this.cookTime = 0;
@@ -216,6 +206,9 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
                         flag1 = true;
                         this.sendUpdates();
                     }
+                } else {
+                    this.cookTime = 0;
+                    this.sendUpdates();
                 }
             } else if (!this.isBurning() && this.cookTime > 0) {
                 this.cookTime = MathHelper.clamp(this.cookTime - 2, 0, this.cookTimeTotal);
@@ -224,8 +217,8 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
 
             if (flag != this.isBurning()) {
                 flag1 = true;
-                this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(MelterBlock.LIT, this.isBurning()), 3);
-                super.sendUpdates();
+                this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(PizzaOvenBlock.LIT, this.isBurning()), 3);
+                this.sendUpdates();
             }
         }
 
@@ -234,58 +227,67 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
     }
 
     private boolean canSmelt(@Nullable IRecipe<?> iRecipe) {
-        if (!(iRecipe instanceof MelterRecipe))
-            return false;
-
-        if (!this.inventory.get(0).isEmpty() && this.tank.getFluidAmount() < this.tank.getCapacity() && (this.tank.getCapacity() - this.tank.getFluidAmount()) >= this.getRecipeResult().getAmount()) {
-            MelterRecipe recipe = (MelterRecipe) iRecipe;
-            FluidStack outStack = recipe.getResult();
-            if (outStack.isEmpty())
+        if (iRecipe != null && hasItems()) {
+            ItemStack recipeOutStack = iRecipe.getRecipeOutput();
+            if (recipeOutStack.isEmpty())
                 return false;
             else {
-                if (this.tank.isEmpty())
+                ItemStack outStack = this.inventory.get(10);
+                if (outStack.isEmpty())
                     return true;
-                else if (!outStack.isFluidEqual(this.tank.getFluid()))
+                else if (!outStack.isItemEqual(recipeOutStack))
                     return false;
+                else if (outStack.getCount() + recipeOutStack.getCount() <= this.getInventoryStackLimit() && outStack.getCount() + recipeOutStack.getCount() <= outStack.getMaxStackSize())
+                    return true;
                 else
-                    return outStack.getAmount() + this.tank.getFluidAmount() <= this.tank.getCapacity();
+                    return outStack.getCount() + recipeOutStack.getCount() <= outStack.getMaxStackSize();
             }
         } else
             return false;
     }
 
     private void smeltRecipe(@Nullable IRecipe<?> iRecipe) {
-        if (!(iRecipe instanceof MelterRecipe))
-            return;
+        if (iRecipe != null && this.canSmelt(iRecipe)) {
+            ItemStack[] ingredients = new ItemStack[9];
+            for (int i = 0; i < 9; i++)
+                ingredients[i] = this.inventory.get(i);
 
-        if (this.canSmelt(iRecipe)) {
-            MelterRecipe recipe = (MelterRecipe) iRecipe;
-            ItemStack ingredientStack = this.inventory.get(0);
-            FluidStack recipeOutStack = recipe.getResult();
-            FluidStack outStack = this.tank.getFluid();
+            ItemStack recipeOutStack = iRecipe.getRecipeOutput();
+            ItemStack outStack = this.inventory.get(10);
             if (outStack.isEmpty())
-                this.tank.setFluid(recipeOutStack.copy());
-            else if (outStack.getFluid() == recipeOutStack.getFluid())
-                this.tank.fill(recipeOutStack, IFluidHandler.FluidAction.EXECUTE);
+                this.inventory.set(10, recipeOutStack.copy());
+            else if (outStack.getItem() == recipeOutStack.getItem())
+                outStack.grow(recipeOutStack.getCount());
 
             if (!this.world.isRemote)
-                this.setRecipeUsed(recipe);
+                this.setRecipeUsed(iRecipe);
 
-            ingredientStack.shrink(1);
+            for (ItemStack ingredient : ingredients)
+                if (!ingredient.isEmpty())
+                    ingredient.shrink(1);
+        }
+    }
+
+    public static int getBurnTime(ItemStack fuelStack) {
+        if (fuelStack.isEmpty())
+            return 0;
+        else {
+            Item fuelItem = fuelStack.getItem();
+            int ret = fuelStack.getBurnTime();
+            return ForgeEventFactory.getItemBurnTime(fuelStack, ret == -1 ? AbstractFurnaceTileEntity.getBurnTimes().getOrDefault(fuelItem, 0) : ret);
         }
     }
 
     private int getCookTimeTotal() {
-        return this.world.getRecipeManager().getRecipe(this.recipeType, this, this.world).map(MelterRecipe::getCookTime).orElse(200);
-    }
-
-    private FluidStack getRecipeResult() {
-        return this.world.getRecipeManager().getRecipe(this.recipeType, this, this.world).map(MelterRecipe::getResult).orElse(FluidStack.EMPTY);
+        return this.world.getRecipeManager().getRecipe(this.recipeType, this, this.world).map(PizzaOvenRecipe::getCookTime).orElse(200);
     }
 
     @Override
     public int[] getSlotsForFace(Direction side) {
-        return side == Direction.UP ? SLOTS_UP : SLOTS_HORIZONTAL;
+        if (side == Direction.DOWN)
+            return SLOTS_DOWN;
+        else
+            return side == Direction.UP ? SLOTS_UP : SLOTS_HORIZONTAL;
     }
 
     @Override
@@ -358,10 +360,12 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
 
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack) {
-        if (index != 1)
+        if (index == 10)
+            return false;
+        else if (index != 9)
             return true;
         else {
-            ItemStack itemstack = this.inventory.get(1);
+            ItemStack itemstack = this.inventory.get(9);
             return AbstractFurnaceTileEntity.isFuel(stack) || stack.getItem() == Items.BUCKET && itemstack.getItem() != Items.BUCKET;
         }
     }
@@ -424,23 +428,5 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
         super.remove();
         for (int x = 0; x < handlers.length; x++)
             handlers[x].invalidate();
-    }
-
-    @Override
-    public CompoundNBT getUpdateTag() {
-        return this.write(new CompoundNBT());
-    }
-
-    @Nullable
-    @Override
-    public SUpdateTileEntityPacket getUpdatePacket() {
-        CompoundNBT nbt = new CompoundNBT();
-        super.write(nbt);
-        return new SUpdateTileEntityPacket(getPos(), 1, nbt);
-    }
-
-    @Override
-    public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-        this.read(pkt.getNbtCompound());
     }
 }

@@ -1,6 +1,7 @@
 package coffeecatrailway.coffeecheese.client.gui.container;
 
 import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
+import coffeecatrailway.coffeecheese.common.tileentity.ModLockableTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.FurnaceResultSlot;
@@ -38,8 +39,8 @@ public class ResultSlot extends FurnaceResultSlot {
     @Override
     protected void onCrafting(ItemStack stack) {
         stack.onCrafting(this.player.world, this.player, this.removeCount);
-        if (!this.player.world.isRemote && this.inventory instanceof GrillTileEntity) {
-            ((GrillTileEntity) this.inventory).giveExperience(this.player);
+        if (!this.player.world.isRemote && this.inventory instanceof ModLockableTileEntity) {
+            ((ModLockableTileEntity) this.inventory).giveExperience(this.player);
         }
 
         this.removeCount = 0;

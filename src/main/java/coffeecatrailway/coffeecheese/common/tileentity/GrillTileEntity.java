@@ -11,7 +11,6 @@ import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import coffeecatrailway.coffeecheese.registry.ModTileEntities;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IRecipeHelperPopulator;
@@ -410,6 +409,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
         return null;
     }
 
+    @Override
     public void giveExperience(PlayerEntity player) {
         List<IRecipe<?>> list = Lists.newArrayList();
 
@@ -422,26 +422,6 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
 
         player.unlockRecipes(list);
         this.recipeAmounts.clear();
-    }
-
-    private void giveExperience(PlayerEntity player, int amount, float experience) {
-        if (experience == 0.0f) {
-            amount = 0;
-        } else if (experience < 1.0f) {
-            int i = MathHelper.floor((float) amount * experience);
-            if (i < MathHelper.ceil((float) amount * experience) && Math.random() < (double) ((float) amount * experience - (float) i)) {
-                ++i;
-            }
-
-            amount = i;
-        }
-
-        while (amount > 0) {
-            int j = ExperienceOrbEntity.getXPSplit(amount);
-            amount -= j;
-            player.world.addEntity(new ExperienceOrbEntity(player.world, player.posX, player.posY + 0.5D, player.posZ + 0.5D, j));
-        }
-
     }
 
     @Override

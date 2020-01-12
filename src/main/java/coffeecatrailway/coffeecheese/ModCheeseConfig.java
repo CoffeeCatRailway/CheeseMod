@@ -52,6 +52,7 @@ public class ModCheeseConfig {
     public static ForgeConfigSpec.DoubleValue grilledFoodMultiplier;
     public static ForgeConfigSpec.IntValue grillSpeed;
     public static ForgeConfigSpec.IntValue melterSpeed;
+    public static ForgeConfigSpec.IntValue pizzaOvenSpeed;
 
     /// Biomes ///
     public static ForgeConfigSpec.IntValue cheeseBiomeWeight;
@@ -134,6 +135,8 @@ public class ModCheeseConfig {
                     .defineInRange(configModifier + "grillSpeed", 5, minSpeed, maxSpeed);
             melterSpeed = builder.comment("Speed multiplier for the melter")
                     .defineInRange(configModifier + "melterSpeed", 4, minSpeed, maxSpeed);
+            pizzaOvenSpeed = builder.comment("Speed multiplier for the pizza oven")
+                    .defineInRange(configModifier + "pizzaOvenSpeed", 4, minSpeed, maxSpeed);
 
             builder.comment("\nCheeseMod biome settings");
             int minWeight = 0;

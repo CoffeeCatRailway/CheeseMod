@@ -3,6 +3,7 @@ package coffeecatrailway.coffeecheese.compat.jei;
 import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.client.gui.screen.GrillScreen;
 import coffeecatrailway.coffeecheese.client.gui.screen.MelterScreen;
+import coffeecatrailway.coffeecheese.client.gui.screen.PizzaOvenScreen;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import mezz.jei.api.IModPlugin;
@@ -31,6 +32,7 @@ public class JEIModPlugin implements IModPlugin {
     private static final ResourceLocation UID = CheeseMod.getLocation("plugin/main");
     static final ResourceLocation GRILL = CheeseMod.getLocation("category/grill");
     static final ResourceLocation MELTER = CheeseMod.getLocation("category/melter");
+    static final ResourceLocation PIZZA_OVEN = CheeseMod.getLocation("category/pizza_oven");
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -42,7 +44,8 @@ public class JEIModPlugin implements IModPlugin {
         IGuiHelper guiHelper = reg.getJeiHelpers().getGuiHelper();
         reg.addRecipeCategories(
                 new GrillRecipeCategory(guiHelper),
-                new MelterRecipeCategory(guiHelper)
+                new MelterRecipeCategory(guiHelper),
+                new PizzaOvenRecipeCategory(guiHelper)
         );
     }
 
@@ -50,6 +53,7 @@ public class JEIModPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration reg) {
         reg.addRecipes(getRecipesOfType(ModRecipes.GRILLING), GRILL);
         reg.addRecipes(getRecipesOfType(ModRecipes.MELTING), MELTER);
+        reg.addRecipes(getRecipesOfType(ModRecipes.PIZZA_OVEN), PIZZA_OVEN);
     }
 
     private static List<IRecipe<?>> getRecipesOfType(IRecipeType<?> type) {
@@ -60,11 +64,13 @@ public class JEIModPlugin implements IModPlugin {
     public void registerRecipeCatalysts(IRecipeCatalystRegistration reg) {
         reg.addRecipeCatalyst(new ItemStack(ModBlocks.GRILL.get()), GRILL);
         reg.addRecipeCatalyst(new ItemStack(ModBlocks.MELTER.get()), MELTER);
+        reg.addRecipeCatalyst(new ItemStack(ModBlocks.PIZZA_OVEN.get()), PIZZA_OVEN);
     }
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration reg) {
         reg.addRecipeClickArea(GrillScreen.class, 85, 33, 24, 17, GRILL);
         reg.addRecipeClickArea(MelterScreen.class, 68, 33, 24, 17, MELTER);
+        reg.addRecipeClickArea(PizzaOvenScreen.class, 101, 33, 24, 17, PIZZA_OVEN);
     }
 }

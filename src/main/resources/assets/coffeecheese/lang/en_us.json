@@ -180,6 +180,7 @@
 
   "block.coffeecheese.grill": "Grill",
   "block.coffeecheese.melter": "Melter",
+  "block.coffeecheese.pizza_oven": "Pizza Oven",
 
   "block.coffeecheese.pineapple_plant": "Pineapple Plant",
 
@@ -350,6 +351,7 @@
 
   "container.coffeecheese.grill": "Grill",
   "container.coffeecheese.melter": "Melter",
+  "container.coffeecheese.pizza_oven": "Pizza Oven",
 
   "gui.coffeecheese.category.grill.oil": "Grill Oil: %smb/%smb",
   "gui.coffeecheese.category.melter.fluid": "%s: %smb/%smb",

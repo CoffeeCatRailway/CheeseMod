@@ -1,0 +1,15 @@
+{
+  "type": "coffeecheese:pizza_oven",
+  "ingredients": [
+    { "item": "coffeecheese:pineapple_bit" },
+    [
+      { "item": "coffeecheese:pizza_cheese_ham_cooked" },
+      { "item": "coffeecheese:pizza_cheese_ham" }
+    ]
+  ],
+  "result": {
+    "item": "coffeecheese:pizza_cheese_ham_pineapple_cooked"
+  },
+  "experience": 0.3,
+  "cookingtime": 150
+}

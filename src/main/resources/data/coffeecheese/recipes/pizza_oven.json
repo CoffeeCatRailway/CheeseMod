@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    "B B",
+    "BLB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:brick"
+    },
+    "L": [
+      { "tag": "minecraft:logs" },
+      { "tag": "minecraft:planks" }
+    ]
+  },
+  "result": {
+    "item": "coffeecheese:pizza_oven"
+  }
+}

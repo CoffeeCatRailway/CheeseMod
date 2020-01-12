@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#coffeecheese:food_slice/ham_raw",
+    "#coffeecheese:food_slice/ham_cooked"
+  ]
+}

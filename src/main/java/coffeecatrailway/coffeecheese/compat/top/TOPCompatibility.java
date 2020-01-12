@@ -5,6 +5,7 @@ import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import coffeecatrailway.coffeecheese.common.block.GrillBlock;
 import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
 import coffeecatrailway.coffeecheese.common.tileentity.MelterTileEntity;
+import coffeecatrailway.coffeecheese.common.tileentity.PizzaOvenTileEntity;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModFluids;
 import com.google.common.base.Function;
@@ -79,6 +80,11 @@ public class TOPCompatibility implements Function<ITheOneProbe, Void>, IProbeInf
                     probeInfo.horizontal().text(I18n.format("top." + CheeseMod.MOD_ID + ".melter.fluid", fluidName));
                     probeInfo.horizontal().item(new ItemStack(tile.getTank().getFluid().getFluid().getFilledBucket())).progress(tile.getTank().getFluidAmount(), tile.getTank().getCapacity());
                 }
+            }
+            if (block == ModBlocks.PIZZA_OVEN.get()) {
+                PizzaOvenTileEntity tile = (PizzaOvenTileEntity) world.getTileEntity(hitData.getPos());
+                if (tile.hasItems() && tile.data.get(2) > 0)
+                    probeInfo.horizontal().progress(tile.data.get(2), tile.data.get(3));
             }
         }
     }

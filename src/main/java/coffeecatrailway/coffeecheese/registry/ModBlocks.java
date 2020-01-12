@@ -209,6 +209,7 @@ public class ModBlocks {
     /// Other ///
     public static final RegistryObject<Block> GRILL = registerBlockGeneral("grill", () -> new GrillBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5f).lightValue(13)));
     public static final RegistryObject<Block> MELTER = registerBlockGeneral("melter", () -> new MelterBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5f).lightValue(13)));
+    public static final RegistryObject<Block> PIZZA_OVEN = registerBlockGeneral("pizza_oven", () -> new PizzaOvenBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(2.0f, 6.0f)));
 
     public static final RegistryObject<PineappleBlock> PINEAPPLE = BLOCKS.register("pineapple_plant", () -> new PineappleBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)));
 

@@ -1,0 +1,12 @@
+{
+  "type": "coffeecheese:pizza_oven",
+  "ingredients": [
+    { "item": "coffeecheese:pizza_cheese" },
+    { "tag": "coffeecheese:food_slice/ham" }
+  ],
+  "result": {
+    "item": "coffeecheese:pizza_cheese_ham_cooked"
+  },
+  "experience": 0.2,
+  "cookingtime": 125
+}

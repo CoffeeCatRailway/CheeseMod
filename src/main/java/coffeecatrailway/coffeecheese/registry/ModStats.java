@@ -16,6 +16,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModStats {
 
     public static ResourceLocation INTERACT_WITH_GRILL;
+    public static ResourceLocation INTERACT_WITH_PIZZA_OVEN;
 
     public static ResourceLocation INTERACT_WITH_CHEESE_DRAW;
     public static ResourceLocation INTERACT_WITH_HAM_DRAW;
@@ -24,6 +25,7 @@ public class ModStats {
         if (!event.getName().equals(ForgeRegistries.STAT_TYPES.getRegistryName())) return;
 
         INTERACT_WITH_GRILL = register("interact_with_grill", IStatFormatter.DEFAULT);
+        INTERACT_WITH_PIZZA_OVEN = register("interact_with_pizza_oven", IStatFormatter.DEFAULT);
 
         INTERACT_WITH_CHEESE_DRAW = register("interact_with_cheese_draw", IStatFormatter.DEFAULT);
         INTERACT_WITH_HAM_DRAW = register("interact_with_ham_draw", IStatFormatter.DEFAULT);
