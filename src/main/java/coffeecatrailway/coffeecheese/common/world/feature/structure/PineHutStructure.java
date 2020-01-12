@@ -25,7 +25,7 @@ public class PineHutStructure extends Structure<NoFeatureConfig> {
     public static final ResourceLocation VARIANT_1 = CheeseMod.getLocation("hut/pine_camp_roof");
     public static final ResourceLocation VARIANT_2 = CheeseMod.getLocation("hut/pine_slab_roof");
     public static final ResourceLocation VARIANT_3 = CheeseMod.getLocation("hut/pine_trap_roof");
-    public static final BlockPos CENTER = new BlockPos(1, 1, 3);
+    public static final BlockPos CENTER = new BlockPos(1, -1, 3);
 
     public PineHutStructure(Function<Dynamic<?>, ? extends NoFeatureConfig> function) {
         super(function);
