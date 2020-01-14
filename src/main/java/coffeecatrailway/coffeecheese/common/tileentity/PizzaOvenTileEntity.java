@@ -383,7 +383,8 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
 
     @Override
     public void clear() {
-        this.inventory = new ItemStackHandler(11);
+        for (int i = 0; i < getSizeInventory(); i++)
+            this.inventory.setStackInSlot(i, ItemStack.EMPTY);
     }
 
     @Override
