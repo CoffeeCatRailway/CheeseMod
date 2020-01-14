@@ -7,7 +7,7 @@ modId="${modId}"
 version="${version}"
 displayName="${name}"
 logoFile="logo.png"
-credits="Credit to MrCrayfish for insperation and the use of his VoxelShapeHelper, thanks to Forge for always being better then fabric."
+credits="Credit to everyone who helped with the technical side! And to Forge for always being better then fabric."
 authors="${author}"
 description='''
 CHEESE, HAM, COOKED HAM WHAT ELSE DO YOU WANT?!
