@@ -71,29 +71,29 @@ public class PizzaOvenContainer extends Container {
         if (slot != null && slot.getHasStack()) {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
-            if (index == 2) {
-                if (!this.mergeItemStack(itemstack1, 3, 39, true)) {
+            if (index == 10) {
+                if (!this.mergeItemStack(itemstack1, 11, 47, true)) {
                     return ItemStack.EMPTY;
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
-            } else if (index != 1 && index != 0) {
-                if (this.recipeHasStack(itemstack1)) {
-                    if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
-                        return ItemStack.EMPTY;
-                    }
+            } else if (!(index < 8)) {
+//                if (this.recipeHasStack(itemstack1)) {
+                if (!this.mergeItemStack(itemstack1, 0, 8, false)) {
+                    return ItemStack.EMPTY;
+//                    }
                 } else if (AbstractFurnaceTileEntity.isFuel(itemstack1)) {
                     if (!this.mergeItemStack(itemstack1, 9, 10, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (index >= 3 && index < 30) {
-                    if (!this.mergeItemStack(itemstack1, 30, 39, false)) {
+                } else if (index >= 11 && index < 30) {
+                    if (!this.mergeItemStack(itemstack1, 38, 47, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (index >= 30 && index < 39 && !this.mergeItemStack(itemstack1, 3, 30, false)) {
+                } else if (index >= 38 && index < 47 && !this.mergeItemStack(itemstack1, 11, 38, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (!this.mergeItemStack(itemstack1, 3, 39, false)) {
+            } else if (!this.mergeItemStack(itemstack1, 11, 47, false)) {
                 return ItemStack.EMPTY;
             }
 

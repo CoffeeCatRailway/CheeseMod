@@ -53,7 +53,7 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
             3, 4, 5,
             6, 7, 8
     };
-    private static final int[] SLOTS_DOWN = new int[]{10, 9};
+    private static final int[] SLOTS_DOWN = new int[]{10};
     private static final int[] SLOTS_HORIZONTAL = new int[]{9};
 
     public ItemStackHandler inventory = new ItemStackHandler(11) {
