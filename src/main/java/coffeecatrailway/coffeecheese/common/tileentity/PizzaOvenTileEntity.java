@@ -14,7 +14,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IRecipeHelperPopulator;
 import net.minecraft.inventory.IRecipeHolder;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,7 +26,6 @@ import net.minecraft.tileentity.AbstractFurnaceTileEntity;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IIntArray;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
@@ -37,6 +35,7 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 import javax.annotation.Nullable;
@@ -57,7 +56,13 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
     private static final int[] SLOTS_DOWN = new int[]{10, 9};
     private static final int[] SLOTS_HORIZONTAL = new int[]{9};
 
-    private NonNullList<ItemStack> inventory = NonNullList.withSize(11, ItemStack.EMPTY);
+    public ItemStackHandler inventory = new ItemStackHandler(11) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            super.onContentsChanged(slot);
+            PizzaOvenTileEntity.this.sendUpdates(PizzaOvenTileEntity.this);
+        }
+    };
     private int burnTime;
     private int recipesUsed;
     private int cookTime;
@@ -125,13 +130,12 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
     @Override
     public void read(CompoundNBT compound) {
         super.read(compound);
-        this.inventory = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
-        ItemStackHelper.loadAllItems(compound, this.inventory);
+        inventory.deserializeNBT(compound.getCompound("inventory"));
 
         this.burnTime = compound.getInt("BurnTime");
         this.cookTime = compound.getInt("CookTime");
         this.cookTimeTotal = compound.getInt("CookTimeTotal");
-        this.recipesUsed = PizzaOvenTileEntity.getBurnTime(this.inventory.get(9));
+        this.recipesUsed = PizzaOvenTileEntity.getBurnTime(this.inventory.getStackInSlot(9));
         int i = compound.getShort("RecipesUsedSize");
 
         for (int j = 0; j < i; ++j) {
@@ -143,7 +147,7 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
 
     @Override
     public CompoundNBT write(CompoundNBT compound) {
-        ItemStackHelper.saveAllItems(compound, this.inventory);
+        compound.put("inventory", inventory.serializeNBT());
 
         compound.putInt("BurnTime", this.burnTime);
         compound.putInt("CookTime", this.cookTime);
@@ -162,7 +166,7 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
 
     public boolean hasItems() {
         for (int i = 0; i < 9; i++)
-            if (!this.inventory.get(i).isEmpty())
+            if (!this.inventory.getStackInSlot(i).isEmpty())
                 return true;
         return false;
     }
@@ -172,11 +176,11 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
         boolean flag1 = false;
         if (this.isBurning()) {
             this.burnTime--;
-            this.sendUpdates();
+            this.sendUpdates(PizzaOvenTileEntity.this);
         }
 
         if (!this.world.isRemote) {
-            ItemStack fuelStack = this.inventory.get(9);
+            ItemStack fuelStack = this.inventory.getStackInSlot(9);
             if (this.isBurning() || !fuelStack.isEmpty() && hasItems()) {
                 IRecipe<?> iRecipe = this.world.getRecipeManager().getRecipe(this.recipeType, this, this.world).orElse(null);
                 if (!this.isBurning() && this.canSmelt(iRecipe)) {
@@ -185,16 +189,17 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
                     if (this.isBurning()) {
                         flag1 = true;
                         if (fuelStack.hasContainerItem()) {
-                            this.inventory.set(9, fuelStack.getContainerItem());
+                            this.inventory.setStackInSlot(9, fuelStack.getContainerItem());
+                            this.sendUpdates(PizzaOvenTileEntity.this);
                         } else {
                             if (!fuelStack.isEmpty()) {
                                 fuelStack.shrink(1);
                                 if (fuelStack.isEmpty())
-                                    this.inventory.set(9, fuelStack.getContainerItem());
+                                    this.inventory.setStackInSlot(9, fuelStack.getContainerItem());
+                                this.sendUpdates(PizzaOvenTileEntity.this);
                             }
                         }
                     }
-                    this.sendUpdates();
                 }
 
                 if (this.isBurning() && this.canSmelt(iRecipe)) {
@@ -204,26 +209,26 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
                         this.cookTime = 0;
                         this.cookTimeTotal = this.getCookTimeTotal();
                         flag1 = true;
-                        this.sendUpdates();
+                        this.sendUpdates(PizzaOvenTileEntity.this);
                     }
                 } else {
                     this.cookTime = 0;
-                    this.sendUpdates();
+                    this.sendUpdates(PizzaOvenTileEntity.this);
                 }
             } else if (!this.isBurning() && this.cookTime > 0) {
                 this.cookTime = MathHelper.clamp(this.cookTime - 2, 0, this.cookTimeTotal);
-                this.sendUpdates();
+                this.sendUpdates(PizzaOvenTileEntity.this);
             }
 
             if (flag != this.isBurning()) {
                 flag1 = true;
                 this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(PizzaOvenBlock.LIT, this.isBurning()), 3);
-                this.sendUpdates();
+                this.sendUpdates(PizzaOvenTileEntity.this);
             }
         }
 
         if (flag1)
-            this.sendUpdates();
+            this.sendUpdates(PizzaOvenTileEntity.this);
     }
 
     private boolean canSmelt(@Nullable IRecipe<?> iRecipe) {
@@ -232,7 +237,7 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
             if (recipeOutStack.isEmpty())
                 return false;
             else {
-                ItemStack outStack = this.inventory.get(10);
+                ItemStack outStack = this.inventory.getStackInSlot(10);
                 if (outStack.isEmpty())
                     return true;
                 else if (!outStack.isItemEqual(recipeOutStack))
@@ -250,12 +255,12 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
         if (iRecipe != null && this.canSmelt(iRecipe)) {
             ItemStack[] ingredients = new ItemStack[9];
             for (int i = 0; i < 9; i++)
-                ingredients[i] = this.inventory.get(i);
+                ingredients[i] = this.inventory.getStackInSlot(i);
 
             ItemStack recipeOutStack = iRecipe.getRecipeOutput();
-            ItemStack outStack = this.inventory.get(10);
+            ItemStack outStack = this.inventory.getStackInSlot(10);
             if (outStack.isEmpty())
-                this.inventory.set(10, recipeOutStack.copy());
+                this.inventory.setStackInSlot(10, recipeOutStack.copy());
             else if (outStack.getItem() == recipeOutStack.getItem())
                 outStack.grow(recipeOutStack.getCount());
 
@@ -308,13 +313,13 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
 
     @Override
     public int getSizeInventory() {
-        return this.inventory.size();
+        return this.inventory.getSlots();
     }
 
     @Override
     public boolean isEmpty() {
-        for (ItemStack itemstack : this.inventory)
-            if (!itemstack.isEmpty())
+        for (int i = 0; i < getSizeInventory(); i++)
+            if (!this.inventory.getStackInSlot(i).isEmpty())
                 return false;
 
         return true;
@@ -322,31 +327,37 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
 
     @Override
     public ItemStack getStackInSlot(int index) {
-        return this.inventory.get(index);
+        return this.inventory.getStackInSlot(index);
     }
 
     @Override
     public ItemStack decrStackSize(int index, int count) {
-        return ItemStackHelper.getAndSplit(this.inventory, index, count);
+        return index >= 0 && index < getSizeInventory() && !this.inventory.getStackInSlot(index).isEmpty() && count > 0 ? this.inventory.getStackInSlot(index).split(count) : ItemStack.EMPTY;
     }
 
     @Override
     public ItemStack removeStackFromSlot(int index) {
-        return ItemStackHelper.getAndRemove(this.inventory, index);
+        if (index >= 0 && index < getSizeInventory()) {
+            ItemStack stack = this.inventory.getStackInSlot(index);
+            this.inventory.setStackInSlot(index, ItemStack.EMPTY);
+            return stack;
+        } else {
+            return ItemStack.EMPTY;
+        }
     }
 
     @Override
     public void setInventorySlotContents(int index, ItemStack stack) {
-        ItemStack itemstack = this.inventory.get(index);
+        ItemStack itemstack = this.inventory.getStackInSlot(index);
         boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
-        this.inventory.set(index, stack);
+        this.inventory.setStackInSlot(index, stack);
         if (stack.getCount() > this.getInventoryStackLimit())
             stack.setCount(this.getInventoryStackLimit());
 
         if (index == 0 && !flag) {
             this.cookTimeTotal = this.getCookTimeTotal();
             this.cookTime = 0;
-            this.sendUpdates();
+            this.sendUpdates(PizzaOvenTileEntity.this);
         }
     }
 
@@ -365,14 +376,14 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
         else if (index != 9)
             return true;
         else {
-            ItemStack itemstack = this.inventory.get(9);
+            ItemStack itemstack = this.inventory.getStackInSlot(9);
             return AbstractFurnaceTileEntity.isFuel(stack) || stack.getItem() == Items.BUCKET && itemstack.getItem() != Items.BUCKET;
         }
     }
 
     @Override
     public void clear() {
-        this.inventory.clear();
+        this.inventory = new ItemStackHandler(11);
     }
 
     @Override
@@ -404,8 +415,8 @@ public class PizzaOvenTileEntity extends ModLockableTileEntity implements ISided
 
     @Override
     public void fillStackedContents(RecipeItemHelper helper) {
-        for (ItemStack itemstack : this.inventory)
-            helper.accountStack(itemstack);
+        for (int i = 0; i < getSizeInventory(); i++)
+            helper.accountStack(this.inventory.getStackInSlot(i));
     }
 
     LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);

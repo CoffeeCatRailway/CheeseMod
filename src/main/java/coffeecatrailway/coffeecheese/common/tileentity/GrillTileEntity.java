@@ -186,7 +186,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
         boolean flag1 = false;
         if (this.isBurning()) {
             this.burnTime--;
-            this.sendUpdates();
+            this.sendUpdates(GrillTileEntity.this);
         }
 
         if (!this.world.isRemote) {
@@ -208,7 +208,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                             }
                         }
                     }
-                    this.sendUpdates();
+                    this.sendUpdates(GrillTileEntity.this);
                 }
 
                 if (this.isBurning() && this.canSmelt(iRecipe)) {
@@ -220,33 +220,33 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                             int catchedOil = this.getOilForRecipe() / 2 + (this.world.rand.nextInt(5) + 10);
                             if (this.catcherTank.getSpace() != 0)
                                 this.catcherTank.fill(new FluidStack(ModFluids.OIL_S.get(), catchedOil), IFluidHandler.FluidAction.EXECUTE);
-                            this.sendUpdates();
+                            this.sendUpdates(GrillTileEntity.this);
                         }
 
                         this.smeltRecipe(iRecipe);
                         this.cookTime = 0;
                         this.cookTimeTotal = this.getCookTimeTotal();
                         flag1 = true;
-                        this.sendUpdates();
+                        this.sendUpdates(GrillTileEntity.this);
                     }
                 } else {
                     this.cookTime = 0;
-                    this.sendUpdates();
+                    this.sendUpdates(GrillTileEntity.this);
                 }
             } else if (!this.isBurning() && this.cookTime > 0) {
                 this.cookTime = MathHelper.clamp(this.cookTime - 2, 0, this.cookTimeTotal);
-                this.sendUpdates();
+                this.sendUpdates(GrillTileEntity.this);
             }
 
             if (flag != this.isBurning()) {
                 flag1 = true;
                 this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(GrillBlock.LIT, this.isBurning()), 3);
-                this.sendUpdates();
+                this.sendUpdates(GrillTileEntity.this);
             }
         }
 
         if (flag1)
-            this.sendUpdates();
+            this.sendUpdates(GrillTileEntity.this);
     }
 
     private boolean canSmelt(@Nullable IRecipe<?> iRecipe) {
@@ -368,7 +368,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
         if (index == 0 && !flag) {
             this.cookTimeTotal = this.getCookTimeTotal();
             this.cookTime = 0;
-            this.sendUpdates();
+            this.sendUpdates(GrillTileEntity.this);
         }
     }
 

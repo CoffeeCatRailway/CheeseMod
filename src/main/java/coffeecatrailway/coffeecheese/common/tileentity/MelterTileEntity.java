@@ -182,7 +182,7 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
         boolean flag1 = false;
         if (this.isBurning()) {
             this.burnTime--;
-            this.sendUpdates();
+            this.sendUpdates(MelterTileEntity.this);
         }
 
         if (!this.world.isRemote) {
@@ -204,7 +204,7 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
                             }
                         }
                     }
-                    this.sendUpdates();
+                    this.sendUpdates(MelterTileEntity.this);
                 }
 
                 if (this.isBurning() && this.canSmelt(iRecipe)) {
@@ -214,23 +214,23 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
                         this.cookTime = 0;
                         this.cookTimeTotal = this.getCookTimeTotal();
                         flag1 = true;
-                        this.sendUpdates();
+                        this.sendUpdates(MelterTileEntity.this);
                     }
                 }
             } else if (!this.isBurning() && this.cookTime > 0) {
                 this.cookTime = MathHelper.clamp(this.cookTime - 2, 0, this.cookTimeTotal);
-                this.sendUpdates();
+                this.sendUpdates(MelterTileEntity.this);
             }
 
             if (flag != this.isBurning()) {
                 flag1 = true;
                 this.world.setBlockState(this.pos, this.world.getBlockState(this.pos).with(MelterBlock.LIT, this.isBurning()), 3);
-                super.sendUpdates();
+                this.sendUpdates(MelterTileEntity.this);
             }
         }
 
         if (flag1)
-            this.sendUpdates();
+            this.sendUpdates(MelterTileEntity.this);
     }
 
     private boolean canSmelt(@Nullable IRecipe<?> iRecipe) {
@@ -344,7 +344,7 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
         if (index == 0 && !flag) {
             this.cookTimeTotal = this.getCookTimeTotal();
             this.cookTime = 0;
-            this.sendUpdates();
+            this.sendUpdates(MelterTileEntity.this);
         }
     }
 

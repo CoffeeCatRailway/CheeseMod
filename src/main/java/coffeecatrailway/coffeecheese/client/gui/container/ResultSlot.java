@@ -1,6 +1,5 @@
 package coffeecatrailway.coffeecheese.client.gui.container;
 
-import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
 import coffeecatrailway.coffeecheese.common.tileentity.ModLockableTileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;

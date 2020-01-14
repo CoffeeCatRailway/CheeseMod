@@ -4,13 +4,13 @@ import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.item.crafting.*;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author CoffeeCatRailway
@@ -19,17 +19,19 @@ import net.minecraft.world.World;
 public class PizzaOvenRecipe implements IRecipe<IInventory> {
 
     private final ResourceLocation id;
-    private final Ingredient[] ingredients;
+    private final NonNullList<Ingredient> ingredients;
     private final ItemStack result;
     private final float experience;
     private final int cookTime;
+    private final boolean isSimple;
 
-    public PizzaOvenRecipe(ResourceLocation id, Ingredient[] ingredients, ItemStack result, float experience, int cookTime) {
+    public PizzaOvenRecipe(ResourceLocation id, NonNullList<Ingredient> ingredients, ItemStack result, float experience, int cookTime) {
         this.id = id;
         this.ingredients = ingredients;
         this.result = result;
         this.experience = experience;
         this.cookTime = cookTime;
+        this.isSimple = ingredients.stream().allMatch(Ingredient::isSimple);
     }
 
     public ItemStack getIcon() {
@@ -46,12 +48,22 @@ public class PizzaOvenRecipe implements IRecipe<IInventory> {
     }
 
     @Override
-    public boolean matches(IInventory inv, World world) {
-        for (int i = 0; i < 9; i++)
-            if (this.ingredients[i] != Ingredient.EMPTY)
-                if (!this.ingredients[i].test(inv.getStackInSlot(i)))
-                    return false;
-        return true;
+    public boolean matches(IInventory inv, World worldIn) {
+        RecipeItemHelper recipeitemhelper = new RecipeItemHelper();
+        List<ItemStack> inputs = new ArrayList<>();
+        int i = 0;
+
+        for (int j = 0; j < 9; ++j) {
+            ItemStack itemstack = inv.getStackInSlot(j);
+            if (!itemstack.isEmpty()) {
+                ++i;
+                if (isSimple)
+                    recipeitemhelper.func_221264_a(itemstack, 1);
+                else inputs.add(itemstack);
+            }
+        }
+
+        return i == this.ingredients.size() && (isSimple ? recipeitemhelper.canCraft(this, null) : net.minecraftforge.common.util.RecipeMatcher.findMatches(inputs, this.ingredients) != null);
     }
 
     @Override
@@ -69,13 +81,13 @@ public class PizzaOvenRecipe implements IRecipe<IInventory> {
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
-        NonNullList<Ingredient> nonnulllist = NonNullList.create();
-        for (int i = 0; i < 9; i++)
-            if (i < ingredients.length)
-                nonnulllist.add(ingredients[i]);
-            else
-                nonnulllist.add(Ingredient.EMPTY);
-        return nonnulllist;
+//        NonNullList<Ingredient> nonnulllist = NonNullList.create();
+//        for (int i = 0; i < 9; i++)
+//            if (i < ingredients.size())
+//                nonnulllist.add(ingredients.get(i));
+//            else
+//                nonnulllist.add(Ingredient.EMPTY);
+        return this.ingredients;
     }
 
     /**

@@ -1,6 +1,7 @@
 package coffeecatrailway.coffeecheese.common.item.crafting;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -8,6 +9,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapedRecipe;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.JSONUtils;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraftforge.registries.ForgeRegistryEntry;
@@ -29,12 +31,9 @@ public class PizzaOvenRecipeSerializer<T extends PizzaOvenRecipe> extends ForgeR
     @Override
     public T read(ResourceLocation id, JsonObject json) {
         JsonArray ingredientJson = JSONUtils.getJsonArray(json, "ingredients");
-        Ingredient[] ingredients = new Ingredient[9];
-        for (int i = 0; i < 9; i++)
-            if (i < ingredientJson.size())
-                ingredients[i] = Ingredient.deserialize(ingredientJson.get(i));
-            else
-                ingredients[i] = Ingredient.EMPTY;
+        NonNullList<Ingredient> ingredients = NonNullList.create();
+        for (JsonElement element : ingredientJson)
+            ingredients.add(Ingredient.deserialize(element));
 
         if (!json.has("result"))
             throw new com.google.gson.JsonSyntaxException("Missing result, expected to find a string or object");
@@ -54,9 +53,9 @@ public class PizzaOvenRecipeSerializer<T extends PizzaOvenRecipe> extends ForgeR
     @Override
     public T read(ResourceLocation id, PacketBuffer buffer) {
         int size = buffer.readVarInt();
-        Ingredient[] ingredients = new Ingredient[size];
+        NonNullList<Ingredient> ingredients = NonNullList.withSize(size, Ingredient.EMPTY);
         for (int i = 0; i < size; i++)
-            ingredients[i] = Ingredient.read(buffer);
+            ingredients.add(Ingredient.read(buffer));
 
         ItemStack stack = buffer.readItemStack();
         float experience = buffer.readFloat();
@@ -76,6 +75,6 @@ public class PizzaOvenRecipeSerializer<T extends PizzaOvenRecipe> extends ForgeR
     }
 
     public interface IFactory<T extends PizzaOvenRecipe> {
-        T create(ResourceLocation id, Ingredient[] ingredient, ItemStack stack, float experience, int cookTime);
+        T create(ResourceLocation id, NonNullList<Ingredient> ingredient, ItemStack stack, float experience, int cookTime);
     }
 }
