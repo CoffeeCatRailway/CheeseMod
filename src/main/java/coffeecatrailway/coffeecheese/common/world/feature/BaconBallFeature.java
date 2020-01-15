@@ -32,29 +32,32 @@ public class BaconBallFeature extends Feature<NoFeatureConfig> {
 
     @Override
     public boolean place(IWorld world, ChunkGenerator<? extends GenerationSettings> generator, Random rand, BlockPos pos, NoFeatureConfig config) {
-        for (BlockState state = world.getBlockState(pos); (state.isAir() || state.isIn(BlockTags.LEAVES)) && pos.getY() > 0; state = world.getBlockState(pos))
-            pos = pos.down();
+        if (rand.nextFloat() < 0.5f) {
+            for (BlockState state = world.getBlockState(pos); state.isAir() && pos.getY() > 0; state = world.getBlockState(pos))
+                pos = pos.down();
 
-        int offset = rand.nextInt(2);
-        int ret = 0;
+            int offset = rand.nextInt(2);
+            int ret = 0;
 
-        for (int height = 0; height < 128; height++) {
-            for(int i = 0; i < 2; i++) {
-                int x = rand.nextInt(2);
-                int y = rand.nextInt(2);
-                int z = rand.nextInt(2);
-                float dist = (float)(height + y + z) * 0.333F + 0.5F;
+            for (int height = 0; height < 128; height++) {
+                for (int i = 0; i < 2; i++) {
+                    int x = rand.nextInt(2);
+                    int y = rand.nextInt(2);
+                    int z = rand.nextInt(2);
+                    float dist = (float) (height + y + z) * 0.333F + 0.5F;
 
-                for(BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add(-x, -y + offset - height, -z), pos.add(x, y + offset - height, z))) {
-                    if (blockpos.distanceSq(pos) <= (double) (dist * dist) && this.block.isValidPosition(world, pos)) {
-                        world.setBlockState(blockpos, this.block, 2);
-                        ret++;
+                    for (BlockPos blockpos : BlockPos.getAllInBoxMutable(pos.add(-x, -y + offset - height, -z), pos.add(x, y + offset - height, z))) {
+                        if (blockpos.distanceSq(pos) <= (double) (dist * dist) && this.block.isValidPosition(world, pos)) {
+                            world.setBlockState(blockpos, this.block, 2);
+                            ret++;
+                        }
                     }
-                }
 
-                pos = pos.add(-rand.nextInt(2), -rand.nextInt(2), -rand.nextInt(2));
+                    pos = pos.add(-rand.nextInt(2), -rand.nextInt(2), -rand.nextInt(2));
+                }
             }
+            return ret > 0;
         }
-        return ret > 0;
+        return false;
     }
 }
