@@ -76,12 +76,13 @@ public class ModFoods {
             return newFood.build();
         }
 
-        Food.Builder newFood = new Food.Builder().hunger((foods[0].getHealing() / 2) * grilledI(grilled)).saturation((foods[0].getSaturation() / 2.0f) * grilledF(grilled));
+        double foodCombo = ModCheeseConfig.foodCombo.get();
+        Food.Builder newFood = new Food.Builder().hunger((int) ((foods[0].getHealing() / foodCombo) * grilledI(grilled))).saturation((float) ((foods[0].getSaturation() / foodCombo) * grilledF(grilled)));
 
         for (int i = 1; i < foods.length; i++) {
             Food food = foods[i];
             Food foodB = newFood.build();
-            newFood = newFood.hunger(food.getHealing() / 2 + foodB.getHealing()).saturation(food.getSaturation() / 2.0f + foodB.getSaturation());
+            newFood = newFood.hunger((int) ((food.getHealing() / foodCombo) + foodB.getHealing())).saturation((float) ((food.getSaturation() / foodCombo) + foodB.getSaturation()));
             newFood = applyEffects(food, newFood);
         }
 
