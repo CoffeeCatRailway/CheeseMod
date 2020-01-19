@@ -218,6 +218,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> HAM_RAW_CAKE = registerBlockGroup("ham_raw_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
     public static final RegistryObject<Block> HAM_COOKED_CAKE = registerBlockGroup("ham_cooked_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
 
+    public static final RegistryObject<FoodWorldPortalBlock> FOOD_PORTAL = BLOCKS.register("food_portal", () -> new FoodWorldPortalBlock(Block.Properties.create(Material.PORTAL).doesNotBlockMovement().harvestTool(ToolType.PICKAXE).hardnessAndResistance(-1.0F, 3000000.0F).lightValue(10).sound(SoundType.GLASS)));
+
     private static <T extends Block> RegistryObject<T> registerBlockGeneral(String name, Supplier<? extends T> block) {
         return registerBlock(name, block, item -> registerBlockItem(item, ModItemGroups.GROUP_ALL));
     }

@@ -84,6 +84,9 @@ public class CheeseMod {
         ModEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(ModEntities::registerSpawnPlacements);
         ModParticles.PARTICLE_TYPES.register(modEventBus);
+        ModDimensions.DIMENSIONS.register(modEventBus);
+        modEventBus.addListener(ModDimensions::registerToManager);
+        modEventBus.addListener(ModDimensions::onWorldLoad);
     }
 
     public void interModEvent(InterModProcessEvent event) {
@@ -97,7 +100,7 @@ public class CheeseMod {
         DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerParticleFactories);
         DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerEntityRenderers);
         DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerTileEntityRenderers);
-        CheeseMod.LOGGER.debug("Common setup - Renderers");
+        CheeseMod.LOGGER.debug("Client setup - Renderers");
 
         DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerFilters);
     }
