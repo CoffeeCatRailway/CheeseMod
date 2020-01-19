@@ -112,6 +112,8 @@ public class ModTags {
         public static Tag<Item> CRACKER = tag("cracker");
         public static Tag<Item> PIZZA = tag("pizza");
         public static Tag<Item> TOASTIE = tag("toastie");
+        public static Tag<Item> CHEESE = tag("cheese");
+        public static Tag<Item> HAM = tag("ham");
 
         private static Tag<Item> tag(String name) {
             return new ItemTags.Wrapper(CheeseMod.getLocation(name));

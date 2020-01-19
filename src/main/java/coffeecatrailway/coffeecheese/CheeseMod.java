@@ -87,6 +87,7 @@ public class CheeseMod {
         ModDimensions.DIMENSIONS.register(modEventBus);
         modEventBus.addListener(ModDimensions::registerToManager);
         modEventBus.addListener(ModDimensions::onWorldLoad);
+        ModEnchantments.ENCHANTMENTS.register(modEventBus);
     }
 
     public void interModEvent(InterModProcessEvent event) {
