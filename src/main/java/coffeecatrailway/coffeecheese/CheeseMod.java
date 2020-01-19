@@ -84,6 +84,7 @@ public class CheeseMod {
         ModEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(ModEntities::registerSpawnPlacements);
         ModParticles.PARTICLE_TYPES.register(modEventBus);
+        ModEnchantments.ENCHANTMENTS.register(modEventBus);
     }
 
     public void interModEvent(InterModProcessEvent event) {

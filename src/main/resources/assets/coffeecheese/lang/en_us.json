@@ -388,5 +388,7 @@
   "top.coffeecheese.grill.oil_catcher": "Oil Catcher Amount",
 
   "top.coffeecheese.melter.stack": "Melting",
-  "top.coffeecheese.melter.fluid": "%s Amount"
+  "top.coffeecheese.melter.fluid": "%s Amount",
+
+  "enchantment.coffeecheese.edible": "Edible"
 }
