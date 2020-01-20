@@ -14,7 +14,9 @@ import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.ModDimension;
 import net.minecraftforge.event.world.RegisterDimensionsEvent;
 import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -37,21 +39,27 @@ public class ModDimensions {
     public static DimensionType FOOD_WORLD_TYPE;
     public static FoodWorldTeleporter FOOD_WORLD_TELEPORTER;
 
-    public static void registerToManager(final RegisterDimensionsEvent event) {
-        ResourceLocation location = CheeseMod.getLocation("foodworld");
+    @Mod.EventBusSubscriber(modid = CheeseMod.MOD_ID)
+    public static class ForgeEventBus {
 
-        if (DimensionType.byName(location) == null) {
-            FOOD_WORLD_TYPE = DimensionManager.registerDimension(location, FOOD_WORLD.get(), new PacketBuffer(Unpooled.buffer()), true);
-            DimensionManager.keepLoaded(FOOD_WORLD_TYPE, false);
-        } else
-            FOOD_WORLD_TYPE = DimensionType.byName(location);
-    }
+        @SubscribeEvent
+        public static void registerToManager(final RegisterDimensionsEvent event) {
+            ResourceLocation location = CheeseMod.getLocation("foodworld");
 
-    public static void onWorldLoad(WorldEvent.Load event) {
-        if (!(event.getWorld() instanceof ServerWorld)) return;
+            if (DimensionType.byName(location) == null) {
+                FOOD_WORLD_TYPE = DimensionManager.registerDimension(location, FOOD_WORLD.get(), new PacketBuffer(Unpooled.buffer()), true);
+                DimensionManager.keepLoaded(FOOD_WORLD_TYPE, false);
+            } else
+                FOOD_WORLD_TYPE = DimensionType.byName(location);
+        }
 
-        ServerWorld world = (ServerWorld) event.getWorld();
-        if (world.dimension.getType() == DimensionType.OVERWORLD || world.dimension.getType() == FOOD_WORLD_TYPE)
-            world.customTeleporters.add(FOOD_WORLD_TELEPORTER = new FoodWorldTeleporter(world));
+        @SubscribeEvent
+        public static void onWorldLoad(WorldEvent.Load event) {
+            if (!(event.getWorld() instanceof ServerWorld)) return;
+
+            ServerWorld world = (ServerWorld) event.getWorld();
+            if (world.dimension.getType() == DimensionType.OVERWORLD || world.dimension.getType() == FOOD_WORLD_TYPE)
+                world.customTeleporters.add(FOOD_WORLD_TELEPORTER = new FoodWorldTeleporter(world));
+        }
     }
 }

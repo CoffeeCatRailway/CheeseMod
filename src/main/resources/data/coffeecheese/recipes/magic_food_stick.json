@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CLR",
+    "HSG",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "tag": "forge:rods/wooden"
+    },
+    "L": {
+      "tag": "minecraft:logs"
+    },
+    "C": {
+      "item": "coffeecheese:cheese_block"
+    },
+    "R": {
+      "item": "coffeecheese:ham_raw_block"
+    },
+    "H": {
+      "item": "coffeecheese:ham_cooked_block"
+    },
+    "G": {
+      "item": "coffeecheese:grilled_cheese_block"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:magic_food_stick"
+  }
+}

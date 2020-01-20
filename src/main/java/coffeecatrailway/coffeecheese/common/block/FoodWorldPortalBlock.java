@@ -1,5 +1,6 @@
 package coffeecatrailway.coffeecheese.common.block;
 
+import coffeecatrailway.coffeecheese.common.ModTags;
 import coffeecatrailway.coffeecheese.common.world.dimension.FoodWorldTeleporter;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModDimensions;
@@ -13,8 +14,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -26,14 +25,11 @@ import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.WorldInfo;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 /**
- * @author CoffeeCatRailway
+ * @author CoffeeCatRailway - Bagu_Chan https://github.com/pentantan & Andromander https://github.com/Andromander
  * Created: 16/01/2020
  */
 public class FoodWorldPortalBlock extends Block {
@@ -46,38 +42,29 @@ public class FoodWorldPortalBlock extends Block {
     }
 
     public boolean trySpawnPortal(World world, BlockPos pos) {
-        FoodWorldPortalBlock.Size size = new FoodWorldPortalBlock.Size(world, pos);
-        if (size.isValid()) {
+        FoodWorldPortalBlock.Size size = this.isPortal(world, pos);
+        System.out.println(world.getBlockState(pos).getBlock());
+        System.out.println(size);
+        if (size != null && this.canCreatePortalByWorld(world)) {
             size.placePortalBlocks();
-            world.playSound(null, pos, SoundEvents.BLOCK_END_PORTAL_SPAWN, SoundCategory.BLOCKS, 0.7F, 1.0F);
             return true;
         } else {
-            FoodWorldPortalBlock.Size size1 = new FoodWorldPortalBlock.Size(world, pos);
-
-            if (size1.isValid()) {
-                size1.placePortalBlocks();
-                world.playSound(null, pos, SoundEvents.BLOCK_END_PORTAL_SPAWN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                return true;
-            } else {
-                return false;
-            }
+            return false;
         }
     }
 
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        if (rand.nextInt(100) == 0)
-            worldIn.playSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, SoundEvents.BLOCK_PORTAL_AMBIENT, SoundCategory.BLOCKS, 0.5F, rand.nextFloat() * 0.4F + 0.8F, false);
+    private boolean canCreatePortalByWorld(World world) {
+        return (world.dimension.getType() == DimensionType.OVERWORLD || world.dimension.getType() == ModDimensions.FOOD_WORLD_TYPE);
+    }
 
-        for (int i = 0; i < 4; ++i) {
-            double d0 = ((float) pos.getX() + rand.nextFloat());
-            double d1 = (double) ((float) pos.getY() + rand.nextFloat()) + 0.8D;
-            double d2 = ((float) pos.getZ() + rand.nextFloat());
-            double d3 = ((double) rand.nextFloat() - 0.5D) * 0.5D;
-            double d4 = ((double) rand.nextFloat()) * 0.5D;
-            double d5 = ((double) rand.nextFloat() - 0.5D) * 0.5D;
-//            worldIn.addParticle(TofuParticles.TOFUPORTAL, false, d0, d1, d2, d3, d4, d5);
+    @Nullable
+    public FoodWorldPortalBlock.Size isPortal(IWorld world, BlockPos pos) {
+        FoodWorldPortalBlock.Size size = new FoodWorldPortalBlock.Size(world, pos);
+        if (size.isValid()) {
+            return size;
+        } else {
+            FoodWorldPortalBlock.Size size1 = new FoodWorldPortalBlock.Size(world, pos);
+            return size1.isValid() ? size1 : null;
         }
     }
 
@@ -151,7 +138,6 @@ public class FoodWorldPortalBlock extends Block {
         double d2 = serverPlayerEntity.posZ;
         float f = serverPlayerEntity.rotationPitch;
         float f1 = serverPlayerEntity.rotationYaw;
-        double d3 = 8.0D;
         float f2 = f1;
         serverworld.getProfiler().startSection("moving");
         double moveFactor = serverworld.getDimension().getMovementFactor() / serverworld1.getDimension().getMovementFactor();
@@ -280,7 +266,7 @@ public class FoodWorldPortalBlock extends Block {
                 for (int x = 0; x < wallWidth; x++) {
                     for (int z = 0; z < wallLength; z++) {
                         if (y == 0 || x == 0 || z == 0 || x == wallWidth - 1 || z == wallLength - 1) {
-                            if (!isSnowBlock(world.getBlockState(nwCorner.down().add(x, y, z)))) {
+                            if (!isFrameBlock(world.getBlockState(nwCorner.down().add(x, y, z)))) {
                                 return;
                             }
                         }
@@ -297,21 +283,21 @@ public class FoodWorldPortalBlock extends Block {
             for (i = 0; i < 9; ++i) {
                 BlockPos blockpos = pos.offset(facing, i);
 
-                if (!this.isEmptyBlock(this.world.getBlockState(blockpos)) || !isSnowBlock(this.world.getBlockState(blockpos.down()))) {
+                if (!this.isEmptyBlock(this.world.getBlockState(blockpos)) || !isFrameBlock(this.world.getBlockState(blockpos.down()))) {
                     break;
                 }
             }
 
             BlockState state = this.world.getBlockState(pos.offset(facing, i));
-            return isSnowBlock(state) ? i : 0;
+            return isFrameBlock(state) ? i : 0;
         }
 
         private boolean isEmptyBlock(BlockState state) {
-            return state.getBlock() == ModBlocks.HAM_RAW_BLOCK.get();
+            return state.isAir();
         }
 
-        private boolean isSnowBlock(BlockState state) {
-            return state.getBlock() == ModBlocks.CHEESE_BLOCK.get();
+        private boolean isFrameBlock(BlockState state) {
+            return ModTags.Blocks.FOOD_BLOCKS.contains(state.getBlock());
         }
 
         private boolean isValid() {

@@ -10,7 +10,6 @@ public class ModCheeseConfig {
 
     private static final String config = CheeseMod.MOD_ID + ".";
     private static final String configModifier = config + "modifier.";
-    private static final String configBiome = config + "biome.";
     private static final String configOres = config + "ores.";
     private static final String configMobs = config + "mobs.";
 
@@ -55,12 +54,6 @@ public class ModCheeseConfig {
     public static ForgeConfigSpec.IntValue grillSpeed;
     public static ForgeConfigSpec.IntValue melterSpeed;
     public static ForgeConfigSpec.IntValue pizzaOvenSpeed;
-
-    /// Biomes ///
-    public static ForgeConfigSpec.IntValue cheeseBiomeWeight;
-    public static ForgeConfigSpec.IntValue grilledCheeseBiomeWeight;
-    public static ForgeConfigSpec.IntValue hamRawBiomeWeight;
-    public static ForgeConfigSpec.IntValue hamCookedBiomeWeight;
 
     /// Ores ///
     public static ForgeConfigSpec.BooleanValue cheeseOreNetherGen;
@@ -145,16 +138,6 @@ public class ModCheeseConfig {
             builder.comment("\nCheeseMod biome settings");
             int minWeight = 0;
             int maxWeight = 1000;
-
-            /// Biomes ///
-            cheeseBiomeWeight = builder.comment("Cheese weight")
-                    .defineInRange(configBiome + "cheeseBiomeWeight", 10, minWeight, maxWeight);
-            grilledCheeseBiomeWeight = builder.comment("Grilled cheese weight")
-                    .defineInRange(configBiome + "grilledCheeseBiomeWeight", 7, minWeight, maxWeight);
-            hamRawBiomeWeight = builder.comment("Ham raw weight")
-                    .defineInRange(configBiome + "hamRawBiomeWeight", 10, minWeight, maxWeight);
-            hamCookedBiomeWeight = builder.comment("Ham cooked weight")
-                    .defineInRange(configBiome + "hamCookedBiomeWeight", 7, minWeight, maxWeight);
 
             /// Ores ///
             builder.comment("\nCheeseMod ore settings");

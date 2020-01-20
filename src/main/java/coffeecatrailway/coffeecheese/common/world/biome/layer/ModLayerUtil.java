@@ -35,7 +35,7 @@ public class ModLayerUtil {
         return iareafactory;
     }
 
-    public static <T extends IArea, C extends IExtendedNoiseRandom<T>> ImmutableList<IAreaFactory<T>> buildTofuProcedure(WorldType type, OverworldGenSettings settings, LongFunction<C> contextFactory) {
+    public static <T extends IArea, C extends IExtendedNoiseRandom<T>> ImmutableList<IAreaFactory<T>> buildProcedure(WorldType type, OverworldGenSettings settings, LongFunction<C> contextFactory) {
         IAreaFactory<T> areaFactory = ModLayer.INSTANCE.apply(contextFactory.apply(1L));
         areaFactory = ZoomLayer.FUZZY.apply(contextFactory.apply(2000L), areaFactory);
         areaFactory = AddIslandLayer.INSTANCE.apply(contextFactory.apply(1L), areaFactory);
@@ -92,9 +92,9 @@ public class ModLayerUtil {
         return parentLayer;
     }
 
-    public static Layer[] buildTofuProcedure(long seed, WorldType typeIn, OverworldGenSettings settings) {
+    public static Layer[] buildProcedure(long seed, WorldType typeIn, OverworldGenSettings settings) {
         int i = 25;
-        ImmutableList<IAreaFactory<LazyArea>> immutablelist = buildTofuProcedure(typeIn, settings, (seedModifier) -> {
+        ImmutableList<IAreaFactory<LazyArea>> immutablelist = buildProcedure(typeIn, settings, (seedModifier) -> {
             return new LazyAreaLayerContext(25, seed, seedModifier);
         });
         Layer layer = new Layer(immutablelist.get(0));

@@ -71,7 +71,7 @@ public class ModWorldFeatures {
                     addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE_END.get().getDefaultState(), ModCheeseConfig.hamCookedOreEndSize.get(), ModCheeseConfig.hamCookedOreEndRegionSize.get(),
                             TARGET_END, RANGE_FULL);
 
-            } else { /// OVERWORLD ///
+            } else { /// OVERWORLD & OTHER ///
                 boolean isCheese = biome == ModBiomes.CHEESE_FOREST.get() || biome == ModBiomes.CHEESE_PLAINS.get();
                 boolean isGrilledCheese = biome == ModBiomes.GRILLED_CHEESE_FOREST.get() || biome == ModBiomes.GRILLED_CHEESE_PLAINS.get();
                 boolean justCheese = isCheese || isGrilledCheese;

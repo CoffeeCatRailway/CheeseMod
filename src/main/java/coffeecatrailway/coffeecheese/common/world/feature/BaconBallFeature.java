@@ -3,7 +3,6 @@ package coffeecatrailway.coffeecheese.common.world.feature;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.ChunkGenerator;

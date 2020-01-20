@@ -197,6 +197,8 @@ public class ModItems {
         }
     });
 
+    public static final RegistryObject<Item> MAGIC_FOOD_STICK = ITEMS.register("magic_food_stick", () -> new MagicFoodStickItem(new Item.Properties().rarity(Rarity.RARE).group(ModItemGroups.GROUP_ALL)));
+
     private static RegistryObject<Item> registerItemFood(String name, Food food, int stackSize) {
         RegistryObject<Item> reg = ITEMS.register(name, () -> new Item(new Item.Properties().food(food).maxStackSize(stackSize).group(ModItemGroups.GROUP_FOODS)));
         FOODS.add(reg);

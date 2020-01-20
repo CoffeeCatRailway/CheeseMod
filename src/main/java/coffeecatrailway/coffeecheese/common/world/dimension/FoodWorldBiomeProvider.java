@@ -36,7 +36,7 @@ public class FoodWorldBiomeProvider extends BiomeProvider {
 
     public FoodWorldBiomeProvider(World world, OverworldGenSettings settings) {
         this.world = world;
-        Layer[] alayer = ModLayerUtil.buildTofuProcedure(world.getWorldInfo().getSeed(), world.getWorldType(), settings);
+        Layer[] alayer = ModLayerUtil.buildProcedure(world.getWorldInfo().getSeed(), world.getWorldType(), settings);
         this.genBiomes = alayer[0];
         this.biomeFactoryLayer = alayer[1];
     }

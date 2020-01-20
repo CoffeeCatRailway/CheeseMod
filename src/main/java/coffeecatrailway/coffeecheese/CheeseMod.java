@@ -85,8 +85,6 @@ public class CheeseMod {
         modEventBus.addListener(ModEntities::registerSpawnPlacements);
         ModParticles.PARTICLE_TYPES.register(modEventBus);
         ModDimensions.DIMENSIONS.register(modEventBus);
-        modEventBus.addListener(ModDimensions::registerToManager);
-        modEventBus.addListener(ModDimensions::onWorldLoad);
         ModEnchantments.ENCHANTMENTS.register(modEventBus);
     }
 
