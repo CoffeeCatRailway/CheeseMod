@@ -135,10 +135,6 @@ public class ModCheeseConfig {
             pizzaOvenSpeed = builder.comment("Speed multiplier for the pizza oven")
                     .defineInRange(configModifier + "pizzaOvenSpeed", 4, minSpeed, maxSpeed);
 
-            builder.comment("\nCheeseMod biome settings");
-            int minWeight = 0;
-            int maxWeight = 1000;
-
             /// Ores ///
             builder.comment("\nCheeseMod ore settings");
 

@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 public class ChezCommand {
 
     public static void register(CommandDispatcher<CommandSource> dispatcher) {
-        dispatcher.register(Commands.literal("chez").requires(source -> source.hasPermissionLevel(3)).executes(context -> {
+        dispatcher.register(Commands.literal("chez").requires(source -> source.hasPermissionLevel(source.getServer().getOpPermissionLevel())).executes(context -> {
             ServerPlayerEntity player = context.getSource().asPlayer();
             player.inventory.addItemStackToInventory(new ItemStack(ModItems.CHEESE_SLICE.get()));
             return 1;
