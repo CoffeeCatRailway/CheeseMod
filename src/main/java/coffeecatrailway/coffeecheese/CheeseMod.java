@@ -12,19 +12,27 @@ import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
 import coffeecatrailway.coffeecheese.common.tileentity.MelterTileEntity;
 import coffeecatrailway.coffeecheese.common.tileentity.PizzaOvenTileEntity;
 import coffeecatrailway.coffeecheese.common.world.ModWorldFeatures;
+import coffeecatrailway.coffeecheese.common.world.dimension.FoodWorldTeleporter;
 import coffeecatrailway.coffeecheese.compat.jer.JEResourcesCompat;
 import coffeecatrailway.coffeecheese.compat.top.TOPCompatibility;
 import coffeecatrailway.coffeecheese.registry.*;
 import com.mrcrayfish.filters.Filters;
+import io.netty.buffer.Unpooled;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.BreakingParticle;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.event.world.RegisterDimensionsEvent;
+import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -162,9 +170,33 @@ public class CheeseMod {
         CheeseMod.LOGGER.debug("Common setup");
     }
 
-    @SubscribeEvent
-    public void serverStarting(FMLServerStartingEvent event) {
-        ChezCommand.register(event.getCommandDispatcher());
+    @Mod.EventBusSubscriber(modid = CheeseMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public static class ForgeEventBus {
+
+        @SubscribeEvent
+        public static void serverStarting(FMLServerStartingEvent event) {
+            ChezCommand.register(event.getCommandDispatcher());
+        }
+
+        @SubscribeEvent
+        public static void registerToManager(final RegisterDimensionsEvent event) {
+            ResourceLocation location = CheeseMod.getLocation("foodworld");
+
+            if (DimensionType.byName(location) == null) {
+                ModDimensions.FOOD_WORLD_TYPE = DimensionManager.registerDimension(location, ModDimensions.FOOD_WORLD.get(), new PacketBuffer(Unpooled.buffer()), true);
+                DimensionManager.keepLoaded(ModDimensions.FOOD_WORLD_TYPE, false);
+            } else
+                ModDimensions.FOOD_WORLD_TYPE = DimensionType.byName(location);
+        }
+
+        @SubscribeEvent
+        public static void onWorldLoad(WorldEvent.Load event) {
+            if (!(event.getWorld() instanceof ServerWorld)) return;
+
+            ServerWorld world = (ServerWorld) event.getWorld();
+            if (world.dimension.getType() == DimensionType.OVERWORLD || world.dimension.getType() == ModDimensions.FOOD_WORLD_TYPE)
+                world.customTeleporters.add(ModDimensions.FOOD_WORLD_TELEPORTER = new FoodWorldTeleporter(world));
+        }
     }
 
     public static boolean isDate(int month, int day) {
