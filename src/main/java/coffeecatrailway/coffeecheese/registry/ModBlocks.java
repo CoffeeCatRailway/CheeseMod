@@ -52,7 +52,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> HAM_RAW_METAL_BLOCK = registerBlockGeneral("ham_raw_metal_block", () -> new Block(Block.Properties.create(Material.IRON).hardnessAndResistance(5.0f, 6.0f).sound(SoundType.METAL)));
     public static final RegistryObject<Block> HAM_COOKED_METAL_BLOCK = registerBlockGeneral("ham_cooked_metal_block", () -> new Block(Block.Properties.create(Material.IRON).hardnessAndResistance(5.0f, 6.0f).sound(SoundType.METAL)));
 
-    /// Food Wood/Tree ///
+    /// Nature ///
+    public static final RegistryObject<Block> CHEESE_GRASS_BLOCK = registerBlockGeneral("cheese_grass_block", () -> new FoodGrassBlock(Block.Properties.create(Material.ORGANIC).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> GRILLED_CHEESE_GRASS_BLOCK = registerBlockGeneral("grilled_cheese_grass_block", () -> new FoodGrassBlock(Block.Properties.create(Material.ORGANIC).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> HAM_RAW_GRASS_BLOCK = registerBlockGeneral("ham_raw_grass_block", () -> new FoodGrassBlock(Block.Properties.create(Material.ORGANIC).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT)));
+    public static final RegistryObject<Block> HAM_COOKED_GRASS_BLOCK = registerBlockGeneral("ham_cooked_grass_block", () -> new FoodGrassBlock(Block.Properties.create(Material.ORGANIC).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT)));
+
     public static final RegistryObject<Block> CHEESE_PLANKS = registerBlockGeneral("cheese_planks", () -> new Block(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0f, 3.0f).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> GRILLED_CHEESE_PLANKS = registerBlockGeneral("grilled_cheese_planks", () -> new Block(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0f, 3.0f).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> HAM_RAW_PLANKS = registerBlockGeneral("ham_raw_planks", () -> new Block(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0f, 3.0f).sound(SoundType.WOOD)));

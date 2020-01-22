@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "bottom": "block/dirt",
+    "top": "coffeecheese:block/grilled_cheese_grass_block_top_holes",
+    "side": "coffeecheese:block/grilled_cheese_grass_block_side_holes"
+  }
+}
