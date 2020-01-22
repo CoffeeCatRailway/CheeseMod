@@ -1,10 +1,7 @@
 package coffeecatrailway.coffeecheese.registry;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
-import coffeecatrailway.coffeecheese.common.tileentity.FoodDrawTileEntity;
-import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
-import coffeecatrailway.coffeecheese.common.tileentity.MelterTileEntity;
-import coffeecatrailway.coffeecheese.common.tileentity.PizzaOvenTileEntity;
+import coffeecatrailway.coffeecheese.common.tileentity.*;
 import com.google.common.collect.Sets;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
@@ -31,4 +28,7 @@ public class ModTileEntities {
 
     public static final RegistryObject<TileEntityType<PizzaOvenTileEntity>> PIZZA_OVEN = TILE_ENTITIES.register("pizza_oven",
             () -> new TileEntityType<>(PizzaOvenTileEntity::new, Sets.newHashSet(ModBlocks.PIZZA_OVEN.get()), null));
+
+    public static final RegistryObject<TileEntityType<FoodWorldPortalTileEntity>> FOOD_WORLD_PORTAL = TILE_ENTITIES.register("food_world_portal",
+            () -> new TileEntityType<>(FoodWorldPortalTileEntity::new, Sets.newHashSet(ModBlocks.FOOD_PORTAL.get()), null));
 }

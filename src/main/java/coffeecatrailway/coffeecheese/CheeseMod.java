@@ -2,12 +2,14 @@ package coffeecatrailway.coffeecheese;
 
 import coffeecatrailway.coffeecheese.client.render.entity.BoatRendererCM;
 import coffeecatrailway.coffeecheese.client.render.entity.FoodieRenderer;
+import coffeecatrailway.coffeecheese.client.render.tileentity.FoodWorldPortalTileEntityRenderer;
 import coffeecatrailway.coffeecheese.client.render.tileentity.GrillTileEntityRenderer;
 import coffeecatrailway.coffeecheese.client.render.tileentity.MelterTileEntityRenderer;
 import coffeecatrailway.coffeecheese.client.render.tileentity.PizzaOvenTileEntityRenderer;
 import coffeecatrailway.coffeecheese.common.command.ChezCommand;
 import coffeecatrailway.coffeecheese.common.entity.*;
 import coffeecatrailway.coffeecheese.common.entity.item.BoatEntityCM;
+import coffeecatrailway.coffeecheese.common.tileentity.FoodWorldPortalTileEntity;
 import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
 import coffeecatrailway.coffeecheese.common.tileentity.MelterTileEntity;
 import coffeecatrailway.coffeecheese.common.tileentity.PizzaOvenTileEntity;
@@ -156,6 +158,7 @@ public class CheeseMod {
         ClientRegistry.bindTileEntitySpecialRenderer(GrillTileEntity.class, new GrillTileEntityRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(MelterTileEntity.class, new MelterTileEntityRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(PizzaOvenTileEntity.class, new PizzaOvenTileEntityRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(FoodWorldPortalTileEntity.class, new FoodWorldPortalTileEntityRenderer());
     }
 
     public void setupCommon(FMLCommonSetupEvent event) {

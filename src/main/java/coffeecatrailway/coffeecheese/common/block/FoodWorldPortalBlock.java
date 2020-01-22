@@ -1,17 +1,22 @@
 package coffeecatrailway.coffeecheese.common.block;
 
 import coffeecatrailway.coffeecheese.common.ModTags;
+import coffeecatrailway.coffeecheese.common.tileentity.FoodWorldPortalTileEntity;
 import coffeecatrailway.coffeecheese.common.world.dimension.FoodWorldTeleporter;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModDimensions;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.ContainerBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -32,13 +37,23 @@ import javax.annotation.Nullable;
  * @author CoffeeCatRailway - Bagu_Chan https://github.com/pentantan & Andromander https://github.com/Andromander
  * Created: 16/01/2020
  */
-public class FoodWorldPortalBlock extends Block {
+public class FoodWorldPortalBlock extends ContainerBlock {
 
     private static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
     private static final VoxelShape NULL = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D);
 
     public FoodWorldPortalBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(IBlockReader world) {
+        return new FoodWorldPortalTileEntity();
+    }
+
+    @Override
+    public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
+        return ItemStack.EMPTY;
     }
 
     public boolean trySpawnPortal(World world, BlockPos pos) {
@@ -66,6 +81,11 @@ public class FoodWorldPortalBlock extends Block {
             FoodWorldPortalBlock.Size size1 = new FoodWorldPortalBlock.Size(world, pos);
             return size1.isValid() ? size1 : null;
         }
+    }
+
+    @Override
+    public BlockState updatePostPlacement(BlockState state, Direction facing, BlockState facingState, IWorld world, BlockPos pos, BlockPos facingPos) {
+        return facingState.getBlock() != this && !(new FoodWorldPortalBlock.Size(world, pos)).isValid() ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(state, facing, facingState, world, pos, facingPos);
     }
 
     @Override
