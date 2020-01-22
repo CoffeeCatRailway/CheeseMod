@@ -1,8 +1,8 @@
 package coffeecatrailway.coffeecheese.common.world.biome;
 
 import coffeecatrailway.coffeecheese.registry.ModBiomes;
+import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModFeatures;
-import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Feature;
@@ -18,7 +18,7 @@ import net.minecraft.world.gen.placement.Placement;
 public class CheeseFoodBiome extends BaseFoodBiome {
 
     public CheeseFoodBiome(Category category) {
-        super(ModBiomes.CHEESE_WATER_COLOR, ModBiomes.CHEESE_WATER_FOG_COLOR, ModBiomes.CHEESE_GRASS_COLOR, Blocks.GRASS_BLOCK.getDefaultState(), category);
+        super(ModBiomes.CHEESE_WATER_COLOR, ModBiomes.CHEESE_WATER_FOG_COLOR, ModBiomes.CHEESE_GRASS_COLOR, ModBlocks.CHEESE_GRASS_BLOCK.get().getDefaultState(), category);
     }
 
     @Override

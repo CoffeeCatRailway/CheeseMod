@@ -1,18 +1,25 @@
 package coffeecatrailway.coffeecheese.registry;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
+import coffeecatrailway.coffeecheese.common.block.FoodGrassBlock;
 import coffeecatrailway.coffeecheese.common.entity.*;
 import coffeecatrailway.coffeecheese.common.entity.item.BoatEntityCM;
+import net.minecraft.block.*;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.Random;
 
 /**
  * @author CoffeeCatRailway
@@ -43,9 +50,18 @@ public class ModEntities {
     public static void registerSpawnPlacements(RegistryEvent.Register<EntityType<?>> event) {
         if (!event.getName().equals(ForgeRegistries.ENTITIES.getRegistryName())) return;
 
-        EntitySpawnPlacementRegistry.register(CHEESE_FOODIE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, AnimalEntity::func_223316_b);
-        EntitySpawnPlacementRegistry.register(GRILLED_CHEESE_FOODIE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, AnimalEntity::func_223316_b);
-        EntitySpawnPlacementRegistry.register(HAM_RAW_FOODIE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, AnimalEntity::func_223316_b);
-        EntitySpawnPlacementRegistry.register(HAM_COOKED_FOODIE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, AnimalEntity::func_223316_b);
+        EntitySpawnPlacementRegistry.register(CHEESE_FOODIE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, ModEntities::canSpawn);
+        EntitySpawnPlacementRegistry.register(GRILLED_CHEESE_FOODIE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, ModEntities::canSpawn);
+        EntitySpawnPlacementRegistry.register(HAM_RAW_FOODIE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, ModEntities::canSpawn);
+        EntitySpawnPlacementRegistry.register(HAM_COOKED_FOODIE.get(), EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, ModEntities::canSpawn);
+    }
+
+    public static boolean canSpawn(EntityType<? extends AnimalEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
+        return canSpawn(world.getBlockState(pos.down())) && world.getLightSubtracted(pos, 0) > 8;
+    }
+
+    public static boolean canSpawn(BlockState state) {
+        Block block = state.getBlock();
+        return block instanceof GrassBlock || block instanceof GrassPathBlock || block == Blocks.DIRT || block instanceof FoodGrassBlock;
     }
 }
