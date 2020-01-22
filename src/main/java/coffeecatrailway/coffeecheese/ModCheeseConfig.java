@@ -202,28 +202,28 @@ public class ModCheeseConfig {
             cheeseFoodieMin = builder.comment("Cheese foodie min count")
                     .defineInRange(configMobs + "cheeseFoodieMin", 1, 0, 10);
             cheeseFoodieMax = builder.comment("Cheese foodie max count")
-                    .defineInRange(configMobs + "cheeseFoodieMax", 3, 1, 10);
+                    .defineInRange(configMobs + "cheeseFoodieMax", 5, 1, 10);
 
             grilledCheeseFoodieWeight = builder.comment("Grilled cheese foodie weight")
                     .defineInRange(configMobs + "grilledCheeseFoodieWeight", 100, 0, 100);
             grilledCheeseFoodieMin = builder.comment("Grilled cheese foodie min count")
                     .defineInRange(configMobs + "grilledCheeseFoodieMin", 1, 0, 10);
             grilledCheeseFoodieMax = builder.comment("Grilled cheese foodie max count")
-                    .defineInRange(configMobs + "grilledCheeseFoodieMax", 3, 1, 10);
+                    .defineInRange(configMobs + "grilledCheeseFoodieMax", 5, 1, 10);
 
             hamRawFoodieWeight = builder.comment("Ham raw foodie weight")
                     .defineInRange(configMobs + "hamRawFoodieWeight", 100, 0, 100);
             hamRawFoodieMin = builder.comment("Ham raw foodie min count")
                     .defineInRange(configMobs + "hamRawFoodieMin", 1, 0, 10);
             hamRawFoodieMax = builder.comment("Ham raw foodie max count")
-                    .defineInRange(configMobs + "hamRawFoodieMax", 3, 1, 10);
+                    .defineInRange(configMobs + "hamRawFoodieMax", 5, 1, 10);
 
             hamCookedFoodieWeight = builder.comment("Ham cooked foodie weight")
                     .defineInRange(configMobs + "hamCookedFoodieWeight", 100, 0, 100);
             hamCookedFoodieMin = builder.comment("Ham cooked foodie min count")
                     .defineInRange(configMobs + "hamCookedFoodieMin", 1, 0, 10);
             hamCookedFoodieMax = builder.comment("Ham cooked foodie max count")
-                    .defineInRange(configMobs + "hamCookedFoodieMax", 3, 1, 10);
+                    .defineInRange(configMobs + "hamCookedFoodieMax", 5, 1, 10);
         }
     }
 }
