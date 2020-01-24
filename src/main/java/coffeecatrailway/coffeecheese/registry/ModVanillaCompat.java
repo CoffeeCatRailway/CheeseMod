@@ -6,6 +6,7 @@ import net.minecraft.block.*;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.entity.IProjectile;
+import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IItemProvider;
@@ -19,6 +20,9 @@ import net.minecraft.world.World;
 public class ModVanillaCompat {
 
     public static void setup() {
+        // Parrot - Cracker
+        ParrotEntity.TAME_ITEMS.add(ModItems.CRACKER.get());
+
         // Dispenser
         DispenserBlock.registerDispenseBehavior(ModItems.CHEESE_BALL.get(), new ProjectileDispenseBehavior() {
             @Override
