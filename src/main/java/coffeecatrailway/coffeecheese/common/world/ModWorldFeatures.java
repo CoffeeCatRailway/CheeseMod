@@ -4,7 +4,6 @@ import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import coffeecatrailway.coffeecheese.common.world.biome.BaseFoodBiome;
 import coffeecatrailway.coffeecheese.common.world.feature.ModOreFeature;
 import coffeecatrailway.coffeecheese.common.world.feature.ModOreFeatureConfig;
-import coffeecatrailway.coffeecheese.common.world.feature.structure.PineHutStructure;
 import coffeecatrailway.coffeecheese.registry.ModBiomes;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModEntities;
@@ -18,7 +17,6 @@ import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.CountRangeConfig;
-import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -114,12 +112,6 @@ public class ModWorldFeatures {
                         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModFeatures.BACON_RAW_BALL.get(), IFeatureConfig.NO_FEATURE_CONFIG, Placement.CHANCE_HEIGHTMAP, new ChanceConfig(3)));
                     if (isHamCooked)
                         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModFeatures.BACON_COOKED_BALL.get(), IFeatureConfig.NO_FEATURE_CONFIG, Placement.CHANCE_HEIGHTMAP, new ChanceConfig(3)));
-                }
-            } else { /// OVERWORLD ///
-                // Structures
-                if (PineHutStructure.canSpawn(biome) && ModCheeseConfig.pineHutGen.get()) {
-                    biome.addFeature(GenerationStage.Decoration.SURFACE_STRUCTURES, Biome.createDecoratedFeature(ModFeatures.PINE_HUT.get(), IFeatureConfig.NO_FEATURE_CONFIG, Placement.NOPE, IPlacementConfig.NO_PLACEMENT_CONFIG));
-                    biome.addStructure(ModFeatures.PINE_HUT.get(), IFeatureConfig.NO_FEATURE_CONFIG);
                 }
             }
         });

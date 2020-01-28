@@ -1,12 +1,7 @@
 package coffeecatrailway.coffeecheese.common.world.feature.tree;
 
-import coffeecatrailway.coffeecheese.common.block.FoodGrassBlock;
 import coffeecatrailway.coffeecheese.registry.ModEntities;
 import com.mojang.datafixers.Dynamic;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.GrassBlock;
-import net.minecraft.block.GrassPathBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.IWorldGenerationBaseReader;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;

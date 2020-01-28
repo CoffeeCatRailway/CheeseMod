@@ -45,7 +45,7 @@ public class ModCheeseConfig {
 
     public static ForgeConfigSpec.BooleanValue stickyFoodBlock;
 
-    public static ForgeConfigSpec.BooleanValue pineHutGen;
+    public static ForgeConfigSpec.IntValue pineappleDropChance;
 
     /// Modifiers ///
     public static ForgeConfigSpec.DoubleValue grilledFoodMultiplier;
@@ -115,8 +115,8 @@ public class ModCheeseConfig {
             stickyFoodBlock = builder.comment("If true all food blocks (cheese, grilled cheese & ham raw or cooked) will act like slime blocks when pushed by a piston")
                     .define(config + "stickyFoodBlock", true);
 
-            pineHutGen = builder.comment("Pine hut generates if true")
-                    .define(config + "pineHutGen", true);
+            pineappleDropChance = builder.comment("Chance for a pineapple plant to drop from tall grass")
+                    .defineInRange(config + "pineappleDropChance", 8, 0, 100);
 
             /// Modifiers ///
             builder.comment("\nCheeseMod modifier settings");
