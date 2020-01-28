@@ -53,7 +53,7 @@ public class PizzaOvenRecipeSerializer<T extends PizzaOvenRecipe> extends ForgeR
     @Override
     public T read(ResourceLocation id, PacketBuffer buffer) {
         int size = buffer.readVarInt();
-        NonNullList<Ingredient> ingredients = NonNullList.withSize(size, Ingredient.EMPTY);
+        NonNullList<Ingredient> ingredients = NonNullList.create();
         for (int i = 0; i < size; i++)
             ingredients.add(Ingredient.read(buffer));
 
