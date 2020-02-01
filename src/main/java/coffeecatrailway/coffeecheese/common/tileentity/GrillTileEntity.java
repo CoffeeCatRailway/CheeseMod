@@ -85,6 +85,8 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                     return GrillTileEntity.this.cookTimeTotal;
                 case 4:
                     return GrillTileEntity.this.tank.getFluidAmount();
+                case 5:
+                    return GrillTileEntity.this.catcherTank.getFluidAmount();
                 default:
                     return 0;
             }
@@ -107,12 +109,15 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                 case 4:
                     GrillTileEntity.this.tank.setFluid(new FluidStack(ModFluids.OIL_S.get(), value));
                     break;
+                case 5:
+                    GrillTileEntity.this.catcherTank.setFluid(new FluidStack(ModFluids.OIL_S.get(), value));
+                    break;
             }
 
         }
 
         public int size() {
-            return 5;
+            return 6;
         }
     };
     private final Map<ResourceLocation, Integer> recipeAmounts = Maps.newHashMap();

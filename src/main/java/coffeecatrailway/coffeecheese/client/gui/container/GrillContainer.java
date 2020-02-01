@@ -30,7 +30,7 @@ public class GrillContainer extends Container {
     private final IRecipeType<GrillRecipe> recipeType;
 
     public GrillContainer(int id, PlayerInventory playerInventory) {
-        this(id, playerInventory, new Inventory(3), new IntArray(5));
+        this(id, playerInventory, new Inventory(3), new IntArray(6));
     }
 
     public GrillContainer(int id, PlayerInventory playerInventory, IInventory inventory, IIntArray data) {
