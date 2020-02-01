@@ -14,7 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
  */
 public class ModEnchantments {
 
-    private static final EquipmentSlotType[] ARMOR_SLOTS = new EquipmentSlotType[]{EquipmentSlotType.HEAD, EquipmentSlotType.CHEST, EquipmentSlotType.LEGS, EquipmentSlotType.FEET};
+    public static final EquipmentSlotType[] ARMOR_SLOTS = new EquipmentSlotType[]{EquipmentSlotType.HEAD, EquipmentSlotType.CHEST, EquipmentSlotType.LEGS, EquipmentSlotType.FEET};
     public static final DeferredRegister<Enchantment> ENCHANTMENTS = new DeferredRegister<>(ForgeRegistries.ENCHANTMENTS, CheeseMod.MOD_ID);
 
     public static final RegistryObject<Enchantment> EDIBLE = ENCHANTMENTS.register("edible", () -> new EdibleEnchantment(Enchantment.Rarity.RARE, ARMOR_SLOTS));
