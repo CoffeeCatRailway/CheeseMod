@@ -70,13 +70,9 @@ public class EdibleEnchantment extends Enchantment {
                         ItemStack tagStack = hasTag(player.inventory, tag);
                         if (tagStack != ItemStack.EMPTY && tagStack.isFood()) {
                             if (20 - player.getFoodStats().getFoodLevel() >= tagStack.getItem().getFood().getHealing()) {
-                                if (level == 1)
-                                    player.getFoodStats().consume(tagStack.getItem(), tagStack);
-                                else {
-                                    int hunger = tagStack.getItem().getFood().getHealing() * level;
-                                    float saturation = tagStack.getItem().getFood().getSaturation() * (level * 1f);
-                                    player.getFoodStats().addStats(hunger, saturation);
-                                }
+                                int hunger = tagStack.getItem().getFood().getHealing() * level;
+                                float saturation = tagStack.getItem().getFood().getSaturation() * (level * 1f);
+                                player.getFoodStats().addStats(hunger, saturation);
                                 player.inventory.decrStackSize(player.inventory.getSlotFor(tagStack), level);
                                 if (player.world.rand.nextInt(10) < 5)
                                     armorStack.damageItem(level, player, (entity) -> entity.sendBreakAnimation(slot));
