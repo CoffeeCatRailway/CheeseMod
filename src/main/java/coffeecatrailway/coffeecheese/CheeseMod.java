@@ -6,6 +6,7 @@ import coffeecatrailway.coffeecheese.client.render.tileentity.FoodWorldPortalTil
 import coffeecatrailway.coffeecheese.client.render.tileentity.GrillTileEntityRenderer;
 import coffeecatrailway.coffeecheese.client.render.tileentity.MelterTileEntityRenderer;
 import coffeecatrailway.coffeecheese.client.render.tileentity.PizzaOvenTileEntityRenderer;
+import coffeecatrailway.coffeecheese.common.block.TallFoodGrassBlock;
 import coffeecatrailway.coffeecheese.common.command.ChezCommand;
 import coffeecatrailway.coffeecheese.common.entity.*;
 import coffeecatrailway.coffeecheese.common.entity.item.BoatEntityCM;
@@ -213,7 +214,7 @@ public class CheeseMod {
         public static void onBlockBroken(BlockEvent.BreakEvent event) {
             if (!event.getWorld().isRemote()) {
                 if ((event.getPlayer().getHeldItemMainhand().getItem() != Items.SHEARS) || (!event.getPlayer().isCreative())) {
-                    if (event.getState().getBlock() == Blocks.GRASS || event.getState().getBlock() == Blocks.TALL_GRASS || event.getState().getBlock() == Blocks.FERN) {
+                    if (event.getState().getBlock() == Blocks.GRASS || event.getState().getBlock() == Blocks.TALL_GRASS || event.getState().getBlock() == Blocks.FERN || event.getState().getBlock() instanceof TallFoodGrassBlock) {
                         if (Math.random() <= (double) ModCheeseConfig.pineappleDropChance.get() / 100) {
                             event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState(), 2);
                             event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
