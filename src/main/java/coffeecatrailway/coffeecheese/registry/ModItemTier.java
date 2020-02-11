@@ -12,11 +12,11 @@ import java.util.function.Supplier;
  */
 public enum ModItemTier implements IItemTier {
 
-    CHEESE_METAL(1, 150, 4.0f, 2.0f, 5, () -> Ingredient.fromItems(ModItems.CHEESE_METAL_INGOT.get())),
-    GRILLED_CHEESE_METAL(2, 200, 5.2f, 2.5f, 8, () -> Ingredient.fromItems(ModItems.GRILLED_CHEESE_METAL_INGOT.get())),
+    CHEESE_METAL(1, 180, 4.0f, 1.0f, 5, () -> Ingredient.fromItems(ModItems.CHEESE_METAL_INGOT.get())),
+    GRILLED_CHEESE_METAL(2, 200, 5.2f, 2.0f, 8, () -> Ingredient.fromItems(ModItems.GRILLED_CHEESE_METAL_INGOT.get())),
 
-    HAM_RAW_METAL(1, 100, 3.5f, 2.3f, 6, () -> Ingredient.fromItems(ModItems.HAM_RAW_METAL_INGOT.get())),
-    HAM_COOKED_METAL(2, 170, 4.0f, 2.6f, 8, () -> Ingredient.fromItems(ModItems.HAM_COOKED_METAL_INGOT.get()));
+    HAM_RAW_METAL(1, 180, 3.5f, 1.3f, 6, () -> Ingredient.fromItems(ModItems.HAM_RAW_METAL_INGOT.get())),
+    HAM_COOKED_METAL(2, 120, 4.0f, 2.1f, 8, () -> Ingredient.fromItems(ModItems.HAM_COOKED_METAL_INGOT.get()));
 
     private final int harvestLevel;
     private final int maxUses;

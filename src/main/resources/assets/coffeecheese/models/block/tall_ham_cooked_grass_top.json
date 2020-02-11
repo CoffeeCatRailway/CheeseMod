@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "coffeecheese:block/tall_ham_cooked_grass_top"
+  }
+}

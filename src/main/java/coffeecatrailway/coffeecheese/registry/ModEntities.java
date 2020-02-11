@@ -62,6 +62,6 @@ public class ModEntities {
 
     public static boolean canSpawn(BlockState state) {
         Block block = state.getBlock();
-        return block instanceof GrassBlock || block instanceof GrassPathBlock || block == Blocks.DIRT || block instanceof FoodGrassBlock;
+        return block instanceof GrassBlock || block instanceof GrassPathBlock || Block.isDirt(block) || block instanceof FoodGrassBlock;
     }
 }

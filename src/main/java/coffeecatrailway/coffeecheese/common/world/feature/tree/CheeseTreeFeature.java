@@ -21,6 +21,7 @@ public class CheeseTreeFeature extends TreeFeature<NoFeatureConfig> {
     private final int minTreeHeight;
     private final BlockState trunk;
     private final BlockState leaf;
+    private final BlockState food;
 
     public CheeseTreeFeature(boolean grilled, Function<Dynamic<?>, ? extends NoFeatureConfig> dynamicFunction, boolean doBlockNofityOnPlace) {
         super(dynamicFunction, doBlockNofityOnPlace);
@@ -28,10 +29,12 @@ public class CheeseTreeFeature extends TreeFeature<NoFeatureConfig> {
             this.minTreeHeight = 6;
             this.trunk = ModBlocks.GRILLED_CHEESE_LOG.get().getDefaultState();
             this.leaf = ModBlocks.GRILLED_CHEESE_LEAVES.get().getDefaultState();
+            this.food = ModBlocks.GRILLED_CHEESE_BLOCK.get().getDefaultState();
         } else {
             this.minTreeHeight = 4;
             this.trunk = ModBlocks.CHEESE_LOG.get().getDefaultState();
             this.leaf = ModBlocks.CHEESE_LEAVES.get().getDefaultState();
+            this.food = ModBlocks.CHEESE_BLOCK.get().getDefaultState();
         }
     }
 
@@ -82,7 +85,7 @@ public class CheeseTreeFeature extends TreeFeature<NoFeatureConfig> {
                             if (Math.abs(k1) != j4 || Math.abs(i2) != j4 && l3 != 0) {
                                 BlockPos blockpos = new BlockPos(j1, l2, l1);
                                 if (isAirOrLeaves(world, blockpos) || isSoil(world, blockpos)) {
-                                    this.setLogState(changedBlocks, world, blockpos, this.leaf, mutableBoundingBox);
+                                    this.setLogState(changedBlocks, world, blockpos, (rand.nextFloat() < 0.05f ? this.food : this.leaf), mutableBoundingBox);
                                 }
                             }
                         }

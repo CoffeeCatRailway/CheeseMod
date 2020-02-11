@@ -6,9 +6,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * @author CoffeeCatRailway
@@ -17,9 +20,11 @@ import java.util.Random;
 public class TallFoodGrassBlock extends BushBlock implements IGrowable, net.minecraftforge.common.IShearable {
 
     private static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
+    private final DoublePlantBlock doublePlantBlock;
 
-    public TallFoodGrassBlock(Properties properties) {
+    public TallFoodGrassBlock(Properties properties, DoublePlantBlock doublePlantBlock) {
         super(properties);
+        this.doublePlantBlock = doublePlantBlock;
     }
 
     @Override
@@ -39,6 +44,8 @@ public class TallFoodGrassBlock extends BushBlock implements IGrowable, net.mine
 
     @Override
     public void grow(World world, Random rand, BlockPos pos, BlockState state) {
+        if (this.doublePlantBlock.getDefaultState().isValidPosition(world, pos) && world.isAirBlock(pos.up()))
+            this.doublePlantBlock.placeAt(world, pos, 2);
     }
 
     @Override
@@ -47,12 +54,12 @@ public class TallFoodGrassBlock extends BushBlock implements IGrowable, net.mine
     }
 
     @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        Block block = state.getBlock();
+    public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
+        Block block = world.getBlockState(pos.down()).getBlock();
         return block == ModBlocks.CHEESE_GRASS_BLOCK.get() ||
                 block == ModBlocks.GRILLED_CHEESE_GRASS_BLOCK.get() ||
                 block == ModBlocks.HAM_RAW_GRASS_BLOCK.get() ||
                 block == ModBlocks.HAM_COOKED_GRASS_BLOCK.get() ||
-                block == Blocks.DIRT;
+                Block.isDirt(block) || block == Blocks.FARMLAND;
     }
 }

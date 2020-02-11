@@ -60,7 +60,7 @@ public class FoodGrassBlock extends Block implements IGrowable {
                     if (!blockstate2.isAir())
                         break;
 
-                    BlockState blockstate1;
+                    BlockState blockstate1; // TODO: Added other vegetation
                     if (rand.nextInt(8) == 0) {
                         List<ConfiguredFeature<?>> list = world.getBiome(blockpos1).getFlowers();
                         if (list.isEmpty())
