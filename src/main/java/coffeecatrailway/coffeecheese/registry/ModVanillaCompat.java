@@ -8,6 +8,7 @@ import net.minecraft.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.item.AxeItem;
+import net.minecraft.item.HoeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.Util;
@@ -30,6 +31,12 @@ public class ModVanillaCompat {
                 return Util.make(new CheeseBallEntity(world, pos.getX(), pos.getY(), pos.getZ()), (entity) -> entity.setItem(stack));
             }
         });
+
+        // Hoe - Farmland
+        registerHoeable(ModBlocks.CHEESE_GRASS_BLOCK.get());
+        registerHoeable(ModBlocks.GRILLED_CHEESE_GRASS_BLOCK.get());
+        registerHoeable(ModBlocks.HAM_RAW_GRASS_BLOCK.get());
+        registerHoeable(ModBlocks.HAM_COOKED_GRASS_BLOCK.get());
 
         // Log Stripping
         registerStrippable(ModBlocks.CHEESE_LOG.get(), ModBlocks.STRPPED_CHEESE_LOG.get());
@@ -107,6 +114,11 @@ public class ModVanillaCompat {
     private static void registerStrippable(Block log, Block strippedLog) {
         AxeItem.BLOCK_STRIPPING_MAP = Maps.newHashMap(AxeItem.BLOCK_STRIPPING_MAP);
         AxeItem.BLOCK_STRIPPING_MAP.put(log, strippedLog);
+    }
+
+    private static void registerHoeable(Block block) {
+        HoeItem.HOE_LOOKUP = Maps.newHashMap(HoeItem.HOE_LOOKUP);
+        HoeItem.HOE_LOOKUP.put(block, Blocks.FARMLAND.getDefaultState());
     }
 
     private static void registerCompostable(float chance, IItemProvider itemProvider) {
