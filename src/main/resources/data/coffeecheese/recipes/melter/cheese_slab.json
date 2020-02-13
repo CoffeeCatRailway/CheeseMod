@@ -1,7 +1,7 @@
 {
   "type": "coffeecheese:melting",
   "ingredient": {
-    "tag": "coffeecheese:slabs/cheese"
+    "tag": "forge:slabs/cheese"
   },
   "result": {
     "fluid": "coffeecheese:melted_cheese_still",

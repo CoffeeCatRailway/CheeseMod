@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "coffeecheese:oil_still",
-    "coffeecheese:oil_flowing"
+    "#forge:oil"
   ]
 }

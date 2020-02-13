@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    { "tag": "coffeecheese:food_blocks/grilled_cheese" }
+    { "tag": "forge:food_blocks/grilled_cheese" }
   ],
   "result": {
     "item": "coffeecheese:grilled_cheese_button"

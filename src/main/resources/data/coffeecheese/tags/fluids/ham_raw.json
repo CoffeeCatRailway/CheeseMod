@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "coffeecheese:melted_ham_raw_still",
-    "coffeecheese:melted_ham_raw_flowing"
+    "#forge:ham_raw"
   ]
 }

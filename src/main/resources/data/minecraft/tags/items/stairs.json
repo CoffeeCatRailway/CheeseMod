@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "#coffeecheese:stairs/cheese",
-    "#coffeecheese:stairs/wooden/cheese",
-    "#coffeecheese:stairs/ham_raw",
-    "#coffeecheese:stairs/wooden/ham_raw"
+    "#forge:stairs/cheese",
+    "#forge:stairs/wooden/cheese",
+    "#forge:stairs/ham_raw",
+    "#forge:stairs/wooden/ham_raw"
   ]
 }

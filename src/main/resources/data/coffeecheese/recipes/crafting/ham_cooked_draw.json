@@ -13,11 +13,11 @@
       "item": "coffeecheese:ham_cooked_planks"
     },
     "L": {
-      "tag": "coffeecheese:logs/ham_cooked"
+      "tag": "forge:logs/ham_cooked"
     },
     "B": [
-      { "tag": "coffeecheese:food_blocks/ham_raw" },
-      { "tag": "coffeecheese:food_blocks/ham_cooked" }
+      { "tag": "forge:food_blocks/ham_raw" },
+      { "tag": "forge:food_blocks/ham_cooked" }
     ]
   },
   "result": {

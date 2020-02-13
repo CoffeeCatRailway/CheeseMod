@@ -1,7 +1,7 @@
 {
   "type": "coffeecheese:melting",
   "ingredient": {
-    "tag": "coffeecheese:stairs/ham_cooked"
+    "tag": "forge:stairs/ham_cooked"
   },
   "result": {
     "fluid": "coffeecheese:melted_ham_cooked_still",

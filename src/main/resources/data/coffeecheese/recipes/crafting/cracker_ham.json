@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     { "item": "coffeecheese:cracker" },
-    { "tag": "coffeecheese:food_slice/ham_raw" }
+    { "tag": "forge:food_slice/ham_raw" }
   ],
   "result": {
     "item": "coffeecheese:cracker_ham"

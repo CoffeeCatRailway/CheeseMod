@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "#coffeecheese:logs/cheese",
-    "#coffeecheese:logs/grilled_cheese",
-    "#coffeecheese:logs/ham_raw",
-    "#coffeecheese:logs/ham_cooked"
+    "#forge:logs/cheese",
+    "#forge:logs/grilled_cheese",
+    "#forge:logs/ham_raw",
+    "#forge:logs/ham_cooked"
   ]
 }

@@ -3,7 +3,7 @@
   "ingredients": [
     { "item": "coffeecheese:pizza" },
     { "item": "coffeecheese:cheese_slice" },
-    { "tag": "coffeecheese:food_slice/ham" }
+    { "tag": "forge:food_slice/ham" }
   ],
   "result": {
     "item": "coffeecheese:pizza_cheese_ham_cooked"

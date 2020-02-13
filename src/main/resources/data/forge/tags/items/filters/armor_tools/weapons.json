@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "coffeecheese:cheese_metal_sword",
+
+    "coffeecheese:grilled_cheese_metal_sword",
+
+    "coffeecheese:ham_raw_metal_sword",
+
+    "coffeecheese:ham_cooked_metal_sword"
+  ]
+}

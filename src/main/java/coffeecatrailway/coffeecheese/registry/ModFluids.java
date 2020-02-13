@@ -60,7 +60,7 @@ public class ModFluids {
 
     public static final ForgeFlowingFluid.Properties VINEGAR_PROPERTIES =
             new ForgeFlowingFluid.Properties(VINEGAR_S, VINEGAR_F, FluidAttributes.builder(CheeseMod.getLocation("fluid/vinegar_still"), CheeseMod.getLocation("fluid/vinegar_flowing"))
-                    .overlay(CheeseMod.getLocation("fluid/vinegar_overlay")).density(1000).viscosity(1000))
+                    .overlay(CheeseMod.getLocation("fluid/vinegar_overlay")).density(1000).viscosity(750))
                     .bucket(VINEGAR_BUCKET).block(VINEGAR).canMultiply();
 
     /// OIL

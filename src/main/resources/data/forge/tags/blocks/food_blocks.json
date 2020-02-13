@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:food_blocks/cheese",
+    "#forge:food_blocks/grilled_cheese",
+    "#forge:food_blocks/ham_raw",
+    "#forge:food_blocks/ham_cooked"
+  ]
+}

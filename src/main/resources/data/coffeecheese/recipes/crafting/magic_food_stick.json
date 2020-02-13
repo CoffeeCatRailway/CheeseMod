@@ -13,16 +13,16 @@
       "tag": "minecraft:logs"
     },
     "C": {
-      "item": "coffeecheese:cheese_block"
+      "tag": "forge:food_blocks/cheese"
     },
     "R": {
-      "item": "coffeecheese:ham_raw_block"
+      "tag": "forge:food_blocks/ham_raw"
     },
     "H": {
-      "item": "coffeecheese:ham_cooked_block"
+      "tag": "forge:food_blocks/ham_cooked"
     },
     "G": {
-      "item": "coffeecheese:grilled_cheese_block"
+      "tag": "forge:food_blocks/grilled_cheese"
     }
   },
   "result": {
