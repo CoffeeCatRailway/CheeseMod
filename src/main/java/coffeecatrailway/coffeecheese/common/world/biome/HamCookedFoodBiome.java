@@ -5,10 +5,10 @@ import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModFeatures;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.feature.MultipleRandomFeatureConfig;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
+import net.minecraft.world.gen.placement.FrequencyConfig;
+import net.minecraft.world.gen.placement.NoiseDependant;
 import net.minecraft.world.gen.placement.Placement;
 
 /**
@@ -24,6 +24,8 @@ public class HamCookedFoodBiome extends BaseFoodBiome {
     @Override
     public void addFeatures() {
         super.addFeatures();
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.GRASS, new GrassFeatureConfig(ModBlocks.HAM_COOKED_GRASS.get().getDefaultState()), Placement.COUNT_HEIGHTMAP_DOUBLE, new FrequencyConfig(3)));
+        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.DOUBLE_PLANT, new DoublePlantConfig(ModBlocks.TALL_HAM_COOKED_GRASS.get().getDefaultState()), Placement.NOISE_HEIGHTMAP_32, new NoiseDependant(-0.8D, 0, 10)));
         if (this.category == Category.FOREST)
             this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
                             new Feature[]{ModFeatures.HAM_RAW_TREE.get()}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.HAM_COOKED_TREE.get(), IFeatureConfig.NO_FEATURE_CONFIG),

@@ -20,15 +20,18 @@ public class HamTreeFeature extends TreeFeature<NoFeatureConfig> {
 
     private final BlockState trunk;
     private final BlockState leaf;
+    private final BlockState food;
 
     public HamTreeFeature(boolean cooked, Function<Dynamic<?>, ? extends NoFeatureConfig> dynamicFunction, boolean doBlockNofityOnPlace) {
         super(dynamicFunction, doBlockNofityOnPlace);
         if (cooked) {
             this.trunk = ModBlocks.HAM_COOKED_LOG.get().getDefaultState();
             this.leaf = ModBlocks.HAM_COOKED_LEAVES.get().getDefaultState();
+            this.food = ModBlocks.HAM_COOKED_BLOCK.get().getDefaultState();
         } else {
             this.trunk = ModBlocks.HAM_RAW_LOG.get().getDefaultState();
             this.leaf = ModBlocks.HAM_RAW_LEAVES.get().getDefaultState();
+            this.food = ModBlocks.HAM_RAW_BLOCK.get().getDefaultState();
         }
     }
 
@@ -83,7 +86,7 @@ public class HamTreeFeature extends TreeFeature<NoFeatureConfig> {
                             if (Math.abs(j2) != i3 || Math.abs(l2) != i3 || i3 <= rand.nextInt(3)) {
                                 BlockPos blockpos = new BlockPos(i2, j4, k2);
                                 if (isAirOrLeaves(world, blockpos) || isSoil(world, blockpos)) {
-                                    this.setLogState(changedBlocks, world, blockpos, leaf, mutableBoundingBox);
+                                    this.setLogState(changedBlocks, world, blockpos, (rand.nextFloat() < 0.05f ? this.food : this.leaf), mutableBoundingBox);
                                 }
                             }
                         }
