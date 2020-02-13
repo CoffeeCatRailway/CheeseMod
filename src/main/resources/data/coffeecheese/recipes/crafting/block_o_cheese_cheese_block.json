@@ -1,7 +1,8 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    { "item": "coffeecheese:cheese_block" }
+    { "item": "coffeecheese:cheese_block" },
+    { "item": "coffeecheese:cheese_cutter", "data": 32767 }
   ],
   "result": {
     "item": "coffeecheese:block_o_cheese",
