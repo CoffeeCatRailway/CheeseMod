@@ -78,10 +78,6 @@ repositories {
     maven { // JustEnoughItems
         url = "https://dvs1.progwml6.com/files/maven/"
     }
-    maven {
-        name = "CurseForge"
-        url = "https://minecraft.curseforge.com/api/maven/"
-    }
     maven { // JustEnoughResources
         name "bintray-way2muchnoise"
         url "https://dl.bintray.com/way2muchnoise/dev"
@@ -108,8 +104,6 @@ dependencies {
         })
     }
 
-//    compileOnly "filters:Filters-${project.filtersVersion}:${project.mcVersion}:deobf"
-    compile "filters:Filters-${project.filtersVersion}:${project.mcVersion}:deobf"
 }
 
 processResources {
