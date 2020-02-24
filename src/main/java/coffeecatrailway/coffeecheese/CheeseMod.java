@@ -19,7 +19,6 @@ import coffeecatrailway.coffeecheese.common.world.dimension.FoodWorldTeleporter;
 import coffeecatrailway.coffeecheese.compat.jer.JEResourcesCompat;
 import coffeecatrailway.coffeecheese.compat.top.TOPCompatibility;
 import coffeecatrailway.coffeecheese.registry.*;
-import com.mrcrayfish.filters.Filters;
 import io.netty.buffer.Unpooled;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
@@ -116,28 +115,10 @@ public class CheeseMod {
         DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerTileEntityRenderers);
         CheeseMod.LOGGER.debug("Client setup - Renderers");
 
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerFilters);
+        CheeseMod.LOGGER.debug("Client setup - Mod Dependencies");
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static void registerFilters() {
-        if (ModList.get().isLoaded(com.mrcrayfish.filters.Reference.MOD_ID)) {
-            Filters.get().register(ModItemGroups.GROUP_ALL, CheeseMod.getLocation("filters/all/natural"), new ItemStack(ModBlocks.CHEESE_SAPLING.get()));
-            Filters.get().register(ModItemGroups.GROUP_ALL, CheeseMod.getLocation("filters/all/woods"), new ItemStack(ModBlocks.CHEESE_LOG.get()));
-            Filters.get().register(ModItemGroups.GROUP_ALL, CheeseMod.getLocation("filters/all/minerals"), new ItemStack(ModBlocks.CHEESE_METAL_BLOCK.get()));
-
-            Filters.get().register(ModItemGroups.GROUP_ARMOR_TOOLS, CheeseMod.getLocation("filters/armor_tools/weapons"), new ItemStack(ModItems.CHEESE_METAL_SWORD.get()));
-            Filters.get().register(ModItemGroups.GROUP_ARMOR_TOOLS, CheeseMod.getLocation("filters/armor_tools/tools"), new ItemStack(ModItems.CHEESE_METAL_AXE.get()));
-            Filters.get().register(ModItemGroups.GROUP_ARMOR_TOOLS, CheeseMod.getLocation("filters/armor_tools/armor"), new ItemStack(ModItems.CHEESE_METAL_CHESTPLATE.get()));
-
-            Filters.get().register(ModItemGroups.GROUP_FOODS, CheeseMod.getLocation("filters/foods/cheese"), new ItemStack(ModItems.CHEESE_SLICE.get()));
-            Filters.get().register(ModItemGroups.GROUP_FOODS, CheeseMod.getLocation("filters/foods/raw"), new ItemStack(ModItems.HAM_RAW.get()));
-            Filters.get().register(ModItemGroups.GROUP_FOODS, CheeseMod.getLocation("filters/foods/cooked"), new ItemStack(ModItems.HAM_COOKED.get()));
-            Filters.get().register(ModItemGroups.GROUP_FOODS, CheeseMod.getLocation("filters/foods/toasties"), new ItemStack(ModItems.TOASTIE_CHEESE.get()));
-            Filters.get().register(ModItemGroups.GROUP_FOODS, CheeseMod.getLocation("filters/foods/pizzas"), new ItemStack(ModItems.PIZZA_CHEESE.get()));
-            Filters.get().register(ModItemGroups.GROUP_FOODS, CheeseMod.getLocation("filters/foods/crackers"), new ItemStack(ModItems.CRACKER.get()));
-            CheeseMod.LOGGER.debug("Common setup - MrCrayfish Filters support");
-        }
     }
 
     @OnlyIn(Dist.CLIENT)
