@@ -13,13 +13,13 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
  * @author CoffeeCatRailway
  * Created: 30/07/2019
  */
-public class BaseFoodBiome extends Biome {
+public class BaseFoodBiome extends Biome implements IHasFeatures {
 
     private int grassColor;
 
     public BaseFoodBiome(int waterColor, int waterFogColor, int grassColor, BlockState surface, Category category) {
         super(new Biome.Builder().surfaceBuilder(SurfaceBuilder.DEFAULT, new SurfaceBuilderConfig(surface, SurfaceBuilder.DIRT, SurfaceBuilder.SAND)).precipitation(Biome.RainType.RAIN)
-                .category(category).depth(0.1f).scale(0.2f).temperature(0.7f).downfall(0.8f)
+                .category(category).depth(0.8f).scale(0.2f).temperature(0.7f).downfall(0.8f)
                 .waterColor(waterColor).waterFogColor(waterFogColor));
         this.grassColor = grassColor;
 
@@ -33,6 +33,7 @@ public class BaseFoodBiome extends Biome {
         this.addSpawn(EntityClassification.MONSTER, new Biome.SpawnListEntry(EntityType.WITCH, 5, 1, 1));
     }
 
+    @Override
     public void addFeatures() {
         DefaultBiomeFeatures.addCarvers(this);
         DefaultBiomeFeatures.addMonsterRooms(this);

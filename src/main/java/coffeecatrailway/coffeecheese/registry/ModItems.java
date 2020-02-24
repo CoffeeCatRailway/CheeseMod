@@ -29,10 +29,10 @@ public class ModItems {
     public static final List<RegistryObject<Item>> FOODS = new ArrayList<RegistryObject<Item>>();
 
     /// Ingots ///
-    public static final RegistryObject<Item> CHEESE_METAL_INGOT = ITEMS.register("cheese_metal_ingot", () -> new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
-    public static final RegistryObject<Item> GRILLED_CHEESE_METAL_INGOT = ITEMS.register("grilled_cheese_metal_ingot", () -> new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
-    public static final RegistryObject<Item> HAM_RAW_METAL_INGOT = ITEMS.register("ham_raw_metal_ingot", () -> new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
-    public static final RegistryObject<Item> HAM_COOKED_METAL_INGOT = ITEMS.register("ham_cooked_metal_ingot", () -> new Item(new Item.Properties().group(ModItemGroups.GROUP_ALL)));
+    public static final RegistryObject<Item> CHEESE_METAL_INGOT = ITEMS.register("cheese_metal_ingot", () -> new Item(new Item.Properties().food(ModFoods.INGOT).group(ModItemGroups.GROUP_ALL)));
+    public static final RegistryObject<Item> GRILLED_CHEESE_METAL_INGOT = ITEMS.register("grilled_cheese_metal_ingot", () -> new Item(new Item.Properties().food(ModFoods.INGOT).group(ModItemGroups.GROUP_ALL)));
+    public static final RegistryObject<Item> HAM_RAW_METAL_INGOT = ITEMS.register("ham_raw_metal_ingot", () -> new Item(new Item.Properties().food(ModFoods.INGOT).group(ModItemGroups.GROUP_ALL)));
+    public static final RegistryObject<Item> HAM_COOKED_METAL_INGOT = ITEMS.register("ham_cooked_metal_ingot", () -> new Item(new Item.Properties().food(ModFoods.INGOT).group(ModItemGroups.GROUP_ALL)));
 
     /// Tool ///
     public static final RegistryObject<Item> CHEESE_CUTTER = ITEMS.register("cheese_cutter", () -> new CraftToolItem(ItemTier.WOOD, 1, 2.5f, new Item.Properties().group(ModItemGroups.GROUP_ARMOR_TOOLS).maxStackSize(1)));
@@ -197,7 +197,7 @@ public class ModItems {
         }
     });
 
-    public static final RegistryObject<Item> MAGIC_FOOD_STICK = ITEMS.register("magic_food_stick", () -> new MagicFoodStickItem(new Item.Properties().rarity(Rarity.RARE).group(ModItemGroups.GROUP_ALL)));
+    public static final RegistryObject<Item> MAGIC_FOOD_STICK = ITEMS.register("magic_food_stick", () -> new MagicFoodStickItem(new Item.Properties().rarity(Rarity.RARE).maxStackSize(1).maxDamage(20).group(ModItemGroups.GROUP_ALL)));
 
     private static RegistryObject<Item> registerItemFood(String name, Food food, int stackSize) {
         RegistryObject<Item> reg = ITEMS.register(name, () -> new Item(new Item.Properties().food(food).maxStackSize(stackSize).group(ModItemGroups.GROUP_FOODS)));

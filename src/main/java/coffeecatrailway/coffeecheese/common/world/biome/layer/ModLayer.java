@@ -13,8 +13,6 @@ import net.minecraft.world.gen.layer.traits.IAreaTransformer0;
 public enum ModLayer implements IAreaTransformer0 {
     INSTANCE;
 
-    protected static final int OCEAN = Registry.BIOME.getId(Biomes.OCEAN);
-
     @Override
     public int apply(INoiseRandom rand, int p_215735_2_, int p_215735_3_) {
         return Registry.BIOME.getId(FoodWorldBiomeProvider.BIOMES[rand.random(FoodWorldBiomeProvider.BIOMES.length)]);

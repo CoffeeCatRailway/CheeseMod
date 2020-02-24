@@ -1,5 +1,7 @@
 package coffeecatrailway.coffeecheese.common.world.dimension;
 
+import coffeecatrailway.coffeecheese.registry.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModFluids;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.Util;
@@ -189,7 +191,7 @@ public class FoodWorldChunkGenerator extends NoiseChunkGenerator<FoodWorldChunkG
         public static Config createDefault() {
             Config config = new Config();
             config.setDefaultBlock(Blocks.STONE.getDefaultState());
-            config.setDefaultFluid(Blocks.WATER.getDefaultState());
+            config.setDefaultFluid(ModFluids.VINEGAR.get().getDefaultState());
 
             return config;
         }

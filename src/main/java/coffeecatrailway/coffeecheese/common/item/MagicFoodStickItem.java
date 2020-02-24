@@ -26,7 +26,7 @@ public class MagicFoodStickItem extends Item {
             if (ModBlocks.FOOD_PORTAL.get().trySpawnPortal(context.getWorld(), context.getPos().offset(context.getFace()))) {
                 context.getWorld().playSound(context.getPlayer(), context.getPos().offset(context.getFace()), SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, random.nextFloat() * 0.4F + 0.8F);
                 if (!context.getPlayer().isCreative())
-                    context.getItem().shrink(1);
+                    context.getItem().damageItem(1, context.getPlayer(), (entity) -> entity.sendBreakAnimation(context.getHand()));
                 return ActionResultType.SUCCESS;
             }
         }

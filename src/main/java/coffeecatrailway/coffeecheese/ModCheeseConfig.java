@@ -124,7 +124,7 @@ public class ModCheeseConfig {
             grilledFoodMultiplier = builder.comment("The amount of how much the saturation changes when grilled")
                     .defineInRange(configModifier + "grilledSaturation", 1.5d, 0.5d, 10.0d);
             foodCombo = builder.comment("Food combo add amount (pizza, toastie, etc.)")
-                    .defineInRange(configModifier + "foodCombo", 1.25d, 0.5d, 5.0d);
+                    .defineInRange(configModifier + "foodCombo", .75d, 0.5d, 5.0d);
 
             int minSpeed = 1;
             int maxSpeed = 20;

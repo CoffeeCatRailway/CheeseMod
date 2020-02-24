@@ -148,10 +148,10 @@
   "block.coffeecheese.ham_raw_wood_button": "Raw Ham Wood Button",
   "block.coffeecheese.ham_cooked_wood_button": "Cooked Ham Wood Button",
 
-  "block.coffeecheese.cheese_draw": "Cheese Draw",
-  "block.coffeecheese.grilled_cheese_draw": "Grilled Cheese Draw",
-  "block.coffeecheese.ham_raw_draw": "Raw Ham Draw",
-  "block.coffeecheese.ham_cooked_draw": "Cooked Ham Draw",
+  "block.coffeecheese.cheese_draw": "Cheese Drawer",
+  "block.coffeecheese.grilled_cheese_draw": "Grilled Cheese Drawer",
+  "block.coffeecheese.ham_raw_draw": "Raw Ham Drawer",
+  "block.coffeecheese.ham_cooked_draw": "Cooked Ham Drawer",
 
   "block.coffeecheese.oil": "Grill Oil",
   "block.coffeecheese.oil_still": "Grill Oil",
@@ -177,6 +177,16 @@
   "block.coffeecheese.melted_ham_cooked_still": "Melted Ham Cooked",
   "fluid.coffeecheese.melted_ham_cooked_still": "Melted Ham Cooked",
   "fluid.coffeecheese.melted_ham_cooked_flowing": "Melted Ham Cooked",
+
+  "block.coffeecheese.milk": "Milk",
+  "block.coffeecheese.milk_still": "Milk",
+  "fluid.coffeecheese.milk_still": "Milk",
+  "fluid.coffeecheese.milk_flowing": "Milk",
+
+  "block.coffeecheese.vinegar": "Vinegar",
+  "block.coffeecheese.vinegar_still": "Vinegar",
+  "fluid.coffeecheese.vinegar_still": "Vinegar",
+  "fluid.coffeecheese.vinegar_flowing": "Vinegar",
 
   "block.coffeecheese.grill": "Grill",
   "block.coffeecheese.melter": "Melter",
@@ -270,6 +280,7 @@
 
   "item.coffeecheese.block_o_cheese": "Block O' Cheese",
   "item.coffeecheese.cheese_ball": "Cheese Ball",
+  "item.coffeecheese.cheese_ball.info": "Shift+right click to eat.",
   "item.coffeecheese.cheese_slice": "Cheese Slice",
 
   "item.coffeecheese.salt": "Rock Salt",
@@ -323,6 +334,8 @@
   "item.coffeecheese.pizza_cheese_ham_pineapple_cooked": "Cooked Cheesy Ham N' Pineapple Pizza",
 
   "item.coffeecheese.oil_bucket": "Grill Oil Bucket",
+  "item.coffeecheese.vinegar_bucket": "Vinegar Bucket",
+  "item.coffeecheese.milk_bottle": "Milk Bottle",
 
   "item.coffeecheese.melted_cheese_bucket": "Melted Cheese Bucket",
   "item.coffeecheese.melted_grilled_cheese_bucket": "Melted Grilled Cheese Bucket",
@@ -356,10 +369,10 @@
 
   "entity.coffeecheese.food_boat": "Food Boat",
 
-  "container.coffeecheese.cheese_draw": "Cheese Draw",
-  "container.coffeecheese.grilled_cheese_draw": "Grilled Cheese Draw",
-  "container.coffeecheese.ham_raw_draw": "Raw Ham Draw",
-  "container.coffeecheese.ham_cooked_draw": "Cooked Ham Draw",
+  "container.coffeecheese.cheese_draw": "Cheese Drawer",
+  "container.coffeecheese.grilled_cheese_draw": "Grilled Cheese Drawer",
+  "container.coffeecheese.ham_raw_draw": "Raw Ham Drawer",
+  "container.coffeecheese.ham_cooked_draw": "Cooked Ham Drawer",
 
   "container.coffeecheese.grill": "Grill",
   "container.coffeecheese.melter": "Melter",
@@ -394,7 +407,7 @@
 
   "itemGroup.coffeecheese.foods": "Cheese Mod Foods",
   "itemGroup.coffeecheese.armor_tools": "Cheese Mod Armor & Tools",
-  "itemGroup.coffeecheese.all": "Cheese Mod",
+  "itemGroup.coffeecheese": "Cheese Mod",
 
   "top.coffeecheese.grill.oil": "Oil Amount",
   "top.coffeecheese.grill.oil_catcher": "Oil Catcher Amount",

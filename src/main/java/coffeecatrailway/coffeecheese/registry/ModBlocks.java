@@ -196,8 +196,8 @@ public class ModBlocks {
     /// Pressure Plate ///
     public static final RegistryObject<Block> CHEESE_PRESSURE_PLATE = registerBlockGeneral("cheese_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(CHEESE_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
     public static final RegistryObject<Block> GRILLED_CHEESE_PRESSURE_PLATE = registerBlockGeneral("grilled_cheese_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(GRILLED_CHEESE_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> HAM_RAW_PRESSURE_PLATE = registerBlockGeneral("ham_raw_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(HAM_RAW_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> HAM_COOKED_PRESSURE_PLATE = registerBlockGeneral("ham_cooked_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(HAM_COOKED_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+    public static final RegistryObject<Block> HAM_RAW_PRESSURE_PLATE = registerBlockGeneral("ham_raw_pressure_plate", () -> new HamPressurePlateBlock(Block.Properties.from(HAM_RAW_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+    public static final RegistryObject<Block> HAM_COOKED_PRESSURE_PLATE = registerBlockGeneral("ham_cooked_pressure_plate", () -> new HamPressurePlateBlock(Block.Properties.from(HAM_COOKED_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
 
     public static final RegistryObject<Block> CHEESE_WOOD_PRESSURE_PLATE = registerBlockGeneral("cheese_wood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(CHEESE_PLANKS.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
     public static final RegistryObject<Block> GRILLED_CHEESE_WOOD_PRESSURE_PLATE = registerBlockGeneral("grilled_cheese_wood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(GRILLED_CHEESE_PLANKS.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
@@ -207,8 +207,8 @@ public class ModBlocks {
     /// Buttons ///
     public static final RegistryObject<Block> CHEESE_BUTTON = registerBlockGeneral("cheese_button", () -> new WoodButtonBlock(Block.Properties.from(CHEESE_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
     public static final RegistryObject<Block> GRILLED_CHEESE_BUTTON = registerBlockGeneral("grilled_cheese_button", () -> new WoodButtonBlock(Block.Properties.from(GRILLED_CHEESE_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> HAM_RAW_BUTTON = registerBlockGeneral("ham_raw_button", () -> new WoodButtonBlock(Block.Properties.from(HAM_RAW_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> HAM_COOKED_BUTTON = registerBlockGeneral("ham_cooked_button", () -> new WoodButtonBlock(Block.Properties.from(HAM_COOKED_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+    public static final RegistryObject<Block> HAM_RAW_BUTTON = registerBlockGeneral("ham_raw_button", () -> new HamButtonBlock(Block.Properties.from(HAM_RAW_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+    public static final RegistryObject<Block> HAM_COOKED_BUTTON = registerBlockGeneral("ham_cooked_button", () -> new HamButtonBlock(Block.Properties.from(HAM_COOKED_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
 
     public static final RegistryObject<Block> CHEESE_WOOD_BUTTON = registerBlockGeneral("cheese_wood_button", () -> new WoodButtonBlock(Block.Properties.from(CHEESE_PLANKS.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
     public static final RegistryObject<Block> GRILLED_CHEESE_WOOD_BUTTON = registerBlockGeneral("grilled_cheese_wood_button", () -> new WoodButtonBlock(Block.Properties.from(GRILLED_CHEESE_PLANKS.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
