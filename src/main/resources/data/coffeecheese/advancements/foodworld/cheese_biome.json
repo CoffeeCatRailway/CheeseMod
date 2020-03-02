@@ -1,0 +1,32 @@
+{
+  "display": {
+    "title": {
+      "text": "Cheese biomes"
+    },
+    "description": {
+      "text": "Find all cheese biomes! (Not grilled)"
+    },
+    "icon": {
+      "item": "coffeecheese:cheese_grass_block"
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "cheese_forest": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "coffeecheese:cheese_forest"
+      }
+    },
+    "cheese_plains": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "coffeecheese:cheese_plains"
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  },
+  "parent": "coffeecheese:foodworld/foodworld"
+}

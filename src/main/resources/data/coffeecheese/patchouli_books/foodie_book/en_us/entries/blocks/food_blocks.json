@@ -1,0 +1,33 @@
+{
+  "name": "Foods Blocks",
+  "icon": "coffeecheese:cheese_block",
+  "category": "blocks",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/cheese_block",
+      "text": "Ever been so hungry you could eat a pig? Now you can.. sort of.. I think.. HAM!$(br)These blocks can be used as decorations or food. They can also be used to make a mystical portal to another world!"
+    },
+    {
+      "type": "grilling",
+      "recipe": "coffeecheese:grill/grilled_cheese_block"
+    },
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/ham_raw_block",
+      "recipe2": "coffeecheese:crafting/ham_cooked_block_cooked_porkchop"
+    },
+    {
+      "type": "smelting",
+      "text": "$(ham) & bacon, two of the best types of meats, even if there there same meat.. I think... ye... BACON!",
+      "recipe": "coffeecheese:smelting/ham_cooked_block",
+      "recipe2": "coffeecheese:smelting/bacon_cooked_block"
+    },
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/bacon_raw_block",
+      "recipe2": "coffeecheese:crafting/bacon_cooked_block"
+    }
+  ]
+}

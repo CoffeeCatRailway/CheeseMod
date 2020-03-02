@@ -1,0 +1,53 @@
+{
+  "name": "Ingredients",
+  "icon": "coffeecheese:dough",
+  "category": "foods",
+  "sortnum": 6,
+  "advancement": "coffeecheese:rolling_pin",
+  "pages": [
+    {
+      "type": "crafting",
+      "text": "Ingredients. Some recipes will require some of these ingredients.$(br2)Believe me when I say I wanted to put a pun here but I'm not sure about copyright..",
+      "recipe": "coffeecheese:crafting/dough"
+    },
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/salt",
+      "recipe2": "coffeecheese:crafting/flour",
+      "advancement": "coffeecheese:grinding_stones"
+    },
+    {
+      "type": "smelting",
+      "text": "Ah the breakfast/snack food of many! Bread and/or toast, it can come in may forms or be combined with others to make it better.",
+      "recipe": "coffeecheese:smelting/toast",
+      "advancement": "coffeecheese:knife"
+    },
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/toast_bacon",
+      "recipe2": "coffeecheese:crafting/toast_french",
+      "advancement": "coffeecheese:knife"
+    },
+    {
+      "type": "spotlight",
+      "item": "coffeecheese:pineapple_plant",
+      "text": "Even if it isn't really a food you can still eat it, it wont taste that well though...",
+      "advancement": "coffeecheese:pineapple"
+    },
+    {
+      "type": "crafting",
+      "text": "Pin apple",
+      "recipe": "coffeecheese:crafting/pineapple_ring",
+      "recipe2": "coffeecheese:crafting/pineapple_bit",
+      "advancement": "coffeecheese:pineapple"
+    },
+    {
+      "type": "relations",
+      "entries": [
+        "foods/cracker",
+        "foods/toastie",
+        "foods/pizza"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "display": {
+    "title": {
+      "text": "Their cute but vicious!"
+    },
+    "description": {
+      "text": "And tasty..."
+    },
+    "icon": {
+      "item": "coffeecheese:cheese_foodie_spawn_egg"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "cheese_planks": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "coffeecheese:cheese_foodie"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "parent": "coffeecheese:foodworld/cheese_biome"
+}

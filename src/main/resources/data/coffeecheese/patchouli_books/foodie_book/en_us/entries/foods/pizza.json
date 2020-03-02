@@ -1,0 +1,46 @@
+{
+  "name": "Pizzas",
+  "icon": "coffeecheese:pizza_cheese",
+  "category": "foods",
+  "sortnum": 5,
+  "advancement": "coffeecheese:pizza",
+  "pages": [
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/pizza",
+      "recipe2": "coffeecheese:crafting/pizza_cheese",
+      "anchor": "cheese"
+    },
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/pizza_cheese_ham",
+      "recipe2": "coffeecheese:crafting/pizza_cheese_ham_alt",
+      "anchor": "ham"
+    },
+    {
+      "type": "crafting",
+      "text": "Pin apple & Hawaii",
+      "recipe": "coffeecheese:crafting/pizza_cheese_ham_pineapple",
+      "anchor": "pineapple"
+    },
+    {
+      "type": "pizzaing",
+      "text": "All following pizza recipes for using the Pizza Oven!",
+      "recipe": "coffeecheese:pizza_oven/pizza_cheese_cooked",
+      "recipe2": "coffeecheese:pizza_oven/pizza_cheese_to_cooked",
+      "anchor": "cooked"
+    },
+    {
+      "type": "pizzaing",
+      "recipe": "coffeecheese:pizza_oven/pizza_cheese_ham_cooked",
+      "recipe2": "coffeecheese:pizza_oven/pizza_cheese_ham_to_cooked",
+      "anchor": "cooked1"
+    },
+    {
+      "type": "pizzaing",
+      "recipe": "coffeecheese:pizza_oven/pizza_cheese_ham_pineapple_cooked",
+      "recipe2": "coffeecheese:pizza_oven/pizza_cheese_ham_pineapple_to_cooked",
+      "anchor": "cooked2"
+    }
+  ]
+}

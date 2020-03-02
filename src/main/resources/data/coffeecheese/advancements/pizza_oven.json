@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Wood fired!"
+    },
+    "description": {
+      "text": "Pineapple...."
+    },
+    "icon": {
+      "item": "coffeecheese:pizza_oven"
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "grill": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:pizza_oven"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:root"
+}

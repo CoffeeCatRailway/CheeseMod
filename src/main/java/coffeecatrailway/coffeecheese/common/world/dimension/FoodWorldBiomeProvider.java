@@ -27,11 +27,11 @@ public class FoodWorldBiomeProvider extends BiomeProvider {
     private final World world;
     private final Layer genBiomes;
     private final Layer biomeFactoryLayer;
-    public static final Biome[] BIOMES = new Biome[] {
-            ModBiomes.CHEESE_FOREST.get(), ModBiomes.CHEESE_PLAINS.get(), ModBiomes.CHEESE_OCEAN.get(),
-            ModBiomes.GRILLED_CHEESE_FOREST.get(), ModBiomes.GRILLED_CHEESE_PLAINS.get(), ModBiomes.GRILLED_CHEESE_OCEAN.get(),
-            ModBiomes.HAM_RAW_FOREST.get(), ModBiomes.HAM_RAW_PLAINS.get(), ModBiomes.HAM_RAW_OCEAN.get(),
-            ModBiomes.HAM_COOKED_FOREST.get(), ModBiomes.HAM_COOKED_PLAINS.get(), ModBiomes.HAM_COOKED_OCEAN.get()
+    public static final Biome[] BIOMES = new Biome[]{
+            ModBiomes.CHEESE_FOREST.get(), ModBiomes.CHEESE_PLAINS.get(),
+            ModBiomes.GRILLED_CHEESE_FOREST.get(), ModBiomes.GRILLED_CHEESE_PLAINS.get(),
+            ModBiomes.HAM_RAW_FOREST.get(), ModBiomes.HAM_RAW_PLAINS.get(),
+            ModBiomes.HAM_COOKED_FOREST.get(), ModBiomes.HAM_COOKED_PLAINS.get()
     };
 
     public FoodWorldBiomeProvider(World world, OverworldGenSettings settings) {
