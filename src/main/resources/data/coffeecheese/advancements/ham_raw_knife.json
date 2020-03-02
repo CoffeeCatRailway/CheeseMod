@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Knife #4"
+    },
+    "description": {
+      "text": "It's still sharp!"
+    },
+    "icon": {
+      "item": "coffeecheese:ham_raw_knife"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "Knife": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:ham_raw_knife"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:knife"
+}

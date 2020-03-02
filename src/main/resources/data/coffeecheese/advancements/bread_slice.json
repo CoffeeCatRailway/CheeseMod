@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Sliced bread"
+    },
+    "description": {
+      "text": "The best invention since.. well.. sliced bread!"
+    },
+    "icon": {
+      "item": "coffeecheese:bread_slice"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "Salt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:bread_slice"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:dough"
+}

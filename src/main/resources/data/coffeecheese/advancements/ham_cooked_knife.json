@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Knife #5"
+    },
+    "description": {
+      "text": "It's still sharp and hot..."
+    },
+    "icon": {
+      "item": "coffeecheese:ham_cooked_knife"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "Knife": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:ham_cooked_knife"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:ham_raw_knife"
+}

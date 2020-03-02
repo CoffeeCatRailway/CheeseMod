@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Cheese n' ham!"
+    },
+    "description": {
+      "text": "Try it grilled maybe?"
+    },
+    "icon": {
+      "item": "coffeecheese:cracker_cheese_ham"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "Salt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:cracker_cheese_ham"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:cracker"
+}

@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Meat likers!"
+    },
+    "description": {
+      "text": "\"Likers\"?"
+    },
+    "icon": {
+      "item": "coffeecheese:pizza_cheese_ham"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "RollingPin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:pizza_cheese_ham"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:pizza"
+}

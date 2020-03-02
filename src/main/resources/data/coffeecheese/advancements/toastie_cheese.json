@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Nice and toastie"
+    },
+    "description": {
+      "text": "I can't think of anymore cheesy 'puns'..."
+    },
+    "icon": {
+      "item": "coffeecheese:toastie_cheese"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "Salt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:toastie_cheese"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:toast"
+}

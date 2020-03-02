@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Toasty!"
+    },
+    "description": {
+      "text": "Wait, toastie??"
+    },
+    "icon": {
+      "item": "coffeecheese:toast"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "Salt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:toast"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:bread_slice"
+}

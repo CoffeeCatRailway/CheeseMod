@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Better then cold meat"
+    },
+    "description": {
+      "text": "I don't know why you'd eat cold meat..."
+    },
+    "icon": {
+      "item": "coffeecheese:pizza_cheese_ham_cooked"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "RollingPin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:pizza_cheese_ham_cooked"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:pizza_cheese_ham"
+}

@@ -1,0 +1,23 @@
+{
+  "display": {
+    "title": {
+      "text": "CheeseMod"
+    },
+    "description": {
+      "text": "Chez"
+    },
+    "icon": {
+      "item": "coffeecheese:cheese_block"
+    },
+    "frame": "goal",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": true,
+    "background": "coffeecheese:textures/block/cheese_grass_block_top.png"
+  },
+  "criteria": {
+    "CheeseMod": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

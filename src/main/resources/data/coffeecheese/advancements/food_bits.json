@@ -1,0 +1,33 @@
+{
+  "display": {
+    "title": {
+      "text": "Bits o food"
+    },
+    "description": {
+      "text": "Why just bits?"
+    },
+    "icon": {
+      "item": "coffeecheese:cheese_bit"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "Salt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:cheese_bit"
+          },
+          {
+            "item": "coffeecheese:ham_bit"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:cheese_cutter"
+}

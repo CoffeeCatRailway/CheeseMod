@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "They see you rolling..."
+    },
+    "description": {
+      "text": "Weeeeee!"
+    },
+    "icon": {
+      "item": "coffeecheese:rolling_pin"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "RollingPin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:rolling_pin"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:root"
+}

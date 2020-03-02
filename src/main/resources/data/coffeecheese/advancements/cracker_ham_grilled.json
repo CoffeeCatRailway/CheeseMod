@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Don't burn your tongue!"
+    },
+    "description": {
+      "text": "Melted..? Ham?"
+    },
+    "icon": {
+      "item": "coffeecheese:cracker_ham_grilled"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "Salt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:cracker_ham_grilled"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:cracker_ham"
+}

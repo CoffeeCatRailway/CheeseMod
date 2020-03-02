@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Hammy"
+    },
+    "description": {
+      "text": "Slice & dice!"
+    },
+    "icon": {
+      "item": "coffeecheese:ham_raw"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "BlockOCheese": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:ham_raw"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:root"
+}

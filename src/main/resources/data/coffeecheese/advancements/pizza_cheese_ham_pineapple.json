@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Don't annoy people if you don't like it!"
+    },
+    "description": {
+      "text": "It's food!"
+    },
+    "icon": {
+      "item": "coffeecheese:pizza_cheese_ham_pineapple"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "RollingPin": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:pizza_cheese_ham_pineapple"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:pizza"
+}

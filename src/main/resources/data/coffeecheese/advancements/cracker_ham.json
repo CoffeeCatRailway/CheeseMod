@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Maybe add some cheese?"
+    },
+    "description": {
+      "text": "MMMmmm... sliced hammmm!"
+    },
+    "icon": {
+      "item": "coffeecheese:cracker_ham"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "Salt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:cracker_ham"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:cracker"
+}

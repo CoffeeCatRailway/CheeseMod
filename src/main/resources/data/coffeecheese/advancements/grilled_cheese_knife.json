@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Knife #3"
+    },
+    "description": {
+      "text": "Careful, it's sharp and.. cheesy or is it more cheesey..?"
+    },
+    "icon": {
+      "item": "coffeecheese:grilled_cheese_knife"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "Knife": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:grilled_cheese_knife"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:cheese_knife"
+}

@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Cheese & crackers! But grilled!"
+    },
+    "description": {
+      "text": "I don't think the sun is made of cheese..."
+    },
+    "icon": {
+      "item": "coffeecheese:cracker_cheese_grilled"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "Salt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:cracker_cheese_grilled"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:cracker_cheese"
+}

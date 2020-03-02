@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Pretty flower"
+    },
+    "description": {
+      "text": "It doesn't taste good on it's own..."
+    },
+    "icon": {
+      "item": "coffeecheese:flour"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "Flour": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:flour"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:grinding_stones"
+}
