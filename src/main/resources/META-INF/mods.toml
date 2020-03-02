@@ -33,6 +33,6 @@ Issues: https://github.com/CoffeeCatRailway/CoffeeCatsCheeseMod/issues
 [[dependencies.coffeecheese]]
     modId="jeresources"
     mandatory=false
-    versionRange="[0.10,]"
+    versionRange="[0.10,)"
     ordering="AFTER"
     side="BOTH"
