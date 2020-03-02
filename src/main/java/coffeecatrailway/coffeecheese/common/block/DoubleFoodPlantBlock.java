@@ -5,8 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.DoublePlantBlock;
+import net.minecraft.state.properties.DoubleBlockHalf;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 
 /**
@@ -21,11 +21,12 @@ public class DoubleFoodPlantBlock extends DoublePlantBlock {
 
     @Override
     public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
-        Block block = world.getBlockState(pos.down()).getBlock();
+        BlockState blockstate = world.getBlockState(pos.down());
+        Block block = blockstate.getBlock();
         return block == ModBlocks.CHEESE_GRASS_BLOCK.get() ||
                 block == ModBlocks.GRILLED_CHEESE_GRASS_BLOCK.get() ||
                 block == ModBlocks.HAM_RAW_GRASS_BLOCK.get() ||
                 block == ModBlocks.HAM_COOKED_GRASS_BLOCK.get() ||
-                Block.isDirt(block) || block == Blocks.FARMLAND || block == this;
+                Block.isDirt(block) || block == Blocks.FARMLAND || (block == this && blockstate.get(HALF) == DoubleBlockHalf.LOWER);
     }
 }
