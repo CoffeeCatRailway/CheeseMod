@@ -78,10 +78,10 @@ repositories {
     maven { // JustEnoughItems
         url = "https://dvs1.progwml6.com/files/maven/"
     }
-    maven { // JustEnoughResources
-        name "bintray-way2muchnoise"
-        url "https://dl.bintray.com/way2muchnoise/dev"
-    }
+//    maven { // JustEnoughResources
+//        name "bintray-way2muchnoise"
+//        url "https://dl.bintray.com/way2muchnoise/dev"
+//    }
     maven { // TOP
         name 'tterrag maven'
         url "https://maven.tterrag.com/"
@@ -97,7 +97,7 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}")
 
-    compile "jeresources:JustEnoughResources-${project.mcVersion}:${project.jerVersion}"
+//    compile "jeresources:JustEnoughResources-${project.mcVersion}:${project.jerVersion}"
 
     if (findProject(':TheOneProbe') != null) {
         compile project(':TheOneProbe')
