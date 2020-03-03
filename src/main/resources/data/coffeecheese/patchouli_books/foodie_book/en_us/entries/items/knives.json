@@ -1,0 +1,26 @@
+{
+  "name": "Knives",
+  "icon": "coffeecheese:knife",
+  "category": "items",
+  "sortnum": 0,
+  "advancement": "coffeecheese:knife",
+  "pages": [
+    {
+      "type": "crafting",
+      "text": "It's a $(item)Knife$() be careful!$(br)A $(item)Knife$() can be used to cut foods into smaller foods that may be used to make more foods.",
+      "recipe": "coffeecheese:crafting/knife"
+    },
+    {
+      "type": "crafting",
+      "text": "Smells like $(cheese).",
+      "recipe": "coffeecheese:crafting/cheese_knife",
+      "recipe2": "coffeecheese:crafting/grilled_cheese_knife"
+    },
+    {
+      "type": "crafting",
+      "text": "Smells like $(ham).",
+      "recipe": "coffeecheese:crafting/ham_raw_knife",
+      "recipe2": "coffeecheese:crafting/ham_cooked_knife"
+    }
+  ]
+}

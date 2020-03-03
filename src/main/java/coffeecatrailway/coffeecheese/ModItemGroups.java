@@ -63,7 +63,7 @@ public class ModItemGroups {
         }
     };
 
-    public static final ItemGroup GROUP_ALL = new ItemGroup(CheeseMod.MOD_ID + ".all") {
+    public static final ItemGroup GROUP_ALL = new ItemGroup(CheeseMod.MOD_ID) {
 
         @Override
         public ItemStack createIcon() {

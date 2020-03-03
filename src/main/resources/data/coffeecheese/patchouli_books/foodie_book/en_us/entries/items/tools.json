@@ -1,0 +1,34 @@
+{
+  "name": "Tools",
+  "icon": "coffeecheese:milk_curdler",
+  "category": "items",
+  "sortnum": 0,
+  "advancement": "coffeecheese:milk_curdler",
+  "pages": [
+    {
+      "type": "crafting",
+      "text": "The $(item)Cheese Cutter$() is used to cut food blocks into smaller parts.$(br)The cutter can also be used to craft food bits for a $(cheese) or $(ham) suit.",
+      "recipe": "coffeecheese:crafting/cheese_cutter",
+      "advancement": "coffeecheese:cheese_cutter"
+    },
+    {
+      "type": "crafting",
+      "text": "$(item)Griding Stones$() are used to grind foods and stone (Don't ask..) into other ingredients for cooking.",
+      "recipe": "coffeecheese:crafting/grinding_stones",
+      "advancement": "coffeecheese:grinding_stones"
+    },
+    {
+      "type": "crafting",
+      "text": "A $(item)Milk Curdler$() is used to make a $(item)Block O' Cheese$() with milk.",
+      "recipe": "coffeecheese:crafting/milk_curdler",
+      "advancement": "coffeecheese:milk_curdler"
+    },
+    {
+      "type": "crafting",
+      "text": "It's a $(item)Rolling Pin$().",
+      "recipe": "coffeecheese:crafting/rolling_pin",
+      "recipe2": "coffeecheese:crafting/rolling_pin_alt",
+      "advancement": "coffeecheese:rolling_pin"
+    }
+  ]
+}

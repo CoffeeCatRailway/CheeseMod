@@ -86,6 +86,9 @@ repositories {
         name 'tterrag maven'
         url "https://maven.tterrag.com/"
     }
+    maven {  // Patchouli
+        url 'https://maven.blamejared.com'
+    }
 }
 
 dependencies {
@@ -104,6 +107,7 @@ dependencies {
         })
     }
 
+    compile fg.deobf("vazkii.patchouli:Patchouli:${project.mcVersion}-${project.patchouliVersion}")
 }
 
 processResources {

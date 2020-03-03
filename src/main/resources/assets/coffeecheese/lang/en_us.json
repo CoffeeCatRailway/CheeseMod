@@ -362,6 +362,10 @@
 
   "item.coffeecheese.magic_food_stick": "Magic Food Stick",
 
+  "item.coffeecheese.guide_book.title": "Foodie Book",
+  "info.coffeecheese.guide_book.subtitle": "Food!!!",
+  "info.coffeecheese.guide_book.landing_text": "Hado $(playername)!$(br2)It's often said that this world is full of magic, but I wonder if there's any magic in food?$(br)So far I have found traces of magic in $(cheese) & $(ham).",
+
   "entity.coffeecheese.cheese_foodie": "Cheese Foodie",
   "entity.coffeecheese.grilled_cheese_foodie": "Grilled Cheese Foodie",
   "entity.coffeecheese.ham_raw_foodie": "Raw Ham Foodie",

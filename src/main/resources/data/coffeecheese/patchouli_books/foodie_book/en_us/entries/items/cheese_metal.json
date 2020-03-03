@@ -1,0 +1,39 @@
+{
+  "name": "Cheese Metal",
+  "icon": "coffeecheese:cheese_metal_ingot",
+  "category": "items",
+  "sortnum": 1,
+  "advancement": "coffeecheese:cheese_metal",
+  "pages": [
+    {
+      "type": "smelting",
+      "text": "I don't recommend trying to eat this... it will hurt.$(br)A single $(item)Cheese Metal Ingot$() isn't that useful on it's own but if you have enough you can make some armor and tools.",
+      "recipe": "coffeecheese:smelting/cheese_metal_ingot"
+    },
+    {
+      "type": "crafting",
+      "text": "The last thing your enemy will think of is the taste of cheese.",
+      "recipe": "coffeecheese:crafting/cheese_metal_sword"
+    },
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/cheese_metal_axe",
+      "recipe2": "coffeecheese:crafting/cheese_metal_pickaxe"
+    },
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/cheese_metal_shovel",
+      "recipe2": "coffeecheese:crafting/cheese_metal_hoe"
+    },
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/cheese_metal_helmet",
+      "recipe2": "coffeecheese:crafting/cheese_metal_chestplate"
+    },
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/cheese_metal_leggings",
+      "recipe2": "coffeecheese:crafting/cheese_metal_boots"
+    }
+  ]
+}

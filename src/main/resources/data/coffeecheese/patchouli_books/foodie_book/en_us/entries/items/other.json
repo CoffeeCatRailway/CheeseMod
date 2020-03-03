@@ -1,0 +1,30 @@
+{
+  "name": "Other Random Items",
+  "icon": "coffeecheese:wooden_gear",
+  "category": "items",
+  "sortnum": 5,
+  "advancement": "coffeecheese:milk_curdler",
+  "pages": [
+    {
+      "type": "crafting",
+      "text": "These items are here because they don't have a need to have there own entries.",
+      "recipe": "coffeecheese:crafting/wooden_gear"
+    },
+    {
+      "type": "crafting",
+      "text": "This item is made for the Grill to 'catch' any oil that wasn't used in the recipe and fell/dripped out. Once the catcher is full no more oil will be caught and will be lost but you can right click it with an empty bucket to get the oil back.",
+      "recipe": "coffeecheese:crafting/oil_catcher",
+      "anchor": "catcher"
+    },
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/cheese_boat",
+      "recipe2": "coffeecheese:crafting/grilled_cheese_boat"
+    },
+    {
+      "type": "crafting",
+      "recipe": "coffeecheese:crafting/ham_raw_boat",
+      "recipe2": "coffeecheese:crafting/ham_cooked_boat"
+    }
+  ]
+}

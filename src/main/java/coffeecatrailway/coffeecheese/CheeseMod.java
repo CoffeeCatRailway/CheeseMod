@@ -17,6 +17,7 @@ import coffeecatrailway.coffeecheese.common.tileentity.PizzaOvenTileEntity;
 import coffeecatrailway.coffeecheese.common.world.ModWorldFeatures;
 import coffeecatrailway.coffeecheese.common.world.dimension.FoodWorldTeleporter;
 import coffeecatrailway.coffeecheese.compat.jer.JEResourcesCompat;
+import coffeecatrailway.coffeecheese.compat.patchouli.ModPageTypes;
 import coffeecatrailway.coffeecheese.compat.top.TOPCompatibility;
 import coffeecatrailway.coffeecheese.registry.*;
 import io.netty.buffer.Unpooled;
@@ -59,6 +60,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import vazkii.patchouli.common.base.Patchouli;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -115,10 +117,14 @@ public class CheeseMod {
         DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerTileEntityRenderers);
         CheeseMod.LOGGER.debug("Client setup - Renderers");
 
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerPatchouliPages);
         CheeseMod.LOGGER.debug("Client setup - Mod Dependencies");
     }
 
     @OnlyIn(Dist.CLIENT)
+    public static void registerPatchouliPages() {
+        if (ModList.get().isLoaded(Patchouli.MOD_ID))
+            ModPageTypes.registerPageTypes();
     }
 
     @OnlyIn(Dist.CLIENT)
