@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "The bester metal"
+    },
+    "description": {
+      "text": "Hah! Dummy, you ate it!... Did you..?"
+    },
+    "icon": {
+      "item": "coffeecheese:ham_cooked_metal_ingot"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "ham_cooked_metal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:ham_cooked_metal_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:foodworld/ham_cooked_biome"
+}

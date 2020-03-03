@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Long knife #3"
+    },
+    "description": {
+      "text": "That might be close to a sword..."
+    },
+    "icon": {
+      "item": "coffeecheese:ham_raw_metal_sword"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "ham_raw_metal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:ham_raw_metal_sword"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:foodworld/ham_raw_metal"
+}

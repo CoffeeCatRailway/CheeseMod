@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Even more planks of ham"
+    },
+    "description": {
+      "text": "And more splinters!"
+    },
+    "icon": {
+      "item": "coffeecheese:ham_cooked_planks"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "cheese_tree": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:ham_cooked_planks"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:foodworld/ham_cooked_wood"
+}

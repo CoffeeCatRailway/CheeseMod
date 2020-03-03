@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Long knife #2"
+    },
+    "description": {
+      "text": "That's almost a sword..."
+    },
+    "icon": {
+      "item": "coffeecheese:grilled_cheese_metal_sword"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "grilled_cheese_metal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:grilled_cheese_metal_sword"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:foodworld/grilled_cheese_metal"
+}

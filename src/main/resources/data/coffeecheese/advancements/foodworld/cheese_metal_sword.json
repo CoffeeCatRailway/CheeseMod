@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Long knife #1"
+    },
+    "description": {
+      "text": "That's not a sword..."
+    },
+    "icon": {
+      "item": "coffeecheese:cheese_metal_sword"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "cheese_metal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:cheese_metal_sword"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:foodworld/cheese_metal"
+}

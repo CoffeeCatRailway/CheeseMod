@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "It's made of pigs..?"
+    },
+    "description": {
+      "text": "ok, sure..."
+    },
+    "icon": {
+      "item": "coffeecheese:ham_raw_sapling"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "cheese_tree": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:ham_raw_sapling"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:foodworld/ham_raw_biome"
+}

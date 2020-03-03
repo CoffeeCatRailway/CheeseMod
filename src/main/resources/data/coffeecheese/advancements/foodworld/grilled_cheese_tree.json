@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "How do you grill a tree?"
+    },
+    "description": {
+      "text": "Smells like burnt wood..."
+    },
+    "icon": {
+      "item": "coffeecheese:grilled_cheese_sapling"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "cheese_tree": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:grilled_cheese_sapling"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:foodworld/grilled_cheese_biome"
+}

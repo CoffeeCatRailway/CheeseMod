@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "More planks of cheese"
+    },
+    "description": {
+      "text": "And again, splinters.."
+    },
+    "icon": {
+      "item": "coffeecheese:grilled_cheese_planks"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "cheese_tree": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:grilled_cheese_planks"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:foodworld/grilled_cheese_wood"
+}

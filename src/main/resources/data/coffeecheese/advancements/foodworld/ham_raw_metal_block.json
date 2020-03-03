@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "Tis be a block o raw ham"
+    },
+    "description": {
+      "text": "DON'T EAT IT!!"
+    },
+    "icon": {
+      "item": "coffeecheese:ham_raw_metal_block"
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "ham_raw_metal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:ham_raw_metal_block"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:foodworld/ham_raw_metal"
+}

@@ -1,0 +1,32 @@
+{
+  "display": {
+    "title": {
+      "text": "Foodie Book"
+    },
+    "description": {
+      "text": "So you like food?"
+    },
+    "icon": {
+      "item": "patchouli:guide_book",
+      "nbt": "{\"patchouli:book\": \"coffeecheese:foodie_book\"}"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "FoodieBook": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "patchouli:guide_book",
+            "nbt": "{\"patchouli:book\": \"coffeecheese:foodie_book\"}"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:root"
+}

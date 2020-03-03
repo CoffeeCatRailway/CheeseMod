@@ -1,0 +1,26 @@
+{
+  "display": {
+    "title": {
+      "text": "Food Dimension"
+    },
+    "description": {
+      "text": "Cheese & Ham!!"
+    },
+    "icon": {
+      "item": "coffeecheese:magic_food_stick"
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "foodworld": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "coffeecheese:foodworld"
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  },
+  "parent": "coffeecheese:root"
+}

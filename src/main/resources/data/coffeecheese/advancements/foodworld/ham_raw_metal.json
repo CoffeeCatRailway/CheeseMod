@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "The bester-ish metal"
+    },
+    "description": {
+      "text": "Did you eat it yet?"
+    },
+    "icon": {
+      "item": "coffeecheese:ham_raw_metal_ingot"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "ham_raw_metal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:ham_raw_metal_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:foodworld/ham_raw_biome"
+}

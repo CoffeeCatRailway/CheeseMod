@@ -1,0 +1,30 @@
+{
+  "display": {
+    "title": {
+      "text": "The best-ish metal"
+    },
+    "description": {
+      "text": "You'll break a tooth if you TRY to eat this..."
+    },
+    "icon": {
+      "item": "coffeecheese:cheese_metal_ingot"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "cheese_metal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:cheese_metal_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  },
+  "parent": "coffeecheese:foodworld/cheese_biome"
+}
