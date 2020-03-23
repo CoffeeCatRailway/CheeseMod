@@ -8,15 +8,8 @@ import coffeecatrailway.coffeecheese.client.render.tileentity.MelterTileEntityRe
 import coffeecatrailway.coffeecheese.client.render.tileentity.PizzaOvenTileEntityRenderer;
 import coffeecatrailway.coffeecheese.common.block.TallFoodGrassBlock;
 import coffeecatrailway.coffeecheese.common.command.ChezCommand;
-import coffeecatrailway.coffeecheese.common.entity.*;
-import coffeecatrailway.coffeecheese.common.entity.item.BoatEntityCM;
-import coffeecatrailway.coffeecheese.common.tileentity.FoodWorldPortalTileEntity;
-import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
-import coffeecatrailway.coffeecheese.common.tileentity.MelterTileEntity;
-import coffeecatrailway.coffeecheese.common.tileentity.PizzaOvenTileEntity;
 import coffeecatrailway.coffeecheese.common.world.ModWorldFeatures;
 import coffeecatrailway.coffeecheese.common.world.dimension.FoodWorldTeleporter;
-import coffeecatrailway.coffeecheese.compat.jer.JEResourcesCompat;
 import coffeecatrailway.coffeecheese.compat.patchouli.ModPageTypes;
 import coffeecatrailway.coffeecheese.compat.top.TOPCompatibility;
 import coffeecatrailway.coffeecheese.registry.*;
@@ -105,8 +98,8 @@ public class CheeseMod {
     }
 
     public void interModEvent(InterModProcessEvent event) {
-        if (ModList.get().isLoaded(jeresources.JEResources.ID))
-            JEResourcesCompat.register();
+//        if (ModList.get().isLoaded(jeresources.JEResources.ID)) TODO: Add JER
+//            JEResourcesCompat.register();
     }
 
     public void setupClient(FMLClientSetupEvent event) {
@@ -137,24 +130,24 @@ public class CheeseMod {
     @OnlyIn(Dist.CLIENT)
     public static void registerEntityRenderers() {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-        RenderingRegistry.registerEntityRenderingHandler(CheeseBallEntity.class, manager -> new SpriteRenderer<>(manager, itemRenderer));
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.CHEESE_BALL.get(), manager -> new SpriteRenderer<>(manager, itemRenderer));
 
-        RenderingRegistry.registerEntityRenderingHandler(CheeseFoodie.class, manager -> new FoodieRenderer<>(manager, CheeseMod.getLocation("textures/entity/foodie/cheese.png")));
-        RenderingRegistry.registerEntityRenderingHandler(GrilledCheeseFoodie.class, manager -> new FoodieRenderer<>(manager, CheeseMod.getLocation("textures/entity/foodie/grilled_cheese.png")));
-        RenderingRegistry.registerEntityRenderingHandler(HamRawFoodie.class, manager -> new FoodieRenderer<>(manager, CheeseMod.getLocation("textures/entity/foodie/ham_raw.png")));
-        RenderingRegistry.registerEntityRenderingHandler(HamCookedFoodie.class, manager -> new FoodieRenderer<>(manager, CheeseMod.getLocation("textures/entity/foodie/ham_cooked.png")));
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.CHEESE_FOODIE.get(), manager -> new FoodieRenderer<>(manager, CheeseMod.getLocation("textures/entity/foodie/cheese.png")));
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.GRILLED_CHEESE_FOODIE.get(), manager -> new FoodieRenderer<>(manager, CheeseMod.getLocation("textures/entity/foodie/grilled_cheese.png")));
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.HAM_RAW_FOODIE.get(), manager -> new FoodieRenderer<>(manager, CheeseMod.getLocation("textures/entity/foodie/ham_raw.png")));
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.HAM_COOKED_FOODIE.get(), manager -> new FoodieRenderer<>(manager, CheeseMod.getLocation("textures/entity/foodie/ham_cooked.png")));
 
-        RenderingRegistry.registerEntityRenderingHandler(BoatEntityCM.class, BoatRendererCM::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntities.BOAT.get(), BoatRendererCM::new);
 
         CheeseMod.LOGGER.debug("Entity renderers");
     }
 
     @OnlyIn(Dist.CLIENT)
     public static void registerTileEntityRenderers() {
-        ClientRegistry.bindTileEntitySpecialRenderer(GrillTileEntity.class, new GrillTileEntityRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(MelterTileEntity.class, new MelterTileEntityRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(PizzaOvenTileEntity.class, new PizzaOvenTileEntityRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(FoodWorldPortalTileEntity.class, new FoodWorldPortalTileEntityRenderer());
+        ClientRegistry.bindTileEntityRenderer(ModTileEntities.GRILL.get(), dispatcher -> new GrillTileEntityRenderer());
+        ClientRegistry.bindTileEntityRenderer(ModTileEntities.MELTER.get(), dispatcher -> new MelterTileEntityRenderer());
+        ClientRegistry.bindTileEntityRenderer(ModTileEntities.PIZZA_OVEN.get(), dispatcher -> new PizzaOvenTileEntityRenderer());
+        ClientRegistry.bindTileEntityRenderer(ModTileEntities.FOOD_WORLD_PORTAL.get(), dispatcher -> new FoodWorldPortalTileEntityRenderer(dispatcher));
 
         CheeseMod.LOGGER.debug("Tile entity renderers");
     }
@@ -165,8 +158,8 @@ public class CheeseMod {
         ModWorldFeatures.addFeatures();
         ModVanillaCompat.setup();
 
-        if (ModList.get().isLoaded(mcjty.theoneprobe.TheOneProbe.MODID))
-            InterModComms.sendTo(mcjty.theoneprobe.TheOneProbe.MODID, "getTheOneProbe", TOPCompatibility::new);
+        if (ModList.get().isLoaded("theoneprobe"))
+            InterModComms.sendTo("theoneprobe", "getTheOneProbe", TOPCompatibility::new);
 
         CheeseMod.LOGGER.debug("Common setup");
     }
@@ -228,15 +221,6 @@ public class CheeseMod {
                 DimensionManager.keepLoaded(ModDimensions.FOOD_WORLD_TYPE, false);
             } else
                 ModDimensions.FOOD_WORLD_TYPE = DimensionType.byName(location);
-        }
-
-        @SubscribeEvent
-        public static void onWorldLoad(WorldEvent.Load event) {
-            if (!(event.getWorld() instanceof ServerWorld)) return;
-
-            ServerWorld world = (ServerWorld) event.getWorld();
-            if (world.dimension.getType() == DimensionType.OVERWORLD || world.dimension.getType() == ModDimensions.FOOD_WORLD_TYPE)
-                world.customTeleporters.add(ModDimensions.FOOD_WORLD_TELEPORTER = new FoodWorldTeleporter(world));
         }
     }
 
