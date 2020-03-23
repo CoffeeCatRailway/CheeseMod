@@ -97,11 +97,6 @@ public class PizzaOvenBlock extends ContainerBlock implements IWaterLoggable {
     }
 
     @Override
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.CUTOUT;
-    }
-
-    @Override
     public int getLightValue(BlockState state) {
         return state.get(LIT) ? super.getLightValue(state) : 0;
     }
@@ -152,7 +147,7 @@ public class PizzaOvenBlock extends ContainerBlock implements IWaterLoggable {
     }
 
     @Override
-    public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+    public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         if (!world.isRemote) {
             INamedContainerProvider provider = this.getContainer(state, world, pos);
             if (provider != null) {
@@ -160,7 +155,7 @@ public class PizzaOvenBlock extends ContainerBlock implements IWaterLoggable {
                 player.addStat(ModStats.INTERACT_WITH_PIZZA_OVEN);
             }
         }
-        return true;
+        return ActionResultType.PASS;
     }
 
     @Nullable

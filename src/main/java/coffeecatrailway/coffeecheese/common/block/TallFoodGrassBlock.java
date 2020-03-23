@@ -8,6 +8,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -43,7 +44,7 @@ public class TallFoodGrassBlock extends BushBlock implements IGrowable, net.mine
     }
 
     @Override
-    public void grow(World world, Random rand, BlockPos pos, BlockState state) {
+    public void grow(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
         if (this.doublePlantBlock.getDefaultState().isValidPosition(world, pos) && world.isAirBlock(pos.up()))
             this.doublePlantBlock.placeAt(world, pos, 2);
     }
@@ -60,6 +61,6 @@ public class TallFoodGrassBlock extends BushBlock implements IGrowable, net.mine
                 block == ModBlocks.GRILLED_CHEESE_GRASS_BLOCK.get() ||
                 block == ModBlocks.HAM_RAW_GRASS_BLOCK.get() ||
                 block == ModBlocks.HAM_COOKED_GRASS_BLOCK.get() ||
-                Block.isDirt(block) || block == Blocks.FARMLAND;
+                super.isValidGround(state, world, pos) || block == Blocks.FARMLAND;
     }
 }

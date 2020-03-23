@@ -33,16 +33,16 @@ public class FoodBlock extends Block {
 
     @Override
     public void onFallenUpon(World world, BlockPos pos, Entity entity, float fallDistance) {
-        if (entity.isSneaking()) {
+        if (entity.isCrouching()) {
             super.onFallenUpon(world, pos, entity, fallDistance);
         } else {
-            entity.fall(fallDistance, 0.0f);
+            entity.onLivingFall(fallDistance, 0.0f);
         }
     }
 
     @Override
     public void onLanded(IBlockReader reader, Entity entity) {
-        if (entity.isSneaking()) {
+        if (entity.isCrouching()) {
             super.onLanded(reader, entity);
         } else {
             Vec3d vec3d = entity.getMotion();
@@ -56,7 +56,7 @@ public class FoodBlock extends Block {
     @Override
     public void onEntityWalk(World world, BlockPos pos, Entity entity) {
         double d0 = Math.abs(entity.getMotion().y);
-        if (d0 < 0.1D && !entity.isSneaking()) {
+        if (d0 < 0.1D && !entity.isCrouching()) {
             double d1 = 0.4D + d0 * 0.2D;
             entity.setMotion(entity.getMotion().mul(d1, 1.0D, d1));
         }

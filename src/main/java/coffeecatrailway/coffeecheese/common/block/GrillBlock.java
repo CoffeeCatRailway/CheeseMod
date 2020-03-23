@@ -115,11 +115,6 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
     }
 
     @Override
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.CUTOUT;
-    }
-
-    @Override
     public int getLightValue(BlockState state) {
         return state.get(LIT) ? super.getLightValue(state) : 0;
     }
@@ -170,9 +165,9 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
     }
 
     @Override
-    public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+    public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         if (world.isRemote)
-            return true;
+            return ActionResultType.PASS;
         else if (player.getHeldItem(hand).getItem() == ModFluids.OIL_BUCKET.get() && hand == Hand.MAIN_HAND) {
             if (world.getTileEntity(pos) instanceof GrillTileEntity) {
                 GrillTileEntity tile = (GrillTileEntity) world.getTileEntity(pos);
@@ -183,7 +178,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
 
                     tile.getTank().fill(new FluidStack(ModFluids.OIL_S.get(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
                     world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    return true;
+                    return ActionResultType.SUCCESS;
                 }
             }
         } else if (player.getHeldItem(hand).getItem() == Items.BUCKET && state.get(HAS_CATCHER) && hand == Hand.MAIN_HAND) {
@@ -196,7 +191,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
 
                     tile.getCatcherTank().drain(new FluidStack(ModFluids.OIL_S.get(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
                     world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    return true;
+                    return ActionResultType.SUCCESS;
                 }
             }
         } else if (player.getHeldItem(hand).getItem() == ModItems.OIL_CATCHER.get() && !state.get(HAS_CATCHER) && hand == Hand.MAIN_HAND) {
@@ -209,9 +204,9 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
                 player.openContainer(provider);
                 player.addStat(ModStats.INTERACT_WITH_GRILL);
             }
-            return true;
+            return ActionResultType.PASS;
         }
-        return false;
+        return ActionResultType.FAIL;
     }
 
     @Nullable

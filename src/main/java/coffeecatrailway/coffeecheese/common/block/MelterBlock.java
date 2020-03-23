@@ -95,11 +95,6 @@ public class MelterBlock extends ContainerBlock implements IWaterLoggable {
     }
 
     @Override
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.CUTOUT;
-    }
-
-    @Override
     public int getLightValue(BlockState state) {
         return state.get(LIT) ? super.getLightValue(state) : 0;
     }
@@ -150,9 +145,9 @@ public class MelterBlock extends ContainerBlock implements IWaterLoggable {
     }
 
     @Override
-    public boolean onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+    public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         if (world.isRemote)
-            return true;
+            return ActionResultType.PASS;
         else if (player.getHeldItem(hand).getItem() == Items.BUCKET && hand == Hand.MAIN_HAND) {
             if (world.getTileEntity(pos) instanceof MelterTileEntity) {
                 MelterTileEntity tile = (MelterTileEntity) world.getTileEntity(pos);
@@ -165,7 +160,7 @@ public class MelterBlock extends ContainerBlock implements IWaterLoggable {
 
                     tile.getTank().drain(FluidAttributes.BUCKET_VOLUME, IFluidHandler.FluidAction.EXECUTE);
                     world.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    return true;
+                    return ActionResultType.SUCCESS;
                 }
             }
         } else {
@@ -174,9 +169,9 @@ public class MelterBlock extends ContainerBlock implements IWaterLoggable {
                 player.openContainer(provider);
                 player.addStat(ModStats.INTERACT_WITH_GRILL);
             }
-            return true;
+            return ActionResultType.PASS;
         }
-        return false;
+        return ActionResultType.FAIL;
     }
 
     @Nullable

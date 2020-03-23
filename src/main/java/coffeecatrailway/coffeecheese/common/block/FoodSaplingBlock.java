@@ -27,6 +27,6 @@ public class FoodSaplingBlock extends SaplingBlock {
                 block == ModBlocks.GRILLED_CHEESE_GRASS_BLOCK.get() ||
                 block == ModBlocks.HAM_RAW_GRASS_BLOCK.get() ||
                 block == ModBlocks.HAM_COOKED_GRASS_BLOCK.get() ||
-                Block.isDirt(block) || block == Blocks.FARMLAND;
+                super.isValidGround(state, world, pos) || block == Blocks.FARMLAND;
     }
 }

@@ -5,7 +5,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.IGrowable;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -15,6 +14,7 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.DecoratedFeatureConfig;
 import net.minecraft.world.gen.feature.FlowersFeature;
 import net.minecraft.world.lighting.LightEngine;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.List;
 import java.util.Random;
@@ -43,7 +43,7 @@ public class FoodGrassBlock extends Block implements IGrowable {
     }
 
     @Override
-    public void grow(World world, Random rand, BlockPos pos, BlockState state) {
+    public void grow(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
         BlockPos blockpos = pos.up();
         BlockState blockstate = this.tallstate;
 
@@ -62,11 +62,12 @@ public class FoodGrassBlock extends Block implements IGrowable {
 
                     BlockState blockstate1; // TODO: Added other vegetation
                     if (rand.nextInt(8) == 0) {
-                        List<ConfiguredFeature<?>> list = world.getBiome(blockpos1).getFlowers();
+                        List<ConfiguredFeature<?, ?>> list = world.getBiome(blockpos1).getFlowers();
                         if (list.isEmpty())
                             break;
 
-                        blockstate1 = ((FlowersFeature) ((DecoratedFeatureConfig) (list.get(0)).config).feature.feature).getRandomFlower(rand, blockpos1);
+                        ConfiguredFeature<?, ?> configuredfeature = ((DecoratedFeatureConfig) (list.get(0)).config).feature;
+                        blockstate1 = ((FlowersFeature) configuredfeature.feature).getFlowerToPlace(rand, blockpos1, configuredfeature.config);
                     } else
                         blockstate1 = blockstate;
 
@@ -76,7 +77,7 @@ public class FoodGrassBlock extends Block implements IGrowable {
                 }
 
                 blockpos1 = blockpos1.add(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
-                if (world.getBlockState(blockpos1.down()).getBlock() != this || world.getBlockState(blockpos1).func_224756_o(world, blockpos1))
+                if (world.getBlockState(blockpos1.down()).getBlock() != this || world.getBlockState(blockpos1).isCollisionShapeOpaque(world, blockpos1))
                     break;
 
                 j++;
@@ -97,7 +98,7 @@ public class FoodGrassBlock extends Block implements IGrowable {
     }
 
     @Override
-    public void tick(BlockState state, World worldIn, BlockPos pos, Random random) {
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         if (!worldIn.isRemote) {
             if (!worldIn.isAreaLoaded(pos, 3))
                 return; // Forge: prevent loading unloaded chunks when checking neighbor's light and spreading
@@ -109,23 +110,11 @@ public class FoodGrassBlock extends Block implements IGrowable {
 
                     for (int i = 0; i < 4; ++i) {
                         BlockPos blockpos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                        if (worldIn.getBlockState(blockpos).getBlock() == Blocks.DIRT && canSpread(blockstate, worldIn, blockpos)) {
+                        if (worldIn.getBlockState(blockpos).getBlock() == Blocks.DIRT && canSpread(blockstate, worldIn, blockpos))
                             worldIn.setBlockState(blockpos, blockstate);
-                        }
                     }
                 }
-
             }
         }
-    }
-
-    @Override
-    public boolean isSolid(BlockState state) {
-        return true;
-    }
-
-    @Override
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.CUTOUT_MIPPED;
     }
 }
