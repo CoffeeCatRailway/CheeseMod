@@ -14,6 +14,8 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -44,7 +46,7 @@ public class ModEntities {
     public static final RegistryObject<EntityType<HamCookedFoodie>> HAM_COOKED_FOODIE = ENTITIES.register("ham_cooked_foodie", () -> EntityType.Builder.<HamCookedFoodie>create(HamCookedFoodie::new, EntityClassification.CREATURE).size(0.5f, 1.15f)
             .setCustomClientFactory((packet, world) -> new HamCookedFoodie(world)).build("ham_cooked_foodie"));
 
-    public static final RegistryObject<EntityType<? extends BoatEntity>> BOAT = ENTITIES.register("food_boat", () -> EntityType.Builder.<BoatEntityCM>create(BoatEntityCM::new, EntityClassification.MISC).setTrackingRange(80)
+    public static final RegistryObject<EntityType<BoatEntityCM>> BOAT = ENTITIES.register("food_boat", () -> EntityType.Builder.<BoatEntityCM>create(BoatEntityCM::new, EntityClassification.MISC).setTrackingRange(80)
             .setUpdateInterval(3).setShouldReceiveVelocityUpdates(true).size(1.375f, 0.5625f).setCustomClientFactory(BoatEntityCM::new).build("food_boat"));
 
     public static void registerSpawnPlacements(RegistryEvent.Register<EntityType<?>> event) {
@@ -62,6 +64,6 @@ public class ModEntities {
 
     public static boolean canSpawn(BlockState state) {
         Block block = state.getBlock();
-        return block instanceof GrassBlock || block instanceof GrassPathBlock || Block.isDirt(block) || block instanceof FoodGrassBlock;
+        return block instanceof GrassBlock || block instanceof GrassPathBlock || Tags.Blocks.DIRT.contains(block) || block instanceof FoodGrassBlock;
     }
 }
