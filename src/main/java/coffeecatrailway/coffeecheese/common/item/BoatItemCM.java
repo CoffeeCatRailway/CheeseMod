@@ -63,7 +63,7 @@ public class BoatItemCM extends Item {
                 BoatEntityCM boatentity = new BoatEntityCM(worldIn, raytraceresult.getHitVec().x, raytraceresult.getHitVec().y, raytraceresult.getHitVec().z);
                 boatentity.setBoatModel(this.type);
                 boatentity.rotationYaw = playerIn.rotationYaw;
-                if (!worldIn.isCollisionBoxesEmpty(boatentity, boatentity.getBoundingBox().grow(-0.1D)))
+                if (!worldIn.hasNoCollisions(boatentity, boatentity.getBoundingBox().grow(-0.1D)))
                     return new ActionResult<>(ActionResultType.FAIL, itemstack);
                 else {
                     if (!worldIn.isRemote)
