@@ -2,6 +2,7 @@ package coffeecatrailway.coffeecheese.compat.patchouli;
 
 import coffeecatrailway.coffeecheese.common.item.crafting.PizzaOvenRecipe;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.item.ItemStack;
@@ -16,12 +17,12 @@ import vazkii.patchouli.client.book.page.abstr.PageDoubleRecipeRegistry;
 public class PagePizza extends PageDoubleRecipeRegistry<PizzaOvenRecipe> {
 
     public PagePizza() {
-        super(PizzaOvenRecipe.class);
+        super(ModRecipes.PIZZA_OVEN);
     }
 
     @Override
     protected void drawRecipe(PizzaOvenRecipe recipe, int recipeX, int recipeY, int mouseX, int mouseY, boolean second) {
-        this.mc.textureManager.bindTexture(this.book.craftingResource);
+        this.mc.textureManager.bindTexture(this.book.craftingTexture);
         GlStateManager.enableBlend();
         AbstractGui.blit(recipeX - 2, recipeY - 2, 0f, 0f, 100, 62, 128, 128);
 

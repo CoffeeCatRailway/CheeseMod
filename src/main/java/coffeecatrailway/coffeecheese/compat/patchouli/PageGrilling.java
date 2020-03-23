@@ -3,6 +3,7 @@ package coffeecatrailway.coffeecheese.compat.patchouli;
 import coffeecatrailway.coffeecheese.client.gui.screen.GrillScreen;
 import coffeecatrailway.coffeecheese.common.item.crafting.GrillRecipe;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.item.ItemStack;
@@ -16,12 +17,12 @@ import vazkii.patchouli.client.book.page.abstr.PageDoubleRecipeRegistry;
 public class PageGrilling extends PageDoubleRecipeRegistry<GrillRecipe> {
 
     public PageGrilling() {
-        super(GrillRecipe.class);
+        super(ModRecipes.GRILLING);
     }
 
     @Override
     protected void drawRecipe(GrillRecipe recipe, int recipeX, int recipeY, int mouseX, int mouseY, boolean second) {
-        mc.textureManager.bindTexture(book.craftingResource);
+        mc.textureManager.bindTexture(book.craftingTexture);
         GlStateManager.enableBlend();
         AbstractGui.blit(recipeX, recipeY + 10, 11, 71, 96, 24, 128, 128);
 
