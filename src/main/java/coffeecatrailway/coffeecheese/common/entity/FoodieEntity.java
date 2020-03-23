@@ -42,7 +42,7 @@ public abstract class FoodieEntity extends TameableEntity {
         this.sitGoal = new SitGoal(this);
         this.goalSelector.addGoal(1, this.sitGoal);
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, true));
-        this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.0D, 10.0f, 2.0f));
+        this.goalSelector.addGoal(3, new FollowOwnerGoal(this, 1.0D, 10.0f, 2.0f, false));
         this.goalSelector.addGoal(4, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 0.6D));
         this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 6.0f));
@@ -191,7 +191,7 @@ public abstract class FoodieEntity extends TameableEntity {
                 }
             }
 
-            if (itemstack.isEmpty() && player.isSneaking()) {
+            if (itemstack.isEmpty() && player.isCrouching()) {
                 if (this.getRidingEntity() != null) {
                     this.stopRiding();
                     return true;

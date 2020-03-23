@@ -64,7 +64,7 @@ public class CheeseBallEntity extends ProjectileItemEntity {
         if (flags == 3) {
             IParticleData data = this.func_213887_n();
             for (int lvt_3_1_ = 0; lvt_3_1_ < 8; ++lvt_3_1_)
-                this.world.addParticle(data, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
+                this.world.addParticle(data, this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D, 0.0D);
         }
     }
 
