@@ -99,13 +99,8 @@ dependencies {
 
 //    compile "jeresources:JustEnoughResources-${project.mcVersion}:${project.jerVersion}"
 
-    if (findProject(':TheOneProbe') != null) {
-        compile project(':TheOneProbe')
-    } else {
-        compile fg.deobf(project.dependencies.create("mcjty.theoneprobe:TheOneProbe-${project.topVersion}") {
-            transitive = false
-        })
-    }
+    compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-${project.topVersion}:api")
+    runtimeOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-${project.topVersion}")
 
     compile fg.deobf("vazkii.patchouli:Patchouli:${project.mcVersion}-${project.patchouliVersion}")
 }
