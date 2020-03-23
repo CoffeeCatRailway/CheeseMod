@@ -24,9 +24,8 @@ public class FoodieRenderer<E extends FoodieEntity> extends MobRenderer<E, Foodi
         this.textures = textures;
     }
 
-    @Nullable
     @Override
-    protected ResourceLocation getEntityTexture(E entity) {
+    public ResourceLocation getEntityTexture(E entity) {
         return this.textures;
     }
 }
