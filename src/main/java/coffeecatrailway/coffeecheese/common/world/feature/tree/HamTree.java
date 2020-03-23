@@ -1,18 +1,16 @@
 package coffeecatrailway.coffeecheese.common.world.feature.tree;
 
+import coffeecatrailway.coffeecheese.common.world.feature.FoodTreeFeatureConfig;
 import coffeecatrailway.coffeecheese.registry.ModFeatures;
-import net.minecraft.block.trees.Tree;
-import net.minecraft.world.gen.feature.AbstractTreeFeature;
-import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 
-import javax.annotation.Nullable;
 import java.util.Random;
 
 /**
  * @author CoffeeCatRailway
  * Created: 27/07/2019
  */
-public class HamTree extends Tree {
+public class HamTree extends FoodTree {
 
     private boolean cooked;
 
@@ -20,9 +18,8 @@ public class HamTree extends Tree {
         this.cooked = cooked;
     }
 
-    @Nullable
     @Override
-    protected AbstractTreeFeature<NoFeatureConfig> getTreeFeature(Random random) {
-        return cooked ? ModFeatures.HAM_COOKED_TREE.get() : ModFeatures.HAM_RAW_TREE.get();
+    public ConfiguredFeature<FoodTreeFeatureConfig, ?> createTreeFeature(Random rand) {
+        return cooked ? ModFeatures.HAM_COOKED_TREE.get().withConfiguration(ModFeatures.HAM_COOKED_TREE_CONFIG) : ModFeatures.HAM_RAW_TREE.get().withConfiguration(ModFeatures.HAM_RAW_TREE_CONFIG);
     }
 }

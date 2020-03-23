@@ -7,12 +7,13 @@ import com.mojang.datafixers.types.DynamicOps;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
 
 /**
  * @author CoffeeCatRailway
  * Created: 26/07/2019
  */
-public class ModOreFeatureConfig implements IFeatureConfig {
+public class ModOreFeatureConfig extends OreFeatureConfig {
 
     public final BlockState state;
     public final int size;
@@ -20,6 +21,7 @@ public class ModOreFeatureConfig implements IFeatureConfig {
     public final Predicate<BlockState> target;
 
     public ModOreFeatureConfig(BlockState state, int size, int regionSize, Predicate<BlockState> target) {
+        super(FillerBlockType.NATURAL_STONE, state, size);
         this.state = state;
         this.size = size;
         this.regionSize = regionSize;

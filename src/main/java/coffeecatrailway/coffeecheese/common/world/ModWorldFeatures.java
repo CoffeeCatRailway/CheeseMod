@@ -14,6 +14,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.CountRangeConfig;
@@ -109,24 +110,15 @@ public class ModWorldFeatures {
                             TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
 
                     if (isHamRaw)
-                        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModFeatures.BACON_RAW_BALL.get(), IFeatureConfig.NO_FEATURE_CONFIG, Placement.CHANCE_HEIGHTMAP, new ChanceConfig(3)));
+                        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModFeatures.BACON_RAW_BALL.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.CHANCE_HEIGHTMAP.configure(new ChanceConfig(3))));
                     if (isHamCooked)
-                        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(ModFeatures.BACON_COOKED_BALL.get(), IFeatureConfig.NO_FEATURE_CONFIG, Placement.CHANCE_HEIGHTMAP, new ChanceConfig(3)));
+                        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModFeatures.BACON_COOKED_BALL.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.CHANCE_HEIGHTMAP.configure(new ChanceConfig(3))));
                 }
             }
         });
     }
 
     private static void addOre(Biome biome, BlockState state, int size, int regionSize, Predicate<BlockState> target, CountRangeConfig range) {
-        addOre(biome, new ModOreFeatureConfig(state, size, regionSize, target), range);
-    }
-
-    private static void addOre(Biome biome, ModOreFeatureConfig config, CountRangeConfig rangeConfig) {
-        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Biome.createDecoratedFeature(
-                ModOreFeature.INSTANCE,
-                config,
-                Placement.COUNT_RANGE,
-                rangeConfig
-        ));
+        biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE.withConfiguration(new ModOreFeatureConfig(state, size, regionSize, target)).withPlacement(Placement.COUNT_RANGE.configure(range)));
     }
 }
