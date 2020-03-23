@@ -3,13 +3,6 @@ package coffeecatrailway.coffeecheese.common.world.biome;
 import coffeecatrailway.coffeecheese.registry.ModBiomes;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModFeatures;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
-import net.minecraft.world.gen.placement.FrequencyConfig;
-import net.minecraft.world.gen.placement.NoiseDependant;
-import net.minecraft.world.gen.placement.Placement;
 
 /**
  * @author CoffeeCatRailway
@@ -24,11 +17,9 @@ public class CheeseFoodBiome extends BaseFoodBiome {
     @Override
     public void addFeatures() {
         super.addFeatures();
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.GRASS, new GrassFeatureConfig(ModBlocks.CHEESE_GRASS.get().getDefaultState()), Placement.COUNT_HEIGHTMAP_DOUBLE, new FrequencyConfig(3)));
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.DOUBLE_PLANT, new DoublePlantConfig(ModBlocks.TALL_CHEESE_GRASS.get().getDefaultState()), Placement.NOISE_HEIGHTMAP_32, new NoiseDependant(-0.8D, 0, 10)));
+        ModFeatures.addFoodGrass(this, ModFeatures.CHEESE_GRASS_CONFIG);
+        ModFeatures.addTallFoodGrass(this, ModFeatures.TALL_CHEESE_GRASS_CONFIG);
         if (this.category == Category.FOREST)
-            this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
-                            new Feature[]{ModFeatures.GRILLED_CHEESE_TREE.get()}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.CHEESE_TREE.get(), IFeatureConfig.NO_FEATURE_CONFIG),
-                    Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(10, 0.1f, 1)));
+            ModFeatures.addFoodTrees(this, ModFeatures.CHEESE_TREE.get().withConfiguration(ModFeatures.CHEESE_TREE_CONFIG), ModFeatures.GRILLED_CHEESE_TREE.get().withConfiguration(ModFeatures.GRILLED_CHEESE_TREE_CONFIG));
     }
 }

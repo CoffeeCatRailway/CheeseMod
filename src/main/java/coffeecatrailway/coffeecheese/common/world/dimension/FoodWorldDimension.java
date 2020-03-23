@@ -27,13 +27,13 @@ import javax.annotation.Nullable;
 public class FoodWorldDimension extends Dimension {
 
     public FoodWorldDimension(World world, DimensionType type) {
-        super(world, type);
+        super(world, type, 0f);
     }
 
     @Override
     public ChunkGenerator<?> createChunkGenerator() {
         BiomeProvider biomeProvider = new FoodWorldBiomeProvider(this.world, new OverworldGenSettings());
-        return new FoodWorldChunkGenerator(this.world, biomeProvider, FoodWorldChunkGenerator.Config.createDefault());
+        return new FoodWorldChunkGenerator(this.world, biomeProvider, FoodWorldChunkGenerator.FoodWorldGenSettings.createDefault());
     }
 
     /**
@@ -60,7 +60,7 @@ public class FoodWorldDimension extends Dimension {
     @Nullable
     @Override
     public BlockPos findSpawn(int posX, int posZ, boolean checkValid) {
-        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos(posX, 0, posZ);
+        BlockPos.Mutable blockpos$mutableblockpos = new BlockPos.Mutable(posX, 0, posZ);
         Biome biome = this.world.getBiome(blockpos$mutableblockpos);
         BlockState blockstate = biome.getSurfaceBuilderConfig().getTop();
         if (checkValid && !blockstate.getBlock().isIn(BlockTags.VALID_SPAWN)) {

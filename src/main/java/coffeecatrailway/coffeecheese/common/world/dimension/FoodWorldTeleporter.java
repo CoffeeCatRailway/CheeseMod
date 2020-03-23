@@ -7,18 +7,20 @@ import it.unimi.dsi.fastutil.objects.Object2LongMap;
 import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.pattern.BlockPattern;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
-import net.minecraft.util.math.ColumnPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.server.TicketType;
+import net.minecraftforge.common.util.ITeleporter;
 
 import javax.annotation.Nullable;
 import java.util.Iterator;
@@ -29,24 +31,35 @@ import java.util.function.Supplier;
  * @author CoffeeCatRailway - Bagu_Chan https://github.com/pentantan
  * Created: 16/01/2020
  */
-public class FoodWorldTeleporter extends Teleporter {
+public class FoodWorldTeleporter extends Teleporter implements ITeleporter {
 
-    private final Object2LongMap<ColumnPos> field_222275_f = new Object2LongOpenHashMap<>();
-    protected final Map<ColumnPos, PortalPosition> destinationCoordinateCache = Maps.newHashMapWithExpectedSize(4096);
+    private final Object2LongMap<BlockPos> field_222275_f = new Object2LongOpenHashMap<>();
+    protected final Map<BlockPos, PortalPosition> destinationCoordinateCache = Maps.newHashMapWithExpectedSize(4096);
 
     public FoodWorldTeleporter(ServerWorld world) {
         super(world);
     }
 
+    @Override
+    public boolean placeInPortal(Entity p_222268_1_, float p_222268_2_) {
+        return super.placeInPortal(p_222268_1_, p_222268_2_);
+    }
+
+    @Nullable
+    @Override
+    public BlockPattern.PortalInfo placeInExistingPortal(BlockPos p_222272_1_, Vec3d p_222272_2_, Direction directionIn, double p_222272_4_, double p_222272_6_, boolean p_222272_8_) {
+        return super.placeInExistingPortal(p_222272_1_, p_222272_2_, directionIn, p_222272_4_, p_222272_6_, p_222272_8_);
+    }
+
     public boolean func_222268_a(Entity entity, float rotationYaw) {
-        ColumnPos columnpos = new ColumnPos(entity.getPosition());
+        BlockPos blockPos = entity.getPosition();
 
         double distance = -1.0D;
         boolean doesPortalExist = true;
         BlockPos location = BlockPos.ZERO;
 
-        if (this.destinationCoordinateCache.containsKey(columnpos)) {
-            final PortalPosition portalPosition = this.destinationCoordinateCache.get(columnpos);
+        if (this.destinationCoordinateCache.containsKey(blockPos)) {
+            final PortalPosition portalPosition = this.destinationCoordinateCache.get(blockPos);
             distance = 0.0D;
             location = portalPosition.pos;
             portalPosition.lastUpdateTime = this.world.getGameTime();
@@ -75,7 +88,7 @@ public class FoodWorldTeleporter extends Teleporter {
 
         if (distance >= 0.0D) {
             if (doesPortalExist)
-                this.destinationCoordinateCache.put(columnpos, new PortalPosition(location, this.world.getWorld().getGameTime()));
+                this.destinationCoordinateCache.put(blockPos, new PortalPosition(location, this.world.getWorld().getGameTime()));
 
             double tpX = location.getX() + 0.5D;
             double tpY = location.getY() + 0.5D;
@@ -168,7 +181,7 @@ public class FoodWorldTeleporter extends Teleporter {
 
     @Override
     public boolean makePortal(Entity entity) {
-        return createPortal(this.world, new BlockPos(MathHelper.floor(entity.posX), MathHelper.floor(entity.posY), MathHelper.floor(entity.posZ)), entity);
+        return createPortal(this.world, new BlockPos(MathHelper.floor(entity.getPosX()), MathHelper.floor(entity.getPosY()), MathHelper.floor(entity.getPosZ())), entity);
     }
 
     public static boolean createPortal(World world, BlockPos pos, @Nullable Entity entity) {
@@ -182,15 +195,15 @@ public class FoodWorldTeleporter extends Teleporter {
             pos = pos.up();
 
         //Bottom layers
-        for (BlockPos basePos : BlockPos.MutableBlockPos.getAllInBoxMutable(pos.add(-2, 0, -2), pos.add(2, 1, 2)))
+        for (BlockPos basePos : BlockPos.Mutable.getAllInBoxMutable(pos.add(-2, 0, -2), pos.add(2, 1, 2)))
             world.setBlockState(basePos, snowstate, 2);
 
         //air
-        for (BlockPos airPos : BlockPos.MutableBlockPos.getAllInBoxMutable(pos.add(-2, 2, -1), pos.add(2, 3, 1)))
+        for (BlockPos airPos : BlockPos.Mutable.getAllInBoxMutable(pos.add(-2, 2, -1), pos.add(2, 3, 1)))
             world.setBlockState(airPos, Blocks.AIR.getDefaultState(), 2);
 
         //Portal blocks
-        for (BlockPos portalPos : BlockPos.MutableBlockPos.getAllInBoxMutable(pos.add(-1, 1, -1), pos.add(1, 1, 1)))
+        for (BlockPos portalPos : BlockPos.Mutable.getAllInBoxMutable(pos.add(-1, 1, -1), pos.add(1, 1, 1)))
             world.setBlockState(portalPos, portalState, 2);
 
         return true;
@@ -215,18 +228,18 @@ public class FoodWorldTeleporter extends Teleporter {
 
     private void func_222269_c(long worldTime) {
         long i = worldTime - 300L;
-        Iterator<Map.Entry<ColumnPos, PortalPosition>> iterator = this.destinationCoordinateCache.entrySet().iterator();
+        Iterator<Map.Entry<BlockPos, PortalPosition>> iterator = this.destinationCoordinateCache.entrySet().iterator();
 
         while (iterator.hasNext()) {
-            Map.Entry<ColumnPos, PortalPosition> entry = iterator.next();
+            Map.Entry<BlockPos, PortalPosition> entry = iterator.next();
             FoodWorldTeleporter.PortalPosition teleporter$portalposition = entry.getValue();
             if (teleporter$portalposition.lastUpdateTime < i) {
-                ColumnPos columnpos = entry.getKey();
+                BlockPos blockPos = entry.getKey();
                 Supplier[] suppliers = new Supplier[2];
                 Dimension dimension = this.world.getDimension();
                 suppliers[0] = dimension::getType;
-                suppliers[1] = () -> columnpos;
-                this.world.getChunkProvider().func_217222_b(TicketType.PORTAL, new ChunkPos(teleporter$portalposition.pos), 3, columnpos);
+                suppliers[1] = () -> blockPos;
+                this.world.getChunkProvider().registerTicket(TicketType.PORTAL, new ChunkPos(teleporter$portalposition.pos), 3, blockPos);
                 iterator.remove();
             }
         }

@@ -81,7 +81,7 @@ public class ModLayerUtil {
 
         lvt_8_1_ = SmoothLayer.INSTANCE.apply((IExtendedNoiseRandom) contextFactory.apply(1000L), lvt_8_1_);
         lvt_8_1_ = MixRiverLayer.INSTANCE.apply((IExtendedNoiseRandom) contextFactory.apply(100L), lvt_8_1_, lvt_7_1_);
-        IAreaFactory<T> iareafactory5 = VoroniZoomLayer.INSTANCE.apply(contextFactory.apply(10L), lvt_8_1_);
+        IAreaFactory<T> iareafactory5 = ZoomLayer.NORMAL.apply(contextFactory.apply(10L), lvt_8_1_);
         return ImmutableList.of(lvt_8_1_, iareafactory5, lvt_8_1_);
     }
 

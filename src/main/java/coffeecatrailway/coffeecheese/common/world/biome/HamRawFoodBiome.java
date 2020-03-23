@@ -24,11 +24,9 @@ public class HamRawFoodBiome extends BaseFoodBiome {
     @Override
     public void addFeatures() {
         super.addFeatures();
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.GRASS, new GrassFeatureConfig(ModBlocks.HAM_RAW_GRASS.get().getDefaultState()), Placement.COUNT_HEIGHTMAP_DOUBLE, new FrequencyConfig(3)));
-        this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.DOUBLE_PLANT, new DoublePlantConfig(ModBlocks.TALL_HAM_RAW_GRASS.get().getDefaultState()), Placement.NOISE_HEIGHTMAP_32, new NoiseDependant(-0.8D, 0, 10)));
+        ModFeatures.addFoodGrass(this, ModFeatures.HAM_RAW_GRASS_CONFIG);
+        ModFeatures.addTallFoodGrass(this, ModFeatures.TALL_HAM_RAW_GRASS_CONFIG);
         if (this.category == Category.FOREST)
-            this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Biome.createDecoratedFeature(Feature.RANDOM_SELECTOR, new MultipleRandomFeatureConfig(
-                            new Feature[]{ModFeatures.HAM_COOKED_TREE.get()}, new IFeatureConfig[]{IFeatureConfig.NO_FEATURE_CONFIG}, new float[]{0.2F}, ModFeatures.HAM_RAW_TREE.get(), IFeatureConfig.NO_FEATURE_CONFIG),
-                    Placement.COUNT_EXTRA_HEIGHTMAP, new AtSurfaceWithExtraConfig(10, 0.1f, 1)));
+            ModFeatures.addFoodTrees(this, ModFeatures.HAM_RAW_TREE.get().withConfiguration(ModFeatures.HAM_RAW_TREE_CONFIG), ModFeatures.HAM_COOKED_TREE.get().withConfiguration(ModFeatures.HAM_COOKED_TREE_CONFIG));
     }
 }
