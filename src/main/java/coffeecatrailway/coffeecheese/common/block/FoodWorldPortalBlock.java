@@ -17,7 +17,6 @@ import net.minecraft.potion.EffectInstance;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -147,15 +146,15 @@ public class FoodWorldPortalBlock extends ContainerBlock {
         FoodWorldTeleporter teleporter = new FoodWorldTeleporter(serverworld1);
 
         WorldInfo worldinfo = serverPlayerEntity.world.getWorldInfo();
-        serverPlayerEntity.connection.sendPacket(new SRespawnPacket(destination, worldinfo.getGenerator(), serverPlayerEntity.interactionManager.getGameType()));
+        serverPlayerEntity.connection.sendPacket(new SRespawnPacket(destination, WorldInfo.byHashing(worldinfo.getSeed()), worldinfo.getGenerator(), serverPlayerEntity.interactionManager.getGameType()));
         serverPlayerEntity.connection.sendPacket(new SServerDifficultyPacket(worldinfo.getDifficulty(), worldinfo.isDifficultyLocked()));
         PlayerList playerlist = serverPlayerEntity.server.getPlayerList();
         playerlist.updatePermissionLevel(serverPlayerEntity);
         serverworld.removeEntity(serverPlayerEntity, true); //Forge: the player entity is moved to the new world, NOT cloned. So keep the data alive with no matching invalidate call.
         serverPlayerEntity.revive();
-        double d0 = serverPlayerEntity.posX;
-        double d1 = serverPlayerEntity.posY;
-        double d2 = serverPlayerEntity.posZ;
+        double d0 = serverPlayerEntity.getPosX();
+        double d1 = serverPlayerEntity.getPosY();
+        double d2 = serverPlayerEntity.getPosZ();
         float f = serverPlayerEntity.rotationPitch;
         float f1 = serverPlayerEntity.rotationYaw;
         float f2 = f1;
@@ -182,8 +181,8 @@ public class FoodWorldPortalBlock extends ContainerBlock {
 
         serverworld.getProfiler().endSection();
         serverPlayerEntity.setWorld(serverworld1);
-        serverworld1.func_217447_b(serverPlayerEntity);
-        serverPlayerEntity.connection.setPlayerLocation(serverPlayerEntity.posX, serverPlayerEntity.posY, serverPlayerEntity.posZ, f1, f);
+        serverworld1.addNewPlayer(serverPlayerEntity);
+        serverPlayerEntity.connection.setPlayerLocation(serverPlayerEntity.getPosX(), serverPlayerEntity.getPosY(), serverPlayerEntity.getPosZ(), f1, f);
         serverPlayerEntity.interactionManager.setWorld(serverworld1);
         serverPlayerEntity.connection.sendPacket(new SPlayerAbilitiesPacket(serverPlayerEntity.abilities));
         playerlist.sendWorldInfo(serverPlayerEntity, serverworld1);
@@ -223,7 +222,7 @@ public class FoodWorldPortalBlock extends ContainerBlock {
                 entity2.copyDataFromOld(entity);
                 teleporter.func_222268_a(entity2, entity2.rotationYaw);
                 entity2.setMotion(vec3d);
-                serverworld1.func_217460_e(entity2);
+                serverworld1.addFromAnotherDimension(entity2);
                 entity.remove();
             }
 
@@ -234,10 +233,6 @@ public class FoodWorldPortalBlock extends ContainerBlock {
             return entity2;
         } else
             return null;
-    }
-
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.TRANSLUCENT;
     }
 
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
@@ -325,7 +320,7 @@ public class FoodWorldPortalBlock extends ContainerBlock {
         }
 
         private void placePortalBlocks() {
-            for (BlockPos portalPos : BlockPos.MutableBlockPos.getAllInBoxMutable(nw, se))
+            for (BlockPos portalPos : BlockPos.Mutable.getAllInBoxMutable(nw, se))
                 this.world.setBlockState(portalPos, ModBlocks.FOOD_PORTAL.get().getDefaultState(), 2);
         }
     }
