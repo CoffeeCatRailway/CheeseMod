@@ -144,9 +144,9 @@ public class CheeseMod {
 
     @OnlyIn(Dist.CLIENT)
     public static void registerTileEntityRenderers() {
-        ClientRegistry.bindTileEntityRenderer(ModTileEntities.GRILL.get(), dispatcher -> new GrillTileEntityRenderer());
-        ClientRegistry.bindTileEntityRenderer(ModTileEntities.MELTER.get(), dispatcher -> new MelterTileEntityRenderer());
-        ClientRegistry.bindTileEntityRenderer(ModTileEntities.PIZZA_OVEN.get(), dispatcher -> new PizzaOvenTileEntityRenderer());
+        ClientRegistry.bindTileEntityRenderer(ModTileEntities.GRILL.get(), dispatcher -> new GrillTileEntityRenderer(dispatcher));
+        ClientRegistry.bindTileEntityRenderer(ModTileEntities.MELTER.get(), dispatcher -> new MelterTileEntityRenderer(dispatcher));
+        ClientRegistry.bindTileEntityRenderer(ModTileEntities.PIZZA_OVEN.get(), dispatcher -> new PizzaOvenTileEntityRenderer(dispatcher));
         ClientRegistry.bindTileEntityRenderer(ModTileEntities.FOOD_WORLD_PORTAL.get(), dispatcher -> new FoodWorldPortalTileEntityRenderer(dispatcher));
 
         CheeseMod.LOGGER.debug("Tile entity renderers");

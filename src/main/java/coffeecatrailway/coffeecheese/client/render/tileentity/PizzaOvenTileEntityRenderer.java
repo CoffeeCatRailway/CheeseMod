@@ -3,13 +3,18 @@ package coffeecatrailway.coffeecheese.client.render.tileentity;
 import coffeecatrailway.coffeecheese.common.block.PizzaOvenBlock;
 import coffeecatrailway.coffeecheese.common.tileentity.PizzaOvenTileEntity;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
+import coffeecatrailway.coffeecheese.registry.ModItems;
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.texture.AtlasTexture;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraftforge.api.distmarker.Dist;
@@ -22,37 +27,32 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class PizzaOvenTileEntityRenderer extends TileEntityRenderer<PizzaOvenTileEntity> {
 
-    @Override
-    public void render(PizzaOvenTileEntity tile, double x, double y, double z, float partialTicks, int destroyStage) {
-        BlockState state = tile.getWorld().getBlockState(tile.getPos());
-        if (state.getBlock() != ModBlocks.PIZZA_OVEN.get())
-            return;
+    public PizzaOvenTileEntityRenderer(TileEntityRendererDispatcher dispatcher) {
+        super(dispatcher);
+    }
 
-        GlStateManager.disableLighting();
-        GlStateManager.pushMatrix();
-        bindTexture(AtlasTexture.LOCATION_BLOCKS_TEXTURE);
+    @Override
+    public void render(PizzaOvenTileEntity tile, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer typeBuffer, int combinedLight, int combinedOverlay) {
+        BlockState state = tile.getWorld().getBlockState(tile.getPos());
+        if (state.getBlock() != ModBlocks.PIZZA_OVEN.get()) return;
 
         ItemStack outStack = tile.inventory.getStackInSlot(10);
         if (outStack.getCount() > 0) {
-            Minecraft mc = Minecraft.getInstance();
-            ItemRenderer renderItem = mc.getItemRenderer();
+            matrixStack.push();
 
             double off = (state.get(PizzaOvenBlock.FACING).getHorizontalAngle() / 90d) / 10d;
             double xo = state.get(PizzaOvenBlock.FACING) == Direction.EAST ? off : state.get(PizzaOvenBlock.FACING) == Direction.WEST ? -off : 0d;
             double zo = state.get(PizzaOvenBlock.FACING) == Direction.NORTH ? -off : state.get(PizzaOvenBlock.FACING) == Direction.SOUTH ? off : 0d;
-            GlStateManager.translated(x + .5d + xo, y + .2d, z + .5d + zo);
+            matrixStack.translate(.5d + xo, .2d, .5d + zo);
 
             float angle = -state.get(PizzaOvenBlock.FACING).getHorizontalAngle();
-            GlStateManager.rotated(angle, 0d, 1d, 0d);
-            GlStateManager.rotated(-90d, 1d, 0d, 0d);
+            matrixStack.rotate(Vector3f.YP.rotationDegrees(angle));
+            matrixStack.rotate(Vector3f.XP.rotationDegrees(-90.0f));
 
-            GlStateManager.scalef(1.1f, 1.1f, 1.1f);
-            GlStateManager.color4f(1f, 1f, 1f, 1f);
+            matrixStack.scale(1.1f, 1.1f, 1.1f);
 
-            renderItem.renderItem(outStack, ItemCameraTransforms.TransformType.GROUND);
+            Minecraft.getInstance().getItemRenderer().renderItem(new ItemStack(ModItems.OIL_CATCHER.get()), ItemCameraTransforms.TransformType.FIXED, combinedLight, combinedOverlay, matrixStack, typeBuffer);
+            matrixStack.pop();
         }
-
-        GlStateManager.popMatrix();
-        GlStateManager.enableLighting();
     }
 }
