@@ -10,6 +10,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
+import java.util.function.Supplier;
+
 /**
  * @author CoffeeCatRailway
  * Created: 29/07/2019
@@ -18,7 +20,7 @@ public class ModStairsBlock extends StairsBlock {
 
     private boolean isBoundy;
 
-    public ModStairsBlock(BlockState state, Properties properties, boolean isBoundy) {
+    public ModStairsBlock(Supplier<BlockState> state, Properties properties, boolean isBoundy) {
         super(state, properties);
         this.isBoundy = isBoundy;
     }

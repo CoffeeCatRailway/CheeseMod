@@ -1,24 +1,18 @@
 package coffeecatrailway.coffeecheese.registry;
 
-import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.ModItemGroups;
 import coffeecatrailway.coffeecheese.common.block.*;
 import coffeecatrailway.coffeecheese.common.item.FoodBlockItem;
 import coffeecatrailway.coffeecheese.common.world.feature.tree.CheeseTree;
 import coffeecatrailway.coffeecheese.common.world.feature.tree.HamTree;
+import com.tterrag.registrate.util.RegistryEntry;
+import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.ToolType;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.function.Function;
-import java.util.function.Supplier;
+import static coffeecatrailway.coffeecheese.CheeseMod.REGISTRATE;
 
 /**
  * @author CoffeeCatRailway
@@ -27,229 +21,483 @@ import java.util.function.Supplier;
 @SuppressWarnings("unused")
 public class ModBlocks {
 
-    public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, CheeseMod.MOD_ID);
-
     /// Ores ///
-    public static final RegistryObject<Block> CHEESE_METAL_ORE = registerBlockGeneral("cheese_metal_ore", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE)));
-    public static final RegistryObject<Block> CHEESE_METAL_ORE_NETHER = registerBlockGeneral("cheese_metal_ore_nether", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE)));
-    public static final RegistryObject<Block> CHEESE_METAL_ORE_END = registerBlockGeneral("cheese_metal_ore_end", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE)));
+    private static NonNullUnaryOperator<Block.Properties> ORE_PROPS = prop -> prop.sound(SoundType.STONE).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE);
 
-    public static final RegistryObject<Block> GRILLED_CHEESE_METAL_ORE = registerBlockGeneral("grilled_cheese_metal_ore", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_METAL_ORE_NETHER = registerBlockGeneral("grilled_cheese_metal_ore_nether", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_METAL_ORE_END = registerBlockGeneral("grilled_cheese_metal_ore_end", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryEntry<Block> CHEESE_METAL_ORE = REGISTRATE.object("cheese_metal_ore").block(Block::new).properties(ORE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> CHEESE_METAL_ORE_NETHER = REGISTRATE.object("cheese_metal_ore_nether").block(Block::new).properties(ORE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> CHEESE_METAL_ORE_END = REGISTRATE.object("cheese_metal_ore_end").block(Block::new).properties(ORE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> HAM_RAW_METAL_ORE = registerBlockGeneral("ham_raw_metal_ore", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE)));
-    public static final RegistryObject<Block> HAM_RAW_METAL_ORE_NETHER = registerBlockGeneral("ham_raw_metal_ore_nether", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE)));
-    public static final RegistryObject<Block> HAM_RAW_METAL_ORE_END = registerBlockGeneral("ham_raw_metal_ore_end", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryEntry<Block> GRILLED_CHEESE_METAL_ORE = REGISTRATE.object("grilled_cheese_metal_ore").block(Block::new).properties(ORE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> GRILLED_CHEESE_METAL_ORE_NETHER = REGISTRATE.object("grilled_cheese_metal_ore_nether").block(Block::new).properties(ORE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> GRILLED_CHEESE_METAL_ORE_END = REGISTRATE.object("grilled_cheese_metal_ore_end").block(Block::new).properties(ORE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> HAM_COOKED_METAL_ORE = registerBlockGeneral("ham_cooked_metal_ore", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE)));
-    public static final RegistryObject<Block> HAM_COOKED_METAL_ORE_NETHER = registerBlockGeneral("ham_cooked_metal_ore_nether", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE)));
-    public static final RegistryObject<Block> HAM_COOKED_METAL_ORE_END = registerBlockGeneral("ham_cooked_metal_ore_end", () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).harvestTool(ToolType.PICKAXE)));
+    public static final RegistryEntry<Block> HAM_RAW_METAL_ORE = REGISTRATE.object("ham_raw_metal_ore").block(Block::new).properties(ORE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> HAM_RAW_METAL_ORE_NETHER = REGISTRATE.object("ham_raw_metal_ore_nether").block(Block::new).properties(ORE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> HAM_RAW_METAL_ORE_END = REGISTRATE.object("ham_raw_metal_ore_end").block(Block::new).properties(ORE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+
+    public static final RegistryEntry<Block> HAM_COOKED_METAL_ORE = REGISTRATE.object("ham_cooked_metal_ore").block(Block::new).properties(ORE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> HAM_COOKED_METAL_ORE_NETHER = REGISTRATE.object("ham_cooked_metal_ore_nether").block(Block::new).properties(ORE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> HAM_COOKED_METAL_ORE_END = REGISTRATE.object("ham_cooked_metal_ore_end").block(Block::new).properties(ORE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Food Metal ///
-    public static final RegistryObject<Block> CHEESE_METAL_BLOCK = registerBlockGeneral("cheese_metal_block", () -> new Block(Block.Properties.create(Material.IRON).hardnessAndResistance(5.0f, 6.0f).sound(SoundType.METAL)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_METAL_BLOCK = registerBlockGeneral("grilled_cheese_metal_block", () -> new Block(Block.Properties.create(Material.IRON).hardnessAndResistance(5.0f, 6.0f).sound(SoundType.METAL)));
-    public static final RegistryObject<Block> HAM_RAW_METAL_BLOCK = registerBlockGeneral("ham_raw_metal_block", () -> new Block(Block.Properties.create(Material.IRON).hardnessAndResistance(5.0f, 6.0f).sound(SoundType.METAL)));
-    public static final RegistryObject<Block> HAM_COOKED_METAL_BLOCK = registerBlockGeneral("ham_cooked_metal_block", () -> new Block(Block.Properties.create(Material.IRON).hardnessAndResistance(5.0f, 6.0f).sound(SoundType.METAL)));
+    private static NonNullUnaryOperator<Block.Properties> METAL_PROPS = prop -> prop.sound(SoundType.METAL).hardnessAndResistance(5.0f, 6.0f).harvestTool(ToolType.PICKAXE);
+
+    public static final RegistryEntry<Block> CHEESE_METAL_BLOCK = REGISTRATE.object("cheese_metal_block").block(Block::new).properties(METAL_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> GRILLED_CHEESE_METAL_BLOCK = REGISTRATE.object("grilled_cheese_metal_block").block(Block::new).properties(METAL_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> HAM_RAW_METAL_BLOCK = REGISTRATE.object("ham_raw_metal_block").block(Block::new).properties(METAL_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> HAM_COOKED_METAL_BLOCK = REGISTRATE.object("ham_cooked_metal_block").block(Block::new).properties(METAL_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Nature ///
-    public static final RegistryObject<DoubleFoodPlantBlock> TALL_CHEESE_GRASS = registerBlockGeneral("tall_cheese_grass", () -> new DoubleFoodPlantBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT)));
-    public static final RegistryObject<DoubleFoodPlantBlock> TALL_GRILLED_CHEESE_GRASS = registerBlockGeneral("tall_grilled_cheese_grass", () -> new DoubleFoodPlantBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT)));
-    public static final RegistryObject<DoubleFoodPlantBlock> TALL_HAM_RAW_GRASS = registerBlockGeneral("tall_ham_raw_grass", () -> new DoubleFoodPlantBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT)));
-    public static final RegistryObject<DoubleFoodPlantBlock> TALL_HAM_COOKED_GRASS = registerBlockGeneral("tall_ham_cooked_grass", () -> new DoubleFoodPlantBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+    private static NonNullUnaryOperator<Block.Properties> GRASS_PROPS = prop -> prop.sound(SoundType.PLANT).doesNotBlockMovement().zeroHardnessAndResistance();
 
-    public static final RegistryObject<TallFoodGrassBlock> CHEESE_GRASS = registerBlockGeneral("cheese_grass", () -> new TallFoodGrassBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT), ModBlocks.TALL_CHEESE_GRASS.get()));
-    public static final RegistryObject<TallFoodGrassBlock> GRILLED_CHEESE_GRASS = registerBlockGeneral("grilled_cheese_grass", () -> new TallFoodGrassBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT), ModBlocks.TALL_GRILLED_CHEESE_GRASS.get()));
-    public static final RegistryObject<TallFoodGrassBlock> HAM_RAW_GRASS = registerBlockGeneral("ham_raw_grass", () -> new TallFoodGrassBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT), ModBlocks.TALL_HAM_RAW_GRASS.get()));
-    public static final RegistryObject<TallFoodGrassBlock> HAM_COOKED_GRASS = registerBlockGeneral("ham_cooked_grass", () -> new TallFoodGrassBlock(Block.Properties.create(Material.TALL_PLANTS).doesNotBlockMovement().zeroHardnessAndResistance().sound(SoundType.PLANT), ModBlocks.TALL_HAM_COOKED_GRASS.get()));
+    public static final RegistryEntry<DoubleFoodPlantBlock> TALL_CHEESE_GRASS = REGISTRATE.object("tall_cheese_grass").block(DoubleFoodPlantBlock::new)
+            .initialProperties(Material.TALL_PLANTS, Material.TALL_PLANTS.getColor()).properties(GRASS_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<DoubleFoodPlantBlock> TALL_GRILLED_CHEESE_GRASS = REGISTRATE.object("tall_grilled_cheese_grass").block(DoubleFoodPlantBlock::new)
+            .initialProperties(Material.TALL_PLANTS, Material.TALL_PLANTS.getColor()).properties(GRASS_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<DoubleFoodPlantBlock> TALL_HAM_RAW_GRASS = REGISTRATE.object("tall_ham_raw_grass").block(DoubleFoodPlantBlock::new)
+            .initialProperties(Material.TALL_PLANTS, Material.TALL_PLANTS.getColor()).properties(GRASS_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<DoubleFoodPlantBlock> TALL_HAM_COOKED_GRASS = REGISTRATE.object("tall_ham_cooked_grass").block(DoubleFoodPlantBlock::new)
+            .initialProperties(Material.TALL_PLANTS, Material.TALL_PLANTS.getColor()).properties(GRASS_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<FoodGrassBlock> CHEESE_GRASS_BLOCK = registerBlockGeneral("cheese_grass_block", () -> new FoodGrassBlock(Block.Properties.create(Material.ORGANIC).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT), ModBlocks.CHEESE_GRASS.get().getDefaultState()));
-    public static final RegistryObject<FoodGrassBlock> GRILLED_CHEESE_GRASS_BLOCK = registerBlockGeneral("grilled_cheese_grass_block", () -> new FoodGrassBlock(Block.Properties.create(Material.ORGANIC).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT), ModBlocks.GRILLED_CHEESE_GRASS.get().getDefaultState()));
-    public static final RegistryObject<FoodGrassBlock> HAM_RAW_GRASS_BLOCK = registerBlockGeneral("ham_raw_grass_block", () -> new FoodGrassBlock(Block.Properties.create(Material.ORGANIC).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT), ModBlocks.HAM_RAW_GRASS.get().getDefaultState()));
-    public static final RegistryObject<FoodGrassBlock> HAM_COOKED_GRASS_BLOCK = registerBlockGeneral("ham_cooked_grass_block", () -> new FoodGrassBlock(Block.Properties.create(Material.ORGANIC).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT), ModBlocks.HAM_COOKED_GRASS.get().getDefaultState()));
+    public static final RegistryEntry<TallFoodGrassBlock> CHEESE_GRASS = REGISTRATE.object("cheese_grass").block(prop -> new TallFoodGrassBlock(prop, ModBlocks.TALL_CHEESE_GRASS))
+            .initialProperties(Material.TALL_PLANTS, Material.TALL_PLANTS.getColor()).properties(GRASS_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<TallFoodGrassBlock> GRILLED_CHEESE_GRASS = REGISTRATE.object("grilled_cheese_grass").block(prop -> new TallFoodGrassBlock(prop, ModBlocks.TALL_GRILLED_CHEESE_GRASS))
+            .initialProperties(Material.TALL_PLANTS, Material.TALL_PLANTS.getColor()).properties(GRASS_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<TallFoodGrassBlock> HAM_RAW_GRASS = REGISTRATE.object("ham_raw_grass").block(prop -> new TallFoodGrassBlock(prop, ModBlocks.TALL_HAM_RAW_GRASS))
+            .initialProperties(Material.TALL_PLANTS, Material.TALL_PLANTS.getColor()).properties(GRASS_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<TallFoodGrassBlock> HAM_COOKED_GRASS = REGISTRATE.object("ham_cooked_grass").block(prop -> new TallFoodGrassBlock(prop, ModBlocks.TALL_HAM_COOKED_GRASS))
+            .initialProperties(Material.TALL_PLANTS, Material.TALL_PLANTS.getColor()).properties(GRASS_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<FoodSaplingBlock> CHEESE_SAPLING = registerBlockGeneral("cheese_sapling", () -> new FoodSaplingBlock(new CheeseTree(false), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
-    public static final RegistryObject<FoodSaplingBlock> GRILLED_CHEESE_SAPLING = registerBlockGeneral("grilled_cheese_sapling", () -> new FoodSaplingBlock(new CheeseTree(true), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
-    public static final RegistryObject<FoodSaplingBlock> HAM_RAW_SAPLING = registerBlockGeneral("ham_raw_sapling", () -> new FoodSaplingBlock(new HamTree(false), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
-    public static final RegistryObject<FoodSaplingBlock> HAM_COOKED_SAPLING = registerBlockGeneral("ham_cooked_sapling", () -> new FoodSaplingBlock(new HamTree(true), Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)));
+    private static NonNullUnaryOperator<Block.Properties> GRASS_BLOCK_PROPS = prop -> prop.sound(SoundType.PLANT).tickRandomly().hardnessAndResistance(0.6F).sound(SoundType.PLANT);
 
-    public static final RegistryObject<Block> CHEESE_PLANKS = registerBlockGeneral("cheese_planks", () -> new Block(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0f, 3.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_PLANKS = registerBlockGeneral("grilled_cheese_planks", () -> new Block(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0f, 3.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> HAM_RAW_PLANKS = registerBlockGeneral("ham_raw_planks", () -> new Block(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0f, 3.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> HAM_COOKED_PLANKS = registerBlockGeneral("ham_cooked_planks", () -> new Block(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(2.0f, 3.0f).sound(SoundType.WOOD)));
+    public static final RegistryEntry<FoodGrassBlock> CHEESE_GRASS_BLOCK = REGISTRATE.object("cheese_grass_block")
+            .block(prop -> new FoodGrassBlock(prop, ModBlocks.CHEESE_GRASS))
+            .initialProperties(Material.ORGANIC, Material.ORGANIC.getColor()).properties(GRASS_BLOCK_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FoodGrassBlock> GRILLED_CHEESE_GRASS_BLOCK = REGISTRATE.object("grilled_cheese_grass_block")
+            .block(prop -> new FoodGrassBlock(prop, ModBlocks.GRILLED_CHEESE_GRASS))
+            .initialProperties(Material.ORGANIC, Material.ORGANIC.getColor()).properties(GRASS_BLOCK_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FoodGrassBlock> HAM_RAW_GRASS_BLOCK = REGISTRATE.object("ham_raw_grass_block")
+            .block(prop -> new FoodGrassBlock(prop, ModBlocks.HAM_RAW_GRASS))
+            .initialProperties(Material.ORGANIC, Material.ORGANIC.getColor()).properties(GRASS_BLOCK_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FoodGrassBlock> HAM_COOKED_GRASS_BLOCK = REGISTRATE.object("ham_cooked_grass_block")
+            .block(prop -> new FoodGrassBlock(prop, ModBlocks.HAM_COOKED_GRASS))
+            .initialProperties(Material.ORGANIC, Material.ORGANIC.getColor()).properties(GRASS_BLOCK_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> CHEESE_LEAVES = registerBlockGeneral("cheese_leaves", () -> new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2f).tickRandomly().sound(SoundType.PLANT)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_LEAVES = registerBlockGeneral("grilled_cheese_leaves", () -> new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2f).tickRandomly().sound(SoundType.PLANT)));
-    public static final RegistryObject<Block> HAM_RAW_LEAVES = registerBlockGeneral("ham_raw_leaves", () -> new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2f).tickRandomly().sound(SoundType.PLANT)));
-    public static final RegistryObject<Block> HAM_COOKED_LEAVES = registerBlockGeneral("ham_cooked_leaves", () -> new LeavesBlock(Block.Properties.create(Material.LEAVES).hardnessAndResistance(0.2f).tickRandomly().sound(SoundType.PLANT)));
+    private static NonNullUnaryOperator<Block.Properties> SAPLING_PROPS = prop -> prop.doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT);
 
-    public static final RegistryObject<Block> CHEESE_LOG = registerBlockGeneral("cheese_log", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_LOG = registerBlockGeneral("grilled_cheese_log", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> HAM_RAW_LOG = registerBlockGeneral("ham_raw_log", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> HAM_COOKED_LOG = registerBlockGeneral("ham_cooked_log", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
+    public static final RegistryEntry<FoodSaplingBlock> CHEESE_SAPLING = REGISTRATE.object("cheese_sapling").block(prop -> new FoodSaplingBlock(new CheeseTree(false), prop))
+            .initialProperties(Material.PLANTS, Material.PLANTS.getColor()).properties(SAPLING_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FoodSaplingBlock> GRILLED_CHEESE_SAPLING = REGISTRATE.object("grilled_cheese_sapling").block(prop -> new FoodSaplingBlock(new CheeseTree(true), prop))
+            .initialProperties(Material.PLANTS, Material.PLANTS.getColor()).properties(SAPLING_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FoodSaplingBlock> HAM_RAW_SAPLING = REGISTRATE.object("ham_raw_sapling").block(prop -> new FoodSaplingBlock(new HamTree(false), prop))
+            .initialProperties(Material.PLANTS, Material.PLANTS.getColor()).properties(SAPLING_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FoodSaplingBlock> HAM_COOKED_SAPLING = REGISTRATE.object("ham_cooked_sapling").block(prop -> new FoodSaplingBlock(new HamTree(true), prop))
+            .initialProperties(Material.PLANTS, Material.PLANTS.getColor()).properties(SAPLING_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> STRPPED_CHEESE_LOG = registerBlockGeneral("stripped_cheese_log", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> STRPPED_GRILLED_CHEESE_LOG = registerBlockGeneral("stripped_grilled_cheese_log", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> STRPPED_HAM_RAW_LOG = registerBlockGeneral("stripped_ham_raw_log", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> STRPPED_HAM_COOKED_LOG = registerBlockGeneral("stripped_ham_cooked_log", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
+    private static NonNullUnaryOperator<Block.Properties> PLANKS_PROPS = prop -> prop.hardnessAndResistance(2.0f, 3.0f).sound(SoundType.WOOD);
 
-    public static final RegistryObject<Block> CHEESE_WOOD = registerBlockGeneral("cheese_wood", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_WOOD = registerBlockGeneral("grilled_cheese_wood", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> HAM_RAW_WOOD = registerBlockGeneral("ham_raw_wood", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> HAM_COOKED_WOOD = registerBlockGeneral("ham_cooked_wood", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
+    public static final RegistryEntry<Block> CHEESE_PLANKS = REGISTRATE.object("cheese_planks").block(Block::new).initialProperties(Material.WOOD, Material.WOOD.getColor()).properties(PLANKS_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> GRILLED_CHEESE_PLANKS = REGISTRATE.object("grilled_cheese_planks").block(Block::new).initialProperties(Material.WOOD, Material.WOOD.getColor()).properties(PLANKS_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> HAM_RAW_PLANKS = REGISTRATE.object("ham_raw_planks").block(Block::new).initialProperties(Material.WOOD, Material.WOOD.getColor()).properties(PLANKS_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<Block> HAM_COOKED_PLANKS = REGISTRATE.object("ham_cooked_planks").block(Block::new).initialProperties(Material.WOOD, Material.WOOD.getColor()).properties(PLANKS_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> STRPPED_CHEESE_WOOD = registerBlockGeneral("stripped_cheese_wood", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> STRPPED_GRILLED_CHEESE_WOOD = registerBlockGeneral("stripped_grilled_cheese_wood", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> STRPPED_HAM_RAW_WOOD = registerBlockGeneral("stripped_ham_raw_wood", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> STRPPED_HAM_COOKED_WOOD = registerBlockGeneral("stripped_ham_cooked_wood", () -> new LogBlock(MaterialColor.WOOD, Block.Properties.create(Material.WOOD, MaterialColor.OBSIDIAN).hardnessAndResistance(2.0f).sound(SoundType.WOOD)));
+    private static NonNullUnaryOperator<Block.Properties> LEAVES_PROPS = prop -> prop.hardnessAndResistance(0.2f).tickRandomly().sound(SoundType.PLANT);
+
+    public static final RegistryEntry<LeavesBlock> CHEESE_LEAVES = REGISTRATE.object("cheese_leaves").block(LeavesBlock::new)
+            .initialProperties(Material.LEAVES, Material.LEAVES.getColor()).properties(LEAVES_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LeavesBlock> GRILLED_CHEESE_LEAVES = REGISTRATE.object("grilled_cheese_leaves").block(LeavesBlock::new)
+            .initialProperties(Material.LEAVES, Material.LEAVES.getColor()).properties(LEAVES_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LeavesBlock> HAM_RAW_LEAVES = REGISTRATE.object("ham_raw_leaves").block(LeavesBlock::new)
+            .initialProperties(Material.LEAVES, Material.LEAVES.getColor()).properties(LEAVES_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LeavesBlock> HAM_COOKED_LEAVES = REGISTRATE.object("ham_cooked_leaves").block(LeavesBlock::new)
+            .initialProperties(Material.LEAVES, Material.LEAVES.getColor()).properties(LEAVES_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+
+    private static NonNullUnaryOperator<Block.Properties> LOG_PROPS = prop -> prop.hardnessAndResistance(2.0f).sound(SoundType.WOOD);
+
+    public static final RegistryEntry<LogBlock> CHEESE_LOG = REGISTRATE.object("cheese_log").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LogBlock> GRILLED_CHEESE_LOG = REGISTRATE.object("grilled_cheese_log").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LogBlock> HAM_RAW_LOG = REGISTRATE.object("ham_raw_log").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LogBlock> HAM_COOKED_LOG = REGISTRATE.object("ham_cooked_log").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+
+    public static final RegistryEntry<LogBlock> STRPPED_CHEESE_LOG = REGISTRATE.object("stripped_cheese_log").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LogBlock> STRPPED_GRILLED_CHEESE_LOG = REGISTRATE.object("stripped_grilled_cheese_log").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LogBlock> STRPPED_HAM_RAW_LOG = REGISTRATE.object("stripped_ham_raw_log").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LogBlock> STRPPED_HAM_COOKED_LOG = REGISTRATE.object("stripped_ham_cooked_log").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+
+    public static final RegistryEntry<LogBlock> CHEESE_WOOD = REGISTRATE.object("cheese_wood").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LogBlock> GRILLED_CHEESE_WOOD = REGISTRATE.object("grilled_cheese_wood").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LogBlock> HAM_RAW_WOOD = REGISTRATE.object("ham_raw_wood").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LogBlock> HAM_COOKED_WOOD = REGISTRATE.object("ham_cooked_wood").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+
+    public static final RegistryEntry<LogBlock> STRPPED_CHEESE_WOOD = REGISTRATE.object("stripped_cheese_wood").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LogBlock> STRPPED_GRILLED_CHEESE_WOOD = REGISTRATE.object("stripped_grilled_cheese_wood").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LogBlock> STRPPED_HAM_RAW_WOOD = REGISTRATE.object("stripped_ham_raw_wood").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<LogBlock> STRPPED_HAM_COOKED_WOOD = REGISTRATE.object("stripped_ham_cooked_wood").block(prop -> new LogBlock(MaterialColor.WOOD, prop))
+            .initialProperties(Material.WOOD, MaterialColor.OBSIDIAN).properties(LOG_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Food Block ///
-    public static final RegistryObject<Block> CHEESE_BLOCK = BLOCKS.register("cheese_block", () -> new FoodBlock(true));
-    public static final RegistryObject<Block> GRILLED_CHEESE_BLOCK = BLOCKS.register("grilled_cheese_block", () -> new FoodBlock(true));
+    public static final RegistryEntry<FoodBlock> CHEESE_BLOCK = REGISTRATE.object("cheese_block").block(prop -> new FoodBlock(true))
+            .item((foodBlock, prop) -> new FoodBlockItem(foodBlock, ModFoods.CHEESE_SLICE, false)).properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FoodBlock> GRILLED_CHEESE_BLOCK = REGISTRATE.object("grilled_cheese_block").block(prop -> new FoodBlock(true))
+            .item((foodBlock, prop) -> new FoodBlockItem(foodBlock, ModFoods.CHEESE_SLICE, true)).properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> HAM_RAW_BLOCK = BLOCKS.register("ham_raw_block", () -> new FoodBlock(true));
-    public static final RegistryObject<Block> HAM_COOKED_BLOCK = BLOCKS.register("ham_cooked_block", () -> new FoodBlock(true));
+    public static final RegistryEntry<FoodBlock> HAM_RAW_BLOCK = REGISTRATE.object("ham_raw_block").block(prop -> new FoodBlock(true))
+            .item((foodBlock, prop) -> new FoodBlockItem(foodBlock, ModFoods.HAM, false)).properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FoodBlock> HAM_COOKED_BLOCK = REGISTRATE.object("ham_cooked_block").block(prop -> new FoodBlock(true))
+            .item((foodBlock, prop) -> new FoodBlockItem(foodBlock, ModFoods.HAM_COOKED, false)).properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> BACON_RAW_BLOCK = BLOCKS.register("bacon_raw_block", () -> new FoodBlock(false));
-    public static final RegistryObject<Block> BACON_COOKED_BLOCK = BLOCKS.register("bacon_cooked_block", () -> new FoodBlock(false));
-
-    static {
-        ModItems.ITEMS.register("cheese_block", () -> new FoodBlockItem(CHEESE_BLOCK.get(), ModFoods.CHEESE_SLICE, false));
-        ModItems.ITEMS.register("grilled_cheese_block", () -> new FoodBlockItem(GRILLED_CHEESE_BLOCK.get(), ModFoods.CHEESE_SLICE, false));
-
-        ModItems.ITEMS.register("ham_raw_block", () -> new FoodBlockItem(HAM_RAW_BLOCK.get(), ModFoods.HAM, false));
-        ModItems.ITEMS.register("ham_cooked_block", () -> new FoodBlockItem(HAM_COOKED_BLOCK.get(), ModFoods.HAM_COOKED, false));
-
-        ModItems.ITEMS.register("bacon_raw_block", () -> new FoodBlockItem(BACON_RAW_BLOCK.get(), ModFoods.BACON, false));
-        ModItems.ITEMS.register("bacon_cooked_block", () -> new FoodBlockItem(BACON_COOKED_BLOCK.get(), ModFoods.BACON_COOKED, false));
-    }
+    public static final RegistryEntry<FoodBlock> BACON_RAW_BLOCK = REGISTRATE.object("bacon_raw_block").block(prop -> new FoodBlock(false))
+            .item((foodBlock, prop) -> new FoodBlockItem(foodBlock, ModFoods.BACON, false)).properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FoodBlock> BACON_COOKED_BLOCK = REGISTRATE.object("bacon_cooked_block").block(prop -> new FoodBlock(false))
+            .item((foodBlock, prop) -> new FoodBlockItem(foodBlock, ModFoods.BACON_COOKED, false)).properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Stairs ///
-    public static final RegistryObject<Block> CHEESE_STAIRS = registerBlockGeneral("cheese_stairs", () -> new ModStairsBlock(CHEESE_BLOCK.get().getDefaultState(), Block.Properties.from(CHEESE_BLOCK.get()), true));
-    public static final RegistryObject<Block> GRILLED_CHEESE_STAIRS = registerBlockGeneral("grilled_cheese_stairs", () -> new ModStairsBlock(GRILLED_CHEESE_BLOCK.get().getDefaultState(), Block.Properties.from(GRILLED_CHEESE_BLOCK.get()), true));
-    public static final RegistryObject<Block> HAM_RAW_STAIRS = registerBlockGeneral("ham_raw_stairs", () -> new ModStairsBlock(HAM_RAW_BLOCK.get().getDefaultState(), Block.Properties.from(HAM_RAW_BLOCK.get()), true));
-    public static final RegistryObject<Block> HAM_COOKED_STAIRS = registerBlockGeneral("ham_cooked_stairs", () -> new ModStairsBlock(HAM_COOKED_BLOCK.get().getDefaultState(), Block.Properties.from(HAM_COOKED_BLOCK.get()), true));
+    public static final RegistryEntry<ModStairsBlock> CHEESE_STAIRS = REGISTRATE.object("cheese_stairs")
+            .block(prop -> new ModStairsBlock(() -> ModBlocks.CHEESE_BLOCK.get().getDefaultState(), prop, true)).initialProperties(ModBlocks.CHEESE_BLOCK)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<ModStairsBlock> GRILLED_CHEESE_STAIRS = REGISTRATE.object("grilled_cheese_stairs")
+            .block(prop -> new ModStairsBlock(() -> ModBlocks.GRILLED_CHEESE_BLOCK.get().getDefaultState(), prop, true)).initialProperties(ModBlocks.GRILLED_CHEESE_BLOCK)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<ModStairsBlock> HAM_RAW_STAIRS = REGISTRATE.object("ham_raw_stairs")
+            .block(prop -> new ModStairsBlock(() -> ModBlocks.HAM_RAW_BLOCK.get().getDefaultState(), prop, true)).initialProperties(ModBlocks.HAM_RAW_BLOCK)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<ModStairsBlock> HAM_COOKED_STAIRS = REGISTRATE.object("ham_cooked_stairs")
+            .block(prop -> new ModStairsBlock(() -> ModBlocks.HAM_COOKED_BLOCK.get().getDefaultState(), prop, true)).initialProperties(ModBlocks.HAM_COOKED_BLOCK)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> CHEESE_WOOD_STAIRS = registerBlockGeneral("cheese_wood_stairs", () -> new ModStairsBlock(CHEESE_PLANKS.get().getDefaultState(), Block.Properties.from(CHEESE_PLANKS.get()), false));
-    public static final RegistryObject<Block> GRILLED_CHEESE_WOOD_STAIRS = registerBlockGeneral("grilled_cheese_wood_stairs", () -> new ModStairsBlock(GRILLED_CHEESE_PLANKS.get().getDefaultState(), Block.Properties.from(GRILLED_CHEESE_PLANKS.get()), false));
-    public static final RegistryObject<Block> HAM_RAW_WOOD_STAIRS = registerBlockGeneral("ham_raw_wood_stairs", () -> new ModStairsBlock(HAM_RAW_PLANKS.get().getDefaultState(), Block.Properties.from(HAM_RAW_PLANKS.get()), false));
-    public static final RegistryObject<Block> HAM_COOKED_WOOD_STAIRS = registerBlockGeneral("ham_cooked_wood_stairs", () -> new ModStairsBlock(HAM_COOKED_PLANKS.get().getDefaultState(), Block.Properties.from(HAM_COOKED_PLANKS.get()), false));
+    public static final RegistryEntry<ModStairsBlock> CHEESE_WOOD_STAIRS = REGISTRATE.object("cheese_wood_stairs")
+            .block(prop -> new ModStairsBlock(() -> ModBlocks.CHEESE_PLANKS.get().getDefaultState(), prop, false)).initialProperties(ModBlocks.CHEESE_PLANKS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<ModStairsBlock> GRILLED_CHEESE_WOOD_STAIRS = REGISTRATE.object("grilled_cheese_wood_stairs")
+            .block(prop -> new ModStairsBlock(() -> ModBlocks.GRILLED_CHEESE_PLANKS.get().getDefaultState(), prop, false)).initialProperties(ModBlocks.GRILLED_CHEESE_PLANKS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<ModStairsBlock> HAM_RAW_WOOD_STAIRS = REGISTRATE.object("ham_raw_wood_stairs")
+            .block(prop -> new ModStairsBlock(() -> ModBlocks.HAM_RAW_PLANKS.get().getDefaultState(), prop, false)).initialProperties(ModBlocks.HAM_RAW_PLANKS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<ModStairsBlock> HAM_COOKED_WOOD_STAIRS = REGISTRATE.object("ham_cooked_wood_stairs")
+            .block(prop -> new ModStairsBlock(() -> ModBlocks.HAM_COOKED_PLANKS.get().getDefaultState(), prop, false)).initialProperties(ModBlocks.HAM_COOKED_PLANKS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Slabs ///
-    public static final RegistryObject<Block> CHEESE_SLAB = registerBlockGeneral("cheese_slab", () -> new ModSlabBlock(Block.Properties.from(CHEESE_BLOCK.get()), true));
-    public static final RegistryObject<Block> GRILLED_CHEESE_SLAB = registerBlockGeneral("grilled_cheese_slab", () -> new ModSlabBlock(Block.Properties.from(GRILLED_CHEESE_BLOCK.get()), true));
-    public static final RegistryObject<Block> HAM_RAW_SLAB = registerBlockGeneral("ham_raw_slab", () -> new ModSlabBlock(Block.Properties.from(HAM_RAW_BLOCK.get()), true));
-    public static final RegistryObject<Block> HAM_COOKED_SLAB = registerBlockGeneral("ham_cooked_slab", () -> new ModSlabBlock(Block.Properties.from(HAM_COOKED_BLOCK.get()), true));
+    public static final RegistryEntry<ModSlabBlock> CHEESE_SLAB = REGISTRATE.object("cheese_slab")
+            .block(prop -> new ModSlabBlock(prop, true)).initialProperties(ModBlocks.CHEESE_BLOCK)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<ModSlabBlock> GRILLED_CHEESE_SLAB = REGISTRATE.object("grilled_cheese_slab")
+            .block(prop -> new ModSlabBlock(prop, true)).initialProperties(ModBlocks.GRILLED_CHEESE_BLOCK)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<ModSlabBlock> HAM_RAW_SLAB = REGISTRATE.object("ham_raw_slab")
+            .block(prop -> new ModSlabBlock(prop, true)).initialProperties(ModBlocks.HAM_RAW_BLOCK)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<ModSlabBlock> HAM_COOKED_SLAB = REGISTRATE.object("ham_cooked_slab")
+            .block(prop -> new ModSlabBlock(prop, true)).initialProperties(ModBlocks.HAM_COOKED_BLOCK)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> CHEESE_WOOD_SLAB = registerBlockGeneral("cheese_wood_slab", () -> new ModSlabBlock(Block.Properties.from(CHEESE_PLANKS.get()), false));
-    public static final RegistryObject<Block> GRILLED_CHEESE_WOOD_SLAB = registerBlockGeneral("grilled_cheese_wood_slab", () -> new ModSlabBlock(Block.Properties.from(GRILLED_CHEESE_PLANKS.get()), false));
-    public static final RegistryObject<Block> HAM_RAW_WOOD_SLAB = registerBlockGeneral("ham_raw_wood_slab", () -> new ModSlabBlock(Block.Properties.from(HAM_RAW_PLANKS.get()), false));
-    public static final RegistryObject<Block> HAM_COOKED_WOOD_SLAB = registerBlockGeneral("ham_cooked_wood_slab", () -> new ModSlabBlock(Block.Properties.from(HAM_COOKED_PLANKS.get()), false));
+    public static final RegistryEntry<ModSlabBlock> CHEESE_WOOD_SLAB = REGISTRATE.object("cheese_wood_slab")
+            .block(prop -> new ModSlabBlock(prop, false)).initialProperties(ModBlocks.CHEESE_PLANKS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<ModSlabBlock> GRILLED_CHEESE_WOOD_SLAB = REGISTRATE.object("grilled_cheese_wood_slab")
+            .block(prop -> new ModSlabBlock(prop, false)).initialProperties(ModBlocks.GRILLED_CHEESE_PLANKS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<ModSlabBlock> HAM_RAW_WOOD_SLAB = REGISTRATE.object("ham_raw_wood_slab")
+            .block(prop -> new ModSlabBlock(prop, false)).initialProperties(ModBlocks.HAM_RAW_PLANKS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<ModSlabBlock> HAM_COOKED_WOOD_SLAB = REGISTRATE.object("ham_cooked_wood_slab")
+            .block(prop -> new ModSlabBlock(prop, false)).initialProperties(ModBlocks.HAM_COOKED_PLANKS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Fences ///
-    public static final RegistryObject<Block> CHEESE_FENCE = registerBlockGeneral("cheese_fence", () -> new FenceBlock(Block.Properties.from(CHEESE_BLOCK.get()).hardnessAndResistance(2.0F, 3.0F)));
-    public static final RegistryObject<Block> CHEESE_FENCE_GATE = registerBlockGeneral("cheese_fence_gate", () -> new FenceGateBlock(Block.Properties.from(CHEESE_BLOCK.get()).hardnessAndResistance(2.0F, 3.0F)));
+    private static NonNullUnaryOperator<Block.Properties> FENCE_PROPS = prop -> prop.hardnessAndResistance(2.0F, 3.0F);
 
-    public static final RegistryObject<Block> GRILLED_CHEESE_FENCE = registerBlockGeneral("grilled_cheese_fence", () -> new FenceBlock(Block.Properties.from(GRILLED_CHEESE_BLOCK.get()).hardnessAndResistance(2.0F, 3.0F)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_FENCE_GATE = registerBlockGeneral("grilled_cheese_fence_gate", () -> new FenceGateBlock(Block.Properties.from(GRILLED_CHEESE_BLOCK.get()).hardnessAndResistance(2.0F, 3.0F)));
+    public static final RegistryEntry<FenceBlock> CHEESE_FENCE = REGISTRATE.object("cheese_fence").block(FenceBlock::new)
+            .initialProperties(ModBlocks.CHEESE_BLOCK).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FenceGateBlock> CHEESE_FENCE_GATE = REGISTRATE.object("cheese_fence_gate").block(FenceGateBlock::new)
+            .initialProperties(ModBlocks.CHEESE_BLOCK).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> HAM_RAW_FENCE = registerBlockGeneral("ham_raw_fence", () -> new FenceBlock(Block.Properties.from(HAM_RAW_BLOCK.get()).hardnessAndResistance(2.0F, 3.0F)));
-    public static final RegistryObject<Block> HAM_RAW_FENCE_GATE = registerBlockGeneral("ham_raw_fence_gate", () -> new FenceGateBlock(Block.Properties.from(HAM_RAW_BLOCK.get()).hardnessAndResistance(2.0F, 3.0F)));
+    public static final RegistryEntry<FenceBlock> GRILLED_CHEESE_FENCE = REGISTRATE.object("grilled_cheese_fence").block(FenceBlock::new)
+            .initialProperties(ModBlocks.GRILLED_CHEESE_BLOCK).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FenceGateBlock> GRILLED_CHEESE_FENCE_GATE = REGISTRATE.object("grilled_cheese_fence_gate").block(FenceGateBlock::new)
+            .initialProperties(ModBlocks.GRILLED_CHEESE_BLOCK).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> HAM_COOKED_FENCE = registerBlockGeneral("ham_cooked_fence", () -> new FenceBlock(Block.Properties.from(HAM_COOKED_BLOCK.get()).hardnessAndResistance(2.0F, 3.0F)));
-    public static final RegistryObject<Block> HAM_COOKED_FENCE_GATE = registerBlockGeneral("ham_cooked_fence_gate", () -> new FenceGateBlock(Block.Properties.from(HAM_COOKED_BLOCK.get()).hardnessAndResistance(2.0F, 3.0F)));
+    public static final RegistryEntry<FenceBlock> HAM_RAW_FENCE = REGISTRATE.object("ham_raw_fence").block(FenceBlock::new)
+            .initialProperties(ModBlocks.HAM_RAW_BLOCK).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FenceGateBlock> HAM_RAW_FENCE_GATE = REGISTRATE.object("ham_raw_fence_gate").block(FenceGateBlock::new)
+            .initialProperties(ModBlocks.HAM_RAW_BLOCK).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> CHEESE_WOOD_FENCE = registerBlockGeneral("cheese_wood_fence", () -> new FenceBlock(Block.Properties.from(CHEESE_PLANKS.get()).hardnessAndResistance(2.0F, 3.0F)));
-    public static final RegistryObject<Block> CHEESE_WOOD_FENCE_GATE = registerBlockGeneral("cheese_wood_fence_gate", () -> new FenceGateBlock(Block.Properties.from(CHEESE_PLANKS.get()).hardnessAndResistance(2.0F, 3.0F)));
+    public static final RegistryEntry<FenceBlock> HAM_COOKED_FENCE = REGISTRATE.object("ham_cooked_fence").block(FenceBlock::new)
+            .initialProperties(ModBlocks.HAM_COOKED_BLOCK).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FenceGateBlock> HAM_COOKED_FENCE_GATE = REGISTRATE.object("ham_cooked_fence_gate").block(FenceGateBlock::new)
+            .initialProperties(ModBlocks.HAM_COOKED_BLOCK).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> GRILLED_CHEESE_WOOD_FENCE = registerBlockGeneral("grilled_cheese_wood_fence", () -> new FenceBlock(Block.Properties.from(GRILLED_CHEESE_PLANKS.get()).hardnessAndResistance(2.0F, 3.0F)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_WOOD_FENCE_GATE = registerBlockGeneral("grilled_cheese_wood_fence_gate", () -> new FenceGateBlock(Block.Properties.from(GRILLED_CHEESE_PLANKS.get()).hardnessAndResistance(2.0F, 3.0F)));
+    public static final RegistryEntry<FenceBlock> CHEESE_WOOD_FENCE = REGISTRATE.object("cheese_wood_fence").block(FenceBlock::new)
+            .initialProperties(ModBlocks.CHEESE_PLANKS).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FenceGateBlock> CHEESE_WOOD_FENCE_GATE = REGISTRATE.object("cheese_wood_fence_gate").block(FenceGateBlock::new)
+            .initialProperties(ModBlocks.CHEESE_PLANKS).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> HAM_RAW_WOOD_FENCE = registerBlockGeneral("ham_raw_wood_fence", () -> new FenceBlock(Block.Properties.from(HAM_RAW_PLANKS.get()).hardnessAndResistance(2.0F, 3.0F)));
-    public static final RegistryObject<Block> HAM_RAW_WOOD_FENCE_GATE = registerBlockGeneral("ham_raw_wood_fence_gate", () -> new FenceGateBlock(Block.Properties.from(HAM_RAW_PLANKS.get()).hardnessAndResistance(2.0F, 3.0F)));
+    public static final RegistryEntry<FenceBlock> GRILLED_CHEESE_WOOD_FENCE = REGISTRATE.object("grilled_cheese_wood_fence").block(FenceBlock::new)
+            .initialProperties(ModBlocks.GRILLED_CHEESE_PLANKS).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FenceGateBlock> GRILLED_CHEESE_WOOD_FENCE_GATE = REGISTRATE.object("grilled_cheese_wood_fence_gate").block(FenceGateBlock::new)
+            .initialProperties(ModBlocks.GRILLED_CHEESE_PLANKS).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> HAM_COOKED_WOOD_FENCE = registerBlockGeneral("ham_cooked_wood_fence", () -> new FenceBlock(Block.Properties.from(HAM_COOKED_PLANKS.get()).hardnessAndResistance(2.0F, 3.0F)));
-    public static final RegistryObject<Block> HAM_COOKED_WOOD_FENCE_GATE = registerBlockGeneral("ham_cooked_wood_fence_gate", () -> new FenceGateBlock(Block.Properties.from(HAM_COOKED_PLANKS.get()).hardnessAndResistance(2.0F, 3.0F)));
+    public static final RegistryEntry<FenceBlock> HAM_RAW_WOOD_FENCE = REGISTRATE.object("ham_raw_wood_fence").block(FenceBlock::new)
+            .initialProperties(ModBlocks.HAM_RAW_PLANKS).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FenceGateBlock> HAM_RAW_WOOD_FENCE_GATE = REGISTRATE.object("ham_raw_wood_fence_gate").block(FenceGateBlock::new)
+            .initialProperties(ModBlocks.HAM_RAW_PLANKS).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+
+    public static final RegistryEntry<FenceBlock> HAM_COOKED_WOOD_FENCE = REGISTRATE.object("ham_cooked_wood_fence").block(FenceBlock::new)
+            .initialProperties(ModBlocks.HAM_COOKED_PLANKS).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FenceGateBlock> HAM_COOKED_WOOD_FENCE_GATE = REGISTRATE.object("ham_cooked_wood_fence_gate").block(FenceGateBlock::new)
+            .initialProperties(ModBlocks.HAM_COOKED_PLANKS).properties(FENCE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Doors ///
-    public static final RegistryObject<Block> CHEESE_DOOR = registerBlockGeneral("cheese_door", () -> new DoorBlock(Block.Properties.from(CHEESE_BLOCK.get()).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_DOOR = registerBlockGeneral("grilled_cheese_door", () -> new DoorBlock(Block.Properties.from(GRILLED_CHEESE_BLOCK.get()).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> HAM_RAW_DOOR = registerBlockGeneral("ham_raw_door", () -> new DoorBlock(Block.Properties.from(HAM_RAW_BLOCK.get()).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> HAM_COOKED_DOOR = registerBlockGeneral("ham_cooked_door", () -> new DoorBlock(Block.Properties.from(HAM_COOKED_BLOCK.get()).hardnessAndResistance(3.0F)));
+    private static NonNullUnaryOperator<Block.Properties> DOOR_PROPS = prop -> prop.hardnessAndResistance(3.0F);
 
-    public static final RegistryObject<Block> CHEESE_WOOD_DOOR = registerBlockGeneral("cheese_wood_door", () -> new DoorBlock(Block.Properties.from(CHEESE_PLANKS.get()).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_WOOD_DOOR = registerBlockGeneral("grilled_cheese_wood_door", () -> new DoorBlock(Block.Properties.from(GRILLED_CHEESE_PLANKS.get()).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> HAM_RAW_WOOD_DOOR = registerBlockGeneral("ham_raw_wood_door", () -> new DoorBlock(Block.Properties.from(HAM_RAW_PLANKS.get()).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> HAM_COOKED_WOOD_DOOR = registerBlockGeneral("ham_cooked_wood_door", () -> new DoorBlock(Block.Properties.from(HAM_COOKED_PLANKS.get()).hardnessAndResistance(3.0F)));
+    public static final RegistryEntry<DoorBlock> CHEESE_DOOR = REGISTRATE.object("cheese_door").block(DoorBlock::new)
+            .initialProperties(ModBlocks.CHEESE_BLOCK).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<DoorBlock> GRILLED_CHEESE_DOOR = REGISTRATE.object("grilled_cheese_door").block(DoorBlock::new)
+            .initialProperties(ModBlocks.GRILLED_CHEESE_BLOCK).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<DoorBlock> HAM_RAW_DOOR = REGISTRATE.object("ham_raw_door").block(DoorBlock::new)
+            .initialProperties(ModBlocks.HAM_RAW_BLOCK).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<DoorBlock> HAM_COOKED_DOOR = REGISTRATE.object("ham_cooked_door").block(DoorBlock::new)
+            .initialProperties(ModBlocks.HAM_COOKED_BLOCK).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+
+    public static final RegistryEntry<DoorBlock> CHEESE_WOOD_DOOR = REGISTRATE.object("cheese_wood_door").block(DoorBlock::new)
+            .initialProperties(ModBlocks.CHEESE_PLANKS).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<DoorBlock> GRILLED_CHEESE_WOOD_DOOR = REGISTRATE.object("grilled_cheese_wood_door").block(DoorBlock::new)
+            .initialProperties(ModBlocks.GRILLED_CHEESE_PLANKS).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<DoorBlock> HAM_RAW_WOOD_DOOR = REGISTRATE.object("ham_raw_wood_door").block(DoorBlock::new)
+            .initialProperties(ModBlocks.HAM_RAW_PLANKS).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<DoorBlock> HAM_COOKED_WOOD_DOOR = REGISTRATE.object("ham_cooked_wood_door").block(DoorBlock::new)
+            .initialProperties(ModBlocks.HAM_COOKED_PLANKS).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Trap Doors ///
-    public static final RegistryObject<Block> CHEESE_TRAP_DOOR = registerBlockGeneral("cheese_trap_door", () -> new TrapDoorBlock(Block.Properties.from(CHEESE_BLOCK.get()).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_TRAP_DOOR = registerBlockGeneral("grilled_cheese_trap_door", () -> new TrapDoorBlock(Block.Properties.from(GRILLED_CHEESE_BLOCK.get()).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> HAM_RAW_TRAP_DOOR = registerBlockGeneral("ham_raw_trap_door", () -> new TrapDoorBlock(Block.Properties.from(HAM_RAW_BLOCK.get()).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> HAM_COOKED_TRAP_DOOR = registerBlockGeneral("ham_cooked_trap_door", () -> new TrapDoorBlock(Block.Properties.from(HAM_COOKED_BLOCK.get()).hardnessAndResistance(3.0F)));
+    public static final RegistryEntry<TrapDoorBlock> CHEESE_TRAP_DOOR = REGISTRATE.object("cheese_trap_door").block(TrapDoorBlock::new)
+            .initialProperties(ModBlocks.CHEESE_BLOCK).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<TrapDoorBlock> GRILLED_CHEESE_TRAP_DOOR = REGISTRATE.object("grilled_cheese_trap_door").block(TrapDoorBlock::new)
+            .initialProperties(ModBlocks.GRILLED_CHEESE_BLOCK).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<TrapDoorBlock> HAM_RAW_TRAP_DOOR = REGISTRATE.object("ham_raw_trap_door").block(TrapDoorBlock::new)
+            .initialProperties(ModBlocks.HAM_RAW_BLOCK).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<TrapDoorBlock> HAM_COOKED_TRAP_DOOR = REGISTRATE.object("ham_cooked_trap_door").block(TrapDoorBlock::new)
+            .initialProperties(ModBlocks.HAM_COOKED_BLOCK).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> CHEESE_WOOD_TRAP_DOOR = registerBlockGeneral("cheese_wood_trap_door", () -> new TrapDoorBlock(Block.Properties.from(CHEESE_PLANKS.get()).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_WOOD_TRAP_DOOR = registerBlockGeneral("grilled_cheese_wood_trap_door", () -> new TrapDoorBlock(Block.Properties.from(GRILLED_CHEESE_PLANKS.get()).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> HAM_RAW_WOOD_TRAP_DOOR = registerBlockGeneral("ham_raw_wood_trap_door", () -> new TrapDoorBlock(Block.Properties.from(HAM_RAW_PLANKS.get()).hardnessAndResistance(3.0F)));
-    public static final RegistryObject<Block> HAM_COOKED_WOOD_TRAP_DOOR = registerBlockGeneral("ham_cooked_wood_trap_door", () -> new TrapDoorBlock(Block.Properties.from(HAM_COOKED_PLANKS.get()).hardnessAndResistance(3.0F)));
+    public static final RegistryEntry<TrapDoorBlock> CHEESE_WOOD_TRAP_DOOR = REGISTRATE.object("cheese_wood_trap_door").block(TrapDoorBlock::new)
+            .initialProperties(ModBlocks.CHEESE_PLANKS).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<TrapDoorBlock> GRILLED_CHEESE_WOOD_TRAP_DOOR = REGISTRATE.object("grilled_cheese_wood_trap_door").block(TrapDoorBlock::new)
+            .initialProperties(ModBlocks.GRILLED_CHEESE_PLANKS).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<TrapDoorBlock> HAM_RAW_WOOD_TRAP_DOOR = REGISTRATE.object("ham_raw_wood_trap_door").block(TrapDoorBlock::new)
+            .initialProperties(ModBlocks.HAM_RAW_PLANKS).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<TrapDoorBlock> HAM_COOKED_WOOD_TRAP_DOOR = REGISTRATE.object("ham_cooked_wood_trap_door").block(TrapDoorBlock::new)
+            .initialProperties(ModBlocks.HAM_COOKED_PLANKS).properties(DOOR_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Pressure Plate ///
-    public static final RegistryObject<Block> CHEESE_PRESSURE_PLATE = registerBlockGeneral("cheese_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(CHEESE_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_PRESSURE_PLATE = registerBlockGeneral("grilled_cheese_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(GRILLED_CHEESE_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> HAM_RAW_PRESSURE_PLATE = registerBlockGeneral("ham_raw_pressure_plate", () -> new HamPressurePlateBlock(Block.Properties.from(HAM_RAW_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> HAM_COOKED_PRESSURE_PLATE = registerBlockGeneral("ham_cooked_pressure_plate", () -> new HamPressurePlateBlock(Block.Properties.from(HAM_COOKED_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+    private static NonNullUnaryOperator<Block.Properties> PLATE_BUTTON_PROPS = prop -> prop.doesNotBlockMovement().hardnessAndResistance(0.5F);
 
-    public static final RegistryObject<Block> CHEESE_WOOD_PRESSURE_PLATE = registerBlockGeneral("cheese_wood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(CHEESE_PLANKS.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_WOOD_PRESSURE_PLATE = registerBlockGeneral("grilled_cheese_wood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(GRILLED_CHEESE_PLANKS.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> HAM_RAW_WOOD_PRESSURE_PLATE = registerBlockGeneral("ham_raw_wood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(HAM_RAW_PLANKS.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> HAM_COOKED_WOOD_PRESSURE_PLATE = registerBlockGeneral("ham_cooked_wood_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, Block.Properties.from(HAM_COOKED_PLANKS.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+    public static final RegistryEntry<PressurePlateBlock> CHEESE_PRESSURE_PLATE = REGISTRATE.object("cheese_pressure_plate")
+            .block(prop -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, prop)).initialProperties(ModBlocks.CHEESE_BLOCK).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<PressurePlateBlock> GRILLED_CHEESE_PRESSURE_PLATE = REGISTRATE.object("grilled_cheese_pressure_plate")
+            .block(prop -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, prop)).initialProperties(ModBlocks.GRILLED_CHEESE_BLOCK).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<HamPressurePlateBlock> HAM_RAW_PRESSURE_PLATE = REGISTRATE.object("ham_raw_pressure_plate").block(HamPressurePlateBlock::new)
+            .initialProperties(ModBlocks.HAM_RAW_BLOCK).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<HamPressurePlateBlock> HAM_COOKED_PRESSURE_PLATE = REGISTRATE.object("ham_cooked_pressure_plate").block(HamPressurePlateBlock::new)
+            .initialProperties(ModBlocks.HAM_COOKED_BLOCK).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+
+    public static final RegistryEntry<PressurePlateBlock> CHEESE_WOOD_PRESSURE_PLATE = REGISTRATE.object("cheese_wood_pressure_plate")
+            .block(prop -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, prop)).initialProperties(ModBlocks.CHEESE_PLANKS).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<PressurePlateBlock> GRILLED_CHEESE_WOOD_PRESSURE_PLATE = REGISTRATE.object("grilled_cheese_wood_pressure_plate")
+            .block(prop -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, prop)).initialProperties(ModBlocks.GRILLED_CHEESE_PLANKS).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<PressurePlateBlock> HAM_RAW_WOOD_PRESSURE_PLATE = REGISTRATE.object("ham_raw_wood_pressure_plate")
+            .block(prop -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, prop)).initialProperties(ModBlocks.HAM_RAW_PLANKS).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<PressurePlateBlock> HAM_COOKED_WOOD_PRESSURE_PLATE = REGISTRATE.object("ham_cooked_wood_pressure_plate")
+            .block(prop -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, prop)).initialProperties(ModBlocks.HAM_COOKED_PLANKS).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Buttons ///
-    public static final RegistryObject<Block> CHEESE_BUTTON = registerBlockGeneral("cheese_button", () -> new WoodButtonBlock(Block.Properties.from(CHEESE_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_BUTTON = registerBlockGeneral("grilled_cheese_button", () -> new WoodButtonBlock(Block.Properties.from(GRILLED_CHEESE_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> HAM_RAW_BUTTON = registerBlockGeneral("ham_raw_button", () -> new HamButtonBlock(Block.Properties.from(HAM_RAW_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> HAM_COOKED_BUTTON = registerBlockGeneral("ham_cooked_button", () -> new HamButtonBlock(Block.Properties.from(HAM_COOKED_BLOCK.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+    public static final RegistryEntry<WoodButtonBlock> CHEESE_BUTTON = REGISTRATE.object("cheese_button").block(WoodButtonBlock::new)
+            .initialProperties(ModBlocks.CHEESE_BLOCK).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<WoodButtonBlock> GRILLED_CHEESE_BUTTON = REGISTRATE.object("grilled_cheese_button").block(WoodButtonBlock::new)
+            .initialProperties(ModBlocks.GRILLED_CHEESE_BLOCK).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<WoodButtonBlock> HAM_RAW_BUTTON = REGISTRATE.object("ham_raw_button").block(WoodButtonBlock::new)
+            .initialProperties(ModBlocks.HAM_RAW_BLOCK).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<WoodButtonBlock> HAM_COOKED_BUTTON = REGISTRATE.object("ham_cooked_button").block(WoodButtonBlock::new)
+            .initialProperties(ModBlocks.HAM_COOKED_BLOCK).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<Block> CHEESE_WOOD_BUTTON = registerBlockGeneral("cheese_wood_button", () -> new WoodButtonBlock(Block.Properties.from(CHEESE_PLANKS.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> GRILLED_CHEESE_WOOD_BUTTON = registerBlockGeneral("grilled_cheese_wood_button", () -> new WoodButtonBlock(Block.Properties.from(GRILLED_CHEESE_PLANKS.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> HAM_RAW_WOOD_BUTTON = registerBlockGeneral("ham_raw_wood_button", () -> new WoodButtonBlock(Block.Properties.from(HAM_RAW_PLANKS.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
-    public static final RegistryObject<Block> HAM_COOKED_WOOD_BUTTON = registerBlockGeneral("ham_cooked_wood_button", () -> new WoodButtonBlock(Block.Properties.from(HAM_COOKED_PLANKS.get()).doesNotBlockMovement().hardnessAndResistance(0.5F)));
+    public static final RegistryEntry<WoodButtonBlock> CHEESE_WOOD_BUTTON = REGISTRATE.object("cheese_wood_button").block(WoodButtonBlock::new)
+            .initialProperties(ModBlocks.CHEESE_PLANKS).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<WoodButtonBlock> GRILLED_CHEESE_WOOD_BUTTON = REGISTRATE.object("grilled_cheese_wood_button").block(WoodButtonBlock::new)
+            .initialProperties(ModBlocks.GRILLED_CHEESE_PLANKS).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<WoodButtonBlock> HAM_RAW_WOOD_BUTTON = REGISTRATE.object("ham_raw_wood_button").block(WoodButtonBlock::new)
+            .initialProperties(ModBlocks.HAM_RAW_PLANKS).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<WoodButtonBlock> HAM_COOKED_WOOD_BUTTON = REGISTRATE.object("ham_cooked_wood_button").block(WoodButtonBlock::new)
+            .initialProperties(ModBlocks.HAM_COOKED_PLANKS).properties(PLATE_BUTTON_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Drawers ///
-    public static final RegistryObject<Block> CHEESE_DRAW = registerBlockGeneral("cheese_draw", () -> new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5f).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_CHEESE_DRAW));
-    public static final RegistryObject<Block> GRILLED_CHEESE_DRAW = registerBlockGeneral("grilled_cheese_draw", () -> new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5f).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_CHEESE_DRAW));
-    public static final RegistryObject<Block> HAM_RAW_DRAW = registerBlockGeneral("ham_raw_draw", () -> new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5f).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_HAM_DRAW));
-    public static final RegistryObject<Block> HAM_COOKED_DRAW = registerBlockGeneral("ham_cooked_draw", () -> new FoodDrawBlock(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5f).sound(SoundType.WOOD), () -> ModStats.INTERACT_WITH_HAM_DRAW));
+    private static NonNullUnaryOperator<Block.Properties> DRAWER_PROPS = prop -> prop.hardnessAndResistance(2.5f).sound(SoundType.WOOD);
+
+    public static final RegistryEntry<FoodDrawBlock> CHEESE_DRAW = REGISTRATE.object("cheese_draw").block(prop -> new FoodDrawBlock(prop, () -> ModStats.INTERACT_WITH_CHEESE_DRAW))
+            .initialProperties(Material.WOOD, Material.WOOD.getColor()).properties(DRAWER_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FoodDrawBlock> GRILLED_CHEESE_DRAW = REGISTRATE.object("grilled_cheese_draw").block(prop -> new FoodDrawBlock(prop, () -> ModStats.INTERACT_WITH_CHEESE_DRAW))
+            .initialProperties(Material.WOOD, Material.WOOD.getColor()).properties(DRAWER_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FoodDrawBlock> HAM_RAW_DRAW = REGISTRATE.object("ham_raw_draw").block(prop -> new FoodDrawBlock(prop, () -> ModStats.INTERACT_WITH_CHEESE_DRAW))
+            .initialProperties(Material.WOOD, Material.WOOD.getColor()).properties(DRAWER_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<FoodDrawBlock> HAM_COOKED_DRAW = REGISTRATE.object("ham_cooked_draw").block(prop -> new FoodDrawBlock(prop, () -> ModStats.INTERACT_WITH_CHEESE_DRAW))
+            .initialProperties(Material.WOOD, Material.WOOD.getColor()).properties(DRAWER_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Other ///
-    public static final RegistryObject<Block> GRILL = registerBlockGeneral("grill", () -> new GrillBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5f).lightValue(13)));
-    public static final RegistryObject<Block> MELTER = registerBlockGeneral("melter", () -> new MelterBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5f).lightValue(13)));
-    public static final RegistryObject<Block> PIZZA_OVEN = registerBlockGeneral("pizza_oven", () -> new PizzaOvenBlock(Block.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(2.0f, 6.0f)));
+    public static final RegistryEntry<GrillBlock> GRILL = REGISTRATE.object("grill").block(GrillBlock::new)
+            .initialProperties(Material.IRON, Material.IRON.getColor()).properties(prop -> prop.hardnessAndResistance(3.5f).lightValue(13))
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<MelterBlock> MELTER = REGISTRATE.object("melter").block(MelterBlock::new)
+            .initialProperties(Material.IRON, Material.IRON.getColor()).properties(prop -> prop.hardnessAndResistance(3.5f).lightValue(13))
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
+    public static final RegistryEntry<PizzaOvenBlock> PIZZA_OVEN = REGISTRATE.object("pizza_oven").block(PizzaOvenBlock::new)
+            .initialProperties(Material.ROCK, MaterialColor.RED).properties(prop -> prop.hardnessAndResistance(2.0f, 6.0f))
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    public static final RegistryObject<PineappleBlock> PINEAPPLE = BLOCKS.register("pineapple_plant", () -> new PineappleBlock(Block.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)));
+    public static final RegistryEntry<PineappleBlock> PINEAPPLE = REGISTRATE.block("pineapple_plant", PineappleBlock::new)
+            .initialProperties(Material.PLANTS, Material.PLANTS.getColor()).properties(prop -> prop.doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)).register();
 
-    public static final RegistryObject<Block> CHEESE_CAKE = registerBlockGroup("cheese_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
-    public static final RegistryObject<Block> GRILLED_CHEESE_CAKE = registerBlockGroup("grilled_cheese_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
-    public static final RegistryObject<Block> HAM_RAW_CAKE = registerBlockGroup("ham_raw_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
-    public static final RegistryObject<Block> HAM_COOKED_CAKE = registerBlockGroup("ham_cooked_cake", () -> new CakeBlock(Block.Properties.create(Material.CAKE).hardnessAndResistance(0.5f).sound(SoundType.CLOTH)), ModItemGroups.GROUP_FOODS);
+    private static NonNullUnaryOperator<Block.Properties> CAKE_PROPS = prop -> prop.hardnessAndResistance(0.5f).sound(SoundType.CLOTH);
 
-    public static final RegistryObject<FoodWorldPortalBlock> FOOD_PORTAL = BLOCKS.register("food_portal", () -> new FoodWorldPortalBlock(Block.Properties.create(Material.PORTAL).doesNotBlockMovement().harvestTool(ToolType.PICKAXE).hardnessAndResistance(-1.0F, 3000000.0F).lightValue(10).sound(SoundType.GLASS)));
+    public static final RegistryEntry<CakeBlock> CHEESE_CAKE = REGISTRATE.object("cheese_cake").block(CakeBlock::new)
+            .initialProperties(Material.CAKE, Material.CAKE.getColor()).properties(CAKE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_FOODS)).build().register();
+    public static final RegistryEntry<CakeBlock> GRILLED_CHEESE_CAKE = REGISTRATE.object("grilled_cheese_cake").block(CakeBlock::new)
+            .initialProperties(Material.CAKE, Material.CAKE.getColor()).properties(CAKE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_FOODS)).build().register();
+    public static final RegistryEntry<CakeBlock> HAM_RAW_CAKE = REGISTRATE.object("ham_raw_cake").block(CakeBlock::new)
+            .initialProperties(Material.CAKE, Material.CAKE.getColor()).properties(CAKE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_FOODS)).build().register();
+    public static final RegistryEntry<CakeBlock> HAM_COOKED_CAKE = REGISTRATE.object("ham_cooked_cake").block(CakeBlock::new)
+            .initialProperties(Material.CAKE, Material.CAKE.getColor()).properties(CAKE_PROPS)
+            .item().properties(prop -> prop.group(ModItemGroups.GROUP_FOODS)).build().register();
 
-    private static <T extends Block> RegistryObject<T> registerBlockGeneral(String name, Supplier<? extends T> block) {
-        return registerBlock(name, block, item -> registerBlockItem(item, ModItemGroups.GROUP_ALL));
-    }
+    public static final RegistryEntry<FoodWorldPortalBlock> FOOD_PORTAL = REGISTRATE.block("food_portal", FoodWorldPortalBlock::new)
+            .initialProperties(Material.PORTAL, Material.PORTAL.getColor())
+            .properties(prop -> prop.doesNotBlockMovement().harvestTool(ToolType.PICKAXE).hardnessAndResistance(-1.0F, 3000000.0F).lightValue(10).sound(SoundType.GLASS))
+            .register();
 
-    private static <T extends Block> RegistryObject<T> registerBlockGroup(String name, Supplier<? extends T> block, ItemGroup group) {
-        return registerBlock(name, block, item -> registerBlockItem(item, group));
-    }
-
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {
-        RegistryObject<T> reg = BLOCKS.register(name, block);
-        ModItems.ITEMS.register(name, item.apply(reg));
-        return reg;
-    }
-
-    private static <T extends Block> Supplier<BlockItem> registerBlockItem(final RegistryObject<T> block, ItemGroup group) {
-        return () -> new BlockItem(block.get(), new Item.Properties().group(group));
+    public static void load() {
     }
 }

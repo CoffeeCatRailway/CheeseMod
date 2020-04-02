@@ -32,7 +32,7 @@ public class ModItemGroups {
             last = System.currentTimeMillis();
 
             if (now > cooldown) {
-                item = ModItems.FOODS.get(new Random().nextInt(ModItems.FOODS.size() - 1)).get();
+                item = ModItems.CHEESE_SLICE.get(); //ModItems.FOODS.get(new Random().nextInt(ModItems.FOODS.size() - 1));
                 now = 0;
             }
             return new ItemStack(item);

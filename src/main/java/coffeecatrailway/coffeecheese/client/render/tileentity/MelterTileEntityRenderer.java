@@ -51,10 +51,10 @@ public class MelterTileEntityRenderer extends TileEntityRenderer<MelterTileEntit
                 matrixStack.push();
                 Matrix4f matrix = matrixStack.getLast().getMatrix();
                 float animation = 16 * still.getUvShrinkRatio() * (tile.getWorld().getGameTime() % still.getFrameCount());
-                buffer.pos(matrix, left, posY, 0).tex(0, 0 + animation).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).endVertex();
-                buffer.pos(matrix, right, posY, 0).tex(0.5f, 0 + animation).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).endVertex();
-                buffer.pos(matrix, right, posY, 1).tex(0.5f, 16f / (still.getHeight() * still.getFrameCount()) + animation).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).endVertex();
-                buffer.pos(matrix, left, posY, 1).tex(0, 16f / (still.getHeight() * still.getFrameCount()) + animation).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).endVertex();
+                buffer.pos(matrix, left, posY, 0).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).tex(0, 0 + animation).endVertex();
+                buffer.pos(matrix, right, posY, 0).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).tex(0.5f, 0 + animation).endVertex();
+                buffer.pos(matrix, right, posY, 1).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).tex(0.5f, 16f / (still.getHeight() * still.getFrameCount()) + animation).endVertex();
+                buffer.pos(matrix, left, posY, 1).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).tex(0, 16f / (still.getHeight() * still.getFrameCount()) + animation).endVertex();
                 matrixStack.pop();
             }
             RenderSystem.popMatrix();

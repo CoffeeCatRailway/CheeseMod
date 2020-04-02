@@ -10,6 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.blockstateprovider.BlockStateProvider;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.DecoratedFeatureConfig;
 import net.minecraft.world.gen.feature.FlowersFeature;
@@ -18,6 +19,7 @@ import net.minecraft.world.server.ServerWorld;
 
 import java.util.List;
 import java.util.Random;
+import java.util.function.Supplier;
 
 /**
  * @author CoffeeCatRailway
@@ -25,16 +27,16 @@ import java.util.Random;
  */
 public class FoodGrassBlock extends Block implements IGrowable {
 
-    private final BlockState tallstate;
+    private final Supplier<TallFoodGrassBlock> tallstate;
 
-    public FoodGrassBlock(Properties properties, BlockState tallstate) {
+    public FoodGrassBlock(Properties properties, Supplier<TallFoodGrassBlock> tallstate) {
         super(properties);
         this.tallstate = tallstate;
     }
 
     @Override
     public boolean canGrow(IBlockReader world, BlockPos pos, BlockState state, boolean isClient) {
-        return world.getBlockState(pos.up()).isAir();
+        return world.getBlockState(pos.up()).isAir(world, pos);
     }
 
     @Override
@@ -45,7 +47,7 @@ public class FoodGrassBlock extends Block implements IGrowable {
     @Override
     public void grow(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
         BlockPos blockpos = pos.up();
-        BlockState blockstate = this.tallstate;
+        BlockState blockstate = this.tallstate.get().getDefaultState();
 
         for (int i = 0; i < 128; ++i) {
             BlockPos blockpos1 = blockpos;
@@ -79,7 +81,6 @@ public class FoodGrassBlock extends Block implements IGrowable {
                 blockpos1 = blockpos1.add(rand.nextInt(3) - 1, (rand.nextInt(3) - 1) * rand.nextInt(3) / 2, rand.nextInt(3) - 1);
                 if (world.getBlockState(blockpos1.down()).getBlock() != this || world.getBlockState(blockpos1).isCollisionShapeOpaque(world, blockpos1))
                     break;
-
                 j++;
             }
         }

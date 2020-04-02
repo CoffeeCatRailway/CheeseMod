@@ -6,6 +6,7 @@ import coffeecatrailway.coffeecheese.common.tileentity.MelterTileEntity;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
+import net.minecraft.client.renderer.texture.AtlasTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.PlayerInventory;
@@ -100,7 +101,7 @@ public class MelterScreen extends ContainerScreen<MelterContainer> {
     }
 
     public static int getFluidTextureHeight(ResourceLocation fluidTexture) {
-        TextureAtlasSprite sprite = Minecraft.getInstance().getTextureMap().getSprite(fluidTexture);
+        TextureAtlasSprite sprite = Minecraft.getInstance().getAtlasSpriteGetter(AtlasTexture.LOCATION_BLOCKS_TEXTURE).apply(fluidTexture);
         return sprite.getHeight();
     }
 

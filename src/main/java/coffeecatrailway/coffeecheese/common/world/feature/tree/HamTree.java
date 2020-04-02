@@ -20,6 +20,6 @@ public class HamTree extends FoodTree {
 
     @Override
     public ConfiguredFeature<FoodTreeFeatureConfig, ?> createTreeFeature(Random rand) {
-        return cooked ? ModFeatures.HAM_COOKED_TREE.get().withConfiguration(ModFeatures.HAM_COOKED_TREE_CONFIG) : ModFeatures.HAM_RAW_TREE.get().withConfiguration(ModFeatures.HAM_RAW_TREE_CONFIG);
+        return cooked ? ModFeatures.HAM_COOKED_TREE.get().withConfiguration(ModFeatures.getHamCookedTreeConfig()) : ModFeatures.HAM_RAW_TREE.get().withConfiguration(ModFeatures.getHamRawTreeConfig());
     }
 }

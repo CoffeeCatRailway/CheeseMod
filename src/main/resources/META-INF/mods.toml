@@ -38,6 +38,6 @@ Issues: https://github.com/CoffeeCatRailway/CoffeeCatsCheeseMod/issues
     side="BOTH"
 [[dependencies.coffeecheese]]
     modId="patchouli"
-    mandatory=true
+    mandatory=false
     versionRange="[1.2-28,)"
     side="BOTH"

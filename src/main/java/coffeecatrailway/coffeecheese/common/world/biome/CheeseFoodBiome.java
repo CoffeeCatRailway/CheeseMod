@@ -17,9 +17,9 @@ public class CheeseFoodBiome extends BaseFoodBiome {
     @Override
     public void addFeatures() {
         super.addFeatures();
-        ModFeatures.addFoodGrass(this, ModFeatures.CHEESE_GRASS_CONFIG);
-        ModFeatures.addTallFoodGrass(this, ModFeatures.TALL_CHEESE_GRASS_CONFIG);
+        ModFeatures.addFoodGrass(this, ModFeatures.getCheeseGrassConfig());
+        ModFeatures.addTallFoodGrass(this, ModFeatures.getTallCheeseGrassConfig());
         if (this.category == Category.FOREST)
-            ModFeatures.addFoodTrees(this, ModFeatures.CHEESE_TREE.get().withConfiguration(ModFeatures.CHEESE_TREE_CONFIG), ModFeatures.GRILLED_CHEESE_TREE.get().withConfiguration(ModFeatures.GRILLED_CHEESE_TREE_CONFIG));
+            ModFeatures.addFoodTrees(this, ModFeatures.CHEESE_TREE.get().withConfiguration(ModFeatures.getCheeseTreeConfig()), ModFeatures.GRILLED_CHEESE_TREE.get().withConfiguration(ModFeatures.getGrilledCheeseTreeConfig()), 10);
     }
 }

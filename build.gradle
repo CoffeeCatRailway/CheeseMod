@@ -8,6 +8,10 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
     }
 }
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
@@ -89,6 +93,13 @@ repositories {
     maven {  // Patchouli
         url 'https://maven.blamejared.com'
     }
+    maven { // Registrate
+        url "http://maven.tterrag.com/"
+    }
+}
+
+configurations {
+    shade
 }
 
 dependencies {
@@ -102,8 +113,23 @@ dependencies {
     compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-${project.topVersion}:api")
     runtimeOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-${project.topVersion}")
 
-    compile fg.deobf("vazkii.patchouli:Patchouli:${project.mcVersion}-${project.patchouliVersion}")
+//    compile fg.deobf("vazkii.patchouli:Patchouli:${project.mcVersion}-${project.patchouliVersion}")
+
+    def registrate = "com.tterrag.registrate:Registrate:MC${project.mcVersion}-${project.registrateVersion}"
+    implementation fg.deobf(registrate)
+    shade registrate
 }
+
+shadowJar {
+    configurations = [project.configurations.shade]
+    relocate 'com.tterrag.registrate', 'coffeecatrailway.repack.registrate'
+}
+
+reobf {
+    shadowJar {}
+}
+
+build.dependsOn reobfShadowJar
 
 processResources {
     inputs.property("version", version)

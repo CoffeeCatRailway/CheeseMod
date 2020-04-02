@@ -3,13 +3,6 @@ package coffeecatrailway.coffeecheese.common.world.biome;
 import coffeecatrailway.coffeecheese.registry.ModBiomes;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModFeatures;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
-import net.minecraft.world.gen.placement.FrequencyConfig;
-import net.minecraft.world.gen.placement.NoiseDependant;
-import net.minecraft.world.gen.placement.Placement;
 
 /**
  * @author CoffeeCatRailway
@@ -24,9 +17,9 @@ public class GrilledCheeseFoodBiome extends BaseFoodBiome {
     @Override
     public void addFeatures() {
         super.addFeatures();
-        ModFeatures.addFoodGrass(this, ModFeatures.GRILLED_CHEESE_GRASS_CONFIG);
-        ModFeatures.addTallFoodGrass(this, ModFeatures.TALL_GRILLED_CHEESE_GRASS_CONFIG);
+        ModFeatures.addFoodGrass(this, ModFeatures.getGrilledCheeseGrassConfig());
+        ModFeatures.addTallFoodGrass(this, ModFeatures.getTallGrilledCheeseGrassConfig());
         if (this.category == Category.FOREST)
-            ModFeatures.addFoodTrees(this, ModFeatures.GRILLED_CHEESE_TREE.get().withConfiguration(ModFeatures.GRILLED_CHEESE_TREE_CONFIG), ModFeatures.CHEESE_TREE.get().withConfiguration(ModFeatures.CHEESE_TREE_CONFIG));
+            ModFeatures.addFoodTrees(this, ModFeatures.GRILLED_CHEESE_TREE.get().withConfiguration(ModFeatures.getGrilledCheeseTreeConfig()), ModFeatures.CHEESE_TREE.get().withConfiguration(ModFeatures.getCheeseTreeConfig()), 9);
     }
 }

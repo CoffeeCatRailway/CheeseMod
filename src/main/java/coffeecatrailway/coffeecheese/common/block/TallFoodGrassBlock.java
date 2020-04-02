@@ -13,6 +13,7 @@ import net.minecraft.world.server.ServerWorld;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
+import java.util.function.Supplier;
 
 /**
  * @author CoffeeCatRailway
@@ -21,9 +22,9 @@ import java.util.Set;
 public class TallFoodGrassBlock extends BushBlock implements IGrowable, net.minecraftforge.common.IShearable {
 
     private static final VoxelShape SHAPE = Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 13.0D, 14.0D);
-    private final DoublePlantBlock doublePlantBlock;
+    private final Supplier<DoubleFoodPlantBlock> doublePlantBlock;
 
-    public TallFoodGrassBlock(Properties properties, DoublePlantBlock doublePlantBlock) {
+    public TallFoodGrassBlock(Properties properties, Supplier<DoubleFoodPlantBlock> doublePlantBlock) {
         super(properties);
         this.doublePlantBlock = doublePlantBlock;
     }
@@ -45,8 +46,8 @@ public class TallFoodGrassBlock extends BushBlock implements IGrowable, net.mine
 
     @Override
     public void grow(ServerWorld world, Random rand, BlockPos pos, BlockState state) {
-        if (this.doublePlantBlock.getDefaultState().isValidPosition(world, pos) && world.isAirBlock(pos.up()))
-            this.doublePlantBlock.placeAt(world, pos, 2);
+        if (this.doublePlantBlock.get().getDefaultState().isValidPosition(world, pos) && world.isAirBlock(pos.up()))
+            this.doublePlantBlock.get().placeAt(world, pos, 2);
     }
 
     @Override

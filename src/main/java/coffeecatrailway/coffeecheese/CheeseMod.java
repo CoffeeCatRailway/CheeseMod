@@ -9,10 +9,10 @@ import coffeecatrailway.coffeecheese.client.render.tileentity.PizzaOvenTileEntit
 import coffeecatrailway.coffeecheese.common.block.TallFoodGrassBlock;
 import coffeecatrailway.coffeecheese.common.command.ChezCommand;
 import coffeecatrailway.coffeecheese.common.world.ModWorldFeatures;
-import coffeecatrailway.coffeecheese.common.world.dimension.FoodWorldTeleporter;
 import coffeecatrailway.coffeecheese.compat.patchouli.ModPageTypes;
 import coffeecatrailway.coffeecheese.compat.top.TOPCompatibility;
 import coffeecatrailway.coffeecheese.registry.*;
+import com.tterrag.registrate.Registrate;
 import io.netty.buffer.Unpooled;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
@@ -26,7 +26,6 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.DimensionManager;
@@ -34,7 +33,6 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.RegisterDimensionsEvent;
-import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -53,7 +51,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import vazkii.patchouli.common.base.Patchouli;
+//import vazkii.patchouli.common.base.Patchouli;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -67,11 +65,10 @@ public class CheeseMod {
     public static ModCheeseConfig.ClientConfig CLIENT_CFG;
     public static ModCheeseConfig.ServerConfig SERVER_CFG;
 
+    public static Registrate REGISTRATE;
+
     public CheeseMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        modEventBus.addListener(this::setupClient);
-        modEventBus.addListener(this::setupCommon);
-        modEventBus.addListener(this::interModEvent);
 
         final Pair<ModCheeseConfig.ClientConfig, ForgeConfigSpec> specPairC = new ForgeConfigSpec.Builder().configure(ModCheeseConfig.ClientConfig::new);
         final Pair<ModCheeseConfig.ServerConfig, ForgeConfigSpec> specPairS = new ForgeConfigSpec.Builder().configure(ModCheeseConfig.ServerConfig::new);
@@ -80,8 +77,10 @@ public class CheeseMod {
         CLIENT_CFG = specPairC.getLeft();
         SERVER_CFG = specPairS.getLeft();
 
-        ModBlocks.BLOCKS.register(modEventBus);
-        ModItems.ITEMS.register(modEventBus);
+        REGISTRATE = Registrate.create(MOD_ID).itemGroup(() -> ModItemGroups.GROUP_ALL);
+
+        ModBlocks.load();
+        ModItems.load();
         ModFluids.register(modEventBus);
         ModTileEntities.TILE_ENTITIES.register(modEventBus);
         ModContainers.CONTAINERS.register(modEventBus);
@@ -95,11 +94,9 @@ public class CheeseMod {
         ModParticles.PARTICLE_TYPES.register(modEventBus);
         ModDimensions.DIMENSIONS.register(modEventBus);
         ModEnchantments.ENCHANTMENTS.register(modEventBus);
-    }
 
-    public void interModEvent(InterModProcessEvent event) {
-//        if (ModList.get().isLoaded(jeresources.JEResources.ID)) TODO: Add JER
-//            JEResourcesCompat.register();
+        modEventBus.addListener(this::setupClient);
+        modEventBus.addListener(this::setupCommon);
     }
 
     public void setupClient(FMLClientSetupEvent event) {
@@ -116,8 +113,8 @@ public class CheeseMod {
 
     @OnlyIn(Dist.CLIENT)
     public static void registerPatchouliPages() {
-        if (ModList.get().isLoaded(Patchouli.MOD_ID))
-            ModPageTypes.registerPageTypes();
+//        if (ModList.get().isLoaded(Patchouli.MOD_ID))
+//            ModPageTypes.registerPageTypes();
     }
 
     @OnlyIn(Dist.CLIENT)
