@@ -151,7 +151,7 @@ public class FoodWorldChunkGenerator extends NoiseChunkGenerator<FoodWorldChunkG
         public static FoodWorldGenSettings createDefault() {
             FoodWorldGenSettings foodWorldGenSettings = new FoodWorldGenSettings();
             foodWorldGenSettings.setDefaultBlock(Blocks.STONE.getDefaultState());
-            foodWorldGenSettings.setDefaultFluid(ModFluids.VINEGAR.get().getDefaultState());
+            foodWorldGenSettings.setDefaultFluid(ModFluids.VINEGAR.get().getDefaultState().getBlockState());
 
             return foodWorldGenSettings;
         }

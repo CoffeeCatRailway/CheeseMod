@@ -168,7 +168,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
     public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
         if (world.isRemote)
             return ActionResultType.PASS;
-        else if (player.getHeldItem(hand).getItem() == ModFluids.OIL_BUCKET.get() && hand == Hand.MAIN_HAND) {
+        else if (player.getHeldItem(hand).getItem() == ModFluids.OIL.get().getFilledBucket() && hand == Hand.MAIN_HAND) {
             if (world.getTileEntity(pos) instanceof GrillTileEntity) {
                 GrillTileEntity tile = (GrillTileEntity) world.getTileEntity(pos);
                 int oil = tile.getTank().getFluidAmount();
@@ -176,9 +176,9 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
                     if (!player.abilities.isCreativeMode)
                         player.setHeldItem(hand, new ItemStack(Items.BUCKET));
 
-                    tile.getTank().fill(new FluidStack(ModFluids.OIL_S.get(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
+                    tile.getTank().fill(new FluidStack(ModFluids.OIL.get().getFluid(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
                     world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    return ActionResultType.SUCCESS;
+                    return ActionResultType.PASS;
                 }
             }
         } else if (player.getHeldItem(hand).getItem() == Items.BUCKET && state.get(HAS_CATCHER) && hand == Hand.MAIN_HAND) {
@@ -187,11 +187,11 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
                 int oil = tile.getCatcherTank().getFluidAmount();
                 if (oil >= FluidAttributes.BUCKET_VOLUME) {
                     if (!player.abilities.isCreativeMode)
-                        player.setHeldItem(hand, new ItemStack(ModFluids.OIL_BUCKET.get()));
+                        player.setHeldItem(hand, new ItemStack(ModFluids.OIL.get().getFilledBucket()));
 
-                    tile.getCatcherTank().drain(new FluidStack(ModFluids.OIL_S.get(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
+                    tile.getCatcherTank().drain(new FluidStack(ModFluids.OIL.get().getFluid(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
                     world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    return ActionResultType.SUCCESS;
+                    return ActionResultType.PASS;
                 }
             }
         } else if (player.getHeldItem(hand).getItem() == ModItems.OIL_CATCHER.get() && !state.get(HAS_CATCHER) && hand == Hand.MAIN_HAND) {

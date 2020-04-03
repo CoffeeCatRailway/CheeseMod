@@ -196,12 +196,6 @@ public class ModItems {
     public static final RegistryEntry<Item> PIZZA_CHEESE_HAM_PINEAPPLE_COOKED = REGISTRATE.item("pizza_cheese_ham_pineapple_cooked", Item::new)
             .properties(prop -> prop.food(ModFoods.PIZZA_CHEESE_HAM_PINEAPPLE_COOKED).maxStackSize(32).group(ModItemGroups.GROUP_FOODS)).register();
 
-    /// Spawn Eggs ///
-//    public static final RegistryEntry<LazySpawnEggItem> CHEESE_FOODIE_SPAWN_EGG = REGISTRATE.item("cheese_foodie_spawn_egg", prop -> new LazySpawnEggItem<>(ModEntities.CHEESE_FOODIE, 11445876, 9404726, prop.group(ItemGroup.MISC))).register();
-//    public static final RegistryEntry<Item> GRILLED_CHEESE_FOODIE_SPAWN_EGG = REGISTRATE.item("grilled_cheese_foodie_spawn_egg", GrilledCheeseFoodieSpawnEggItem::new);
-//    public static final RegistryEntry<Item> HAM_RAW_FOODIE_SPAWN_EGG = REGISTRATE.item("ham_raw_foodie_spawn_egg", HamRawFoodieSpawnEggItem::new);
-//    public static final RegistryEntry<Item> HAM_COOKED_FOODIE_SPAWN_EGG = REGISTRATE.item("ham_cooked_foodie_spawn_egg", HamCookedFoodieSpawnEggItem::new);
-
     /// Boats ///
     public static final RegistryEntry<BoatItemCM> BOAT_CHEESE = REGISTRATE.item("cheese_boat", prop -> new BoatItemCM(BoatEntityCM.Type.CHEESE, prop.maxStackSize(1))).register();
     public static final RegistryEntry<BoatItemCM> BOAT_GRILLED_CHEESE = REGISTRATE.item("grilled_cheese_boat", prop -> new BoatItemCM(BoatEntityCM.Type.GRILLED_CHEESE, prop.maxStackSize(1))).register();

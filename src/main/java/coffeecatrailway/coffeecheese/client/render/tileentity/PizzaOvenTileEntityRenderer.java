@@ -48,7 +48,7 @@ public class PizzaOvenTileEntityRenderer extends TileEntityRenderer<PizzaOvenTil
 
             matrixStack.scale(1.1f, 1.1f, 1.1f);
 
-            Minecraft.getInstance().getItemRenderer().renderItem(new ItemStack(ModItems.OIL_CATCHER.get()), ItemCameraTransforms.TransformType.FIXED, combinedLight, combinedOverlay, matrixStack, typeBuffer);
+            Minecraft.getInstance().getItemRenderer().renderItem(outStack, ItemCameraTransforms.TransformType.FIXED, combinedLight, combinedOverlay, matrixStack, typeBuffer);
             matrixStack.pop();
         }
     }

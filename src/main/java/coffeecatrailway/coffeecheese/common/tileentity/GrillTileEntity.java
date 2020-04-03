@@ -107,10 +107,10 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                     GrillTileEntity.this.cookTimeTotal = value;
                     break;
                 case 4:
-                    GrillTileEntity.this.tank.setFluid(new FluidStack(ModFluids.OIL_S.get(), value));
+                    GrillTileEntity.this.tank.setFluid(new FluidStack(ModFluids.OIL.get().getFluid(), value));
                     break;
                 case 5:
-                    GrillTileEntity.this.catcherTank.setFluid(new FluidStack(ModFluids.OIL_S.get(), value));
+                    GrillTileEntity.this.catcherTank.setFluid(new FluidStack(ModFluids.OIL.get().getFluid(), value));
                     break;
             }
 
@@ -228,7 +228,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                         if (this.getBlockState().get(GrillBlock.HAS_CATCHER)) {
                             int catchedOil = this.getOilForRecipe() / 2 + (this.world.rand.nextInt(5) + 10);
                             if (this.catcherTank.getSpace() != 0)
-                                this.catcherTank.fill(new FluidStack(ModFluids.OIL_S.get(), catchedOil), IFluidHandler.FluidAction.EXECUTE);
+                                this.catcherTank.fill(new FluidStack(ModFluids.OIL.get().getFluid(), catchedOil), IFluidHandler.FluidAction.EXECUTE);
                             this.sendUpdates(GrillTileEntity.this);
                         }
 

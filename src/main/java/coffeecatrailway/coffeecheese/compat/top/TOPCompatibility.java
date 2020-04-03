@@ -59,11 +59,11 @@ public class TOPCompatibility implements Function<ITheOneProbe, Void>, IProbeInf
                     probeInfo.horizontal().item(tile.getStackInSlot(0)).progress(tile.data.get(2), tile.data.get(3));
 
                 probeInfo.horizontal().text(I18n.format("top." + CheeseMod.MOD_ID + ".grill.oil"));
-                probeInfo.horizontal().item(new ItemStack(ModFluids.OIL_BUCKET.get())).progress(tile.getTank().getFluidAmount(), tile.getTank().getCapacity());
+                probeInfo.horizontal().item(new ItemStack(ModFluids.OIL.get().getFilledBucket())).progress(tile.getTank().getFluidAmount(), tile.getTank().getCapacity());
 
                 if (tile.getBlockState().get(GrillBlock.HAS_CATCHER)) {
                     probeInfo.horizontal().text(I18n.format("top." + CheeseMod.MOD_ID + ".grill.oil_catcher"));
-                    probeInfo.horizontal().item(new ItemStack(ModFluids.OIL_BUCKET.get())).progress(tile.getCatcherTank().getFluidAmount(), tile.getCatcherTank().getCapacity());
+                    probeInfo.horizontal().item(new ItemStack(ModFluids.OIL.get().getFilledBucket())).progress(tile.getCatcherTank().getFluidAmount(), tile.getCatcherTank().getCapacity());
                 }
             }
             if (block == ModBlocks.MELTER.get()) {

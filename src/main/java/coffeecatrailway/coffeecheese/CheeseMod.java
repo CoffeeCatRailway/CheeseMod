@@ -51,7 +51,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-//import vazkii.patchouli.common.base.Patchouli;
+import vazkii.patchouli.common.base.Patchouli;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -81,15 +81,15 @@ public class CheeseMod {
 
         ModBlocks.load();
         ModItems.load();
-        ModFluids.register(modEventBus);
-        ModTileEntities.TILE_ENTITIES.register(modEventBus);
+        ModFluids.load();
+        ModTileEntities.load();
+        ModEntities.load();
         ModContainers.CONTAINERS.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
         ModBiomes.BIOMES.register(modEventBus);
         modEventBus.addListener(ModStats::registerAll);
         ModRecipes.registerRecipeType();
         ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
-        ModEntities.ENTITIES.register(modEventBus);
         modEventBus.addListener(ModEntities::registerSpawnPlacements);
         ModParticles.PARTICLE_TYPES.register(modEventBus);
         ModDimensions.DIMENSIONS.register(modEventBus);
@@ -113,8 +113,8 @@ public class CheeseMod {
 
     @OnlyIn(Dist.CLIENT)
     public static void registerPatchouliPages() {
-//        if (ModList.get().isLoaded(Patchouli.MOD_ID))
-//            ModPageTypes.registerPageTypes();
+        if (ModList.get().isLoaded(Patchouli.MOD_ID))
+            ModPageTypes.registerPageTypes();
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -141,10 +141,10 @@ public class CheeseMod {
 
     @OnlyIn(Dist.CLIENT)
     public static void registerTileEntityRenderers() {
-        ClientRegistry.bindTileEntityRenderer(ModTileEntities.GRILL.get(), dispatcher -> new GrillTileEntityRenderer(dispatcher));
-        ClientRegistry.bindTileEntityRenderer(ModTileEntities.MELTER.get(), dispatcher -> new MelterTileEntityRenderer(dispatcher));
-        ClientRegistry.bindTileEntityRenderer(ModTileEntities.PIZZA_OVEN.get(), dispatcher -> new PizzaOvenTileEntityRenderer(dispatcher));
-        ClientRegistry.bindTileEntityRenderer(ModTileEntities.FOOD_WORLD_PORTAL.get(), dispatcher -> new FoodWorldPortalTileEntityRenderer(dispatcher));
+        ClientRegistry.bindTileEntityRenderer(ModTileEntities.GRILL.get(), GrillTileEntityRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(ModTileEntities.MELTER.get(), MelterTileEntityRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(ModTileEntities.PIZZA_OVEN.get(), PizzaOvenTileEntityRenderer::new);
+        ClientRegistry.bindTileEntityRenderer(ModTileEntities.FOOD_WORLD_PORTAL.get(), FoodWorldPortalTileEntityRenderer::new);
 
         CheeseMod.LOGGER.debug("Tile entity renderers");
     }
@@ -166,7 +166,7 @@ public class CheeseMod {
 
         @SubscribeEvent
         public static void onItemCrafted(PlayerEvent.ItemCraftedEvent event) {
-            if (event.getCrafting().getItem() == ModFluids.OIL_BUCKET.get())
+            if (event.getCrafting().getItem() == ModFluids.OIL.get().getFilledBucket())
                 event.getInventory().decrStackSize(getSlotFor(event, new ItemStack(Items.WATER_BUCKET)), 1);
         }
 

@@ -43,8 +43,8 @@ public class MelterTileEntityRenderer extends TileEntityRenderer<MelterTileEntit
                 FluidStack fluid = tile.getTank().getFluid();
                 TextureAtlasSprite still = ((AtlasTexture) texture).getSprite(fluid.getFluid().getAttributes().getStillTexture(fluid));
                 float posY = 4.1f / 16f + MelterScreen.mapFluid(tile.data.get(4), 0f, 2.85f) / 16f;
-                float right = 1 / 16f;
-                float left = 15 / 16f;
+                float right = 0f;
+                float left = 1f;
                 IVertexBuilder buffer = typeBuffer.getBuffer(RenderTypeHelper.MELTER.applyTexture(new ResourceLocation(still.getName().getNamespace(), "textures/" + still.getName().getPath() + ".png")));
                 Color color = new Color(fluid.getFluid().getAttributes().getColor(tile.getTank().getFluid()));
 

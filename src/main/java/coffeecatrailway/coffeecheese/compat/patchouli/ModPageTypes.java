@@ -1,6 +1,6 @@
 package coffeecatrailway.coffeecheese.compat.patchouli;
 
-//import vazkii.patchouli.client.book.ClientBookRegistry;
+import vazkii.patchouli.client.book.ClientBookRegistry;
 
 /**
  * @author CoffeeCatRailway
@@ -8,10 +8,10 @@ package coffeecatrailway.coffeecheese.compat.patchouli;
  */
 public class ModPageTypes {
 
-//    public static void registerPageTypes() {
-//        ClientBookRegistry registry = ClientBookRegistry.INSTANCE;
-//
-//        registry.pageTypes.put("grilling", PageGrilling.class);
-//        registry.pageTypes.put("pizzaing", PagePizza.class);
-//    }
+    public static void registerPageTypes() {
+        ClientBookRegistry registry = ClientBookRegistry.INSTANCE;
+
+        registry.pageTypes.put("grilling", PageGrilling.class);
+        registry.pageTypes.put("pizzaing", PagePizza.class);
+    }
 }

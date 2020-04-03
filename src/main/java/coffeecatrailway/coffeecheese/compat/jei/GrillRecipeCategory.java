@@ -84,9 +84,9 @@ public class GrillRecipeCategory implements IRecipeCategory<GrillRecipe> {
     @Override
     public void setIngredients(GrillRecipe recipe, IIngredients ingredients) {
         List<Ingredient> inputs = new ArrayList<>(recipe.getIngredients());
-        inputs.add(Ingredient.fromItems(ModFluids.OIL_BUCKET.get()));
+        inputs.add(Ingredient.fromItems(ModFluids.OIL.get().getFilledBucket()));
         ingredients.setInputIngredients(inputs);
-        ingredients.setInput(VanillaTypes.FLUID, new FluidStack(ModFluids.OIL_S.get(), recipe.getOil()));
+        ingredients.setInput(VanillaTypes.FLUID, new FluidStack(ModFluids.OIL.get().getFluid(), recipe.getOil()));
         ingredients.setOutput(VanillaTypes.ITEM, recipe.getResult());
     }
 
