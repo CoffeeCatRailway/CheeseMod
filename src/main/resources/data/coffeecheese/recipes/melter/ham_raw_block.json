@@ -4,7 +4,7 @@
     "tag": "forge:food_blocks/ham_raw"
   },
   "result": {
-    "fluid": "coffeecheese:melted_ham_raw_still",
+    "fluid": "coffeecheese:melted_ham_raw",
     "amount": 1000
   },
   "cookingtime": 50

@@ -4,7 +4,7 @@
     "tag": "forge:stairs/ham_raw"
   },
   "result": {
-    "fluid": "coffeecheese:melted_ham_raw_still",
+    "fluid": "coffeecheese:melted_ham_raw",
     "amount": 750
   },
   "cookingtime": 37

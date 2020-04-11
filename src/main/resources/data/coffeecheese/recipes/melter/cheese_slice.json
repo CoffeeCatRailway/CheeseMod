@@ -4,7 +4,7 @@
     "tag": "forge:food_slice/cheese"
   },
   "result": {
-    "fluid": "coffeecheese:melted_cheese_still",
+    "fluid": "coffeecheese:melted_cheese",
     "amount": 25
   },
   "cookingtime": 50

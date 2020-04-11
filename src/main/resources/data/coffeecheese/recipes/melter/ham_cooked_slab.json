@@ -4,7 +4,7 @@
     "tag": "forge:slabs/ham_cooked"
   },
   "result": {
-    "fluid": "coffeecheese:melted_ham_cooked_still",
+    "fluid": "coffeecheese:melted_ham_cooked",
     "amount": 500
   },
   "cookingtime": 25

@@ -4,7 +4,7 @@
     "tag": "forge:slabs/grilled_cheese"
   },
   "result": {
-    "fluid": "coffeecheese:melted_grilled_cheese_still",
+    "fluid": "coffeecheese:melted_grilled_cheese",
     "amount": 500
   },
   "cookingtime": 25
