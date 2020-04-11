@@ -1,6 +1,7 @@
 package coffeecatrailway.coffeecheese.common.tileentity;
 
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.INBT;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
@@ -34,15 +35,23 @@ public abstract class LockableTileFluidHandler extends ModLockableTileEntity {
     @Override
     public void read(CompoundNBT compound) {
         super.read(compound);
-        this.tank.readFromNBT((CompoundNBT) compound.get("fluidTank"));
+        this.readTankNBT(compound, "FluidTank", this.tank);
     }
 
     @Override
     public CompoundNBT write(CompoundNBT compound) {
-        CompoundNBT tankNBT = new CompoundNBT();
-        this.tank.writeToNBT(tankNBT);
-        compound.put("fluidTank", tankNBT);
+        this.writeTankNBT(compound, "FluidTank", this.tank);
         return super.write(compound);
+    }
+
+    protected INBT writeTankNBT(CompoundNBT compound, String key, FluidTank tank) {
+        CompoundNBT tankNBT = new CompoundNBT();
+        tank.writeToNBT(tankNBT);
+        return compound.put(key, tankNBT);
+    }
+
+    protected FluidTank readTankNBT(CompoundNBT compound, String key, FluidTank tank) {
+        return tank.readFromNBT((CompoundNBT) compound.get(key));
     }
 
     @Override

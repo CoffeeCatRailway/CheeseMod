@@ -155,7 +155,7 @@ public class PizzaOvenBlock extends ContainerBlock implements IWaterLoggable {
                 player.addStat(ModStats.INTERACT_WITH_PIZZA_OVEN);
             }
         }
-        return ActionResultType.PASS;
+        return ActionResultType.SUCCESS;
     }
 
     @Nullable
