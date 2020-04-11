@@ -151,16 +151,14 @@ public class FoodDrawBlock extends ContainerBlock implements IWaterLoggable {
 
     @Override
     public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-        if (world.isRemote)
-            return ActionResultType.PASS;
-        else {
+        if (!world.isRemote) {
             INamedContainerProvider provider = this.getContainer(state, world, pos);
             if (provider != null) {
                 player.openContainer(provider);
                 player.addStat(this.stat.getStat());
             }
-            return ActionResultType.SUCCESS;
         }
+        return ActionResultType.SUCCESS;
     }
 
     @Nullable
