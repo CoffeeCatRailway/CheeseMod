@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "coffeecheese:milk"
+    "coffeecheese:milk",
+    "coffeecheese:flowing_milk"
   ]
 }

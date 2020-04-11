@@ -107,10 +107,10 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                     GrillTileEntity.this.cookTimeTotal = value;
                     break;
                 case 4:
-                    GrillTileEntity.this.tank.setFluid(new FluidStack(ModFluids.OIL.get().getFluid(), value));
+                    GrillTileEntity.this.tank.setFluid(new FluidStack(ModFluids.OIL.get(), value));
                     break;
                 case 5:
-                    GrillTileEntity.this.catcherTank.setFluid(new FluidStack(ModFluids.OIL.get().getFluid(), value));
+                    GrillTileEntity.this.catcherTank.setFluid(new FluidStack(ModFluids.OIL.get(), value));
                     break;
             }
 
@@ -150,7 +150,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
         inventory.deserializeNBT(compound.getCompound("inventory"));
 
         if (compound.contains("catcherTank"))
-            this.catcherTank.readFromNBT((CompoundNBT) compound.get("catcherTank"));
+            this.readTankNBT(compound, "CatcherTank", this.catcherTank);
 
         this.burnTime = compound.getInt("BurnTime");
         this.cookTime = compound.getInt("CookTime");
@@ -169,11 +169,8 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
     public CompoundNBT write(CompoundNBT compound) {
         compound.put("inventory", inventory.serializeNBT());
 
-        if (this.getBlockState().get(GrillBlock.HAS_CATCHER)) {
-            CompoundNBT tankNBT = new CompoundNBT();
-            this.catcherTank.writeToNBT(tankNBT);
-            compound.put("catcherTank", tankNBT);
-        }
+        if (this.getBlockState().get(GrillBlock.HAS_CATCHER))
+            this.writeTankNBT(compound, "CatcherTank", this.catcherTank);
 
         compound.putInt("BurnTime", this.burnTime);
         compound.putInt("CookTime", this.cookTime);
@@ -228,7 +225,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                         if (this.getBlockState().get(GrillBlock.HAS_CATCHER)) {
                             int catchedOil = this.getOilForRecipe() / 2 + (this.world.rand.nextInt(5) + 10);
                             if (this.catcherTank.getSpace() != 0)
-                                this.catcherTank.fill(new FluidStack(ModFluids.OIL.get().getFluid(), catchedOil), IFluidHandler.FluidAction.EXECUTE);
+                                this.catcherTank.fill(new FluidStack(ModFluids.OIL.get(), catchedOil), IFluidHandler.FluidAction.EXECUTE);
                             this.sendUpdates(GrillTileEntity.this);
                         }
 

@@ -1,5 +1,6 @@
 package coffeecatrailway.coffeecheese.common.block;
 
+import coffeecatrailway.coffeecheese.common.ModTags;
 import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
 import coffeecatrailway.coffeecheese.registry.ModFluids;
 import coffeecatrailway.coffeecheese.registry.ModItems;
@@ -9,6 +10,7 @@ import com.google.common.collect.Lists;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.inventory.IInventory;
@@ -129,7 +131,7 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         IFluidState ifluidstate = context.getWorld().getFluidState(context.getPos());
-        return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite()).with(WATERLOGGED, ifluidstate.getFluid() == Fluids.WATER);
+        return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite()).with(WATERLOGGED, ifluidstate == Fluids.WATER);
     }
 
     @Override
@@ -164,49 +166,53 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
         }
     }
 
+    private void playEmptyBucketSound(World world, BlockPos pos) {
+        world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
+    }
+
     @Override
     public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-        if (world.isRemote)
-            return ActionResultType.PASS;
-        else if (player.getHeldItem(hand).getItem() == ModFluids.OIL.get().getFilledBucket() && hand == Hand.MAIN_HAND) {
-            if (world.getTileEntity(pos) instanceof GrillTileEntity) {
-                GrillTileEntity tile = (GrillTileEntity) world.getTileEntity(pos);
+        if (!world.isRemote && hand == Hand.MAIN_HAND && world.getTileEntity(pos) instanceof GrillTileEntity) {
+            ItemStack stack = player.getHeldItem(hand);
+            GrillTileEntity tile = (GrillTileEntity) world.getTileEntity(pos);
+            if (stack.getItem() == ModFluids.OIL.get().getFilledBucket()) {
                 int oil = tile.getTank().getFluidAmount();
                 if (oil <= FluidAttributes.BUCKET_VOLUME) {
-                    if (!player.abilities.isCreativeMode)
-                        player.setHeldItem(hand, new ItemStack(Items.BUCKET));
+                    if (!player.abilities.isCreativeMode) {
+                        stack.shrink(1);
+                        player.addItemStackToInventory(new ItemStack(Items.BUCKET));
+                    }
 
-                    tile.getTank().fill(new FluidStack(ModFluids.OIL.get().getFluid(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
-                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    return ActionResultType.PASS;
+                    tile.getTank().fill(new FluidStack(ModFluids.OIL.get(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
+                    playEmptyBucketSound(world, pos);
+                    return ActionResultType.SUCCESS;
                 }
-            }
-        } else if (player.getHeldItem(hand).getItem() == Items.BUCKET && state.get(HAS_CATCHER) && hand == Hand.MAIN_HAND) {
-            if (world.getTileEntity(pos) instanceof GrillTileEntity) {
-                GrillTileEntity tile = (GrillTileEntity) world.getTileEntity(pos);
+            } else if (stack.getItem() == Items.BUCKET && state.get(HAS_CATCHER)) {
                 int oil = tile.getCatcherTank().getFluidAmount();
                 if (oil >= FluidAttributes.BUCKET_VOLUME) {
-                    if (!player.abilities.isCreativeMode)
-                        player.setHeldItem(hand, new ItemStack(ModFluids.OIL.get().getFilledBucket()));
+                    if (!player.abilities.isCreativeMode) {
+                        stack.shrink(1);
+                        player.addItemStackToInventory(new ItemStack(ModFluids.OIL.get().getFilledBucket()));
+                    }
 
-                    tile.getCatcherTank().drain(new FluidStack(ModFluids.OIL.get().getFluid(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
-                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    return ActionResultType.PASS;
+                    tile.getCatcherTank().drain(new FluidStack(ModFluids.OIL.get(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
+                    playEmptyBucketSound(world, pos);
+                    return ActionResultType.SUCCESS;
                 }
+            } else if (stack.getItem() == ModItems.OIL_CATCHER.get() && !state.get(HAS_CATCHER)) {
+                world.setBlockState(pos, state.with(HAS_CATCHER, Boolean.TRUE));
+                if (!player.abilities.isCreativeMode)
+                    stack.shrink(1);
+            } else {
+                INamedContainerProvider provider = this.getContainer(state, world, pos);
+                if (provider != null) {
+                    player.openContainer(provider);
+                    player.addStat(ModStats.INTERACT_WITH_GRILL);
+                }
+                return ActionResultType.SUCCESS;
             }
-        } else if (player.getHeldItem(hand).getItem() == ModItems.OIL_CATCHER.get() && !state.get(HAS_CATCHER) && hand == Hand.MAIN_HAND) {
-            world.setBlockState(pos, state.with(HAS_CATCHER, Boolean.TRUE));
-            if (!player.abilities.isCreativeMode)
-                player.getHeldItem(hand).shrink(1);
-        } else {
-            INamedContainerProvider provider = this.getContainer(state, world, pos);
-            if (provider != null) {
-                player.openContainer(provider);
-                player.addStat(ModStats.INTERACT_WITH_GRILL);
-            }
-            return ActionResultType.PASS;
         }
-        return ActionResultType.FAIL;
+        return ActionResultType.SUCCESS;
     }
 
     @Nullable

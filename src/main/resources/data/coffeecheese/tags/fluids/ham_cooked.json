@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "coffeecheese:melted_ham_cooked"
+    "coffeecheese:melted_ham_cooked",
+    "coffeecheese:flowing_melted_ham_cooked"
   ]
 }
