@@ -13,11 +13,14 @@ import coffeecatrailway.coffeecheese.compat.patchouli.ModPageTypes;
 import coffeecatrailway.coffeecheese.compat.top.TOPCompatibility;
 import coffeecatrailway.coffeecheese.registry.*;
 import com.tterrag.registrate.Registrate;
+import com.tterrag.registrate.util.LazySpawnEggItem;
+import com.tterrag.registrate.util.RegistryEntry;
 import io.netty.buffer.Unpooled;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.BreakingParticle;
 import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.ItemStack;
@@ -100,6 +103,11 @@ public class CheeseMod {
     }
 
     public void setupClient(FMLClientSetupEvent event) {
+        ItemColors c = Minecraft.getInstance().getItemColors();
+        for (RegistryEntry<? extends LazySpawnEggItem<?>> egg : ModEntities.SPAWN_EGGS) {
+            c.register((a, layer) -> egg.get().getColor(layer), egg.get());
+        }
+
         ModContainers.registerScreens();
 
         DistExecutor.runWhenOn(Dist.CLIENT, () -> CheeseMod::registerParticleFactories);
