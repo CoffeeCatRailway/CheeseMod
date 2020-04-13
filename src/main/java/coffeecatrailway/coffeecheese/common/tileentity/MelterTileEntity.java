@@ -77,11 +77,11 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
                 case 3:
                     return MelterTileEntity.this.cookTimeTotal;
                 case 4:
-                    return MelterTileEntity.this.tank.getFluidAmount();
+                    return MelterTileEntity.this.getTankA().getFluidAmount();
                 case 5:
-                    return Registry.FLUID.getId(MelterTileEntity.this.tank.getFluid().getFluid());
+                    return Registry.FLUID.getId(MelterTileEntity.this.getTankA().getFluid().getFluid());
                 case 6:
-                    return MelterTileEntity.this.tank.getFluid().getFluid().getAttributes().getColor(MelterTileEntity.this.world, MelterTileEntity.this.getPos());
+                    return MelterTileEntity.this.getTankA().getFluid().getFluid().getAttributes().getColor(MelterTileEntity.this.world, MelterTileEntity.this.getPos());
                 default:
                     return 0;
             }
@@ -102,10 +102,10 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
                     MelterTileEntity.this.cookTimeTotal = value;
                     break;
                 case 4:
-                    MelterTileEntity.this.tank.setFluid(new FluidStack(MelterTileEntity.this.tank.getFluid().getFluid(), value));
+                    MelterTileEntity.this.getTankA().setFluid(new FluidStack(MelterTileEntity.this.getTankA().getFluid().getFluid(), value));
                     break;
                 case 5:
-                    MelterTileEntity.this.tank.setFluid(new FluidStack(Registry.FLUID.getByValue(value), 1));
+                    MelterTileEntity.this.getTankA().setFluid(new FluidStack(Registry.FLUID.getByValue(value), 1));
                     break;
                 case 6:
                     break;
@@ -123,6 +123,7 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
     public MelterTileEntity() {
         super(ModTileEntities.MELTER.get(), FLUID_CAPTACITY);
         recipeType = ModRecipes.MELTING;
+        this.useTankB = false;
     }
 
     @Override
@@ -237,18 +238,18 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
         if (!(iRecipe instanceof MelterRecipe))
             return false;
 
-        if (!this.inventory.get(0).isEmpty() && this.tank.getFluidAmount() < this.tank.getCapacity() && (this.tank.getCapacity() - this.tank.getFluidAmount()) >= this.getRecipeResult().getAmount()) {
+        if (!this.inventory.get(0).isEmpty() && this.getTankA().getFluidAmount() < this.getTankA().getCapacity() && (this.getTankA().getCapacity() - this.getTankA().getFluidAmount()) >= this.getRecipeResult().getAmount()) {
             MelterRecipe recipe = (MelterRecipe) iRecipe;
             FluidStack outStack = recipe.getResult();
             if (outStack.isEmpty())
                 return false;
             else {
-                if (this.tank.isEmpty())
+                if (this.getTankA().isEmpty())
                     return true;
-                else if (!outStack.isFluidEqual(this.tank.getFluid()))
+                else if (!outStack.isFluidEqual(this.getTankA().getFluid()))
                     return false;
                 else
-                    return outStack.getAmount() + this.tank.getFluidAmount() <= this.tank.getCapacity();
+                    return outStack.getAmount() + this.getTankA().getFluidAmount() <= this.getTankA().getCapacity();
             }
         } else
             return false;
@@ -262,11 +263,11 @@ public class MelterTileEntity extends LockableTileFluidHandler implements ISided
             MelterRecipe recipe = (MelterRecipe) iRecipe;
             ItemStack ingredientStack = this.inventory.get(0);
             FluidStack recipeOutStack = recipe.getResult();
-            FluidStack outStack = this.tank.getFluid();
+            FluidStack outStack = this.getTankA().getFluid();
             if (outStack.isEmpty())
-                this.tank.setFluid(recipeOutStack.copy());
+                this.getTankA().setFluid(recipeOutStack.copy());
             else if (outStack.getFluid() == recipeOutStack.getFluid())
-                this.tank.fill(recipeOutStack, IFluidHandler.FluidAction.EXECUTE);
+                this.getTankA().fill(recipeOutStack, IFluidHandler.FluidAction.EXECUTE);
 
             if (!this.world.isRemote)
                 this.setRecipeUsed(recipe);

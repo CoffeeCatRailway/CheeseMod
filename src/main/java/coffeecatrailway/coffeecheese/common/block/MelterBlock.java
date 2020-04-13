@@ -146,32 +146,33 @@ public class MelterBlock extends ContainerBlock implements IWaterLoggable {
 
     @Override
     public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
-        if (world.isRemote)
-            return ActionResultType.PASS;
-        else if (player.getHeldItem(hand).getItem() == Items.BUCKET && hand == Hand.MAIN_HAND) {
-            if (world.getTileEntity(pos) instanceof MelterTileEntity) {
-                MelterTileEntity tile = (MelterTileEntity) world.getTileEntity(pos);
-                int fluidAmount = tile.getTank().getFluidAmount();
-                if (fluidAmount >= FluidAttributes.BUCKET_VOLUME) {
-                    if (!player.abilities.isCreativeMode) {
-                        player.inventory.addItemStackToInventory(new ItemStack(tile.getTank().getFluid().getFluid().getFilledBucket()));
-                        player.getHeldItem(hand).shrink(1);
-                    }
+        if (!world.isRemote && hand == Hand.MAIN_HAND) {
+            ItemStack stack = player.getHeldItem(hand);
+            if (stack.getItem() == Items.BUCKET) {
+                if (world.getTileEntity(pos) instanceof MelterTileEntity) {
+                    MelterTileEntity tile = (MelterTileEntity) world.getTileEntity(pos);
+                    int fluidAmount = tile.getTankA().getFluidAmount();
+                    if (fluidAmount >= FluidAttributes.BUCKET_VOLUME) {
+                        if (!player.abilities.isCreativeMode) {
+                            player.inventory.addItemStackToInventory(new ItemStack(tile.getTankA().getFluid().getFluid().getFilledBucket()));
+                            stack.shrink(1);
+                        }
 
-                    tile.getTank().drain(FluidAttributes.BUCKET_VOLUME, IFluidHandler.FluidAction.EXECUTE);
-                    world.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    return ActionResultType.SUCCESS;
+                        tile.getTankA().drain(FluidAttributes.BUCKET_VOLUME, IFluidHandler.FluidAction.EXECUTE);
+                        world.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                        return ActionResultType.SUCCESS;
+                    }
                 }
+            } else {
+                INamedContainerProvider provider = this.getContainer(state, world, pos);
+                if (provider != null) {
+                    player.openContainer(provider);
+                    player.addStat(ModStats.INTERACT_WITH_GRILL);
+                }
+                return ActionResultType.SUCCESS;
             }
-        } else {
-            INamedContainerProvider provider = this.getContainer(state, world, pos);
-            if (provider != null) {
-                player.openContainer(provider);
-                player.addStat(ModStats.INTERACT_WITH_GRILL);
-            }
-            return ActionResultType.PASS;
         }
-        return ActionResultType.FAIL;
+        return ActionResultType.SUCCESS;
     }
 
     @Nullable

@@ -5,6 +5,7 @@ import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import coffeecatrailway.coffeecheese.client.gui.container.GrillContainer;
 import coffeecatrailway.coffeecheese.common.ModTags;
 import coffeecatrailway.coffeecheese.common.block.GrillBlock;
+import coffeecatrailway.coffeecheese.common.fluids.capability.DuelFluidTank;
 import coffeecatrailway.coffeecheese.common.item.crafting.GrillRecipe;
 import coffeecatrailway.coffeecheese.registry.ModFluids;
 import coffeecatrailway.coffeecheese.registry.ModRecipes;
@@ -66,7 +67,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
             GrillTileEntity.this.sendUpdates(GrillTileEntity.this);
         }
     };
-    private final FluidTank catcherTank;
+//    private final FluidTank catcherTank;
 
     private int burnTime;
     private int recipesUsed;
@@ -84,9 +85,10 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                 case 3:
                     return GrillTileEntity.this.cookTimeTotal;
                 case 4:
-                    return GrillTileEntity.this.tank.getFluidAmount();
+                    return GrillTileEntity.this.getTankA().getFluidAmount();
                 case 5:
-                    return GrillTileEntity.this.catcherTank.getFluidAmount();
+//                    return GrillTileEntity.this.catcherTank.getFluidAmount();
+                return GrillTileEntity.this.getTankB().getFluidAmount();
                 default:
                     return 0;
             }
@@ -107,10 +109,11 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                     GrillTileEntity.this.cookTimeTotal = value;
                     break;
                 case 4:
-                    GrillTileEntity.this.tank.setFluid(new FluidStack(ModFluids.OIL.get(), value));
+                    GrillTileEntity.this.getTankA().setFluid(new FluidStack(ModFluids.OIL.get(), value));
                     break;
                 case 5:
-                    GrillTileEntity.this.catcherTank.setFluid(new FluidStack(ModFluids.OIL.get(), value));
+//                    GrillTileEntity.this.catcherTank.setFluid(new FluidStack(ModFluids.OIL.get(), value));
+                    GrillTileEntity.this.getTankB().setFluid(new FluidStack(ModFluids.OIL.get(), value));
                     break;
             }
 
@@ -124,9 +127,9 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
     private final IRecipeType<GrillRecipe> recipeType;
 
     public GrillTileEntity() {
-        super(ModTileEntities.GRILL.get(), FLUID_CAPTACITY);
-        this.tank.setValidator(fluid -> ModTags.Fluids.GRILL_OIL.contains(fluid.getFluid()));
-        this.catcherTank = new FluidTank(FluidAttributes.BUCKET_VOLUME);
+        super(ModTileEntities.GRILL.get());
+        this.duelTank = new DuelFluidTank(FLUID_CAPTACITY, stack -> ModTags.Fluids.GRILL_OIL.contains(stack.getFluid()), FluidAttributes.BUCKET_VOLUME, stack -> true);
+//        this.catcherTank = new FluidTank(FluidAttributes.BUCKET_VOLUME);
         this.recipeType = ModRecipes.GRILLING;
     }
 
@@ -149,8 +152,8 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
         super.read(compound);
         inventory.deserializeNBT(compound.getCompound("inventory"));
 
-        if (compound.contains("catcherTank"))
-            this.readTankNBT(compound, "CatcherTank", this.catcherTank);
+//        if (compound.contains("catcherTank"))
+//            this.readTankNBT(compound, "CatcherTank", this.catcherTank);
 
         this.burnTime = compound.getInt("BurnTime");
         this.cookTime = compound.getInt("CookTime");
@@ -169,8 +172,8 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
     public CompoundNBT write(CompoundNBT compound) {
         compound.put("inventory", inventory.serializeNBT());
 
-        if (this.getBlockState().get(GrillBlock.HAS_CATCHER))
-            this.writeTankNBT(compound, "CatcherTank", this.catcherTank);
+//        if (this.getBlockState().get(GrillBlock.HAS_CATCHER))
+//            this.writeTankNBT(compound, "CatcherTank", this.catcherTank);
 
         compound.putInt("BurnTime", this.burnTime);
         compound.putInt("CookTime", this.cookTime);
@@ -220,12 +223,14 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                 if (this.isBurning() && this.canSmelt(iRecipe)) {
                     this.cookTime += ModCheeseConfig.grillSpeed.get();
                     if (this.cookTime >= this.cookTimeTotal) {
-                        this.tank.drain(this.getOilForRecipe(), IFluidHandler.FluidAction.EXECUTE);
+                        this.duelTank.drain(this.getOilForRecipe(), IFluidHandler.FluidAction.EXECUTE);
 
                         if (this.getBlockState().get(GrillBlock.HAS_CATCHER)) {
                             int catchedOil = this.getOilForRecipe() / 2 + (this.world.rand.nextInt(5) + 10);
-                            if (this.catcherTank.getSpace() != 0)
-                                this.catcherTank.fill(new FluidStack(ModFluids.OIL.get(), catchedOil), IFluidHandler.FluidAction.EXECUTE);
+//                            if (this.catcherTank.getSpace() != 0)
+//                                this.catcherTank.fill(new FluidStack(ModFluids.OIL.get(), catchedOil), IFluidHandler.FluidAction.EXECUTE);
+                            if (this.getTankA().getSpace() != 0)
+                                this.getTankB().fill(new FluidStack(ModFluids.OIL.get(), catchedOil), IFluidHandler.FluidAction.EXECUTE);
                             this.sendUpdates(GrillTileEntity.this);
                         }
 
@@ -256,7 +261,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
     }
 
     private boolean canSmelt(@Nullable IRecipe<?> iRecipe) {
-        if (!this.inventory.getStackInSlot(0).isEmpty() && iRecipe != null && this.tank.getFluidAmount() > 0 && this.tank.getFluidAmount() >= this.getOilForRecipe()) {
+        if (!this.inventory.getStackInSlot(0).isEmpty() && iRecipe != null && this.getTankA().getFluidAmount() > 0 && this.getTankA().getFluidAmount() >= this.getOilForRecipe()) {
             ItemStack recipeOutStack = iRecipe.getRecipeOutput();
             if (recipeOutStack.isEmpty())
                 return false;
@@ -465,7 +470,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
             handlers[x].invalidate();
     }
 
-    public FluidTank getCatcherTank() {
-        return catcherTank;
-    }
+//    public FluidTank getCatcherTank() {
+//        return catcherTank;
+//    }
 }

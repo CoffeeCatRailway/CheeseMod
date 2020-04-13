@@ -36,25 +36,25 @@ public class MelterTileEntityRenderer extends TileEntityRenderer<MelterTileEntit
 
     @Override
     public void render(MelterTileEntity tile, float partialTicks, MatrixStack matrixStack, IRenderTypeBuffer typeBuffer, int combinedLight, int combinedOverlay) {
-        if (tile.data.get(4) > 0) {
+        if (!tile.getTankA().isEmpty()) {
             RenderSystem.pushMatrix();
             Texture texture = Minecraft.getInstance().getTextureManager().getTexture(AtlasTexture.LOCATION_BLOCKS_TEXTURE);
             if (texture instanceof AtlasTexture) {
-                FluidStack fluid = tile.getTank().getFluid();
-                TextureAtlasSprite still = ((AtlasTexture) texture).getSprite(fluid.getFluid().getAttributes().getStillTexture(fluid));
-                float posY = 4.1f / 16f + MelterScreen.mapFluid(tile.data.get(4), 0f, 2.85f) / 16f;
-                float right = 0f;
-                float left = 1f;
-                IVertexBuilder buffer = typeBuffer.getBuffer(RenderTypeHelper.MELTER.applyTexture(new ResourceLocation(still.getName().getNamespace(), "textures/" + still.getName().getPath() + ".png")));
-                Color color = new Color(fluid.getFluid().getAttributes().getColor(tile.getTank().getFluid()));
+                FluidStack fluid = tile.getTankA().getFluid();
+                TextureAtlasSprite fluidAtlas = ((AtlasTexture) texture).getSprite(fluid.getFluid().getAttributes().getStillTexture(fluid));
+                float posY = 4.1f / 16f + MelterScreen.mapFluid(tile.getTankA().getFluidAmount(), 0f, 2.85f) / 16f;
+                float right = 1.0f / 16.0f;
+                float left = 15.0f / 16.0f;
+                IVertexBuilder buffer = typeBuffer.getBuffer(RenderTypeHelper.MELTER.applyTexture(new ResourceLocation(fluidAtlas.getName().getNamespace(), "textures/" + fluidAtlas.getName().getPath() + ".png")));
+                Color color = new Color(fluid.getFluid().getAttributes().getColor(tile.getTankA().getFluid()));
 
                 matrixStack.push();
                 Matrix4f matrix = matrixStack.getLast().getMatrix();
-                float animation = 16 * still.getUvShrinkRatio() * (tile.getWorld().getGameTime() % still.getFrameCount());
-                buffer.pos(matrix, left, posY, 0).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).tex(0, 0 + animation).endVertex();
-                buffer.pos(matrix, right, posY, 0).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).tex(0.5f, 0 + animation).endVertex();
-                buffer.pos(matrix, right, posY, 1).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).tex(0.5f, 16f / (still.getHeight() * still.getFrameCount()) + animation).endVertex();
-                buffer.pos(matrix, left, posY, 1).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).tex(0, 16f / (still.getHeight() * still.getFrameCount()) + animation).endVertex();
+                float animation = 16 * fluidAtlas.getUvShrinkRatio() * (tile.getWorld().getGameTime() % fluidAtlas.getFrameCount());
+                buffer.pos(matrix, left, posY, right).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).tex(0f, 0f + animation).endVertex();
+                buffer.pos(matrix, right, posY, right).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).tex(1f, 0f + animation).endVertex();
+                buffer.pos(matrix, right, posY, left).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).tex(1f, 16f / (fluidAtlas.getHeight() * fluidAtlas.getFrameCount()) + animation).endVertex();
+                buffer.pos(matrix, left, posY, left).color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()).tex(0f, 16f / (fluidAtlas.getHeight() * fluidAtlas.getFrameCount()) + animation).endVertex();
                 matrixStack.pop();
             }
             RenderSystem.popMatrix();

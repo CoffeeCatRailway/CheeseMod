@@ -59,11 +59,11 @@ public class TOPCompatibility implements Function<ITheOneProbe, Void>, IProbeInf
                     probeInfo.horizontal().item(tile.getStackInSlot(0)).progress(tile.data.get(2), tile.data.get(3));
 
                 probeInfo.horizontal().text(I18n.format("top." + CheeseMod.MOD_ID + ".grill.oil"));
-                probeInfo.horizontal().item(new ItemStack(ModFluids.OIL.get().getFilledBucket())).progress(tile.getTank().getFluidAmount(), tile.getTank().getCapacity());
+                probeInfo.horizontal().item(new ItemStack(ModFluids.OIL.get().getFilledBucket())).progress(tile.getTankA().getFluidAmount(), tile.getTankA().getCapacity());
 
                 if (tile.getBlockState().get(GrillBlock.HAS_CATCHER)) {
                     probeInfo.horizontal().text(I18n.format("top." + CheeseMod.MOD_ID + ".grill.oil_catcher"));
-                    probeInfo.horizontal().item(new ItemStack(ModFluids.OIL.get().getFilledBucket())).progress(tile.getCatcherTank().getFluidAmount(), tile.getCatcherTank().getCapacity());
+                    probeInfo.horizontal().item(new ItemStack(ModFluids.OIL.get().getFilledBucket())).progress(tile.getTankB().getFluidAmount(), tile.getTankB().getCapacity());
                 }
             }
             if (block == ModBlocks.MELTER.get()) {
@@ -73,12 +73,12 @@ public class TOPCompatibility implements Function<ITheOneProbe, Void>, IProbeInf
                     probeInfo.horizontal().item(tile.getStackInSlot(0)).progress(tile.data.get(2), tile.data.get(3));
                 }
 
-                if (tile.getTank().getFluidAmount() > 0) {
-                    String fluidName = I18n.format("block." + tile.getTank().getFluid().getFluid().getRegistryName().toString().replace(":", "."));
+                if (tile.getTankA().getFluidAmount() > 0) {
+                    String fluidName = I18n.format("block." + tile.getTankA().getFluid().getFluid().getRegistryName().toString().replace(":", "."));
                     if (fluidName.contains("empty"))
                         fluidName = "Empty";
                     probeInfo.horizontal().text(I18n.format("top." + CheeseMod.MOD_ID + ".melter.fluid", fluidName));
-                    probeInfo.horizontal().item(new ItemStack(tile.getTank().getFluid().getFluid().getFilledBucket())).progress(tile.getTank().getFluidAmount(), tile.getTank().getCapacity());
+                    probeInfo.horizontal().item(new ItemStack(tile.getTankA().getFluid().getFluid().getFilledBucket())).progress(tile.getTankA().getFluidAmount(), tile.getTankA().getCapacity());
                 }
             }
             if (block == ModBlocks.PIZZA_OVEN.get()) {

@@ -1,6 +1,5 @@
 package coffeecatrailway.coffeecheese.common.block;
 
-import coffeecatrailway.coffeecheese.common.ModTags;
 import coffeecatrailway.coffeecheese.common.tileentity.GrillTileEntity;
 import coffeecatrailway.coffeecheese.registry.ModFluids;
 import coffeecatrailway.coffeecheese.registry.ModItems;
@@ -10,7 +9,6 @@ import com.google.common.collect.Lists;
 import net.minecraft.block.*;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.inventory.IInventory;
@@ -176,26 +174,26 @@ public class GrillBlock extends ContainerBlock implements IWaterLoggable {
             ItemStack stack = player.getHeldItem(hand);
             GrillTileEntity tile = (GrillTileEntity) world.getTileEntity(pos);
             if (stack.getItem() == ModFluids.OIL.get().getFilledBucket()) {
-                int oil = tile.getTank().getFluidAmount();
+                int oil = tile.getTankA().getFluidAmount();
                 if (oil <= FluidAttributes.BUCKET_VOLUME) {
                     if (!player.abilities.isCreativeMode) {
                         stack.shrink(1);
                         player.addItemStackToInventory(new ItemStack(Items.BUCKET));
                     }
 
-                    tile.getTank().fill(new FluidStack(ModFluids.OIL.get(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
+                    tile.getTankA().fill(new FluidStack(ModFluids.OIL.get(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
                     playEmptyBucketSound(world, pos);
                     return ActionResultType.SUCCESS;
                 }
             } else if (stack.getItem() == Items.BUCKET && state.get(HAS_CATCHER)) {
-                int oil = tile.getCatcherTank().getFluidAmount();
+                int oil = tile.getTankB().getFluidAmount();
                 if (oil >= FluidAttributes.BUCKET_VOLUME) {
                     if (!player.abilities.isCreativeMode) {
                         stack.shrink(1);
                         player.addItemStackToInventory(new ItemStack(ModFluids.OIL.get().getFilledBucket()));
                     }
 
-                    tile.getCatcherTank().drain(new FluidStack(ModFluids.OIL.get(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
+                    tile.getTankB().drain(new FluidStack(ModFluids.OIL.get(), FluidAttributes.BUCKET_VOLUME), IFluidHandler.FluidAction.EXECUTE);
                     playEmptyBucketSound(world, pos);
                     return ActionResultType.SUCCESS;
                 }
