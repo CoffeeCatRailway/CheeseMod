@@ -68,9 +68,9 @@ public class ModEntities {
 
     static {
         SPAWN_EGGS.add(REGISTRATE.item("cheese_foodie_spawn_egg", spawnEgg(ModEntities.CHEESE_FOODIE, 11445876, 9404726)).properties((prop) -> prop.group(ItemGroup.MISC)).model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/template_spawn_egg"))).register());
-        SPAWN_EGGS.add(REGISTRATE.item("grilled_cheese_foodie_spawn_egg", spawnEgg(ModEntities.CHEESE_FOODIE, 8484425, 8877339)).properties((prop) -> prop.group(ItemGroup.MISC)).model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/template_spawn_egg"))).register());
-        SPAWN_EGGS.add(REGISTRATE.item("ham_raw_foodie_spawn_egg", spawnEgg(ModEntities.CHEESE_FOODIE, 12152929, 13920850)).properties((prop) -> prop.group(ItemGroup.MISC)).model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/template_spawn_egg"))).register());
-        SPAWN_EGGS.add(REGISTRATE.item("ham_cooked_foodie_spawn_egg", spawnEgg(ModEntities.CHEESE_FOODIE, 13218964, 16770746)).properties((prop) -> prop.group(ItemGroup.MISC)).model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/template_spawn_egg"))).register());
+        SPAWN_EGGS.add(REGISTRATE.item("grilled_cheese_foodie_spawn_egg", spawnEgg(ModEntities.GRILLED_CHEESE_FOODIE, 8484425, 8877339)).properties((prop) -> prop.group(ItemGroup.MISC)).model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/template_spawn_egg"))).register());
+        SPAWN_EGGS.add(REGISTRATE.item("ham_raw_foodie_spawn_egg", spawnEgg(ModEntities.HAM_RAW_FOODIE, 12152929, 13920850)).properties((prop) -> prop.group(ItemGroup.MISC)).model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/template_spawn_egg"))).register());
+        SPAWN_EGGS.add(REGISTRATE.item("ham_cooked_foodie_spawn_egg", spawnEgg(ModEntities.HAM_COOKED_FOODIE, 13218964, 16770746)).properties((prop) -> prop.group(ItemGroup.MISC)).model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/template_spawn_egg"))).register());
     }
 
     public static void registerSpawnPlacements(RegistryEvent.Register<EntityType<?>> event) {
