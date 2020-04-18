@@ -57,8 +57,6 @@ public class FoodWorldPortalBlock extends ContainerBlock {
 
     public boolean trySpawnPortal(World world, BlockPos pos) {
         FoodWorldPortalBlock.Size size = this.isPortal(world, pos);
-        System.out.println(world.getBlockState(pos).getBlock());
-        System.out.println(size);
         if (size != null && this.canCreatePortalByWorld(world)) {
             size.placePortalBlocks();
             return true;
@@ -173,9 +171,9 @@ public class FoodWorldPortalBlock extends ContainerBlock {
         d0 = MathHelper.clamp(d0, d7, d5);
         d2 = MathHelper.clamp(d2, d4, d6);
         serverPlayerEntity.setLocationAndAngles(d0, d1, d2, f1, f);
-        if (!teleporter.func_222268_a(serverPlayerEntity, f2)) {
+        if (!teleporter.placeInPortal(serverPlayerEntity, f2)) {
             teleporter.makePortal(serverPlayerEntity);
-            teleporter.func_222268_a(serverPlayerEntity, f2);
+            teleporter.placeInPortal(serverPlayerEntity, f2);
         }
 
 
@@ -220,7 +218,7 @@ public class FoodWorldPortalBlock extends ContainerBlock {
             Entity entity2 = entity.getType().create(serverworld1);
             if (entity2 != null) {
                 entity2.copyDataFromOld(entity);
-                teleporter.func_222268_a(entity2, entity2.rotationYaw);
+                teleporter.placeInPortal(entity2, entity2.rotationYaw);
                 entity2.setMotion(vec3d);
                 serverworld1.addFromAnotherDimension(entity2);
                 entity.remove();
@@ -277,17 +275,12 @@ public class FoodWorldPortalBlock extends ContainerBlock {
             int wallWidth = width + 2;
             int wallLength = length + 2;
 
-            for (int y = 0; y <= 1; y++) {
-                for (int x = 0; x < wallWidth; x++) {
-                    for (int z = 0; z < wallLength; z++) {
-                        if (y == 0 || x == 0 || z == 0 || x == wallWidth - 1 || z == wallLength - 1) {
-                            if (!isFrameBlock(world.getBlockState(nwCorner.down().add(x, y, z)))) {
+            for (int y = 0; y <= 1; y++)
+                for (int x = 0; x < wallWidth; x++)
+                    for (int z = 0; z < wallLength; z++)
+                        if (y == 0 || x == 0 || z == 0 || x == wallWidth - 1 || z == wallLength - 1)
+                            if (!isFrameBlock(world.getBlockState(nwCorner.down().add(x, y, z))))
                                 return;
-                            }
-                        }
-                    }
-                }
-            }
 
             this.valid = true;
         }

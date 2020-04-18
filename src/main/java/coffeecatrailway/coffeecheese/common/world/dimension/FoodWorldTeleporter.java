@@ -1,5 +1,6 @@
 package coffeecatrailway.coffeecheese.common.world.dimension;
 
+import coffeecatrailway.coffeecheese.common.ModTags;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.longs.LongIterator;
@@ -41,17 +42,7 @@ public class FoodWorldTeleporter extends Teleporter implements ITeleporter {
     }
 
     @Override
-    public boolean placeInPortal(Entity p_222268_1_, float p_222268_2_) {
-        return super.placeInPortal(p_222268_1_, p_222268_2_);
-    }
-
-    @Nullable
-    @Override
-    public BlockPattern.PortalInfo placeInExistingPortal(BlockPos p_222272_1_, Vec3d p_222272_2_, Direction directionIn, double p_222272_4_, double p_222272_6_, boolean p_222272_8_) {
-        return super.placeInExistingPortal(p_222272_1_, p_222272_2_, directionIn, p_222272_4_, p_222272_6_, p_222272_8_);
-    }
-
-    public boolean func_222268_a(Entity entity, float rotationYaw) {
+    public boolean placeInPortal(Entity entity, float rotationYaw) {
         BlockPos blockPos = entity.getPosition();
 
         double distance = -1.0D;
@@ -175,6 +166,12 @@ public class FoodWorldTeleporter extends Teleporter implements ITeleporter {
             return false;
     }
 
+//    @Nullable
+//    @Override
+//    public BlockPattern.PortalInfo placeInExistingPortal(BlockPos pos, Vec3d p_222272_2_, Direction direction, double p_222272_4_, double p_222272_6_, boolean p_222272_8_) {
+//        return super.placeInExistingPortal(pos, p_222272_2_, direction, p_222272_4_, p_222272_6_, p_222272_8_);
+//    }
+
     private boolean isInsideBlock(BlockPos position) {
         return !this.world.isAirBlock(position) || !this.world.isAirBlock(position.up());
     }
@@ -186,7 +183,7 @@ public class FoodWorldTeleporter extends Teleporter implements ITeleporter {
 
     public static boolean createPortal(World world, BlockPos pos, @Nullable Entity entity) {
         BlockState portalState = ModBlocks.FOOD_PORTAL.get().getDefaultState();
-        BlockState snowstate = ModBlocks.CHEESE_BLOCK.get().getDefaultState();
+        BlockState frameState = ModTags.Blocks.FOOD_BLOCKS.getRandomElement(world.rand).getDefaultState();
 
         while (pos.getY() > 1 && world.isAirBlock(pos))
             pos = pos.down();
@@ -196,7 +193,7 @@ public class FoodWorldTeleporter extends Teleporter implements ITeleporter {
 
         //Bottom layers
         for (BlockPos basePos : BlockPos.Mutable.getAllInBoxMutable(pos.add(-2, 0, -2), pos.add(2, 1, 2)))
-            world.setBlockState(basePos, snowstate, 2);
+            world.setBlockState(basePos, frameState, 2);
 
         //air
         for (BlockPos airPos : BlockPos.Mutable.getAllInBoxMutable(pos.add(-2, 2, -1), pos.add(2, 3, 1)))

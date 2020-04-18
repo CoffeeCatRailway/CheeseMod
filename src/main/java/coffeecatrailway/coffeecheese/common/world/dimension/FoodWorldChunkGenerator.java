@@ -2,15 +2,18 @@ package coffeecatrailway.coffeecheese.common.world.dimension;
 
 import coffeecatrailway.coffeecheese.registry.ModFluids;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.GenerationSettings;
 import net.minecraft.world.gen.NoiseChunkGenerator;
 import net.minecraft.world.gen.OctavesNoiseGenerator;
+import net.minecraft.world.gen.WorldGenRegion;
 import net.minecraft.world.server.ServerWorld;
 
 /**
@@ -26,10 +29,10 @@ public class FoodWorldChunkGenerator extends NoiseChunkGenerator<FoodWorldChunkG
                 weight[i + 2 + (j + 2) * 5] = f;
             }
         }
-
     });
 
     private final OctavesNoiseGenerator depthNoise;
+    private final boolean isAmplified;
     private final World world;
 
     public FoodWorldChunkGenerator(World world, BiomeProvider biomeProvider, FoodWorldGenSettings foodWorldGenSettings) {
@@ -37,20 +40,20 @@ public class FoodWorldChunkGenerator extends NoiseChunkGenerator<FoodWorldChunkG
         this.randomSeed.skip(2620);
         this.world = world;
         this.depthNoise = new OctavesNoiseGenerator(this.randomSeed, 15, 0);
+        this.isAmplified = world.getWorldInfo().getGenerator() == WorldType.AMPLIFIED;
     }
 
-//    @Override
-//    public void spawnMobs(WorldGenRegion region) {
-//        int chunkX = region.getMainChunkX();
-//        int chunkZ = region.getMainChunkZ();
-//
-//        SharedSeedRandom random = new SharedSeedRandom();
-//        random.setDecorationSeed(region.getSeed(), chunkX << 4, chunkZ << 4);
-//
-//        if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING)) {
-//            super.spawnMobs(region);
-//        }
-//    }
+    @Override
+    public void spawnMobs(WorldGenRegion region) {
+        int chunkX = region.getMainChunkX();
+        int chunkZ = region.getMainChunkZ();
+
+        SharedSeedRandom random = new SharedSeedRandom();
+        random.setDecorationSeed(region.getSeed(), chunkX << 4, chunkZ << 4);
+
+        if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING))
+            super.spawnMobs(region);
+    }
 
     @Override
     public void spawnMobs(ServerWorld world, boolean p_203222_2_, boolean p_203222_3_) {
@@ -61,13 +64,7 @@ public class FoodWorldChunkGenerator extends NoiseChunkGenerator<FoodWorldChunkG
 
     @Override
     protected void fillNoiseColumn(double[] adouble, int noiseX, int noiseZ) {
-        double d0 = 684.412f;
-        double d1 = 684.412f;
-        double d2 = 8.555149841308594d;
-        double d3 = 4.277574920654297d;
-        int i = -10;
-        int j = 3;
-        this.calcNoiseColumn(adouble, noiseX, noiseZ, d0, d1, d2, d3, i, j);
+        this.calcNoiseColumn(adouble, noiseX, noiseZ, 684.412f, 684.412f, 8.555149841308594d, 4.277574920654297d, -10, 3);
     }
 
     @Override
@@ -93,7 +90,7 @@ public class FoodWorldChunkGenerator extends NoiseChunkGenerator<FoodWorldChunkG
                 Biome biome = this.biomeProvider.getNoiseBiome(chunkX + j, sea, chunkZ + k);
                 float f4 = biome.getDepth();
                 float f5 = biome.getScale();
-                if (f4 > 0.0f) {
+                if (this.isAmplified && f4 > 0.0f) {
                     f4 = 1.0f + f4 * 2.0f;
                     f5 = 1.0f + f5 * 4.0f;
                 }
