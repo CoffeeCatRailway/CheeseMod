@@ -3,7 +3,7 @@
   "icon": "coffeecheese:ham_cooked_metal_ingot",
   "category": "items",
   "sortnum": 4,
-  "advancement": "coffeecheese:ham_cooked_metal",
+  "advancement": "coffeecheese:foodworld/ham_cooked_metal",
   "pages": [
     {
       "type": "smelting",

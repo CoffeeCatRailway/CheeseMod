@@ -3,7 +3,7 @@
   "icon": "coffeecheese:grilled_cheese_metal_ingot",
   "category": "items",
   "sortnum": 2,
-  "advancement": "coffeecheese:grilled_cheese_metal",
+  "advancement": "coffeecheese:foodworld/grilled_cheese_metal",
   "pages": [
     {
       "type": "smelting",

@@ -3,7 +3,7 @@
   "icon": "coffeecheese:ham_raw_metal_ingot",
   "category": "items",
   "sortnum": 3,
-  "advancement": "coffeecheese:ham_raw_metal",
+  "advancement": "coffeecheese:foodworld/ham_raw_metal",
   "pages": [
     {
       "type": "smelting",
