@@ -23,6 +23,7 @@ public class FoodieModel<E extends FoodieEntity> extends BipedModel<E> {
         this.bipedHead = new ModelRenderer(this, 0, 0);
         this.bipedHead.addBox(-2.5f, -5.0f, -2.5f, 5, 5, 5, 0.0f);
         this.bipedHead.setRotationPoint(0.0f, 12.0f, 0.0f);
+        this.bipedHeadwear = new ModelRenderer(this);
 
         this.bipedBody = new ModelRenderer(this);
         this.bipedBody.setRotationPoint(0.0f, 12.0f, 0.0f);
