@@ -5,7 +5,6 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.TameableEntity;
-import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.item.Item;
@@ -30,7 +29,7 @@ import java.util.UUID;
  */
 public abstract class FoodieEntity extends TameableEntity {
 
-    private static final DataParameter<Float> DATA_HEALTH_ID = EntityDataManager.createKey(WolfEntity.class, DataSerializers.FLOAT);
+    private static final DataParameter<Float> DATA_HEALTH_ID = EntityDataManager.createKey(FoodieEntity.class, DataSerializers.FLOAT);
 
     public FoodieEntity(EntityType<? extends TameableEntity> type, World world) {
         super(type, world);
