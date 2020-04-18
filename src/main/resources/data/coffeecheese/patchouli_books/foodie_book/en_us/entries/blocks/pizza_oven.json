@@ -1,5 +1,5 @@
 {
-  "name": "Grill",
+  "name": "Pizza Oven",
   "icon": "coffeecheese:pizza_oven",
   "category": "blocks",
   "sortnum": 1,
@@ -9,6 +9,12 @@
       "type": "crafting",
       "recipe": "coffeecheese:crafting/pizza_oven",
       "text": "The pizza oven is used to make pizzas, what were you expecting?"
+    },
+    {
+      "type": "relations",
+      "entries": [
+        "foods/pizza"
+      ]
     }
   ]
 }
