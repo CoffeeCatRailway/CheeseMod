@@ -1,13 +1,11 @@
 package coffeecatrailway.coffeecheese.registry;
 
-import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.common.block.FoodGrassBlock;
 import coffeecatrailway.coffeecheese.common.entity.*;
 import coffeecatrailway.coffeecheese.common.entity.item.BoatEntityCM;
 import com.tterrag.registrate.util.LazySpawnEggItem;
 import com.tterrag.registrate.util.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
-import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.GrassBlock;
@@ -16,16 +14,12 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
-import net.minecraft.state.IProperty;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;

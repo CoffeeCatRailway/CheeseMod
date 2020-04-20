@@ -8,8 +8,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import javax.annotation.Nullable;
-
 /**
  * @author CoffeeCatRailway
  * Created: 13/09/2019

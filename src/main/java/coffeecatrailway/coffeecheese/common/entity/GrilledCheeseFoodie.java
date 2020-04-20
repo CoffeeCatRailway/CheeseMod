@@ -3,7 +3,6 @@ package coffeecatrailway.coffeecheese.common.entity;
 import coffeecatrailway.coffeecheese.registry.ModEntities;
 import coffeecatrailway.coffeecheese.registry.ModItems;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 

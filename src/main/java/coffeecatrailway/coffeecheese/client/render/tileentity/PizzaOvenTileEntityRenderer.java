@@ -3,7 +3,6 @@ package coffeecatrailway.coffeecheese.client.render.tileentity;
 import coffeecatrailway.coffeecheese.common.block.PizzaOvenBlock;
 import coffeecatrailway.coffeecheese.common.tileentity.PizzaOvenTileEntity;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
-import coffeecatrailway.coffeecheese.registry.ModItems;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;

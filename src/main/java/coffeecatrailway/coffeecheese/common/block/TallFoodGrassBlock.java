@@ -10,9 +10,7 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-import java.util.HashSet;
 import java.util.Random;
-import java.util.Set;
 import java.util.function.Supplier;
 
 /**

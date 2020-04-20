@@ -10,8 +10,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import java.util.Random;
-
 /**
  * @author CoffeeCatRailway
  * Created: 17/09/2019

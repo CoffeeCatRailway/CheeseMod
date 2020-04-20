@@ -3,7 +3,6 @@ package coffeecatrailway.coffeecheese.common.world.biome.layer;
 import coffeecatrailway.coffeecheese.common.world.dimension.FoodWorldBiomeProvider;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.layer.traits.IAreaTransformer0;
 

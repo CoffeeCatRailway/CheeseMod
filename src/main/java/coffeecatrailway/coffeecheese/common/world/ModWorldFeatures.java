@@ -2,7 +2,6 @@ package coffeecatrailway.coffeecheese.common.world;
 
 import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import coffeecatrailway.coffeecheese.common.world.biome.BaseFoodBiome;
-import coffeecatrailway.coffeecheese.common.world.feature.ModOreFeature;
 import coffeecatrailway.coffeecheese.common.world.feature.ModOreFeatureConfig;
 import coffeecatrailway.coffeecheese.registry.ModBiomes;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
