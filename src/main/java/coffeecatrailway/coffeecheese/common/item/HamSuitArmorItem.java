@@ -1,7 +1,7 @@
 package coffeecatrailway.coffeecheese.common.item;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
-import coffeecatrailway.coffeecheese.client.model.ModelHamSuit;
+import coffeecatrailway.coffeecheese.client.render.entity.model.ModelHamSuit;
 import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -39,7 +39,7 @@ public class HamSuitArmorItem extends ArmorItem {
     public <A extends BipedModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlotType armorSlot, A _default) {
         if (!itemStack.isEmpty())
             if (itemStack.getItem() instanceof HamSuitArmorItem) {
-                BipedModel armorModel = new ModelHamSuit(1.0f, armorSlot);
+                ModelHamSuit armorModel = new ModelHamSuit(1.0f, armorSlot);
 
                 armorModel.bipedHeadwear.showModel = armorSlot == EquipmentSlotType.HEAD;
 
