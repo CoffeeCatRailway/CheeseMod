@@ -45,6 +45,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Mod(CheeseMod.MOD_ID)
+@Mod.EventBusSubscriber(modid = CheeseMod.MOD_ID)
 public class CheeseMod {
 
     public static final String MOD_ID = "coffeecheese";
@@ -152,14 +153,11 @@ public class CheeseMod {
     @SubscribeEvent
     public static void serverStarting(FMLServerStartingEvent event) {
         ChezCommand.register(event.getCommandDispatcher());
-
-        CheeseMod.LOGGER.debug("Command registered");
     }
 
     @SubscribeEvent
     public static void registerToManager(final RegisterDimensionsEvent event) {
         ResourceLocation location = CheeseMod.getLocation("foodworld");
-
         if (DimensionType.byName(location) == null) {
             ModDimensions.FOOD_WORLD_TYPE = DimensionManager.registerDimension(location, ModDimensions.FOOD_WORLD.get(), new PacketBuffer(Unpooled.buffer()), true);
             DimensionManager.keepLoaded(ModDimensions.FOOD_WORLD_TYPE, false);

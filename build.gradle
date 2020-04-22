@@ -8,6 +8,7 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
     }
 }
+
 plugins {
     id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
@@ -75,6 +76,10 @@ minecraft {
     }
 }
 
+configurations {
+    shade
+}
+
 repositories {
     jcenter()
     mavenLocal()
@@ -82,24 +87,17 @@ repositories {
     maven { // JustEnoughItems
         url = "https://dvs1.progwml6.com/files/maven/"
     }
-//    maven { // JustEnoughResources
-//        name "bintray-way2muchnoise"
-//        url "https://dl.bintray.com/way2muchnoise/dev"
-//    }
-    maven { // TOP
+    maven { // TOP & Registrate
         name 'tterrag maven'
         url "https://maven.tterrag.com/"
     }
     maven {  // Patchouli
         url 'https://maven.blamejared.com'
     }
-    maven { // Registrate
-        url "http://maven.tterrag.com/"
+    maven { // FishLib
+        name = "Jitpack"
+        url = "https://jitpack.io"
     }
-}
-
-configurations {
-    shade
 }
 
 dependencies {
@@ -116,11 +114,16 @@ dependencies {
     def registrate = "com.tterrag.registrate:Registrate:MC${project.mcVersion}-${project.registrateVersion}"
     implementation fg.deobf(registrate)
     shade registrate
+
+    def fishLib = "com.github.Ocelot5836:FishLib:${project.mcVersion}-${project.fishLibVersion}"
+    implementation fg.deobf(fishLib)
+    shade fishLib
 }
 
 shadowJar {
     configurations = [project.configurations.shade]
     relocate 'com.tterrag.registrate', 'coffeecatrailway.repack.registrate'
+    relocate 'io.github.ocelot', 'io.github.ocelot.lib'
 }
 
 reobf {
@@ -128,6 +131,10 @@ reobf {
 }
 
 build.dependsOn reobfShadowJar
+
+artifacts {
+    archives shadowJar
+}
 
 processResources {
     inputs.property("version", version)
