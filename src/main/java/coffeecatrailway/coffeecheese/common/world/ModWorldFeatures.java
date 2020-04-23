@@ -107,11 +107,6 @@ public class ModWorldFeatures {
                             TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
                     addOre(biome, ModBlocks.HAM_COOKED_METAL_ORE.get().getDefaultState(), ModCheeseConfig.hamCookedOreSize.get(), ModCheeseConfig.hamCookedOreRegionSize.get(),
                             TARGET_OVERWORLD, new CountRangeConfig(20, 16, 20, 80));
-
-                    if (isHamRaw)
-                        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModFeatures.BACON_RAW_BALL.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.CHANCE_HEIGHTMAP.configure(new ChanceConfig(3))));
-                    if (isHamCooked)
-                        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, ModFeatures.BACON_COOKED_BALL.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG).withPlacement(Placement.CHANCE_HEIGHTMAP.configure(new ChanceConfig(3))));
                 }
             }
         });

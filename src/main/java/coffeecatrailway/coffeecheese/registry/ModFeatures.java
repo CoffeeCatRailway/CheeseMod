@@ -1,7 +1,6 @@
 package coffeecatrailway.coffeecheese.registry;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
-import coffeecatrailway.coffeecheese.common.world.feature.BaconBallFeature;
 import coffeecatrailway.coffeecheese.common.world.feature.FoodTreeFeatureConfig;
 import coffeecatrailway.coffeecheese.common.world.feature.tree.CheeseTreeFeature;
 import coffeecatrailway.coffeecheese.common.world.feature.tree.HamTreeFeature;
@@ -12,7 +11,10 @@ import net.minecraft.world.gen.blockplacer.DoublePlantBlockPlacer;
 import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.BlockClusterFeatureConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.MultipleRandomFeatureConfig;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.FrequencyConfig;
 import net.minecraft.world.gen.placement.Placement;
@@ -40,10 +42,6 @@ public class ModFeatures {
 
     public static final RegistryObject<Feature<FoodTreeFeatureConfig>> HAM_COOKED_TREE = FEATURES.register("ham_cooked_tree", () ->
             new HamTreeFeature(true, FoodTreeFeatureConfig::deserializeHamCooked));
-
-    /// Other ///
-    public static final RegistryObject<BaconBallFeature> BACON_RAW_BALL = FEATURES.register("bacon_raw_ball", () -> new BaconBallFeature(false, NoFeatureConfig::deserialize));
-    public static final RegistryObject<BaconBallFeature> BACON_COOKED_BALL = FEATURES.register("bacon_cooked_ball", () -> new BaconBallFeature(true, NoFeatureConfig::deserialize));
 
     public static FoodTreeFeatureConfig getCheeseTreeConfig() {
         return (new FoodTreeFeatureConfig.Builder(
