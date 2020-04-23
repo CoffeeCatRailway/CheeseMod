@@ -17,21 +17,6 @@ public class ModBiomes {
     public static final DeferredRegister<Biome> BIOMES = new DeferredRegister<>(ForgeRegistries.BIOMES, CheeseMod.MOD_ID);
 
     /// Biome Colors ///
-    public static final int CHEESE_WATER_COLOR = 14402627;
-    public static final int CHEESE_WATER_FOG_COLOR = 4800790;
-    public static final int CHEESE_GRASS_COLOR = 16768849;
-
-    public static final int GRILLED_CHEESE_WATER_COLOR = 9864494;
-    public static final int GRILLED_CHEESE_WATER_FOG_COLOR = 7036449;
-    public static final int GRILLED_CHEESE_GRASS_COLOR = 9534766;
-
-    public static final int HAM_RAW_WATER_COLOR = 13920850;
-    public static final int HAM_RAW_WATER_FOG_COLOR = 10506302;
-    public static final int HAM_RAW_GRASS_COLOR = 16744291;
-
-    public static final int HAM_COOKED_WATER_COLOR = 14729878;
-    public static final int HAM_COOKED_WATER_FOG_COLOR = 10389865;
-    public static final int HAM_COOKED_GRASS_COLOR = 16770746;
 
     /// Biomes ///
     public static final RegistryObject<BaseFoodBiome> CHEESE_FOREST = BIOMES.register("cheese_forest", () ->
@@ -53,6 +38,21 @@ public class ModBiomes {
             new HamCookedFoodBiome(Biome.Category.FOREST));
     public static final RegistryObject<BaseFoodBiome> HAM_COOKED_PLAINS = BIOMES.register("ham_cooked_plains", () ->
             new HamCookedFoodBiome(Biome.Category.PLAINS));
+    private static final int CHEESE_WATER_COLOR = 0xdbc443;
+    private static final int CHEESE_WATER_FOG_COLOR = 0x494116;
+    private static final int CHEESE_GRASS_COLOR = 0xffdf51;
+
+    private static final int GRILLED_CHEESE_WATER_COLOR = 0x96852e;
+    private static final int GRILLED_CHEESE_WATER_FOG_COLOR = 0x6b5e21;
+    private static final int GRILLED_CHEESE_GRASS_COLOR = 0x917d2e;
+
+    private static final int HAM_RAW_WATER_COLOR = 0xd46a52;
+    private static final int HAM_RAW_WATER_FOG_COLOR = 0xa0503e;
+    private static final int HAM_RAW_GRASS_COLOR = 0xff7f63;
+
+    private static final int HAM_COOKED_WATER_COLOR = 0xe0c296;
+    private static final int HAM_COOKED_WATER_FOG_COLOR = 0x9e8969;
+    private static final int HAM_COOKED_GRASS_COLOR = 0xffe6ba;
 
     public static void addBiomeTypes() {
         BiomeDictionary.addTypes(CHEESE_FOREST.get(), BiomeDictionary.Type.FOREST, BiomeDictionary.Type.COLD);
