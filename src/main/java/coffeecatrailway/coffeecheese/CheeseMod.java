@@ -7,7 +7,6 @@ import coffeecatrailway.coffeecheese.compat.patchouli.ModPageTypes;
 import coffeecatrailway.coffeecheese.compat.registrate.ModRegistrate;
 import coffeecatrailway.coffeecheese.compat.top.TOPCompatibility;
 import coffeecatrailway.coffeecheese.registry.*;
-import com.tterrag.registrate.Registrate;
 import io.netty.buffer.Unpooled;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.item.ItemEntity;
@@ -92,7 +91,6 @@ public class CheeseMod {
     @OnlyIn(Dist.CLIENT)
     public void setupClient(FMLClientSetupEvent event) {
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::itemColors);
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::renderLayers);
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::containerScreens);
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::particleFactories);
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::entityRenderers);

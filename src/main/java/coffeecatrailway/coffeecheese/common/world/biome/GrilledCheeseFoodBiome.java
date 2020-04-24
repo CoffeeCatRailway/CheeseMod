@@ -1,7 +1,5 @@
 package coffeecatrailway.coffeecheese.common.world.biome;
 
-import coffeecatrailway.coffeecheese.registry.ModBiomes;
-import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModFeatures;
 
 /**

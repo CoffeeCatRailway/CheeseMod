@@ -3,7 +3,6 @@ package coffeecatrailway.coffeecheese.common.world;
 import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import coffeecatrailway.coffeecheese.common.world.biome.*;
 import coffeecatrailway.coffeecheese.common.world.feature.ModOreFeatureConfig;
-import coffeecatrailway.coffeecheese.registry.ModBiomes;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModEntities;
 import com.google.common.base.Predicate;

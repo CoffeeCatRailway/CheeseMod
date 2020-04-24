@@ -1,7 +1,6 @@
 package coffeecatrailway.coffeecheese.common.block;
 
 import coffeecatrailway.coffeecheese.common.tileentity.FoodDrawTileEntity;
-import io.github.ocelot.common.BaseBlock;
 import io.github.ocelot.common.VoxelShapeHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;

@@ -1,6 +1,5 @@
 package coffeecatrailway.coffeecheese.registry;
 
-import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.common.world.feature.FoodTreeFeatureConfig;
 import coffeecatrailway.coffeecheese.common.world.feature.tree.CheeseTreeFeature;
 import coffeecatrailway.coffeecheese.common.world.feature.tree.HamTreeFeature;
@@ -19,9 +18,6 @@ import net.minecraft.world.gen.feature.MultipleRandomFeatureConfig;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.FrequencyConfig;
 import net.minecraft.world.gen.placement.Placement;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import static coffeecatrailway.coffeecheese.CheeseMod.REGISTRATE;
 
