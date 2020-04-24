@@ -10,8 +10,8 @@ import coffeecatrailway.coffeecheese.registry.ModFeatures;
  */
 public class HamCookedFoodBiome extends BaseFoodBiome {
 
-    public HamCookedFoodBiome(Category category) {
-        super(ModBiomes.HAM_COOKED_WATER_COLOR, ModBiomes.HAM_COOKED_WATER_FOG_COLOR, ModBiomes.HAM_COOKED_GRASS_COLOR, ModBlocks.HAM_COOKED_GRASS_BLOCK.get().getDefaultState(), category);
+    public HamCookedFoodBiome(Builder builder, int grassColor) {
+        super(builder, grassColor);
     }
 
     @Override

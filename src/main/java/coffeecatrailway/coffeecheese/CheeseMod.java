@@ -4,6 +4,7 @@ import coffeecatrailway.coffeecheese.common.block.TallFoodGrassBlock;
 import coffeecatrailway.coffeecheese.common.command.ChezCommand;
 import coffeecatrailway.coffeecheese.common.world.ModWorldFeatures;
 import coffeecatrailway.coffeecheese.compat.patchouli.ModPageTypes;
+import coffeecatrailway.coffeecheese.compat.registrate.ModRegistrate;
 import coffeecatrailway.coffeecheese.compat.top.TOPCompatibility;
 import coffeecatrailway.coffeecheese.registry.*;
 import com.tterrag.registrate.Registrate;
@@ -54,7 +55,7 @@ public class CheeseMod {
     public static ModCheeseConfig.ClientConfig CLIENT_CFG;
     public static ModCheeseConfig.ServerConfig SERVER_CFG;
 
-    public static Registrate REGISTRATE;
+    public static ModRegistrate REGISTRATE;
 
     public CheeseMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -69,16 +70,16 @@ public class CheeseMod {
         CLIENT_CFG = specPairC.getLeft();
         SERVER_CFG = specPairS.getLeft();
 
-        REGISTRATE = Registrate.create(MOD_ID).itemGroup(() -> ModItemGroups.GROUP_ALL);
+        REGISTRATE = ModRegistrate.create(MOD_ID, modEventBus);
 
         ModBlocks.load();
         ModItems.load();
         ModFluids.load();
         ModTileEntities.load();
         ModEntities.load();
-        ModContainers.CONTAINERS.register(modEventBus);
-        ModFeatures.FEATURES.register(modEventBus);
-        ModBiomes.BIOMES.register(modEventBus);
+        ModContainers.load();
+        ModFeatures.load();
+        ModBiomes.load();
         modEventBus.addListener(ModStats::registerAll);
         ModRecipes.registerRecipeType();
         ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
@@ -91,6 +92,7 @@ public class CheeseMod {
     @OnlyIn(Dist.CLIENT)
     public void setupClient(FMLClientSetupEvent event) {
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::itemColors);
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::renderLayers);
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::containerScreens);
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::particleFactories);
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::entityRenderers);

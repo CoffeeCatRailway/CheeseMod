@@ -1,12 +1,11 @@
 package coffeecatrailway.coffeecheese.common.world;
 
 import coffeecatrailway.coffeecheese.ModCheeseConfig;
-import coffeecatrailway.coffeecheese.common.world.biome.BaseFoodBiome;
+import coffeecatrailway.coffeecheese.common.world.biome.*;
 import coffeecatrailway.coffeecheese.common.world.feature.ModOreFeatureConfig;
 import coffeecatrailway.coffeecheese.registry.ModBiomes;
 import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModEntities;
-import coffeecatrailway.coffeecheese.registry.ModFeatures;
 import com.google.common.base.Predicate;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -14,8 +13,6 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.IFeatureConfig;
-import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.CountRangeConfig;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.common.Tags;
@@ -70,12 +67,12 @@ public class ModWorldFeatures {
                             TARGET_END, RANGE_FULL);
 
             } else if (biome instanceof BaseFoodBiome) { // FOOD WORLD
-                boolean isCheese = biome == ModBiomes.CHEESE_FOREST.get() || biome == ModBiomes.CHEESE_PLAINS.get();
-                boolean isGrilledCheese = biome == ModBiomes.GRILLED_CHEESE_FOREST.get() || biome == ModBiomes.GRILLED_CHEESE_PLAINS.get();
+                boolean isCheese = biome instanceof CheeseFoodBiome;
+                boolean isGrilledCheese = biome instanceof GrilledCheeseFoodBiome;
                 boolean justCheese = isCheese || isGrilledCheese;
 
-                boolean isHamRaw = biome == ModBiomes.HAM_RAW_FOREST.get() || biome == ModBiomes.HAM_RAW_PLAINS.get();
-                boolean isHamCooked = biome == ModBiomes.HAM_COOKED_FOREST.get() || biome == ModBiomes.HAM_COOKED_PLAINS.get();
+                boolean isHamRaw = biome instanceof HamRawFoodBiome;
+                boolean isHamCooked = biome instanceof HamCookedFoodBiome;
                 boolean justHam = isHamRaw || isHamCooked;
 
                 // Foodies

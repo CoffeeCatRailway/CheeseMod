@@ -10,8 +10,8 @@ import coffeecatrailway.coffeecheese.registry.ModFeatures;
  */
 public class GrilledCheeseFoodBiome extends BaseFoodBiome {
 
-    public GrilledCheeseFoodBiome(Category category) {
-        super(ModBiomes.GRILLED_CHEESE_WATER_COLOR, ModBiomes.GRILLED_CHEESE_WATER_FOG_COLOR, ModBiomes.GRILLED_CHEESE_GRASS_COLOR, ModBlocks.GRILLED_CHEESE_GRASS_BLOCK.get().getDefaultState(), category);
+    public GrilledCheeseFoodBiome(Builder builder, int grassColor) {
+        super(builder, grassColor);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package coffeecatrailway.coffeecheese.common.world.biome;
 
-import coffeecatrailway.coffeecheese.registry.ModBiomes;
-import coffeecatrailway.coffeecheese.registry.ModBlocks;
 import coffeecatrailway.coffeecheese.registry.ModFeatures;
 
 /**
@@ -10,8 +8,8 @@ import coffeecatrailway.coffeecheese.registry.ModFeatures;
  */
 public class CheeseFoodBiome extends BaseFoodBiome {
 
-    public CheeseFoodBiome(Category category) {
-        super(ModBiomes.CHEESE_WATER_COLOR, ModBiomes.CHEESE_WATER_FOG_COLOR, ModBiomes.CHEESE_GRASS_COLOR, ModBlocks.CHEESE_GRASS_BLOCK.get().getDefaultState(), category);
+    public CheeseFoodBiome(Builder builder, int grassColor) {
+        super(builder, grassColor);
     }
 
     @Override

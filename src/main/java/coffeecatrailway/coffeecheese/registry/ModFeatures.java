@@ -5,6 +5,7 @@ import coffeecatrailway.coffeecheese.common.world.feature.FoodTreeFeatureConfig;
 import coffeecatrailway.coffeecheese.common.world.feature.tree.CheeseTreeFeature;
 import coffeecatrailway.coffeecheese.common.world.feature.tree.HamTreeFeature;
 import com.google.common.collect.ImmutableList;
+import com.tterrag.registrate.util.RegistryEntry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.blockplacer.DoublePlantBlockPlacer;
@@ -22,26 +23,26 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import static coffeecatrailway.coffeecheese.CheeseMod.REGISTRATE;
+
 /**
  * @author CoffeeCatRailway
  * Created: 30/07/2019
  */
 public class ModFeatures {
 
-    public static final DeferredRegister<Feature<?>> FEATURES = new DeferredRegister<>(ForgeRegistries.FEATURES, CheeseMod.MOD_ID);
-
     /// Trees ///
-    public static final RegistryObject<Feature<FoodTreeFeatureConfig>> CHEESE_TREE = FEATURES.register("cheese_tree", () ->
-            new CheeseTreeFeature(false, FoodTreeFeatureConfig::deserializeCheese));
+    public static final RegistryEntry<CheeseTreeFeature> CHEESE_TREE = REGISTRATE.feature("cheese_tree", () ->
+            new CheeseTreeFeature(false, FoodTreeFeatureConfig::deserializeCheese)).register();
 
-    public static final RegistryObject<Feature<FoodTreeFeatureConfig>> GRILLED_CHEESE_TREE = FEATURES.register("grilled_cheese_tree", () ->
-            new CheeseTreeFeature(true, FoodTreeFeatureConfig::deserializeGrilledCheese));
+    public static final RegistryEntry<CheeseTreeFeature> GRILLED_CHEESE_TREE = REGISTRATE.feature("grilled_cheese_tree", () ->
+            new CheeseTreeFeature(true, FoodTreeFeatureConfig::deserializeGrilledCheese)).register();
 
-    public static final RegistryObject<Feature<FoodTreeFeatureConfig>> HAM_RAW_TREE = FEATURES.register("ham_raw_tree", () ->
-            new HamTreeFeature(false, FoodTreeFeatureConfig::deserializeHamRaw));
+    public static final RegistryEntry<HamTreeFeature> HAM_RAW_TREE = REGISTRATE.feature("ham_raw_tree", () ->
+            new HamTreeFeature(false, FoodTreeFeatureConfig::deserializeHamRaw)).register();
 
-    public static final RegistryObject<Feature<FoodTreeFeatureConfig>> HAM_COOKED_TREE = FEATURES.register("ham_cooked_tree", () ->
-            new HamTreeFeature(true, FoodTreeFeatureConfig::deserializeHamCooked));
+    public static final RegistryEntry<HamTreeFeature> HAM_COOKED_TREE = REGISTRATE.feature("ham_cooked_tree", () ->
+            new HamTreeFeature(true, FoodTreeFeatureConfig::deserializeHamCooked)).register();
 
     public static FoodTreeFeatureConfig getCheeseTreeConfig() {
         return (new FoodTreeFeatureConfig.Builder(
@@ -114,4 +115,6 @@ public class ModFeatures {
     public static void addFoodTrees(Biome biome, ConfiguredFeature<? extends FoodTreeFeatureConfig, ?> mainTree, ConfiguredFeature<? extends FoodTreeFeatureConfig, ?> secondTree, int count) {
         biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(secondTree.func_227227_a_(0.15F)), mainTree)).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(count, 0.1F, 1))));
     }
+
+    public static void load() {}
 }

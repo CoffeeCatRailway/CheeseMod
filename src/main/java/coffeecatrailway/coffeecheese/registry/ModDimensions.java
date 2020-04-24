@@ -2,7 +2,6 @@ package coffeecatrailway.coffeecheese.registry;
 
 import coffeecatrailway.coffeecheese.CheeseMod;
 import coffeecatrailway.coffeecheese.common.world.dimension.FoodWorldDimension;
-import coffeecatrailway.coffeecheese.common.world.dimension.FoodWorldTeleporter;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
@@ -28,5 +27,4 @@ public class ModDimensions {
         }
     });
     public static DimensionType FOOD_WORLD_TYPE;
-    public static FoodWorldTeleporter FOOD_WORLD_TELEPORTER;
 }
