@@ -46,4 +46,9 @@ public class BaseFoodBiome extends Biome implements IHasFeatures {
     public int getGrassColor(double posX, double posZ) {
         return this.grassColor;
     }
+
+    @Override
+    public int getFoliageColor() {
+        return this.grassColor;
+    }
 }
