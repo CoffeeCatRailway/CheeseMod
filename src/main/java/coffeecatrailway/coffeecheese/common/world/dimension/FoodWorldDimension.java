@@ -136,4 +136,9 @@ public class FoodWorldDimension extends Dimension {
     public boolean doesXZShowFog(int x, int z) {
         return false;
     }
+
+    @Override
+    public int getSeaLevel() {
+        return FoodWorldGenSettings.SEA_LEVEL;
+    }
 }

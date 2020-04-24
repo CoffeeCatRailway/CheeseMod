@@ -76,9 +76,9 @@ public class FoodWorldChunkGenerator extends NoiseChunkGenerator<FoodWorldGenSet
     @Override
     protected double[] getBiomeNoiseColumn(int chunkX, int chunkZ) {
         double[] adouble = new double[2];
-        float f = 0.0f;
-        float f1 = 0.0f;
-        float f2 = 0.0f;
+        float f = 0.0F;
+        float f1 = 0.0F;
+        float f2 = 0.0F;
         int sea = this.getSeaLevel();
         float f3 = this.biomeProvider.getNoiseBiome(chunkX, sea, chunkZ).getDepth();
 
@@ -87,14 +87,14 @@ public class FoodWorldChunkGenerator extends NoiseChunkGenerator<FoodWorldGenSet
                 Biome biome = this.biomeProvider.getNoiseBiome(chunkX + j, sea, chunkZ + k);
                 float f4 = biome.getDepth();
                 float f5 = biome.getScale();
-                if (this.isAmplified && f4 > 0.0f) {
-                    f4 = 1.0f + f4 * 2.0f;
-                    f5 = 1.0f + f5 * 4.0f;
+                if (this.isAmplified && f4 > 0.0F) {
+                    f4 = 1.0F + f4 * 2.0F;
+                    f5 = 1.0F + f5 * 4.0F;
                 }
 
-                float f6 = biomeWeights[j + 2 + (k + 2) * 5] / (f4 + 2.0f);
+                float f6 = biomeWeights[j + 2 + (k + 2) * 5] / (f4 + 2.0F);
                 if (biome.getDepth() > f3)
-                    f6 /= 2.0f;
+                    f6 /= 2.0F;
 
                 f += f5 * f6;
                 f1 += f4 * f6;
@@ -104,9 +104,9 @@ public class FoodWorldChunkGenerator extends NoiseChunkGenerator<FoodWorldGenSet
 
         f = f / f2;
         f1 = f1 / f2;
-        f = f * 0.9f + 0.1f;
-        f1 = (f1 * 4.0f - 1.0f) / 8.0f;
-        adouble[0] = f1 + this.getDepthNoise(chunkX, chunkZ);
+        f = f * 0.9F + 0.1F;
+        f1 = (f1 * 4.0F - 1.0F) / 8.0F;
+        adouble[0] = (double) f1 + this.getDepthNoise(chunkX, chunkZ);
         adouble[1] = f;
         return adouble;
     }

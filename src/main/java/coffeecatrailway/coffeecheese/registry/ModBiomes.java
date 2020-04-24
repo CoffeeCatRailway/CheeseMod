@@ -3,6 +3,7 @@ package coffeecatrailway.coffeecheese.registry;
 import coffeecatrailway.coffeecheese.common.world.biome.*;
 import com.tterrag.registrate.util.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import net.minecraft.item.Food;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;
@@ -20,7 +21,7 @@ public class ModBiomes {
     /// Biome Colors & SurfaceBuilders ///
     private static final int CHEESE_WATER_COLOR = 0xdbc443;
     private static final int CHEESE_WATER_FOG_COLOR = 0x494116;
-    private static final int CHEESE_GRASS_COLOR = 0xffdf51;
+    public static final int CHEESE_GRASS_COLOR = 0xffdf51;
     private static final NonNullSupplier<SurfaceBuilderConfig> CHEESE_SURFACE = () -> new SurfaceBuilderConfig(ModBlocks.CHEESE_GRASS_BLOCK.get().getDefaultState(), SurfaceBuilder.DIRT, SurfaceBuilder.SAND);
 
     private static final int GRILLED_CHEESE_WATER_COLOR = 0x96852e;
@@ -37,6 +38,8 @@ public class ModBiomes {
     private static final int HAM_COOKED_WATER_FOG_COLOR = 0x9e8969;
     private static final int HAM_COOKED_GRASS_COLOR = 0xffe6ba;
     private static final NonNullSupplier<SurfaceBuilderConfig> HAM_COOKED_SURFACE = () -> new SurfaceBuilderConfig(ModBlocks.HAM_COOKED_GRASS_BLOCK.get().getDefaultState(), SurfaceBuilder.DIRT, SurfaceBuilder.SAND);
+
+    private static final NonNullSupplier<SurfaceBuilderConfig> FOOD_RIVER_SURFACE = () -> new SurfaceBuilderConfig(SurfaceBuilder.SAND, SurfaceBuilder.SAND, SurfaceBuilder.SAND);
 
     // Cheese
     public static final RegistryEntry<CheeseFoodBiome> CHEESE_FOREST = REGISTRATE.biome("cheese_forest", prop -> new CheeseFoodBiome(prop, CHEESE_GRASS_COLOR))
@@ -90,6 +93,11 @@ public class ModBiomes {
             .defaultPrecipitation().defaultParent().category(Biome.Category.PLAINS).depth(0.125f).scale(0.035f).temperature(0.5f).downfall(0.4f)
             .waterColor(HAM_COOKED_WATER_COLOR).waterFogColor(HAM_COOKED_WATER_FOG_COLOR).surfaceBuilder(SurfaceBuilder.DEFAULT, HAM_COOKED_SURFACE).register();
 
+    // River
+    public static final RegistryEntry<FoodRiverBiome> FOOD_RIVER_BIOME = REGISTRATE.biome("food_river_biome", FoodRiverBiome::new)
+            .precipitation(Biome.RainType.NONE).defaultParent().category(Biome.Category.RIVER).depth(-0.5f).scale(0.0f).temperature(0.66f).downfall(0.0f)
+            .waterColor(CHEESE_WATER_COLOR).waterFogColor(CHEESE_WATER_FOG_COLOR).surfaceBuilder(SurfaceBuilder.DEFAULT, FOOD_RIVER_SURFACE).register();
+
     public static void addBiomeTypes() {
         BiomeDictionary.addTypes(CHEESE_FOREST.get(), BiomeDictionary.Type.FOREST, BiomeDictionary.Type.COLD);
         BiomeDictionary.addTypes(CHEESE_FOREST_HILLS.get(), BiomeDictionary.Type.FOREST, BiomeDictionary.Type.HILLS);
@@ -106,6 +114,8 @@ public class ModBiomes {
         BiomeDictionary.addTypes(HAM_COOKED_FOREST.get(), BiomeDictionary.Type.FOREST, BiomeDictionary.Type.HOT);
         BiomeDictionary.addTypes(HAM_COOKED_FOREST_HILLS.get(), BiomeDictionary.Type.FOREST, BiomeDictionary.Type.HILLS);
         BiomeDictionary.addTypes(HAM_COOKED_PLAINS.get(), BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.HOT);
+
+        BiomeDictionary.addTypes(FOOD_RIVER_BIOME.get(), BiomeDictionary.Type.RIVER);
     }
 
     public static void addBiomeFeatures() {
