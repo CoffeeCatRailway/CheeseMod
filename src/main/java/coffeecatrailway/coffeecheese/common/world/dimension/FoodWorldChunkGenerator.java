@@ -1,7 +1,5 @@
 package coffeecatrailway.coffeecheese.common.world.dimension;
 
-import coffeecatrailway.coffeecheese.registry.ModFluids;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
@@ -10,7 +8,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
-import net.minecraft.world.gen.GenerationSettings;
 import net.minecraft.world.gen.NoiseChunkGenerator;
 import net.minecraft.world.gen.OctavesNoiseGenerator;
 import net.minecraft.world.gen.WorldGenRegion;
@@ -20,7 +17,7 @@ import net.minecraft.world.server.ServerWorld;
  * @author CoffeeCatRailway - Bagu_Chan https://github.com/pentantan
  * Created: 15/01/2020
  */
-public class FoodWorldChunkGenerator extends NoiseChunkGenerator<FoodWorldChunkGenerator.FoodWorldGenSettings> {
+public class FoodWorldChunkGenerator extends NoiseChunkGenerator<FoodWorldGenSettings> {
 
     private static final float[] biomeWeights = Util.make(new float[25], (weight) -> {
         for (int i = -2; i <= 2; ++i) {
@@ -139,22 +136,5 @@ public class FoodWorldChunkGenerator extends NoiseChunkGenerator<FoodWorldChunkG
     @Override
     public int getSeaLevel() {
         return FoodWorldGenSettings.SEA_LEVEL;
-    }
-
-    public static class FoodWorldGenSettings extends GenerationSettings {
-
-        public static final int SEA_LEVEL = 65;
-
-        public static FoodWorldGenSettings createDefault() {
-            FoodWorldGenSettings foodWorldGenSettings = new FoodWorldGenSettings();
-            foodWorldGenSettings.setDefaultBlock(Blocks.STONE.getDefaultState());
-            foodWorldGenSettings.setDefaultFluid(ModFluids.VINEGAR.get().getDefaultState().getBlockState());
-
-            return foodWorldGenSettings;
-        }
-
-        public int getBedrockFloorHeight() {
-            return 0;
-        }
     }
 }

@@ -32,7 +32,7 @@ public class FoodWorldDimension extends Dimension {
     @Override
     public ChunkGenerator<?> createChunkGenerator() {
         BiomeProvider biomeProvider = new FoodWorldBiomeProvider(this.world);
-        return new FoodWorldChunkGenerator(this.world, biomeProvider, FoodWorldChunkGenerator.FoodWorldGenSettings.createDefault());
+        return new FoodWorldChunkGenerator(this.world, biomeProvider, FoodWorldGenSettings.createDefault());
     }
 
     /**
