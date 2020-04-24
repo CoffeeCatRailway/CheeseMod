@@ -14,7 +14,6 @@ import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.Heightmap;
-import net.minecraft.world.gen.OverworldGenSettings;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -32,7 +31,7 @@ public class FoodWorldDimension extends Dimension {
 
     @Override
     public ChunkGenerator<?> createChunkGenerator() {
-        BiomeProvider biomeProvider = new FoodWorldBiomeProvider(this.world, new OverworldGenSettings());
+        BiomeProvider biomeProvider = new FoodWorldBiomeProvider(this.world);
         return new FoodWorldChunkGenerator(this.world, biomeProvider, FoodWorldChunkGenerator.FoodWorldGenSettings.createDefault());
     }
 
@@ -42,8 +41,8 @@ public class FoodWorldDimension extends Dimension {
     @Nullable
     @Override
     public BlockPos findSpawn(ChunkPos chunkPos, boolean checkValid) {
-        for(int i = chunkPos.getXStart(); i <= chunkPos.getXEnd(); ++i) {
-            for(int j = chunkPos.getZStart(); j <= chunkPos.getZEnd(); ++j) {
+        for (int i = chunkPos.getXStart(); i <= chunkPos.getXEnd(); ++i) {
+            for (int j = chunkPos.getZStart(); j <= chunkPos.getZEnd(); ++j) {
                 BlockPos blockpos = this.findSpawn(i, j, checkValid);
                 if (blockpos != null) {
                     return blockpos;
@@ -73,7 +72,7 @@ public class FoodWorldDimension extends Dimension {
             } else if (chunk.getTopBlockY(Heightmap.Type.WORLD_SURFACE, posX & 15, posZ & 15) > chunk.getTopBlockY(Heightmap.Type.OCEAN_FLOOR, posX & 15, posZ & 15)) {
                 return null;
             } else {
-                for(int j = i + 1; j >= 0; --j) {
+                for (int j = i + 1; j >= 0; --j) {
                     blockpos$mutableblockpos.setPos(posX, j, posZ);
                     BlockState blockstate1 = this.world.getBlockState(blockpos$mutableblockpos);
                     if (!blockstate1.getFluidState().isEmpty()) {
@@ -95,9 +94,9 @@ public class FoodWorldDimension extends Dimension {
      */
     @Override
     public float calculateCelestialAngle(long worldTime, float partialTicks) {
-        double d0 = MathHelper.frac((double)worldTime / 24000.0D - 0.25D);
+        double d0 = MathHelper.frac((double) worldTime / 24000.0D - 0.25D);
         double d1 = 0.5D - Math.cos(d0 * Math.PI) / 2.0D;
-        return (float)(d0 * 2.0D + d1) / 3.0F;
+        return (float) (d0 * 2.0D + d1) / 3.0F;
     }
 
     @Override
