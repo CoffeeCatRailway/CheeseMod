@@ -164,12 +164,6 @@ public class FoodWorldTeleporter extends Teleporter implements ITeleporter {
             return false;
     }
 
-//    @Nullable
-//    @Override
-//    public BlockPattern.PortalInfo placeInExistingPortal(BlockPos pos, Vec3d p_222272_2_, Direction direction, double p_222272_4_, double p_222272_6_, boolean p_222272_8_) {
-//        return super.placeInExistingPortal(pos, p_222272_2_, direction, p_222272_4_, p_222272_6_, p_222272_8_);
-//    }
-
     private boolean isInsideBlock(BlockPos position) {
         return !this.world.isAirBlock(position) || !this.world.isAirBlock(position.up());
     }

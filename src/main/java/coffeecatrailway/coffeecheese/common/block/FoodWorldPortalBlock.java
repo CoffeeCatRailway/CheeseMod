@@ -243,8 +243,6 @@ public class FoodWorldPortalBlock extends ContainerBlock {
     }
 
     public static class Size {
-        private static final int MAX_SIZE = 9;
-        private static final int MIN_SIZE = 3;
 
         private final IWorld world;
         private boolean valid = false;
@@ -262,9 +260,9 @@ public class FoodWorldPortalBlock extends ContainerBlock {
             int width = east + west - 1;
             int length = north + south - 1;
 
-            if (width > Size.MAX_SIZE || length > Size.MAX_SIZE)
+            if (width > 2 || length > 2)
                 return;
-            if (width < Size.MIN_SIZE || length < Size.MIN_SIZE)
+            if (width < 2 || length < 2)
                 return;
 
             BlockPos nwCorner = pos.west(west).north(north);
@@ -275,12 +273,11 @@ public class FoodWorldPortalBlock extends ContainerBlock {
             int wallWidth = width + 2;
             int wallLength = length + 2;
 
-            for (int y = 0; y <= 1; y++)
-                for (int x = 0; x < wallWidth; x++)
-                    for (int z = 0; z < wallLength; z++)
-                        if (y == 0 || x == 0 || z == 0 || x == wallWidth - 1 || z == wallLength - 1)
-                            if (!isFrameBlock(world.getBlockState(nwCorner.down().add(x, y, z))))
-                                return;
+            for (int x = 0; x < wallWidth; x++)
+                for (int z = 0; z < wallLength; z++)
+                    if (x == 0 || z == 0 || x == wallWidth - 1 || z == wallLength - 1)
+                        if (!isFrameBlock(world.getBlockState(nwCorner.down().add(x, 1, z))))
+                            return;
 
             this.valid = true;
         }
