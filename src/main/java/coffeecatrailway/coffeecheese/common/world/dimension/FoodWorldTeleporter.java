@@ -184,15 +184,15 @@ public class FoodWorldTeleporter extends Teleporter implements ITeleporter {
             pos = pos.up();
 
         //Bottom layers
-        for (BlockPos basePos : BlockPos.Mutable.getAllInBoxMutable(pos.add(-2, 0, -2), pos.add(2, 1, 2)))
+        for (BlockPos basePos : BlockPos.Mutable.getAllInBoxMutable(pos.add(-2, 0, -2), pos.add(1, 1, 1)))
             world.setBlockState(basePos, frameState, 2);
 
         //air
-        for (BlockPos airPos : BlockPos.Mutable.getAllInBoxMutable(pos.add(-2, 2, -1), pos.add(2, 3, 1)))
+        for (BlockPos airPos : BlockPos.Mutable.getAllInBoxMutable(pos.add(-2, 2, -1), pos.add(2, 3, 0)))
             world.setBlockState(airPos, Blocks.AIR.getDefaultState(), 2);
 
         //Portal blocks
-        for (BlockPos portalPos : BlockPos.Mutable.getAllInBoxMutable(pos.add(-1, 1, -1), pos.add(1, 1, 1)))
+        for (BlockPos portalPos : BlockPos.Mutable.getAllInBoxMutable(pos.add(-1, 1, -1), pos.add(0, 1, 0)))
             world.setBlockState(portalPos, portalState, 2);
 
         return true;
