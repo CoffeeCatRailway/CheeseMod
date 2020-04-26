@@ -41,6 +41,72 @@ public class ClientEvents {
         }
     }
 
+    public static void renderLayers() {
+        RenderType cutoutMipped = RenderType.getCutoutMipped();
+
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHEESE_LEAVES.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRILLED_CHEESE_LEAVES.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_RAW_LEAVES.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_COOKED_LEAVES.get(), cutoutMipped);
+
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHEESE_DRAW.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRILLED_CHEESE_DRAW.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_RAW_DRAW.get(), cutoutMipped);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_COOKED_DRAW.get(), cutoutMipped);
+
+        RenderType cutout = RenderType.getCutout();
+
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHEESE_GRASS.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.TALL_CHEESE_GRASS.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRILLED_CHEESE_GRASS.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.TALL_GRILLED_CHEESE_GRASS.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_RAW_GRASS.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.TALL_HAM_RAW_GRASS.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_COOKED_GRASS.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.TALL_HAM_COOKED_GRASS.get(), cutout);
+
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHEESE_SAPLING.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRILLED_CHEESE_SAPLING.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_RAW_SAPLING.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_COOKED_SAPLING.get(), cutout);
+
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHEESE_DOOR.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRILLED_CHEESE_DOOR.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_RAW_DOOR.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_COOKED_DOOR.get(), cutout);
+
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHEESE_WOOD_DOOR.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRILLED_CHEESE_WOOD_DOOR.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_RAW_WOOD_DOOR.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_COOKED_WOOD_DOOR.get(), cutout);
+
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHEESE_TRAP_DOOR.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRILLED_CHEESE_TRAP_DOOR.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_RAW_TRAP_DOOR.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_COOKED_TRAP_DOOR.get(), cutout);
+
+        RenderTypeLookup.setRenderLayer(ModBlocks.CHEESE_WOOD_TRAP_DOOR.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRILLED_CHEESE_WOOD_TRAP_DOOR.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_RAW_WOOD_TRAP_DOOR.get(), cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.HAM_COOKED_WOOD_TRAP_DOOR.get(), cutout);
+
+        RenderTypeLookup.setRenderLayer(ModBlocks.PINEAPPLE.get(), cutout);
+        
+        RenderType translucent = RenderType.getTranslucent();
+
+        RenderTypeLookup.setRenderLayer(ModFluids.MILK.get(), translucent);
+        RenderTypeLookup.setRenderLayer(ModFluids.MILK.get().getFlowingFluid(), translucent);
+        RenderTypeLookup.setRenderLayer(ModFluids.MILK.get().getStillFluid(), translucent);
+
+        RenderTypeLookup.setRenderLayer(ModFluids.VINEGAR.get(), translucent);
+        RenderTypeLookup.setRenderLayer(ModFluids.VINEGAR.get().getFlowingFluid(), translucent);
+        RenderTypeLookup.setRenderLayer(ModFluids.VINEGAR.get().getStillFluid(), translucent);
+
+        RenderTypeLookup.setRenderLayer(ModFluids.OIL.get(), translucent);
+        RenderTypeLookup.setRenderLayer(ModFluids.OIL.get().getFlowingFluid(), translucent);
+        RenderTypeLookup.setRenderLayer(ModFluids.OIL.get().getStillFluid(), translucent);
+    }
+
     public static void containerScreens() {
         ScreenManager.registerFactory(ModContainers.FOOD_DRAW.get(), FoodDrawScreen::new);
         ScreenManager.registerFactory(ModContainers.GRILL.get(), GrillScreen::new);

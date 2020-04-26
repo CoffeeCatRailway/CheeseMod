@@ -91,6 +91,7 @@ public class CheeseMod {
     @OnlyIn(Dist.CLIENT)
     public void setupClient(FMLClientSetupEvent event) {
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::itemColors);
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::renderLayers);
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::containerScreens);
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::particleFactories);
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::entityRenderers);
