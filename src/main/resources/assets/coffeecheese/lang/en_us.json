@@ -401,13 +401,22 @@
   "gui.tag_filter.coffeecheese.filters.foods.crackers": "Cracker",
 
   "biome.coffeecheese.cheese_forest": "Cheese Forest",
+  "biome.coffeecheese.cheese_forest_hills": "Cheese Forest Hills",
   "biome.coffeecheese.cheese_plains": "Cheese Plains",
+
   "biome.coffeecheese.grilled_cheese_forest": "Grilled Cheese Forest",
+  "biome.coffeecheese.grilled_cheese_forest_hills": "Grilled Cheese Forest Hills",
   "biome.coffeecheese.grilled_cheese_plains": "Grilled Cheese Plains",
+
   "biome.coffeecheese.ham_raw_forest": "Raw Ham Forest",
+  "biome.coffeecheese.ham_raw_forest_hills": "Raw Ham Forest Hills",
   "biome.coffeecheese.ham_raw_plains": "Raw Ham Plains",
+
   "biome.coffeecheese.ham_cooked_forest": "Cooked Ham Forest",
+  "biome.coffeecheese.ham_cooked_forest_hills": "Cooked Ham Forest Hills",
   "biome.coffeecheese.ham_cooked_plains": "Cooked Ham Plains",
+
+  "biome.coffeecheese.food_river_biome": "Food River",
 
   "itemGroup.coffeecheese.foods": "Cheese Mod Foods",
   "itemGroup.coffeecheese.armor_tools": "Cheese Mod Armor & Tools",
