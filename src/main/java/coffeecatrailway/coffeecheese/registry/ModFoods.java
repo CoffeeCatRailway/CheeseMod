@@ -38,7 +38,7 @@ public class ModFoods {
     public static final Food HAM_COOKED = new Food.Builder().hunger(HAM.getHealing() * 2).saturation(HAM.getSaturation() * 2.0f).meat().build();
     public static final Food HAM_GREEN = new Food.Builder().hunger(HAM.getHealing()).saturation(HAM.getSaturation()).effect(() -> new EffectInstance(Effects.HUNGER, 400, 1), 1.0f).meat().build();
 
-    public static final Food TOAST = new Food.Builder().hunger(BREAD_SLICE.getHealing() * 3).saturation(BREAD_SLICE.getSaturation() * 3.0f).build();
+    public static final Food TOAST = buildCombo(true, BREAD_SLICE);
     public static final Food TOAST_FRENCH = buildCombo(false, TOAST, EGG, EGG);
     public static final Food TOAST_BACON = buildCombo(false, TOAST, BACON_COOKED);
 
@@ -49,13 +49,6 @@ public class ModFoods {
     public static final Food CRACKER_HAM_GRILLED = buildCombo(true, CRACKER_HAM);
     public static final Food CRACKER_CHEESE_HAM = buildCombo(false, CRACKER, CHEESE_SLICE, HAM);
     public static final Food CRACKER_CHEESE_HAM_GRILLED = buildCombo(true, CRACKER_CHEESE_HAM);
-
-    public static final Food TOASTIE_CHEESE = buildCombo(false, TOAST, TOAST, CHEESE_SLICE);
-    public static final Food TOASTIE_CHEESE_GRILLED = buildCombo(true, TOASTIE_CHEESE);
-    public static final Food TOASTIE_CHEESE_HAM = buildCombo(false, TOAST, TOAST, CHEESE_SLICE, HAM);
-    public static final Food TOASTIE_CHEESE_HAM_GRILLED = buildCombo(true, TOASTIE_CHEESE_HAM);
-    public static final Food TOASTIE_CHEESE_HAM_COOKED = buildCombo(false, TOAST, TOAST, CHEESE_SLICE, HAM_COOKED);
-    public static final Food TOASTIE_CHEESE_HAM_COOKED_GRILLED = buildCombo(true, TOASTIE_CHEESE_HAM_COOKED);
 
     public static final Food PINEAPPLE = new Food.Builder().hunger(12).saturation(5.0f).build();
     public static final Food PINEAPPLE_PLANT = new Food.Builder().hunger(PINEAPPLE.getHealing() / 8).saturation(PINEAPPLE.getSaturation() / 8.0f).effect(() -> new EffectInstance(Effects.NAUSEA, 400, 1), 1.0f).build();

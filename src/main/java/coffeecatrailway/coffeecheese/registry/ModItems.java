@@ -1,6 +1,7 @@
 package coffeecatrailway.coffeecheese.registry;
 
 import coffeecatrailway.coffeecheese.ModItemGroups;
+import coffeecatrailway.coffeecheese.client.render.item.SandwichStackRenderer;
 import coffeecatrailway.coffeecheese.common.entity.item.BoatEntityCM;
 import coffeecatrailway.coffeecheese.common.item.*;
 import com.tterrag.registrate.util.RegistryEntry;
@@ -176,6 +177,8 @@ public class ModItems {
 
     public static final RegistryEntry<Item> BREAD_SLICE = REGISTRATE.item("bread_slice", Item::new)
             .properties(prop -> prop.food(ModFoods.BREAD_SLICE)).group(() -> ModItemGroups.GROUP_FOODS).register();
+    public static final RegistryEntry<SandwichItem> SANDWICH = REGISTRATE.item("sandwich", SandwichItem::new)
+            .properties(prop -> prop.food(ModFoods.BREAD_SLICE).maxStackSize(4).setISTER(() -> SandwichStackRenderer::new)).group(() -> ModItemGroups.GROUP_FOODS).register();
 
     public static final RegistryEntry<Item> DOUGH = REGISTRATE.item("dough", Item::new)
             .properties(prop -> prop.food(ModFoods.DOUGH)).group(() -> ModItemGroups.GROUP_FOODS).register();
