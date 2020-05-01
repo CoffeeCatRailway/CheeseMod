@@ -19,7 +19,7 @@
       "type": "relations",
       "entries": [
         "foods/cracker",
-        "foods/toastie",
+        "foods/sandwich",
         "foods/pizza"
       ]
     }

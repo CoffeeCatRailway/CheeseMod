@@ -1,0 +1,9 @@
+{
+  "name": "Sandwiches",
+  "icon": "coffeecheese:sandwich",
+  "category": "foods",
+  "sortnum": 4,
+  "advancement": "coffeecheese:bread_slice",
+  "pages": [
+  ]
+}

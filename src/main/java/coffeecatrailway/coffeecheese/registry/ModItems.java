@@ -221,14 +221,6 @@ public class ModItems {
     public static final RegistryEntry<Item> CRACKER_CHEESE_HAM_GRILLED = REGISTRATE.item("cracker_cheese_ham_grilled", Item::new)
             .properties(prop -> prop.food(ModFoods.CRACKER_CHEESE_HAM_GRILLED).maxStackSize(32)).group(() -> ModItemGroups.GROUP_FOODS).register();
 
-    /// Food - Toastie ///
-    public static final RegistryEntry<ToastieFoodItem> TOASTIE_CHEESE = REGISTRATE.item("toastie_cheese", prop -> new ToastieFoodItem(ModFoods.TOASTIE_CHEESE, 32)).register();
-    public static final RegistryEntry<ToastieFoodItem> TOASTIE_CHEESE_GRILLED = REGISTRATE.item("toastie_cheese_grilled", prop -> new ToastieFoodItem(ModFoods.TOASTIE_CHEESE_GRILLED, 32).grilled()).register();
-    public static final RegistryEntry<ToastieFoodItem> TOASTIE_CHEESE_HAM = REGISTRATE.item("toastie_cheese_ham", prop -> new ToastieFoodItem(ModFoods.TOASTIE_CHEESE_HAM, 32)).register();
-    public static final RegistryEntry<ToastieFoodItem> TOASTIE_CHEESE_HAM_GRILLED = REGISTRATE.item("toastie_cheese_ham_grilled", prop -> new ToastieFoodItem(ModFoods.TOASTIE_CHEESE_HAM_GRILLED, 32).grilled()).register();
-    public static final RegistryEntry<ToastieFoodItem> TOASTIE_CHEESE_HAM_COOKED = REGISTRATE.item("toastie_cheese_ham_cooked", prop -> new ToastieFoodItem(ModFoods.TOASTIE_CHEESE_HAM_COOKED, 32)).register();
-    public static final RegistryEntry<ToastieFoodItem> TOASTIE_CHEESE_HAM_COOKED_GRILLED = REGISTRATE.item("toastie_cheese_ham_cooked_grilled", prop -> new ToastieFoodItem(ModFoods.TOASTIE_CHEESE_HAM_COOKED_GRILLED, 32).grilled()).register();
-
     /// Food - Pineapple ///
     public static final RegistryEntry<BlockNamedItem> PINEAPPLE_PLANT = REGISTRATE.item("pineapple_plant", prop -> new BlockNamedItem(ModBlocks.PINEAPPLE.get(), prop))
             .properties(prop -> prop.food(ModFoods.PINEAPPLE_PLANT)).group(() -> ModItemGroups.GROUP_FOODS).register();
