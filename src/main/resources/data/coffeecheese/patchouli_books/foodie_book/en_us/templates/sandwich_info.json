@@ -1,0 +1,41 @@
+{
+  "components": [
+    {
+      "type": "header",
+      "text": "#headertext",
+      "x": -1,
+      "y": -1
+    },
+    {
+      "type": "separator",
+      "x": -1,
+      "y": -1
+    },
+    {
+      "type": "text",
+      "text": "#txt",
+      "x": 0,
+      "y": 20
+    },
+    {
+      "type": "item",
+      "item": "coffeecheese:bread_slice",
+      "framed": true,
+      "x": 39,
+      "y": 60
+    },
+    {
+      "type": "item",
+      "item": "coffeecheese:toast",
+      "framed": true,
+      "x": 60,
+      "y": 60
+    },
+    {
+      "type": "text",
+      "text": "#txt1",
+      "x": 0,
+      "y": 80
+    }
+  ]
+}

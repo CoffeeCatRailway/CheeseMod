@@ -1,9 +1,27 @@
 {
   "name": "Sandwiches",
-  "icon": "coffeecheese:sandwich",
+  "icon": "coffeecheese:sandwich{Ingredients:[{id:\"coffeecheese:block_o_cheese\",Count:1},{id:\"coffeecheese:egg_cooked\",Count:1},{id:\"coffeecheese:ham_raw\",Count:1}]}",
   "category": "foods",
   "sortnum": 4,
   "advancement": "coffeecheese:bread_slice",
   "pages": [
+    {
+      "type": "sandwich_info",
+      "headertext": "Sandwiches",
+      "txt": "$(item)Sandwiches$() are one of the great ways to combine foods!$(br)Every sandwich needs to have $(item)2 slices of bread$() or $(item)toast$()!",
+      "txt1": "Along with bread you also need some food/ingredients to go in the $(item)sandwich$()!$(br)For example you could use some of the items on the next page."
+    },
+    {
+      "type": "sandwich_foods",
+      "food1": "coffeecheese:block_o_cheese",
+      "food2": "coffeecheese:cheese_slice",
+      "food3": "coffeecheese:egg_cooked",
+      "food4": "coffeecheese:bacon_cooked",
+      "food5": "coffeecheese:salt",
+      "food6": "coffeecheese:pineapple_ring",
+      "food7": "minecraft:carrot",
+      "food8": "minecraft:apple",
+      "txt": "You can use any of these or any other food you find in the world!$(br)But be careful when adding \"deadly\" foods as they will still effect you in bad ways!"
+    }
   ]
 }

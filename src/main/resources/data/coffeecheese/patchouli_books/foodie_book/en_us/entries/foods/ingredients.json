@@ -42,6 +42,19 @@
       "advancement": "coffeecheese:pineapple"
     },
     {
+      "type": "crafting",
+      "text": "Both $(item)bread slices$() & $(item)toast$() can be used to make a $(item)sandwich$()!",
+      "recipe": "minecraft:bread",
+      "recipe2": "coffeecheese:crafting/bread_slice",
+      "advancement": "coffeecheese:bread_slice"
+    },
+    {
+      "type": "smelting",
+      "text": "As we don't have any form of a toaster you'll need to use a furnace..",
+      "recipe": "coffeecheese:smelting/toast",
+      "advancement": "coffeecheese:bread_slice"
+    },
+    {
       "type": "relations",
       "entries": [
         "foods/cracker",

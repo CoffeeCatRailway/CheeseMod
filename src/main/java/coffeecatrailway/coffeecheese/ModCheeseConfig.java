@@ -126,7 +126,7 @@ public class ModCheeseConfig {
 
             grilledFoodMultiplier = builder.comment("The amount of how much the saturation changes when grilled")
                     .defineInRange(configModifier + "grilledSaturation", 1.5d, 0.5d, 10.0d);
-            foodCombo = builder.comment("Food combo add amount (pizza, toastie, etc.)")
+            foodCombo = builder.comment("Food combo add amount (pizza, toasted sandwich, etc.)")
                     .defineInRange(configModifier + "foodCombo", .75d, 0.5d, 5.0d);
             toastedSandwichOilDrain = builder.comment("The amount oil drained from the grill when cooking a sandwich")
                     .defineInRange(configModifier + "toastedSandwichOilDrain", 10, 1, GrillTileEntity.FLUID_CAPTACITY);
