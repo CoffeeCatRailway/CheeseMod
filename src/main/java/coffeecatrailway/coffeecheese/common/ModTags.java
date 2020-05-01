@@ -26,7 +26,6 @@ public class ModTags {
 
     public static class Fluids {
 
-        public static Tag<Fluid> MILK = tag("milk");
         public static Tag<Fluid> VINEGAR = tag("vinegar");
         public static Tag<Fluid> GRILL_OIL = tag("oil");
         public static Tag<Fluid> MELTED_CHEESE = tag("cheese");

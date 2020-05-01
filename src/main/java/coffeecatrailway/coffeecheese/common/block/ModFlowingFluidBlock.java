@@ -85,20 +85,6 @@ public class ModFlowingFluidBlock extends FlowingFluidBlock {
                     }
                 }
             }
-        } else if (this.getFluid().isIn(ModTags.Fluids.MILK)) {
-            for (Direction side : Direction.values()) {
-                if (side != Direction.DOWN) {
-                    IFluidState offset = world.getFluidState(pos.offset(side));
-
-                    if (offset.getFluid().isIn(ModTags.Fluids.VINEGAR)) {
-                        if (world.getFluidState(pos).isSource()) {
-                            world.setBlockState(pos, ModBlocks.CHEESE_BLOCK.get().getDefaultState());
-                            this.triggerMixEffects(world, pos);
-                            return false;
-                        }
-                    }
-                }
-            }
         }
 
         return super.reactWithNeighbors(world, pos, state);

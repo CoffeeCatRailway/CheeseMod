@@ -18,13 +18,6 @@ public class ModFluids {
 
     private static NonNullUnaryOperator<Item.Properties> BUCKET_PROPS = prop -> prop.maxStackSize(1).group(ItemGroup.MISC).containerItem(Items.BUCKET);
 
-    /// MILK
-    public static final RegistryEntry<ForgeFlowingFluid.Flowing> MILK = REGISTRATE
-            .fluid("milk", CheeseMod.getLocation("fluid/milk_still"), CheeseMod.getLocation("fluid/milk_flowing"))
-            .properties(ForgeFlowingFluid.Properties::canMultiply)
-            .attributes(builder -> builder.overlay(CheeseMod.getLocation("fluid/milk_overlay")).density(1000).viscosity(1000))
-            .defaultBlock().bucket().properties(BUCKET_PROPS).build().defaultSource().register();
-
     /// VINEGAR
     public static final RegistryEntry<ForgeFlowingFluid.Flowing> VINEGAR = REGISTRATE
             .fluid("vinegar", CheeseMod.getLocation("fluid/vinegar_still"), CheeseMod.getLocation("fluid/vinegar_flowing"))

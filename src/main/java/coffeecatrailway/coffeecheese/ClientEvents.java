@@ -94,10 +94,6 @@ public class ClientEvents {
         
         RenderType translucent = RenderType.getTranslucent();
 
-        RenderTypeLookup.setRenderLayer(ModFluids.MILK.get(), translucent);
-        RenderTypeLookup.setRenderLayer(ModFluids.MILK.get().getFlowingFluid(), translucent);
-        RenderTypeLookup.setRenderLayer(ModFluids.MILK.get().getStillFluid(), translucent);
-
         RenderTypeLookup.setRenderLayer(ModFluids.VINEGAR.get(), translucent);
         RenderTypeLookup.setRenderLayer(ModFluids.VINEGAR.get().getFlowingFluid(), translucent);
         RenderTypeLookup.setRenderLayer(ModFluids.VINEGAR.get().getStillFluid(), translucent);
