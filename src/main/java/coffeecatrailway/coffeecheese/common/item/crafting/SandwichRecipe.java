@@ -1,5 +1,6 @@
 package coffeecatrailway.coffeecheese.common.item.crafting;
 
+import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import coffeecatrailway.coffeecheese.common.ModTags;
 import coffeecatrailway.coffeecheese.common.item.SandwichItem;
 import coffeecatrailway.coffeecheese.registry.ModItems;
@@ -43,7 +44,7 @@ public class SandwichRecipe extends SpecialRecipe {
             }
         }
 
-        return oneBreadFlag && bothBreadFlag && itemCount > 0 && itemCount <= 4 && !nonFoodFlag;
+        return oneBreadFlag && bothBreadFlag && itemCount > 0 && itemCount <= ModCheeseConfig.sandwichIngredientCount.get() && !nonFoodFlag;
     }
 
     @Override

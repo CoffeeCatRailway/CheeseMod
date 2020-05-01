@@ -1,5 +1,6 @@
 package coffeecatrailway.coffeecheese.common.item;
 
+import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import coffeecatrailway.coffeecheese.registry.ModFoods;
 import coffeecatrailway.coffeecheese.registry.ModItems;
 import com.google.common.collect.ImmutableSet;
@@ -136,7 +137,7 @@ public class SandwichItem extends Item {
             added.setCount(1);
 
             ListNBT ingredients = sandwich.getOrCreateTag().getList(TAG_INGREDIENTS, Constants.NBT.TAG_COMPOUND);
-            if (ingredients.size() < 4)
+            if (ingredients.size() < ModCheeseConfig.sandwichIngredientCount.get())
                 ingredients.add(added.write(new CompoundNBT()));
         }
         return sandwich;

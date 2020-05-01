@@ -52,6 +52,7 @@ public class ModCheeseConfig {
     public static ForgeConfigSpec.DoubleValue grilledFoodMultiplier;
     public static ForgeConfigSpec.DoubleValue foodCombo;
     public static ForgeConfigSpec.IntValue toastedSandwichOilDrain;
+    public static ForgeConfigSpec.IntValue sandwichIngredientCount;
 
     public static ForgeConfigSpec.IntValue grillSpeed;
     public static ForgeConfigSpec.IntValue melterSpeed;
@@ -129,6 +130,8 @@ public class ModCheeseConfig {
                     .defineInRange(configModifier + "foodCombo", .75d, 0.5d, 5.0d);
             toastedSandwichOilDrain = builder.comment("The amount oil drained from the grill when cooking a sandwich")
                     .defineInRange(configModifier + "toastedSandwichOilDrain", 10, 1, GrillTileEntity.FLUID_CAPTACITY);
+            sandwichIngredientCount = builder.comment("The amount of foods that can be crafted in a sandwich")
+                    .defineInRange(configModifier + "sandwichIngredientCount", 4, 1, 7);
 
             int minSpeed = 1;
             int maxSpeed = 20;
