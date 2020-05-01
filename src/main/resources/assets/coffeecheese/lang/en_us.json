@@ -178,11 +178,6 @@
   "fluid.coffeecheese.melted_ham_cooked_still": "Melted Ham Cooked",
   "fluid.coffeecheese.melted_ham_cooked_flowing": "Melted Ham Cooked",
 
-  "block.coffeecheese.milk": "Milk",
-  "block.coffeecheese.milk_still": "Milk",
-  "fluid.coffeecheese.milk_still": "Milk",
-  "fluid.coffeecheese.milk_flowing": "Milk",
-
   "block.coffeecheese.vinegar": "Vinegar",
   "block.coffeecheese.vinegar_still": "Vinegar",
   "fluid.coffeecheese.vinegar_still": "Vinegar",
@@ -331,7 +326,6 @@
 
   "item.coffeecheese.oil_bucket": "Grill Oil Bucket",
   "item.coffeecheese.vinegar_bucket": "Vinegar Bucket",
-  "item.coffeecheese.milk_bottle": "Milk Bottle",
 
   "item.coffeecheese.melted_cheese_bucket": "Melted Cheese Bucket",
   "item.coffeecheese.melted_grilled_cheese_bucket": "Melted Grilled Cheese Bucket",
