@@ -7,6 +7,7 @@ import coffeecatrailway.coffeecheese.common.ModTags;
 import coffeecatrailway.coffeecheese.common.block.GrillBlock;
 import coffeecatrailway.coffeecheese.common.fluids.capability.DuelFluidTank;
 import coffeecatrailway.coffeecheese.common.item.SandwichItem;
+import coffeecatrailway.coffeecheese.common.item.StackableFoodItem;
 import coffeecatrailway.coffeecheese.common.item.crafting.GrillRecipe;
 import coffeecatrailway.coffeecheese.registry.ModFluids;
 import coffeecatrailway.coffeecheese.registry.ModRecipes;
@@ -273,7 +274,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                     ItemStack output = this.inventory.getStackInSlot(2);
                     if (output.isEmpty())
                         return true;
-                    else if (!SandwichItem.areSandwichesEqual(output, toasted))
+                    else if (!StackableFoodItem.areStacksEqual(output, toasted))
                         return false;
                     else if (output.getCount() + toasted.getCount() <= this.getInventoryStackLimit() && output.getCount() + toasted.getCount() <= output.getMaxStackSize())
                         return true;
@@ -310,7 +311,7 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
 
                     if (outStack.isEmpty())
                         this.inventory.setStackInSlot(2, sandwich);
-                    else if (SandwichItem.areSandwichesEqual(outStack, sandwich))
+                    else if (StackableFoodItem.areStacksEqual(outStack, sandwich))
                         outStack.grow(sandwich.getCount());
 
                     ingredientStack.shrink(1);

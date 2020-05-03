@@ -9,33 +9,6 @@
       "type": "crafting",
       "text": "Remember those ingredients? Yeah you need them now...$(br)Also parrots love these cracker!",
       "recipe": "coffeecheese:crafting/cracker"
-    },
-    {
-      "type": "crafting",
-      "recipe": "coffeecheese:crafting/cracker_cheese",
-      "recipe2": "coffeecheese:crafting/cracker_ham",
-      "advancement": "coffeecheese:cracker",
-      "anchor": "cheese"
-    },
-    {
-      "type": "crafting",
-      "recipe": "coffeecheese:crafting/cracker_cheese_ham",
-      "recipe2": "coffeecheese:crafting/cracker_cheese_ham_alt1",
-      "advancement": "coffeecheese:cracker",
-      "anchor": "ham"
-    },
-    {
-      "type": "grilling",
-      "recipe": "coffeecheese:grill/cracker_cheese_grilled",
-      "recipe2": "coffeecheese:grill/cracker_ham_grilled",
-      "advancement": "coffeecheese:cracker",
-      "anchor": "grilled"
-    },
-    {
-      "type": "grilling",
-      "recipe": "coffeecheese:grill/cracker_cheese_ham_grilled",
-      "advancement": "coffeecheese:cracker",
-      "anchor": "grilled1"
     }
   ]
 }

@@ -289,6 +289,10 @@
   "item.coffeecheese.sandwich": "Sandwich",
   "item.coffeecheese.sandwich.toasted": "Toasted",
 
+  "item.coffeecheese.cracker": "Cracker",
+  "item.coffeecheese.toasted_cracker": "Cracker",
+  "item.coffeecheese.cracker_dummy_item": "Why do you have this?",
+
   "item.coffeecheese.dough": "Dough",
 
   "item.coffeecheese.egg_cracked": "Cracked Egg",
@@ -302,14 +306,6 @@
   "item.coffeecheese.toast": "Toast",
   "item.coffeecheese.toast_french": "French Toast",
   "item.coffeecheese.toast_bacon": "Bacon On Toast",
-
-  "item.coffeecheese.cracker": "Cracker",
-  "item.coffeecheese.cracker_cheese": "Cheese N' Cracker",
-  "item.coffeecheese.cracker_cheese_grilled": "Grilled Cheese N' Cracker",
-  "item.coffeecheese.cracker_ham": "Ham N' Cracker",
-  "item.coffeecheese.cracker_ham_grilled": "Grilled Ham N' Cracker",
-  "item.coffeecheese.cracker_cheese_ham": "Cheese, Ham N' Cracker",
-  "item.coffeecheese.cracker_cheese_ham_grilled": "Grilled Cheese, Ham N' Cracker",
 
   "item.coffeecheese.pineapple_plant": "Pineapple Plant",
   "item.coffeecheese.pineapple": "Pineapple",

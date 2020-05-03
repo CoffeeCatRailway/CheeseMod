@@ -43,6 +43,7 @@ public class ModTags {
         public static Tag<Item> CHEESE = tag("cheese");
         public static Tag<Item> HAM = tag("ham");
         public static Tag<Item> BREAD_SLICE = tag("bread_slice");
+        public static Tag<Item> CRACKER = tag("cracker");
 
         private static Tag<Item> tag(String name) {
             return new ItemTags.Wrapper(CheeseMod.getLocation(name));

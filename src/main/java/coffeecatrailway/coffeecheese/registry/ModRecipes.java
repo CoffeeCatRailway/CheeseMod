@@ -31,6 +31,7 @@ public class ModRecipes {
     public static final RegistryObject<PizzaOvenRecipeSerializer<PizzaOvenRecipe>> PIZZA_OVEN_SERIALIZER = RECIPE_SERIALIZERS.register("pizza_oven", () -> new PizzaOvenRecipeSerializer<>(PizzaOvenRecipe::new, 200));
 
     public static final RegistryObject<SpecialRecipeSerializer<SandwichRecipe>> SANDWICH_SERIALIZER = RECIPE_SERIALIZERS.register("sandwich", () -> new SpecialRecipeSerializer<>(SandwichRecipe::new));
+    public static final RegistryObject<SpecialRecipeSerializer<CrackerRecipe>> CRACKER_SERIALIZER = RECIPE_SERIALIZERS.register("cracker", () -> new SpecialRecipeSerializer<>(CrackerRecipe::new));
 
     public static void registerRecipeType() {
         GRILLING = register("grilling");

@@ -1,7 +1,7 @@
 package coffeecatrailway.coffeecheese.registry;
 
 import coffeecatrailway.coffeecheese.ModItemGroups;
-import coffeecatrailway.coffeecheese.client.render.item.SandwichStackRenderer;
+import coffeecatrailway.coffeecheese.client.render.item.StackableFoodRenderer;
 import coffeecatrailway.coffeecheese.common.entity.item.BoatEntityCM;
 import coffeecatrailway.coffeecheese.common.item.*;
 import com.tterrag.registrate.util.RegistryEntry;
@@ -178,7 +178,12 @@ public class ModItems {
     public static final RegistryEntry<Item> BREAD_SLICE = REGISTRATE.item("bread_slice", Item::new)
             .properties(prop -> prop.food(ModFoods.BREAD_SLICE)).group(() -> ModItemGroups.GROUP_FOODS).register();
     public static final RegistryEntry<SandwichItem> SANDWICH = REGISTRATE.item("sandwich", SandwichItem::new)
-            .properties(prop -> prop.food(ModFoods.BREAD_SLICE).maxStackSize(4).setISTER(() -> SandwichStackRenderer::new)).group(() -> ModItemGroups.GROUP_FOODS).register();
+            .properties(prop -> prop.maxStackSize(4).setISTER(() -> StackableFoodRenderer::new)).group(() -> ModItemGroups.GROUP_FOODS).register();
+
+    public static final RegistryEntry<CrackerItem> CRACKER = REGISTRATE.item("cracker", CrackerItem::new)
+            .properties(prop -> prop.maxStackSize(16).setISTER(() -> StackableFoodRenderer::new)).group(() -> ModItemGroups.GROUP_FOODS).register();
+    public static final RegistryEntry<Item> CRACKER_DUMMY_ITEM = REGISTRATE.item("cracker_dummy_item", Item::new)
+            .properties(prop -> prop.food(ModFoods.CRACKER).maxStackSize(1).group(null)).register();
 
     public static final RegistryEntry<Item> DOUGH = REGISTRATE.item("dough", Item::new)
             .properties(prop -> prop.food(ModFoods.DOUGH)).group(() -> ModItemGroups.GROUP_FOODS).register();
@@ -204,22 +209,6 @@ public class ModItems {
             .properties(prop -> prop.food(ModFoods.TOAST_FRENCH)).group(() -> ModItemGroups.GROUP_FOODS).register();
     public static final RegistryEntry<Item> TOAST_BACON = REGISTRATE.item("toast_bacon", Item::new)
             .properties(prop -> prop.food(ModFoods.TOAST_BACON)).group(() -> ModItemGroups.GROUP_FOODS).register();
-
-    /// Food - Cracker ///
-    public static final RegistryEntry<Item> CRACKER = REGISTRATE.item("cracker", Item::new)
-            .properties(prop -> prop.food(ModFoods.CRACKER).maxStackSize(32)).group(() -> ModItemGroups.GROUP_FOODS).register();
-    public static final RegistryEntry<Item> CRACKER_CHEESE = REGISTRATE.item("cracker_cheese", Item::new)
-            .properties(prop -> prop.food(ModFoods.CRACKER_CHEESE).maxStackSize(32)).group(() -> ModItemGroups.GROUP_FOODS).register();
-    public static final RegistryEntry<Item> CRACKER_CHEESE_GRILLED = REGISTRATE.item("cracker_cheese_grilled", Item::new)
-            .properties(prop -> prop.food(ModFoods.CRACKER_CHEESE_GRILLED).maxStackSize(32)).group(() -> ModItemGroups.GROUP_FOODS).register();
-    public static final RegistryEntry<Item> CRACKER_HAM = REGISTRATE.item("cracker_ham", Item::new)
-            .properties(prop -> prop.food(ModFoods.CRACKER_HAM).maxStackSize(32)).group(() -> ModItemGroups.GROUP_FOODS).register();
-    public static final RegistryEntry<Item> CRACKER_HAM_GRILLED = REGISTRATE.item("cracker_ham_grilled", Item::new)
-            .properties(prop -> prop.food(ModFoods.CRACKER_HAM_GRILLED).maxStackSize(32)).group(() -> ModItemGroups.GROUP_FOODS).register();
-    public static final RegistryEntry<Item> CRACKER_CHEESE_HAM = REGISTRATE.item("cracker_cheese_ham", Item::new)
-            .properties(prop -> prop.food(ModFoods.CRACKER_CHEESE_HAM).maxStackSize(32)).group(() -> ModItemGroups.GROUP_FOODS).register();
-    public static final RegistryEntry<Item> CRACKER_CHEESE_HAM_GRILLED = REGISTRATE.item("cracker_cheese_ham_grilled", Item::new)
-            .properties(prop -> prop.food(ModFoods.CRACKER_CHEESE_HAM_GRILLED).maxStackSize(32)).group(() -> ModItemGroups.GROUP_FOODS).register();
 
     /// Food - Pineapple ///
     public static final RegistryEntry<BlockNamedItem> PINEAPPLE_PLANT = REGISTRATE.item("pineapple_plant", prop -> new BlockNamedItem(ModBlocks.PINEAPPLE.get(), prop))

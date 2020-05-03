@@ -10,14 +10,14 @@ import net.minecraft.util.ResourceLocation;
  * @author CoffeeCatRailway
  * Created: 29/04/2020
  */
-public class SandwichRecipe extends StackableFoodRecipe {
+public class CrackerRecipe extends StackableFoodRecipe {
 
-    public SandwichRecipe(ResourceLocation id) {
-        super(id, ModTags.Items.BREAD_SLICE, ModItems.SANDWICH);
+    public CrackerRecipe(ResourceLocation id) {
+        super(id, ModTags.Items.CRACKER, ModItems.CRACKER);
     }
 
     @Override
     public IRecipeSerializer<?> getSerializer() {
-        return ModRecipes.SANDWICH_SERIALIZER.get();
+        return ModRecipes.CRACKER_SERIALIZER.get();
     }
 }
