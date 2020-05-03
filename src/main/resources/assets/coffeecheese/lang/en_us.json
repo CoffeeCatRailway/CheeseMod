@@ -285,12 +285,11 @@
   "item.coffeecheese.bacon_cooked": "Cooked Bacon",
 
   "item.coffeecheese.bread_slice": "Bread Slice",
-  "item.coffeecheese.toasted_bread_slice": "Toasted Bread Slice",
   "item.coffeecheese.sandwich": "Sandwich",
   "item.coffeecheese.sandwich.toasted": "Toasted",
 
   "item.coffeecheese.cracker": "Cracker",
-  "item.coffeecheese.toasted_cracker": "Cracker",
+  "item.coffeecheese.cracker.toasted": "Grilled",
   "item.coffeecheese.cracker_dummy_item": "Why do you have this?",
 
   "item.coffeecheese.dough": "Dough",
