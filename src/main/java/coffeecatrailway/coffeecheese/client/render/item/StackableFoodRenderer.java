@@ -1,5 +1,7 @@
 package coffeecatrailway.coffeecheese.client.render.item;
 
+import coffeecatrailway.coffeecheese.CheeseMod;
+import coffeecatrailway.coffeecheese.ModCheeseConfig;
 import coffeecatrailway.coffeecheese.common.item.StackableFoodItem;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
@@ -10,7 +12,6 @@ import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.ItemStackTileEntityRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.INBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -22,6 +23,12 @@ import net.minecraftforge.common.util.Constants;
  */
 @OnlyIn(Dist.CLIENT)
 public class StackableFoodRenderer extends ItemStackTileEntityRenderer {
+
+    private static final float[] ANGLES = new float[]{-5.0f, 0.0f, 25.0f, -75.0f, 0.0f, 90.0f, -90.0f, 75.0f, 5.0f};
+
+    private float getRotateAngle(ListNBT ingredients, int ingredient) {
+        return ANGLES[(int) CheeseMod.map(ingredient, 0, ingredients.size(), 0, Math.min(ANGLES.length, ModCheeseConfig.stackableFoodIngredientCount.get()))];
+    }
 
     @Override
     public void render(ItemStack stack, MatrixStack matrix, IRenderTypeBuffer buffer, int combinedLight, int combinedOverlay) {
@@ -52,9 +59,12 @@ public class StackableFoodRenderer extends ItemStackTileEntityRenderer {
 
             // Render ingredients
             if (ingredients.size() > 0) {
-                for (INBT ingredient : ingredients) {
+                for (int i = 0; i < ingredients.size(); i++) {
                     matrix.translate(0f, 0f, 0.06f);
-                    itemRenderer.renderItem(ItemStack.read((CompoundNBT) ingredient), ItemCameraTransforms.TransformType.FIXED, combinedLight, combinedOverlay, matrix, buffer);
+                    float angle = getRotateAngle(ingredients, i);
+                    matrix.rotate(Vector3f.ZN.rotationDegrees(angle));
+                    itemRenderer.renderItem(ItemStack.read((CompoundNBT) ingredients.get(i)), ItemCameraTransforms.TransformType.FIXED, combinedLight, combinedOverlay, matrix, buffer);
+                    matrix.rotate(Vector3f.ZP.rotationDegrees(angle));
                 }
             }
 
