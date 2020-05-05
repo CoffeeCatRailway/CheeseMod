@@ -1,18 +1,29 @@
 {
-  "name": "Sandwiches",
+  "name": "Sandwiches & Crackers",
   "icon": "coffeecheese:sandwich{Ingredients:[{id:\"coffeecheese:block_o_cheese\",Count:1},{id:\"coffeecheese:egg_cooked\",Count:1},{id:\"coffeecheese:ham_raw\",Count:1}]}",
   "category": "foods",
-  "sortnum": 4,
-  "advancement": "coffeecheese:bread_slice",
+  "sortnum": 2,
   "pages": [
     {
-      "type": "sandwich_info",
+      "type": "stackablefood_info",
       "headertext": "Sandwiches",
+      "side1": "coffeecheese:bread_slice",
+      "side2": "coffeecheese:toast",
       "txt": "$(item)Sandwiches$() are one of the great ways to combine foods!$(br)Every sandwich needs to have $(item)2 slices of bread$() or $(item)toast$()!",
-      "txt1": "Along with bread you also need some food/ingredients to go in the $(item)sandwich$()!$(br)For example you could use some of the items on the next page."
+      "txt1": "Along with bread you also need some food/ingredients to go in the $(item)sandwich$()!",
+      "advancement": "coffeecheese:bread_slice"
     },
     {
-      "type": "sandwich_foods",
+      "type": "stackablefood_info",
+      "headertext": "Crackers",
+      "side1": "coffeecheese:cracker",
+      "side2": "coffeecheese:cracker",
+      "txt": "$(item)Crackers$() are a nice snack to have around, but sometimes they can be a bit plain...",
+      "txt1": "If you want a truly tasty cracker try adding some $(item)ham$() & $(item)cheese$() or if your not feeling hungry feed them to your parrot!",
+      "advancement": "coffeecheese:grinding_stones"
+    },
+    {
+      "type": "stackablefood_foods",
       "food1": "coffeecheese:block_o_cheese",
       "food2": "coffeecheese:cheese_slice",
       "food3": "coffeecheese:egg_cooked",

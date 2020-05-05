@@ -2,7 +2,7 @@
   "name": "Ingredients",
   "icon": "coffeecheese:dough",
   "category": "foods",
-  "sortnum": 6,
+  "sortnum": 4,
   "advancement": "coffeecheese:rolling_pin",
   "pages": [
     {

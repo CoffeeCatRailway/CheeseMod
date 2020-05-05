@@ -2,7 +2,7 @@
   "name": "Pizzas",
   "icon": "coffeecheese:pizza_cheese",
   "category": "foods",
-  "sortnum": 5,
+  "sortnum": 3,
   "advancement": "coffeecheese:pizza",
   "pages": [
     {
