@@ -28,7 +28,7 @@ public class ModFoods {
 
     public static final Food BREAD_SLICE = new Food.Builder().hunger(Foods.BREAD.getHealing() / 3).saturation(Foods.BREAD.getSaturation() / 3.0f).build();
     public static final Food CRACKER = new Food.Builder().hunger(5).saturation(2.0f).build();
-    public static final Food CRACKER_TOASTED = buildCombo(0.15d, true, CRACKER);
+    public static final Food CRACKER_TOASTED = buildCombo(true, CRACKER);
 
     public static final Food DOUGH = new Food.Builder().hunger(INGREDIENT.getHealing() * 3).saturation(INGREDIENT.getSaturation() * 3.0f).build();
 

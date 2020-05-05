@@ -24,6 +24,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.fml.ModList;
 import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nullable;
@@ -43,14 +44,12 @@ public class StackableFoodItem extends Item {
 
     public final FoodProperties foodProperties;
 
+    private ItemStack foodStack;
+    private Food food;
+
     public StackableFoodItem(Properties properties, FoodProperties foodProperties) {
         super(properties.food(foodProperties.getBaseFood()));
         this.foodProperties = foodProperties;
-    }
-
-    @Override
-    public boolean isFood() {
-        return true;
     }
 
     @Nullable
@@ -96,9 +95,32 @@ public class StackableFoodItem extends Item {
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+        if (ModList.get().isLoaded("appleskin")) {
+            ItemStack copy = stack.copy();
+            if (this.foodStack != copy)
+                this.foodStack = copy;
+        }
+
         ListNBT ingredients = stack.getOrCreateTag().getList(TAG_INGREDIENTS, Constants.NBT.TAG_COMPOUND);
         for (INBT ingredient : ingredients)
             tooltip.add(ItemStack.read((CompoundNBT) ingredient).getDisplayName().applyTextStyle(TextFormatting.GRAY));
+    }
+
+    @Nullable
+    @Override
+    public Food getFood() {
+        if (ModList.get().isLoaded("appleskin")) {
+            Food food = this.getFood(foodStack);
+            if (this.food != food)
+                this.food = food;
+            return this.food;
+        } else
+            return super.getFood();
+    }
+
+    @Override
+    public boolean isFood() {
+        return true;
     }
 
     @Override
@@ -142,7 +164,7 @@ public class StackableFoodItem extends Item {
                 foods.add(foodStack.getItem().getFood());
         }
 
-        return ModFoods.buildCombo(0.15d, nbt.getBoolean(TAG_TOASTED), foods.toArray(new Food[]{}));
+        return ModFoods.buildCombo(0.2d, nbt.getBoolean(TAG_TOASTED), foods.toArray(new Food[]{}));
     }
 
     public static ItemStack addIngredient(ItemStack stack, ItemStack ingredient) {
