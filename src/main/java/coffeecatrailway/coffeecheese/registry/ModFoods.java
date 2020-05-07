@@ -13,8 +13,6 @@ import org.apache.commons.lang3.tuple.Pair;
  */
 public class ModFoods {
 
-    private static final double grilledMul = ModCheeseConfig.grilledFoodMultiplier.get();
-
     public static final Food INGOT = new Food.Builder().hunger(1).saturation(0f).effect(() -> new EffectInstance(Effects.INSTANT_DAMAGE, 1, 1), 1f).build();
 
     public static final Food BLOCK_O_CHEESE = new Food.Builder().hunger(6).saturation(1f).fastToEat().build();
@@ -57,50 +55,38 @@ public class ModFoods {
     public static final Food PIZZA_CHEESE_HAM_PINEAPPLE_COOKED = buildCombo(true, PIZZA_CHEESE_HAM_PINEAPPLE);
 
     public static Food buildCombo(boolean grilled, Food... foods) {
-        return buildCombo(0.0d, grilled, foods);
+        return buildCombo(0.0f, grilled, foods);
     }
 
-    public static Food buildCombo(double foodComboOffset, boolean grilled, Food... foods) {
-        if (foods.length == 1) {
-            Food food = foods[0];
-            Food.Builder newFood = new Food.Builder().hunger(food.getHealing() * grilledI(grilled)).saturation(food.getSaturation() * grilledF(grilled));
-            newFood = applyEffects(food, newFood);
+    public static Food buildCombo(float foodComboOffset, boolean grilled, Food... foods) {
+        float foodCombo = (float) (ModCheeseConfig.foodCombo.get() + foodComboOffset);
+        int hunger = 0;
+        float saturation = 0.0f;
+        Food.Builder builder = new Food.Builder();
 
-            return newFood.build();
+        for (Food food : foods) {
+            hunger += (int) (food.getHealing() / foodCombo);
+            saturation += food.getSaturation() / foodCombo;
+            applyEffects(food, builder);
         }
 
-        double foodCombo = ModCheeseConfig.foodCombo.get() + foodComboOffset;
-        Food.Builder newFood = new Food.Builder().hunger((int) ((foods[0].getHealing() / foodCombo) * grilledI(grilled))).saturation((float) ((foods[0].getSaturation() / foodCombo) * grilledF(grilled)));
-
-        for (int i = 1; i < foods.length; i++) {
-            Food food = foods[i];
-            Food foodB = newFood.build();
-            newFood = newFood.hunger((int) ((food.getHealing() / foodCombo) + foodB.getHealing())).saturation((float) ((food.getSaturation() / foodCombo) + foodB.getSaturation()));
-            newFood = applyEffects(food, newFood);
-        }
-
-        Food foodB = newFood.build();
-        return newFood.hunger(foodB.getHealing() * grilledI(grilled)).saturation(foodB.getSaturation() * grilledF(grilled)).build();
+        return builder.hunger((int) (hunger * grilled(grilled))).saturation(saturation * grilled(grilled) * foodCombo).build();
     }
 
-    private static Food.Builder applyEffects(Food fooda, Food.Builder foodb) {
-        Food.Builder newFood = foodb;
-        if (fooda.isMeat()) newFood = newFood.meat();
-        if (fooda.isFastEating()) newFood = newFood.fastToEat();
-        if (fooda.canEatWhenFull()) newFood = newFood.setAlwaysEdible();
+    private static Food.Builder applyEffects(Food apply, Food.Builder to) {
+        Food tmpBuild = to.build();
+        if (apply.isMeat() && !tmpBuild.isMeat()) to.meat();
+        if (apply.isFastEating() && !tmpBuild.isFastEating()) to.fastToEat();
+        if (apply.canEatWhenFull() && !tmpBuild.canEatWhenFull()) to.setAlwaysEdible();
 
-        if (fooda.getEffects().size() > 0)
-            for (Pair<EffectInstance, Float> effect : fooda.getEffects())
-                newFood = newFood.effect(effect.getLeft(), effect.getRight());
+        for (Pair<EffectInstance, Float> effect : apply.getEffects())
+            if (!tmpBuild.getEffects().contains(effect))
+                to.effect(effect::getLeft, effect.getRight());
 
-        return newFood;
+        return to;
     }
 
-    private static float grilledF(boolean isGrilled) {
-        return (float) (isGrilled ? grilledMul : 1.0f);
-    }
-
-    private static int grilledI(boolean isGrilled) {
-        return (int) grilledF(isGrilled);
+    private static float grilled(boolean grilled) {
+        return (float) (grilled ? ModCheeseConfig.grilledFoodMultiplier.get() : 1.0f);
     }
 }

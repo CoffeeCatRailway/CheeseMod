@@ -164,7 +164,7 @@ public class StackableFoodItem extends Item {
                 foods.add(foodStack.getItem().getFood());
         }
 
-        return ModFoods.buildCombo(0.2d, nbt.getBoolean(TAG_TOASTED), foods.toArray(new Food[]{}));
+        return ModFoods.buildCombo(0.2f, nbt.getBoolean(TAG_TOASTED), foods.toArray(new Food[]{}));
     }
 
     public static ItemStack addIngredient(ItemStack stack, ItemStack ingredient) {
