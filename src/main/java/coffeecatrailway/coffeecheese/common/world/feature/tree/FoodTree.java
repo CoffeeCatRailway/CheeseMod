@@ -28,7 +28,7 @@ public abstract class FoodTree extends Tree {
     public abstract ConfiguredFeature<FoodTreeFeatureConfig, ?> createTreeFeature(Random rand);
 
     @Override
-    public boolean func_225545_a_(IWorld world, ChunkGenerator<?> generator, BlockPos pos, BlockState state, Random rand) {
+    public boolean place(IWorld world, ChunkGenerator<?> generator, BlockPos pos, BlockState state, Random rand) {
         ConfiguredFeature<FoodTreeFeatureConfig, ?> feature = this.createTreeFeature(rand);
         if (feature == null)
             return false;

@@ -65,23 +65,23 @@ public class ModFeatures {
     }
 
     public static BlockClusterFeatureConfig getCheeseGrassConfig() {
-        return new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider().func_227407_a_(ModBlocks.CHEESE_GRASS.get().getDefaultState(), 3)
-                .func_227407_a_(ModBlocks.GRILLED_CHEESE_GRASS.get().getDefaultState(), 1), new SimpleBlockPlacer()).tries(32).build();
+        return new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider().addWeightedBlockstate(ModBlocks.CHEESE_GRASS.get().getDefaultState(), 3)
+                .addWeightedBlockstate(ModBlocks.GRILLED_CHEESE_GRASS.get().getDefaultState(), 1), new SimpleBlockPlacer()).tries(32).build();
     }
 
     public static BlockClusterFeatureConfig getGrilledCheeseGrassConfig() {
-        return new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider().func_227407_a_(ModBlocks.GRILLED_CHEESE_GRASS.get().getDefaultState(), 3)
-                .func_227407_a_(ModBlocks.CHEESE_GRASS.get().getDefaultState(), 1), new SimpleBlockPlacer()).tries(32).build();
+        return new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider().addWeightedBlockstate(ModBlocks.GRILLED_CHEESE_GRASS.get().getDefaultState(), 3)
+                .addWeightedBlockstate(ModBlocks.CHEESE_GRASS.get().getDefaultState(), 1), new SimpleBlockPlacer()).tries(32).build();
     }
 
     public static BlockClusterFeatureConfig getHamRawGrassConfig() {
-        return new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider().func_227407_a_(ModBlocks.HAM_RAW_GRASS.get().getDefaultState(), 3)
-                .func_227407_a_(ModBlocks.HAM_COOKED_GRASS.get().getDefaultState(), 1), new SimpleBlockPlacer()).tries(32).build();
+        return new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider().addWeightedBlockstate(ModBlocks.HAM_RAW_GRASS.get().getDefaultState(), 3)
+                .addWeightedBlockstate(ModBlocks.HAM_COOKED_GRASS.get().getDefaultState(), 1), new SimpleBlockPlacer()).tries(32).build();
     }
 
     public static BlockClusterFeatureConfig getHamCookedGrassConfig() {
-        return new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider().func_227407_a_(ModBlocks.HAM_COOKED_GRASS.get().getDefaultState(), 3)
-                .func_227407_a_(ModBlocks.HAM_RAW_GRASS.get().getDefaultState(), 1), new SimpleBlockPlacer()).tries(32).build();
+        return new BlockClusterFeatureConfig.Builder(new WeightedBlockStateProvider().addWeightedBlockstate(ModBlocks.HAM_COOKED_GRASS.get().getDefaultState(), 3)
+                .addWeightedBlockstate(ModBlocks.HAM_RAW_GRASS.get().getDefaultState(), 1), new SimpleBlockPlacer()).tries(32).build();
     }
 
     public static BlockClusterFeatureConfig getTallCheeseGrassConfig() {
@@ -109,7 +109,7 @@ public class ModFeatures {
     }
 
     public static void addFoodTrees(Biome biome, ConfiguredFeature<? extends FoodTreeFeatureConfig, ?> mainTree, ConfiguredFeature<? extends FoodTreeFeatureConfig, ?> secondTree, int count) {
-        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(secondTree.func_227227_a_(0.15F)), mainTree)).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(count, 0.1F, 1))));
+        biome.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.withConfiguration(new MultipleRandomFeatureConfig(ImmutableList.of(secondTree.withChance(0.15F)), mainTree)).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(count, 0.1F, 1))));
     }
 
     public static void load() {}
