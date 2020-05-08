@@ -1,7 +1,6 @@
 package coffeecatrailway.coffeecheese.common.world.biome;
 
 import coffeecatrailway.coffeecheese.registry.ModBiomes;
-import net.minecraft.world.biome.Biome;
 
 /**
  * @author CoffeeCatRailway

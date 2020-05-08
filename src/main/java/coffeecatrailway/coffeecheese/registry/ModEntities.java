@@ -31,7 +31,7 @@ import static coffeecatrailway.coffeecheese.CheeseMod.REGISTRATE;
 /**
  * @author CoffeeCatRailway
  * Created: 9/09/2019
- *
+ * <p>
  * Spawn Egg code snipets: https://github.com/MysticMods/MysticalWorld/blob/1.14/src/main/java/epicsquid/mysticalworld/init/ModEntities.java
  */
 public class ModEntities {

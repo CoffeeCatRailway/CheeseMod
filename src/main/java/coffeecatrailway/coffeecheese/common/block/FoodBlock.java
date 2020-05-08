@@ -18,7 +18,7 @@ import net.minecraftforge.common.ToolType;
  * Created: 19/07/2019
  */
 public class FoodBlock extends Block {
-    
+
     private final boolean definiteStick;
 
     public FoodBlock(boolean definiteStick) {

@@ -3,7 +3,6 @@ package coffeecatrailway.coffeecheese.registry;
 import coffeecatrailway.coffeecheese.common.world.biome.*;
 import com.tterrag.registrate.util.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import net.minecraft.item.Food;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilderConfig;

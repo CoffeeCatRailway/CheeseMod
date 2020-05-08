@@ -3,8 +3,6 @@ package coffeecatrailway.coffeecheese.common.item;
 import coffeecatrailway.coffeecheese.registry.ModFoods;
 import coffeecatrailway.coffeecheese.registry.ModItems;
 import com.google.common.collect.ImmutableSet;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 
 import java.util.function.Supplier;
 

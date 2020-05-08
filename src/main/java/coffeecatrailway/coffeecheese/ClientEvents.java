@@ -91,7 +91,7 @@ public class ClientEvents {
         RenderTypeLookup.setRenderLayer(ModBlocks.HAM_COOKED_WOOD_TRAP_DOOR.get(), cutout);
 
         RenderTypeLookup.setRenderLayer(ModBlocks.PINEAPPLE.get(), cutout);
-        
+
         RenderType translucent = RenderType.getTranslucent();
 
         RenderTypeLookup.setRenderLayer(ModFluids.VINEGAR.get(), translucent);

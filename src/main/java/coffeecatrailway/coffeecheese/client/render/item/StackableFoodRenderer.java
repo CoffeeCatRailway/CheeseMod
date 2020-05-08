@@ -46,7 +46,6 @@ public class StackableFoodRenderer extends ItemStackTileEntityRenderer {
             ListNBT ingredients = nbt.getList(StackableFoodItem.TAG_INGREDIENTS, Constants.NBT.TAG_COMPOUND);
             ItemStack bread = new ItemStack(nbt.getBoolean(StackableFoodItem.TAG_TOASTED) ? item.foodProperties.getToastedSide().get() : item.foodProperties.getBaseSide().get());
 
-
             // Move back if ingredients are present
             float offset;
             if (ingredients.size() > 0) {

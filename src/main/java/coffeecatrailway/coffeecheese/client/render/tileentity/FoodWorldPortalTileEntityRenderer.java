@@ -41,8 +41,8 @@ public class FoodWorldPortalTileEntityRenderer extends TileEntityRenderer<FoodWo
         Matrix4f matrix4f = matrix.getLast().getMatrix();
         this.renderCube(f, 0.15F, matrix4f, buffer.getBuffer(RENDER_TYPES.get(0)));
 
-        for(int j = 1; j < i; ++j) {
-            this.renderCube(f, 2.0F / (float)(18 - j), matrix4f, buffer.getBuffer(RENDER_TYPES.get(j)));
+        for (int j = 1; j < i; ++j) {
+            this.renderCube(f, 2.0F / (float) (18 - j), matrix4f, buffer.getBuffer(RENDER_TYPES.get(j)));
         }
     }
 
@@ -55,9 +55,9 @@ public class FoodWorldPortalTileEntityRenderer extends TileEntityRenderer<FoodWo
 
     private void renderFace(Matrix4f matrix, IVertexBuilder vertexBuilder, float p_228884_4_, float p_228884_5_, float p_228884_6_, float p_228884_7_, float p_228884_8_, float p_228884_9_, float p_228884_10_, float p_228884_11_, float red, float green, float blue) {
         vertexBuilder.pos(matrix, p_228884_4_, p_228884_6_, p_228884_8_).color(red, green, blue, 1.0F).endVertex();
-            vertexBuilder.pos(matrix, p_228884_5_, p_228884_6_, p_228884_9_).color(red, green, blue, 1.0F).endVertex();
-            vertexBuilder.pos(matrix, p_228884_5_, p_228884_7_, p_228884_10_).color(red, green, blue, 1.0F).endVertex();
-            vertexBuilder.pos(matrix, p_228884_4_, p_228884_7_, p_228884_11_).color(red, green, blue, 1.0F).endVertex();
+        vertexBuilder.pos(matrix, p_228884_5_, p_228884_6_, p_228884_9_).color(red, green, blue, 1.0F).endVertex();
+        vertexBuilder.pos(matrix, p_228884_5_, p_228884_7_, p_228884_10_).color(red, green, blue, 1.0F).endVertex();
+        vertexBuilder.pos(matrix, p_228884_4_, p_228884_7_, p_228884_11_).color(red, green, blue, 1.0F).endVertex();
     }
 
     protected int getPasses(double p_191286_1_) {
