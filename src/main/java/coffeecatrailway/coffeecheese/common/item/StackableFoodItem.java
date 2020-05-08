@@ -182,7 +182,7 @@ public class StackableFoodItem extends Item {
     public static boolean areStacksEqual(ItemStack stack1, ItemStack stack2) {
         if (!(stack1.getItem() instanceof StackableFoodItem) || !(stack2.getItem() instanceof StackableFoodItem))
             return false;
-        return ItemStack.areItemStackTagsEqual(stack1, stack2);
+        return ItemStack.areItemStackTagsEqual(stack1, stack2) && stack1.getItem() == stack2.getItem();
     }
 
     public static class FoodProperties {

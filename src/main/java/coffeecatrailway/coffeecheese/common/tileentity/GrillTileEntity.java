@@ -6,7 +6,6 @@ import coffeecatrailway.coffeecheese.client.gui.container.GrillContainer;
 import coffeecatrailway.coffeecheese.common.ModTags;
 import coffeecatrailway.coffeecheese.common.block.GrillBlock;
 import coffeecatrailway.coffeecheese.common.fluids.capability.DuelFluidTank;
-import coffeecatrailway.coffeecheese.common.item.SandwichItem;
 import coffeecatrailway.coffeecheese.common.item.StackableFoodItem;
 import coffeecatrailway.coffeecheese.common.item.crafting.GrillRecipe;
 import coffeecatrailway.coffeecheese.registry.ModFluids;
@@ -36,6 +35,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.FluidAttributes;
@@ -250,8 +250,8 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
     }
 
     private boolean canSmelt(@Nullable IRecipe<?> iRecipe) {
-        if (!this.inventory.getStackInSlot(0).isEmpty() && this.getTankA().getFluidAmount() > 0 && this.getTankA().getFluidAmount() >= this.getOilForRecipe()) {
-            if (iRecipe != null) {
+        if (!this.inventory.getStackInSlot(0).isEmpty() && this.getTankA().getFluidAmount() > 0) {
+            if (iRecipe != null && this.getTankA().getFluidAmount() >= this.getOilForRecipe()) {
                 ItemStack recipeOutStack = iRecipe.getRecipeOutput();
                 if (recipeOutStack.isEmpty())
                     return false;
@@ -267,19 +267,27 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                         return outStack.getCount() + recipeOutStack.getCount() <= outStack.getMaxStackSize();
                 }
             } else {
-                if (this.inventory.getStackInSlot(0).getItem() instanceof SandwichItem) {
-                    ItemStack toasted = this.inventory.getStackInSlot(0).copy();
-                    toasted.setCount(1);
-                    toasted.getOrCreateTag().putBoolean(SandwichItem.TAG_TOASTED, true);
+                if (this.inventory.getStackInSlot(0).getItem() instanceof StackableFoodItem) {
                     ItemStack output = this.inventory.getStackInSlot(2);
-                    if (output.isEmpty())
-                        return true;
-                    else if (!StackableFoodItem.areStacksEqual(output, toasted))
+                    ItemStack toasted = this.inventory.getStackInSlot(0).copy();
+
+                    CompoundNBT nbt = toasted.getOrCreateTag();
+                    if (nbt.getBoolean(StackableFoodItem.TAG_TOASTED))
                         return false;
-                    else if (output.getCount() + toasted.getCount() <= this.getInventoryStackLimit() && output.getCount() + toasted.getCount() <= output.getMaxStackSize())
-                        return true;
-                    else
-                        return output.getCount() + toasted.getCount() <= output.getMaxStackSize();
+
+                    if (this.getTankA().getFluidAmount() >= getIngredientOil(nbt)) {
+                        toasted.setCount(1);
+                        nbt.putBoolean(StackableFoodItem.TAG_TOASTED, true);
+
+                        if (output.isEmpty())
+                            return true;
+                        else if (!StackableFoodItem.areStacksEqual(output, toasted))
+                            return false;
+                        else if (output.getCount() + toasted.getCount() <= this.getInventoryStackLimit() && output.getCount() + toasted.getCount() <= output.getMaxStackSize())
+                            return true;
+                        else
+                            return output.getCount() + toasted.getCount() <= output.getMaxStackSize();
+                    }
                 }
                 return false;
             }
@@ -303,11 +311,13 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
 
                 ingredientStack.shrink(1);
             } else {
-                if (ingredientStack.getItem() instanceof SandwichItem) {
+                if (ingredientStack.getItem() instanceof StackableFoodItem) {
                     ItemStack outStack = this.inventory.getStackInSlot(2);
                     ItemStack sandwich = ingredientStack.copy();
+
+                    CompoundNBT nbt = sandwich.getOrCreateTag();
                     sandwich.setCount(1);
-                    sandwich.getOrCreateTag().putBoolean(SandwichItem.TAG_TOASTED, true);
+                    nbt.putBoolean(StackableFoodItem.TAG_TOASTED, true);
 
                     if (outStack.isEmpty())
                         this.inventory.setStackInSlot(2, sandwich);
@@ -315,10 +325,14 @@ public class GrillTileEntity extends LockableTileFluidHandler implements ISidedI
                         outStack.grow(sandwich.getCount());
 
                     ingredientStack.shrink(1);
-                    this.getTankA().drain(ModCheeseConfig.toastedSandwichOilDrain.get(), IFluidHandler.FluidAction.EXECUTE);
+                    this.getTankA().drain(getIngredientOil(nbt), IFluidHandler.FluidAction.EXECUTE);
                 }
             }
         }
+    }
+
+    private int getIngredientOil(CompoundNBT nbt) {
+        return ModCheeseConfig.toastedSandwichOilDrain.get() * nbt.getList(StackableFoodItem.TAG_INGREDIENTS, Constants.NBT.TAG_COMPOUND).size();
     }
 
     public static int getBurnTime(ItemStack fuelStack) {
