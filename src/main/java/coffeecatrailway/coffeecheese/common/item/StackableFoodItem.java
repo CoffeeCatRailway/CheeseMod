@@ -154,8 +154,6 @@ public class StackableFoodItem extends Item {
         if (nbt.getBoolean(TAG_TOASTED))
             bread = this.foodProperties.getToastedFood();
         foods.add(bread);
-        if (this.foodProperties.hasTwoSides())
-            foods.add(bread);
 
         ListNBT ingredients = nbt.getList(TAG_INGREDIENTS, Constants.NBT.TAG_COMPOUND);
         for (INBT ingredient : ingredients) {
@@ -163,6 +161,9 @@ public class StackableFoodItem extends Item {
             if (foodStack.isFood())
                 foods.add(foodStack.getItem().getFood());
         }
+
+        if (this.foodProperties.hasTwoSides())
+            foods.add(bread);
 
         return ModFoods.buildCombo(0.2f, nbt.getBoolean(TAG_TOASTED), foods.toArray(new Food[]{}));
     }
