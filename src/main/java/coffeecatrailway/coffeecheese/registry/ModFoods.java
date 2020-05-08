@@ -59,14 +59,14 @@ public class ModFoods {
     }
 
     public static Food buildCombo(float foodComboOffset, boolean grilled, Food... foods) {
-        float foodCombo = (float) (ModCheeseConfig.foodCombo.get() + foodComboOffset);
+        float foodCombo = (float) ((foods.length > 1 ? ModCheeseConfig.foodCombo.get() : 1f) + foodComboOffset);
         int hunger = 0;
         float saturation = 0.0f;
         Food.Builder builder = new Food.Builder();
 
         for (Food food : foods) {
-            hunger += (int) (food.getHealing() / foodCombo);
-            saturation += food.getSaturation() / foodCombo;
+            hunger += (int) (food.getHealing() * foodCombo);
+            saturation += food.getSaturation() * foodCombo;
             applyEffects(food, builder);
         }
 
