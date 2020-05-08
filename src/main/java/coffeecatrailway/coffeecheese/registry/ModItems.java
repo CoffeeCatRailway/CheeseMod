@@ -184,6 +184,8 @@ public class ModItems {
             .properties(prop -> prop.maxStackSize(16).setISTER(() -> StackableFoodRenderer::new)).group(() -> ModItemGroups.GROUP_FOODS).register();
     public static final RegistryEntry<Item> CRACKER_DUMMY_ITEM = REGISTRATE.item("cracker_dummy_item", Item::new)
             .properties(prop -> prop.food(ModFoods.CRACKER).maxStackSize(1).group(null)).register();
+    public static final RegistryEntry<Item> CRACKER_TOASTED_DUMMY_ITEM = REGISTRATE.item("cracker_toasted_dummy_item", Item::new)
+            .properties(prop -> prop.food(ModFoods.CRACKER_TOASTED).maxStackSize(1).group(null)).register();
 
     public static final RegistryEntry<Item> DOUGH = REGISTRATE.item("dough", Item::new)
             .properties(prop -> prop.food(ModFoods.DOUGH)).group(() -> ModItemGroups.GROUP_FOODS).register();

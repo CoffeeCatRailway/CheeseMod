@@ -25,7 +25,7 @@ public class CrackerItem extends StackableFoodItem {
                 ModFoods.CRACKER,
                 ModFoods.CRACKER_TOASTED,
                 ModItems.CRACKER_DUMMY_ITEM,
-                ModItems.CRACKER_DUMMY_ITEM,
+                ModItems.CRACKER_TOASTED_DUMMY_ITEM,
                 false
         ));
     }

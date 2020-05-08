@@ -17,7 +17,7 @@
       "type": "stackablefood_info",
       "headertext": "Crackers",
       "side1": "coffeecheese:cracker",
-      "side2": "coffeecheese:cracker",
+      "side2": "coffeecheese:cracker{Toasted:1b}",
       "txt": "$(item)Crackers$() are a nice snack to have around, but sometimes they can be a bit plain...",
       "txt1": "If you want a truly tasty cracker try adding some $(item)ham$() & $(item)cheese$() or if your not feeling hungry feed them to your parrot!",
       "advancement": "coffeecheese:grinding_stones"
