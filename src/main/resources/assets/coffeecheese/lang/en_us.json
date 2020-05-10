@@ -370,14 +370,6 @@
   "gui.coffeecheese.category.grill.oil": "Grill Oil: %smb/%smb",
   "gui.coffeecheese.category.melter.fluid": "%s: %smb/%smb",
 
-  "gui.tag_filter.coffeecheese.filters.all.natural": "Natural",
-  "gui.tag_filter.coffeecheese.filters.all.woods": "Wooden",
-  "gui.tag_filter.coffeecheese.filters.all.minerals": "Minerals",
-
-  "gui.tag_filter.coffeecheese.filters.armor_tools.weapons": "Weapons",
-  "gui.tag_filter.coffeecheese.filters.armor_tools.tools": "Tools",
-  "gui.tag_filter.coffeecheese.filters.armor_tools.armor": "Armor",
-
   "biome.coffeecheese.cheese_forest": "Cheese Forest",
   "biome.coffeecheese.cheese_forest_hills": "Cheese Forest Hills",
   "biome.coffeecheese.cheese_plains": "Cheese Plains",
