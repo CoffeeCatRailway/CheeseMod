@@ -65,7 +65,7 @@ public class ModBlocks {
             .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Nature ///
-    private static NonNullUnaryOperator<Block.Properties> GRASS_PROPS = prop -> prop.sound(SoundType.PLANT).doesNotBlockMovement().zeroHardnessAndResistance();
+    private static NonNullUnaryOperator<Block.Properties> GRASS_PROPS = prop -> prop.sound(SoundType.PLANT).doesNotBlockMovement().zeroHardnessAndResistance().notSolid();
 
     public static final RegistryEntry<DoubleFoodPlantBlock> TALL_CHEESE_GRASS = REGISTRATE.object("tall_cheese_grass").block(DoubleFoodPlantBlock::new)
             .initialProperties(Material.TALL_PLANTS, Material.TALL_PLANTS.getColor()).properties(GRASS_PROPS)
@@ -112,7 +112,7 @@ public class ModBlocks {
             .initialProperties(Material.ORGANIC, Material.ORGANIC.getColor()).properties(GRASS_BLOCK_PROPS)
             .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    private static NonNullUnaryOperator<Block.Properties> SAPLING_PROPS = prop -> prop.doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT);
+    private static NonNullUnaryOperator<Block.Properties> SAPLING_PROPS = prop -> prop.doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT).notSolid();
 
     public static final RegistryEntry<FoodSaplingBlock> CHEESE_SAPLING = REGISTRATE.object("cheese_sapling").block(prop -> new FoodSaplingBlock(new CheeseTree(false), prop))
             .initialProperties(Material.PLANTS, Material.PLANTS.getColor()).properties(SAPLING_PROPS)
@@ -138,7 +138,7 @@ public class ModBlocks {
     public static final RegistryEntry<Block> HAM_COOKED_PLANKS = REGISTRATE.object("ham_cooked_planks").block(Block::new).initialProperties(Material.WOOD, Material.WOOD.getColor()).properties(PLANKS_PROPS)
             .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
-    private static NonNullUnaryOperator<Block.Properties> LEAVES_PROPS = prop -> prop.hardnessAndResistance(0.2f).tickRandomly().sound(SoundType.PLANT);
+    private static NonNullUnaryOperator<Block.Properties> LEAVES_PROPS = prop -> prop.hardnessAndResistance(0.2f).tickRandomly().sound(SoundType.PLANT).notSolid();
 
     public static final RegistryEntry<LeavesBlock> CHEESE_LEAVES = REGISTRATE.object("cheese_leaves").block(LeavesBlock::new)
             .initialProperties(Material.LEAVES, Material.LEAVES.getColor()).properties(LEAVES_PROPS)
@@ -278,7 +278,7 @@ public class ModBlocks {
             .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Fences ///
-    private static NonNullUnaryOperator<Block.Properties> FENCE_PROPS = prop -> prop.hardnessAndResistance(2.0F, 3.0F);
+    private static NonNullUnaryOperator<Block.Properties> FENCE_PROPS = prop -> prop.hardnessAndResistance(2.0F, 3.0F).notSolid();
 
     public static final RegistryEntry<FenceBlock> CHEESE_FENCE = REGISTRATE.object("cheese_fence").block(FenceBlock::new)
             .initialProperties(ModBlocks.CHEESE_BLOCK).properties(FENCE_PROPS)
@@ -337,7 +337,7 @@ public class ModBlocks {
             .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Doors ///
-    private static NonNullUnaryOperator<Block.Properties> DOOR_PROPS = prop -> prop.hardnessAndResistance(3.0F);
+    private static NonNullUnaryOperator<Block.Properties> DOOR_PROPS = prop -> prop.hardnessAndResistance(3.0F).notSolid();
 
     public static final RegistryEntry<DoorBlock> CHEESE_DOOR = REGISTRATE.object("cheese_door").block(DoorBlock::new)
             .initialProperties(ModBlocks.CHEESE_BLOCK).properties(DOOR_PROPS)
@@ -393,7 +393,7 @@ public class ModBlocks {
             .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Pressure Plate ///
-    private static NonNullUnaryOperator<Block.Properties> PLATE_BUTTON_PROPS = prop -> prop.doesNotBlockMovement().hardnessAndResistance(0.5F);
+    private static NonNullUnaryOperator<Block.Properties> PLATE_BUTTON_PROPS = prop -> prop.doesNotBlockMovement().hardnessAndResistance(0.5F).notSolid();
 
     public static final RegistryEntry<PressurePlateBlock> CHEESE_PRESSURE_PLATE = REGISTRATE.object("cheese_pressure_plate")
             .block(prop -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING, prop)).initialProperties(ModBlocks.CHEESE_BLOCK).properties(PLATE_BUTTON_PROPS)
@@ -449,7 +449,7 @@ public class ModBlocks {
             .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     /// Drawers ///
-    private static NonNullUnaryOperator<Block.Properties> DRAWER_PROPS = prop -> prop.hardnessAndResistance(2.5f).sound(SoundType.WOOD);
+    private static NonNullUnaryOperator<Block.Properties> DRAWER_PROPS = prop -> prop.hardnessAndResistance(2.5f).sound(SoundType.WOOD).notSolid();
 
     public static final RegistryEntry<FoodDrawBlock> CHEESE_DRAW = REGISTRATE.object("cheese_draw").block(prop -> new FoodDrawBlock(prop, () -> ModStats.INTERACT_WITH_CHEESE_DRAW))
             .initialProperties(Material.WOOD, Material.WOOD.getColor()).properties(DRAWER_PROPS)
@@ -466,19 +466,19 @@ public class ModBlocks {
 
     /// Other ///
     public static final RegistryEntry<GrillBlock> GRILL = REGISTRATE.object("grill").block(GrillBlock::new)
-            .initialProperties(Material.IRON, Material.IRON.getColor()).properties(prop -> prop.hardnessAndResistance(3.5f).lightValue(13))
+            .initialProperties(Material.IRON, Material.IRON.getColor()).properties(prop -> prop.hardnessAndResistance(3.5f).lightValue(13).notSolid())
             .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
     public static final RegistryEntry<MelterBlock> MELTER = REGISTRATE.object("melter").block(MelterBlock::new)
-            .initialProperties(Material.IRON, Material.IRON.getColor()).properties(prop -> prop.hardnessAndResistance(3.5f).lightValue(13))
+            .initialProperties(Material.IRON, Material.IRON.getColor()).properties(prop -> prop.hardnessAndResistance(3.5f).lightValue(13).notSolid())
             .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
     public static final RegistryEntry<PizzaOvenBlock> PIZZA_OVEN = REGISTRATE.object("pizza_oven").block(PizzaOvenBlock::new)
-            .initialProperties(Material.ROCK, MaterialColor.RED).properties(prop -> prop.hardnessAndResistance(2.0f, 6.0f))
+            .initialProperties(Material.ROCK, MaterialColor.RED).properties(prop -> prop.hardnessAndResistance(2.0f, 6.0f).notSolid())
             .item().properties(prop -> prop.group(ModItemGroups.GROUP_ALL)).build().register();
 
     public static final RegistryEntry<PineappleBlock> PINEAPPLE = REGISTRATE.block("pineapple_plant", PineappleBlock::new)
-            .initialProperties(Material.PLANTS, Material.PLANTS.getColor()).properties(prop -> prop.doesNotBlockMovement().tickRandomly().sound(SoundType.CROP)).register();
+            .initialProperties(Material.PLANTS, Material.PLANTS.getColor()).properties(prop -> prop.doesNotBlockMovement().tickRandomly().sound(SoundType.CROP).notSolid()).register();
 
-    private static NonNullUnaryOperator<Block.Properties> CAKE_PROPS = prop -> prop.hardnessAndResistance(0.5f).sound(SoundType.CLOTH);
+    private static NonNullUnaryOperator<Block.Properties> CAKE_PROPS = prop -> prop.hardnessAndResistance(0.5f).sound(SoundType.CLOTH).notSolid();
 
     public static final RegistryEntry<CakeBlock> CHEESE_CAKE = REGISTRATE.object("cheese_cake").block(CakeBlock::new)
             .initialProperties(Material.CAKE, Material.CAKE.getColor()).properties(CAKE_PROPS)
@@ -495,7 +495,7 @@ public class ModBlocks {
 
     public static final RegistryEntry<FoodWorldPortalBlock> FOOD_PORTAL = REGISTRATE.block("food_portal", FoodWorldPortalBlock::new)
             .initialProperties(Material.PORTAL, Material.PORTAL.getColor())
-            .properties(prop -> prop.doesNotBlockMovement().harvestTool(ToolType.PICKAXE).hardnessAndResistance(-1.0F, 3000000.0F).lightValue(10).sound(SoundType.GLASS))
+            .properties(prop -> prop.doesNotBlockMovement().harvestTool(ToolType.PICKAXE).hardnessAndResistance(-1.0F, 3000000.0F).lightValue(10).sound(SoundType.GLASS).notSolid())
             .register();
 
     public static void load() {
