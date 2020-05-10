@@ -31,12 +31,6 @@ Issues: https://github.com/CoffeeCatRailway/CoffeeCatsCheeseMod/issues
     ordering="NONE"
     side="BOTH"
 [[dependencies.coffeecheese]]
-    modId="jeresources"
-    mandatory=false
-    versionRange="[0.10,)"
-    ordering="AFTER"
-    side="BOTH"
-[[dependencies.coffeecheese]]
     modId="patchouli"
     mandatory=false
     versionRange="[1.2-28,)"
