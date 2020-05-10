@@ -70,7 +70,7 @@ public class ModFoods {
             applyEffects(food, builder);
         }
 
-        return builder.hunger((int) (hunger * grilled(grilled))).saturation(saturation * grilled(grilled) * foodCombo).build();
+        return builder.hunger((int) (hunger * grilled(grilled))).saturation(saturation * grilled(grilled) * 0.5f).build();
     }
 
     private static Food.Builder applyEffects(Food apply, Food.Builder to) {
