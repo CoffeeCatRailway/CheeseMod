@@ -124,7 +124,7 @@ public class MelterBlock extends ContainerBaseBlock implements IWaterLoggable {
                 return ActionResultType.SUCCESS;
             }
         }
-        return ActionResultType.FAIL;
+        return ActionResultType.PASS;
     }
 
     @Override

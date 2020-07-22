@@ -101,7 +101,7 @@ public class FoodDrawBlock extends ContainerBaseBlock implements IWaterLoggable 
                 }
             }
         }
-        return ActionResultType.FAIL;
+        return ActionResultType.PASS;
     }
 
     @Override
