@@ -9,10 +9,7 @@ import coffeecatrailway.coffeecheese.registry.ModRecipes;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.registration.IGuiHandlerRegistration;
-import mezz.jei.api.registration.IRecipeCatalystRegistration;
-import mezz.jei.api.registration.IRecipeCategoryRegistration;
-import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -54,6 +51,11 @@ public class JEIModPlugin implements IModPlugin {
         reg.addRecipes(getRecipesOfType(ModRecipes.GRILLING), GRILL);
         reg.addRecipes(getRecipesOfType(ModRecipes.MELTING), MELTER);
         reg.addRecipes(getRecipesOfType(ModRecipes.PIZZA_OVEN), PIZZA_OVEN);
+    }
+
+    @Override
+    public void registerVanillaCategoryExtensions(IVanillaCategoryExtensionRegistration reg) {
+        //reg.getCraftingCategory().addCategoryExtension(SandwichRecipe.class, SandwichRecipeExtention::new);
     }
 
     private static List<IRecipe<?>> getRecipesOfType(IRecipeType<?> type) {
