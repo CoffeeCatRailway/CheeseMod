@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[28,)"
+loaderVersion="[32,)"
 issueTrackerURL="https://github.com/CoffeeCatRailway/CoffeeCatsCheeseMod/issues"
 
 [[mods]]
@@ -21,17 +21,29 @@ Issues: https://github.com/CoffeeCatRailway/CoffeeCatsCheeseMod/issues
 [[dependencies.coffeecheese]]
     modId="forge"
     mandatory=true
-    versionRange="[31,)"
+    versionRange="[32,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.coffeecheese]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]"
+    versionRange="[${mcVersion}]"
     ordering="NONE"
     side="BOTH"
 [[dependencies.coffeecheese]]
     modId="patchouli"
     mandatory=false
-    versionRange="[1.2-28,)"
+    versionRange="[1.16-39,)"
     side="BOTH"
+[[dependencies.coffeecheese]]
+    modId="jei"
+    mandatory=false
+    versionRange="[7,]"
+    ordering="NONE"
+    side="CLIENT"
+[[dependencies.coffeecheese]]
+    modId="theoneprobe"
+    mandatory=false
+    versionRange="[1.16-3,]"
+    ordering="NONE"
+    side="CLIENT"

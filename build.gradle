@@ -13,6 +13,12 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
+repositories {
+    maven {
+        url 'https://www.dogforce-games.com/maven/'
+    }
+}
+
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
@@ -23,6 +29,7 @@ archivesBaseName = project.modId
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
+println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
     mappings channel: project.mcpChannel.toString(), version: project.mcpMappings.toString()
 
@@ -37,7 +44,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                cheesemod {
+                coffeecheese {
                     source sourceSets.main
                 }
             }
@@ -51,7 +58,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                cheesemod {
+                coffeecheese {
                     source sourceSets.main
                 }
             }
@@ -64,15 +71,21 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'cheesemod', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'coffeecheese', '--all', '--output', '"' + rootProject.file('src/generated/resources/') + '"', '--existing', '"' + rootProject.file('src/main/resources') + '"'
 
             mods {
-                cheesemod {
+                coffeecheese {
                     source sourceSets.main
                 }
             }
         }
     }
+}
+
+sourceSets.main.resources {
+    srcDir 'src/generated/resources'
+
+//    exclude "**/*.ase"
 }
 
 configurations {
@@ -102,11 +115,11 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${project.mcVersion}-${project.forgeVersion}"
 
-    compileOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}")
+    compileOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}:api")
 
-    compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-${project.topVersion}:api")
-    runtimeOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-${project.topVersion}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}")
+    compileOnly fg.deobf("mezz.jei:jei-${project.mcVersion}:${project.jeiVersion}:api")
 
     compile fg.deobf("vazkii.patchouli:Patchouli:${project.patchouliVersion}")
 
@@ -114,7 +127,7 @@ dependencies {
     implementation fg.deobf(registrate)
     shade registrate
 
-    def fishLib = "com.github.Ocelot5836:FishLib:${project.mcVersion}-${project.fishLibVersion}"
+    def fishLib = "com.github.Ocelot5836:FishLib:${project.fishLibVersion}"
     implementation fg.deobf(fishLib)
     shade fishLib
 }
@@ -130,9 +143,10 @@ processResources {
     inputs.property("modId", project.modId)
     inputs.property("name", project.name)
     inputs.property("author", project.author)
+    inputs.property("mcVersion", mcVersion)
     from(sourceSets.main.resources.srcDirs) {
         include 'META-INF/mods.toml'
-        expand 'version': version, 'modId': project.modId, 'name': project.name, 'author': project.author
+        expand 'version': version, 'modId': project.modId, 'name': project.name, 'author': project.author, 'mcVersion': project.mcVersion
     }
 
     from(sourceSets.main.resources.srcDirs) {
