@@ -1,6 +1,0 @@
-{
-  "parent": "block/button_pressed",
-  "textures": {
-    "texture": "coffeecheese:block/grilled_cheese_planks"
-  }
-}

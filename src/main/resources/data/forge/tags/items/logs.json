@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#forge:logs/cheese",
-    "#forge:logs/grilled_cheese",
-    "#forge:logs/ham_raw",
-    "#forge:logs/ham_cooked"
-  ]
-}

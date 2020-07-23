@@ -1,6 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "coffeecheese:block/pineapple_stage4"
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "coffeecheese:ham_raw_log",
-    "coffeecheese:stripped_ham_raw_log",
-    "coffeecheese:ham_raw_wood",
-    "coffeecheese:stripped_ham_raw_wood"
-  ]
-}

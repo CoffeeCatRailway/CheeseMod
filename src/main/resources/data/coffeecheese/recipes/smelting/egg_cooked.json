@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": [
-    { "item": "coffeecheese:egg_cracked" }
-  ],
-  "result": "coffeecheese:egg_cooked",
-  "experience": 0.15,
-  "cookingtime": 100
-}

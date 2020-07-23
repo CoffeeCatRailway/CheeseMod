@@ -1,6 +1,0 @@
-{
-  "parent": "block/fence_side",
-  "textures": {
-    "texture": "coffeecheese:block/cheese_block_holes"
-  }
-}

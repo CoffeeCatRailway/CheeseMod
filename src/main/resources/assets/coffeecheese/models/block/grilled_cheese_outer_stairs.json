@@ -1,8 +1,0 @@
-{
-  "parent": "block/outer_stairs",
-  "textures": {
-    "bottom": "coffeecheese:block/grilled_cheese_block",
-    "top": "coffeecheese:block/grilled_cheese_block",
-    "side": "coffeecheese:block/grilled_cheese_block"
-  }
-}

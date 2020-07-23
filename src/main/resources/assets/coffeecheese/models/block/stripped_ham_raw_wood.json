@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "coffeecheese:block/stripped_ham_raw_log_side",
-    "side": "coffeecheese:block/stripped_ham_raw_log_side"
-  }
-}

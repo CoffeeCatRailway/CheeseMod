@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    { "tag": "forge:food_blocks/ham_cooked" }
-  ],
-  "result": {
-    "item": "coffeecheese:ham_cooked_button"
-  }
-}

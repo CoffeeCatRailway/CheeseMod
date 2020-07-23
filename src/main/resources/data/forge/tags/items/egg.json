@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:egg",
-    "coffeecheese:egg_cracked",
-    "coffeecheese:egg_cooked",
-    "coffeecheese:egg_green"
-  ]
-}

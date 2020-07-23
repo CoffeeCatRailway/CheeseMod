@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#forge:slabs/cheese",
-    "#forge:slabs/grilled_cheese",
-    "#forge:slabs/ham_raw",
-    "#forge:slabs/ham_cooked"
-  ]
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab",
-  "textures": {
-    "bottom": "coffeecheese:block/grilled_cheese_block",
-    "top": "coffeecheese:block/grilled_cheese_block",
-    "side": "coffeecheese:block/grilled_cheese_block"
-  }
-}

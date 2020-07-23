@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "powered=false": { "model": "coffeecheese:block/ham_cooked_wood_pressure_plate" },
-    "powered=true": { "model": "coffeecheese:block/ham_cooked_wood_pressure_plate_down" }
-  }
-}

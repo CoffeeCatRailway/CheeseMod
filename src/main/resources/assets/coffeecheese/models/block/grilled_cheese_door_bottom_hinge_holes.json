@@ -1,7 +1,0 @@
-{
-    "parent": "block/door_bottom_rh",
-    "textures": {
-        "bottom": "coffeecheese:block/grilled_cheese_door_bottom_holes",
-        "top": "coffeecheese:block/grilled_cheese_door_top_holes"
-    }
-}

@@ -1,45 +1,21 @@
 package coffeecatrailway.coffeecheese;
 
-import coffeecatrailway.coffeecheese.common.block.TallFoodGrassBlock;
-import coffeecatrailway.coffeecheese.common.command.ChezCommand;
-import coffeecatrailway.coffeecheese.common.world.ModWorldFeatures;
-import coffeecatrailway.coffeecheese.compat.patchouli.ModPageTypes;
-import coffeecatrailway.coffeecheese.compat.registrate.ModRegistrate;
-import coffeecatrailway.coffeecheese.compat.top.TOPCompatibility;
-import coffeecatrailway.coffeecheese.registry.*;
-import io.netty.buffer.Unpooled;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.DimensionManager;
-import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.event.world.RegisterDimensionsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.InterModComms;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import vazkii.patchouli.common.base.Patchouli;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -51,10 +27,10 @@ public class CheeseMod {
     public static final String MOD_ID = "coffeecheese";
 
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-    public static ModCheeseConfig.ClientConfig CLIENT_CFG;
-    public static ModCheeseConfig.ServerConfig SERVER_CFG;
-
-    public static ModRegistrate REGISTRATE;
+//    public static ModCheeseConfig.ClientConfig CLIENT_CFG;
+//    public static ModCheeseConfig.ServerConfig SERVER_CFG;
+//
+//    public static ModRegistrate REGISTRATE;
 
     public CheeseMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -62,61 +38,61 @@ public class CheeseMod {
         modEventBus.addListener(this::setupCommon);
         MinecraftForge.EVENT_BUS.register(this);
 
-        final Pair<ModCheeseConfig.ClientConfig, ForgeConfigSpec> specPairC = new ForgeConfigSpec.Builder().configure(ModCheeseConfig.ClientConfig::new);
-        final Pair<ModCheeseConfig.ServerConfig, ForgeConfigSpec> specPairS = new ForgeConfigSpec.Builder().configure(ModCheeseConfig.ServerConfig::new);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, specPairC.getRight());
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, specPairS.getRight());
-        CLIENT_CFG = specPairC.getLeft();
-        SERVER_CFG = specPairS.getLeft();
-
-        REGISTRATE = ModRegistrate.create(MOD_ID, modEventBus);
-
-        ModBlocks.load();
-        ModItems.load();
-        ModFluids.load();
-        ModTileEntities.load();
-        ModEntities.load();
-        ModContainers.load();
-        ModFeatures.load();
-        ModBiomes.load();
-        modEventBus.addListener(ModStats::registerAll);
-        ModRecipes.registerRecipeType();
-        ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
-        modEventBus.addListener(ModEntities::registerSpawnPlacements);
-        ModParticles.PARTICLE_TYPES.register(modEventBus);
-        ModDimensions.DIMENSIONS.register(modEventBus);
-        ModEnchantments.ENCHANTMENTS.register(modEventBus);
+//        final Pair<ModCheeseConfig.ClientConfig, ForgeConfigSpec> specPairC = new ForgeConfigSpec.Builder().configure(ModCheeseConfig.ClientConfig::new);
+//        final Pair<ModCheeseConfig.ServerConfig, ForgeConfigSpec> specPairS = new ForgeConfigSpec.Builder().configure(ModCheeseConfig.ServerConfig::new);
+//        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, specPairC.getRight());
+//        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, specPairS.getRight());
+//        CLIENT_CFG = specPairC.getLeft();
+//        SERVER_CFG = specPairS.getLeft();
+//
+//        REGISTRATE = ModRegistrate.create(MOD_ID, modEventBus);
+//
+//        ModBlocks.load();
+//        ModItems.load();
+//        ModFluids.load();
+//        ModTileEntities.load();
+//        ModEntities.load();
+//        ModContainers.load();
+//        ModFeatures.load();
+//        ModBiomes.load();
+//        modEventBus.addListener(ModStats::registerAll);
+//        ModRecipes.registerRecipeType();
+//        ModRecipes.RECIPE_SERIALIZERS.register(modEventBus);
+//        modEventBus.addListener(ModEntities::registerSpawnPlacements);
+//        ModParticles.PARTICLE_TYPES.register(modEventBus);
+//        ModDimensions.DIMENSIONS.register(modEventBus);
+//        ModEnchantments.ENCHANTMENTS.register(modEventBus);
     }
 
     @OnlyIn(Dist.CLIENT)
     public void setupClient(FMLClientSetupEvent event) {
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::itemColors);
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::renderLayers);
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::containerScreens);
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::particleFactories);
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::entityRenderers);
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::tileEntityRenderers);
-
-        if (ModList.get().isLoaded(Patchouli.MOD_ID))
-            ModPageTypes.registerPageTypes();
+//        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::itemColors);
+//        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::renderLayers);
+//        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::containerScreens);
+//        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::particleFactories);
+//        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::entityRenderers);
+//        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEvents::tileEntityRenderers);
+//
+//        if (ModList.get().isLoaded(Patchouli.MOD_ID))
+//            ModPageTypes.registerPageTypes();
     }
 
     public void setupCommon(FMLCommonSetupEvent event) {
-        ModBiomes.addBiomeTypes();
-        ModBiomes.addBiomeFeatures();
-        ModWorldFeatures.addFeatures();
-        ModVanillaCompat.setup();
-
-        if (ModList.get().isLoaded("theoneprobe"))
-            InterModComms.sendTo("theoneprobe", "getTheOneProbe", TOPCompatibility::new);
-
-        CheeseMod.LOGGER.debug("Common setup");
+//        ModBiomes.addBiomeTypes();
+//        ModBiomes.addBiomeFeatures();
+//        ModWorldFeatures.addFeatures();
+//        ModVanillaCompat.setup();
+//
+//        if (ModList.get().isLoaded("theoneprobe"))
+//            InterModComms.sendTo("theoneprobe", "getTheOneProbe", TOPCompatibility::new);
+//
+//        CheeseMod.LOGGER.debug("Common setup");
     }
 
     @SubscribeEvent
     public static void onItemCrafted(PlayerEvent.ItemCraftedEvent event) {
-        if (event.getCrafting().getItem() == ModFluids.OIL.get().getFilledBucket())
-            event.getInventory().decrStackSize(getSlotFor(event, new ItemStack(Items.WATER_BUCKET)), 1);
+//        if (event.getCrafting().getItem() == ModFluids.OIL.get().getFilledBucket())
+//            event.getInventory().decrStackSize(getSlotFor(event, new ItemStack(Items.WATER_BUCKET)), 1);
     }
 
     /**
@@ -138,33 +114,33 @@ public class CheeseMod {
 
     @SubscribeEvent
     public static void onBlockBroken(BlockEvent.BreakEvent event) {
-        if (!event.getWorld().isRemote()) {
-            if ((event.getPlayer().getHeldItemMainhand().getItem() != Items.SHEARS) || (!event.getPlayer().isCreative())) {
-                if (event.getState().getBlock() == Blocks.GRASS || event.getState().getBlock() == Blocks.TALL_GRASS || event.getState().getBlock() == Blocks.FERN || event.getState().getBlock() instanceof TallFoodGrassBlock) {
-                    if (Math.random() <= (double) ModCheeseConfig.pineappleDropChance.get() / 100) {
-                        event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState(), 2);
-                        event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
-                                event.getPos().getY(), event.getPos().getZ(), new ItemStack(ModItems.PINEAPPLE_PLANT.get(), 1)));
-                    }
-                }
-            }
-        }
+//        if (!event.getWorld().isRemote()) {
+//            if ((event.getPlayer().getHeldItemMainhand().getItem() != Items.SHEARS) || (!event.getPlayer().isCreative())) {
+//                if (event.getState().getBlock() == Blocks.GRASS || event.getState().getBlock() == Blocks.TALL_GRASS || event.getState().getBlock() == Blocks.FERN || event.getState().getBlock() instanceof TallFoodGrassBlock) {
+//                    if (Math.random() <= (double) ModCheeseConfig.pineappleDropChance.get() / 100) {
+//                        event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState(), 2);
+//                        event.getWorld().addEntity(new ItemEntity((World) event.getWorld(), event.getPos().getX(),
+//                                event.getPos().getY(), event.getPos().getZ(), new ItemStack(ModItems.PINEAPPLE_PLANT.get(), 1)));
+//                    }
+//                }
+//            }
+//        }
     }
 
     @SubscribeEvent
     public static void serverStarting(FMLServerStartingEvent event) {
-        ChezCommand.register(event.getCommandDispatcher());
+//        ChezCommand.register(event.getCommandDispatcher());
     }
 
-    @SubscribeEvent
-    public static void registerToManager(final RegisterDimensionsEvent event) {
-        ResourceLocation location = CheeseMod.getLocation("foodworld");
-        if (DimensionType.byName(location) == null) {
-            ModDimensions.FOOD_WORLD_TYPE = DimensionManager.registerDimension(location, ModDimensions.FOOD_WORLD.get(), new PacketBuffer(Unpooled.buffer()), true);
-            DimensionManager.keepLoaded(ModDimensions.FOOD_WORLD_TYPE, false);
-        } else
-            ModDimensions.FOOD_WORLD_TYPE = DimensionType.byName(location);
-    }
+//    @SubscribeEvent
+//    public static void registerToManager(final RegisterDimensionsEvent event) {
+//        ResourceLocation location = CheeseMod.getLocation("foodworld");
+//        if (DimensionType.byName(location) == null) {
+//            ModDimensions.FOOD_WORLD_TYPE = DimensionManager.registerDimension(location, ModDimensions.FOOD_WORLD.get(), new PacketBuffer(Unpooled.buffer()), true);
+//            DimensionManager.keepLoaded(ModDimensions.FOOD_WORLD_TYPE, false);
+//        } else
+//            ModDimensions.FOOD_WORLD_TYPE = DimensionType.byName(location);
+//    }
 
     public static boolean isDate(int month, int day) {
         Date today = new Date();

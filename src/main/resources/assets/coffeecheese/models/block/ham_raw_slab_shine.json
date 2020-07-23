@@ -1,8 +1,0 @@
-{
-  "parent": "block/slab",
-  "textures": {
-    "bottom": "coffeecheese:block/ham_raw_block_shine",
-    "top": "coffeecheese:block/ham_raw_block_shine",
-    "side": "coffeecheese:block/ham_raw_block_shine"
-  }
-}

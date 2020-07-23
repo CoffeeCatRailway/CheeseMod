@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:campfire_cooking",
-  "ingredient": [
-    { "item": "coffeecheese:ham_raw" }
-  ],
-  "result": "coffeecheese:ham_cooked",
-  "experience": 0.35,
-  "cookingtime": 600
-}

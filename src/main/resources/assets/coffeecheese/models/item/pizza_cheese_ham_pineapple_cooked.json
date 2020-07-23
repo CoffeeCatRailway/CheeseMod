@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "coffeecheese:item/pizza_cheese_ham_pineapple_cooked"
-  }
-}

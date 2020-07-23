@@ -1,8 +1,0 @@
-{
-  "parent": "block/stairs",
-  "textures": {
-    "bottom": "coffeecheese:block/ham_raw_block",
-    "top": "coffeecheese:block/ham_raw_block",
-    "side": "coffeecheese:block/ham_raw_block"
-  }
-}
