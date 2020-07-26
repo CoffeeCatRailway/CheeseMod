@@ -26,3 +26,4 @@ forge*changelog.txt
 build.bat
 *.pdn
 curseforge
+src/generated/resources/.cache/cache
