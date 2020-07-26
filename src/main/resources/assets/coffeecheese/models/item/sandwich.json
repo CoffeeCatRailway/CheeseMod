@@ -1,0 +1,6 @@
+{
+  "parent": "coffeecheese:item/stackable_food",
+  "textures": {
+    "particle": "coffeecheese:item/bread_slice"
+  }
+}

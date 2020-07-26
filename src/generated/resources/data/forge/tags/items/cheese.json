@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:food_slice/cheese",
+    "coffeecheese:block_o_cheese",
+    "coffeecheese:cheese_ball",
+    "coffeecheese:cheese_slice",
+    "coffeecheese:pizza_cheese",
+    "coffeecheese:pizza_cheese_cooked",
+    "coffeecheese:pizza_cheese_ham",
+    "coffeecheese:pizza_cheese_ham_cooked",
+    "coffeecheese:pizza_cheese_ham_pineapple",
+    "coffeecheese:pizza_cheese_ham_pineapple_cooked"
+  ]
+}

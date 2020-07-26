@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "coffeecheese:item/pizza_cheese_ham_cooked"
+  }
+}

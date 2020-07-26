@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "coffeecheese:item/grilled_cheese_metal_sword"
+  }
+}

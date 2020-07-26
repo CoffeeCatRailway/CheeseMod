@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "i",
+    "s",
+    "s"
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:rods/wooden"
+    },
+    "i": {
+      "item": "coffeecheese:ham_raw_metal_ingot"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:ham_raw_metal_shovel"
+  }
+}

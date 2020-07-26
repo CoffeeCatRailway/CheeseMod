@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:bread",
+    "#forge:toast",
+    "coffeecheese:bread_slice",
+    "coffeecheese:sandwich"
+  ]
+}

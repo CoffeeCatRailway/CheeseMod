@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:food_slice/ham",
+    "coffeecheese:ham_raw",
+    "coffeecheese:ham_cooked",
+    "coffeecheese:ham_green",
+    "coffeecheese:pizza_cheese_ham",
+    "coffeecheese:pizza_cheese_ham_cooked",
+    "coffeecheese:pizza_cheese_ham_pineapple",
+    "coffeecheese:pizza_cheese_ham_pineapple_cooked"
+  ]
+}

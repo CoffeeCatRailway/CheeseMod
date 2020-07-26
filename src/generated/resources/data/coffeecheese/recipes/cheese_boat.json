@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "b b",
+    "bbb"
+  ],
+  "key": {
+    "b": {
+      "item": "coffeecheese:cheese_planks"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:cheese_boat"
+  }
+}
