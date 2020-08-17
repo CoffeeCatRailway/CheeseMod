@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "coffeecheese:cheese_metal_block"
+    }
+  ],
+  "result": {
+    "item": "coffeecheese:grilled_cheese_metal_ingot"
+  }
+}

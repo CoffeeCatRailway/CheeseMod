@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ll",
+    "ll"
+  ],
+  "key": {
+    "l": {
+      "item": "coffeecheese:ham_cooked_log"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:ham_cooked_wood",
+    "count": 3
+  }
+}

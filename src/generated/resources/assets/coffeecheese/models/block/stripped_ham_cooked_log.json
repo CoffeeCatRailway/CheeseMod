@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "coffeecheese:block/stripped_ham_cooked_log_side",
+    "end": "coffeecheese:block/stripped_ham_cooked_log_top"
+  }
+}

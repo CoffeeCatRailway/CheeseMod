@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_trapdoor",
+  "pattern": [
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "coffeecheese:ham_cooked_planks"
+    }
+  },
+  "result": {
+    "item": "coffeecheese:ham_cooked_wood_trapdoor",
+    "count": 2
+  }
+}

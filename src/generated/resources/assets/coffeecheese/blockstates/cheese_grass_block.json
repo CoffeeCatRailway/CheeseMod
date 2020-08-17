@@ -1,0 +1,44 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "coffeecheese:block/cheese_grass_block",
+        "weight": 10
+      },
+      {
+        "model": "coffeecheese:block/cheese_grass_block",
+        "y": 90,
+        "weight": 10
+      },
+      {
+        "model": "coffeecheese:block/cheese_grass_block",
+        "y": 180,
+        "weight": 10
+      },
+      {
+        "model": "coffeecheese:block/cheese_grass_block",
+        "y": 270,
+        "weight": 10
+      },
+      {
+        "model": "coffeecheese:block/cheese_grass_block_holes",
+        "weight": 5
+      },
+      {
+        "model": "coffeecheese:block/cheese_grass_block_holes",
+        "y": 90,
+        "weight": 5
+      },
+      {
+        "model": "coffeecheese:block/cheese_grass_block_holes",
+        "y": 180,
+        "weight": 5
+      },
+      {
+        "model": "coffeecheese:block/cheese_grass_block_holes",
+        "y": 270,
+        "weight": 5
+      }
+    ]
+  }
+}

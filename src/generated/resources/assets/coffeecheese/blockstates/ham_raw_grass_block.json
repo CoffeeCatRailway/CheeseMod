@@ -1,0 +1,44 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "coffeecheese:block/ham_raw_grass_block",
+        "weight": 10
+      },
+      {
+        "model": "coffeecheese:block/ham_raw_grass_block",
+        "y": 90,
+        "weight": 10
+      },
+      {
+        "model": "coffeecheese:block/ham_raw_grass_block",
+        "y": 180,
+        "weight": 10
+      },
+      {
+        "model": "coffeecheese:block/ham_raw_grass_block",
+        "y": 270,
+        "weight": 10
+      },
+      {
+        "model": "coffeecheese:block/ham_raw_grass_block_shine",
+        "weight": 5
+      },
+      {
+        "model": "coffeecheese:block/ham_raw_grass_block_shine",
+        "y": 90,
+        "weight": 5
+      },
+      {
+        "model": "coffeecheese:block/ham_raw_grass_block_shine",
+        "y": 180,
+        "weight": 5
+      },
+      {
+        "model": "coffeecheese:block/ham_raw_grass_block_shine",
+        "y": 270,
+        "weight": 5
+      }
+    ]
+  }
+}

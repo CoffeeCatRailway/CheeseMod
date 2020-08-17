@@ -20,6 +20,14 @@ public class CheeseTags {
 
     public static class Blocks implements NonNullConsumer<RegistrateTagsProvider<Block>> {
 
+        public static final ITag.INamedTag<Block> FOOD_GRASS_BLOCKS = tagForge("food_grass_blocks");
+
+        public static final ITag.INamedTag<Block> FOOD_METAL_ORES = tagForge("food_metal_ores");
+        public static final ITag.INamedTag<Block> FOOD_METAL_ORE_CHEESE = tagForge("food_metal_ores/cheese");
+        public static final ITag.INamedTag<Block> FOOD_METAL_ORE_GRILLED_CHEESE = tagForge("food_metal_ores/grilled_cheese");
+        public static final ITag.INamedTag<Block> FOOD_METAL_ORE_HAM_RAW = tagForge("food_metal_ores/ham_raw");
+        public static final ITag.INamedTag<Block> FOOD_METAL_ORE_HAM_COOKED = tagForge("food_metal_ores/ham_cooked");
+
         public static final ITag.INamedTag<Block> FOOD_BLOCKS = tagForge("food_blocks");
         public static final ITag.INamedTag<Block> CHEESE_BLOCKS = tagForge("food_blocks/cheese");
         public static final ITag.INamedTag<Block> GRILLED_CHEESE_BLOCKS = tagForge("food_blocks/grilled_cheese");
@@ -28,7 +36,13 @@ public class CheeseTags {
 
         @Override
         public void accept(RegistrateTagsProvider<Block> provider) {
-//            provider.getOrCreateBuilder(FOOD_BLOCKS).addTag(CHEESE_BLOCKS).addTag(GRILLED_CHEESE_BLOCKS).addTag(HAM_RAW_BLOCKS).addTag(HAM_COOKED_BLOCKS);
+            provider.getOrCreateBuilder(FOOD_METAL_ORES).addTags(FOOD_METAL_ORE_CHEESE, FOOD_METAL_ORE_GRILLED_CHEESE,  FOOD_METAL_ORE_HAM_RAW, FOOD_METAL_ORE_HAM_COOKED);
+
+            provider.getOrCreateBuilder(CHEESE_BLOCKS);
+            provider.getOrCreateBuilder(GRILLED_CHEESE_BLOCKS);
+            provider.getOrCreateBuilder(HAM_RAW_BLOCKS);
+            provider.getOrCreateBuilder(HAM_COOKED_BLOCKS);
+            provider.getOrCreateBuilder(FOOD_BLOCKS).addTags(CHEESE_BLOCKS, GRILLED_CHEESE_BLOCKS,  HAM_RAW_BLOCKS, HAM_COOKED_BLOCKS);
         }
 
         private static ITag.INamedTag<Block> tagMod(String name) {
@@ -84,7 +98,17 @@ public class CheeseTags {
 
         public static final ITag.INamedTag<Item> WHEAT = tagForge("wheat");
 
+        public static final ITag.INamedTag<Item> FOODS_TAB = tagMod("foods_tab");
+
         /// Blocks ///
+        public static final ITag.INamedTag<Item> FOOD_GRASS_BLOCKS = tagForge("food_grass_blocks");
+
+        public static final ITag.INamedTag<Item> FOOD_METAL_ORES = tagForge("food_metal_ores");
+        public static final ITag.INamedTag<Item> FOOD_METAL_ORE_CHEESE = tagForge("food_metal_ores/cheese");
+        public static final ITag.INamedTag<Item> FOOD_METAL_ORE_GRILLED_CHEESE = tagForge("food_metal_ores/grilled_cheese");
+        public static final ITag.INamedTag<Item> FOOD_METAL_ORE_HAM_RAW = tagForge("food_metal_ores/ham_raw");
+        public static final ITag.INamedTag<Item> FOOD_METAL_ORE_HAM_COOKED = tagForge("food_metal_ores/ham_cooked");
+
         public static final ITag.INamedTag<Item> FOOD_BLOCKS = tagForge("food_blocks");
         public static final ITag.INamedTag<Item> CHEESE_BLOCKS = tagForge("food_blocks/cheese");
         public static final ITag.INamedTag<Item> GRILLED_CHEESE_BLOCKS = tagForge("food_blocks/grilled_cheese");
@@ -95,14 +119,14 @@ public class CheeseTags {
         public void accept(RegistrateTagsProvider<Item> provider) {
             provider.getOrCreateBuilder(BREAD).add(net.minecraft.item.Items.BREAD).addTag(TOAST);
 
-            provider.getOrCreateBuilder(CHEESE).addTags(FOOD_SLICE_CHEESE); // , CHEESE_BLOCKS, GRILLED_CHEESE_BLOCKS
+            provider.getOrCreateBuilder(CHEESE).addTags(FOOD_SLICE_CHEESE, CHEESE_BLOCKS, GRILLED_CHEESE_BLOCKS);
 
             provider.getOrCreateBuilder(FOOD_SLICE_HAM).addTags(FOOD_SLICE_HAM_RAW, FOOD_SLICE_HAM_COOKED);
             provider.getOrCreateBuilder(FOOD_SLICE).addTags(FOOD_SLICE_CHEESE, FOOD_SLICE_HAM);
 
             provider.getOrCreateBuilder(GEARS).addTag(GEARS_WOODEN);
 
-            provider.getOrCreateBuilder(HAM).addTags(FOOD_SLICE_HAM); // , HAM_RAW_BLOCKS, HAM_COOKED_BLOCKS
+            provider.getOrCreateBuilder(HAM).addTags(FOOD_SLICE_HAM, HAM_RAW_BLOCKS, HAM_COOKED_BLOCKS);
 
             provider.getOrCreateBuilder(KNIVES).addTags(KNIVES_IRON, KNIVES_CHEESE, KNIVES_HAM);
 
@@ -110,8 +134,16 @@ public class CheeseTags {
 
             provider.getOrCreateBuilder(WHEAT).add(net.minecraft.item.Items.WHEAT);
 
+            provider.getOrCreateBuilder(FOODS_TAB).addTags(BACON, BREAD, DOUGH, CRACKER, FLOUR, FOOD_SLICE, PIZZA, SALT, TOAST);
+
             /// Blocks ///
-//            provider.getOrCreateBuilder(FOOD_BLOCKS).addTags(CHEESE_BLOCKS, GRILLED_CHEESE_BLOCKS, HAM_RAW_BLOCKS, HAM_COOKED_BLOCKS);
+            provider.getOrCreateBuilder(FOOD_METAL_ORES).addTags(FOOD_METAL_ORE_CHEESE, FOOD_METAL_ORE_GRILLED_CHEESE,  FOOD_METAL_ORE_HAM_RAW, FOOD_METAL_ORE_HAM_COOKED);
+
+            provider.getOrCreateBuilder(CHEESE_BLOCKS);
+            provider.getOrCreateBuilder(GRILLED_CHEESE_BLOCKS);
+            provider.getOrCreateBuilder(HAM_RAW_BLOCKS);
+            provider.getOrCreateBuilder(HAM_COOKED_BLOCKS);
+            provider.getOrCreateBuilder(FOOD_BLOCKS).addTags(CHEESE_BLOCKS, GRILLED_CHEESE_BLOCKS, HAM_RAW_BLOCKS, HAM_COOKED_BLOCKS);
         }
 
         private static ITag.INamedTag<Item> tagMod(String name) {

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "coffeecheese:grilled_cheese_log"
+      },
+      {
+        "item": "coffeecheese:stripped_grilled_cheese_log"
+      },
+      {
+        "item": "coffeecheese:grilled_cheese_wood"
+      },
+      {
+        "item": "coffeecheese:stripped_grilled_cheese_wood"
+      }
+    ]
+  ],
+  "result": {
+    "item": "coffeecheese:grilled_cheese_planks",
+    "count": 4
+  }
+}

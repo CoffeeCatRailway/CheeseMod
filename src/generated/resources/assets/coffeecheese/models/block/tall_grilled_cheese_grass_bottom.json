@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "coffeecheese:block/tall_grilled_cheese_grass_bottom"
+  }
+}

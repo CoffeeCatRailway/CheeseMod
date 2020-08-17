@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "coffeecheese:block/ham_raw_metal_block"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "coffeecheese:cheese_metal_block",
+    "coffeecheese:grilled_cheese_metal_block",
+    "coffeecheese:ham_raw_metal_block",
+    "coffeecheese:ham_cooked_metal_block"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:food_metal_ores/cheese",
+    "#forge:food_metal_ores/grilled_cheese",
+    "#forge:food_metal_ores/ham_raw",
+    "#forge:food_metal_ores/ham_cooked"
+  ]
+}

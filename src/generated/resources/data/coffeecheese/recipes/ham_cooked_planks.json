@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    [
+      {
+        "item": "coffeecheese:ham_cooked_log"
+      },
+      {
+        "item": "coffeecheese:stripped_ham_cooked_log"
+      },
+      {
+        "item": "coffeecheese:ham_cooked_wood"
+      },
+      {
+        "item": "coffeecheese:stripped_ham_cooked_wood"
+      }
+    ]
+  ],
+  "result": {
+    "item": "coffeecheese:ham_cooked_planks",
+    "count": 4
+  }
+}

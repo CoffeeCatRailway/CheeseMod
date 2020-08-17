@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "coffeecheese:cheese_planks"
+    ]
+  },
+  "criteria": {
+    "has_cheese_log": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:cheese_log"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "coffeecheese:cheese_planks"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cheese_log",
+      "has_the_recipe"
+    ]
+  ]
+}

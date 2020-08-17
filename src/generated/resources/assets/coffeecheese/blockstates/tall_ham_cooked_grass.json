@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=upper": {
+      "model": "coffeecheese:block/tall_ham_cooked_grass_top"
+    },
+    "half=lower": {
+      "model": "coffeecheese:block/tall_ham_cooked_grass_bottom"
+    }
+  }
+}

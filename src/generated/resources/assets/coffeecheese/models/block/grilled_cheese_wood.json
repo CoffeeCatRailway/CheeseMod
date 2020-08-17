@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "coffeecheese:block/grilled_cheese_log_side",
+    "end": "coffeecheese:block/grilled_cheese_log_side"
+  }
+}

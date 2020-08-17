@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "coffeecheese:cheese_metal_ingot_from_food_metal_ores_cheese_smelting"
+    ]
+  },
+  "criteria": {
+    "has_food_metal_ores_cheese": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:food_metal_ores/cheese"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "coffeecheese:cheese_metal_ingot_from_food_metal_ores_cheese_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_food_metal_ores_cheese",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "coffeecheese:ham_cooked_metal_ingot_from_food_metal_ores_ham_cooked_blasting"
+    ]
+  },
+  "criteria": {
+    "has_food_metal_ores_ham_cooked": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:food_metal_ores/ham_cooked"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "coffeecheese:ham_cooked_metal_ingot_from_food_metal_ores_ham_cooked_blasting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_food_metal_ores_ham_cooked",
+      "has_the_recipe"
+    ]
+  ]
+}

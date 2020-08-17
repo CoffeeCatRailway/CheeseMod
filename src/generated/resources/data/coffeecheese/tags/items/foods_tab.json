@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:bacon",
+    "#forge:bread",
+    "#forge:dough",
+    "#forge:cracker",
+    "#forge:flour",
+    "#forge:food_slice",
+    "#forge:pizza",
+    "#forge:salt",
+    "#forge:toast",
+    "coffeecheese:pineapple_plant",
+    "coffeecheese:pineapple",
+    "coffeecheese:pineapple_ring",
+    "coffeecheese:pineapple_bit"
+  ]
+}

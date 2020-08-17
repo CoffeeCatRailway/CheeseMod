@@ -1,34 +1,32 @@
 package coffeecatrailway.coffeecheese;
 
+import coffeecatrailway.coffeecheese.common.command.ChezCommand;
 import coffeecatrailway.coffeecheese.integration.VanillaCompatability;
 import coffeecatrailway.coffeecheese.integration.registrate.CheeseLang;
 import coffeecatrailway.coffeecheese.integration.registrate.CheeseTags;
-import coffeecatrailway.coffeecheese.registry.CheeseBlocks;
-import coffeecatrailway.coffeecheese.registry.CheeseEntities;
-import coffeecatrailway.coffeecheese.registry.CheeseItems;
-import coffeecatrailway.coffeecheese.registry.CheeseParticles;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.TallGrassBlock;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.item.Item;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.DistExecutor;
-import org.apache.commons.lang3.tuple.Pair;
+import coffeecatrailway.coffeecheese.registry.*;
 import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.providers.ProviderType;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.TallGrassBlock;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.projectile.EggEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -36,6 +34,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -49,35 +48,40 @@ public class CheeseMod {
     public static final String MOD_ID = "coffeecheese";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
-    public static final ItemGroup GROUP_FOODS = new CheeseItemGroup("foods", "CC's Cheese Foods") {
-        private final long cooldown = 1500;
-        private long last, now;
-        private Item item = Items.STICK;
-
-        @Override
-        public ItemStack createIcon() {
-            now += System.currentTimeMillis() - last;
-            last = System.currentTimeMillis();
-
-            if (now > cooldown) {
-                item = CheeseItems.CHEESE_SLICE.get(); //CheeseItems.FOODS.get(new Random().nextInt(CheeseItems.FOODS.size() - 1));
-                now = 0;
-            }
-            return new ItemStack(item);
-        }
-    };
-    public static final ItemGroup GROUP_ARMOR_TOOLS = new CheeseItemGroup("armor_tools", "CC's Cheese Armor & Tools") {
-        @Override
-        public ItemStack createIcon() {
-            return new ItemStack(CheeseItems.CHEESE_METAL_SWORD.get());
-        }
-    };
     public static final ItemGroup GROUP_ALL = new CheeseItemGroup("CoffeeCat's Cheese Mod") {
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(Items.CHAIN);
+            return new ItemStack(CheeseBlocks.CHEESE_GRASS_BLOCK.get());
         }
     };
+    public static final ItemGroup GROUP_FOODS = GROUP_ALL;//new CheeseItemGroup("foods", "CC's Cheese Foods") {
+    //
+//        private final long cooldown = 1500;
+//        private long last, now;
+//        private Item item = Items.STICK;
+//
+//        @Override
+//        public ItemStack createIcon() {
+//            now += System.currentTimeMillis() - last;
+//            last = System.currentTimeMillis();
+//
+//            if (now > cooldown) {
+//                item = CheeseTags.Items.FOODS_TAB.getRandomElement(getRand());
+//                now = 0;
+//            }
+//            return new ItemStack(item);
+//        }
+//
+//        private Random getRand() {
+//            return Minecraft.getInstance().world != null ? Minecraft.getInstance().world.rand : new Random();
+//        }
+//    };
+    public static final ItemGroup GROUP_ARMOR_TOOLS = GROUP_ALL;//new CheeseItemGroup("armor_tools", "CC's Cheese Armor & Tools") {
+//        @Override
+//        public ItemStack createIcon() {
+//            return new ItemStack(CheeseItems.CHEESE_METAL_SWORD.get());
+//        }
+//    };
 
     public static CheeseConfig.Client CLIENT_CONFIG;
     public static CheeseConfig.Server SERVER_CONFIG;

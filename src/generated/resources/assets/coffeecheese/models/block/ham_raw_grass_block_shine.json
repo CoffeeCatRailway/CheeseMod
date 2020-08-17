@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "coffeecheese:block/ham_raw_grass_block_side_shine",
+    "bottom": "minecraft:block/dirt",
+    "top": "coffeecheese:block/ham_raw_grass_block_top_shine"
+  }
+}

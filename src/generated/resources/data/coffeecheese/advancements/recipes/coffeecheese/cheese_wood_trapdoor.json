@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "coffeecheese:cheese_wood_trapdoor"
+    ]
+  },
+  "criteria": {
+    "has_cheese_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:cheese_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "coffeecheese:cheese_wood_trapdoor"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cheese_planks",
+      "has_the_recipe"
+    ]
+  ]
+}

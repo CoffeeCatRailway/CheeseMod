@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "coffeecheese:cheese_wood_door",
+    "coffeecheese:grilled_cheese_wood_door",
+    "coffeecheese:ham_raw_door",
+    "coffeecheese:ham_cooked_door"
+  ]
+}

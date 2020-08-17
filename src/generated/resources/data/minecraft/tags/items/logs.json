@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "coffeecheese:cheese_log",
+    "coffeecheese:stripped_cheese_log",
+    "coffeecheese:cheese_wood",
+    "coffeecheese:stripped_cheese_wood",
+    "coffeecheese:grilled_cheese_log",
+    "coffeecheese:stripped_grilled_cheese_log",
+    "coffeecheese:grilled_cheese_wood",
+    "coffeecheese:stripped_grilled_cheese_wood",
+    "coffeecheese:ham_raw_log",
+    "coffeecheese:stripped_ham_raw_log",
+    "coffeecheese:ham_raw_wood",
+    "coffeecheese:stripped_ham_raw_wood",
+    "coffeecheese:ham_cooked_log",
+    "coffeecheese:stripped_ham_cooked_log",
+    "coffeecheese:ham_cooked_wood",
+    "coffeecheese:stripped_ham_cooked_wood"
+  ]
+}

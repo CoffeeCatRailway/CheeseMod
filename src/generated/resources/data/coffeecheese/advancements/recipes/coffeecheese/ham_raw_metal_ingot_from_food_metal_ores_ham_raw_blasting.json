@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "coffeecheese:ham_raw_metal_ingot_from_food_metal_ores_ham_raw_blasting"
+    ]
+  },
+  "criteria": {
+    "has_food_metal_ores_ham_raw": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:food_metal_ores/ham_raw"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "coffeecheese:ham_raw_metal_ingot_from_food_metal_ores_ham_raw_blasting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_food_metal_ores_ham_raw",
+      "has_the_recipe"
+    ]
+  ]
+}

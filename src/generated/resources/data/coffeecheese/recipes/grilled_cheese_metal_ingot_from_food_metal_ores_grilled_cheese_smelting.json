@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "forge:food_metal_ores/grilled_cheese"
+  },
+  "result": "coffeecheese:grilled_cheese_metal_ingot",
+  "experience": 0.7,
+  "cookingtime": 200
+}

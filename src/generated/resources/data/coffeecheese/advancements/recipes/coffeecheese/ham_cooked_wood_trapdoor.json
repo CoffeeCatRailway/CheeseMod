@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "coffeecheese:ham_cooked_wood_trapdoor"
+    ]
+  },
+  "criteria": {
+    "has_ham_cooked_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:ham_cooked_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "coffeecheese:ham_cooked_wood_trapdoor"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ham_cooked_planks",
+      "has_the_recipe"
+    ]
+  ]
+}

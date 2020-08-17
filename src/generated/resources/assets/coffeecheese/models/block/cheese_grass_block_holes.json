@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "coffeecheese:block/cheese_grass_block_side_holes",
+    "bottom": "minecraft:block/dirt",
+    "top": "coffeecheese:block/cheese_grass_block_top_holes"
+  }
+}
