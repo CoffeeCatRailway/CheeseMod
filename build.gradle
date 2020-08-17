@@ -14,8 +14,26 @@ plugins {
 }
 
 repositories {
-    maven {
+    jcenter()
+    mavenLocal()
+
+    maven { // Mappings
         url 'https://www.dogforce-games.com/maven/'
+    }
+
+    maven { // JustEnoughItems
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven { // TOP & Registrate
+        name 'tterrag maven'
+        url "https://maven.tterrag.com/"
+    }
+    maven {  // Patchouli
+        url 'https://maven.blamejared.com'
+    }
+    maven { // FishLib
+        name = "Jitpack"
+        url = "https://jitpack.io"
     }
 }
 
@@ -90,26 +108,6 @@ sourceSets.main.resources {
 
 configurations {
     shade
-}
-
-repositories {
-    jcenter()
-    mavenLocal()
-
-    maven { // JustEnoughItems
-        url = "https://dvs1.progwml6.com/files/maven/"
-    }
-    maven { // TOP & Registrate
-        name 'tterrag maven'
-        url "https://maven.tterrag.com/"
-    }
-    maven {  // Patchouli
-        url 'https://maven.blamejared.com'
-    }
-    maven { // FishLib
-        name = "Jitpack"
-        url = "https://jitpack.io"
-    }
 }
 
 dependencies {
