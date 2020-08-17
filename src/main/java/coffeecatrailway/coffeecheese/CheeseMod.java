@@ -204,7 +204,7 @@ public class CheeseMod {
 
     @SubscribeEvent
     public static void serverStarting(FMLServerStartingEvent event) {
-//        ChezCommand.register(event.getCommandDispatcher());
+        ChezCommand.register(event.getServer().getCommandManager().getDispatcher());
         LOGGER.info("Register /chez command");
     }
 
