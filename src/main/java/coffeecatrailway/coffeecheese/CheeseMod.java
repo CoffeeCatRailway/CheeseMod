@@ -154,6 +154,17 @@ public class CheeseMod {
     }
 
     @SubscribeEvent
+    public static void onEggBroken(ProjectileImpactEvent.Throwable event) {
+        if (event.getThrowable() instanceof EggEntity && event.getRayTraceResult().getType() != RayTraceResult.Type.MISS) {
+            EggEntity egg = (EggEntity) event.getThrowable();
+            World world = egg.world;
+            if (!world.isRemote)
+                if (world.rand.nextInt(2) == 0)
+                    world.addEntity(new ItemEntity(world, egg.getPosX(), egg.getPosY(), egg.getPosZ(), new ItemStack(CheeseItems.EGG_CRACKED.get())));
+        }
+    }
+
+    @SubscribeEvent
     public static void onItemCrafted(PlayerEvent.ItemCraftedEvent event) {
 //        if (event.getCrafting().getItem() == ModFluids.OIL.get().getFilledBucket())
 //            event.getInventory().decrStackSize(getSlotFor(event, new ItemStack(Items.WATER_BUCKET)), 1);
