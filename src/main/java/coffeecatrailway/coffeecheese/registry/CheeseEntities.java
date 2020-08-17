@@ -27,7 +27,7 @@ import static coffeecatrailway.coffeecheese.CheeseMod.REGISTRATE;
  */
 public class CheeseEntities {
 
-    public static final Logger LOGGER = LogManager.getLogger(CheeseMod.MOD_ID + "-Entities");
+    private static final Logger LOGGER = LogManager.getLogger(CheeseMod.MOD_ID + "-Entities");
 
     private static <E extends Entity> NonNullFunction<Item.Properties, LazySpawnEggItem<E>> spawnEgg(RegistryEntry<EntityType<E>> entity, int primaryColor, int seconadryColor) {
         return prop -> new LazySpawnEggItem<>(entity, primaryColor, seconadryColor, prop);

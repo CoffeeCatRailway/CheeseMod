@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
  */
 public class CheeseParticles {
 
-    public static final Logger LOGGER = LogManager.getLogger(CheeseMod.MOD_ID + "-Particles");
+    private static final Logger LOGGER = LogManager.getLogger(CheeseMod.MOD_ID + "-Particles");
 
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, CheeseMod.MOD_ID);
 
