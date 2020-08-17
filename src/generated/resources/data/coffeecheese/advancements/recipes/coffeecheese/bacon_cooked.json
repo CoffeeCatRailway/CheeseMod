@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "coffeecheese:bacon_cooked"
+    ]
+  },
+  "criteria": {
+    "has_ham": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:food_slice/ham_cooked"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "coffeecheese:bacon_cooked"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ham",
+      "has_the_recipe"
+    ]
+  ]
+}

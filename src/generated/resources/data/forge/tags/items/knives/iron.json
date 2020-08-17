@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "coffeecheese:cheese_cutter",
     "coffeecheese:knife"
   ]
 }

@@ -10,6 +10,7 @@ import coffeecatrailway.coffeecheese.registry.nonregistries.CheeseFoods;
 import coffeecatrailway.coffeecheese.registry.nonregistries.CheeseItemTier;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import net.minecraft.block.Block;
@@ -27,6 +28,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 import static coffeecatrailway.coffeecheese.CheeseMod.REGISTRATE;
 
@@ -36,33 +38,79 @@ import static coffeecatrailway.coffeecheese.CheeseMod.REGISTRATE;
  */
 public class CheeseItems {
 
-    public static final Logger LOGGER = LogManager.getLogger(CheeseMod.MOD_ID + "-Items");
+    private static final Logger LOGGER = LogManager.getLogger(CheeseMod.MOD_ID + "-Items");
+
+    /// Food Tools ///
+    public static final RegistryEntry<CraftToolItem> CHEESE_CUTTER = REGISTRATE.item("cheese_cutter", prop -> new CraftToolItem(ItemTier.IRON, 1, 2.5f, prop))
+            .recipe((ctx, provider) -> ShapedRecipeBuilder.shapedRecipe(ctx::getEntry).key('s', Tags.Items.RODS_WOODEN).key('i', Tags.Items.INGOTS_IRON)
+                    .key('c', CheeseTags.Items.FOOD_SLICE_CHEESE).patternLine("i  ").patternLine("ci ").patternLine("  s")
+                    .addCriterion("has_ingot", RegistrateRecipeProvider.hasItem(Tags.Items.INGOTS_IRON)).build(provider))
+            .tag(CheeseTags.Items.KNIVES_IRON).group(() -> CheeseMod.GROUP_ARMOR_TOOLS).model((ctx, provider) -> provider.handheld(ctx::getEntry)).register();
+    public static final RegistryEntry<CraftToolItem> GRINDING_STONES = REGISTRATE.item("grinding_stones", prop -> new CraftToolItem(ItemTier.STONE, 2, 2.7f, prop))
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry).addIngredient(Tags.Items.COBBLESTONE)
+                    .addCriterion("has_stone", RegistrateRecipeProvider.hasItem(Tags.Items.COBBLESTONE)).build(provider))
+            .group(() -> CheeseMod.GROUP_ARMOR_TOOLS).model((ctx, provider) -> provider.handheld(ctx::getEntry)).register();
+    public static final RegistryEntry<CraftToolItem> MILK_CURDLER = REGISTRATE.item("milk_curdler", prop -> new CraftToolItem(ItemTier.WOOD, 2, 2.5f, prop))
+            .recipe((ctx, provider) -> ShapedRecipeBuilder.shapedRecipe(ctx::getEntry).key('s', Tags.Items.RODS_WOODEN).key('g', CheeseTags.Items.GEARS_WOODEN).patternLine("g")
+                    .patternLine("s").patternLine("s").addCriterion("has_gear", RegistrateRecipeProvider.hasItem(CheeseTags.Items.GEARS_WOODEN)).build(provider))
+            .group(() -> CheeseMod.GROUP_ARMOR_TOOLS).model((ctx, provider) -> provider.handheld(ctx::getEntry)).register();
+    public static final RegistryEntry<CraftToolItem> ROLLING_PIN = REGISTRATE.item("rolling_pin", prop -> new CraftToolItem(ItemTier.WOOD, 1, 2.5f, prop))
+            .recipe((ctx, provider) -> ShapedRecipeBuilder.shapedRecipe(ctx::getEntry).key('s', Tags.Items.RODS_WOODEN).key('p', ItemTags.PLANKS).patternLine("sps")
+                    .addCriterion("has_planks", RegistrateRecipeProvider.hasItem(ItemTags.PLANKS)).build(provider))
+            .group(() -> CheeseMod.GROUP_ARMOR_TOOLS).model((ctx, provider) -> provider.handheld(ctx::getEntry)).register();
 
     /// Foods ///
-    public static final RegistryEntry<Item> BLOCK_O_CHEESE = REGISTRATE.item("block_o_cheese", Item::new).properties(prop -> prop.food(CheeseFoods.BLOCK_O_CHEESE).maxStackSize(16)).lang("Block O' Cheese")
-            .tag(CheeseTags.Items.CHEESE).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
+    public static final RegistryEntry<Item> BLOCK_O_CHEESE = REGISTRATE.item("block_o_cheese", Item::new).properties(prop -> prop.food(CheeseFoods.BLOCK_O_CHEESE).maxStackSize(16))
+            .recipe((ctx, provider) -> {
+                ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 2).addIngredient(Items.MILK_BUCKET).addIngredient(MILK_CURDLER.get())
+                        .addCriterion("has_milk", RegistrateRecipeProvider.hasItem(Items.MILK_BUCKET)).build(provider);
+                ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 9).addIngredient(CheeseTags.Items.CHEESE_BLOCKS)
+                        .addCriterion("has_cheese_block", RegistrateRecipeProvider.hasItem(CheeseTags.Items.CHEESE_BLOCKS)).build(provider, CheeseMod.getLocation("block_o_cheese_from_cheese_block"));
+            })
+            .lang("Block O' Cheese").tag(CheeseTags.Items.CHEESE).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
     public static final RegistryEntry<CheeseBallItem> CHEESE_BALL = REGISTRATE.item("cheese_ball", CheeseBallItem::new).properties(prop -> prop.food(CheeseFoods.CHEESE_BALL).maxStackSize(16))
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 2).addIngredient(BLOCK_O_CHEESE.get())
+                    .addCriterion("has_cheese", RegistrateRecipeProvider.hasItem(BLOCK_O_CHEESE.get())).build(provider))
             .tag(CheeseTags.Items.CHEESE).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
 
     public static final RegistryEntry<Item> CHEESE_SLICE = REGISTRATE.item("cheese_slice", Item::new).properties(prop -> prop.food(CheeseFoods.CHEESE_SLICE).maxStackSize(32))
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 3).addIngredient(BLOCK_O_CHEESE.get()).addIngredient(CheeseTags.Items.KNIVES)
+                    .addCriterion("has_cheese", RegistrateRecipeProvider.hasItem(BLOCK_O_CHEESE.get())).build(provider))
             .tag(CheeseTags.Items.CHEESE).tag(CheeseTags.Items.FOOD_SLICE_CHEESE).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
 
     public static final RegistryEntry<Item> SALT = REGISTRATE.item("salt", Item::new).properties(prop -> prop.food(CheeseFoods.INGREDIENT)).tag(CheeseTags.Items.SALT)
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 2).addIngredient(GRINDING_STONES.get())
+                    .addIngredient(Ingredient.fromItemListStream(Stream.of(new Ingredient.TagList(Tags.Items.STONE), new Ingredient.TagList(Tags.Items.COBBLESTONE))))
+                    .addCriterion("has_gind_stones", RegistrateRecipeProvider.hasItem(GRINDING_STONES.get())).build(provider))
             .group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
     public static final RegistryEntry<Item> FLOUR = REGISTRATE.item("flour", Item::new).properties(prop -> prop.food(CheeseFoods.INGREDIENT)).tag(CheeseTags.Items.FLOUR)
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 3).addIngredient(GRINDING_STONES.get()).addIngredient(CheeseTags.Items.WHEAT)
+                    .addCriterion("has_wheat", RegistrateRecipeProvider.hasItem(CheeseTags.Items.WHEAT)).build(provider))
             .group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
 
     public static final RegistryEntry<Item> BACON_RAW = REGISTRATE.item("bacon_raw", Item::new).properties(prop -> prop.food(CheeseFoods.BACON).maxStackSize(32)).lang("Raw Bacon")
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 2).addIngredient(CheeseTags.Items.KNIVES).addIngredient(CheeseTags.Items.FOOD_SLICE_HAM_RAW)
+                    .addCriterion("has_ham", RegistrateRecipeProvider.hasItem(CheeseTags.Items.FOOD_SLICE_HAM_RAW)).build(provider))
             .tag(CheeseTags.Items.BACON).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
     public static final RegistryEntry<Item> BACON_COOKED = REGISTRATE.item("bacon_cooked", Item::new).properties(prop -> prop.food(CheeseFoods.BACON_COOKED).maxStackSize(32)).lang("Bacon")
-            .tag(CheeseTags.Items.BACON).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
+            .recipe((ctx, provider) -> {
+                provider.smelting(DataIngredient.items(BACON_RAW.get()), ctx::getEntry, .2f, 100);
+                provider.smoking(DataIngredient.items(BACON_RAW.get()), ctx::getEntry, .2f, 50);
+                provider.campfire(DataIngredient.items(BACON_RAW.get()), ctx::getEntry, .2f, 300);
+                ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 2).addIngredient(CheeseTags.Items.KNIVES).addIngredient(CheeseTags.Items.FOOD_SLICE_HAM_COOKED)
+                        .addCriterion("has_ham", RegistrateRecipeProvider.hasItem(CheeseTags.Items.FOOD_SLICE_HAM_COOKED)).build(provider);
+            }).tag(CheeseTags.Items.BACON).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
 
     public static final RegistryEntry<Item> BREAD_SLICE = REGISTRATE.item("bread_slice", Item::new).tag(CheeseTags.Items.BREAD)
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 3).addIngredient(CheeseTags.Items.KNIVES).addIngredient(Items.BREAD)
+                    .addCriterion("has_bread", RegistrateRecipeProvider.hasItem(Items.BREAD)).build(provider))
             .properties(prop -> prop.food(CheeseFoods.BREAD_SLICE)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
     public static final RegistryEntry<SandwichItem> SANDWICH = REGISTRATE.item("sandwich", SandwichItem::new).tag(CheeseTags.Items.BREAD)
             .properties(prop -> prop.maxStackSize(4).setISTER(() -> StackableFoodRenderer::new)).group(() -> CheeseMod.GROUP_FOODS).model(NonNullBiConsumer.noop()).register();
 
     public static final RegistryEntry<CrackerItem> CRACKER = REGISTRATE.item("cracker", CrackerItem::new).tag(CheeseTags.Items.CRACKER)
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 2).addIngredient(CheeseTags.Items.WHEAT).addIngredient(CheeseTags.Items.SALT)
+                    .addIngredient(CheeseTags.Items.FLOUR).addCriterion("has_wheat", RegistrateRecipeProvider.hasItem(CheeseTags.Items.WHEAT)).build(provider, CheeseMod.getLocation("cracker_with_ingredients")))
             .properties(prop -> prop.maxStackSize(16).setISTER(() -> StackableFoodRenderer::new)).group(() -> CheeseMod.GROUP_FOODS).model(NonNullBiConsumer.noop()).register();
     public static final RegistryEntry<Item> CRACKER_DUMMY_ITEM = REGISTRATE.item("cracker_dummy_item", Item::new).lang("Dummy Item - Why do you have this?")
             .properties(prop -> prop.food(CheeseFoods.CRACKER).maxStackSize(1).group(null)).model(NonNullBiConsumer.noop()).register();
@@ -70,41 +118,77 @@ public class CheeseItems {
             .properties(prop -> prop.food(CheeseFoods.CRACKER_TOASTED).maxStackSize(1).group(null)).model(NonNullBiConsumer.noop()).register();
 
     public static final RegistryEntry<Item> DOUGH = REGISTRATE.item("dough", Item::new).tag(CheeseTags.Items.DOUGH)
-            .properties(prop -> prop.food(CheeseFoods.DOUGH)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
+            .recipe((ctx, provider) -> {
+                ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 2).addIngredient(CheeseTags.Items.WHEAT).addIngredient(CheeseTags.Items.SUGAR).addIngredient(CheeseTags.Items.SALT).
+                        addIngredient(CheeseTags.Items.FLOUR).addCriterion("has_wheat", RegistrateRecipeProvider.hasItem(CheeseTags.Items.WHEAT)).build(provider);
+                provider.smoking(DataIngredient.items(ctx.getEntry()), () -> Items.BREAD, .5f, 50);
+            }).properties(prop -> prop.food(CheeseFoods.DOUGH)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
 
     public static final RegistryEntry<Item> EGG_CRACKED = REGISTRATE.item("egg_cracked", Item::new).lang("Egg Yolk").tag(Tags.Items.EGGS)
             .properties(prop -> prop.food(CheeseFoods.EGG).maxStackSize(32)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
     public static final RegistryEntry<Item> EGG_COOKED = REGISTRATE.item("egg_cooked", Item::new).lang("Cooked Egg").tag(Tags.Items.EGGS)
+            .recipe((ctx, provider) -> {
+                provider.smelting(DataIngredient.items(EGG_CRACKED.get()), ctx::getEntry, .15f, 100);
+                provider.smoking(DataIngredient.items(EGG_CRACKED.get()), ctx::getEntry, .15f, 50);
+                provider.campfire(DataIngredient.items(EGG_CRACKED.get()), ctx::getEntry, .15f, 300);
+            })
             .properties(prop -> prop.food(CheeseFoods.EGG_COOKED).maxStackSize(32)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
     public static final RegistryEntry<GreenFoodItem> EGG_GREEN = REGISTRATE.item("egg_green", prop -> new GreenFoodItem(CheeseFoods.EGG_GREEN, 32)).tag(Tags.Items.EGGS)
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry).addIngredient(Tags.Items.DYES_GREEN).addIngredient(EGG_CRACKED.get())
+                    .addCriterion("has_egg", RegistrateRecipeProvider.hasItem(EGG_CRACKED.get())).build(provider))
             .defaultModel().lang("Green Egg Yolk").register();
 
     public static final RegistryEntry<Item> HAM_RAW = REGISTRATE.item("ham_raw", Item::new).properties(prop -> prop.food(CheeseFoods.HAM).maxStackSize(32)).lang("Raw Ham")
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 3).addIngredient(CheeseTags.Items.KNIVES).addIngredient(Items.PORKCHOP)
+                    .addCriterion("has_knife", RegistrateRecipeProvider.hasItem(CheeseTags.Items.KNIVES)).build(provider))
             .tag(CheeseTags.Items.HAM).tag(CheeseTags.Items.FOOD_SLICE_HAM_RAW).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
     public static final RegistryEntry<Item> HAM_COOKED = REGISTRATE.item("ham_cooked", Item::new).properties(prop -> prop.food(CheeseFoods.HAM_COOKED).maxStackSize(32)).lang("Ham")
+            .recipe((ctx, provider) -> {
+                ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 3).addIngredient(CheeseTags.Items.KNIVES).addIngredient(Items.COOKED_PORKCHOP)
+                        .addCriterion("has_knife", RegistrateRecipeProvider.hasItem(CheeseTags.Items.KNIVES)).build(provider);
+                provider.smelting(DataIngredient.tag(CheeseTags.Items.FOOD_SLICE_HAM_RAW), ctx::getEntry, .35f, 200);
+                provider.smoking(DataIngredient.tag(CheeseTags.Items.FOOD_SLICE_HAM_RAW), ctx::getEntry, .35f);
+                provider.campfire(DataIngredient.tag(CheeseTags.Items.FOOD_SLICE_HAM_RAW), ctx::getEntry, .35f, 600);
+            })
             .tag(CheeseTags.Items.HAM).tag(CheeseTags.Items.FOOD_SLICE_HAM_COOKED).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
     public static final RegistryEntry<GreenFoodItem> HAM_GREEN = REGISTRATE.item("ham_green", prop -> new GreenFoodItem(CheeseFoods.HAM_GREEN, 32))
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry).addIngredient(Tags.Items.DYES_GREEN).addIngredient(HAM_RAW.get())
+                    .addCriterion("has_ham", RegistrateRecipeProvider.hasItem(HAM_RAW.get())).build(provider))
             .tag(CheeseTags.Items.HAM).tag(CheeseTags.Items.FOOD_SLICE_HAM_RAW).lang("Green Ham").defaultModel().register();
 
     public static final RegistryEntry<Item> TOAST = REGISTRATE.item("toast", Item::new).tag(CheeseTags.Items.TOAST)
-            .properties(prop -> prop.food(CheeseFoods.TOAST)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
+            .recipe((ctx, provider) -> {
+                provider.smelting(DataIngredient.items(BREAD_SLICE.get()), ctx::getEntry, .2f, 200);
+                provider.smoking(DataIngredient.items(BREAD_SLICE.get()), ctx::getEntry, .2f);
+                provider.campfire(DataIngredient.items(BREAD_SLICE.get()), ctx::getEntry, .2f, 300);
+            }).properties(prop -> prop.food(CheeseFoods.TOAST)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
     public static final RegistryEntry<Item> TOAST_FRENCH = REGISTRATE.item("toast_french", Item::new).lang("French Toast").tag(CheeseTags.Items.TOAST)
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry).addIngredient(Tags.Items.EGGS).addIngredient(TOAST.get()).addIngredient(Items.MILK_BUCKET)
+                    .addCriterion("has_toast", RegistrateRecipeProvider.hasItem(TOAST.get())).build(provider))
             .properties(prop -> prop.food(CheeseFoods.TOAST_FRENCH)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
     public static final RegistryEntry<Item> TOAST_BACON = REGISTRATE.item("toast_bacon", Item::new).lang("Bacon On Toast").tag(CheeseTags.Items.TOAST)
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry).addIngredient(CheeseTags.Items.BACON).addIngredient(TOAST.get())
+                    .addCriterion("has_toast", RegistrateRecipeProvider.hasItem(TOAST.get())).build(provider))
             .properties(prop -> prop.food(CheeseFoods.TOAST_BACON)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
 
     public static final RegistryEntry<BlockNamedItem> PINEAPPLE_PLANT = REGISTRATE.item("pineapple_plant", prop -> new BlockNamedItem(Blocks.DIRT, prop)) // CheeseBlocks.PINEAPPLE.get()
-            .properties(prop -> prop.food(CheeseFoods.PINEAPPLE_PLANT)).group(() -> CheeseMod.GROUP_FOODS)
+            .properties(prop -> prop.food(CheeseFoods.PINEAPPLE_PLANT)).group(() -> CheeseMod.GROUP_FOODS).tag(CheeseTags.Items.FOODS_TAB)
             .model((ctx, provider) -> provider.generated(ctx::getEntry, CheeseMod.getLocation("block/pineapple_stage0"))).register();
-    public static final RegistryEntry<Item> PINEAPPLE = REGISTRATE.item("pineapple", Item::new)
+    public static final RegistryEntry<Item> PINEAPPLE = REGISTRATE.item("pineapple", Item::new).tag(CheeseTags.Items.FOODS_TAB)
             .properties(prop -> prop.food(CheeseFoods.PINEAPPLE).maxStackSize(32)).group(() -> CheeseMod.GROUP_FOODS)
             .model((ctx, provider) -> provider.generated(ctx::getEntry, CheeseMod.getLocation("block/pineapple_stage4"))).register();
-    public static final RegistryEntry<Item> PINEAPPLE_RING = REGISTRATE.item("pineapple_ring", Item::new)
+    public static final RegistryEntry<Item> PINEAPPLE_RING = REGISTRATE.item("pineapple_ring", Item::new).tag(CheeseTags.Items.FOODS_TAB)
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 4).addIngredient(CheeseTags.Items.KNIVES).addIngredient(PINEAPPLE.get())
+                    .addCriterion("has_pineapple", RegistrateRecipeProvider.hasItem(PINEAPPLE.get())).build(provider))
             .properties(prop -> prop.food(CheeseFoods.PINEAPPLE_RING).maxStackSize(32)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
-    public static final RegistryEntry<Item> PINEAPPLE_BIT = REGISTRATE.item("pineapple_bit", Item::new)
+    public static final RegistryEntry<Item> PINEAPPLE_BIT = REGISTRATE.item("pineapple_bit", Item::new).tag(CheeseTags.Items.FOODS_TAB)
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry, 4).addIngredient(CheeseTags.Items.KNIVES).addIngredient(PINEAPPLE_RING.get())
+                    .addCriterion("has_pineapple", RegistrateRecipeProvider.hasItem(PINEAPPLE_RING.get())).build(provider))
             .properties(prop -> prop.food(CheeseFoods.PINEAPPLE_BIT).maxStackSize(32)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
 
     public static final RegistryEntry<Item> PIZZA = REGISTRATE.item("pizza", Item::new).tag(CheeseTags.Items.PIZZA).tag(CheeseTags.Items.DOUGH)
+            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry).addIngredient(ROLLING_PIN.get()).addIngredient(DOUGH.get())
+                    .addCriterion("has_dough", RegistrateRecipeProvider.hasItem(DOUGH.get())).build(provider))
             .properties(prop -> prop.food(CheeseFoods.DOUGH).maxStackSize(32)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
     public static final RegistryEntry<Item> PIZZA_CHEESE = REGISTRATE.item("pizza_cheese", Item::new).lang("Cold All Cheese Pizza").tag(CheeseTags.Items.PIZZA).tag(CheeseTags.Items.CHEESE)
             .properties(prop -> prop.food(CheeseFoods.PIZZA_CHEESE).maxStackSize(32)).group(() -> CheeseMod.GROUP_FOODS).defaultModel().register();
@@ -121,28 +205,27 @@ public class CheeseItems {
 
     /// Ingots ///
     public static final RegistryEntry<Item> CHEESE_METAL_INGOT = REGISTRATE.item("cheese_metal_ingot", Item::new).properties(prop -> prop.food(CheeseFoods.INGOT)).defaultModel()
-            .tag(Tags.Items.INGOTS).register();
+            .recipe((ctx, provider) -> {
+                foodMetalIngotRecipe(CheeseTags.Items.FOOD_METAL_ORE_CHEESE).accept(ctx, provider);
+                provider.singleItem(DataIngredient.items(CheeseBlocks.CHEESE_METAL_BLOCK.get()), ctx::getEntry, 1, 1);
+            }).tag(Tags.Items.INGOTS).register();
     public static final RegistryEntry<Item> GRILLED_CHEESE_METAL_INGOT = REGISTRATE.item("grilled_cheese_metal_ingot", Item::new).properties(prop -> prop.food(CheeseFoods.INGOT)).defaultModel()
-            .tag(Tags.Items.INGOTS).register();
+            .recipe((ctx, provider) -> {
+                foodMetalIngotRecipe(CheeseTags.Items.FOOD_METAL_ORE_GRILLED_CHEESE).accept(ctx, provider);
+                provider.singleItem(DataIngredient.items(CheeseBlocks.CHEESE_METAL_BLOCK.get()), ctx::getEntry, 1, 1);
+            }).tag(Tags.Items.INGOTS).register();
     public static final RegistryEntry<Item> HAM_RAW_METAL_INGOT = REGISTRATE.item("ham_raw_metal_ingot", Item::new).properties(prop -> prop.food(CheeseFoods.INGOT)).defaultModel()
-            .tag(Tags.Items.INGOTS).register();
+            .recipe((ctx, provider) -> {
+                foodMetalIngotRecipe(CheeseTags.Items.FOOD_METAL_ORE_HAM_RAW).accept(ctx, provider);
+                provider.singleItem(DataIngredient.items(CheeseBlocks.CHEESE_METAL_BLOCK.get()), ctx::getEntry, 1, 1);
+            }).tag(Tags.Items.INGOTS).register();
     public static final RegistryEntry<Item> HAM_COOKED_METAL_INGOT = REGISTRATE.item("ham_cooked_metal_ingot", Item::new).properties(prop -> prop.food(CheeseFoods.INGOT)).defaultModel()
-            .tag(Tags.Items.INGOTS).register();
+            .recipe((ctx, provider) -> {
+                foodMetalIngotRecipe(CheeseTags.Items.FOOD_METAL_ORE_HAM_COOKED).accept(ctx, provider);
+                provider.singleItem(DataIngredient.items(CheeseBlocks.CHEESE_METAL_BLOCK.get()), ctx::getEntry, 1, 1);
+            }).tag(Tags.Items.INGOTS).register();
 
     /// Tools ///
-    public static final RegistryEntry<CraftToolItem> CHEESE_CUTTER = REGISTRATE.item("cheese_cutter", prop -> new CraftToolItem(ItemTier.IRON, 1, 2.5f, prop))
-            .group(() -> CheeseMod.GROUP_ARMOR_TOOLS).model((ctx, provider) -> provider.handheld(ctx::getEntry)).register();
-    public static final RegistryEntry<CraftToolItem> GRINDING_STONES = REGISTRATE.item("grinding_stones", prop -> new CraftToolItem(ItemTier.STONE, 2, 2.7f, prop))
-            .recipe((ctx, provider) -> ShapelessRecipeBuilder.shapelessRecipe(ctx::getEntry).addIngredient(Tags.Items.COBBLESTONE)
-                    .addCriterion("has_stone", RegistrateRecipeProvider.hasItem(Tags.Items.COBBLESTONE)).build(provider))
-            .group(() -> CheeseMod.GROUP_ARMOR_TOOLS).model((ctx, provider) -> provider.handheld(ctx::getEntry)).register();
-    public static final RegistryEntry<CraftToolItem> MILK_CURDLER = REGISTRATE.item("milk_curdler", prop -> new CraftToolItem(ItemTier.WOOD, 2, 2.5f, prop))
-            .group(() -> CheeseMod.GROUP_ARMOR_TOOLS).model((ctx, provider) -> provider.handheld(ctx::getEntry)).register();
-    public static final RegistryEntry<CraftToolItem> ROLLING_PIN = REGISTRATE.item("rolling_pin", prop -> new CraftToolItem(ItemTier.WOOD, 1, 2.5f, prop))
-            .recipe((ctx, provider) -> ShapedRecipeBuilder.shapedRecipe(ctx::getEntry).key('s', Tags.Items.RODS_WOODEN).key('p', ItemTags.PLANKS).patternLine("sps")
-                    .addCriterion("has_planks", RegistrateRecipeProvider.hasItem(ItemTags.PLANKS)).build(provider))
-            .group(() -> CheeseMod.GROUP_ARMOR_TOOLS).model((ctx, provider) -> provider.handheld(ctx::getEntry)).register();
-
     public static final RegistryEntry<CraftToolItem> KNIFE = REGISTRATE.item("knife", prop -> new CraftToolItem(ItemTier.IRON, 4, -2.1f, prop))
             .recipe(knifeRecipe(Tags.Items.INGOTS_IRON)).group(() -> CheeseMod.GROUP_ARMOR_TOOLS).model((ctx, provider) -> provider.handheld(ctx::getEntry)).tag(CheeseTags.Items.KNIVES_IRON).register();
     public static final RegistryEntry<CraftToolItem> CHEESE_KNIFE = REGISTRATE.item("cheese_knife", prop -> new CraftToolItem(CheeseItemTier.CHEESE_METAL, 5, -2.7f, prop))
@@ -285,6 +368,10 @@ public class CheeseItems {
             .properties(prop -> prop.maxStackSize(1)).defaultModel().recipe(boatRecipe(CheeseBlocks.HAM_RAW_PLANKS)).tag(ItemTags.BOATS).register();
     public static final RegistryEntry<FoodBoatItem> BOAT_HAM_COOKED = REGISTRATE.item("ham_cooked_boat", prop -> new FoodBoatItem(FoodBoatEntity.Type.HAM_COOKED, prop))
             .properties(prop -> prop.maxStackSize(1)).defaultModel().recipe(boatRecipe(CheeseBlocks.HAM_COOKED_PLANKS)).tag(ItemTags.BOATS).register();
+
+    private static NonNullBiConsumer<DataGenContext<Item, Item>, RegistrateRecipeProvider> foodMetalIngotRecipe(ITag.INamedTag<Item> ore) {
+        return (ctx, provider) -> provider.smeltingAndBlasting(DataIngredient.tag(ore), ctx::getEntry, .7f);
+    }
 
     private static NonNullBiConsumer<DataGenContext<Item, FoodBoatItem>, RegistrateRecipeProvider> boatRecipe(Supplier<Block> planks) {
         return (ctx, provider) -> ShapedRecipeBuilder.shapedRecipe(ctx::getEntry).addCriterion("has_planks", RegistrateRecipeProvider.hasItem(planks.get()))

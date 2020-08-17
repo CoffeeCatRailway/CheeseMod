@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:food_blocks/cheese"
+    }
+  ],
+  "result": {
+    "item": "coffeecheese:block_o_cheese",
+    "count": 9
+  }
+}

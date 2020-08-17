@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "#forge:food_slice/ham",
+    "#forge:food_blocks/ham_raw",
+    "#forge:food_blocks/ham_cooked",
     "coffeecheese:ham_raw",
     "coffeecheese:ham_cooked",
     "coffeecheese:ham_green",

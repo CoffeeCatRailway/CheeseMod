@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "tag": "forge:food_slice/ham_raw"
+  },
+  "result": "coffeecheese:ham_cooked",
+  "experience": 0.35,
+  "cookingtime": 200
+}

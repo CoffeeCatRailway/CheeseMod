@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "coffeecheese:bread_slice"
+  },
+  "result": "coffeecheese:toast",
+  "experience": 0.2,
+  "cookingtime": 100
+}

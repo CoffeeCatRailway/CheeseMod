@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "coffeecheese:pineapple_bit"
+    ]
+  },
+  "criteria": {
+    "has_pineapple": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:pineapple_ring"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "coffeecheese:pineapple_bit"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_pineapple",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:knives"
+    },
+    {
+      "item": "coffeecheese:pineapple"
+    }
+  ],
+  "result": {
+    "item": "coffeecheese:pineapple_ring",
+    "count": 4
+  }
+}

@@ -1,5 +1,4 @@
 {
-	"parent": "generated_item",
 	"textures": {
 		"0": "block/oak_log",
 		"1": "coffeecheese:block/grilled_cheese_block_holes",

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "coffeecheese:egg_cooked_from_egg_cracked_smoking"
+    ]
+  },
+  "criteria": {
+    "has_egg_cracked": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:egg_cracked"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "coffeecheese:egg_cooked_from_egg_cracked_smoking"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_egg_cracked",
+      "has_the_recipe"
+    ]
+  ]
+}

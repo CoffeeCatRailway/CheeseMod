@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "coffeecheese:toast_bacon"
+    ]
+  },
+  "criteria": {
+    "has_toast": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "coffeecheese:toast"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "coffeecheese:toast_bacon"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_toast",
+      "has_the_recipe"
+    ]
+  ]
+}

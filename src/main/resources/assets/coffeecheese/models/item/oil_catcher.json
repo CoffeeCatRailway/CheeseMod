@@ -1,5 +1,4 @@
 {
-	"parent": "generated_item",
 	"textures": {
 		"0": "block/anvil",
 		"particle": "block/anvil"
