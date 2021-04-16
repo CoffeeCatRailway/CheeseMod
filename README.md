@@ -1,3 +1,5 @@
+# [Github for re-write (Click Here!)](https://github.com/CoffeeCatRailway/HamNCheese)
+
 <img src="https://i.imgur.com/rhx5rd4.png"/>
 
 # CoffeeCats CheeseMod [![Curseforge](http://cf.way2muchnoise.eu/full_coffeecheese_downloads.svg)](https://minecraft.curseforge.com/projects/coffeecheese) [![Curseforge](http://cf.way2muchnoise.eu/versions/For%20MC_coffeecheese_all.svg)](https://minecraft.curseforge.com/projects/coffeecheese) [![Discord](https://img.shields.io/discord/416514612977205248?label=discord&logo=discord&color=7289da)](https://discord.gg/vjHmHE9)
